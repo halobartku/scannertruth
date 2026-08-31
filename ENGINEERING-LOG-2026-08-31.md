@@ -3,8 +3,8 @@
 Everything that happened on the day this benchmark was built, in order, including every mistake.
 
 This exists because the project's only real asset is that its numbers can be checked, and a reader
-who cannot see how a number was produced has to take it on faith. Nineteen errors are recorded
-below. Fifteen were caught by measurement or by a check, four by a person noticing. Two would have
+who cannot see how a number was produced has to take it on faith. Twenty-one errors are recorded
+below. Sixteen were caught by measurement or by a check, five by a person noticing. Two would have
 put a false statement in a funding application, one had already been published before it was
 caught, and one was a defect in our own ground truth.
 
@@ -362,6 +362,44 @@ roughly a hundred files, and on one case the vulnerable variant completed while 
 not, which makes the pair useless even though half of it worked. Recorded as unavailable. When it
 gives up it still prints `Results written to <path>` for a file it did not write, which is the
 identical bug we made ourselves in error 16, twelve hours apart, in opposite directions.
+
+---
+
+## Part 14: the headline rested on one case, and the harness hid it both ways
+
+**Error 20, the worst of the day, because it was the headline.** The published claim that Radar
+detects 0 of 8 real vulnerabilities was **extrapolated from one case**. Every Radar artefact in the
+repository was either the teaching corpus, complete and properly evidenced, or **Wormhole alone,
+twice**: once as an isolated file, once as the real crate. `c2clean-radar.json`, which reads as a
+cleaned corpus-2 run, is not one at all - its paths are `/tmp/whreal/`. VaultLint's corpus-2 file
+covers `solend-owner-checks` only.
+
+The cause was mechanical and invisible. **Radar requires a `Cargo.toml` in a subdirectory of the
+path it is given.** Corpus-2 cases carry their manifest at the root, so it answers
+`400 Bad Request: No Cargo.toml files found in any subdirectories` and analyses nothing. Wormhole
+passed on the accident of its layout; the real crates passed because the crate is nested. Every
+other case was an invocation error being recorded as a miss.
+
+**Retracted in public before the replacement data existed**, because leaving an unsupported claim
+standing while gathering better numbers is the wrong order.
+
+Re-measured with the corpus wrapped one level deeper: **18 runs, 18 successes, zero unavailable,
+238 findings, all nine cases.** The conclusion held - 0 detected of 8 valid cases - but the detail
+did not. The old text said the mapped rule "never fired at all" on eight of nine. It fires in the
+right file on two of them, just not where the fix changed anything. Those are `unlocated`. Being
+right about the headline while wrong about the mechanism is still being wrong.
+
+**Error 21, mine, in the opposite direction and within the same hour.** The new harness marked
+`anchor-interface-account/insecure` **unavailable**. Radar had run it perfectly: 57 templates, one
+file scanned, `completed successfully. No results found.` It wrote no JSON, and my script read a
+missing file as a failed run. So after a full day of insisting that "could not run" and "found
+nothing" must never be confused, I confused them myself, in the tool built to stop exactly that.
+
+**What survived the audit, stated as loudly as what did not.** Corpus 1 is properly evidenced:
+`runs/2026-08-31.json` carries per-class records for radar (11), sol-audit (13) and vaultlint (11),
+all `measured`, and X-Ray's log shows 35 leaves across 11 classes, all `ok`. The real-crate results
+stand, because that run wrote a log per run. The pattern is exact: **everything that held up had a
+per-run artefact; everything that collapsed had been inferred from a summary.**
 
 ---
 

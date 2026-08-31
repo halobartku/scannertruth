@@ -1,15 +1,17 @@
 # RESULTS: corpus 2, real vulnerabilities. Eight valid cases, one detection.
 
-> **RETRACTED IN PART, 2026-08-31 late.** The Radar and VaultLint numbers on this page are
-> **not supported by the data behind them.** `c2-radar.json` contains findings from exactly one
-> case (`wormhole-sysvar`); `c2-vaultlint.json` likewise. Neither run left a per-case log, and the
-> corpus directory those runs read contained only that one case. So for the other eight cases we
-> **cannot distinguish "the tool found nothing" from "the tool was never given the case"** - which
-> is the precise confusion this benchmark exists to name, appearing in its own headline.
+> **RE-MEASURED, 2026-08-31 late.** The Radar figures on this page were retracted a few hours ago
+> because the data behind them covered one case. Radar has now been run **per case, per variant,
+> over all nine cases, with a log per run** (`c2-radar-percase.log`, `c2-radar-complete.json`):
+> 18 runs, 18 successful, **zero unavailable**, 238 findings.
 >
-> Treat every Radar and VaultLint figure below as **unverified** until the re-run completes. Only
-> `sol-audit` (findings across 9 cases) and X-Ray (per-leaf run log, all 9 `status=ok`) had
-> evidence that every case was analysed.
+> **The conclusion held: 0 detected of 8 valid cases.** But the detail was wrong in a way that
+> mattered - the old text said Radar's mapped rule "never fired at all" on eight of nine cases.
+> Measured, it fires in the right file on two of them (`squads-signer-auth`,
+> `metaplex-token-metadata`), just not where the fix changed anything. Those are `unlocated`, not
+> misses. No rule fires only on a vulnerable variant; every one fires on the fix too.
+>
+> **VaultLint has not yet been re-measured** and its figures here remain unsupported.
 
 
 

@@ -1,0 +1,19 @@
+anchor-interface-account insecure UNAVAILABLE rc=0 no-parseable-output
+anchor-interface-account secure ok rc=0 findings=2
+cashio-account-data insecure ok rc=0 findings=4
+cashio-account-data secure ok rc=0 findings=4
+metaplex-bubblegum-creator insecure ok rc=0 findings=8
+metaplex-bubblegum-creator secure ok rc=0 findings=8
+metaplex-candy-machine insecure ok rc=0 findings=2
+metaplex-candy-machine secure ok rc=0 findings=2
+metaplex-token-metadata insecure ok rc=0 findings=2
+metaplex-token-metadata secure ok rc=0 findings=2
+solend-owner-checks insecure ok rc=0 findings=5
+solend-owner-checks secure ok rc=0 findings=5
+squads-account-matching insecure ok rc=0 findings=4
+squads-account-matching secure ok rc=0 findings=4
+squads-signer-auth insecure ok rc=0 findings=4
+squads-signer-auth secure ok rc=0 findings=4
+wormhole-sysvar insecure ok rc=0 findings=4
+wormhole-sysvar secure ok rc=0 findings=4
+C2_PERCASE_DONE

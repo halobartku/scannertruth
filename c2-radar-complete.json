@@ -1,0 +1,1194 @@
+{
+ "findings": [
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "line": 244
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "line": 219
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "line": 245
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 89
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 149
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 58
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 60
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 62
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 64
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 66
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 81
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 85
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 95
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 98
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 101
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 105
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 109
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 133
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 137
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 64
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 66
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 81
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 85
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 109
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 133
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 137
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 141
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 55
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/cashio-account-data/insecure/src/lib.rs",
+   "line": 92
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 91
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 151
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 60
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 62
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 64
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 66
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 68
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 83
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 87
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 97
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 100
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 103
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 107
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 111
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 135
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 139
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 66
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 68
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 83
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 87
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 111
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 135
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 139
+  },
+  {
+   "rule_id": "Missing Token Mint Constraint",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 143
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 57
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/cashio-account-data/secure/src/lib.rs",
+   "line": 94
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 55
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 78
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 100
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 107
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 109
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 113
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 134
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 136
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 139
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 153
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 155
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 158
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 174
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 176
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 179
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 184
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 189
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 191
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 195
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 217
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 219
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 221
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 224
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 240
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 242
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 245
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 269
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 272
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 302
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 336
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 356
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 359
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 365
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 367
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 382
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 384
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 401
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 403
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 418
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 420
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/collection.rs",
+   "line": 62
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 393
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 395
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 775
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 1427
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/mod.rs",
+   "line": 106
+  },
+  {
+   "rule_id": "Unchecked Close Target",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 305
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 126
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+   "line": 208
+  },
+  {
+   "rule_id": "Random Authority Generation",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/mod.rs",
+   "line": 206
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/mod.rs",
+   "line": 83
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/metaplex-bubblegum-creator/insecure/src/mod.rs",
+   "line": 159
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 55
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 78
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 100
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 107
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 109
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 113
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 134
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 136
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 139
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 153
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 155
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 158
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 174
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 176
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 179
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 184
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 189
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 191
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 195
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 217
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 219
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 221
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 224
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 240
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 242
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 245
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 269
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 272
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 302
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 336
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 357
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 360
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 366
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 368
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 383
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 385
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 402
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 404
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 419
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 421
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/collection.rs",
+   "line": 76
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 394
+  },
+  {
+   "rule_id": "Duplicate Mutable Accounts",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 396
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 776
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 1430
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/mod.rs",
+   "line": 108
+  },
+  {
+   "rule_id": "Unchecked Close Target",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 305
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 126
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+   "line": 208
+  },
+  {
+   "rule_id": "Random Authority Generation",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/collection.rs",
+   "line": 153
+  },
+  {
+   "rule_id": "Random Authority Generation",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/mod.rs",
+   "line": 208
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/mod.rs",
+   "line": 85
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/metaplex-bubblegum-creator/secure/src/mod.rs",
+   "line": 161
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 19
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 30
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 32
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 34
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 36
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "line": 152
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 19
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 30
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 32
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 34
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 36
+  },
+  {
+   "rule_id": "Unconstrained UncheckedAccount",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "line": 160
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/metaplex-token-metadata/insecure/src/transfer.rs",
+   "line": 197
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus2/metaplex-token-metadata/insecure/src/transfer.rs",
+   "line": 197
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/metaplex-token-metadata/secure/src/transfer.rs",
+   "line": 209
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus2/metaplex-token-metadata/secure/src/transfer.rs",
+   "line": 209
+  },
+  {
+   "rule_id": "Missing Pyth Confidence Interval",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 309
+  },
+  {
+   "rule_id": "Missing Pyth Confidence Interval",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 449
+  },
+  {
+   "rule_id": "Missing Pyth Confidence Interval",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2109
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2124
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2178
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2262
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 42
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2064
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 131
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 194
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 733
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2213
+  },
+  {
+   "rule_id": "Missing Pyth Confidence Interval",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 309
+  },
+  {
+   "rule_id": "Missing Pyth Confidence Interval",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 449
+  },
+  {
+   "rule_id": "Missing Pyth Confidence Interval",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2113
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2128
+  },
+  {
+   "rule_id": "Unvalidated Price Data Account",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2182
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2266
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 42
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2068
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 131
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 194
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 733
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2217
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 319
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 285
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 19
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 51
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 327
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 285
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 19
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 51
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 327
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 285
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 19
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 51
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Invoke Signed Unvalidated Seeds",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 327
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 285
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 19
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 38
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 51
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+   "line": 68
+  },
+  {
+   "rule_id": "Missing Rent Exemption Check",
+   "file": "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+   "line": 179
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/wormhole-sysvar/insecure/src/main.rs",
+   "line": 72
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/wormhole-sysvar/insecure/src/main.rs",
+   "line": 72
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+   "line": 68
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+   "line": 204
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+   "line": 68
+  },
+  {
+   "rule_id": "Missing Rent Exemption Check",
+   "file": "corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+   "line": 179
+  },
+  {
+   "rule_id": "Account Precreation DoS",
+   "file": "corpus2/wormhole-sysvar/secure/src/main.rs",
+   "line": 73
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/wormhole-sysvar/secure/src/main.rs",
+   "line": 73
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+   "line": 68
+  },
+  {
+   "rule_id": "Unchecked Arithmetics",
+   "file": "corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+   "line": 204
+  }
+ ]
+}

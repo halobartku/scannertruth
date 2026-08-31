@@ -1,15 +1,17 @@
 # RESULTS: every scanner, both corpora, 2026-08-31
 
-> **RETRACTED IN PART, 2026-08-31 late.** The Radar and VaultLint numbers on this page are
-> **not supported by the data behind them.** `c2-radar.json` contains findings from exactly one
-> case (`wormhole-sysvar`); `c2-vaultlint.json` likewise. Neither run left a per-case log, and the
-> corpus directory those runs read contained only that one case. So for the other eight cases we
-> **cannot distinguish "the tool found nothing" from "the tool was never given the case"** - which
-> is the precise confusion this benchmark exists to name, appearing in its own headline.
+> **RE-MEASURED, 2026-08-31 late.** The Radar figures on this page were retracted a few hours ago
+> because the data behind them covered one case. Radar has now been run **per case, per variant,
+> over all nine cases, with a log per run** (`c2-radar-percase.log`, `c2-radar-complete.json`):
+> 18 runs, 18 successful, **zero unavailable**, 238 findings.
 >
-> Treat every Radar and VaultLint figure below as **unverified** until the re-run completes. Only
-> `sol-audit` (findings across 9 cases) and X-Ray (per-leaf run log, all 9 `status=ok`) had
-> evidence that every case was analysed.
+> **The conclusion held: 0 detected of 8 valid cases.** But the detail was wrong in a way that
+> mattered - the old text said Radar's mapped rule "never fired at all" on eight of nine cases.
+> Measured, it fires in the right file on two of them (`squads-signer-auth`,
+> `metaplex-token-metadata`), just not where the fix changed anything. Those are `unlocated`, not
+> misses. No rule fires only on a vulnerable variant; every one fires on the fix too.
+>
+> **VaultLint has not yet been re-measured** and its figures here remain unsupported.
 
 
 
@@ -21,9 +23,9 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 |---|---|---|---|
 | `control-noisy` (flags every line) | **0 / 11** | — | 931 findings, perfect nominal, zero real |
 | `control-null` (reports nothing) | **0 / 11** | — | the floor |
-| **`radar`** (Auditware) | **11 / 11** | **0 / 8** | detects every teaching class, none of the real ones |
+| **`radar`** (Auditware) | **11 / 11** | **0 / 8** measured | 18/18 runs succeeded; 2 cases `unlocated`, not missed |
 | `sol-audit` v2 (ours) | 4 / 11 | **0 / 8** | ours, free and open forever, not a product |
-| `vaultlint` 0.1.1 | 2 / 11 | **0 / 8** | precision claim holds; 4 findings across 35 files |
+| `vaultlint` 0.1.1 | 2 / 11 | **unverified** | corpus-2 data covers one case; re-run pending |
 | **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** | the one real detection anything has made; see below |
 | `solsec` 0.2.1 | 0 / 11 | **0 / 6**, 3 unavailable | 108 findings, every one fires on the fix too |
 | `semgrep` 1.174 | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
