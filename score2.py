@@ -137,7 +137,45 @@ def demo():
     m = {"10-sysvar-address-checking": ["Unvalidated Sysvar Account"]}
     assert rules_for(m, "sysvar-address-checking") == {"unvalidated sysvar account"}
     assert rules_for(m, "owner-checks") == set()
-    print("score2: OK")
+
+    # POSITIVE CONTROL, end to end through score_case itself.
+    #
+    # Until 2026-08-31 this scorer had never once returned "detected" for
+    # anything, and nobody had checked that it could. Every published zero
+    # rested on an instrument whose only observed output was zero. It does
+    # work - confirmed against the real X-Ray finding on
+    # squads-account-matching - but that was the luck of one tool happening to
+    # fire, not method. A synthetic case now drives the whole scoring path on
+    # every run, so a corpus of zeros can never again quietly mean a scorer
+    # that cannot say yes.
+    with tempfile.TemporaryDirectory() as d:
+        case = os.path.join(d, "synthetic-case")
+        vulnerable = "\n".join(["a", "b", "vulnerable_line", "d"]) + "\n"
+        fixed = "\n".join(["a", "b", "guard()", "vulnerable_line", "d"]) + "\n"
+        for variant, text in (("insecure", vulnerable), ("secure", fixed)):
+            sub = os.path.join(case, variant, "src")
+            os.makedirs(sub)
+            open(os.path.join(sub, "lib.rs"), "w").write(text)
+        mapping = {"1-account-data-matching": ["RULE-X"]}
+        ins_path = os.path.join(case, "insecure", "src", "lib.rs")
+        sec_path = os.path.join(case, "secure", "src", "lib.rs")
+
+        # fires on the vulnerable variant at the fix site, silent on the fix
+        v, _ = score_case(case, "account-data-matching", mapping,
+                          {ins_path: [("RULE-X", 3)]})
+        assert v == "detected", f"positive control returned {v!r}, not 'detected'"
+
+        # the same rule firing on the fix too is not a detection
+        v, _ = score_case(case, "account-data-matching", mapping,
+                          {ins_path: [("RULE-X", 3)], sec_path: [("RULE-X", 3)]})
+        assert v != "detected", f"firing on the fix must not score detected: {v!r}"
+
+        # firing far from the fix is neither a detection nor a clean miss
+        v, _ = score_case(case, "account-data-matching", mapping,
+                          {ins_path: [("RULE-X", 400)]})
+        assert v == "unlocated", f"off-site finding returned {v!r}"
+
+    print("score2: OK (including the positive control)")
 
 
 def load_findings(kind, path):

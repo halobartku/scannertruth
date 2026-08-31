@@ -183,3 +183,30 @@ gaps against it on the day we measured. A holdout is the only real answer and we
 assigned. Until they are answered, every third-party number in this repository is provisional, and
 the X-Ray case is the proof that this is not a formality: our mapping was wrong in a way only the
 tool's authors could have settled quickly.
+
+## Added 2026-08-31, late. Both found by asking what we had not checked.
+
+**24. The corpus-2 scorer had never returned a positive verdict, and nobody had checked it could.**
+Every number this project published from corpus 2 was a zero, produced by an instrument whose only
+observed output was zero. If `score_case` had a defect making `detected` unreachable, every result
+would look exactly as it does. It does work - `score2.py --demo` now drives a synthetic
+vulnerable/fixed pair end to end and asserts three verdicts: `detected` when a mapped rule fires at
+the fix site and not on the fix, not-detected when it fires on both, and `unlocated` when it fires
+far from the fix. **FIXED**, and it runs on every invocation. The uncomfortable part is that the
+project wrote this exact rule into its own skill file the same day - *a check returning zero
+everywhere may simply be broken* - and then did not apply it to its own scorer.
+
+**25. Corpus 2 is selected from public postmortems, and that is a bias we never stated.**
+Every case comes from a rekt.news writeup, a published audit, a GitHub Security Advisory or a
+RustSec entry: Wormhole, Cashio, Solend, SPL, Squads, Metaplex, Anchor. Those incidents are
+*famous precisely because nobody caught them in time*. A corpus assembled from the bugs that got
+through is systematically harder than the population of real bugs, and it will understate any
+scanner. It is still the right corpus for the question "do these tools catch the ones that cost
+money", but it cannot support the broader claim "these tools do not work", and nothing in this
+repository should be read as making it. Unfixed, and probably unfixable without a source of
+disclosed-but-uncelebrated vulnerabilities.
+
+**26. No calibration control was ever run on corpus 2.** `control-noisy` and `control-null` cover
+the teaching corpus only. The corpus that carries the headline has no floor and no ceiling
+established by construction. Item 24 partly substitutes for this, but a real `control-noisy` run
+over corpus 2 is still missing.

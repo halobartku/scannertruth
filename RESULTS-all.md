@@ -117,6 +117,20 @@ main ways a benchmark misleads.
 
 ## Limits
 
+**Corpus 2 is drawn entirely from public postmortems** - rekt.news, published audits, GitHub
+advisories, RustSec. Those incidents are famous *because nobody caught them in time*, so the corpus
+is systematically harder than the population of real bugs and understates every scanner measured on
+it. It answers "do these tools catch the ones that cost money". It cannot support "these tools do
+not work", and nothing here should be read as claiming that.
+
+**The right of reply is now open, not exercised.** Four threads, one per measured tool:
+[radar#32](https://github.com/Auditware/radar/issues/32),
+[x-ray#51](https://github.com/sec3-product/x-ray/issues/51),
+[vaultlint#1](https://github.com/vaultlint/vaultlint/issues/1),
+[solsec#14](https://github.com/hasip-timurtas/solsec/issues/14). No replies yet. Until they answer,
+every third-party number below is provisional, and the X-Ray correction shows that is not a
+formality.
+
 Every result here is provisional until each tool's authors have been offered their mapping for
 correction, which `PROTOCOL.md` requires and which has not yet happened for anyone. Ten real cases
 is a small corpus. The teaching corpus is public and known to be tuned against. Our own packaging
