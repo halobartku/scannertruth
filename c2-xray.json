@@ -1,0 +1,9 @@
+{
+ "findings": [
+  {
+   "rule_id": "1019",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 310
+  }
+ ]
+}
