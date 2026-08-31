@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Test suite
+        run: python test_all.py
+
       - name: Scorer self-checks, including the positive control
         run: |
           python score.py --demo

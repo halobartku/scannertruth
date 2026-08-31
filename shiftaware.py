@@ -47,32 +47,42 @@ def load(p):
             if m: out.append((n,re.sub(r"^.*/(insecure|secure)/","",m.group(1)),int(m.group(2))))
     return out
 
-OUT="/tmp/c2crates-radar"
-man=json.load(open("/tmp/c2crates/manifest.json"))
-real=0
-for c in man["cases"]:
-    n=c["name"]
-    fi,fs=f"{OUT}/{n}.insecure.json",f"{OUT}/{n}.secure.json"
-    if not (os.path.exists(fi) and os.path.exists(fs)):
-        print(f"{n:30} PAIR INCOMPLETE - not scored"); continue
-    if c.get("valid",True) is False:
-        print(f"{n:30} EXCLUDED - manifest marks the pair invalid"); continue
-    repo="/tmp/c2cache/"+c["repo"].replace("/","__")
-    files=c.get("files") or []
-    ins,sec=load(fi),load(fs)
-    sec_set=set((r,p,l) for r,p,l in sec)
-    survivors=[]
-    for r,p,L in ins:
-        target=[f for f in files if p.endswith(os.path.basename(f))]
-        hs=hunks(repo,c["fix"],target[0]) if target else []
-        m=map_line(L,hs) if hs else L
-        if m is None: continue                       # the fix deleted this line outright
-        if any((r,p,m+d) in sec_set for d in range(-TOL,TOL+1)): continue
-        survivors.append((r,p,L,hs))
-    print(f"{n:30} insecure={len(ins):4} secure={len(sec):4} survives-shift-correction={len(survivors)}")
-    for r,p,L,hs in survivors:
-        ch=changed(hs)
-        at = "*** AT FIX SITE ***" if any(abs(L-x)<=TOL for x in ch) else "not at fix site"
-        print(f"      {r:34} {p.split(chr(47))[-1]}:{L:<6} {at}")
-        if at.startswith("***"): real+=1
-print(f"\nRadar on real crates: {real} finding(s) that are differential AND at the fix site")
+
+def main(out_dir="/tmp/c2crates-radar", manifest="/tmp/c2crates/manifest.json"):
+    """Everything below used to run at import time, which made this module impossible to import
+    and therefore impossible to test - which is exactly why the tool that corrected 23 phantom
+    detections had no tests of its own. Wrapped so the functions above can be exercised."""
+    OUT = out_dir
+    man = json.load(open(manifest))
+    real=0
+    for c in man["cases"]:
+        n=c["name"]
+        fi,fs=f"{OUT}/{n}.insecure.json",f"{OUT}/{n}.secure.json"
+        if not (os.path.exists(fi) and os.path.exists(fs)):
+            print(f"{n:30} PAIR INCOMPLETE - not scored"); continue
+        if c.get("valid",True) is False:
+            print(f"{n:30} EXCLUDED - manifest marks the pair invalid"); continue
+        repo="/tmp/c2cache/"+c["repo"].replace("/","__")
+        files=c.get("files") or []
+        ins,sec=load(fi),load(fs)
+        sec_set=set((r,p,l) for r,p,l in sec)
+        survivors=[]
+        for r,p,L in ins:
+            target=[f for f in files if p.endswith(os.path.basename(f))]
+            hs=hunks(repo,c["fix"],target[0]) if target else []
+            m=map_line(L,hs) if hs else L
+            if m is None: continue                       # the fix deleted this line outright
+            if any((r,p,m+d) in sec_set for d in range(-TOL,TOL+1)): continue
+            survivors.append((r,p,L,hs))
+        print(f"{n:30} insecure={len(ins):4} secure={len(sec):4} survives-shift-correction={len(survivors)}")
+        for r,p,L,hs in survivors:
+            ch=changed(hs)
+            at = "*** AT FIX SITE ***" if any(abs(L-x)<=TOL for x in ch) else "not at fix site"
+            print(f"      {r:34} {p.split(chr(47))[-1]}:{L:<6} {at}")
+            if at.startswith("***"): real+=1
+    print(f"\nRadar on real crates: {real} finding(s) that are differential AND at the fix site")
+
+
+
+if __name__ == "__main__":
+    main()

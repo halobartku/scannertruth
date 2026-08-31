@@ -26,6 +26,7 @@ ever ranks it above zero, your measurement is broken, not the control.
 ## The ten-minute version
 
 ```bash
+python test_all.py                                   # the full suite
 python score.py --demo && python score2.py --demo    # self-checks, incl. the positive control
 python verify.py                                     # run-1 headline reproduces from raw data
 python control_c2.py                                 # controls must score zero
