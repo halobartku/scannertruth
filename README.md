@@ -46,6 +46,11 @@ sysvar-check bug, 320 million dollars, taken from the real fix commit and its pa
 on the vulnerable and the fixed program. So does ours. VaultLint reports nothing.
 [`RESULTS-wormhole.md`](RESULTS-wormhole.md).
 
+**How all of this was actually built, mistakes included:**
+[`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md) is the full record of the day this
+benchmark was made, in order, with fifteen errors recorded. Eleven were caught by measurement,
+four by a person noticing, and two would have put a false statement in a funding application.
+
 **What is wrong with all of this:** [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md) lists every
 weakness we know of in our own method and code, ordered by how much damage each does. It opens with
 an error we made and published on the same day. A measurement project that only documents other
