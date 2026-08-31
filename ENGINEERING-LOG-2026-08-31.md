@@ -3,9 +3,10 @@
 Everything that happened on the day this benchmark was built, in order, including every mistake.
 
 This exists because the project's only real asset is that its numbers can be checked, and a reader
-who cannot see how a number was produced has to take it on faith. Sixteen errors are recorded
-below. Twelve were caught by measurement or by a check, four by a person noticing. Two would have
-put a false statement in a funding application.
+who cannot see how a number was produced has to take it on faith. Seventeen errors are recorded
+below. Thirteen were caught by measurement or by a check, four by a person noticing. Two would have
+put a false statement in a funding application, and one had already been published before it was
+caught.
 
 ---
 
@@ -242,6 +243,50 @@ production of nothing is no longer indistinguishable from a clean result.
 
 The general shape, now three instances deep: **we check that a step ran, not that it produced
 something.** Every remaining harness step should be read with that question.
+
+---
+
+## Part 11: the headline was wrong, and our own mapping was hiding it
+
+**Error 17, and it is the most consequential of the day**, because unlike the others it had already
+been published and it understated somebody else's tool rather than ours.
+
+The consolidated page went out saying that none of six scanners detected anything on real
+vulnerabilities. Checking X-Ray's single corpus-2 finding before quoting it in conversation showed
+that statement to be false.
+
+X-Ray's rule `1019` is named **"The account may not be properly validated and may be untrustful"**.
+We mapped it to `sysvar-address-checking` and nothing else, because sec3's own blog presents 1019 as
+the rule that catches the Wormhole hack. **That is an example of the rule, not its scope**, and
+narrowing a generic rule to one class on the strength of a marketing post was our error.
+
+It fired once in all of corpus 2: `squads-account-matching/insecure`, `src/lib.rs:310`. The
+maintainers' fix changed lines **309 and 311**, adding the check that the instruction account keys
+match the submitted keys. It did not fire on the fixed variant. A real vulnerability, detected at
+the fix site, differentially — **the only such detection any of the six scanners made** — and our
+pre-registered mapping scored it zero.
+
+Both numbers are now published, **0/9 as registered and 1/9 corrected**, with the pre-registered map
+preserved unedited beside the correction. A benchmark that quietly repairs its mapping after seeing
+the scores is worth nothing, and the point of pre-registration is that it binds when the result is
+inconvenient. What sec3's rule actually covers is theirs to say, which is what the right of reply is
+for, and they have not been asked.
+
+**Two denominators were wrong as well**, both found in the same check. X-Ray ran nine cases, not
+ten: the findings files list only cases where something fired, so coverage has to be read from the
+run log. And solsec produced no output at all for three of nine cases with no log explaining why,
+which makes it 0/6 with three **unavailable**, not 0/9. That is the exact distinction this project
+insists on and we had just collapsed it in our own table.
+
+**The lesson is narrower than "check your work".** Every one of these errors came from trusting a
+derived artefact instead of the thing it was derived from: a findings file instead of a run log, a
+blog post instead of a rule name, a summary line instead of raw JSON. The check that keeps working
+is going one level down toward the source.
+
+**And solsec turned out to be the cleanest demonstration of the project's thesis anyone could ask
+for:** 108 findings on corpus 2, and every rule that fired on a vulnerable program fired on its fix
+too, without a single exception. A benchmark that counts findings ranks it near the top. This one
+ranks it at zero.
 
 ---
 
