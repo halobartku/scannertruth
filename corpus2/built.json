@@ -1,0 +1,207 @@
+[
+ {
+  "name": "wormhole-sysvar",
+  "status": "built",
+  "repo": "wormhole-foundation/wormhole",
+  "fix": "7edbbd3677ee6ca681be8722a607bc576a3912c8",
+  "parent": "79ab522f802ccc5ba34278d3c648fa62e06f4f1c",
+  "class": "sysvar-address-checking",
+  "source": "https://rekt.news/wormhole-rekt/",
+  "files": [
+   "solana/bridge/client/src/main.rs",
+   "solana/bridge/cpi_poster/src/lib.rs",
+   "solana/bridge/program/src/api/verify_signature.rs",
+   "solana/bridge/program/src/lib.rs",
+   "solana/bridge/program_stub/src/lib.rs",
+   "solana/migration/src/lib.rs",
+   "solana/modules/nft_bridge/program/src/lib.rs",
+   "solana/modules/token_bridge/client/src/main.rs",
+   "solana/modules/token_bridge/program/src/lib.rs",
+   "solana/pyth2wormhole/program/src/lib.rs",
+   "solana/solitaire/client/src/lib.rs",
+   "solana/solitaire/program/src/lib.rs"
+  ],
+  "written": [
+   "insecure/main.rs",
+   "insecure/lib.rs",
+   "insecure/verify_signature.rs",
+   "insecure/lib.rs",
+   "insecure/lib.rs",
+   "insecure/lib.rs",
+   "insecure/lib.rs",
+   "insecure/main.rs",
+   "insecure/lib.rs",
+   "insecure/lib.rs",
+   "insecure/lib.rs",
+   "insecure/lib.rs",
+   "secure/main.rs",
+   "secure/lib.rs",
+   "secure/verify_signature.rs",
+   "secure/lib.rs",
+   "secure/lib.rs",
+   "secure/lib.rs",
+   "secure/lib.rs",
+   "secure/main.rs",
+   "secure/lib.rs",
+   "secure/lib.rs",
+   "secure/lib.rs",
+   "secure/lib.rs"
+  ]
+ },
+ {
+  "name": "cashio-account-data",
+  "status": "built",
+  "repo": "cashioapp/cashio",
+  "fix": "7df658184c2610139fa2c0058363c66b28add4c4",
+  "parent": "a51c3c59d544a5763b64abb4a8d82c49b0abd6d0",
+  "class": "account-data-matching",
+  "source": "https://www.sec3.dev/blog/cashioapp-attack-whats-the-vulnerability-and-how-x-ray-detects-it",
+  "files": [
+   "programs/brrr/src/actions/mod.rs",
+   "programs/brrr/src/lib.rs"
+  ],
+  "written": [
+   "insecure/mod.rs",
+   "insecure/lib.rs",
+   "secure/mod.rs",
+   "secure/lib.rs"
+  ]
+ },
+ {
+  "name": "solend-owner-checks",
+  "status": "built",
+  "repo": "solendprotocol/solana-program-library",
+  "fix": "4c2d5c10e2240fd79398dbad586aa73fd9077f0f",
+  "parent": "132d74cf171dac66f896c4009ad6836f8c0b3799",
+  "class": "owner-checks",
+  "source": "Kudelski audit, token-lending/audit/solend-audit-v1.0.pdf, finding KS-SOLEND-F-00",
+  "files": [
+   "token-lending/program/src/processor.rs"
+  ],
+  "written": [
+   "insecure/processor.rs",
+   "secure/processor.rs"
+  ]
+ },
+ {
+  "name": "spl-token-lending-rounding",
+  "status": "skipped",
+  "reason": "fix touches no .rs file"
+ },
+ {
+  "name": "squads-signer-auth",
+  "status": "built",
+  "repo": "Squads-Protocol/squads-mpl",
+  "fix": "4b5c0e9c7d043b27c4a89bb8ab0bbe743fef8f27",
+  "parent": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+  "class": "signer-authorization",
+  "source": "Bramah Systems, Squads_V3_Audit_Bramah.pdf in repo",
+  "files": [
+   "programs/squads-mpl/src/lib.rs"
+  ],
+  "written": [
+   "insecure/lib.rs",
+   "secure/lib.rs"
+  ]
+ },
+ {
+  "name": "squads-account-matching",
+  "status": "built",
+  "repo": "Squads-Protocol/squads-mpl",
+  "fix": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+  "parent": "336bdbd887bb5566fae4db9dcb05347f73961877",
+  "class": "account-data-matching",
+  "source": "Bramah Systems, same report",
+  "files": [
+   "programs/squads-mpl/src/lib.rs"
+  ],
+  "written": [
+   "insecure/lib.rs",
+   "secure/lib.rs"
+  ]
+ },
+ {
+  "name": "metaplex-token-metadata",
+  "status": "built",
+  "repo": "metaplex-foundation/metaplex-program-library",
+  "fix": "7f163a1777d2540af92d7cb5cf89ea0393094619",
+  "parent": "b8735d98ad592ea5847631435ceff5d9b2881a01",
+  "class": "account-data-matching",
+  "source": "GHSA-5233-j5mj-qxww",
+  "files": [
+   "token-metadata/program/src/assertions/misc.rs",
+   "token-metadata/program/src/processor/metadata/transfer.rs"
+  ],
+  "written": [
+   "insecure/misc.rs",
+   "insecure/transfer.rs",
+   "secure/misc.rs",
+   "secure/transfer.rs"
+  ]
+ },
+ {
+  "name": "metaplex-candy-machine",
+  "status": "built",
+  "repo": "metaplex-foundation/metaplex-program-library",
+  "fix": "e6b3aff603ac06236bf77c2ec21ead93c6836dce",
+  "parent": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+  "class": "instruction-introspection",
+  "source": "GHSA-9v25-r5q2-2p6w",
+  "files": [
+   "candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
+  ],
+  "written": [
+   "insecure/set_collection_during_mint.rs",
+   "secure/set_collection_during_mint.rs"
+  ]
+ },
+ {
+  "name": "metaplex-bubblegum-creator",
+  "status": "built",
+  "repo": "metaplex-foundation/metaplex-program-library",
+  "fix": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+  "parent": "ec23ef776f183d5b8aa0697eef07db7ecf5f4658",
+  "class": "signer-authorization",
+  "source": "GHSA-8r76-fr72-j32w",
+  "files": [
+   "bubblegum/program/src/error.rs",
+   "bubblegum/program/src/lib.rs",
+   "token-metadata/program/src/assertions/collection.rs",
+   "token-metadata/program/src/pda.rs",
+   "token-metadata/program/src/utils/compression.rs",
+   "token-metadata/program/src/utils/metadata.rs",
+   "token-metadata/program/src/utils/mod.rs"
+  ],
+  "written": [
+   "insecure/error.rs",
+   "insecure/lib.rs",
+   "insecure/collection.rs",
+   "insecure/pda.rs",
+   "insecure/metadata.rs",
+   "insecure/mod.rs",
+   "secure/error.rs",
+   "secure/lib.rs",
+   "secure/collection.rs",
+   "secure/pda.rs",
+   "secure/compression.rs",
+   "secure/metadata.rs",
+   "secure/mod.rs"
+  ]
+ },
+ {
+  "name": "anchor-interface-account",
+  "status": "built",
+  "repo": "otter-sec/anchor",
+  "fix": "26ef36968a62e28a1f028e7adae4806af30c747d",
+  "parent": "6374139ba383d22a75cfacfdabd9506f4d390663",
+  "class": "type-cosplay",
+  "source": "RUSTSEC-2026-0146, GHSA-429q-fhh4-r6hj",
+  "files": [
+   "lang/src/accounts/interface_account.rs"
+  ],
+  "written": [
+   "insecure/interface_account.rs",
+   "secure/interface_account.rs"
+  ]
+ }
+]

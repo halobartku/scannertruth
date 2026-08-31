@@ -14,7 +14,13 @@ On the teaching corpus, "nominal" means *a rule mapped to that vulnerability cla
 corpus 2, our first pass counted **every finding of any kind**. Those are not the same measurement
 and they were printed in the same table.
 
-**Status: partially fixed.** Corpus 2 was recomputed as a set difference over rule ids (does any
+**Status: FIXED 2026-08-31, same day.** `score2.py` now scores corpus 2 with mapped rules only and
+requires the finding to land at the site the fix changed. Results in `RESULTS-corpus2.md`. The
+conclusion did not change under the stricter method, which is worth stating: the result was not an
+artefact of the sloppy one. Limitation 2 below is fixed by the same change. The paragraph that
+follows is kept as the record of what was wrong.
+
+**Original entry:** Corpus 2 was recomputed as a set difference over rule ids (does any
 rule fire on the vulnerable variant and not on the fixed one). The 0/9 result survived the stricter
 method. But corpus 2 still has **no class-to-rule mapping at all**, so its numbers answer a weaker
 question than the teaching corpus numbers do: "did anything distinguish the two files" rather than

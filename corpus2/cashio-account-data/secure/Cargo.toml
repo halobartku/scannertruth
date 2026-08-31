@@ -1,5 +1,5 @@
 [package]
-name = "wormhole-sysvar"
+name = "cashio-account-data"
 version = "0.1.0"
 edition = "2018"
 

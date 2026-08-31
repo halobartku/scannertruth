@@ -1,5 +1,5 @@
 [package]
-name = "wormhole-sysvar"
+name = "squads-signer-auth"
 version = "0.1.0"
 edition = "2018"
 

@@ -1,219 +1,126 @@
-use solitaire::*;
+#![feature(const_generics)]
+#![allow(warnings)]
 
-use crate::{
-    GuardianSet,
-    GuardianSetDerivationData,
-    SignatureSet,
-    error::Error::{
-        GuardianSetMismatch,
-        InstructionAtWrongIndex,
-        InvalidHash,
-        InvalidSecpInstruction,
+pub use rocksalt::*;
+
+// Lacking:
+//
+// - Error is a lacking as its just a basic enum, maybe use errorcode.
+// - Client generation incomplete.
+
+// We need a few Solana things in scope in order to properly abstract Solana.
+use solana_program::{
+    account_info::{
+        next_account_info,
+        AccountInfo,
     },
-    MAX_LEN_GUARDIAN_KEYS,
+    entrypoint,
+    entrypoint::ProgramResult,
+    instruction::{
+        AccountMeta,
+        Instruction,
+    },
+    program::invoke_signed,
+    program_error::ProgramError,
+    program_pack::Pack,
+    pubkey::Pubkey,
+    rent::Rent,
+    system_instruction,
+    system_program,
+    sysvar::{
+        self,
+        SysvarId,
+    },
 };
-use byteorder::ByteOrder;
-use solana_program::program_error::ProgramError;
-use solitaire::{
-    processors::seeded::Seeded,
-    CreationLamports::Exempt,
+
+use std::{
+    io::{
+        ErrorKind,
+        Write,
+    },
+    marker::PhantomData,
+    ops::{
+        Deref,
+        DerefMut,
+    },
+    slice::Iter,
+    string::FromUtf8Error,
 };
 
-#[derive(FromAccounts)]
-pub struct VerifySignatures<'b> {
-    /// Payer for account creation
-    pub payer: Mut<Signer<Info<'b>>>,
+pub use borsh::{
+    BorshDeserialize,
+    BorshSerialize,
+};
 
-    /// Guardian set of the signatures
-    pub guardian_set: GuardianSet<'b, { AccountState::Initialized }>,
+// Expose all submodules for consumption.
+pub mod error;
+pub mod macros;
+pub mod processors;
+pub mod types;
 
-    /// Signature Account
-    pub signature_set: Mut<Signer<SignatureSet<'b, { AccountState::MaybeInitialized }>>>,
+// We can also re-export a set of types at module scope, this defines the intended API we expect
+// people to be able to use from top-level.
+pub use crate::{
+    error::{
+        ErrBox,
+        Result,
+        SolitaireError,
+    },
+    macros::*,
+    processors::{
+        keyed::Keyed,
+        peel::Peel,
+        persist::Persist,
+        seeded::{
+            invoke_seeded,
+            AccountOwner,
+            AccountSize,
+            Creatable,
+            Owned,
+            Seeded,
+        },
+    },
+    types::*,
+};
 
-    /// Instruction reflection account (special sysvar)
-    pub instruction_acc: Info<'b>,
+/// Library name and version to print in entrypoint. Must be evaluated in this crate in order to do the right thing
+pub const PKG_NAME_VERSION: &'static str =
+    concat!(env!("CARGO_PKG_NAME"), " ", env!("CARGO_PKG_VERSION"));
+
+pub struct ExecutionContext<'a, 'b: 'a> {
+    /// A reference to the program_id of the current program.
+    pub program_id: &'a Pubkey,
+
+    /// All accounts passed into the program
+    pub accounts: &'a [AccountInfo<'b>],
 }
 
-impl<'b> InstructionContext<'b> for VerifySignatures<'b> {
+/// Lamports to pay to an account being created
+pub enum CreationLamports {
+    Exempt,
+    Amount(u64),
 }
 
-impl From<&VerifySignatures<'_>> for GuardianSetDerivationData {
-    fn from(data: &VerifySignatures<'_>) -> Self {
-        GuardianSetDerivationData {
-            index: data.guardian_set.index,
+impl CreationLamports {
+    /// Amount of lamports to be paid in account creation
+    pub fn amount(self, size: usize) -> u64 {
+        match self {
+            CreationLamports::Exempt => Rent::default().minimum_balance(size),
+            CreationLamports::Amount(v) => v,
         }
     }
 }
 
-#[derive(Default, BorshSerialize, BorshDeserialize)]
-pub struct VerifySignaturesData {
-    /// instruction indices of signers (-1 for missing)
-    pub signers: [i8; MAX_LEN_GUARDIAN_KEYS],
+pub trait InstructionContext<'a> {
+    fn deps(&self) -> Vec<Pubkey> {
+        vec![]
+    }
 }
 
-/// SigInfo contains metadata about signers in a VerifySignature ix
-struct SigInfo {
-    /// index of the signer in the guardianset
-    signer_index: u8,
-    /// index of the signature in the secp instruction
-    sig_index: u8,
-}
-
-struct SecpInstructionPart<'a> {
-    address: &'a [u8],
-    msg_offset: u16,
-    msg_size: u16,
-}
-
-pub fn verify_signatures(
-    ctx: &ExecutionContext,
-    accs: &mut VerifySignatures,
-    data: VerifySignaturesData,
-) -> Result<()> {
-    accs.guardian_set
-        .verify_derivation(ctx.program_id, &(&*accs).into())?;
-
-    let sig_infos: Vec<SigInfo> = data
-        .signers
-        .iter()
-        .enumerate()
-        .filter_map(|(i, p)| {
-            if *p == -1 {
-                return None;
-            }
-
-            return Some(SigInfo {
-                sig_index: *p as u8,
-                signer_index: i as u8,
-            });
-        })
-        .collect();
-
-    let current_instruction = solana_program::sysvar::instructions::load_current_index(
-        &accs.instruction_acc.try_borrow_mut_data()?,
-    );
-    if current_instruction == 0 {
-        return Err(InstructionAtWrongIndex.into());
-    }
-
-    // The previous ix must be a secp verification instruction
-    let secp_ix_index = (current_instruction - 1) as u8;
-    let secp_ix = solana_program::sysvar::instructions::load_instruction_at(
-        secp_ix_index as usize,
-        &accs.instruction_acc.try_borrow_mut_data()?,
-    )
-    .map_err(|_| ProgramError::InvalidAccountData)?;
-
-    // Check that the instruction is actually for the secp program
-    if secp_ix.program_id != solana_program::secp256k1_program::id() {
-        return Err(InvalidSecpInstruction.into());
-    }
-
-    let secp_data_len = secp_ix.data.len();
-    if secp_data_len < 2 {
-        return Err(InvalidSecpInstruction.into());
-    }
-
-    let sig_len = secp_ix.data[0];
-    let mut index = 1;
-
-    let mut secp_ixs: Vec<SecpInstructionPart> = Vec::with_capacity(sig_len as usize);
-    for i in 0..sig_len {
-        let _sig_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;
-        index += 2;
-        let sig_ix = secp_ix.data[index];
-        index += 1;
-        let address_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;
-        index += 2;
-        let address_ix = secp_ix.data[index];
-        index += 1;
-        let msg_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);
-        index += 2;
-        let msg_size = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);
-        index += 2;
-        let msg_ix = secp_ix.data[index];
-        index += 1;
-
-        if address_ix != secp_ix_index || msg_ix != secp_ix_index || sig_ix != secp_ix_index {
-            return Err(InvalidSecpInstruction.into());
-        }
-
-        let address: &[u8] = &secp_ix.data[address_offset..address_offset + 20];
-
-        // Make sure that all messages are equal
-        if i > 0 {
-            if msg_offset != secp_ixs[0].msg_offset || msg_size != secp_ixs[0].msg_size {
-                return Err(InvalidSecpInstruction.into());
-            }
-        }
-        secp_ixs.push(SecpInstructionPart {
-            address,
-            msg_offset,
-            msg_size,
-        });
-    }
-
-    if sig_infos.len() != secp_ixs.len() {
-        return Err(ProgramError::InvalidArgument.into());
-    }
-
-    // Data must be a hash
-    if secp_ixs[0].msg_size != 32 {
-        return Err(ProgramError::InvalidArgument.into());
-    }
-
-    // Extract message which is encoded in Solana Secp256k1 instruction data.
-    let message = &secp_ix.data
-        [secp_ixs[0].msg_offset as usize..(secp_ixs[0].msg_offset + secp_ixs[0].msg_size) as usize];
-
-    // Hash the message part, which contains the serialized VAA body.
-    let mut msg_hash: [u8; 32] = [0u8; 32];
-    msg_hash.copy_from_slice(message);
-
-    if !accs.signature_set.is_initialized() {
-        accs.signature_set.signatures = vec![false; accs.guardian_set.keys.len()];
-        accs.signature_set.guardian_set_index = accs.guardian_set.index;
-        accs.signature_set.hash = msg_hash;
-
-        let size = accs.signature_set.size();
-        let ix = solana_program::system_instruction::create_account(
-            accs.payer.key,
-            accs.signature_set.info().key,
-            Exempt.amount(size),
-            size as u64,
-            ctx.program_id,
-        );
-        solana_program::program::invoke(&ix, ctx.accounts)?;
-    } else {
-        // If the account already existed, check that the parameters match
-        if accs.signature_set.guardian_set_index != accs.guardian_set.index {
-            return Err(GuardianSetMismatch.into());
-        }
-
-        if accs.signature_set.hash != msg_hash {
-            return Err(InvalidHash.into());
-        }
-    }
-
-    // Write sigs of checked addresses into sig_state
-    for s in sig_infos {
-        if s.signer_index > accs.guardian_set.num_guardians() {
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        if s.sig_index + 1 > sig_len {
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        let key = accs.guardian_set.keys[s.signer_index as usize];
-        // Check key in ix
-        if key != secp_ixs[s.sig_index as usize].address {
-            return Err(ProgramError::InvalidArgument.into());
-        }
-
-        // Overwritten content should be zeros except double signs by the signer or harmless replays
-        accs.signature_set.signatures[s.signer_index as usize] = true;
-    }
-
-    Ok(())
+/// Trait definition that describes types that can be constructed from a list of solana account
+/// references. A list of dependent accounts is produced as a side effect of the parsing stage.
+pub trait FromAccounts<'a, 'b: 'a, 'c> {
+    fn from<T>(_: &'a Pubkey, _: &'c mut Iter<'a, AccountInfo<'b>>, _: &'a T) -> Result<Self>
+    where
+        Self: Sized;
 }
