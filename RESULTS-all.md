@@ -1,5 +1,18 @@
 # RESULTS: every scanner, both corpora, 2026-08-31
 
+> **RETRACTED IN PART, 2026-08-31 late.** The Radar and VaultLint numbers on this page are
+> **not supported by the data behind them.** `c2-radar.json` contains findings from exactly one
+> case (`wormhole-sysvar`); `c2-vaultlint.json` likewise. Neither run left a per-case log, and the
+> corpus directory those runs read contained only that one case. So for the other eight cases we
+> **cannot distinguish "the tool found nothing" from "the tool was never given the case"** - which
+> is the precise confusion this benchmark exists to name, appearing in its own headline.
+>
+> Treat every Radar and VaultLint figure below as **unverified** until the re-run completes. Only
+> `sol-audit` (findings across 9 cases) and X-Ray (per-leaf run log, all 9 `status=ok`) had
+> evidence that every case was analysed.
+
+
+
 Six scanners and two calibration controls, measured with one protocol on the same day.
 
 ## The table
