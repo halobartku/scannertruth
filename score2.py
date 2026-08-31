@@ -182,6 +182,13 @@ def main():
         return 0
 
     cases = json.load(open(args.manifest, encoding="utf-8"))["cases"]
+    # A case whose "secure" variant does not actually fix the bug is not a pair, and scoring it
+    # produces a verdict about something else. Enforced here rather than left as a note in the
+    # manifest, because a note does not stop the next run from counting it.
+    excluded = [c["name"] for c in cases if not c.get("valid", True)]
+    cases = [c for c in cases if c.get("valid", True)]
+    for name in excluded:
+        print(f"EXCLUDED {name}: manifest marks it not a valid insecure/secure pair")
     mapping = json.load(open(f"mappings/{args.scanner}.json", encoding="utf-8"))["map"]
     findings = load_findings(args.kind, args.findings)
 

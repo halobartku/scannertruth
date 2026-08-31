@@ -8,16 +8,16 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 |---|---|---|---|
 | `control-noisy` (flags every line) | **0 / 11** | — | 931 findings, perfect nominal, zero real |
 | `control-null` (reports nothing) | **0 / 11** | — | the floor |
-| **`radar`** (Auditware) | **11 / 11** | **0 / 9** | detects every teaching class, none of the real ones |
-| `sol-audit` v2 (ours) | 4 / 11 | **0 / 9** | ours, free and open forever, not a product |
-| `vaultlint` 0.1.1 | 2 / 11 | **0 / 9** | precision claim holds; 4 findings across 35 files |
-| **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 9 registered, 1 / 9 corrected** | the one real detection anything has made; see below |
+| **`radar`** (Auditware) | **11 / 11** | **0 / 8** | detects every teaching class, none of the real ones |
+| `sol-audit` v2 (ours) | 4 / 11 | **0 / 8** | ours, free and open forever, not a product |
+| `vaultlint` 0.1.1 | 2 / 11 | **0 / 8** | precision claim holds; 4 findings across 35 files |
+| **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** | the one real detection anything has made; see below |
 | `solsec` 0.2.1 | 0 / 11 | **0 / 6**, 3 unavailable | 108 findings, every one fires on the fix too |
 | `semgrep` 1.174 | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
 
 ## What this says
 
-**Six scanners, nine real vulnerabilities each, one detection between them, and it took a correction to
+**Six scanners, eight real vulnerabilities, one detection between them, and it took a correction to
 our own mapping to see it.**
 
 An earlier version of this page said no scanner detected anything. That was wrong, and the error
@@ -45,7 +45,7 @@ at the fix site, differential.
 Our pre-registered mapping scored it **zero**, because that case's class is `account-data-matching`
 and we had not mapped 1019 there.
 
-Both numbers are published. **0/9 as pre-registered, 1/9 under the corrected mapping.** The
+Both numbers are published. **0/8 as pre-registered, 1/8 under the corrected mapping.** The
 pre-registered map is preserved unedited in `mappings/xray.json` beside the correction, because a
 benchmark that silently repairs its mapping after seeing the scores is worth nothing. And this is
 exactly the case the **right of reply** exists for: sec3 should be the ones to say what 1019 covers,
@@ -74,11 +74,30 @@ matching text, and it scores 2/11. Depth of analysis did not translate into reca
 **solsec** is the clearest illustration of why real recall is the only number that matters. It
 produced **108 findings** on corpus 2 and detected nothing: every rule that fired on a vulnerable
 program fired on the fixed one too, without exception. A findings count would rank it second in
-this table. It also produced no output at all for three of the nine cases, with no log explaining
-why, so its denominator is **six**, and the three are recorded as unavailable rather than as zeros.
+this table. It also produced no output at all for three of the cases it was given, with no log
+explaining why, so its denominator is **six**, and the three are recorded as unavailable rather than as zeros.
 
 **semgrep** is not a failure, it is an absence: the world's most widely used generic static analyser
 has eleven Rust rules and no Solana coverage at all. Worth knowing before anyone relies on it.
+
+## A case we had to throw out, found by checking our own data
+
+`cashio-account-data` is **not a valid pair and has been excluded from every denominator.**
+
+The commit we used as the fix, `7df65818`, does not fix the vulnerability. It adds
+`vipers::invariant!(false, "temporarily disabled")` to `print_cash` and `burn_cash`, disabling the
+program. It is an emergency shutdown. Only three commits in the repository's history ever touched
+that file, this is the last of them, and everything after the exploit is a dependency bump: Cashio
+never shipped a fix, because the protocol was shut down.
+
+So the `secure` variant is dead code. Findings vanish from it for reasons that have nothing to do
+with the bug, and **any detection credited on this pair would have been spurious.** It was found
+while checking why Radar produced 23 insecure-only findings on the real crate: a result too good to
+accept without reading the diff.
+
+The case stays in `corpus2/manifest.json` marked `valid: false` with the reason, rather than being
+deleted, and `score2.py` now refuses to score any case marked that way. A note in a manifest does
+not stop the next run from counting it; a check in the scorer does.
 
 ## Tools we could not run, recorded rather than omitted
 

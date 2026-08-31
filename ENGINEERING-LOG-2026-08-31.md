@@ -3,10 +3,10 @@
 Everything that happened on the day this benchmark was built, in order, including every mistake.
 
 This exists because the project's only real asset is that its numbers can be checked, and a reader
-who cannot see how a number was produced has to take it on faith. Seventeen errors are recorded
-below. Thirteen were caught by measurement or by a check, four by a person noticing. Two would have
-put a false statement in a funding application, and one had already been published before it was
-caught.
+who cannot see how a number was produced has to take it on faith. Eighteen errors are recorded
+below. Fourteen were caught by measurement or by a check, four by a person noticing. Two would have
+put a false statement in a funding application, one had already been published before it was
+caught, and one was a defect in our own ground truth.
 
 ---
 
@@ -287,6 +287,42 @@ is going one level down toward the source.
 for:** 108 findings on corpus 2, and every rule that fired on a vulnerable program fired on its fix
 too, without a single exception. A benchmark that counts findings ranks it near the top. This one
 ranks it at zero.
+
+---
+
+## Part 12: a case in our own corpus where the fix was not a fix
+
+**Error 18, and it is a ground-truth error, which is the worst kind this project can make.** Every
+other number here rests on the claim that the `secure` variant is the vulnerable program with the
+bug removed. For one case that was false.
+
+Radar, run over the **real crate** rather than the isolated file, produced **23 findings on
+`cashio-account-data/insecure` that were absent from `secure`**, including `Missing Token Mint
+Constraint`, which is the class of the Cashio bug. Read quickly, that is a detection, and a
+spectacular one: the tool that found nothing on the isolated files finds the bug the moment it is
+given the real project.
+
+Reading the diff instead showed what the commit does:
+
+```
++ vipers::invariant!(false, "temporarily disabled");
+```
+
+added to `print_cash` and `burn_cash`. **It does not fix the vulnerability, it switches the program
+off.** The findings disappear from the `secure` variant because the code is dead, not because it is
+safe. `git log` confirms there is no other candidate: three commits in the repository's entire
+history touch that file, this is the last, and everything after the exploit is a dependency bump.
+Cashio never shipped a fix because the protocol was shut down.
+
+The case is now marked `valid: false` in the manifest with the reason, excluded from every
+denominator, and **`score2.py` refuses to score any case marked that way**. A note in a manifest
+does not stop the next run from counting it. Corpus 2 drops from nine scored cases to eight.
+
+**What nearly happened is the point.** A result that flattered the story arrived, and the only thing
+between it and publication was reading a four-line diff. This is the same discipline that produced
+error 17 in the opposite direction, where the surprising result damaged somebody else's tool. The
+rule that catches both is identical: **a result you did not expect is a reason to go to the source,
+whichever way it points.**
 
 ---
 
