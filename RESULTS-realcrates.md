@@ -26,6 +26,35 @@ module. 927 `.rs` files in total.
 
 **Six scoreable pairs, zero detections. The packaging objection does not explain the result.**
 
+## VaultLint on the same crates
+
+VaultLint produced **38 findings** on the real crates against 4 on the extracted files, which was
+large enough a difference to be worth scoring rather than assuming. Scored the same way:
+
+| Case | vulnerable | fixed | result |
+|---|---|---|---|
+| `wormhole-sysvar` | 3 | 3 | no detection |
+| `solend-owner-checks` | 10 | 10 | no detection |
+| `metaplex-candy-machine` | 3 | 3 | no detection |
+| `anchor-interface-account` | 2 | 2 | no detection |
+| `metaplex-token-metadata` | 1 | 1 | no detection |
+| 5 further cases | - | - | no findings recorded |
+
+**Zero detections.** Every one of the 38 findings appears on the fixed program too. Only three rules
+fired at all: `VL003`, `VL004`, `VL005`.
+
+Two things are worth saying in VaultLint's favour. Its extra findings on real crates are mostly
+`VL003`, a workspace-level check for `overflow-checks = true` in `[profile.release]`, which is a
+manifest property that simply cannot exist in an extracted single file — so the 4-to-38 jump is
+largely the tool doing more with more context, exactly as its authors would predict. And **it
+produced output on `metaplex-token-metadata` and `anchor-interface-account`, the two crates where
+Radar exceeded its retry budget entirely.**
+
+**A limitation of our own run, stated because it weakens the above:** VaultLint was invoked once
+over the whole corpus rather than per case, so for the five cases with no findings we **cannot
+distinguish "found nothing" from "did not analyse"**. Those are reported as no findings recorded,
+not as zeros, and a per-case rerun is the fix.
+
 ## Radar cannot finish on large real crates
 
 Three of the ten cases exceeded Radar's own retry budget: `Exceeded maximum retries. Tasks did not
@@ -76,8 +105,9 @@ Raw run log: [`realcrates-radar-run.log`](realcrates-radar-run.log).
 
 ## Limits
 
-- **One scanner.** VaultLint produced 38 findings on the real crates against 4 on the extracted
-  files, which is a large enough difference to be worth scoring properly, and it has not been.
+- **Two scanners, not six.** X-Ray, solsec and semgrep have not been run against the real crates.
+- **VaultLint was run once over the whole corpus**, not per case, so five of its cases cannot
+  distinguish "found nothing" from "did not analyse".
 - **Three cases could not be measured at all**, and they are the three largest. Coverage here is
   biased toward small projects.
 - **Six pairs is not a corpus.** It is enough to retire one objection, not to prove a general claim.
