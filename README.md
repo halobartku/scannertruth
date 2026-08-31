@@ -34,6 +34,12 @@ flags every line scores 11/11 nominal and **0/11 real**, so a real-recall score 
 with volume. Radar also puts **46% of its findings on already-fixed code**. Full table and the
 in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
 
+**Run 4, 2026-08-31: the first out-of-sample case, and nobody caught it.** The Wormhole
+sysvar-check bug, 320 million dollars, taken from the real fix commit and its parent. Radar scores
+11/11 on the teaching corpus and **does not detect it**; every finding it produces fires identically
+on the vulnerable and the fixed program. So does ours. VaultLint reports nothing.
+[`RESULTS-wormhole.md`](RESULTS-wormhole.md).
+
 ## Independence
 
 Three standing promises, made while this project has one measured scanner, no users and nobody
