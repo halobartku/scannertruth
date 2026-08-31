@@ -1,0 +1,199 @@
+{
+ "complete": true,
+ "candidates": [
+  {
+   "ghsa": "GHSA-429q-fhh4-r6hj",
+   "summary": "Anchor: `InterfaceAccount` allows account substitution between unexpected types",
+   "packages": [
+    "anchor-lang"
+   ],
+   "severity": "high",
+   "published": "2026-05-13",
+   "matched_because": "package 'anchor-lang' matches 'anchor-lang'",
+   "fix_commits": [
+    {
+     "repo": "solana-foundation/anchor",
+     "sha": "26ef36968a62e28a1f028e7adae4806af30c747d"
+    }
+   ],
+   "fix_prs": [
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 3837
+    },
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 4139
+    },
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 4139
+    },
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 3837
+    },
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 4139
+    },
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 3837
+    },
+    {
+     "repo": "solana-foundation/anchor",
+     "pr": 4139
+    }
+   ],
+   "usable": true
+  },
+  {
+   "ghsa": "GHSA-c6rc-8jpp-2fgc",
+   "summary": "Anchor: Program<'info, System> is not properly validated",
+   "packages": [
+    "anchor-lang"
+   ],
+   "severity": "high",
+   "published": "2026-05-13",
+   "matched_because": "package 'anchor-lang' matches 'anchor-lang'",
+   "fix_commits": [],
+   "fix_prs": [],
+   "usable": false
+  },
+  {
+   "ghsa": "GHSA-725g-w329-g7qr",
+   "summary": "kora-lib: Token-2022 Transfer Fee Not Deducted During Payment Verification",
+   "packages": [
+    "kora-lib"
+   ],
+   "severity": "medium",
+   "published": "2026-03-12",
+   "matched_because": "text matches /\\bspl\\s+token\\b/",
+   "fix_commits": [
+    {
+     "repo": "solana-foundation/kora",
+     "sha": "8cbd8217ee505e6b37c63ef835ff095cfa8ab318"
+    }
+   ],
+   "fix_prs": [],
+   "usable": true
+  },
+  {
+   "ghsa": "GHSA-x442-m7cc-hr92",
+   "summary": "kora-lib: Unrecognized Instruction Types Create Empty Stubs That Bypass Fee Payer Policy",
+   "packages": [
+    "kora-lib"
+   ],
+   "severity": "medium",
+   "published": "2026-03-12",
+   "matched_because": "text matches /\\bsolana\\b/",
+   "fix_commits": [],
+   "fix_prs": [],
+   "usable": false
+  },
+  {
+   "ghsa": "GHSA-h6xm-c6r4-vmwf",
+   "summary": "Unsound usages of `u8` type casting in spl-token-swap",
+   "packages": [
+    "spl-token-swap"
+   ],
+   "severity": "medium",
+   "published": "2024-12-23",
+   "matched_because": "package 'spl-token-swap' matches 'spl-'",
+   "fix_commits": [],
+   "fix_prs": [],
+   "usable": false
+  },
+  {
+   "ghsa": "GHSA-9v25-r5q2-2p6w",
+   "summary": "Candy Machine Set Collection During Mint Missing Check",
+   "packages": [
+    "mpl-candy-machine"
+   ],
+   "severity": "medium",
+   "published": "2022-12-12",
+   "matched_because": "package 'mpl-candy-machine' matches 'mpl-'",
+   "fix_commits": [
+    {
+     "repo": "metaplex-foundation/metaplex-program-library",
+     "sha": "e6b3aff603ac06236bf77c2ec21ead93c6836dce"
+    }
+   ],
+   "fix_prs": [],
+   "usable": true
+  },
+  {
+   "ghsa": "GHSA-8r76-fr72-j32w",
+   "summary": "Creator Verification Error when Bubblegum Activate",
+   "packages": [
+    "mpl-bubblegum",
+    "mpl-token-metadata"
+   ],
+   "severity": "high",
+   "published": "2022-12-12",
+   "matched_because": "package 'mpl-bubblegum' matches 'mpl-'",
+   "fix_commits": [
+    {
+     "repo": "metaplex-foundation/metaplex-program-library",
+     "sha": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57"
+    }
+   ],
+   "fix_prs": [],
+   "usable": true
+  },
+  {
+   "ghsa": "GHSA-ffx3-8qvm-pq3j",
+   "summary": "Integer overflow in solana_rbpf",
+   "packages": [
+    "solana_rbpf"
+   ],
+   "severity": "high",
+   "published": "2022-05-22",
+   "matched_because": "package 'solana_rbpf' matches 'solana'",
+   "fix_commits": [],
+   "fix_prs": [],
+   "usable": false
+  },
+  {
+   "ghsa": "GHSA-9qmm-4mfr-r3wj",
+   "summary": "Incorrect Calculation in solana_rbpf",
+   "packages": [
+    "solana_rbpf"
+   ],
+   "severity": "critical",
+   "published": "2022-05-10",
+   "matched_because": "package 'solana_rbpf' matches 'solana'",
+   "fix_commits": [
+    {
+     "repo": "solana-labs/rbpf",
+     "sha": "e61e045f8c244de978401d186dcfd50838817297"
+    }
+   ],
+   "fix_prs": [],
+   "usable": true
+  },
+  {
+   "ghsa": "GHSA-xwqr-xmgg-j69q",
+   "summary": "Integer overflow in solana_rbpf",
+   "packages": [
+    "solana_rbpf"
+   ],
+   "severity": "high",
+   "published": "2022-01-28",
+   "matched_because": "package 'solana_rbpf' matches 'solana'",
+   "fix_commits": [],
+   "fix_prs": [
+    {
+     "repo": "solana-labs/rbpf",
+     "pr": 200
+    },
+    {
+     "repo": "solana-labs/rbpf",
+     "pr": 236
+    }
+   ],
+   "usable": false
+  }
+ ]
+}
