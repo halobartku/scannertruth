@@ -1,0 +1,174 @@
+[
+    {
+        "name": "Account Reinitialization",
+        "description": "When account initialization is not properly validated against reinitialization attempts, callers of the program may try to reinitialize an existing account to manipulate its data and state.",
+        "severity": "High",
+        "certainty": "High",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:11:12-22"
+        ]
+    },
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs:36:28-43"
+        ]
+    },
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs:10:12-15"
+        ]
+    },
+    {
+        "name": "Closing Accounts Insecurely",
+        "description": "Closing accounts in Solana requires transferring the lamports remaining in the account. When lamports are zeroed, the Solana runtime eventually closes the account. Improperly setting the account for closure could cause account reinitialization type attacks.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs:19:28-38",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs:18:28-38",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs:15:59-69"
+        ]
+    },
+    {
+        "name": "Duplicate Mutable Accounts",
+        "description": "When there are two or more accounts with mutable data, a check must be in place to ensure mutation of each account is differentiated properly, to avoid unintended data modification of other accounts.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:21:13-20",
+            "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:22:13-20"
+        ]
+    },
+    {
+        "name": "Missing Bump Seed Canonicalization",
+        "description": "create_program_address accepts any bump that lands on a valid address, so a caller-supplied bump can derive a second, non-canonical PDA for the same seeds. find_program_address returns the canonical bump and is what a derivation should be checked against.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure/src/lib.rs:11:13-19"
+        ]
+    },
+    {
+        "name": "Missing Token Mint Constraint",
+        "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/1-account-data-matching/recommended/src/lib.rs:19:12-19",
+            "/tmp/sealevel-attacks/programs/2-owner-checks/recommended/src/lib.rs:19:12-19",
+            "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended/src/lib.rs:17:13-20",
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs:21:12-19",
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs:29:12-19",
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs:24:12-19"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs:12:38-44"
+        ]
+    },
+    {
+        "name": "Missing Owner Check",
+        "description": "Deserializing or unpacking a raw account's data without verifying the account is owned by the expected program lets a caller substitute an attacker-controlled account with a compatible layout. The account's owner should be checked against the program ID, or the account should be typed as Anchor's Account<T> which validates it.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs:18:3-9",
+            "/tmp/sealevel-attacks/programs/1-account-data-matching/secure/src/lib.rs:21:3-9",
+            "/tmp/sealevel-attacks/programs/2-owner-checks/insecure/src/lib.rs:22:3-9",
+            "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:29:3-9",
+            "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs:28:3-9"
+        ]
+    },
+    {
+        "name": "Missing Signer Check",
+        "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/0-signer-authorization/insecure/src/lib.rs:14:3-9",
+            "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs:15:3-9",
+            "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/recommended/src/lib.rs:15:3-9",
+            "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/secure/src/lib.rs:16:3-9",
+            "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs:29:3-9",
+            "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs:32:3-9",
+            "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:19:3-9",
+            "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/recommended/src/lib.rs:19:3-9",
+            "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/secure/src/lib.rs:22:3-9",
+            "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure/src/lib.rs:22:3-9",
+            "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended/src/lib.rs:15:3-9",
+            "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/secure/src/lib.rs:30:3-9",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs:36:3-9",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs:36:3-9",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs:21:3-9",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/recommended/src/lib.rs:14:3-9",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs:56:3-9",
+            "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs:62:3-9"
+        ]
+    },
+    {
+        "name": "Missing Transfer Amount Validation",
+        "description": "Ensure that token transfers validate the amount being transferred. Transfers should not allow negative values or amounts exceeding the account balance.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended/src/lib.rs:11:16-24",
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs:13:16-24",
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs:16:16-24",
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs:16:16-24"
+        ]
+    },
+    {
+        "name": "Missing has_one Constraint",
+        "description": "An account holding an authority Pubkey should be tied to the signer that claims it, either with a has_one constraint or an explicit key comparison. Without one, any signer can act on another account's behalf.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/3-type-cosplay/insecure/src/lib.rs:23:3-9",
+            "/tmp/sealevel-attacks/programs/3-type-cosplay/secure/src/lib.rs:26:3-9",
+            "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:29:3-9",
+            "/tmp/sealevel-attacks/programs/4-initialization/recommended/src/lib.rs:16:3-9",
+            "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs:28:3-9"
+        ]
+    },
+    {
+        "name": "PDA Sharing",
+        "description": "Reuse of a PDA across multiple authority domains can lead to unauthorized data or funds access.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs:13:16-24"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/3-type-cosplay/insecure/src/lib.rs:11:26-40",
+            "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:12:30-44"
+        ]
+    },
+    {
+        "name": "Unvalidated Sysvar Account",
+        "description": "A sysvar passed as a raw AccountInfo or UncheckedAccount is not checked against the sysvar's well-known address, so a caller can substitute an account of their own and control what the instruction reads. Anchor's Sysvar type or an address constraint pins it.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs:17:11-22"
+        ]
+    }
+]

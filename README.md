@@ -28,6 +28,12 @@ day. Full numbers in [`RESULTS.md`](RESULTS.md).
 See [`RESULTS-v2.md`](RESULTS-v2.md) and [`sol-audit`](https://github.com/halobartku/sol-audit).
 Run 1 is left exactly as published; a benchmark that rewrites its own history is worthless.
 
+**Run 3, 2026-08-31: the first scanner that is not ours.** Auditware's Radar scores **11/11 real
+recall**, against our repaired scanner's 4/11. Two control scanners calibrate the metric: one that
+flags every line scores 11/11 nominal and **0/11 real**, so a real-recall score cannot be bought
+with volume. Radar also puts **46% of its findings on already-fixed code**. Full table and the
+in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
+
 ## Independence
 
 Three standing promises, made while this project has one measured scanner, no users and nobody

@@ -1,0 +1,28 @@
+{
+  "scanner": "radar",
+  "homepage": "https://github.com/Auditware/radar",
+  "version_note": "main branch, installed 2026-08-31 via the project's own install script",
+  "derivation": "Mapping derived from Radar's OWN rule names as emitted in its JSON output, not from which rules happened to fire on the corpus. Each corpus class was matched to the Radar rule whose name states that it detects that class. Where no Radar rule names a class, the entry is empty and the class counts as a miss.",
+  "right_of_reply": "Not yet sent to Auditware. Under PROTOCOL.md this mapping should be offered to the tool's authors for correction before the result is treated as final, and their correction published.",
+  "in_sample_warning": "Radar's own README uses `radar -p sealevel-attacks` as a usage example. Any score Radar gets on this corpus should be read as in-sample for Radar.",
+  "map": {
+    "0-signer-authorization": ["Missing Signer Check"],
+    "1-account-data-matching": ["Account Data Matching"],
+    "2-owner-checks": ["Missing Owner Check"],
+    "3-type-cosplay": ["Type Cosplay"],
+    "4-initialization": ["Account Reinitialization"],
+    "5-arbitrary-cpi": ["Arbitrary Cross-Program Invocation"],
+    "6-duplicate-mutable-accounts": ["Duplicate Mutable Accounts"],
+    "7-bump-seed-canonicalization": ["Missing Bump Seed Canonicalization"],
+    "8-pda-sharing": ["PDA Sharing"],
+    "9-closing-accounts": ["Closing Accounts Insecurely"],
+    "10-sysvar-address-checking": ["Unvalidated Sysvar Account"]
+  },
+  "unmapped_rules": [
+    "Missing Token Mint Constraint",
+    "Missing has_one Constraint",
+    "Missing Transfer Amount Validation",
+    "Unvalidated Price Data Account"
+  ],
+  "unmapped_note": "These Radar rules name no class in this corpus. They are excluded from per-class scoring, which is the correct treatment: a scanner is not penalised for detecting things the corpus does not label. Their behaviour is still reported separately as noise, because firing on fixed code is informative regardless of whether the corpus labels it."
+}
