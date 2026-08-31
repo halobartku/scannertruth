@@ -1,0 +1,91 @@
+{
+  "corpus": "scannertruth-corpus2",
+  "description": "Real Solana vulnerabilities, taken from the maintainers' own fix commit and its parent. The answer key is the fix, written by the project's own developers in response to a public disclosure. We do not decide what the bug was.",
+  "built": "2026-08-31",
+  "acceptance_criteria": [
+    "public repository",
+    "a merged commit or PR that fixed the bug",
+    "the code as it stood before that commit, reachable as the parent",
+    "a public description of the bug, so the label is not our opinion"
+  ],
+  "caveat": "File paths are derived from each fix commit rather than typed in, but the packaging is ours: each variant is extracted into a minimal crate so scanners will parse it. That is not how the code exists in the real project and may affect analysis that depends on crate context.",
+  "cases": [
+    {
+      "name": "wormhole-sysvar",
+      "repo": "wormhole-foundation/wormhole",
+      "fix": "7edbbd3677ee6ca681be8722a607bc576a3912c8",
+      "class": "sysvar-address-checking",
+      "loss_usd": 320000000,
+      "source": "https://rekt.news/wormhole-rekt/",
+      "note": "Instructions sysvar read without verifying the account address; fix switches to the _checked variants."
+    },
+    {
+      "name": "cashio-account-data",
+      "repo": "cashioapp/cashio",
+      "fix": "7df658184c2610139fa2c0058363c66b28add4c4",
+      "class": "account-data-matching",
+      "source": "https://www.sec3.dev/blog/cashioapp-attack-whats-the-vulnerability-and-how-x-ray-detects-it",
+      "note": "Missing assert that the bank's crate mint matches the supplied crate mint."
+    },
+    {
+      "name": "solend-owner-checks",
+      "repo": "solendprotocol/solana-program-library",
+      "fix": "4c2d5c10e2240fd79398dbad586aa73fd9077f0f",
+      "class": "owner-checks",
+      "source": "Kudelski audit, token-lending/audit/solend-audit-v1.0.pdf, finding KS-SOLEND-F-00"
+    },
+    {
+      "name": "spl-token-lending-rounding",
+      "repo": "solana-labs/solana-program-library",
+      "fix": "bf15464783aca0395d953165b68b143c4b8c984f",
+      "class": "arithmetic-rounding-drain",
+      "source": "https://neodyme.io/en/blog/lending_disclosure"
+    },
+    {
+      "name": "squads-signer-auth",
+      "repo": "Squads-Protocol/squads-mpl",
+      "fix": "4b5c0e9c7d043b27c4a89bb8ab0bbe743fef8f27",
+      "class": "signer-authorization",
+      "source": "Bramah Systems, Squads_V3_Audit_Bramah.pdf in repo"
+    },
+    {
+      "name": "squads-account-matching",
+      "repo": "Squads-Protocol/squads-mpl",
+      "fix": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+      "class": "account-data-matching",
+      "source": "Bramah Systems, same report"
+    },
+    {
+      "name": "metaplex-token-metadata",
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "fix": "7f163a1777d2540af92d7cb5cf89ea0393094619",
+      "class": "account-data-matching",
+      "source": "GHSA-5233-j5mj-qxww"
+    },
+    {
+      "name": "metaplex-candy-machine",
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "fix": "e6b3aff603ac06236bf77c2ec21ead93c6836dce",
+      "class": "instruction-introspection",
+      "source": "GHSA-9v25-r5q2-2p6w"
+    },
+    {
+      "name": "metaplex-bubblegum-creator",
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "fix": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+      "class": "signer-authorization",
+      "source": "GHSA-8r76-fr72-j32w"
+    },
+    {
+      "name": "anchor-interface-account",
+      "repo": "otter-sec/anchor",
+      "fix": "26ef36968a62e28a1f028e7adae4806af30c747d",
+      "class": "type-cosplay",
+      "source": "RUSTSEC-2026-0146, GHSA-429q-fhh4-r6hj",
+      "note": "A vulnerability in the framework itself rather than in a program built with it."
+    }
+  ],
+  "excluded": {
+    "anchor-program-system": "CVE-2026-45137. The only reference we have is a release commit rather than a surgical fix, so the pair would not isolate the change. Needs the actual fixing commit in lang/src/accounts/program.rs before it can be used."
+  }
+}
