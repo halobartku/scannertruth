@@ -1,0 +1,82 @@
+[
+  {
+    "name": "1001",
+    "rule_name": "The account is missing signer check",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/0-signer-authorization/insecure/src/lib.rs:16:4"
+    ]
+  },
+  {
+    "name": "1002",
+    "rule_name": "The account is missing owner check",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/1-account-data-matching/insecure/src/lib.rs:20:4"
+    ]
+  },
+  {
+    "name": "1002",
+    "rule_name": "The account is missing owner check",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/1-account-data-matching/secure/src/lib.rs:23:4"
+    ]
+  },
+  {
+    "name": "1019",
+    "rule_name": "The account may not be properly validated and may be untrustful",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/10-sysvar-address-checking/insecure/src/lib.rs:17:4"
+    ]
+  },
+  {
+    "name": "1019",
+    "rule_name": "The account may not be properly validated and may be untrustful",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/10-sysvar-address-checking/secure/src/lib.rs:18:4"
+    ]
+  },
+  {
+    "name": "1002",
+    "rule_name": "The account is missing owner check",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/2-owner-checks/insecure/src/lib.rs:24:4"
+    ]
+  },
+  {
+    "name": "1002",
+    "rule_name": "The account is missing owner check",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/2-owner-checks/secure/src/lib.rs:27:4"
+    ]
+  },
+  {
+    "name": "1019",
+    "rule_name": "The account may not be properly validated and may be untrustful",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/5-arbitrary-cpi/insecure/src/lib.rs:34:4"
+    ]
+  },
+  {
+    "name": "1014",
+    "rule_name": "The account's bump seed is not validated and may be vulnerable to seed canonicalization attacks",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/7-bump-seed-canonicalization/insecure/src/lib.rs:11:12"
+    ]
+  },
+  {
+    "name": "1019",
+    "rule_name": "The account may not be properly validated and may be untrustful",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c1/9-closing-accounts/insecure/src/lib.rs:23:4"
+    ]
+  }
+]

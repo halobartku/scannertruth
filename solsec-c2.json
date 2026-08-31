@@ -1,0 +1,1128 @@
+{
+  "metadata": {
+    "generated_at": "2026-08-31T18:47:43.591400674Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 12,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 108,
+    "critical_issues": 0,
+    "high_issues": 14,
+    "medium_issues": 94,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 84,
+      "unchecked_account": 10,
+      "missing_signer_check": 6,
+      "reentrancy": 8
+    },
+    "files_with_issues": [
+      "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "/corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+      "/corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+      "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "/corpus2/anchor-interface-account/secure/src/interface_account.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 161,
+      "column": null,
+      "code_snippet": "pub struct InterfaceAccount<'info, T: AccountSerialize + AccountDeserialize + Clone> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 168,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone + fmt::Debug> fmt::Debug",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 176,
+      "column": null,
+      "code_snippet": "impl<'a, T: AccountSerialize + AccountDeserialize + Clone> InterfaceAccount<'a, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 210,
+      "column": null,
+      "code_snippet": "impl<'a, T: AccountSerialize + AccountDeserialize + CheckOwner + Clone> InterfaceAccount<'a, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 251,
+      "column": null,
+      "code_snippet": "impl<'info, B, T: AccountSerialize + AccountDeserialize + CheckOwner + Clone> Accounts<'info, B>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 271,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Owners + Clone> AccountsExit<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 280,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AccountsClose<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 288,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> ToAccountMetas for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 294,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> ToAccountInfos<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 302,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AsRef<AccountInfo<'info>>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 310,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> AsRef<T> for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 316,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> Deref for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 324,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> DerefMut for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 330,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> Key for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 257,
+      "column": null,
+      "code_snippet": "accounts: &mut &'info [AccountInfo<'info>],",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 283,
+      "column": null,
+      "code_snippet": "fn close(&self, sol_destination: AccountInfo<'info>) -> Result<()> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 297,
+      "column": null,
+      "code_snippet": "fn to_account_infos(&self) -> Vec<AccountInfo<'info>> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 302,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AsRef<AccountInfo<'info>>",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/secure/src/interface_account.rs",
+      "line_number": 305,
+      "column": null,
+      "code_snippet": "fn as_ref(&self) -> &AccountInfo<'info> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 161,
+      "column": null,
+      "code_snippet": "pub struct InterfaceAccount<'info, T: AccountSerialize + AccountDeserialize + Clone> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 168,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone + fmt::Debug> fmt::Debug",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 176,
+      "column": null,
+      "code_snippet": "impl<'a, T: AccountSerialize + AccountDeserialize + Clone> InterfaceAccount<'a, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 236,
+      "column": null,
+      "code_snippet": "impl<'a, T: AccountSerialize + AccountDeserialize + CheckOwner + Clone> InterfaceAccount<'a, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 270,
+      "column": null,
+      "code_snippet": "impl<'info, B, T: AccountSerialize + AccountDeserialize + CheckOwner + Clone> Accounts<'info, B>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 290,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Owners + Clone> AccountsExit<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 299,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AccountsClose<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 307,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> ToAccountMetas for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 313,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> ToAccountInfos<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 321,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AsRef<AccountInfo<'info>>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 329,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> AsRef<T> for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 335,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> Deref for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 343,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> DerefMut for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 349,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> Key for InterfaceAccount<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 276,
+      "column": null,
+      "code_snippet": "accounts: &mut &'info [AccountInfo<'info>],",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 302,
+      "column": null,
+      "code_snippet": "fn close(&self, sol_destination: AccountInfo<'info>) -> Result<()> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 316,
+      "column": null,
+      "code_snippet": "fn to_account_infos(&self) -> Vec<AccountInfo<'info>> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 321,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AsRef<AccountInfo<'info>>",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+      "line_number": 324,
+      "column": null,
+      "code_snippet": "fn as_ref(&self) -> &AccountInfo<'info> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+      "line_number": 179,
+      "column": null,
+      "code_snippet": "metadata.serialize(&mut *metadata_account_info.data.borrow_mut())?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+      "line_number": 252,
+      "column": null,
+      "code_snippet": "metadata.serialize(&mut *metadata_account_info_data)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+      "line_number": 323,
+      "column": null,
+      "code_snippet": "uri: \"https://arweave.net/HzOnfNMWQBHT9v0DW8Er9YFwdiGJX4-uK9RSYAR8fxE\".to_string(),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+      "line_number": 191,
+      "column": null,
+      "code_snippet": "metadata.serialize(&mut *metadata_account_info.data.borrow_mut())?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+      "line_number": 264,
+      "column": null,
+      "code_snippet": "metadata.serialize(&mut *metadata_account_info_data)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+      "line_number": 335,
+      "column": null,
+      "code_snippet": "uri: \"https://arweave.net/HzOnfNMWQBHT9v0DW8Er9YFwdiGJX4-uK9RSYAR8fxE\".to_string(),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 49,
+      "column": null,
+      "code_snippet": "let next_len = curr_data_size + 32;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 51,
+      "column": null,
+      "code_snippet": "let needed_len = curr_data_size + ( 10 * 32 );",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 274,
+      "column": null,
+      "code_snippet": "let max_ix_index = ctx.accounts.transaction.instruction_index + 1;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 357,
+      "column": null,
+      "code_snippet": "space = 8 + Ms::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 384,
+      "column": null,
+      "code_snippet": "space = 8 + MsTransaction::initial_size_with_members(multisig.keys.len()),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 429,
+      "column": null,
+      "code_snippet": "space = 8 + MsInstruction::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'add_instruction' may be missing signer validation",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 183,
+      "column": null,
+      "code_snippet": "pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'add_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 333 after external call",
+      "file_path": "/corpus2/squads-account-matching/secure/src/lib.rs",
+      "line_number": 327,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 49,
+      "column": null,
+      "code_snippet": "let next_len = curr_data_size + 32;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 51,
+      "column": null,
+      "code_snippet": "let needed_len = curr_data_size + ( 10 * 32 );",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 274,
+      "column": null,
+      "code_snippet": "let max_ix_index = ctx.accounts.transaction.instruction_index + 1;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 349,
+      "column": null,
+      "code_snippet": "space = 8 + Ms::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 376,
+      "column": null,
+      "code_snippet": "space = 8 + MsTransaction::initial_size_with_members(multisig.keys.len()),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 421,
+      "column": null,
+      "code_snippet": "space = 8 + MsInstruction::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'add_instruction' may be missing signer validation",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 183,
+      "column": null,
+      "code_snippet": "pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'add_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 325 after external call",
+      "file_path": "/corpus2/squads-account-matching/insecure/src/lib.rs",
+      "line_number": 319,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 49,
+      "column": null,
+      "code_snippet": "let next_len = curr_data_size + 32;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 51,
+      "column": null,
+      "code_snippet": "let needed_len = curr_data_size + ( 10 * 32 );",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 274,
+      "column": null,
+      "code_snippet": "let max_ix_index = ctx.accounts.transaction.instruction_index + 1;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 357,
+      "column": null,
+      "code_snippet": "space = 8 + Ms::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 384,
+      "column": null,
+      "code_snippet": "space = 8 + MsTransaction::initial_size_with_members(multisig.keys.len()),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 429,
+      "column": null,
+      "code_snippet": "space = 8 + MsInstruction::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'add_instruction' may be missing signer validation",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 183,
+      "column": null,
+      "code_snippet": "pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'add_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 333 after external call",
+      "file_path": "/corpus2/squads-signer-auth/secure/src/lib.rs",
+      "line_number": 327,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 49,
+      "column": null,
+      "code_snippet": "let next_len = curr_data_size + 32;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 51,
+      "column": null,
+      "code_snippet": "let needed_len = curr_data_size + ( 10 * 32 );",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 274,
+      "column": null,
+      "code_snippet": "let max_ix_index = ctx.accounts.transaction.instruction_index + 1;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 357,
+      "column": null,
+      "code_snippet": "space = 8 + Ms::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 384,
+      "column": null,
+      "code_snippet": "space = 8 + MsTransaction::initial_size_with_members(multisig.keys.len()),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 429,
+      "column": null,
+      "code_snippet": "space = 8 + MsInstruction::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'add_instruction' may be missing signer validation",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 183,
+      "column": null,
+      "code_snippet": "pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'add_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 333 after external call",
+      "file_path": "/corpus2/squads-signer-auth/insecure/src/lib.rs",
+      "line_number": 327,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "line_number": 2055,
+      "column": null,
+      "code_snippet": "fn assert_uninitialized<T: Pack + IsInitialized>(",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "line_number": 2081,
+      "column": null,
+      "code_snippet": "let mut end = start + length;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "line_number": 2093,
+      "column": null,
+      "code_snippet": "end = start + length;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "line_number": 2433,
+      "column": null,
+      "code_snippet": "E: 'static + std::error::Error + DecodeError<E> + PrintProgramError + FromPrimitive,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'process_instruction' may be missing signer validation",
+      "file_path": "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "line_number": 37,
+      "column": null,
+      "code_snippet": "pub fn process_instruction(",
+      "suggestion": "Add signer validation to function 'process_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 1886 after external call",
+      "file_path": "/corpus2/solend-owner-checks/secure/src/processor.rs",
+      "line_number": 1877,
+      "column": null,
+      "code_snippet": "invoke(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "line_number": 2051,
+      "column": null,
+      "code_snippet": "fn assert_uninitialized<T: Pack + IsInitialized>(",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "line_number": 2077,
+      "column": null,
+      "code_snippet": "let mut end = start + length;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "line_number": 2089,
+      "column": null,
+      "code_snippet": "end = start + length;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "line_number": 2429,
+      "column": null,
+      "code_snippet": "E: 'static + std::error::Error + DecodeError<E> + PrintProgramError + FromPrimitive,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'process_instruction' may be missing signer validation",
+      "file_path": "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "line_number": 37,
+      "column": null,
+      "code_snippet": "pub fn process_instruction(",
+      "suggestion": "Add signer validation to function 'process_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 1882 after external call",
+      "file_path": "/corpus2/solend-owner-checks/insecure/src/processor.rs",
+      "line_number": 1873,
+      "column": null,
+      "code_snippet": "invoke(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 81,
+      "column": null,
+      "code_snippet": "if *p == -1 {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 100,
+      "column": null,
+      "code_snippet": "let secp_ix_index = (current_instruction - 1) as u8;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 122,
+      "column": null,
+      "code_snippet": "let _sig_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 126,
+      "column": null,
+      "code_snippet": "let address_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 130,
+      "column": null,
+      "code_snippet": "let msg_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 132,
+      "column": null,
+      "code_snippet": "let msg_size = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 141,
+      "column": null,
+      "code_snippet": "let address: &[u8] = &secp_ix.data[address_offset..address_offset + 20];",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 167,
+      "column": null,
+      "code_snippet": "[secp_ixs[0].msg_offset as usize..(secp_ixs[0].msg_offset + secp_ixs[0].msg_size) as usize];",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 204,
+      "column": null,
+      "code_snippet": "if s.sig_index + 1 > sig_len {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 189 after external call",
+      "file_path": "/corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+      "line_number": 186,
+      "column": null,
+      "code_snippet": "solana_program::program::invoke(&ix, ctx.accounts)?;",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 81,
+      "column": null,
+      "code_snippet": "if *p == -1 {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 100,
+      "column": null,
+      "code_snippet": "let secp_ix_index = (current_instruction - 1) as u8;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 122,
+      "column": null,
+      "code_snippet": "let _sig_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 126,
+      "column": null,
+      "code_snippet": "let address_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 130,
+      "column": null,
+      "code_snippet": "let msg_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 132,
+      "column": null,
+      "code_snippet": "let msg_size = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 141,
+      "column": null,
+      "code_snippet": "let address: &[u8] = &secp_ix.data[address_offset..address_offset + 20];",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 167,
+      "column": null,
+      "code_snippet": "[secp_ixs[0].msg_offset as usize..(secp_ixs[0].msg_offset + secp_ixs[0].msg_size) as usize];",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 204,
+      "column": null,
+      "code_snippet": "if s.sig_index + 1 > sig_len {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 189 after external call",
+      "file_path": "/corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+      "line_number": 186,
+      "column": null,
+      "code_snippet": "solana_program::program::invoke(&ix, ctx.accounts)?;",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "⚠️  14 high-severity issues require attention.",
+    "Implement proper account validation for 10 locations.",
+    "Consider using checked arithmetic operations for 84 overflow-prone locations.",
+    "Add signer validation to 6 instruction handlers.",
+    "Review 8 potential reentrancy vulnerabilities and implement guards.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

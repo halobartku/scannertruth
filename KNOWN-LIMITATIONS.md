@@ -135,8 +135,8 @@ sensitivity analysis. The Wormhole result is one file.
 | The `CargoBinary` / `VaultLint` adapter class is **dead**: VaultLint is actually run through Docker by the shell script, not through the adapter. | The adapter layer is less real than it appears. |
 | `score.py` decides which class a file belongs to by testing whether `/<class>/` appears in the path. | A path containing the class name in another position would be misattributed. |
 | Nothing asserts that a corpus pair actually differs. | A failed extraction would produce identical variants, every tool would score MISS, and it would look like a finding. *(Checked by hand today: all nine pairs differ. Not automated.)* |
-| `corpus_radar.py` has only ever been run in `--demo`. | Unknown whether it produces anything usable against live sources. |
-| `spl-token-lending-rounding` was skipped as "fix touches no .rs file", which is almost certainly an artefact of shallow cloning rather than the truth. | One good case silently dropped. |
+| ~~`corpus_radar.py` has only ever been run in `--demo`~~ **RUN LIVE 2026-08-31: it finds nothing, and the reason is a design flaw of ours.** Twenty-three queries produced one regex hit, and that one was false. The acquisition layer greps search-result snippets for a raw `github.com/.../commit/` URL, but incident postmortems put that link in the page body, never in the snippet. The verification half is sound and worth keeping; the acquisition half needs rebuilding against GitHub Security Advisories and RustSec rather than web search. | A tool that looked like coverage and produced none. |
+| ~~`spl-token-lending-rounding` skipped, almost certainly an artefact of shallow cloning~~ **That guess was WRONG and testing disproved it.** The SHA in the manifest was a merge commit with two parents; `git show` without `-m` prints the combined diff, which omits files identical to either parent, so the diff read as empty at any clone depth. Corrected to the squash-merge commit, which has one parent. | A cause asserted without testing it, published, and then refuted. |
 
 ---
 

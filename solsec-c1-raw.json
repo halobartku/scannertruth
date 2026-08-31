@@ -1,0 +1,170 @@
+[
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/secure/src/lib.rs:59"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/secure/src/lib.rs:64"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/secure/src/lib.rs:65"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/recommended/src/lib.rs:19"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/insecure/src/lib.rs:24"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/insecure-still/src/lib.rs:39"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/9-closing-accounts/insecure-still-still/src/lib.rs:39"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/secure/src/lib.rs:34"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/secure/src/lib.rs:35"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/secure/src/lib.rs:36"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/secure/src/lib.rs:37"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/insecure/src/lib.rs:31"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/insecure/src/lib.rs:32"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/insecure/src/lib.rs:33"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/5-arbitrary-cpi/insecure/src/lib.rs:34"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/4-initialization/secure/src/lib.rs:30"
+    ]
+  },
+  {
+    "name": "integer_overflow",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/4-initialization/recommended/src/lib.rs:18"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/4-initialization/insecure/src/lib.rs:31"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/3-type-cosplay/secure/src/lib.rs:28"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/3-type-cosplay/insecure/src/lib.rs:25"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/2-owner-checks/secure/src/lib.rs:27"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/2-owner-checks/insecure/src/lib.rs:24"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/10-sysvar-address-checking/secure/src/lib.rs:18"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/10-sysvar-address-checking/insecure/src/lib.rs:17"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/1-account-data-matching/secure/src/lib.rs:23"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/1-account-data-matching/insecure/src/lib.rs:20"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/0-signer-authorization/secure/src/lib.rs:20"
+    ]
+  },
+  {
+    "name": "unchecked_account",
+    "locations": [
+      "/tmp/solsec_c1//corpus1/0-signer-authorization/insecure/src/lib.rs:16"
+    ]
+  }
+]

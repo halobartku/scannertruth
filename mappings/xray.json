@@ -1,0 +1,30 @@
+{
+  "scanner": "xray",
+  "homepage": "https://github.com/sec3-product/x-ray",
+  "version_note": "X-Ray v0.0.6, official container ghcr.io/sec3-product/x-ray:latest, pulled 2026-08-31. sec3 was formerly Soteria; X-Ray is the open-source successor to their earlier Soteria scanner and the free tier of their commercial product.",
+  "derivation": "Mapping derived from X-Ray's OWN rule table, fetched from the project's own package/conf/xray.json (the file it ships and reads its rule set from) and from the rule table published in README.md, BEFORE any corpus run. Each corpus class was matched to the X-Ray rule whose name and description states that it detects that class, using the rule's own 'url' field where it points at the matching sealevel-attacks class page. Not derived from which rules happened to fire.",
+  "right_of_reply": "Not sent to sec3. Under PROTOCOL.md this mapping should be offered to the tool's authors for correction before the result is treated as final, and their correction published.",
+  "in_sample_warning": "X-Ray's own rule table cites coral-xyz/sealevel-attacks and project-serum/sealevel-attacks class pages directly as the reference for 8 of its rules (1001, 1002, 1007, 1010, 1011, 1014, 1015, 1016). Its authors built these rules against this exact corpus. Any score on corpus 1 should be read as in-sample for X-Ray, same caveat as Radar.",
+  "map": {
+    "0-signer-authorization": ["1001"],
+    "1-account-data-matching": ["1007"],
+    "2-owner-checks": ["1002"],
+    "3-type-cosplay": ["1010", "1011"],
+    "4-initialization": [],
+    "5-arbitrary-cpi": ["1016"],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": ["1014"],
+    "8-pda-sharing": ["1015"],
+    "9-closing-accounts": [],
+    "10-sysvar-address-checking": ["1019"]
+  },
+  "unmapped_rules": [
+    "1003 IntegerAddOverflow", "1004 IntegerUnderflow", "1005 IntegerMulOverflow",
+    "1006 IntegerDivOverflow", "1017 MaliciousSimulation",
+    "2001 IncorrectLoopBreakLogic", "2002 IncorrectConditionCheck", "2003 ExponentialCalculation",
+    "2004 IncorrectDivisionLogic", "2005 IncorrectTokenCalculation"
+  ],
+  "unmapped_note": "These X-Ray rules detect arithmetic-overflow and economic-logic bugs, none of which name a class in this corpus. They are excluded from per-class scoring, the correct treatment: a scanner is not penalised for detecting things the corpus does not label.",
+  "structural_gaps": "Three classes have no X-Ray rule mapped at all: 4-initialization, 6-duplicate-mutable-accounts, 9-closing-accounts. These count as misses for a reason that has nothing to do with detection quality on the classes X-Ray does claim to cover.",
+  "note_on_rule_1019": "Rule 1019 'UnvalidatedAccount' is described by X-Ray's own docs as the rule that detects 'the Wormhole hack' (linked blog: 'How Soteria detects the vulnerability automatically'), which is a sysvar-address-checking bug (unchecked instructions sysvar in signature verification). It is mapped to 10-sysvar-address-checking on that basis, pre-registered from the description, not from where it fired. In the actual run it also fired on 5-arbitrary-cpi/insecure, which is noise under this mapping (not credited to class 5), and it fired on both the insecure and secure variant of its own mapped class 10, which is why class 10 scores nominal but not real."
+}

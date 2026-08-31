@@ -1,0 +1,10 @@
+[
+  {
+    "name": "1019",
+    "rule_name": "The account may not be properly validated and may be untrustful",
+    "bucket": "untrustfulAccounts",
+    "locations": [
+      "/tmp/xray_c2/squads-account-matching/insecure/src/lib.rs:310:16"
+    ]
+  }
+]

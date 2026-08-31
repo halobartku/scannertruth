@@ -48,9 +48,14 @@
     {
       "name": "spl-token-lending-rounding",
       "repo": "solana-labs/solana-program-library",
-      "fix": "bf15464783aca0395d953165b68b143c4b8c984f",
+      "fix": "c2b287788b98b74dcec7436db107d66e6da91295",
       "class": "arithmetic-rounding-drain",
-      "source": "https://neodyme.io/en/blog/lending_disclosure"
+      "source": "https://neodyme.io/en/blog/lending_disclosure",
+      "files": [
+        "token-lending/program/src/math/rate.rs",
+        "token-lending/program/src/state/reserve.rs"
+      ],
+      "sha_correction": "The manifest first carried bf15464783aca0395d953165b68b143c4b8c984f, the head of PR #1883's branch. That is a MERGE commit with two parents, and `git show` on a merge without -m prints the combined diff, which omits files identical to either parent. rate.rs and reserve.rs matched the feature-branch parent exactly, so the diff appeared empty and the case was dropped. We recorded the cause as 'almost certainly an artefact of shallow cloning'. That guess was wrong and was disproved by testing it. The correct SHA is the squash-merge commit, which has a single parent."
     },
     {
       "name": "squads-signer-auth",

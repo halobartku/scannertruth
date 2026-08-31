@@ -1,0 +1,25 @@
+{
+  "scanner": "solana-lints",
+  "homepage": "https://github.com/crytic/solana-lints",
+  "version_note": "git main (crytic org, formerly published under trailofbits/solana-lints; crytic is Trail of Bits' blockchain-security org), dylint-based lint library, pinned to rust-toolchain nightly-2025-01-09 with llvm-tools-preview and rustc-dev components. Installed and run in a rust:slim container via cargo-dylint + dylint-link, nothing on the host.",
+  "derivation": "Mapping derived from the library's OWN README table (7 lints, each row naming the sealevel-attacks class it targets by name and linking to that class's page in coral-xyz/sealevel-attacks), fetched and read BEFORE any corpus run. Not derived from which lints happened to fire.",
+  "right_of_reply": "Not sent to Trail of Bits / Crytic. Under PROTOCOL.md this mapping should be offered to the tool's authors for correction before the result is treated as final, and their correction published.",
+  "in_sample_warning": "solana-lints was built explicitly against coral-xyz/sealevel-attacks: its own README links each lint directly to the matching class page in that corpus, and the project describes itself as inspired by the Sealevel Attacks. Any score on corpus 1 should be read as in-sample, the same caveat as Radar and X-Ray.",
+  "map": {
+    "0-signer-authorization": ["missing_signer_check"],
+    "1-account-data-matching": [],
+    "2-owner-checks": ["missing_owner_check"],
+    "3-type-cosplay": ["type_cosplay"],
+    "4-initialization": [],
+    "5-arbitrary-cpi": ["arbitrary_cpi"],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": ["bump_seed_canonicalization"],
+    "8-pda-sharing": [],
+    "9-closing-accounts": ["insecure_account_close"],
+    "10-sysvar-address-checking": ["sysvar_get"]
+  },
+  "unmapped_rules": [],
+  "unmapped_note": "All 7 of solana-lints' lints map to a corpus-1 class; none are excluded as noise-only. sysvar_get is a narrower rule than the corpus's own framing of class 10 (it flags Sysvar::from_account_info instead of Sysvar::get specifically, rather than address validation in general), mapped here because it is the lint the project itself links to the sysvar-address-checking class page.",
+  "structural_gaps": "Four classes have no solana-lints rule at all: 1-account-data-matching, 4-initialization, 6-duplicate-mutable-accounts, 8-pda-sharing. These count as misses for a reason that has nothing to do with detection quality on the 7 classes the library does target.",
+  "installability_note": "See report body for the exact outcome. If the tool could not be made to run in the time budgeted, this file records the pre-registered mapping anyway per PROTOCOL.md's own standard: intent and mapping do not depend on whether the run succeeded."
+}

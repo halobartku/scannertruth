@@ -52,6 +52,67 @@ def rs_files_in_commit(repo_dir, sha):
             if line.strip().endswith(".rs") and "/tests/" not in line and not line.startswith("tests/")]
 
 
+def crate_root_for(repo_dir, sha, path):
+    """Nearest ancestor directory of `path` that has a Cargo.toml at this commit.
+
+    Extracting a lone .rs file into a synthetic manifest is packaging we invented, and a tool that
+    needs project context is then penalised for our choice rather than its own behaviour. Taking the
+    real crate removes that objection at the cost of dragging in sibling modules.
+    """
+    parts = path.split("/")[:-1]
+    while parts:
+        d = "/".join(parts)
+        p = subprocess.run(["git", "cat-file", "-e", f"{sha}:{d}/Cargo.toml"],
+                           cwd=repo_dir, capture_output=True)
+        if p.returncode == 0:
+            return d
+        parts.pop()
+    return None
+
+
+def archive_dir(repo_dir, sha, subdir, dest):
+    """Extract a whole directory at a commit. Returns True on success."""
+    os.makedirs(dest, exist_ok=True)
+    tar = subprocess.run(["git", "archive", sha, subdir], cwd=repo_dir, capture_output=True)
+    if tar.returncode != 0 or not tar.stdout:
+        return False
+    untar = subprocess.run(["tar", "-x", "-C", dest], input=tar.stdout, capture_output=True)
+    return untar.returncode == 0
+
+
+def build_case_crates(case, cache, out_root):
+    """Variant of build_case that takes the whole crate rather than the implicated file alone."""
+    name, repo, fix = case["name"], case["repo"], case["fix"]
+    repo_dir = ensure_clone(repo, cache)
+    run(["git", "fetch", "-q", "--depth", "50", "origin", fix], cwd=repo_dir, check=False)
+    parent = run(["git", "rev-parse", f"{fix}^"], cwd=repo_dir).strip()
+
+    paths = case.get("files") or rs_files_in_commit(repo_dir, fix)
+    if not paths:
+        return {"name": name, "status": "skipped", "reason": "no implicated file"}
+
+    crate = crate_root_for(repo_dir, fix, paths[0])
+    if not crate:
+        return {"name": name, "status": "skipped",
+                "reason": f"no Cargo.toml above {paths[0]}; cannot form a real crate"}
+
+    ok = {}
+    for variant, sha in (("insecure", parent), ("secure", fix)):
+        ok[variant] = archive_dir(repo_dir, sha, crate,
+                                  os.path.join(out_root, name, variant))
+    if not (ok["insecure"] and ok["secure"]):
+        shutil.rmtree(os.path.join(out_root, name), ignore_errors=True)
+        return {"name": name, "status": "skipped",
+                "reason": f"crate {crate} not present in both commits"}
+
+    n = 0
+    for _, _, files in os.walk(os.path.join(out_root, name, "insecure")):
+        n += sum(1 for f in files if f.endswith(".rs"))
+    return {"name": name, "status": "built", "repo": repo, "fix": fix, "parent": parent,
+            "class": case.get("class"), "crate": crate, "implicated": paths,
+            "rs_files_in_crate": n}
+
+
 def file_at(repo_dir, sha, path):
     p = subprocess.run(["git", "show", f"{sha}:{path}"], cwd=repo_dir,
                        capture_output=True, text=True)
@@ -115,6 +176,8 @@ def main():
     ap.add_argument("--out", default="corpus2")
     ap.add_argument("--cache", default="/tmp/c2cache")
     ap.add_argument("--only")
+    ap.add_argument("--crates", action="store_true",
+                    help="extract the whole crate containing the implicated file, not just the file")
     ap.add_argument("--demo", action="store_true")
     args = ap.parse_args()
     if args.demo:
@@ -129,11 +192,14 @@ def main():
     results = []
     for case in cases:
         try:
-            r = build_case(case, args.cache, args.out)
+            builder = build_case_crates if args.crates else build_case
+            r = builder(case, args.cache, args.out)
         except Exception as exc:
             r = {"name": case["name"], "status": "error", "reason": repr(exc)[:200]}
         results.append(r)
-        print(f"{r['name']:34} {r['status']:8} {r.get('reason','') or r.get('class','')}")
+        extra = r.get("reason") or (f"{r.get('crate','')}  ({r.get('rs_files_in_crate','?')} .rs)"
+                                    if args.crates else r.get("class", ""))
+        print(f"{r['name']:34} {r['status']:8} {extra}")
 
     with open(os.path.join(args.out, "built.json"), "w", encoding="utf-8") as fh:
         json.dump(results, fh, indent=1)

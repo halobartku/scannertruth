@@ -157,6 +157,12 @@ def load_findings(kind, path):
         for r in (blob.get("results") if isinstance(blob, dict) else blob) or []:
             line = (r.get("start") or {}).get("line", 0)
             out.setdefault(r.get("path", ""), []).append((r.get("check_id", ""), line))
+    elif kind == "solsec":
+        for x in blob.get("analysis_results") or []:
+            fp = x.get("file_path", "")
+            if fp.startswith("./"):
+                fp = fp[2:]
+            out.setdefault(fp, []).append((x.get("rule_name", ""), x.get("line_number", 0)))
     else:
         raise ValueError(kind)
     return out

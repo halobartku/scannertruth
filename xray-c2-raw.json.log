@@ -1,0 +1,92 @@
+[
+  {
+    "leaf": "anchor-interface-account/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "anchor-interface-account/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "cashio-account-data/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "cashio-account-data/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "metaplex-bubblegum-creator/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "metaplex-bubblegum-creator/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "metaplex-candy-machine/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "metaplex-candy-machine/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "metaplex-token-metadata/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "metaplex-token-metadata/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "solend-owner-checks/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "solend-owner-checks/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "squads-account-matching/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "squads-account-matching/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "squads-signer-auth/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "squads-signer-auth/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "wormhole-sysvar/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "wormhole-sysvar/secure",
+    "status": "ok",
+    "findings": 0
+  }
+]

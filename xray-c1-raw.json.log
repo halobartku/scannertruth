@@ -1,0 +1,177 @@
+[
+  {
+    "leaf": "0-signer-authorization/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "0-signer-authorization/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "0-signer-authorization/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "1-account-data-matching/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "1-account-data-matching/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "1-account-data-matching/secure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "10-sysvar-address-checking/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "10-sysvar-address-checking/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "10-sysvar-address-checking/secure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "2-owner-checks/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "2-owner-checks/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "2-owner-checks/secure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "3-type-cosplay/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "3-type-cosplay/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "3-type-cosplay/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "4-initialization/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "4-initialization/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "4-initialization/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "5-arbitrary-cpi/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "5-arbitrary-cpi/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "5-arbitrary-cpi/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "6-duplicate-mutable-accounts/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "6-duplicate-mutable-accounts/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "6-duplicate-mutable-accounts/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "7-bump-seed-canonicalization/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "7-bump-seed-canonicalization/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "7-bump-seed-canonicalization/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "8-pda-sharing/insecure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "8-pda-sharing/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "8-pda-sharing/secure",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "9-closing-accounts/insecure",
+    "status": "ok",
+    "findings": 1
+  },
+  {
+    "leaf": "9-closing-accounts/insecure-still",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "9-closing-accounts/insecure-still-still",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "9-closing-accounts/recommended",
+    "status": "ok",
+    "findings": 0
+  },
+  {
+    "leaf": "9-closing-accounts/secure",
+    "status": "ok",
+    "findings": 0
+  }
+]
