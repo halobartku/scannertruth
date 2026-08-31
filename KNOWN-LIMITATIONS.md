@@ -218,3 +218,36 @@ valid corpus-2 case and all four measured tools changes **no verdict at all** - 
 identical at every setting. The published numbers therefore do not rest on that constant. Recorded
 because an unjustified constant in a scoring rule is a fair thing for a reader to attack, and the
 answer should exist before they ask.
+
+## Added 2026-08-31, deepest pass. Four findings, one of them in the headline.
+
+**28. Radar was never run over corpus 2 as a corpus, and neither was VaultLint.** Every Radar
+artefact in this repository is either the teaching corpus (complete, all 11 classes, 52 locations)
+or **Wormhole alone** - twice, once as an isolated file and once as the real crate. `c2-radar.json`
+holds findings from that single case. `c2clean-radar.json`, despite the name, is not a corpus-2 run
+at all: its paths are `/tmp/whreal/`, the Wormhole real crate. VaultLint's corpus-2 file covers
+`solend-owner-checks` only. **The published "0 of 8 real vulnerabilities" for both tools was
+extrapolated from one case each.** Retracted; a per-case re-run with a log per run is replacing it.
+
+**29. The root cause, which also explains the missing coverage.** Radar requires a `Cargo.toml` in
+a **subdirectory** of the path it is given. Corpus-2 cases carry their manifest at the root, so
+Radar answers `400 Bad Request: No Cargo.toml files found in any subdirectories` and analyses
+nothing. Wormhole passed because of its layout; the real crates passed because the crate is nested.
+Every other case was an invocation error being scored as a miss - our error, in our favour's
+opposite direction, and invisible without a per-run log.
+
+**30. The teaching corpus was not pinned anywhere.** No commit was recorded, so nothing in this
+repository established which corpus state produced 11/11. Recovered after the fact from the working
+checkout: `24555d044802db4022112a94d6d70e74291a4b6d`, 2022-07-16. **FIXED** in `PROTOCOL.md`, with
+the recovery disclosed. The corpus itself has not been touched since July 2022.
+
+**31. `verify.py` verifies run 1 only, and the CI step claimed more.** It checks `RESULTS.md`
+(sol-audit v1, 2/11 nominal, 0/11 real) and nothing else - not the six-scanner table, not corpus 2,
+not the real crates. The workflow step was labelled "Published headline reproduces from raw data".
+**Step renamed and the scope stated in the module docstring.** Nothing currently re-derives the
+current headline from raw data, and that remains open.
+
+**32. `control-noisy`'s corpus-1 numbers have no raw file in this repository.** The 931 findings and
+its 11/11 nominal / 0/11 real appear in two results pages with nothing stored to re-derive them
+from. The control is deterministic and cheap to re-run, so this is weaker than 28, but it is the
+same species: a published number with no artefact behind it.

@@ -3,6 +3,19 @@
 The scoring rules for this benchmark, and an honest account of what was fixed before running,
 what was corrected after, and what cannot be independently verified.
 
+## 0. What was measured, exactly
+
+**Teaching corpus:** `coral-xyz/sealevel-attacks` at commit
+**`24555d044802db4022112a94d6d70e74291a4b6d`** (2022-07-16, "Fix typo (#19)").
+
+This pin was **recovered from the working checkout after the fact**, not recorded at measurement
+time, and that distinction is the honest one: nothing in this repository proved which corpus state
+produced the published numbers until it was dug out. It is recorded now so that every future run
+states it up front.
+
+Worth noting on its own: the corpus that every Solana scanner is benchmarked against, including by
+their own authors, **has not been touched since July 2022.**
+
 ## 1. Corpus and ground truth
 
 Corpus: [`coral-xyz/sealevel-attacks`](https://github.com/coral-xyz/sealevel-attacks), the
