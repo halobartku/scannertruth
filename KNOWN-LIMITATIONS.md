@@ -210,3 +210,11 @@ disclosed-but-uncelebrated vulnerabilities.
 the teaching corpus only. The corpus that carries the headline has no floor and no ceiling
 established by construction. Item 24 partly substitutes for this, but a real `control-noisy` run
 over corpus 2 is still missing.
+
+**27. The line tolerance is arbitrary, so we tested whether anything depends on it. Nothing does.**
+`TOLERANCE = 3` decides how close a finding must land to a changed line to count as located, and
+the number was picked by hand with no justification. Sweeping it from 0 to 25 lines across every
+valid corpus-2 case and all four measured tools changes **no verdict at all** - the results are
+identical at every setting. The published numbers therefore do not rest on that constant. Recorded
+because an unjustified constant in a scoring rule is a fair thing for a reader to attack, and the
+answer should exist before they ask.

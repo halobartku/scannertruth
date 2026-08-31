@@ -117,6 +117,10 @@ main ways a benchmark misleads.
 
 ## Limits
 
+**The scoring is insensitive to its one arbitrary constant.** The line tolerance that decides
+whether a finding counts as landing at the fix site was swept from 0 to 25 lines across every case
+and all four tools: **no verdict changes at any setting.**
+
 **Corpus 2 is drawn entirely from public postmortems** - rekt.news, published audits, GitHub
 advisories, RustSec. Those incidents are famous *because nobody caught them in time*, so the corpus
 is systematically harder than the population of real bugs and understates every scanner measured on
