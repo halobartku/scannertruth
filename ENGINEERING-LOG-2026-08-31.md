@@ -3,8 +3,8 @@
 Everything that happened on the day this benchmark was built, in order, including every mistake.
 
 This exists because the project's only real asset is that its numbers can be checked, and a reader
-who cannot see how a number was produced has to take it on faith. Fifteen errors are recorded
-below. Eleven were caught by measurement or by a check, four by a person noticing. Two would have
+who cannot see how a number was produced has to take it on faith. Sixteen errors are recorded
+below. Twelve were caught by measurement or by a check, four by a person noticing. Two would have
 put a false statement in a funding application.
 
 ---
@@ -225,6 +225,23 @@ compared by rule and location. Radar 52 = 52, VaultLint 4 = 4, both identical.
 **Semgrep was added as a third tool** and produced zero findings under three configurations, with
 zero errors. Not a miss: `p/rust` contains eleven rules in total and none concern Solana. The most
 widely used generic static analyser has no coverage of this domain at all.
+
+---
+
+## Part 10: the same error, a third time
+
+**Error 16, and it is error 11 wearing different clothes.** The per-case run of Radar over the
+real-crate corpus printed `ok` for all ten cases and `PER_CASE_DONE`. The output file was **zero
+bytes**. The loop reported the completion of a step rather than the existence of its result, which
+is the exact failure recorded earlier in this log as a `touch done` that fired regardless of
+success, and which the log itself calls the project's most repeated failure.
+
+Nothing was scored from it. The run was rewritten to print `ok` only after the output file exists
+**and** parses as JSON, and to print `FAILED` with the return code otherwise, so a silent
+production of nothing is no longer indistinguishable from a clean result.
+
+The general shape, now three instances deep: **we check that a step ran, not that it produced
+something.** Every remaining harness step should be read with that question.
 
 ---
 
