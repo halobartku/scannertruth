@@ -1,0 +1,104 @@
+{
+ "findings": [
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 316
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 558
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 699
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 1205
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 1375
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 1691
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 1790
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2026
+  },
+  {
+   "rule_id": "VL005",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2227
+  },
+  {
+   "rule_id": "VL005",
+   "file": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "line": 2248
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 316
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 558
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 699
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 1205
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 1375
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 1691
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 1790
+  },
+  {
+   "rule_id": "VL004",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2030
+  },
+  {
+   "rule_id": "VL005",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2231
+  },
+  {
+   "rule_id": "VL005",
+   "file": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "line": 2252
+  }
+ ]
+}

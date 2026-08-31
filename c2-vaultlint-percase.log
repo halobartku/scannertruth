@@ -1,0 +1,39 @@
+building the runner image (cargo install vaultlint inside rust:slim)
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM rust:slim
+ ---> 17d1ba895198
+Step 2/4 : RUN apt-get update && apt-get install -y --no-install-recommends pkg-config libssl-dev ca-certificates  && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> b3d7dca54d67
+Step 3/4 : RUN cargo install vaultlint --version 0.1.1 --locked || cargo install vaultlint --locked
+ ---> Using cache
+ ---> 141677396d24
+Step 4/4 : ENTRYPOINT ["vaultlint"]
+ ---> Using cache
+ ---> 2d540010da0b
+Successfully built 2d540010da0b
+Successfully tagged vaultlint-runner:local
+build ok
+anchor-interface-account insecure ok rc=0 findings=0
+anchor-interface-account secure ok rc=0 findings=0
+cashio-account-data insecure ok rc=0 findings=0
+cashio-account-data secure ok rc=0 findings=0
+metaplex-bubblegum-creator insecure ok rc=0 findings=0
+metaplex-bubblegum-creator secure ok rc=0 findings=0
+metaplex-candy-machine insecure ok rc=0 findings=0
+metaplex-candy-machine secure ok rc=0 findings=0
+metaplex-token-metadata insecure ok rc=0 findings=0
+metaplex-token-metadata secure ok rc=0 findings=0
+solend-owner-checks insecure ok rc=0 findings=10
+solend-owner-checks secure ok rc=0 findings=10
+squads-account-matching insecure ok rc=0 findings=0
+squads-account-matching secure ok rc=0 findings=0
+squads-signer-auth insecure ok rc=0 findings=0
+squads-signer-auth secure ok rc=0 findings=0
+wormhole-sysvar insecure ok rc=0 findings=0
+wormhole-sysvar secure ok rc=0 findings=0
+C2_VL_DONE

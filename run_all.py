@@ -36,7 +36,8 @@ SOURCES_CORPUS2 = {
     # c2-radar.json covered one case; superseded 2026-08-31 by a per-case run over all nine
     # with a log per run. The old file is kept for the record, not for scoring.
     "radar": ("c2-radar-complete.json", "sol-audit"),
-    "vaultlint": ("c2-vaultlint.json", "vaultlint"),
+    # c2-vaultlint.json covered one case; superseded 2026-08-31 by a per-case run with a log.
+    "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
 }
 

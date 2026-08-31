@@ -1,17 +1,14 @@
 # RESULTS: corpus 2, real vulnerabilities. Eight valid cases, one detection.
 
-> **RE-MEASURED, 2026-08-31 late.** The Radar figures on this page were retracted a few hours ago
-> because the data behind them covered one case. Radar has now been run **per case, per variant,
-> over all nine cases, with a log per run** (`c2-radar-percase.log`, `c2-radar-complete.json`):
-> 18 runs, 18 successful, **zero unavailable**, 238 findings.
+> **RE-MEASURED AND CLOSED, 2026-08-31.** Radar and VaultLint were re-run **per case, per
+> variant, over every case, with a log per run**. Both now carry `coverage_evidence: run log`, the
+> strongest form: 18 runs each, 36 in total, **36 successes, zero unavailable**.
 >
-> **The conclusion held: 0 detected of 8 valid cases.** But the detail was wrong in a way that
-> mattered - the old text said Radar's mapped rule "never fired at all" on eight of nine cases.
-> Measured, it fires in the right file on two of them (`squads-signer-auth`,
-> `metaplex-token-metadata`), just not where the fix changed anything. Those are `unlocated`, not
-> misses. No rule fires only on a vulnerable variant; every one fires on the fix too.
->
-> **VaultLint has not yet been re-measured** and its figures here remain unsupported.
+> **The conclusion held. Nothing detects anything on corpus 2** except the single X-Ray finding
+> under a corrected mapping. But two details were wrong before and are worth more than the
+> headline: Radar's mapped rule was said to "never fire at all" on eight of nine cases - it in fact
+> fires in the right file on two of them, just not at the fix site (`unlocated`). And VaultLint's
+> shape is coverage, not failure: **7 of 8 cases are `no-rule`**, a limit it states about itself.
 
 
 

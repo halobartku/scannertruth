@@ -1,17 +1,14 @@
 # RESULTS: every scanner, both corpora, 2026-08-31
 
-> **RE-MEASURED, 2026-08-31 late.** The Radar figures on this page were retracted a few hours ago
-> because the data behind them covered one case. Radar has now been run **per case, per variant,
-> over all nine cases, with a log per run** (`c2-radar-percase.log`, `c2-radar-complete.json`):
-> 18 runs, 18 successful, **zero unavailable**, 238 findings.
+> **RE-MEASURED AND CLOSED, 2026-08-31.** Radar and VaultLint were re-run **per case, per
+> variant, over every case, with a log per run**. Both now carry `coverage_evidence: run log`, the
+> strongest form: 18 runs each, 36 in total, **36 successes, zero unavailable**.
 >
-> **The conclusion held: 0 detected of 8 valid cases.** But the detail was wrong in a way that
-> mattered - the old text said Radar's mapped rule "never fired at all" on eight of nine cases.
-> Measured, it fires in the right file on two of them (`squads-signer-auth`,
-> `metaplex-token-metadata`), just not where the fix changed anything. Those are `unlocated`, not
-> misses. No rule fires only on a vulnerable variant; every one fires on the fix too.
->
-> **VaultLint has not yet been re-measured** and its figures here remain unsupported.
+> **The conclusion held. Nothing detects anything on corpus 2** except the single X-Ray finding
+> under a corrected mapping. But two details were wrong before and are worth more than the
+> headline: Radar's mapped rule was said to "never fire at all" on eight of nine cases - it in fact
+> fires in the right file on two of them, just not at the fix site (`unlocated`). And VaultLint's
+> shape is coverage, not failure: **7 of 8 cases are `no-rule`**, a limit it states about itself.
 
 
 
@@ -23,9 +20,9 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 |---|---|---|---|
 | `control-noisy` (flags every line) | **0 / 11** | — | 931 findings, perfect nominal, zero real |
 | `control-null` (reports nothing) | **0 / 11** | — | the floor |
-| **`radar`** (Auditware) | **11 / 11** | **0 / 8** measured | 18/18 runs succeeded; 2 cases `unlocated`, not missed |
+| **`radar`** (Auditware) | **11 / 11** | **0 / 8** measured | run log, 18/18; 2 `unlocated`, 5 missed, 1 no-rule |
 | `sol-audit` v2 (ours) | 4 / 11 | **0 / 8** | ours, free and open forever, not a product |
-| `vaultlint` 0.1.1 | 2 / 11 | **unverified** | corpus-2 data covers one case; re-run pending |
+| `vaultlint` 0.1.1 | 2 / 11 | **0 / 8** measured | run log, 18/18; 7 of 8 are `no-rule`, a stated coverage limit |
 | **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** | the one real detection anything has made; see below |
 | `solsec` 0.2.1 | 0 / 11 | **0 / 6**, 3 unavailable | 108 findings, every one fires on the fix too |
 | `semgrep` 1.174 | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
