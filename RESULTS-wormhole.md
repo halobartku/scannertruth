@@ -71,6 +71,12 @@ Anchor-oriented. That is a real partial defence for them. It is also part of the
 Solana code is not always Anchor, and a scanner's coverage of the ecosystem is a property worth
 measuring rather than assuming.
 
+**The packaging objection was tested and does not hold.** After first reporting this, we
+re-extracted the Wormhole program as the real crate: `solana/bridge/program` in full, at both
+commits, with its own `Cargo.toml` and all 46 sibling files. Radar ran 57 templates over it. Its
+`Unvalidated Sysvar Account` rule still did not fire, and every finding in `verify_signature.rs`
+appeared identically in both variants. The result is not an artefact of our packaging.
+
 **We packaged the file ourselves.** The two variants were extracted from the repository at the fix
 commit and its parent, and given a minimal synthetic `Cargo.toml` so the tools would parse them.
 That is not how the code exists in the real project, and it may affect analysis that depends on

@@ -1,0 +1,23 @@
+{
+  "scanner": "semgrep",
+  "homepage": "https://semgrep.dev",
+  "version_note": "semgrep/semgrep:latest Docker image (pulled to hermes-new before this run, image id f1f7b71861c7), run via `docker run --rm -v <corpus>:/src:ro semgrep/semgrep semgrep --config auto --no-git-ignore --timeout 60 --json --quiet /src`, 2026-08-31. Host install was not attempted (blocked by a Debian package conflict per task instructions); container only.",
+  "derivation": "Mapping derived from semgrep's OWN check_id and message for every rule that the registry actually loaded and applied to this codebase's languages under --config auto, not from which rules happened to fire (none fired). --config auto pulled 1074 rules from the Community registry; of those, 51 were applicable to the files under test (3 confirmed rust.lang.security.* rules plus roughly 1 more generic/multilang rule matching the .rs extension, and 47 <multilang> rules that run regardless of language). Every applicable rule's id and description were read and matched against the 11 corpus class names. None describe any of them.",
+  "right_of_reply": "Not yet sent to the Semgrep/r2c team. Under PROTOCOL.md this mapping should be offered to the tool's authors for correction before the result is treated as final, and their correction published.",
+  "coverage_note": "Semgrep's public registry, as reachable anonymously (no `semgrep login`), has NO rules aimed at the Solana/Anchor account-validation bug family this corpus tests: signer checks, owner checks, type cosplay, account-data matching, PDA seed/bump validation, arbitrary CPI targets, sysvar address checks, or account closing. The only Rust-specific rules found anywhere in the registry (in p/rust, p/security-audit, and auto alike) are three TLS/certificate-validation checks (rust.lang.security.reqwest-accept-invalid, rust.lang.security.rustls-dangerous, rust.lang.security.ssl-verify-none) plus, in p/rust only, a handful more (args, args-os, current-exe, insecure-hashes, reqwest-set-sensitive, temp-dir, unsafe-usage) -- all generic Rust hygiene rules, none Solana-aware. This is a structural gap in semgrep's out-of-the-box rule coverage, not a run failure: the scanner executed cleanly (0 errors) on both corpora and simply has nothing built for this bug class.",
+  "map": {
+    "0-signer-authorization": [],
+    "1-account-data-matching": [],
+    "2-owner-checks": [],
+    "3-type-cosplay": [],
+    "4-initialization": [],
+    "5-arbitrary-cpi": [],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": [],
+    "8-pda-sharing": [],
+    "9-closing-accounts": [],
+    "10-sysvar-address-checking": []
+  },
+  "unmapped_rules": [],
+  "unmapped_note": "No rule fired on either corpus under any of the three tested configs (auto, p/rust, p/security-audit), so there is no noise to report either. Every class in the map is empty because no loaded rule's id or message names anything in this vulnerability family, which is why the map is empty rather than merely the run being empty."
+}

@@ -45,7 +45,24 @@ helper. Those files are packaged as part of a "vulnerability pair" and they are 
 Worse, a fix that refactors while fixing produces differences unrelated to the bug, which can
 manufacture a false "detection": a rule fires on code that was simply moved.
 
-## 4. Our packaging of corpus 2 may itself cause the failures we report.
+## 4. Packaging. **TESTED 2026-08-31: it is not the cause.**
+
+The obvious objection to the corpus 2 result was that we extract single files into a synthetic
+crate, so a tool needing project context would fail for our reasons rather than its own. We tested
+it on the strongest case.
+
+The Wormhole program was re-extracted as **the real crate**: `solana/bridge/program` in full, at the
+fix commit and its parent, with its own `Cargo.toml` and every sibling module. Radar scanned
+**46 files with 57 templates** and reported seven rules.
+
+**Its `Unvalidated Sysvar Account` rule still did not fire.** Every finding in
+`verify_signature.rs`, the file containing the bug, appears identically in the vulnerable and the
+fixed variant.
+
+So the failure survives the most favourable conditions we know how to give the tool, and the
+packaging objection does not explain it. The original entry is kept below as the record.
+
+**Original entry:**
 
 Each variant is a single directory of loose `.rs` files with a synthetic `Cargo.toml` we wrote. The
 real programs are multi-crate Anchor workspaces with macros, sibling modules and dependencies. A

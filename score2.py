@@ -153,6 +153,10 @@ def load_findings(kind, path):
     elif kind in ("vaultlint", "sol-audit"):
         for x in (blob.get("findings") if isinstance(blob, dict) else blob) or []:
             out.setdefault(x.get("file", ""), []).append((x.get("rule_id", ""), x.get("line", 0)))
+    elif kind == "semgrep":
+        for r in (blob.get("results") if isinstance(blob, dict) else blob) or []:
+            line = (r.get("start") or {}).get("line", 0)
+            out.setdefault(r.get("path", ""), []).append((r.get("check_id", ""), line))
     else:
         raise ValueError(kind)
     return out
