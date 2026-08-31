@@ -36,7 +36,23 @@ production file has many reasons to attract a finding.
 Fixing this needs location matching against the fix diff hunks, tolerant of line shift between the
 two variants. Not done.
 
-## 3. Corpus 2 pairs contain files that have nothing to do with the vulnerability.
+## 3. Contaminated pairs. **FIXED 2026-08-31.**
+
+Every case now pins the single file the public disclosure implicates, established by reading each
+fix commit's full diff against its advisory. Every exclusion carries a written reason in
+`corpus2/manifest.json`, so the choice can be challenged rather than trusted.
+
+The contamination was larger than expected. `metaplex-bubblegum-creator` went from six files to one.
+`wormhole-sysvar` from three to one: its fix commit is a monorepo-wide dependency bump from
+solana-program 1.7.0 to 1.9.4 plus a compiler attribute change across every crate, and exactly one
+of its twelve .rs files contains the security fix. Cashio's second file was a kill switch, not a
+logic fix. Metaplex Token Metadata's was a helper function never called in that diff.
+
+**Effect on the numbers:** our own scanner lost one `unlocated` verdict, which had been sitting on a
+file that was not the vulnerable one. Radar and VaultLint were unchanged. So the contamination was
+real noise, and it was not the cause of anything.
+
+**Original entry:**
 
 We extract every `.rs` file the fix commit touched. `metaplex-bubblegum-creator` yields six files,
 `wormhole-sysvar` three. Most fix commits also rename things, adjust imports, or touch a test

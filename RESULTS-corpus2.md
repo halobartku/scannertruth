@@ -36,7 +36,7 @@ Two intermediate verdicts exist so that nothing is flattered or unfairly punishe
 |---|---|---|---|---|---|
 | `radar` | **0** | 0 | 8 | 1 | **11 / 11** |
 | `vaultlint` | **0** | 0 | 1 | 8 | 2 / 11 |
-| `sol-audit` v2 (ours) | **0** | 2 | 6 | 1 | 4 / 11 |
+| `sol-audit` v2 (ours) | **0** | 1 | 7 | 1 | 4 / 11 |
 
 **Nothing was detected by anything.**
 
@@ -80,8 +80,10 @@ sloppy one.
   it. Real programs are multi-crate Anchor workspaces. A tool that needs project context is
   penalised for a reason that is our fault. Radar returned `400 Bad Request` on a bare file until we
   supplied a manifest.
-- **Pairs include files the fix touched that are unrelated to the bug**, because we take every `.rs`
-  file in the commit.
+- ~~Pairs include files the fix touched that are unrelated to the bug~~ **FIXED.** Each case now
+  pins the single file the disclosure implicates, with a written reason for every exclusion in
+  `corpus2/manifest.json`. Rescoring on the cleaned corpus changed nothing for Radar or VaultLint
+  and removed one spurious `unlocated` from ours.
 - **Determinism is unverified.** No scanner has been run twice and compared.
 - **Nine cases, one run each.** This is a small corpus and a first measurement.
 - **The right of reply has not been exercised** for either third-party tool.

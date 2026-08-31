@@ -8,44 +8,11 @@
   "class": "sysvar-address-checking",
   "source": "https://rekt.news/wormhole-rekt/",
   "files": [
-   "solana/bridge/client/src/main.rs",
-   "solana/bridge/cpi_poster/src/lib.rs",
-   "solana/bridge/program/src/api/verify_signature.rs",
-   "solana/bridge/program/src/lib.rs",
-   "solana/bridge/program_stub/src/lib.rs",
-   "solana/migration/src/lib.rs",
-   "solana/modules/nft_bridge/program/src/lib.rs",
-   "solana/modules/token_bridge/client/src/main.rs",
-   "solana/modules/token_bridge/program/src/lib.rs",
-   "solana/pyth2wormhole/program/src/lib.rs",
-   "solana/solitaire/client/src/lib.rs",
-   "solana/solitaire/program/src/lib.rs"
+   "solana/bridge/program/src/api/verify_signature.rs"
   ],
   "written": [
-   "insecure/main.rs",
-   "insecure/lib.rs",
    "insecure/verify_signature.rs",
-   "insecure/lib.rs",
-   "insecure/lib.rs",
-   "insecure/lib.rs",
-   "insecure/lib.rs",
-   "insecure/main.rs",
-   "insecure/lib.rs",
-   "insecure/lib.rs",
-   "insecure/lib.rs",
-   "insecure/lib.rs",
-   "secure/main.rs",
-   "secure/lib.rs",
-   "secure/verify_signature.rs",
-   "secure/lib.rs",
-   "secure/lib.rs",
-   "secure/lib.rs",
-   "secure/lib.rs",
-   "secure/main.rs",
-   "secure/lib.rs",
-   "secure/lib.rs",
-   "secure/lib.rs",
-   "secure/lib.rs"
+   "secure/verify_signature.rs"
   ]
  },
  {
@@ -57,14 +24,11 @@
   "class": "account-data-matching",
   "source": "https://www.sec3.dev/blog/cashioapp-attack-whats-the-vulnerability-and-how-x-ray-detects-it",
   "files": [
-   "programs/brrr/src/actions/mod.rs",
-   "programs/brrr/src/lib.rs"
+   "programs/brrr/src/actions/mod.rs"
   ],
   "written": [
    "insecure/mod.rs",
-   "insecure/lib.rs",
-   "secure/mod.rs",
-   "secure/lib.rs"
+   "secure/mod.rs"
   ]
  },
  {
@@ -129,13 +93,10 @@
   "class": "account-data-matching",
   "source": "GHSA-5233-j5mj-qxww",
   "files": [
-   "token-metadata/program/src/assertions/misc.rs",
    "token-metadata/program/src/processor/metadata/transfer.rs"
   ],
   "written": [
-   "insecure/misc.rs",
    "insecure/transfer.rs",
-   "secure/misc.rs",
    "secure/transfer.rs"
   ]
  },
@@ -164,28 +125,13 @@
   "class": "signer-authorization",
   "source": "GHSA-8r76-fr72-j32w",
   "files": [
-   "bubblegum/program/src/error.rs",
-   "bubblegum/program/src/lib.rs",
-   "token-metadata/program/src/assertions/collection.rs",
-   "token-metadata/program/src/pda.rs",
    "token-metadata/program/src/utils/compression.rs",
-   "token-metadata/program/src/utils/metadata.rs",
-   "token-metadata/program/src/utils/mod.rs"
+   "token-metadata/program/src/utils/metadata.rs"
   ],
   "written": [
-   "insecure/error.rs",
-   "insecure/lib.rs",
-   "insecure/collection.rs",
-   "insecure/pda.rs",
    "insecure/metadata.rs",
-   "insecure/mod.rs",
-   "secure/error.rs",
-   "secure/lib.rs",
-   "secure/collection.rs",
-   "secure/pda.rs",
-   "secure/compression.rs",
    "secure/metadata.rs",
-   "secure/mod.rs"
+   "secure/compression.rs"
   ]
  },
  {
