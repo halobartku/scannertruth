@@ -1,5 +1,11 @@
 # ScannerTruth
 
+[![verify](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml/badge.svg)](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml)
+
+Every self-check, the headline reproduction, and the corpus-2 calibration controls run on GitHub's
+machines on every push. A green badge is not independent verification, but the checks run somewhere
+we do not control and you can read what they assert.
+
 **An open, reproducible benchmark for Solana security scanners. The first tool it measured was our
 own, and our own scored zero.**
 
