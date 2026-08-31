@@ -1,0 +1,53 @@
+{
+  "findings": [
+    {
+      "column": 24,
+      "docs_url": "https://vaultlint.com/rules/VL002/",
+      "file": "/corpus/programs/4-initialization/insecure/src/lib.rs",
+      "help": "Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.",
+      "line": 12,
+      "message": "Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.",
+      "rule_id": "VL002",
+      "severity": "high",
+      "snippet": "let mut user = User::try_from_slice(&ctx.accounts.user.data.borrow()).unwrap();",
+      "title": "missing owner check"
+    },
+    {
+      "column": 24,
+      "docs_url": "https://vaultlint.com/rules/VL002/",
+      "file": "/corpus/programs/4-initialization/secure/src/lib.rs",
+      "help": "Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.",
+      "line": 12,
+      "message": "Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.",
+      "rule_id": "VL002",
+      "severity": "high",
+      "snippet": "let mut user = User::try_from_slice(&ctx.accounts.user.data.borrow()).unwrap();",
+      "title": "missing owner check"
+    },
+    {
+      "column": 9,
+      "docs_url": "https://vaultlint.com/rules/VL005/",
+      "file": "/corpus/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+      "help": "Use Anchor's typed CPI helpers, or verify the id first, e.g. `require_keys_eq!(program.key(), expected::ID)`.",
+      "line": 11,
+      "message": "`ctx.accounts.token_program.key` supplies the program id for this CPI, and nothing in the handler proves which program it is. An attacker who controls that account can point the invocation at their own program.",
+      "rule_id": "VL005",
+      "severity": "medium",
+      "snippet": "solana_program::program::invoke(",
+      "title": "unchecked CPI to unknown program"
+    },
+    {
+      "column": 13,
+      "docs_url": "https://vaultlint.com/rules/VL004/",
+      "file": "/corpus/programs/7-bump-seed-canonicalization/insecure/src/lib.rs",
+      "help": "Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.",
+      "line": 11,
+      "message": "`bump` is the bump seed given to `create_program_address` and is not read from account data, so nothing proves it is the canonical bump. The call accepts any bump, and a non-canonical one addresses a different account.",
+      "rule_id": "VL004",
+      "severity": "medium",
+      "snippet": "Pubkey::create_program_address(&[key.to_le_bytes().as_ref(), &[bump]], ctx.program_id)?;",
+      "title": "non-canonical PDA bump"
+    }
+  ],
+  "skipped": []
+}

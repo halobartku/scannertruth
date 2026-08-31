@@ -5,13 +5,17 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 
 ## The table
 
-| Scanner | Nominal recall | **Real recall** | Findings | On already-fixed code | Noise per file |
-|---|---|---|---|---|---|
-| `control-noisy` (flags every line) | 11 / 11 | **0 / 11** | 931 | almost all | 26.6 |
-| `control-null` (reports nothing) | 0 / 11 | **0 / 11** | 0 | 0 | 0 |
-| `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | — | 15 | 0.7 |
-| `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | — | 23 | 1.0 |
-| **`radar`** (Auditware) | **11 / 11** | **11 / 11** | 52 | **24 (46%)** | 0.69 |
+| Scanner | Nominal recall | **Real recall** | Findings | On already-fixed code |
+|---|---|---|---|---|
+| `control-noisy` (flags every line) | 11 / 11 | **0 / 11** | 931 | almost all |
+| `control-null` (reports nothing) | 0 / 11 | **0 / 11** | 0 | 0 |
+| `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | — | 15 |
+| `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | — | 23 |
+| **`radar`** (Auditware) | **11 / 11** | **11 / 11** | 52 | 24 (46%) |
+| **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
+
+Two scanners, two opposite strategies, and the benchmark separates them cleanly. That separation is
+the whole reason to have one.
 
 ## Read the control rows first
 
@@ -52,6 +56,27 @@ gave our own v1 a real recall of zero, surviving inside a tool that is otherwise
 
 **Recall and noise are different axes.** A scanner can be first on one and unremarkable on the
 other, and a single ranking number would hide it. This is why the benchmark reports both.
+
+## VaultLint: the precision claim holds, and you can see what it cost
+
+VaultLint advertises precision as its differentiator. **The measurement supports the claim.**
+Everything it detected, it detected correctly: two classes, both real, no nominal-only detections,
+nothing dressed up as a find. Where Radar has nine clean detectors and six noisy rules, VaultLint
+has no noisy detectors at all among the ones it maps to.
+
+The price is coverage. It produced **four findings across 35 files**, against Radar's 52, and it
+touches three of eleven classes. Real recall 2/11.
+
+One finding is worth recording precisely because it does not cost VaultLint anything in the score:
+`VL002 (missing owner check)` fired on **both** the insecure and the secure variant of
+`4-initialization`, a class it is not mapped to. Under per-class scoring that is neither punished
+nor rewarded, which is correct. It is counted in the noise column, because firing on an
+already-fixed program tells you something whatever the file is labelled.
+
+**So the two tools are not on a single ladder.** Radar catches everything and shouts sometimes.
+VaultLint says little and is right when it does. Which you want depends on whether an ignored alert
+or a missed bug is worse in your workflow, and a single ranking number would have erased that
+entirely. This is the clearest argument in the whole project for reporting both axes.
 
 ## The caveat that matters more than the score
 

@@ -1,0 +1,22 @@
+{
+  "scanner": "vaultlint",
+  "homepage": "https://github.com/vaultlint/vaultlint",
+  "version_note": "0.1.1 from crates.io, built and run inside a container on 2026-08-31",
+  "derivation": "Mapping derived from VaultLint's OWN rule titles as emitted in its JSON output, not from which rules happened to fire. Each corpus class was matched to the rule whose title states that it detects that class. Classes with no corresponding rule are empty and count as misses.",
+  "right_of_reply": "Not yet sent to the VaultLint authors. Under PROTOCOL.md this mapping should be offered to them for correction before the result is treated as final, and their correction published.",
+  "notes": "Only three of VaultLint's rules fired anywhere in the corpus (VL002, VL004, VL005), producing four findings in total across 35 files. That is a deliberate design point rather than a defect: the project advertises precision as its differentiator, and this measurement supports that claim while showing what it costs in coverage.",
+  "map": {
+    "0-signer-authorization": [],
+    "1-account-data-matching": [],
+    "2-owner-checks": ["VL002"],
+    "3-type-cosplay": [],
+    "4-initialization": [],
+    "5-arbitrary-cpi": ["VL005"],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": ["VL004"],
+    "8-pda-sharing": [],
+    "9-closing-accounts": [],
+    "10-sysvar-address-checking": []
+  },
+  "unmapped_behaviour": "VL002 ('missing owner check') fired on both the insecure and the secure variant of 4-initialization, a class it is not mapped to. It therefore costs nothing in per-class scoring, but it is one of four findings and is counted in the noise figure, because firing on an already-fixed program is informative regardless of which class the file belongs to."
+}
