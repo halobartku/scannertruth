@@ -91,6 +91,108 @@
    }
   },
   {
+   "scanner": "sol-audit",
+   "status": "measured",
+   "classes": 13,
+   "nominal": 6,
+   "real": 4,
+   "findings": 44,
+   "findings_on_fixed_code": 22,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 2,
+     "secure": 2,
+     "recommended": 3,
+     "nominal": true,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "arithmetic-rounding-drain": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "instruction-introspection": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
    "scanner": "vaultlint",
    "status": "measured",
    "classes": 11,
@@ -179,8 +281,31 @@
    }
   }
  ],
+ "corpus2": [
+  {
+   "scanner": "radar",
+   "corpus": "corpus2",
+   "status": "measured",
+   "missed": 8,
+   "no-rule": 1
+  },
+  {
+   "scanner": "sol-audit",
+   "corpus": "corpus2",
+   "status": "measured",
+   "missed": 6,
+   "unlocated": 2,
+   "no-rule": 1
+  },
+  {
+   "scanner": "vaultlint",
+   "corpus": "corpus2",
+   "status": "measured",
+   "no-rule": 8,
+   "missed": 1
+  }
+ ],
  "changes_since_previous": [
   "no change since the previous run"
- ],
- "corpus_commit": "24555d0"
+ ]
 }

@@ -36,7 +36,7 @@ Two intermediate verdicts exist so that nothing is flattered or unfairly punishe
 |---|---|---|---|---|---|
 | `radar` | **0** | 0 | 8 | 1 | **11 / 11** |
 | `vaultlint` | **0** | 0 | 1 | 8 | 2 / 11 |
-| `sol-audit` v2 (ours) | **0** | — | 9 | — | 4 / 11 |
+| `sol-audit` v2 (ours) | **0** | 2 | 6 | 1 | 4 / 11 |
 
 **Nothing was detected by anything.**
 
@@ -48,6 +48,12 @@ silent.
 
 For VaultLint the shape is different and more honest: it mostly has **no rule for these classes**,
 which is a stated coverage limit rather than a failed detection.
+
+Our own scanner produces the only two `unlocated` verdicts in the table: on two cases a mapped rule
+fires somewhere in the vulnerable file but not where the fix changed anything. Under the looser
+first method those would have been counted as ordinary misses, and under a generous one they could
+have been counted as detections. They are neither, and the category exists so that we cannot quietly
+choose.
 
 ## Corpus 1 against corpus 2, same tools, same day
 

@@ -1,0 +1,224 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-001",
+   "file": "../sealevel-attacks/programs/0-signer-authorization/insecure/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/0-signer-authorization/insecure/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/0-signer-authorization/secure/src/lib.rs",
+   "line": 20
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs",
+   "line": 20
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/1-account-data-matching/secure/src/lib.rs",
+   "line": 23
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "line": 17
+  },
+  {
+   "rule_id": "SOL-019",
+   "file": "../sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "line": 17
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/10-sysvar-address-checking/secure/src/lib.rs",
+   "line": 18
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/2-owner-checks/insecure/src/lib.rs",
+   "line": 24
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/4-initialization/insecure/src/lib.rs",
+   "line": 31
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/4-initialization/insecure/src/lib.rs",
+   "line": 17
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "line": 30
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "line": 21
+  },
+  {
+   "rule_id": "SOL-001",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 33
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 31
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 32
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 33
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 34
+  },
+  {
+   "rule_id": "SOL-006",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 11
+  },
+  {
+   "rule_id": "SOL-010",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 11
+  },
+  {
+   "rule_id": "SOL-012",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/recommended/src/lib.rs",
+   "line": 11
+  },
+  {
+   "rule_id": "SOL-001",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 36
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 34
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 35
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 36
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "../sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 37
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/7-bump-seed-canonicalization/recommended/src/lib.rs",
+   "line": 28
+  },
+  {
+   "rule_id": "SOL-012",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs",
+   "line": 13
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs",
+   "line": 12
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs",
+   "line": 13
+  },
+  {
+   "rule_id": "SOL-012",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 12
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 25
+  },
+  {
+   "rule_id": "SOL-012",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs",
+   "line": 12
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "../sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs",
+   "line": 14
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "line": 17
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "line": 18
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "line": 30
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 18
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 28
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "../sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 49
+  }
+ ]
+}

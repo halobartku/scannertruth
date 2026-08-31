@@ -150,7 +150,7 @@ def load_findings(kind, path):
                 parts = loc.split(":")
                 if len(parts) >= 2 and parts[1].isdigit():
                     out.setdefault(parts[0], []).append((item.get("name", ""), int(parts[1])))
-    elif kind == "vaultlint":
+    elif kind in ("vaultlint", "sol-audit"):
         for x in (blob.get("findings") if isinstance(blob, dict) else blob) or []:
             out.setdefault(x.get("file", ""), []).append((x.get("rule_id", ""), x.get("line", 0)))
     else:

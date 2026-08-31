@@ -85,8 +85,8 @@ sensitivity analysis. The Wormhole result is one file.
 
 | Gap | Consequence |
 |---|---|
-| The clock (`run_all.py`) only knows `radar` and `vaultlint`. **Our own scanner is not tracked over time.** | We will detect a regression in other people's tools and miss one in ours. |
-| The clock only runs the teaching corpus. **Corpus 2 is not on the schedule at all.** | The corpus that actually tests generalisation is measured once, by hand, and then never again. |
+| ~~The clock only knows `radar` and `vaultlint`~~ **FIXED 2026-08-31.** `sol-audit` is now measured by the same pipeline, and the automated run reproduced the hand-computed 6 nominal / 4 real exactly. A mapping file existed for other people's scanners before it existed for ours. | |
+| ~~The clock only runs the teaching corpus~~ **FIXED 2026-08-31.** Corpus 2 is scored on every run with `score2.py`, reported separately because the two corpora answer different questions. | |
 | `adapters.py` contains a Semgrep adapter that **has never been executed**. Semgrep failed to install and the code path is untested. | Dead code that looks like coverage. |
 | The `CargoBinary` / `VaultLint` adapter class is **dead**: VaultLint is actually run through Docker by the shell script, not through the adapter. | The adapter layer is less real than it appears. |
 | `score.py` decides which class a file belongs to by testing whether `/<class>/` appears in the path. | A path containing the class name in another position would be misattributed. |

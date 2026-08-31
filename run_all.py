@@ -26,6 +26,16 @@ from score import score
 SOURCES = {
     "radar": ("radar-full.json", "radar"),
     "vaultlint": ("vaultlint.json", "vaultlint"),
+    "sol-audit": ("sol-audit.json", "sol-audit"),
+}
+
+# Corpus 2 is scored by score2.py, which is stricter: mapped rules only, and the finding must land
+# at the site the fix changed. Tracked separately because the two corpora answer different
+# questions and a single blended number would hide which one moved.
+SOURCES_CORPUS2 = {
+    "radar": ("c2-radar.json", "radar"),
+    "vaultlint": ("c2-vaultlint.json", "vaultlint"),
+    "sol-audit": ("c2-sol-audit.json", "sol-audit"),
 }
 
 
@@ -37,7 +47,7 @@ def extract(kind, blob):
             for loc in item.get("locations") or []:
                 out.append((item.get("name", ""), loc.split(":")[0]))
         return out
-    if kind == "vaultlint":
+    if kind in ("vaultlint", "sol-audit"):
         findings = blob.get("findings") if isinstance(blob, dict) else blob
         return [(x.get("rule_id", ""), x.get("file", "")) for x in findings or []]
     raise ValueError(kind)
@@ -81,6 +91,43 @@ def measure(raw_dir=".", mappings_dir="mappings"):
                                  "nominal": r[4], "real": r[5]} for r in rows},
         })
     return results
+
+
+def measure_corpus2(raw_dir=".", corpus_dir="corpus2", mappings_dir="mappings"):
+    """Corpus 2, scored with score2.py. Absent raw output is unavailable, never a zero."""
+    try:
+        import score2
+    except Exception as exc:
+        return [{"corpus": "corpus2", "status": "error", "reason": repr(exc)[:120]}]
+    manifest = os.path.join(corpus_dir, "manifest.json")
+    if not os.path.exists(manifest):
+        return [{"corpus": "corpus2", "status": "unavailable", "reason": "no manifest"}]
+    cases = json.load(open(manifest, encoding="utf-8"))["cases"]
+
+    out = []
+    for name, (filename, kind) in sorted(SOURCES_CORPUS2.items()):
+        path = os.path.join(raw_dir, filename)
+        if not os.path.exists(path):
+            out.append({"scanner": name, "corpus": "corpus2", "status": "unavailable",
+                        "reason": f"no raw output at {path}"})
+            continue
+        try:
+            mapping = json.load(open(os.path.join(mappings_dir, f"{name}.json"),
+                                    encoding="utf-8"))["map"]
+            findings = score2.load_findings(kind, path)
+        except Exception as exc:
+            out.append({"scanner": name, "corpus": "corpus2", "status": "error",
+                        "reason": repr(exc)[:120]})
+            continue
+        tally = {}
+        for c in cases:
+            d = os.path.join(corpus_dir, c["name"])
+            if not os.path.isdir(d):
+                continue
+            verdict, _ = score2.score_case(d, c["class"], mapping, findings)
+            tally[verdict] = tally.get(verdict, 0) + 1
+        out.append({"scanner": name, "corpus": "corpus2", "status": "measured", **tally})
+    return out
 
 
 def previous(runs_dir):
@@ -133,13 +180,14 @@ def main():
         return 0
 
     results = measure(args.raw, args.mappings)
+    results_c2 = measure_corpus2(args.raw, "corpus2", args.mappings)
     prev = previous(args.out)
     notes = diff_against(prev, results)
 
     stamp = datetime.date.today().isoformat()
     os.makedirs(args.out, exist_ok=True)
     payload = {"date": stamp, "corpus": "coral-xyz/sealevel-attacks",
-               "results": results, "changes_since_previous": notes}
+               "results": results, "corpus2": results_c2, "changes_since_previous": notes}
     with open(os.path.join(args.out, f"{stamp}.json"), "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=1)
 
@@ -150,6 +198,14 @@ def main():
                   f"{r['findings']:>9} {r['findings_on_fixed_code']:>9}")
         else:
             print(f"{r['scanner']:12} {r['status']:12}   {r.get('reason','')}")
+    print("\ncorpus 2 (strict: mapped rules, located at the fix site):")
+    for r in results_c2:
+        if r.get("status") == "measured":
+            counts = {k: v for k, v in r.items() if k not in ("scanner", "corpus", "status")}
+            print(f"  {r['scanner']:12} " + "  ".join(f"{k}={v}" for k, v in sorted(counts.items())))
+        else:
+            print(f"  {r.get('scanner','?'):12} {r.get('status')}  {r.get('reason','')}")
+
     print("\nchanges since previous run:")
     for n in notes:
         print("  -", n)
