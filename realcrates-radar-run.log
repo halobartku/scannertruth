@@ -1,0 +1,21 @@
+anchor-interface-account insecure ok rc=0 findings=14
+anchor-interface-account secure UNAVAILABLE rc=2 Exceeded maximum retries. Tasks did not complete in time.
+cashio-account-data insecure ok rc=0 findings=6
+cashio-account-data secure ok rc=0 findings=6
+metaplex-bubblegum-creator insecure UNAVAILABLE rc=2 Exceeded maximum retries. Tasks did not complete in time.
+metaplex-bubblegum-creator secure UNAVAILABLE rc=2 Exceeded maximum retries. Tasks did not complete in time.
+metaplex-candy-machine insecure ok rc=0 findings=12
+metaplex-candy-machine secure ok rc=0 findings=12
+metaplex-token-metadata insecure UNAVAILABLE rc=2 Exceeded maximum retries. Tasks did not complete in time.
+metaplex-token-metadata secure UNAVAILABLE rc=2 Exceeded maximum retries. Tasks did not complete in time.
+solend-owner-checks insecure ok rc=0 findings=9
+solend-owner-checks secure ok rc=0 findings=9
+spl-token-lending-rounding insecure ok rc=0 findings=8
+spl-token-lending-rounding secure ok rc=0 findings=8
+squads-account-matching insecure ok rc=0 findings=5
+squads-account-matching secure ok rc=0 findings=5
+squads-signer-auth insecure ok rc=0 findings=5
+squads-signer-auth secure ok rc=0 findings=5
+wormhole-sysvar insecure ok rc=0 findings=7
+wormhole-sysvar secure ok rc=0 findings=7
+PER_CASE2_DONE

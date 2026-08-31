@@ -3,8 +3,8 @@
 Everything that happened on the day this benchmark was built, in order, including every mistake.
 
 This exists because the project's only real asset is that its numbers can be checked, and a reader
-who cannot see how a number was produced has to take it on faith. Eighteen errors are recorded
-below. Fourteen were caught by measurement or by a check, four by a person noticing. Two would have
+who cannot see how a number was produced has to take it on faith. Nineteen errors are recorded
+below. Fifteen were caught by measurement or by a check, four by a person noticing. Two would have
 put a false statement in a funding application, one had already been published before it was
 caught, and one was a defect in our own ground truth.
 
@@ -309,8 +309,15 @@ Reading the diff instead showed what the commit does:
 ```
 
 added to `print_cash` and `burn_cash`. **It does not fix the vulnerability, it switches the program
-off.** The findings disappear from the `secure` variant because the code is dead, not because it is
-safe. `git log` confirms there is no other candidate: three commits in the repository's entire
+off.**
+
+**Correction, made an hour later, to this entry's explanation.** The sentence originally here said
+the findings disappear from the `secure` variant because the code is dead. That was asserted, not
+tested, and it is wrong. They disappeared because our comparison matched findings by `(rule, line)`
+and the fix inserts lines, shifting every finding below it. Under a shift-corrected comparison all
+23 have counterparts in the fixed variant and none of them was ever differential. See error 19.
+**The case is still invalid** — that follows from reading the diff and the history, independently of
+any scanner — but the mechanism given for the 23 findings was not. `git log` confirms there is no other candidate: three commits in the repository's entire
 history touch that file, this is the last, and everything after the exploit is a dependency bump.
 Cashio never shipped a fix because the protocol was shut down.
 
@@ -323,6 +330,38 @@ between it and publication was reading a four-line diff. This is the same discip
 error 17 in the opposite direction, where the surprising result damaged somebody else's tool. The
 rule that catches both is identical: **a result you did not expect is a reason to go to the source,
 whichever way it points.**
+
+---
+
+## Part 13: a comparison that could not do arithmetic
+
+**Error 19, and it is error 15 again: a cause asserted without testing it, published, then
+refuted.**
+
+Running Radar over the real crates, the first comparison matched findings by `(rule, line)` between
+variants. On that basis Radar appeared to be detecting things it had missed on the extracted files:
+23 findings present only on vulnerable Cashio, 6 on Solend, one each on three more cases. It was the
+result the packaging objection predicted, arriving exactly where it was expected.
+
+**A fix that inserts lines moves every finding below it.** Solend's fix adds four lines at 1796, so
+a finding at 2064 in the vulnerable file sits at 2068 in the fixed one, and the comparison called it
+absent. All six of Solend's phantoms were below the insertion point, which is what gave it away.
+
+`shiftaware.py` maps each line through the diff hunks before comparing. Under it, **every apparent
+detection disappears on every case**, including all 23 on Cashio, and Radar's real-crate result is
+zero across six scoreable pairs.
+
+Two things follow. The packaging objection is retired properly rather than on one case. And the
+explanation published an hour earlier for the Cashio findings — that they vanished because the fixed
+variant is dead code — was wrong, and has been corrected in place. The case is still invalid; that
+was established by reading the diff, which is why the conclusion survived an explanation that did
+not.
+
+**Three of ten cases could not be measured at all.** Radar exceeds its own retry budget above
+roughly a hundred files, and on one case the vulnerable variant completed while the fixed one did
+not, which makes the pair useless even though half of it worked. Recorded as unavailable. When it
+gives up it still prints `Results written to <path>` for a file it did not write, which is the
+identical bug we made ourselves in error 16, twelve hours apart, in opposite directions.
 
 ---
 
