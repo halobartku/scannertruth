@@ -12,6 +12,13 @@ constraint as the rest of the repo, so it runs anywhere the harness runs.
 
     python test_all.py            # everything
     python test_all.py -v         # print each check as it passes
+
+**Verified by mutation, because a test that cannot fail is worse than no test.** Three deliberate
+defects were introduced and all three were caught: widening the line tolerance to 999 broke two
+checks; returning an unsplit location from the Radar extractor broke one; and dropping the
+"silent on the fixed variant" half of real recall broke three, including the golden test, which
+reported `sol-audit: published (6, 4), now (6, 6)` - a published number changing under a refactor,
+which is exactly what these exist to catch.
 """
 import io
 import json
@@ -298,6 +305,316 @@ def test_a_findings_file_covering_one_case_cannot_score_many():
     assert len(seen) == 1, "test fixture is wrong"
     assert len(seen) < len(valid),         "a single-case file must not be able to account for every case"
 
+
+
+# ============================================================================ WAVE 2
+# Added 2026-09-01 after the first suite was judged too thin for a project whose entire claim is
+# that it measures carefully. Same selection rule: would a defect here change a published number?
+
+
+# ------------------------------------------------------------------ score.py
+# The corpus-1 scorer. Every headline figure on the teaching corpus comes out of these ten lines.
+
+def test_score1_nominal_needs_a_hit_on_the_vulnerable_variant():
+    import score
+    rows = score.score([("R", "/x/2-owner-checks/secure/lib.rs")], {"2-owner-checks": ["R"]})
+    cls, ins, sec, rec, nominal, real = rows[0]
+    assert not nominal, "firing only on the fixed variant is not even nominal recall"
+
+
+def test_score1_real_requires_silence_on_secure():
+    import score
+    rows = score.score([("R", "/x/2-owner-checks/insecure/lib.rs"),
+                        ("R", "/x/2-owner-checks/secure/lib.rs")], {"2-owner-checks": ["R"]})
+    _, _, _, _, nominal, real = rows[0]
+    assert nominal and not real, "firing on both variants is nominal but not real recall"
+
+
+def test_score1_recommended_variant_also_kills_real_recall():
+    """sealevel-attacks ships a third variant. Ignoring it would inflate every score."""
+    import score
+    rows = score.score([("R", "/x/8-pda-sharing/insecure/lib.rs"),
+                        ("R", "/x/8-pda-sharing/recommended/lib.rs")], {"8-pda-sharing": ["R"]})
+    _, _, _, _, nominal, real = rows[0]
+    assert nominal and not real, "a rule firing on 'recommended' has not detected the bug"
+
+
+def test_score1_clean_detection():
+    import score
+    rows = score.score([("R", "/x/2-owner-checks/insecure/lib.rs")], {"2-owner-checks": ["R"]})
+    _, _, _, _, nominal, real = rows[0]
+    assert nominal and real
+
+
+def test_score1_findings_in_another_class_do_not_count():
+    import score
+    rows = score.score([("R", "/x/3-type-cosplay/insecure/lib.rs")], {"2-owner-checks": ["R"]})
+    _, ins, _, _, nominal, _ = rows[0]
+    assert ins == 0 and not nominal, "a hit in a different class must not credit this one"
+
+
+def test_score1_unmapped_rule_ignored():
+    import score
+    rows = score.score([("OTHER", "/x/2-owner-checks/insecure/lib.rs")], {"2-owner-checks": ["R"]})
+    _, _, _, _, nominal, _ = rows[0]
+    assert not nominal, "only the rule the mapping points at may credit a class"
+
+
+def test_score1_windows_paths_are_handled():
+    import score
+    rows = score.score([("R", r"C:\x\2-owner-checks\insecure\lib.rs")], {"2-owner-checks": ["R"]})
+    _, _, _, _, nominal, _ = rows[0]
+    assert nominal, "backslash paths must score identically to forward slashes"
+
+
+def test_score1_real_never_exceeds_nominal():
+    """An invariant: you cannot have real recall on a class without nominal recall."""
+    import score, json, io as _io, os
+    for fn in sorted(os.listdir("mappings")):
+        if not fn.endswith(".json"):
+            continue
+        m = json.load(_io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
+        rows = score.score([("R", "/x/2-owner-checks/insecure/a.rs")], m)
+        for cls, ins, sec, rec, nominal, real in rows:
+            assert not (real and not nominal), f"{fn}/{cls}: real without nominal is impossible"
+
+
+# --------------------------------------------------------- run_all extractors
+# One wrong parser silently changes a published number, and each scanner has its own format.
+
+def test_extract_radar_envelope():
+    import run_all
+    blob = [{"name": "Rule A", "locations": ["/a/b.rs:10:1-5", "/c/d.rs:20:2-6"]}]
+    out = run_all.extract("radar", blob)
+    assert out == [("Rule A", "/a/b.rs"), ("Rule A", "/c/d.rs")], out
+
+
+def test_extract_xray_same_envelope_as_radar():
+    import run_all
+    blob = [{"name": "1019", "locations": ["/a/b.rs:5:1"]}]
+    assert run_all.extract("xray", blob) == [("1019", "/a/b.rs")]
+
+
+def test_extract_semgrep_shape():
+    import run_all
+    blob = {"results": [{"check_id": "rust.x", "path": "src/a.rs", "start": {"line": 3}}]}
+    assert run_all.extract("semgrep", blob) == [("rust.x", "src/a.rs")]
+
+
+def test_extract_flat_findings_shape():
+    import run_all
+    blob = {"findings": [{"rule_id": "SOL-001", "file": "src/a.rs", "line": 7}]}
+    assert run_all.extract("sol-audit", blob) == [("SOL-001", "src/a.rs")]
+
+
+def test_extract_rejects_an_unknown_format_loudly():
+    import run_all
+    try:
+        run_all.extract("not-a-real-format", [])
+    except ValueError:
+        return
+    raise AssertionError("an unknown format must raise, not return an empty list")
+
+
+def test_extract_handles_empty_input_without_inventing_findings():
+    import run_all
+    assert run_all.extract("radar", []) == []
+    assert run_all.extract("semgrep", {"results": []}) == []
+    assert run_all.extract("sol-audit", {"findings": []}) == []
+
+
+# ------------------------------------------------------------- changed_lines
+# If this is wrong, "at the fix site" is wrong, and every corpus-2 verdict with it.
+
+def _pair(tmp, a, b):
+    import os, io as _io
+    p1, p2 = os.path.join(tmp, "a.rs"), os.path.join(tmp, "b.rs")
+    _io.open(p1, "w", encoding="utf-8").write(a)
+    _io.open(p2, "w", encoding="utf-8").write(b)
+    return p1, p2
+
+
+def test_changed_lines_marks_a_replacement():
+    import score2, tempfile
+    with tempfile.TemporaryDirectory() as t:
+        a, b = _pair(t, "one\ntwo\nBUG\nfour\n", "one\ntwo\nFIXED\nfour\n")
+        ch = score2.changed_lines(a, b)
+        assert 3 in ch and 1 not in ch and 4 not in ch, ch
+
+
+def test_changed_lines_marks_the_seam_of_a_pure_insertion():
+    """A guard added by the fix has no line in the vulnerable file, but the seam must be marked
+    or a correct detection at the missing check would score as unlocated."""
+    import score2, tempfile
+    with tempfile.TemporaryDirectory() as t:
+        a, b = _pair(t, "one\ntwo\nthree\n", "one\nGUARD\ntwo\nthree\n")
+        assert score2.changed_lines(a, b), "an insertion must still mark a location"
+
+
+def test_changed_lines_marks_a_deletion():
+    import score2, tempfile
+    with tempfile.TemporaryDirectory() as t:
+        a, b = _pair(t, "one\ntwo\nthree\n", "one\nthree\n")
+        assert 2 in score2.changed_lines(a, b)
+
+
+def test_changed_lines_identical_files_change_nothing():
+    import score2, tempfile
+    with tempfile.TemporaryDirectory() as t:
+        a, b = _pair(t, "one\ntwo\n", "one\ntwo\n")
+        assert score2.changed_lines(a, b) == set(), "identical files have no fix site"
+
+
+def test_changed_lines_survives_an_empty_file():
+    import score2, tempfile
+    with tempfile.TemporaryDirectory() as t:
+        a, b = _pair(t, "", "one\n")
+        score2.changed_lines(a, b)   # must not raise
+
+
+def test_tolerance_is_symmetric():
+    import score2
+    assert score2.near(100, {103}) and score2.near(100, {97})
+    assert not score2.near(100, {104}) and not score2.near(100, {96})
+
+
+# ------------------------------------------------------- acquisition filters
+# A filter that matches the raw JSON blob once made an unrelated crate a Solana hit.
+
+def test_acquisition_ignores_a_substring_match_in_unrelated_text():
+    import corpus_ghsa
+    fake = {"vulnerabilities": [{"package": {"name": "gix-packetline"}}],
+            "summary": "reachable panic on empty side-band packet",
+            "description": "nothing to do with blockchains"}
+    assert corpus_ghsa.is_solana(fake) is None
+
+
+def test_acquisition_matches_an_obvious_solana_crate():
+    import corpus_ghsa
+    real = {"vulnerabilities": [{"package": {"name": "anchor-lang"}}],
+            "summary": "InterfaceAccount substitution", "description": ""}
+    assert corpus_ghsa.is_solana(real)
+
+
+def test_acquisition_matches_on_text_when_the_crate_name_is_neutral():
+    import corpus_ghsa
+    texty = {"vulnerabilities": [{"package": {"name": "obscure-crate"}}],
+             "summary": "missing owner check in a Solana program", "description": ""}
+    assert corpus_ghsa.is_solana(texty)
+
+
+def test_acquisition_collapses_duplicate_commit_references():
+    import corpus_ghsa
+    adv = {"references": ["https://github.com/a/b/commit/deadbeef1234567",
+                          "https://github.com/a/b/commit/deadbeef1234567",
+                          "https://github.com/a/b/pull/42"]}
+    commits, prs = corpus_ghsa.fix_refs(adv)
+    assert len(commits) == 1 and prs[0]["pr"] == 42
+
+
+# --------------------------------------------------- published-number lockdown
+# Golden tests. If a refactor changes any of these, it changed a public claim.
+
+def test_published_corpus1_numbers_still_reproduce():
+    import run_all
+    expected = {"radar": (11, 11), "sol-audit": (6, 4), "vaultlint": (2, 2),
+                "xray": (4, 2), "solsec": (0, 0), "semgrep": (0, 0)}
+    got = {r["scanner"]: (r.get("nominal"), r.get("real"))
+           for r in run_all.measure() if r.get("status") == "measured"}
+    for name, want in expected.items():
+        assert name in got, f"{name} no longer measurable"
+        assert got[name] == want, f"{name}: published {want}, now {got[name]}"
+
+
+def test_the_noisy_control_still_produces_931_on_corpus_one():
+    """The figure quoted in two results pages and in the call materials."""
+    import json, io as _io, os
+    if not os.path.exists("c1-control-noisy.json"):
+        raise AssertionError("the control's raw data is missing; the 931 figure is unbacked")
+    d = json.load(_io.open("c1-control-noisy.json", encoding="utf-8"))
+    n = len(d["findings"])
+    assert n == 931, f"published 931 findings, raw file now has {n}"
+
+
+def test_corpus_commit_is_pinned_in_the_protocol():
+    import io as _io
+    s = _io.open("PROTOCOL.md", encoding="utf-8").read()
+    assert "24555d044802db4022112a94d6d70e74291a4b6d" in s, \
+        "the corpus commit must stay pinned, or no score is reproducible"
+
+
+# ------------------------------------------------------------ data integrity
+# Cheap checks that catch a corrupted or half-written artefact before it reaches a table.
+
+def test_every_raw_json_file_parses():
+    import json, io as _io, os
+    bad = []
+    for fn in sorted(os.listdir(".")):
+        if fn.endswith(".json"):
+            try:
+                json.load(_io.open(fn, encoding="utf-8"))
+            except Exception as e:
+                bad.append(f"{fn}: {type(e).__name__}")
+    assert not bad, f"unparseable raw files: {bad}"
+
+
+def test_every_corpus_case_names_its_fix_commit():
+    import json, io as _io
+    man = json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+    for c in man:
+        assert c.get("fix"), f"{c['name']} has no fix commit"
+        assert c.get("repo"), f"{c['name']} has no repo"
+        assert c.get("class"), f"{c['name']} has no vulnerability class"
+
+
+def test_every_corpus_case_declares_its_source():
+    """The answer key must be somebody else's, and traceable."""
+    import json, io as _io
+    man = json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+    missing = [c["name"] for c in man if not c.get("source") and c.get("valid", True)]
+    assert not missing, f"valid cases with no disclosure source: {missing}"
+
+
+def test_clock_history_is_ordered_and_parseable():
+    import json, io as _io, os, glob
+    files = sorted(glob.glob("runs/*.json"))
+    assert files, "the clock has no history"
+    dates = []
+    for f in files:
+        d = json.load(_io.open(f, encoding="utf-8"))
+        assert d.get("date"), f"{f} has no date"
+        dates.append(d["date"])
+    assert dates == sorted(dates), f"clock history is out of order: {dates}"
+
+
+def test_results_pages_do_not_contradict_the_clock_on_radar():
+    """The single most quoted number in the whole project."""
+    import io as _io
+    s = _io.open("RESULTS-all.md", encoding="utf-8").read()
+    assert "11 / 11" in s or "11/11" in s, "Radar's teaching-corpus score vanished from RESULTS-all"
+
+
+# --------------------------------------------------------------- adapters.py
+def test_finding_is_a_three_field_record():
+    import adapters
+    f = adapters.Finding("R", "a.rs", 3)
+    assert (f.rule_id, f.path, f.line) == ("R", "a.rs", 3)
+
+
+def test_null_control_produces_nothing():
+    import adapters, tempfile
+    n = adapters.NullScanner()
+    assert n.available()
+    with tempfile.TemporaryDirectory() as t:
+        assert list(n.run(t)) == [], "the null control must be silent by construction"
+
+
+def test_noisy_control_flags_every_non_empty_line():
+    import adapters, tempfile, os, io as _io
+    with tempfile.TemporaryDirectory() as t:
+        _io.open(os.path.join(t, "a.rs"), "w", encoding="utf-8").write("one\n\ntwo\n")
+        out = list(adapters.NoisyScanner().run(t))
+        assert len(out) == 2, f"two non-empty lines should give two findings, got {len(out)}"
 
 # -------------------------------------------------------------------- main
 def main():
