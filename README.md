@@ -24,6 +24,10 @@ class it fired *more* on the idiomatic, safe variant than on the vulnerable one.
 We published this, rewrote the product listing to lead with it, and set the price to zero the same
 day. Full numbers in [`RESULTS.md`](RESULTS.md).
 
+**Run 2, 2026-08-31.** The scanner was then repaired and re-measured. Real recall **0/11 to 4/11**.
+See [`RESULTS-v2.md`](RESULTS-v2.md) and [`sol-audit`](https://github.com/halobartku/sol-audit).
+Run 1 is left exactly as published; a benchmark that rewrites its own history is worthless.
+
 ## Why the ground truth is not a matter of opinion
 
 The corpus is [`coral-xyz/sealevel-attacks`](https://github.com/coral-xyz/sealevel-attacks),
