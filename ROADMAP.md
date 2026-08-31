@@ -6,15 +6,52 @@ a command to run or a page to open, not a progress report.
 If a criterion is not met, the tranche is not due. None of the criteria below require our
 interpretation.
 
-## What exists before the first dollar
+## What already exists, before the first dollar
 
-So it is clear what this is *not* asking to fund: six scanners measured, two corpora plus a
-real-crate build, calibration controls, a clock publishing dated history, pre-registered mappings,
-right of reply, a stated falsifier, CI on machines we do not control, an agent entry point
-(`AGENTS.md`), and a log of 21 of our own errors.
+Not a prototype and not a plan. Measured on 2026-09-01 by counting the repository, so every figure
+below is checkable in thirty seconds.
 
-The grant funds what is missing: **corpus scale, measurement of non-deterministic AI tools, and
-making this usable by somebody other than us.**
+### Built and running
+
+| | |
+|---|---|
+| **1,913 lines** of Python across **14 tools**, 10 of them carrying their own self-check | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
+| **46 commits**, all public | every correction visible in history |
+| **3 skills** | the method as executable procedure, not prose |
+| **CI on machines we do not control** | every self-check, the headline reproduction, and the calibration controls, on every push |
+
+### Measurement, done
+
+- **Six scanners measured** with one protocol on the same day, plus **two calibration controls**.
+- **Seven pre-registered mappings**, committed before their runs.
+- **Three corpora**: the public teaching set (pinned at `24555d04`), **9 real vulnerabilities**
+  taken from their maintainers' own fix commits, and the same bugs rebuilt as **real crates**
+  (927 `.rs` files).
+- **26 raw output files** published, so every number can be re-derived rather than believed.
+- **A clock** that re-measures on a schedule and diffs against the previous run, with two dated
+  entries already published. A ranking can be produced once; a regression only shows up if the
+  measurement repeats.
+
+### The parts that make it a measurement rather than an opinion
+
+- **`control-noisy`**: flags every non-empty line, 931 findings on one corpus and **424,170** on the
+  other, and scores **zero real recall on both**. Proof the metric cannot be bought with volume.
+- **A positive control on the scorer itself**, because until it was added the scorer had never once
+  returned a detection and nobody had checked that it could.
+- **A per-run log** proving each case was actually analysed, for Radar and VaultLint. Ours does not
+  have one yet, which is milestone 1.
+- **A sealed holdout**, committed by hash before the round it scores.
+- **Right of reply**: four threads open with the vendors we measured. Every third-party number is
+  marked provisional until they answer.
+- **21 of our own errors**, documented with dates, including a headline we retracted in public
+  before we had the replacement data.
+
+### What the money is actually for
+
+**Corpus scale** (9 cases is our largest stated weakness), **measurement of non-deterministic AI
+tools** (nobody is doing this and the wave has already started), and **making this usable by
+somebody other than us** (today the answer to "has anyone outside verified it" is no).
 
 ---
 
