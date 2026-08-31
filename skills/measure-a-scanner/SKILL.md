@@ -144,6 +144,20 @@ score, and a candidate-selection target that would have made trades appear befor
 - Third-party results stay **provisional** until the tool's authors have been offered the mapping
   for correction (`PROTOCOL.md`, right of reply).
 
+## Related skills
+
+This skill covers **running a tool against a corpus**. Two neighbouring jobs have their own traps
+and their own skill:
+
+- **`add-a-corpus-case`** - acquiring, triaging and validating ground truth. Different failure
+  modes entirely: a fix commit that disables the program rather than repairing it, scope judgements
+  that must be written down including the rejections, and the selection bias of a corpus drawn from
+  incidents that are famous because nobody caught them.
+- **`publish-a-measurement`** - what to do when the number goes public, and what to do when it
+  turns out to be wrong afterwards. Retract before the replacement exists; correct the mechanism,
+  not only the number; right of reply.
+
+
 ## Red flags
 
 | Thought | Reality |

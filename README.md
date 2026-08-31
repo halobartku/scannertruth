@@ -41,6 +41,21 @@ with volume. Radar also puts **46% of its findings on already-fixed code**. Full
 in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
 
 
+
+## Skills
+
+The method, written as three executable procedures rather than prose, because the same mistakes are
+available every time and two of them produced public retractions:
+
+| Skill | Job | Why it is separate |
+|---|---|---|
+| [`measure-a-scanner`](skills/measure-a-scanner/SKILL.md) | run a tool against a corpus | provenance, containers, pre-registered mapping, proof every case was analysed |
+| [`add-a-corpus-case`](skills/add-a-corpus-case/SKILL.md) | build and validate ground truth | a fix commit that disables the program is not a fix; scope and its rejections go in writing |
+| [`publish-a-measurement`](skills/publish-a-measurement/SKILL.md) | publish, correct, retract | retract before the replacement exists; correct the mechanism, not only the number |
+
+They are split this way because the corpus, not the scoring, is the asset. Running a tool and
+building the thing you run it against fail in completely different ways.
+
 ## What this project actually is
 
 The corpus every Solana scanner is measured against, `coral-xyz/sealevel-attacks`, was last touched
