@@ -1,0 +1,17 @@
+{
+ "scheme": "sha256 over canonical JSON of the case spec",
+ "why": "a holdout chosen or edited after seeing scores proves nothing",
+ "rounds": [
+  {
+   "round": 1,
+   "sealed_at": "2026-08-31T20:58:53Z",
+   "commitment": "fc525b66495c0f576d7d328e2b74eaa733f11fbe7fbfd2cf340de38b15835ec1",
+   "released": false,
+   "spec": null,
+   "note": "First sealed holdout. Spec released when round 1 is published."
+  }
+ ],
+ "what_this_proves": "The case that scored a round is the case sealed before it, unedited. Recompute sha256 over the canonical JSON of the released spec and compare.",
+ "what_this_does_NOT_prove_in_round_1": "Concealment. Round 1's holdout is drawn from CANDIDATES-TRIAGE.md, which is public, so a determined vendor could tune against the whole shortlist. Round 1 therefore gives timestamp integrity and no secrecy. From round 2 the holdout is drawn from discovery that is not published until release. Stated here rather than left for a reader to notice.",
+ "open_data_promise": "Every sealed spec is released when the round it scores is published, so the corpus stays open and free on a one-round delay. A permanently secret corpus would make this benchmark unauditable, which is worse than the problem a holdout solves."
+}

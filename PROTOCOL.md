@@ -129,8 +129,16 @@ bought by **tuning against the corpus itself**, because the teaching corpus is p
 contents are known to everyone who builds one of these tools. A scanner fitted to it passes every
 check in this document.
 
-The only real defence is a **holdout**: at least one insecure/secure pair that is never published,
-against which a tool is scored after its public result is fixed. We do not have one. Until we do,
+The only real defence is a **holdout**: at least one insecure/secure pair withheld until the round
+it scores is published. **As of 2026-08-31 round 1 is sealed**, by commitment rather than by
+promise: `holdout.py` publishes `sha256` over the canonical JSON of the case spec before the run,
+and releases the spec afterwards, so anyone can confirm the case that scored the round is the case
+sealed before it, unedited. The ledger is `COMMITMENTS-HOLDOUT.json`.
+
+**What round 1 does not give is concealment.** Its case is drawn from the public candidate
+shortlist, so it establishes timestamp integrity and nothing more; from round 2 the holdout comes
+from discovery that stays unpublished until release. Until a round has actually been scored against
+a concealed holdout, Until we do,
 **every score on corpus 1 in this repository should be read as in-sample**, including the 11/11, and
 including our own. Corpus 2 is out-of-sample by construction, which is why its numbers carry more
 weight despite being newer and smaller.

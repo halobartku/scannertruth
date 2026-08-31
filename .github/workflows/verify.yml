@@ -1,0 +1,44 @@
+name: verify
+
+# Runs the whole self-checking surface on every push and every pull request, and once a week
+# so rot shows up without anyone pushing.
+#
+# This exists because until 2026-08-31 nobody outside this project had reproduced any number in
+# it. Our credibility rested entirely on self-report, which is the exact thing the benchmark
+# criticises vendors for. A green badge is not independent verification either, but it means a
+# stranger can see the checks run on a machine we do not control, and can read what they assert.
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  selfcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Scorer self-checks, including the positive control
+        run: |
+          python score.py --demo
+          python score2.py --demo
+          python build_corpus2.py --demo
+          python unmapped_check.py --demo
+          python corpus_ghsa.py --demo
+
+      - name: Published headline reproduces from raw data
+        run: python verify.py
+
+      - name: Calibration controls on corpus 2 must score zero
+        run: python control_c2.py
+
+      - name: No scanner may score a detection under an unmapped rule unnoticed
+        run: |
+          for s in radar vaultlint sol-audit; do
+            python unmapped_check.py --findings c2-$s.json --kind $s
+          done
