@@ -28,6 +28,13 @@ day. Full numbers in [`RESULTS.md`](RESULTS.md).
 See [`RESULTS-v2.md`](RESULTS-v2.md) and [`sol-audit`](https://github.com/halobartku/sol-audit).
 Run 1 is left exactly as published; a benchmark that rewrites its own history is worthless.
 
+## Independence
+
+Three standing promises, made while this project has one measured scanner, no users and nobody
+offering it money: **the data is open and free, our own scanner stays free and open source, and we
+take no money from anyone we measure.** Full text and the reasoning in
+[`COMMITMENTS.md`](COMMITMENTS.md).
+
 ## Why the ground truth is not a matter of opinion
 
 The corpus is [`coral-xyz/sealevel-attacks`](https://github.com/coral-xyz/sealevel-attacks),
