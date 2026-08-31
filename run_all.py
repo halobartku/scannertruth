@@ -33,7 +33,9 @@ SOURCES = {
 # at the site the fix changed. Tracked separately because the two corpora answer different
 # questions and a single blended number would hide which one moved.
 SOURCES_CORPUS2 = {
-    "radar": ("c2-radar.json", "radar"),
+    # c2-radar.json covered one case; superseded 2026-08-31 by a per-case run over all nine
+    # with a log per run. The old file is kept for the record, not for scoring.
+    "radar": ("c2-radar-complete.json", "sol-audit"),
     "vaultlint": ("c2-vaultlint.json", "vaultlint"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
 }
@@ -103,6 +105,9 @@ def measure_corpus2(raw_dir=".", corpus_dir="corpus2", mappings_dir="mappings"):
     if not os.path.exists(manifest):
         return [{"corpus": "corpus2", "status": "unavailable", "reason": "no manifest"}]
     cases = json.load(open(manifest, encoding="utf-8"))["cases"]
+    # Same exclusion score2.py enforces: a pair whose "fix" does not fix the bug is not a case.
+    # Two components disagreeing about which cases exist is how a denominator drifts unnoticed.
+    cases = [c for c in cases if c.get("valid", True)]
 
     out = []
     for name, (filename, kind) in sorted(SOURCES_CORPUS2.items()):
@@ -119,14 +124,61 @@ def measure_corpus2(raw_dir=".", corpus_dir="corpus2", mappings_dir="mappings"):
             out.append({"scanner": name, "corpus": "corpus2", "status": "error",
                         "reason": repr(exc)[:120]})
             continue
+        # WHICH CASES WERE ACTUALLY ANALYSED?
+        #
+        # A run log is the only real evidence. A findings file cannot answer this: a scanner that
+        # ran a case and found nothing leaves no entry, and so does a scanner that never saw it.
+        # Treating "no entry" as "not run" is error 21 from the log; treating it as "ran and found
+        # nothing" is error 20. Both were made on 2026-08-31, hours apart.
+        #
+        # So: if <filename>.log exists, it is the authority. If not, we say plainly that the
+        # question is unanswerable rather than guessing in either direction.
+        log_path = os.path.join(raw_dir, filename + ".log")
+        analysed, evidence = None, "none"
+        if os.path.exists(log_path):
+            try:
+                entries = json.load(open(log_path, encoding="utf-8"))
+                analysed = {str(e.get("leaf", "")).split("/")[0]
+                            for e in entries if e.get("status") == "ok"}
+                evidence = "run log"
+            except Exception:
+                analysed = None
+
+        seen = set()
+        for path_key in findings:
+            norm = str(path_key).replace("\\", "/")
+            for c in cases:
+                if f"/{c['name']}/" in norm or norm.startswith(c["name"] + "/"):
+                    seen.add(c["name"])
+
         tally = {}
         for c in cases:
             d = os.path.join(corpus_dir, c["name"])
             if not os.path.isdir(d):
                 continue
+            if analysed is not None:
+                if c["name"] not in analysed:
+                    tally["not-run"] = tally.get("not-run", 0) + 1
+                    continue
+            elif c["name"] not in seen:
+                # No run log, and nothing in the findings file belongs to this case. Silence,
+                # and silence is not a measurement. Recorded as unknown rather than guessed.
+                tally["unknown"] = tally.get("unknown", 0) + 1
+                continue
             verdict, _ = score2.score_case(d, c["class"], mapping, findings)
             tally[verdict] = tally.get(verdict, 0) + 1
-        out.append({"scanner": name, "corpus": "corpus2", "status": "measured", **tally})
+
+        unresolved = tally.get("unknown", 0) + tally.get("not-run", 0)
+        status = "measured" if not unresolved else "partial"
+        entry = {"scanner": name, "corpus": "corpus2", "status": status,
+                 "coverage_evidence": evidence, **tally}
+        if status == "partial":
+            entry["reason"] = (
+                f"{unresolved} of {len(cases)} cases unresolved"
+                + (f" (run log says not run)" if tally.get("not-run") else
+                   f"; no run log for {filename}, so 'found nothing' and 'never analysed' "
+                   f"cannot be told apart"))
+        out.append(entry)
     return out
 
 
