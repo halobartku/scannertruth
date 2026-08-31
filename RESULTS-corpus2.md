@@ -72,7 +72,7 @@ choose.
 | | teaching corpus | real vulnerabilities |
 |---|---|---|
 | `radar` | 11 / 11 | 0 / 8 |
-| `sol-audit` v2 | 4 / 11 | 0 / 9 |
+| `sol-audit` v2 | 4 / 11 | 0 / 8 (first pass said 0/9, before cashio was excluded) |
 
 That gap is the entire argument for this corpus existing, and it is larger than we expected.
 

@@ -34,14 +34,14 @@ flags every line scores 11/11 nominal and **0/11 real**, so a real-recall score 
 with volume. Radar also puts **46% of its findings on already-fixed code**. Full table and the
 in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
 
-**Six scanners now, and on real vulnerabilities none of them detects anything.** Radar, VaultLint,
+**Six scanners, eight real vulnerabilities, one detection between them.** Radar, VaultLint,
 X-Ray (sec3), solsec, semgrep and ours, measured with one protocol on the same day. Full table:
 [`RESULTS-all.md`](RESULTS-all.md).
 
-**Run 5, 2026-08-31: nine real vulnerabilities, no detections by anything.** Corpus 2 is built from
+**Run 5, 2026-08-31: eight valid real vulnerabilities.** Corpus 2 is built from
 production Solana programs at the maintainers' own fix commit and its parent: Wormhole, Cashio,
 Solend, Squads, three Metaplex advisories and one against Anchor itself. Radar scores **11/11 on the
-teaching corpus and 0/8 here**; ours scores 4/11 and 0/9. Scored more strictly than corpus 1: a
+teaching corpus and 0/8 here**; ours scores 4/11 and 0/8. Scored more strictly than corpus 1: a
 detection must fire at the site the fix changed. [`RESULTS-corpus2.md`](RESULTS-corpus2.md).
 
 **Run 4, 2026-08-31: the first out-of-sample case, and nobody caught it.** The Wormhole

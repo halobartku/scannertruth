@@ -332,8 +332,10 @@ Two public repositories, a benchmark with four scanners and two calibration cont
 a monthly clock that has already published a run, and a limitations document that opens with our own
 error.
 
-**And the finding:** on a curated public corpus a tool scores 11/11; on nine real vulnerabilities
-that same tool, measured the same day with the same protocol, detects nothing. The corpus everyone
+**And the finding, in the form it survived the evening's two corrections:** on a curated public
+corpus a tool scores 11/11; on eight real vulnerabilities that same tool, measured the same day with
+the same protocol, detects nothing. Across all six scanners there is exactly one real detection, and
+our own mapping was hiding it. The corpus everyone
 uses has stopped separating tools that generalise from tools that have done their homework, and we
 watched the homework being done.
 
