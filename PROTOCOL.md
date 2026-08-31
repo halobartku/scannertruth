@@ -163,6 +163,17 @@ next round. Every case becomes public, on a delay measured in one round rather t
 permanently secret corpus would make this benchmark unauditable, which is worse than the problem it
 solves.
 
+### What is actually being built
+
+The teaching corpus is four years old and every vendor has read it. A score on it is a measure of
+homework. The measurable thing this project adds is **ground truth that did not exist**: real
+vulnerabilities pinned to their maintainers' own fix commits, the same vulnerabilities as whole
+crates, an acquisition path into advisory databases, and a sealed holdout.
+
+The scoring rules below are copyable in an afternoon and that is fine. **The corpus is the asset**,
+and the falsifier below is really a falsifier about the corpus: if nobody uses it and it stops
+growing, the scoring code is worth nothing on its own.
+
 ### When this benchmark stops
 
 A measuring institution with no one reading the measurements is a hobby that costs money, and the

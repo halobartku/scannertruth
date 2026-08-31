@@ -63,6 +63,16 @@ benchmark that silently repairs its mapping after seeing the scores is worth not
 exactly the case the **right of reply** exists for: sec3 should be the ones to say what 1019 covers,
 and they have not been asked yet.
 
+## Why the teaching-corpus column matters less than it looks
+
+`coral-xyz/sealevel-attacks` was last modified **2022-07-16**. Two of the tools measured here cite
+its class pages directly as the reference for their own rules, and one vendor was closing gaps
+against it on the day of measurement. **Every number in the left-hand column should be read as a
+measure of familiarity with a four-year-old public teaching set**, ours included.
+
+The right-hand column is the one that required building something: real vulnerabilities, taken from
+maintainers' own fix commits, that no scanner author had seen as a test set.
+
 ## The controls are what make this readable
 
 `control-noisy` flags every non-empty line: **931 findings, 11/11 nominal recall, 0/11 real.** Any

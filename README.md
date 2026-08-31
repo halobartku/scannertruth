@@ -40,6 +40,35 @@ flags every line scores 11/11 nominal and **0/11 real**, so a real-recall score 
 with volume. Radar also puts **46% of its findings on already-fixed code**. Full table and the
 in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
 
+
+## What this project actually is
+
+The corpus every Solana scanner is measured against, `coral-xyz/sealevel-attacks`, was last touched
+on **2022-07-16**. Eleven hand-written teaching programs, four years old, public, and cited directly
+in at least two vendors' own rule tables. One vendor merged pull requests titled "close the last
+corpus gaps" against it on the day we measured them.
+
+That is not a benchmark. It is a **teaching aid that everyone has memorised**, and a score on it
+measures how thoroughly a tool has done its homework, not whether it generalises.
+
+So the interesting question is not who wins on that corpus. It is **what happens off it** - and
+answering that requires ground truth that did not exist. Building it is the work:
+
+- **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit
+  and its parent, so the answer key is somebody else's. Nine valid cases today.
+- **Real crates**: the same vulnerabilities as whole projects rather than extracted files, 927
+  `.rs` files, which retires the packaging objection instead of arguing about it.
+- **Acquisition**: `corpus_ghsa.py` reads advisory databases, where a fix commit is a structured
+  field rather than prose to be mined. It scanned 1,200 Rust advisories and proposed candidates
+  with the out-of-scope ones rejected in writing.
+- **A sealed holdout**, committed by hash before the round it scores.
+
+**The protocol is copyable. Anyone can read `PROTOCOL.md` and reimplement the scoring in an
+afternoon.** What is not copyable is fresh, verified, growing ground truth and the record of how
+each case was checked. That is the asset, and it is also the thing that decides whether this
+project deserves to continue: if the corpus stops growing, there is nothing here.
+
+
 **Six scanners, eight real vulnerabilities, one detection between them.** Radar, VaultLint,
 X-Ray (sec3), solsec, semgrep and ours, measured with one protocol on the same day. Full table:
 [`RESULTS-all.md`](RESULTS-all.md).
