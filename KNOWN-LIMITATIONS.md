@@ -56,11 +56,22 @@ Evidence this is real, not hypothetical: **Radar returned `400 Bad Request` on t
 file** and only produced findings after we added a manifest. Whatever it produced afterwards was
 produced under conditions we invented.
 
-## 5. Nobody has checked whether the scanners are deterministic.
+## 5. Determinism. **CHECKED 2026-08-31: both third-party scanners are deterministic.**
 
-The clock reports "real recall 11 -> 9, REGRESSION". If a scanner is nondeterministic, that line is
-noise presented as signal. Radar in particular runs an AST service in containers. **We have never
-run the same scan twice and compared.** Until we do, every entry in the time series is unverified.
+Each was run twice over the same corpus and the findings compared by rule and location.
+
+| Scanner | run 1 | run 2 | identical |
+|---|---|---|---|
+| `radar` | 52 findings | 52 findings | yes |
+| `vaultlint` | 4 findings | 4 findings | yes |
+
+This matters because the clock will one day print "real recall 11 -> 9, REGRESSION". Had either
+tool been nondeterministic, that line would have been noise presented as signal. It is now
+reasonable to read a change in the time series as a real change.
+
+Still unverified: determinism across *versions* of the tool, across host machines, and for our own
+scanner (which is pure Python over text and almost certainly deterministic, but has not been
+checked, and "almost certainly" is how this project gets things wrong).
 
 ## 6. Corpus 2 selection is biased toward famous exploits.
 
