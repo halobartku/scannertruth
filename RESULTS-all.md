@@ -11,21 +11,45 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 | **`radar`** (Auditware) | **11 / 11** | **0 / 9** | detects every teaching class, none of the real ones |
 | `sol-audit` v2 (ours) | 4 / 11 | **0 / 9** | ours, free and open forever, not a product |
 | `vaultlint` 0.1.1 | 2 / 11 | **0 / 9** | precision claim holds; 4 findings across 35 files |
-| **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 9** | AGPL, official container, parses Rust to LLVM IR |
-| `solsec` 0.2.1 | 0 / 11 | **0 / 9** | 77k downloads on crates.io |
+| **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 9 registered, 1 / 9 corrected** | the one real detection anything has made; see below |
+| `solsec` 0.2.1 | 0 / 11 | **0 / 6**, 3 unavailable | 108 findings, every one fires on the fix too |
 | `semgrep` 1.174 | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
 
 ## What this says
 
-**Six scanners. On real vulnerabilities, not one of them detected anything.**
+**Six scanners, nine real vulnerabilities each, one detection between them, and it took a correction to
+our own mapping to see it.**
 
-Yesterday's version of this finding was one tool failing one case and could be waved away as an
-outlier or a packaging artefact. It is now the entire toolchain that a Solana developer could
-plausibly reach for, measured against ten production vulnerabilities with public fix commits, under
-a protocol that requires the detection to land where the fix actually changed something.
+An earlier version of this page said no scanner detected anything. That was wrong, and the error
+was ours, not the tools'. Details in the section below. The corrected statement is narrower and
+still stark: the teaching corpus and the real one disagree almost completely. A tool with a perfect
+score on the corpus everybody uses detects nothing on the bugs that actually cost money, and the
+single real detection in the whole exercise came from a different tool, under a rule we had mapped
+to the wrong class.
 
-The teaching corpus and the real one disagree completely. A tool with a perfect score on the corpus
-everybody uses detects nothing on the bugs that actually cost money.
+Measured against ten production vulnerabilities with public fix commits, under a protocol that
+requires the detection to land where the fix actually changed something.
+
+## The one real detection, and our error that hid it
+
+X-Ray's rule `1019` is named **"The account may not be properly validated and may be untrustful"**.
+We mapped it to `sysvar-address-checking` alone, because sec3's own blog presents 1019 as the rule
+that catches the Wormhole hack. That is an example of the rule, not its scope, and narrowing it was
+our mistake.
+
+On corpus 2 it fired once, on `squads-account-matching/insecure` at `src/lib.rs:310`. The fix
+changed lines **309 and 311** — it added the check that the instruction account keys match the
+submitted keys. It did not fire on the fixed variant. That is a detection of a real vulnerability,
+at the fix site, differential.
+
+Our pre-registered mapping scored it **zero**, because that case's class is `account-data-matching`
+and we had not mapped 1019 there.
+
+Both numbers are published. **0/9 as pre-registered, 1/9 under the corrected mapping.** The
+pre-registered map is preserved unedited in `mappings/xray.json` beside the correction, because a
+benchmark that silently repairs its mapping after seeing the scores is worth nothing. And this is
+exactly the case the **right of reply** exists for: sec3 should be the ones to say what 1019 covers,
+and they have not been asked yet.
 
 ## The controls are what make this readable
 
@@ -46,6 +70,12 @@ strategy, not a worse tool.
 
 **X-Ray** is the most substantial engineering of the group, compiling Rust to LLVM IR rather than
 matching text, and it scores 2/11. Depth of analysis did not translate into recall here.
+
+**solsec** is the clearest illustration of why real recall is the only number that matters. It
+produced **108 findings** on corpus 2 and detected nothing: every rule that fired on a vulnerable
+program fired on the fixed one too, without exception. A findings count would rank it second in
+this table. It also produced no output at all for three of the nine cases, with no log explaining
+why, so its denominator is **six**, and the three are recorded as unavailable rather than as zeros.
 
 **semgrep** is not a failure, it is an absence: the world's most widely used generic static analyser
 has eleven Rust rules and no Solana coverage at all. Worth knowing before anyone relies on it.

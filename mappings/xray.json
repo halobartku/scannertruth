@@ -6,25 +6,110 @@
   "right_of_reply": "Not sent to sec3. Under PROTOCOL.md this mapping should be offered to the tool's authors for correction before the result is treated as final, and their correction published.",
   "in_sample_warning": "X-Ray's own rule table cites coral-xyz/sealevel-attacks and project-serum/sealevel-attacks class pages directly as the reference for 8 of its rules (1001, 1002, 1007, 1010, 1011, 1014, 1015, 1016). Its authors built these rules against this exact corpus. Any score on corpus 1 should be read as in-sample for X-Ray, same caveat as Radar.",
   "map": {
-    "0-signer-authorization": ["1001"],
-    "1-account-data-matching": ["1007"],
-    "2-owner-checks": ["1002"],
-    "3-type-cosplay": ["1010", "1011"],
+    "0-signer-authorization": [
+      "1001"
+    ],
+    "1-account-data-matching": [
+      "1007"
+    ],
+    "2-owner-checks": [
+      "1002"
+    ],
+    "3-type-cosplay": [
+      "1010",
+      "1011"
+    ],
     "4-initialization": [],
-    "5-arbitrary-cpi": ["1016"],
+    "5-arbitrary-cpi": [
+      "1016"
+    ],
     "6-duplicate-mutable-accounts": [],
-    "7-bump-seed-canonicalization": ["1014"],
-    "8-pda-sharing": ["1015"],
+    "7-bump-seed-canonicalization": [
+      "1014"
+    ],
+    "8-pda-sharing": [
+      "1015"
+    ],
     "9-closing-accounts": [],
-    "10-sysvar-address-checking": ["1019"]
+    "10-sysvar-address-checking": [
+      "1019"
+    ]
   },
   "unmapped_rules": [
-    "1003 IntegerAddOverflow", "1004 IntegerUnderflow", "1005 IntegerMulOverflow",
-    "1006 IntegerDivOverflow", "1017 MaliciousSimulation",
-    "2001 IncorrectLoopBreakLogic", "2002 IncorrectConditionCheck", "2003 ExponentialCalculation",
-    "2004 IncorrectDivisionLogic", "2005 IncorrectTokenCalculation"
+    "1003 IntegerAddOverflow",
+    "1004 IntegerUnderflow",
+    "1005 IntegerMulOverflow",
+    "1006 IntegerDivOverflow",
+    "1017 MaliciousSimulation",
+    "2001 IncorrectLoopBreakLogic",
+    "2002 IncorrectConditionCheck",
+    "2003 ExponentialCalculation",
+    "2004 IncorrectDivisionLogic",
+    "2005 IncorrectTokenCalculation"
   ],
   "unmapped_note": "These X-Ray rules detect arithmetic-overflow and economic-logic bugs, none of which name a class in this corpus. They are excluded from per-class scoring, the correct treatment: a scanner is not penalised for detecting things the corpus does not label.",
   "structural_gaps": "Three classes have no X-Ray rule mapped at all: 4-initialization, 6-duplicate-mutable-accounts, 9-closing-accounts. These count as misses for a reason that has nothing to do with detection quality on the classes X-Ray does claim to cover.",
-  "note_on_rule_1019": "Rule 1019 'UnvalidatedAccount' is described by X-Ray's own docs as the rule that detects 'the Wormhole hack' (linked blog: 'How Soteria detects the vulnerability automatically'), which is a sysvar-address-checking bug (unchecked instructions sysvar in signature verification). It is mapped to 10-sysvar-address-checking on that basis, pre-registered from the description, not from where it fired. In the actual run it also fired on 5-arbitrary-cpi/insecure, which is noise under this mapping (not credited to class 5), and it fired on both the insecure and secure variant of its own mapped class 10, which is why class 10 scores nominal but not real."
+  "note_on_rule_1019": "Rule 1019 'UnvalidatedAccount' is described by X-Ray's own docs as the rule that detects 'the Wormhole hack' (linked blog: 'How Soteria detects the vulnerability automatically'), which is a sysvar-address-checking bug (unchecked instructions sysvar in signature verification). It is mapped to 10-sysvar-address-checking on that basis, pre-registered from the description, not from where it fired. In the actual run it also fired on 5-arbitrary-cpi/insecure, which is noise under this mapping (not credited to class 5), and it fired on both the insecure and secure variant of its own mapped class 10, which is why class 10 scores nominal but not real.",
+  "pre_registered_map": {
+    "0-signer-authorization": [
+      "1001"
+    ],
+    "1-account-data-matching": [
+      "1007"
+    ],
+    "2-owner-checks": [
+      "1002"
+    ],
+    "3-type-cosplay": [
+      "1010",
+      "1011"
+    ],
+    "4-initialization": [],
+    "5-arbitrary-cpi": [
+      "1016"
+    ],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": [
+      "1014"
+    ],
+    "8-pda-sharing": [
+      "1015"
+    ],
+    "9-closing-accounts": [],
+    "10-sysvar-address-checking": [
+      "1019"
+    ]
+  },
+  "correction_2026_08_31": "OUR ERROR, found the same day and disclosed rather than quietly repaired. Rule 1019's own name is 'The account may not be properly validated and may be untrustful', which is generic account validation. We narrowed it to 10-sysvar-address-checking alone because sec3's blog post presents it as the rule that catches the Wormhole hack. That is an example of the rule, not its scope. Consequence: on corpus 2, rule 1019 fired on squads-account-matching/insecure at src/lib.rs:310, the fix changed lines 309 and 311, and it did not fire on the fixed variant. That is a detection of a real vulnerability at the fix site, and our pre-registered mapping scored it zero because the case's class is account-data-matching. Both numbers are published: 0/9 as pre-registered, 1/9 under the corrected mapping. The pre-registered map is preserved above and is not edited. This is precisely the case the right of reply exists for and sec3 has not yet been asked.",
+  "corrected_map": {
+    "0-signer-authorization": [
+      "1001"
+    ],
+    "1-account-data-matching": [
+      "1007",
+      "1019"
+    ],
+    "2-owner-checks": [
+      "1002"
+    ],
+    "3-type-cosplay": [
+      "1010",
+      "1011"
+    ],
+    "4-initialization": [],
+    "5-arbitrary-cpi": [
+      "1016"
+    ],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": [
+      "1014"
+    ],
+    "8-pda-sharing": [
+      "1015"
+    ],
+    "9-closing-accounts": [],
+    "10-sysvar-address-checking": [
+      "1019"
+    ]
+  }
 }
