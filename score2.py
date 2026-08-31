@@ -235,6 +235,11 @@ def main():
     for c in cases:
         d = os.path.join(args.corpus, c["name"])
         if not os.path.isdir(d):
+            # A case listed as valid but absent from disk was being skipped in silence, so the
+            # denominator shrank without anyone saying so. Say so.
+            print(f"{c['name']:30} {c['class']:28} {'not-built':10} "
+                  f"in the manifest but not on disk; excluded from the denominator")
+            tally["not-built"] = tally.get("not-built", 0) + 1
             continue
         verdict, info = score_case(d, c["class"], mapping, findings)
         tally[verdict] = tally.get(verdict, 0) + 1

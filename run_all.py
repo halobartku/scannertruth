@@ -27,6 +27,11 @@ SOURCES = {
     "radar": ("radar-full.json", "radar"),
     "vaultlint": ("vaultlint.json", "vaultlint"),
     "sol-audit": ("sol-audit.json", "sol-audit"),
+    # Published in RESULTS-all.md but absent from the clock until 2026-09-01, which meant a
+    # regression in any of them could never have shown up in history.
+    "xray": ("xray-c1-raw.json", "xray"),
+    "solsec": ("solsec-c1-raw.json", "solsec"),
+    "semgrep": ("semgrep-c1.json", "semgrep"),
 }
 
 # Corpus 2 is scored by score2.py, which is stricter: mapped rules only, and the finding must land
@@ -53,6 +58,16 @@ def extract(kind, blob):
     if kind in ("vaultlint", "sol-audit"):
         findings = blob.get("findings") if isinstance(blob, dict) else blob
         return [(x.get("rule_id", ""), x.get("file", "")) for x in findings or []]
+    if kind in ("xray", "solsec"):
+        # Both emit {name, locations:["path:line:col"]}, the same envelope Radar uses.
+        out = []
+        for item in blob or []:
+            for loc in item.get("locations") or []:
+                out.append((item.get("name", ""), str(loc).split(":")[0]))
+        return out
+    if kind == "semgrep":
+        return [(r.get("check_id", ""), r.get("path", ""))
+                for r in (blob or {}).get("results", [])]
     raise ValueError(kind)
 
 
@@ -156,6 +171,7 @@ def measure_corpus2(raw_dir=".", corpus_dir="corpus2", mappings_dir="mappings"):
         for c in cases:
             d = os.path.join(corpus_dir, c["name"])
             if not os.path.isdir(d):
+                tally["not-built"] = tally.get("not-built", 0) + 1
                 continue
             if analysed is not None:
                 if c["name"] not in analysed:
