@@ -43,6 +43,15 @@ in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
 
 
 
+## What comes next
+
+[`ROADMAP.md`](ROADMAP.md) carries four funded milestones, each ending in an artefact a funder can
+check without trusting us. The largest engineering items are the ones this project's own audit
+exposed: a corpus engine that turns an advisory into a validated pair with a false-fix detector, and
+a variance harness for **AI auditors**, which are non-deterministic and therefore cannot be measured
+the way a conventional scanner is. Measuring one once, which is what everyone does today, is
+worthless.
+
 ## Hand this repository to an agent
 
 `AGENTS.md` is the entry point for an AI agent asked to measure a scanner. It carries the whole
