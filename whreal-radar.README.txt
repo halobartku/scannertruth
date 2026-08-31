@@ -1,0 +1,9 @@
+whreal-radar.json
+
+Renamed from c2clean-radar.json on 2026-08-31. The old name said "corpus 2, contamination-cleaned
+run". It was never that: every path in it is /tmp/whreal/, the Wormhole program extracted as its
+REAL CRATE (solana/bridge/program, 46 files, its own Cargo.toml) at the fix commit and its parent.
+
+The misnaming mattered. While auditing why Radar's corpus-2 numbers covered one case, this file
+looked like the missing evidence and was not. A raw artefact whose name asserts something its
+contents do not is worse than no artefact, because it answers a question it never measured.
