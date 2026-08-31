@@ -15,11 +15,11 @@ below is checkable in thirty seconds.
 
 | | |
 |---|---|
-| **1,913 lines** of Python across **14 tools**, 10 of them carrying their own self-check | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **2165 lines** of Python across **15 tools**, plus a suite of **24 checks** | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
 | **46 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
-| **CI on machines we do not control** | every self-check, the headline reproduction, and the calibration controls, on every push |
+| **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
 
 ### Measurement, done
 
@@ -41,6 +41,10 @@ below is checkable in thirty seconds.
   returned a detection and nobody had checked that it could.
 - **A per-run log** proving each case was actually analysed, for Radar and VaultLint. Ours does not
   have one yet, which is milestone 1.
+- **A test suite whose selection rule is "would a defect here change a published number"**, covering
+  line-shift mapping, every scoring verdict, the controls, holdout commitments, and the coverage
+  bookkeeping whose absence caused the retraction. Writing it immediately exposed a module that ran
+  its analysis at import time and therefore could not be tested at all.
 - **A sealed holdout**, committed by hash before the round it scores.
 - **Right of reply**: four threads open with the vendors we measured. Every third-party number is
   marked provisional until they answer.
