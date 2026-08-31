@@ -4,6 +4,12 @@
 Run: python verify.py
 Exits non-zero if the raw data does not reproduce the published result, so this doubles as a
 regression check on the claim rather than only a pretty-printer.
+
+SCOPE, stated because the name promises more than it delivers: this verifies **RESULTS.md only** -
+run 1, `sol-audit` v1, 2/11 nominal and 0/11 real. It does not touch the six-scanner table in
+RESULTS-all.md, the corpus-2 results, or the real-crate results. Nothing currently re-derives the
+current headline from raw data, and until something does, a green check here must not be read as
+the headline being verified.
 """
 import json
 import sys

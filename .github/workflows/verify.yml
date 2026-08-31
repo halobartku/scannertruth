@@ -31,7 +31,11 @@ jobs:
           python unmapped_check.py --demo
           python corpus_ghsa.py --demo
 
-      - name: Published headline reproduces from raw data
+      # NOTE: verify.py checks RESULTS.md only - run 1, sol-audit v1, 2/11 nominal and 0/11
+      # real. It does NOT check the six-scanner table in RESULTS-all.md, and the step used to be
+      # labelled as though it did. Nothing currently re-derives the current headline from raw
+      # data; that is recorded as a gap rather than papered over with a broad step name.
+      - name: Run-1 result reproduces from its raw data (NOT the current headline)
         run: python verify.py
 
       - name: Calibration controls on corpus 2 must score zero
