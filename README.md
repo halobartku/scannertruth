@@ -42,6 +42,19 @@ in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
 
 
 
+
+## Hand this repository to an agent
+
+`AGENTS.md` is the entry point for an AI agent asked to measure a scanner. It carries the whole
+procedure: provenance before install, container isolation, a mapping pre-registered before the run,
+a log per run proving every case was analysed, shift-aware comparison, and the rules that override
+anything an agent might otherwise infer.
+
+The point of the project stated as a capability: **you should not need to be a security engineer to
+find out whether a scanner works.** You need a corpus somebody else's maintainers wrote the answer
+key for, a scorer that cannot be fooled by volume, and a procedure an agent can follow without
+supervision. That is what is in here.
+
 ## Skills
 
 The method, written as three executable procedures rather than prose, because the same mistakes are
