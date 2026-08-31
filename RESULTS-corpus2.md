@@ -1,7 +1,18 @@
-# RESULTS: corpus 2, real vulnerabilities. Nine cases, no detections.
+# RESULTS: corpus 2, real vulnerabilities. Eight valid cases, one detection.
 
-2026-08-31. Nine production Solana programs, each taken from the maintainers' own fix commit and
-its parent, scored with a stricter method than the teaching corpus.
+2026-08-31. Production Solana programs, each taken from the maintainers' own fix commit and its
+parent, scored with a stricter method than the teaching corpus.
+
+**Superseded in part.** This page records the first pass. Two things changed the same evening and
+the consolidated, current table is in [`RESULTS-all.md`](RESULTS-all.md):
+
+1. **One case was thrown out.** `cashio-account-data` is not a valid pair: its "fix" commit adds
+   `invariant!(false, "temporarily disabled")` and switches the program off, so the fixed variant is
+   dead code rather than repaired code. Excluded from every denominator, nine scored cases became
+   **eight**, and `score2.py` now refuses to score any case marked `valid: false`.
+2. **There is one detection, not zero.** X-Ray's rule `1019` fired on `squads-account-matching`
+   at the fix site, on the vulnerable variant only. Our pre-registered mapping scored it zero
+   because we had narrowed that rule to a single class. Our error, published both ways.
 
 ## The corpus
 
@@ -38,7 +49,8 @@ Two intermediate verdicts exist so that nothing is flattered or unfairly punishe
 | `vaultlint` | **0** | 0 | 1 | 8 | 2 / 11 |
 | `sol-audit` v2 (ours) | **0** | 1 | 7 | 1 | 4 / 11 |
 
-**Nothing was detected by anything.**
+**Nothing was detected by any of these three.** X-Ray, measured later the same evening, produced
+the single exception described above and in `RESULTS-all.md`.
 
 For Radar this is sharper than it first appears. It is not that the tool fired noisily and we
 discounted it. On eight of nine cases the rule that Radar's own naming says detects that class
@@ -84,8 +96,15 @@ sloppy one.
   pins the single file the disclosure implicates, with a written reason for every exclusion in
   `corpus2/manifest.json`. Rescoring on the cleaned corpus changed nothing for Radar or VaultLint
   and removed one spurious `unlocated` from ours.
-- **Determinism is unverified.** No scanner has been run twice and compared.
-- **Nine cases, one run each.** This is a small corpus and a first measurement.
+- ~~**Determinism is unverified.**~~ **FIXED.** Each scanner was run twice and findings compared by
+  rule and location: Radar 52 = 52, VaultLint 4 = 4, both identical.
+- **Eight valid cases, one run each.** This is a small corpus and a first measurement.
+- ~~Ground truth is the maintainers' own fix~~ **and that has to be read, not assumed.** One of the
+  ten cases built turned out to have a fix commit that disabled the program instead of repairing
+  it. Every remaining fix diff was then read individually; nine of ten hold up.
+- **A detection under an unmapped rule is invisible to per-class scoring.** `unmapped_check.py`
+  now asks the complementary question, and it is validated against the one case known to be real
+  so that a run of zeros cannot silently mean a broken check.
 - **The right of reply has not been exercised** for either third-party tool.
 
 Full list, including code-level gaps, in [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md).

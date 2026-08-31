@@ -153,3 +153,33 @@ suggests: *no scanner produced any signal that distinguished the vulnerable vers
 one, under a packaging we chose, at file granularity.* That is still a real and uncomfortable
 result. It is not the same sentence as "no scanner detects real vulnerabilities", and we should not
 let it be read as one.
+
+## Added 2026-08-31, evening. Found by checking our own output rather than by being told.
+
+**19. Ground truth was assumed, not read, for one case.** `cashio-account-data`'s fix commit
+disables the program instead of repairing it. Excluded, and every other fix diff was then read
+individually. **Generalised fix:** `score2.py` refuses to score any case marked `valid: false`, so
+the exclusion is enforced by code rather than by a note. **Still open:** nothing automatically
+detects a shutdown-shaped commit; the audit was manual and would have to be repeated for new cases.
+
+**20. Per-class scoring cannot see a detection under an unmapped rule.** X-Ray detected a real
+vulnerability under a rule we had mapped to a different class, and scored zero for it.
+**Partial fix:** `unmapped_check.py` asks the complementary question across all findings and is
+validated against that known case. **Still open:** it can only find candidates. Deciding whether a
+candidate is a detection requires reading it, and properly requires asking the tool's authors.
+
+**21. Radar cannot complete on large real crates.** On the real-crate corpus it exceeds its own
+retry budget on the bigger projects and, when it does, still prints `Results written to <path>` for
+a file it did not write. Those pairs are recorded as **unavailable**, never as zero. This is a real
+limit on measuring tools against real code, and it means our real-crate coverage is biased toward
+small projects.
+
+**22. Every corpus-1 result is in-sample.** Stated in `PROTOCOL.md` and repeated here because it is
+the single most load-bearing caveat in the project. The teaching corpus is public, at least two of
+the measured tools cite it directly as the reference for their own rules, and one vendor was closing
+gaps against it on the day we measured. A holdout is the only real answer and we do not have one.
+
+**23. The right of reply still has not been exercised with anyone.** Three threads are drafted and
+assigned. Until they are answered, every third-party number in this repository is provisional, and
+the X-Ray case is the proof that this is not a formality: our mapping was wrong in a way only the
+tool's authors could have settled quickly.
