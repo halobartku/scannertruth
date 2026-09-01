@@ -65,7 +65,7 @@ on, and nobody publishes an independent, cross-tool, repeatable measurement.**
 
 ## Part 3: the thing the application cited did not exist
 
-The submitted application referenced `PROTOCOL.md` and a public repository with the benchmark
+The submitted application referenced `docs/PROTOCOL.md` and a public repository with the benchmark
 harness. **Neither existed.** The workspace was not even a git repository, so there was also no
 commit history to date the "pre-registered methodology" claim.
 
@@ -418,6 +418,6 @@ watched the homework being done.
 
 ## What is still wrong
 
-In `KNOWN-LIMITATIONS.md`, kept current. Corpus 2 pairs still contain files the fix touched that
+In `docs/KNOWN-LIMITATIONS.md`, kept current. Corpus 2 pairs still contain files the fix touched that
 have nothing to do with the bug. The right of reply has not been exercised with any vendor. Nine
 cases is a small corpus. And nobody outside this project has yet said they want any of this data.

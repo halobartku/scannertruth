@@ -16,7 +16,7 @@
 parent, scored with a stricter method than the teaching corpus.
 
 **Superseded in part.** This page records the first pass. Two things changed the same evening and
-the consolidated, current table is in [`RESULTS-all.md`](RESULTS-all.md):
+the consolidated, current table is in [`docs/results/RESULTS-all.md`](../../docs/results/RESULTS-all.md):
 
 1. **One case was thrown out.** `cashio-account-data` is not a valid pair: its "fix" commit adds
    `invariant!(false, "temporarily disabled")` and switches the program off, so the fixed variant is
@@ -62,7 +62,7 @@ Two intermediate verdicts exist so that nothing is flattered or unfairly punishe
 | `sol-audit` v2 (ours) | **0** | 1 | 7 | 1 | 4 / 11 |
 
 **Nothing was detected by any of these three.** X-Ray, measured later the same evening, produced
-the single exception described above and in `RESULTS-all.md`.
+the single exception described above and in `docs/results/RESULTS-all.md`.
 
 For Radar this is sharper than it first appears. It is not that the tool fired noisily and we
 discounted it. On eight of nine cases the rule that Radar's own naming says detects that class
@@ -92,7 +92,7 @@ That gap is the entire argument for this corpus existing, and it is larger than 
 
 The first pass at corpus 2 **counted findings of any kind, anywhere in the file**, while corpus 1
 counted only rules mapped to the class. Two different questions, printed in one table. It was our
-error and it is recorded in [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md).
+error and it is recorded in [`docs/KNOWN-LIMITATIONS.md`](../../docs/KNOWN-LIMITATIONS.md).
 
 The numbers above use the corrected method. The conclusion did not change, which is worth stating
 plainly: a stricter measurement produced the same answer, so the result is not an artefact of the
@@ -119,13 +119,13 @@ sloppy one.
   so that a run of zeros cannot silently mean a broken check.
 - **The right of reply has not been exercised** for either third-party tool.
 
-Full list, including code-level gaps, in [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md).
+Full list, including code-level gaps, in [`docs/KNOWN-LIMITATIONS.md`](../../docs/KNOWN-LIMITATIONS.md).
 
 ## Reproduce
 
 ```
-python build_corpus2.py --manifest corpus2/manifest.json --out corpus2
-python score2.py --demo
-python score2.py --scanner radar --kind radar --findings c2-radar.json
-python score2.py --scanner vaultlint --kind vaultlint --findings c2-vaultlint.json
+python ../../tools/build_corpus2.py --manifest corpus2/manifest.json --out corpus2
+python ../../tools/score2.py --demo
+python ../../tools/score2.py --scanner radar --kind radar --findings c2-radar.json
+python ../../tools/score2.py --scanner vaultlint --kind vaultlint --findings c2-vaultlint.json
 ```

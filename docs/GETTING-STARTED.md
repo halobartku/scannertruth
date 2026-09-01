@@ -38,8 +38,8 @@ git clone https://github.com/halobartku/scannertruth
 cd scannertruth
 
 python test_all.py        # 59 checks on the code that produces every published figure
-python verify.py          # re-derives a published result from the raw data
-python control_c2.py      # the calibration controls must score zero
+python ../tools/verify.py          # re-derives a published result from the raw data
+python ../tools/control_c2.py      # the calibration controls must score zero
 ```
 
 **What you should see.** `test_all.py` ends with `59 passed, 0 failed`. `verify.py` prints a table
@@ -57,11 +57,11 @@ would be broken, and you just checked that it is not.
 
 | File | What is in it |
 |---|---|
-| [`RESULTS-all.md`](RESULTS-all.md) | Six scanners, both corpora, one table |
-| [`RESULTS-realcrates.md`](RESULTS-realcrates.md) | The same bugs as whole projects, not extracted files |
-| [`PROTOCOL.md`](PROTOCOL.md) | The rules, including what makes a result provisional |
-| [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md) | What this measurement cannot tell you |
-| [`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md) | 21 of our own errors, with dates |
+| [`docs/results/RESULTS-all.md`](../docs/results/RESULTS-all.md) | Six scanners, both corpora, one table |
+| [`docs/results/RESULTS-realcrates.md`](../docs/results/RESULTS-realcrates.md) | The same bugs as whole projects, not extracted files |
+| [`docs/PROTOCOL.md`](../docs/PROTOCOL.md) | The rules, including what makes a result provisional |
+| [`docs/KNOWN-LIMITATIONS.md`](../docs/KNOWN-LIMITATIONS.md) | What this measurement cannot tell you |
+| [`docs/ENGINEERING-LOG-2026-08-31.md`](../docs/ENGINEERING-LOG-2026-08-31.md) | 21 of our own errors, with dates |
 
 **Read the limitations before quoting any number**, and read the log if you want to know whether to
 trust us at all. It records the same reaction when a measurement damaged a competitor and when it
@@ -84,7 +84,7 @@ the numbers a vendor prints on a landing page.
 
 ## 4. Measure a scanner yourself
 
-**[`WALKTHROUGH.md`](WALKTHROUGH.md) is the step-by-step**, written for a person, with every command
+**[`docs/WALKTHROUGH.md`](../docs/WALKTHROUGH.md) is the step-by-step**, written for a person, with every command
 and what you should see. It measures a tool we have already measured, so you can compare your result
 to ours and know whether you did it right. About 40 minutes, most of it a container build.
 
@@ -109,6 +109,6 @@ Open an issue. If a number here is wrong we will fix it and say that we did, in 
 with the date. That has happened repeatedly and the record is public.
 
 If you are the author of a tool we measured: the mapping of your rules is our reading of your work.
-[`PROTOCOL.md`](PROTOCOL.md) gives you a right of reply, and **every third-party number here is
+[`docs/PROTOCOL.md`](../docs/PROTOCOL.md) gives you a right of reply, and **every third-party number here is
 provisional until you use it.** We already understated one tool through a mapping error we made
 ourselves, so this is not a formality.

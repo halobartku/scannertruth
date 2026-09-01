@@ -117,7 +117,7 @@ with the bug, and **any detection credited on this pair would have been spurious
 while checking why Radar appeared to produce 23 insecure-only findings on the real crate: a result
 too good to accept without reading the diff. Those 23 later turned out to be an artefact of our own
 line-shift-blind comparison rather than evidence of anything, which changes how the case was found
-but not that it is invalid. See [`RESULTS-realcrates.md`](RESULTS-realcrates.md).
+but not that it is invalid. See [`docs/results/RESULTS-realcrates.md`](../../docs/results/RESULTS-realcrates.md).
 
 The case stays in `corpus2/manifest.json` marked `valid: false` with the reason, rather than being
 deleted, and `score2.py` now refuses to score any case marked that way. A note in a manifest does
@@ -158,14 +158,14 @@ every third-party number below is provisional, and the X-Ray correction shows th
 formality.
 
 Every result here is provisional until each tool's authors have been offered their mapping for
-correction, which `PROTOCOL.md` requires and which has not yet happened for anyone. Ten real cases
+correction, which `docs/PROTOCOL.md` requires and which has not yet happened for anyone. Ten real cases
 is a small corpus. The teaching corpus is public and known to be tuned against. Our own packaging
 was tested on the strongest case and did not explain the result, but has not been tested on all of
 them.
 
 **The packaging objection is now retired.** Rebuilt as real crates (927 `.rs` files, each project's
 own `Cargo.toml` and sibling modules) Radar detects nothing across six scoreable pairs, and cannot
-complete at all on the three largest. [`RESULTS-realcrates.md`](RESULTS-realcrates.md).
+complete at all on the three largest. [`docs/results/RESULTS-realcrates.md`](../../docs/results/RESULTS-realcrates.md).
 
-Full list in [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md); how it was all built, with every
-mistake, in [`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md).
+Full list in [`docs/KNOWN-LIMITATIONS.md`](../../docs/KNOWN-LIMITATIONS.md); how it was all built, with every
+mistake, in [`docs/ENGINEERING-LOG-2026-08-31.md`](../../docs/ENGINEERING-LOG-2026-08-31.md).

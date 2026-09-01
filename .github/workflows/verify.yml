@@ -28,24 +28,24 @@ jobs:
 
       - name: Scorer self-checks, including the positive control
         run: |
-          python score.py --demo
-          python score2.py --demo
-          python build_corpus2.py --demo
-          python unmapped_check.py --demo
-          python corpus_ghsa.py --demo
+          python tools/score.py --demo
+          python tools/score2.py --demo
+          python tools/build_corpus2.py --demo
+          python tools/unmapped_check.py --demo
+          python tools/corpus_ghsa.py --demo
 
       # NOTE: verify.py checks RESULTS.md only - run 1, sol-audit v1, 2/11 nominal and 0/11
       # real. It does NOT check the six-scanner table in RESULTS-all.md, and the step used to be
       # labelled as though it did. Nothing currently re-derives the current headline from raw
       # data; that is recorded as a gap rather than papered over with a broad step name.
       - name: Run-1 result reproduces from its raw data (NOT the current headline)
-        run: python verify.py
+        run: python tools/verify.py
 
       - name: Calibration controls on corpus 2 must score zero
-        run: python control_c2.py
+        run: python tools/control_c2.py
 
       - name: No scanner may score a detection under an unmapped rule unnoticed
         run: |
-          python unmapped_check.py --findings raw/c2-radar-complete.json --kind sol-audit
-          python unmapped_check.py --findings raw/c2-vaultlint-complete.json --kind sol-audit
-          python unmapped_check.py --findings raw/c2-sol-audit.json --kind sol-audit
+          python tools/unmapped_check.py --findings raw/c2-radar-complete.json --kind sol-audit
+          python tools/unmapped_check.py --findings raw/c2-vaultlint-complete.json --kind sol-audit
+          python tools/unmapped_check.py --findings raw/c2-sol-audit.json --kind sol-audit

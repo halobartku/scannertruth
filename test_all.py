@@ -27,6 +27,10 @@ import os
 import sys
 import tempfile
 
+# The tools live in tools/ so the repository root stays legible. Nothing is packaged, so the
+# import path is set here rather than asking every reader to export PYTHONPATH.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools"))
+
 VERBOSE = "-v" in sys.argv
 PASSED = []
 FAILED = []
@@ -539,7 +543,7 @@ def test_the_noisy_control_still_produces_931_on_corpus_one():
 
 def test_corpus_commit_is_pinned_in_the_protocol():
     import io as _io
-    s = _io.open("PROTOCOL.md", encoding="utf-8").read()
+    s = _io.open("docs/PROTOCOL.md", encoding="utf-8").read()
     assert "24555d044802db4022112a94d6d70e74291a4b6d" in s, \
         "the corpus commit must stay pinned, or no score is reproducible"
 
@@ -548,15 +552,21 @@ def test_corpus_commit_is_pinned_in_the_protocol():
 # Cheap checks that catch a corrupted or half-written artefact before it reaches a table.
 
 def test_every_raw_json_file_parses():
+    """A half-written raw file is a corrupted number waiting to be published."""
     import json, io as _io, os
+    targets = [os.path.join("raw", f) for f in sorted(os.listdir("raw"))]
+    targets += [os.path.join("mappings", f) for f in sorted(os.listdir("mappings"))]
+    targets += ["COMMITMENTS-HOLDOUT.json", "corpus2/manifest.json"]
     bad = []
-    for fn in sorted(os.listdir(".")) + [os.path.join("raw", f) for f in sorted(os.listdir("raw"))]:
-        if fn.endswith(".json"):
-            try:
-                json.load(_io.open(fn, encoding="utf-8"))
-            except Exception as e:
-                bad.append(f"{fn}: {type(e).__name__}")
-    assert not bad, f"unparseable raw files: {bad}"
+    for fn in targets:
+        if not fn.endswith(".json") or not os.path.exists(fn):
+            continue
+        try:
+            json.load(_io.open(fn, encoding="utf-8"))
+        except Exception as e:
+            bad.append(f"{fn}: {type(e).__name__}")
+    assert not bad, f"unparseable json: {bad}"
+
 
 
 def test_every_corpus_case_names_its_fix_commit():
@@ -591,7 +601,7 @@ def test_clock_history_is_ordered_and_parseable():
 def test_results_pages_do_not_contradict_the_clock_on_radar():
     """The single most quoted number in the whole project."""
     import io as _io
-    s = _io.open("RESULTS-all.md", encoding="utf-8").read()
+    s = _io.open("docs/results/RESULTS-all.md", encoding="utf-8").read()
     assert "11 / 11" in s or "11/11" in s, "Radar's teaching-corpus score vanished from RESULTS-all"
 
 
@@ -631,11 +641,11 @@ def test_noisy_control_flags_every_non_empty_line():
 def test_no_external_python_dependencies():
     import ast, os, sys
     stdlib = set(sys.stdlib_module_names)
-    local = {f[:-3] for f in os.listdir(".") if f.endswith(".py")}
+    local = {f[:-3] for f in os.listdir("tools") if f.endswith(".py")}
     local |= {"scanner", "make_fixtures"}      # our own, and optional
     external = {}
-    for fn in sorted(f for f in os.listdir(".") if f.endswith(".py")):
-        tree = ast.parse(open(fn, encoding="utf-8").read())
+    for fn in sorted(f for f in os.listdir("tools") if f.endswith(".py")):
+        tree = ast.parse(open(os.path.join("tools", fn), encoding="utf-8").read())
         for node in ast.walk(tree):
             names = []
             if isinstance(node, ast.Import):
@@ -654,8 +664,8 @@ def test_the_optional_scanner_import_is_guarded():
     stranger's clone."""
     import ast, os
     unguarded = []
-    for fn in sorted(f for f in os.listdir(".") if f.endswith(".py")):
-        src = open(fn, encoding="utf-8").read()
+    for fn in sorted(f for f in os.listdir("tools") if f.endswith(".py")):
+        src = open(os.path.join("tools", fn), encoding="utf-8").read()
         if "import scanner" not in src:
             continue
         tree = ast.parse(src)
@@ -674,7 +684,7 @@ def test_every_module_imports_without_side_effects():
     import importlib, os, sys
     skip = {"rb.py", "emit_sol_audit.py", "test_all.py"}   # these need `scanner` or are this file
     failed = {}
-    for fn in sorted(f for f in os.listdir(".") if f.endswith(".py")):
+    for fn in sorted(f for f in os.listdir("tools") if f.endswith(".py")):
         if fn in skip:
             continue
         name = fn[:-3]
@@ -693,7 +703,7 @@ def test_every_module_imports_without_side_effects():
 def test_every_command_in_getting_started_is_runnable():
     """A quickstart that names a script that no longer exists is a broken promise."""
     import io as _io, os, re
-    s = _io.open("GETTING-STARTED.md", encoding="utf-8").read()
+    s = _io.open("docs/GETTING-STARTED.md", encoding="utf-8").read()
     scripts = set(re.findall(r"python (\w[\w-]*\.py)", s))
     missing = [x for x in sorted(scripts) if not os.path.exists(x)]
     assert not missing, f"GETTING-STARTED names scripts that do not exist: {missing}"
@@ -752,27 +762,27 @@ def test_ci_step_names_do_not_overclaim():
 # ---------------------------------------------------- protocol / results consistency
 def test_protocol_states_the_falsifier_with_a_date():
     import io as _io, re
-    s = _io.open("PROTOCOL.md", encoding="utf-8").read()
+    s = _io.open("docs/PROTOCOL.md", encoding="utf-8").read()
     assert "fourteen days" in s or "14 days" in s or "2026-09-14" in s, \
         "the stop condition must stay stated, and it only binds if it is written down"
 
 
 def test_protocol_warns_that_corpus_one_is_in_sample():
     import io as _io
-    s = _io.open("PROTOCOL.md", encoding="utf-8").read().lower()
+    s = _io.open("docs/PROTOCOL.md", encoding="utf-8").read().lower()
     assert "in-sample" in s, "every corpus-1 score must carry the in-sample warning"
 
 
 def test_limitations_document_is_not_empty_or_shrinking():
     """Limitations should accumulate. A suspiciously short file means someone tidied them away."""
     import io as _io
-    n = len(_io.open("KNOWN-LIMITATIONS.md", encoding="utf-8").read().split("\n"))
+    n = len(_io.open("docs/KNOWN-LIMITATIONS.md", encoding="utf-8").read().split("\n"))
     assert n > 60, f"KNOWN-LIMITATIONS has only {n} lines; limitations do not disappear"
 
 
 def test_commitments_are_still_stated():
     import io as _io
-    s = _io.open("COMMITMENTS.md", encoding="utf-8").read().lower()
+    s = _io.open("docs/COMMITMENTS.md", encoding="utf-8").read().lower()
     assert "free" in s and ("no money" in s or "take no" in s), \
         "the open-data and no-money-from-those-we-measure commitments must stay stated"
 
@@ -848,9 +858,9 @@ def test_unreleased_holdout_specs_are_not_in_the_repository():
 # ------------------------------------------------------------ candidate triage
 def test_rejected_candidates_carry_a_written_reason():
     import io as _io, os
-    if not os.path.exists("CANDIDATES-TRIAGE.md"):
+    if not os.path.exists("docs/CANDIDATES-TRIAGE.md"):
         return
-    s = _io.open("CANDIDATES-TRIAGE.md", encoding="utf-8").read()
+    s = _io.open("docs/CANDIDATES-TRIAGE.md", encoding="utf-8").read()
     assert "REJECT" in s, "the triage file records acceptances only, which hides the judgement calls"
     assert "out of scope" in s.lower(), "rejections must say why, not just that"
 
@@ -864,6 +874,43 @@ def test_every_file_named_in_ci_exists():
     refs |= set(re.findall(r"python\s+([A-Za-z0-9_-]+\.py)", s))
     missing = [r for r in sorted(refs) if not os.path.exists(r)]
     assert not missing, f"CI references files that do not exist: {missing}"
+
+
+def test_readme_does_not_carry_superseded_claims():
+    """The README's tail once still said 'one scanner has been measured' long after six were, and
+    dated the corpus to 2024 after we had pinned it to 2022. A front page contradicting its own
+    result table is the most expensive kind of staleness."""
+    import io as _io
+    s = _io.open("README.md", encoding="utf-8").read()
+    banned = {
+        "One scanner has been measured": "six are measured",
+        "One is not a survey": "superseded phrasing",
+        "corpus last updated in 2024": "the corpus is pinned at 2022-07-16",
+    }
+    hits = [f"{k} ({why})" for k, why in banned.items() if k in s]
+    assert not hits, f"README carries superseded claims: {hits}"
+
+
+def test_readme_result_table_matches_the_clock():
+    """If the front page and the measurement disagree, the front page is what people read."""
+    import io as _io, sys, os
+    sys.path.insert(0, "tools")
+    import run_all
+    s = _io.open("README.md", encoding="utf-8").read()
+    got = {r["scanner"]: (r.get("nominal"), r.get("real"))
+           for r in run_all.measure() if r.get("status") == "measured"}
+    # Radar is the single most quoted figure in the project
+    assert got.get("radar") == (11, 11), f"clock says radar is {got.get('radar')}"
+    assert "11 / 11" in s or "11/11" in s, "README no longer shows the figure the clock produces"
+
+
+def test_layout_block_lists_directories_that_exist():
+    import io as _io, os, re
+    s = _io.open("README.md", encoding="utf-8").read()
+    block = s.split("## Repository layout")[1].split("```")[1]
+    dirs = set(re.findall(r"^([a-z_0-9]+)/", block, re.M))
+    missing = [d for d in sorted(dirs) if not os.path.isdir(d)]
+    assert not missing, f"README describes directories that do not exist: {missing}"
 
 # -------------------------------------------------------------------- main
 def main():

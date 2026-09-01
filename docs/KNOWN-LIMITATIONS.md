@@ -15,7 +15,7 @@ corpus 2, our first pass counted **every finding of any kind**. Those are not th
 and they were printed in the same table.
 
 **Status: FIXED 2026-08-31, same day.** `score2.py` now scores corpus 2 with mapped rules only and
-requires the finding to land at the site the fix changed. Results in `RESULTS-corpus2.md`. The
+requires the finding to land at the site the fix changed. Results in `docs/results/RESULTS-corpus2.md`. The
 conclusion did not change under the stricter method, which is worth stating: the result was not an
 artefact of the sloppy one. Limitation 2 below is fixed by the same change. The paragraph that
 follows is kept as the record of what was wrong.
@@ -174,7 +174,7 @@ a file it did not write. Those pairs are recorded as **unavailable**, never as z
 limit on measuring tools against real code, and it means our real-crate coverage is biased toward
 small projects.
 
-**22. Every corpus-1 result is in-sample.** Stated in `PROTOCOL.md` and repeated here because it is
+**22. Every corpus-1 result is in-sample.** Stated in `docs/PROTOCOL.md` and repeated here because it is
 the single most load-bearing caveat in the project. The teaching corpus is public, at least two of
 the measured tools cite it directly as the reference for their own rules, and one vendor was closing
 gaps against it on the day we measured. A holdout is the only real answer and we do not have one.
@@ -238,10 +238,10 @@ opposite direction, and invisible without a per-run log.
 
 **30. The teaching corpus was not pinned anywhere.** No commit was recorded, so nothing in this
 repository established which corpus state produced 11/11. Recovered after the fact from the working
-checkout: `24555d044802db4022112a94d6d70e74291a4b6d`, 2022-07-16. **FIXED** in `PROTOCOL.md`, with
+checkout: `24555d044802db4022112a94d6d70e74291a4b6d`, 2022-07-16. **FIXED** in `docs/PROTOCOL.md`, with
 the recovery disclosed. The corpus itself has not been touched since July 2022.
 
-**31. `verify.py` verifies run 1 only, and the CI step claimed more.** It checks `RESULTS.md`
+**31. `verify.py` verifies run 1 only, and the CI step claimed more.** It checks `docs/results/RESULTS.md`
 (sol-audit v1, 2/11 nominal, 0/11 real) and nothing else - not the six-scanner table, not corpus 2,
 not the real crates. The workflow step was labelled "Published headline reproduces from raw data".
 **Step renamed and the scope stated in the module docstring.** Nothing currently re-derives the

@@ -27,9 +27,9 @@ ever ranks it above zero, your measurement is broken, not the control.
 
 ```bash
 python test_all.py                                   # the full suite
-python score.py --demo && python score2.py --demo    # self-checks, incl. the positive control
-python verify.py                                     # run-1 headline reproduces from raw data
-python control_c2.py                                 # controls must score zero
+python tools/score.py --demo && python tools/score2.py --demo    # self-checks, incl. the positive control
+python tools/verify.py                                     # run-1 headline reproduces from raw data
+python tools/control_c2.py                                 # controls must score zero
 ```
 
 If all three pass, the harness is sound and you can trust what it tells you next. If any fails,
@@ -77,9 +77,9 @@ one with the other.
 
 ### 6. Score
 ```bash
-python score2.py --scanner <name> --kind <name> --findings c2-<name>.json
-python unmapped_check.py --findings c2-<name>.json --kind <name>
-python run_all.py                                    # appends a dated row to runs/
+python tools/score2.py --scanner <name> --kind <name> --findings c2-<name>.json
+python tools/unmapped_check.py --findings c2-<name>.json --kind <name>
+python tools/run_all.py                                    # appends a dated row to runs/
 ```
 - `detected` requires the mapped rule to fire **at the site the fix changed** and not on the fix.
 - `unlocated` means it fired in the file but not at the bug. Do not collapse it either way.
@@ -125,7 +125,7 @@ Three skills carry the full procedure, including the failures that produced each
 - [`skills/publish-a-measurement`](skills/publish-a-measurement/SKILL.md) - publishing, correcting,
   retracting
 
-And [`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md) records 21 errors with dates.
+And [`docs/ENGINEERING-LOG-2026-08-31.md`](docs/ENGINEERING-LOG-2026-08-31.md) records 21 errors with dates.
 Read it if you want to know which of the rules above were bought with real mistakes. All of them.
 
 ---

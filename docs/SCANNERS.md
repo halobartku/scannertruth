@@ -50,7 +50,7 @@ mature market; it is missing infrastructure.
 
 ## What we measured
 
-Full tables in [`RESULTS-all.md`](RESULTS-all.md). The short version, where **real recall** means the
+Full tables in [`docs/results/RESULTS-all.md`](../docs/results/RESULTS-all.md). The short version, where **real recall** means the
 mapped rule fired on the vulnerable program **and stayed silent on the same program fixed**:
 
 | Tool | Teaching corpus (2022, public) | Real vulnerabilities |
@@ -64,7 +64,7 @@ mapped rule fired on the vulnerable program **and stayed silent on the same prog
 
 Every teaching-corpus figure is **in-sample**: that corpus is public, four years old, and at least
 two of these tools cite it in their own rule tables. Every third-party figure is **provisional**
-until its authors use their [right of reply](PROTOCOL.md).
+until its authors use their [right of reply](../docs/PROTOCOL.md).
 
 Our mapping of each tool's rules is in [`mappings/`](mappings/), one file per tool, each recording
 how it was derived.
@@ -81,7 +81,7 @@ change. Measuring one once tells you almost nothing, and measuring one once is w
 currently does.
 
 Treat any "our AI auditor found N issues" claim as unmeasured until someone reports **spread across
-repeated runs**. Building that is [milestone 3](ROADMAP.md).
+repeated runs**. Building that is [milestone 3](../docs/ROADMAP.md).
 
 ---
 
@@ -103,5 +103,5 @@ Conflating those two is one of the main ways a benchmark misleads, so they get t
 
 Open an issue with the tool's **own** repository link. If it runs in a container and produces
 machine-readable output, adding it is mostly writing a mapping and a run loop. The procedure is
-[`AGENTS.md`](AGENTS.md) for an agent, [`WALKTHROUGH.md`](WALKTHROUGH.md) for a person, and we would
+[`AGENTS.md`](AGENTS.md) for an agent, [`docs/WALKTHROUGH.md`](../docs/WALKTHROUGH.md) for a person, and we would
 rather measure your tool than guess about it.

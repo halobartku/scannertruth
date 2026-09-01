@@ -41,7 +41,7 @@ and we are not going to pretend otherwise.
 ## What these promises do not cover
 
 They are about independence, not about quality. We can still be wrong, and we have already been
-wrong in public: the corrections are in `PROTOCOL.md` and in the commit history, including a bug we
+wrong in public: the corrections are in `docs/PROTOCOL.md` and in the commit history, including a bug we
 introduced in our own guard logic and caught by measurement rather than by reading.
 
 They also do not promise permanence of effort. A benchmark that stops being re-run rots. If this

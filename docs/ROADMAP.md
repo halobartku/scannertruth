@@ -71,7 +71,7 @@ somebody other than us** (today the answer to "has anyone outside verified it" i
   the real crates. No empty cells afterwards, and anything that cannot run is listed with a reason.
 - **`report.py` and a published results page**, where every number links to the raw data behind it.
 
-**Check:** `python run_all.py --verify-coverage` reports zero `coverage_evidence: none`, and the
+**Check:** `python ../tools/run_all.py --verify-coverage` reports zero `coverage_evidence: none`, and the
 page resolves with every figure traceable to its raw file.
 
 ---
@@ -87,7 +87,7 @@ page resolves with every figure traceable to its raw file.
   a second Cashio.
 - **A false-fix detector.** Rules for commits that switch code off instead of repairing it
   (`invariant!(false)`, `unimplemented!`, deleted paths), plus merge-commit detection where the
-  combined diff hides the implicated file. Every rejection lands in `CANDIDATES-TRIAGE.md` **with
+  combined diff hides the implicated file. Every rejection lands in `docs/CANDIDATES-TRIAGE.md` **with
   its reason**.
 - **Corpus from 9 to at least 25 valid cases**, grown by acquisition rather than by remembering
   famous hacks. This attacks our largest stated limitation: sample size.
@@ -167,5 +167,5 @@ tools do better than they do today, that gets published with the same energy.
 
 **Not revenue.** The data stays open and free, and we take no money from anyone we measure.
 
-**Not that the project survives.** `PROTOCOL.md` carries a falsifier and it binds regardless of
+**Not that the project survives.** `docs/PROTOCOL.md` carries a falsifier and it binds regardless of
 funding: if nobody uses this, it stops, and unspent funds go back.

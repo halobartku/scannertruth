@@ -131,9 +131,9 @@ verifier are in this repository.
 - It does not cover vulnerability classes outside the corpus.
 - The corpus was last updated in 2024 and eleven classes is a small sample. ~~Extending it with
   real Anchor programs ... is not done yet.~~ **Done:** corpus 2 holds ten production
-  vulnerabilities where the maintainers' own fix commit is the answer key. See `RESULTS-corpus2.md`.
+  vulnerabilities where the maintainers' own fix commit is the answer key. See `docs/results/RESULTS-corpus2.md`.
 - ~~One scanner has been measured. One is not a survey.~~ **Six have been**, plus two controls.
-  Six is still not a survey. See `RESULTS-all.md`.
+  Six is still not a survey. See `docs/results/RESULTS-all.md`.
 
 ### The gap the controls do not close
 

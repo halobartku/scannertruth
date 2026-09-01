@@ -6,7 +6,7 @@ whether you did it right.
 
 Roughly 40 minutes, most of it a container build you can walk away from.
 
-**Before you start**, read one paragraph in [`GETTING-STARTED.md`](GETTING-STARTED.md): the concept
+**Before you start**, read one paragraph in [`docs/GETTING-STARTED.md`](../docs/GETTING-STARTED.md): the concept
 of **real recall**. Without it the numbers below are meaningless.
 
 ---
@@ -147,8 +147,8 @@ tool's own last log line before deciding which one you are looking at.**
 ## Step 5. Score it
 
 ```bash
-python score2.py --scanner my-vaultlint --kind sol-audit --findings out/merged.json
-python unmapped_check.py --findings out/merged.json --kind sol-audit
+python ../tools/score2.py --scanner my-vaultlint --kind sol-audit --findings out/merged.json
+python ../tools/unmapped_check.py --findings out/merged.json --kind sol-audit
 ```
 
 You will get one verdict per case:
@@ -181,7 +181,7 @@ If your numbers differ, one of us is wrong and we would like to know which. Open
 Before believing any number you just produced:
 
 ```bash
-python control_c2.py
+python ../tools/control_c2.py
 ```
 
 The noisy control flags every non-empty line: **424,170 findings, and it must score zero.** If your
@@ -202,7 +202,7 @@ Not just the number. All five:
 
 **If you cannot produce item 2, you do not have a measurement yet.** Say that instead of publishing
 a number. We learned this the expensive way and it is written into
-[`PROTOCOL.md`](PROTOCOL.md).
+[`docs/PROTOCOL.md`](../docs/PROTOCOL.md).
 
 ---
 

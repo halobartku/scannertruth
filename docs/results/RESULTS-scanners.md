@@ -92,7 +92,7 @@ is the answer key, is the only way to tell those apart.
 
 ## Status of this measurement
 
-**Provisional.** Under `PROTOCOL.md` a third-party mapping should be offered to the tool's authors
+**Provisional.** Under `docs/PROTOCOL.md` a third-party mapping should be offered to the tool's authors
 for correction before the number is treated as final, and their correction published. That has not
 been done yet for Radar. `mappings/radar.json` records this.
 
@@ -105,7 +105,7 @@ informative whether or not the corpus has a label for it.
 ## Reproduce
 
 ```
-python score.py --demo                              # self-check the scoring logic
-python score.py mappings/radar.json radar-full.json # rescore Radar from raw output
-python adapters.py                                  # which scanners are available here
+python ../../tools/score.py --demo                              # self-check the scoring logic
+python ../../tools/score.py mappings/radar.json radar-full.json # rescore Radar from raw output
+python ../../tools/adapters.py                                  # which scanners are available here
 ```

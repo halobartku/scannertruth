@@ -2,255 +2,267 @@
 
 [![verify](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml/badge.svg)](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml)
 
-Every self-check, the headline reproduction, and the corpus-2 calibration controls run on GitHub's
-machines on every push. A green badge is not independent verification, but the checks run somewhere
-we do not control and you can read what they assert.
+An independent, repeatable measurement of Solana security scanners.
 
-**An open, reproducible benchmark for Solana security scanners. The first tool it measured was our
-own, and our own scored zero.**
+Vendors publish finding counts. **A finding count is not recall.** A scanner that flags fixed code
+as often as vulnerable code produces an impressive number and catches nothing. We know because we
+measured it on our own product first, and published the result that killed the claim.
 
-Everyone building on Solana relies on automated security scanners. Almost nobody knows how well any
-of them work. Vendors publish finding counts. **Finding counts are not recall.** A scanner that
-flags fixed code as often as vulnerable code will produce an impressive number and catch nothing.
-
-We know this because we measured it on our own product.
+---
 
 ## Start here
 
-**A person?** [`GETTING-STARTED.md`](GETTING-STARTED.md) - what you need (Python 3, nothing else),
+**A person?** [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) - what you need (Python 3, nothing else),
 how to verify our numbers offline in two minutes, and the one concept that makes them mean anything.
-To measure a scanner yourself, [`WALKTHROUGH.md`](WALKTHROUGH.md) is the step-by-step, on a tool we
-already measured so you can check your answer against ours. [`SCANNERS.md`](SCANNERS.md) lists every
-tool we know of, what it needs to run, and what we measured for it.
+To measure a scanner yourself, [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md) is a worked example on a tool we
+already measured, so you can check your answer against ours. [`docs/SCANNERS.md`](docs/SCANNERS.md) lists
+every tool we know of, what it needs, and what we found.
 
-**An AI agent handed this repo?** [`AGENTS.md`](AGENTS.md) - the full measurement procedure,
-written to be followed unsupervised, including the three steps whose absence produced retractions.
+**An AI agent handed this repository?** [`AGENTS.md`](AGENTS.md) - the whole measurement procedure,
+written to be executed without supervision, including the three steps whose absence produced public
+retractions.
 
 ```bash
 git clone https://github.com/halobartku/scannertruth && cd scannertruth
-python test_all.py && python verify.py && python control_c2.py
+python test_all.py && python tools/verify.py && python tools/control_c2.py
 ```
 
-No pip install. **Every dependency is in the Python standard library**, deliberately: a benchmark
+No `pip install`. **Every dependency is in the Python standard library**, deliberately: a benchmark
 whose results cannot be reproduced because a package version drifted is not a benchmark.
 
+---
 
-**Six scanners, eight real vulnerabilities, one detection between them.** Radar, VaultLint,
-X-Ray (sec3), solsec, semgrep and ours, measured with one protocol on the same day. Full table:
-[`RESULTS-all.md`](RESULTS-all.md).
+## The one concept
 
-**Run 5, 2026-08-31: eight valid real vulnerabilities.** Corpus 2 is built from
-production Solana programs at the maintainers' own fix commit and its parent: Wormhole, Cashio,
-Solend, Squads, three Metaplex advisories and one against Anchor itself. Radar scores **11/11 on the
-teaching corpus and 0/8 here**; ours scores 4/11 and 0/8. Scored more strictly than corpus 1: a
-detection must fire at the site the fix changed. [`RESULTS-corpus2.md`](RESULTS-corpus2.md).
+**Real recall: does the tool's mapped rule fire on a vulnerable program AND stay silent on the same
+program after its authors fixed it?**
 
-**Run 4, 2026-08-31: the first out-of-sample case, and nobody caught it.** The Wormhole
-sysvar-check bug, 320 million dollars, taken from the real fix commit and its parent. Radar scores
-11/11 on the teaching corpus and **does not detect it**; every finding it produces fires identically
-on the vulnerable and the fixed program. So does ours. VaultLint reports nothing.
-[`RESULTS-wormhole.md`](RESULTS-wormhole.md).
+A rule that fires on both has detected nothing. It has recognised a shape of code that also exists
+in working software. Every number here rests on that distinction.
 
-**How all of this was actually built, mistakes included:**
-[`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md) is the full record of the day this
-benchmark was made, in order, with fifteen errors recorded. Eleven were caught by measurement,
-four by a person noticing, and two would have put a false statement in a funding application.
-
-**What is wrong with all of this:** [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md) lists every
-weakness we know of in our own method and code, ordered by how much damage each does. It opens with
-an error we made and published on the same day. A measurement project that only documents other
-people's flaws is not a measurement project.
+---
 
 ## The result
 
-`sol-audit`, our own static scanner for Solana and Anchor programs, which we were selling:
+Six scanners and two calibration controls, one protocol, measured the same day. Full tables in
+[`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md).
 
-| Metric | Result |
-|---|---|
-| Nominal recall | **2 / 11** |
-| Real recall | **0 / 11** |
-
-Both apparent detections fired identically on the **fixed** version of the same program. On one
-class it fired *more* on the idiomatic, safe variant than on the vulnerable one.
-
-We published this, rewrote the product listing to lead with it, and set the price to zero the same
-day. Full numbers in [`RESULTS.md`](RESULTS.md).
-
-**Run 2, 2026-08-31.** The scanner was then repaired and re-measured. Real recall **0/11 to 4/11**.
-See [`RESULTS-v2.md`](RESULTS-v2.md) and [`sol-audit`](https://github.com/halobartku/sol-audit).
-Run 1 is left exactly as published; a benchmark that rewrites its own history is worthless.
-
-**Run 3, 2026-08-31: the first scanner that is not ours.** Auditware's Radar scores **11/11 real
-recall**, against our repaired scanner's 4/11. Two control scanners calibrate the metric: one that
-flags every line scores 11/11 nominal and **0/11 real**, so a real-recall score cannot be bought
-with volume. Radar also puts **46% of its findings on already-fixed code**. Full table and the
-in-sample caveat in [`RESULTS-scanners.md`](RESULTS-scanners.md).
-
-
-
-
-## What comes next
-
-[`ROADMAP.md`](ROADMAP.md) carries four funded milestones, each ending in an artefact a funder can
-check without trusting us. The largest engineering items are the ones this project's own audit
-exposed: a corpus engine that turns an advisory into a validated pair with a false-fix detector, and
-a variance harness for **AI auditors**, which are non-deterministic and therefore cannot be measured
-the way a conventional scanner is. Measuring one once, which is what everyone does today, is
-worthless.
-
-## Hand this repository to an agent
-
-`AGENTS.md` is the entry point for an AI agent asked to measure a scanner. It carries the whole
-procedure: provenance before install, container isolation, a mapping pre-registered before the run,
-a log per run proving every case was analysed, shift-aware comparison, and the rules that override
-anything an agent might otherwise infer.
-
-The point of the project stated as a capability: **you should not need to be a security engineer to
-find out whether a scanner works.** You need a corpus somebody else's maintainers wrote the answer
-key for, a scorer that cannot be fooled by volume, and a procedure an agent can follow without
-supervision. That is what is in here.
-
-## Skills
-
-The method, written as three executable procedures rather than prose, because the same mistakes are
-available every time and two of them produced public retractions:
-
-| Skill | Job | Why it is separate |
+| Scanner | Teaching corpus (2022, public) | Real vulnerabilities |
 |---|---|---|
-| [`measure-a-scanner`](skills/measure-a-scanner/SKILL.md) | run a tool against a corpus | provenance, containers, pre-registered mapping, proof every case was analysed |
-| [`add-a-corpus-case`](skills/add-a-corpus-case/SKILL.md) | build and validate ground truth | a fix commit that disables the program is not a fix; scope and its rejections go in writing |
-| [`publish-a-measurement`](skills/publish-a-measurement/SKILL.md) | publish, correct, retract | retract before the replacement exists; correct the mechanism, not only the number |
+| `control-noisy`, 931 findings | **0 / 11** | **0**, despite 424,170 findings |
+| **Radar** (Auditware) | **11 / 11** | 0 / 8 |
+| `sol-audit` (ours) | 4 / 11 | 0 / 8 |
+| `vaultlint` | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
+| **X-Ray** (sec3) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** |
+| `solsec` | 0 / 11 | 0 / 6, 3 unavailable |
+| `semgrep` | no Solana rules at all | - |
 
-They are split this way because the corpus, not the scoring, is the asset. Running a tool and
-building the thing you run it against fail in completely different ways.
+**Six scanners, eight real vulnerabilities, one detection between them** - and seeing that one
+required correcting a mapping error of our own.
+
+**The control is what makes the table readable.** `control-noisy` flags every non-empty line. It
+would rank first on any metric that counts findings. Here it scores zero, so no score above was
+bought with volume.
+
+---
 
 ## What this project actually is
 
 The corpus every Solana scanner is measured against, `coral-xyz/sealevel-attacks`, was last touched
-on **2022-07-16**. Eleven hand-written teaching programs, four years old, public, and cited directly
-in at least two vendors' own rule tables. One vendor merged pull requests titled "close the last
-corpus gaps" against it on the day we measured them.
+**2022-07-16**. Eleven hand-written teaching programs, four years old, public, and cited directly in
+at least two vendors' own rule tables. One vendor merged pull requests closing gaps against it on
+the day we measured them.
 
-That is not a benchmark. It is a **teaching aid that everyone has memorised**, and a score on it
-measures how thoroughly a tool has done its homework, not whether it generalises.
+That is not a benchmark. It is **a teaching aid everybody has memorised**, and a score on it measures
+homework rather than whether a tool generalises.
 
-So the interesting question is not who wins on that corpus. It is **what happens off it** - and
-answering that requires ground truth that did not exist. Building it is the work:
+So the interesting question is what happens off it, and answering that required ground truth that
+did not exist. Building it is the work:
 
-- **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit
-  and its parent, so the answer key is somebody else's. Nine valid cases today.
-- **Real crates**: the same vulnerabilities as whole projects rather than extracted files, 927
-  `.rs` files, which retires the packaging objection instead of arguing about it.
+- **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit and
+  its parent, so the answer key is somebody else's. Nine valid cases.
+- **Real crates**: the same bugs as whole projects rather than extracted files, 927 `.rs` files,
+  which retires the packaging objection instead of arguing about it.
 - **Acquisition**: `corpus_ghsa.py` reads advisory databases, where a fix commit is a structured
-  field rather than prose to be mined. It scanned 1,200 Rust advisories and proposed candidates
-  with the out-of-scope ones rejected in writing.
+  field rather than prose to be mined. It has scanned 1,200 advisories.
 - **A sealed holdout**, committed by hash before the round it scores.
 
-**The protocol is copyable. Anyone can read `PROTOCOL.md` and reimplement the scoring in an
-afternoon.** What is not copyable is fresh, verified, growing ground truth and the record of how
-each case was checked. That is the asset, and it is also the thing that decides whether this
-project deserves to continue: if the corpus stops growing, there is nothing here.
+**`docs/PROTOCOL.md` is copyable in an afternoon and that is fine.** What is not copyable is fresh,
+verified, growing ground truth and the record of how each case was checked. That is the asset, and
+it is also what decides whether this deserves to continue: if the corpus stops growing, there is
+nothing here.
 
+[`docs/ROADMAP.md`](docs/ROADMAP.md) has what exists today and four funded milestones, the largest being a
+variance harness for **AI auditors**, which are non-deterministic and so cannot be measured the way
+a conventional scanner is. Measuring one once, which is what everyone does today, says almost
+nothing.
 
+---
 
+## Who this is for, and why it matters
+
+### The harm is not missing tools. It is false assurance.
+
+A team buys a scanner, runs it, gets a clean report, ticks "we have security tooling" in the
+documentation, tells investors "it's been scanned", and **sleeps better while being exactly as
+exposed as before.**
+
+That is not hypothetical. Our own scanner produced 194 findings on one repository and detected
+nothing. The best tool on the market scores a perfect 11/11 on the corpus everyone uses and **zero
+on eight real break-ins**. A clean report from a tool of unmeasured effectiveness is not
+information; it is noise that people act on, usually by deciding *not* to spend money on a human
+audit.
+
+### Who this helps
+
+**Teams building on Solana.** Today you choose a scanner by its marketing. With a measured real
+recall you know what a green report is worth, and whether it justifies skipping a human review.
+That is a budget decision, and right now it is made blind.
+
+**Teams already paying for audits.** You can ask your auditor: *what is the measured effectiveness
+of the tooling you use, and how do you know?* Until now that question had no possible answer.
+
+**Grant programmes and foundations.** They fund security tooling and have **no instrument to
+evaluate what the funding produced.** Not carelessness, an absent measuring device. A benchmark lets
+a programme compare applications and ask a grantee for measured real recall instead of a finding
+count.
+
+**Honest tool vendors, and this is not a courtesy.** Our measurement *confirmed* VaultLint's
+precision claim: everything it detected, it detected correctly. That is an asset they earned. Today
+a good tool and a loud tool look identical, because the only visible number is a finding count and
+that number rewards noise. Which is also why every vendor here gets a
+[right of reply](docs/PROTOCOL.md) before a result is treated as final.
+
+**The ecosystem, before the AI-audit wave lands.** It has already started: one tool is in our
+could-not-run table because it needs a paid model key. There is currently **no way to compare these
+tools at all**, so the choice will be made on marketing. Worse, an AI auditor is
+*non-deterministic*: the same code can give a different answer tomorrow, so the single measurement
+everyone performs today says almost nothing. Repeated measurement is the only honest form, and it is
+what the clock in this repository does.
+
+### The market context, measured rather than assumed
+
+Of six tools measured on 2026-09-01: **one is actively developed**, two have been silent for half a
+year, and one is effectively abandoned despite 77,684 lifetime downloads against 56 recent ones.
+[`docs/SCANNERS.md`](docs/SCANNERS.md) has the table.
+
+**That is not a mature market. It is missing infrastructure.** Which is the whole argument for
+building this now rather than in two years.
+
+---
+
+## Why the ground truth is not a matter of opinion
+
+The teaching corpus is maintained by the Anchor team. Every class ships the same program twice: with
+the bug (`insecure`) and with it fixed (`secure`, `recommended`). A finding of class *C* on the
+fixed variant of class *C* is a false positive **by construction**. Nothing to adjudicate.
+
+Corpus 2 works the same way one step harder: each pair is a real program immediately before and
+after the fix **its own maintainers wrote** in response to a public disclosure. We do not decide
+what the bug was.
+
+**A benchmark whose author also writes the answer key is not a benchmark.**
+
+---
+
+## Why you can check us rather than trust us
+
+- **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
+  is why this repository is 49 MB and not 2.
+- **82 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+  that reported a published figure changing under a refactor. `python test_all.py`.
+- **CI on machines we do not control**, running that suite on every push.
+- **[21 of our own errors](docs/ENGINEERING-LOG-2026-08-31.md), with dates**, including a headline we
+  retracted in public *before* we had the replacement data. That document, not the results, is the
+  strongest thing here: it shows the same reaction when a measurement damaged a competitor and when
+  it flattered us.
+- **[`docs/KNOWN-LIMITATIONS.md`](docs/KNOWN-LIMITATIONS.md)** opens with our own mistake.
+
+---
 
 ## Repository layout
 
 ```
+README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-GETTING-STARTED.md     entry point for a person
-WALKTHROUGH.md         worked example: measure a scanner yourself, step by step
-SCANNERS.md            registry of every tool we know of, what it needs, what we measured
-PROTOCOL.md            the rules, and what makes a result provisional
-ROADMAP.md             what exists, and four funded milestones
-KNOWN-LIMITATIONS.md   what this measurement cannot tell you
-ENGINEERING-LOG-*.md   21 of our own errors, with dates
-RESULTS-*.md           the measurements themselves
+test_all.py            82 checks, mutation-verified. Run this first
 
-test_all.py            81 checks, mutation-verified. Run this first
-score.py score2.py     the scorers; score2 is the strict one used for real vulnerabilities
-run_all.py             the clock: re-measures on a schedule and diffs against the previous run
-control_c2.py          the calibration controls, which must score zero
-holdout.py             seal a holdout by hash before the round it scores
-corpus_ghsa.py         propose corpus candidates from advisory databases
-shiftaware.py          compare findings across a fix without being fooled by line shift
-unmapped_check.py      find a detection hiding under a rule the mapping missed
+docs/
+  GETTING-STARTED.md   entry point for a person
+  WALKTHROUGH.md       worked example: measure a scanner yourself, step by step
+  SCANNERS.md          registry: every tool we know of, what it needs, what we measured
+  PROTOCOL.md          the rules, and what makes a result provisional
+  ROADMAP.md           what exists today, and four funded milestones
+  KNOWN-LIMITATIONS.md what this measurement cannot tell you
+  ENGINEERING-LOG-*.md our errors, with dates
+  COMMITMENTS.md       three standing promises
+  CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
+  results/             the measurements themselves
+
+tools/
+  score.py score2.py   the scorers; score2 is the strict one, for real vulnerabilities
+  run_all.py           the clock: re-measures on a schedule, diffs against the previous run
+  control_c2.py        the calibration controls, which must score zero
+  verify.py            re-derives a published result from raw data
+  holdout.py           seal a holdout by hash before the round it scores
+  corpus_ghsa.py       propose corpus candidates from advisory databases
+  shiftaware.py        compare findings across a fix without being fooled by line shift
+  unmapped_check.py    find a detection hiding under a rule the mapping missed
+  adapters.py          one normalised Finding shape, plus the two controls
 
 corpus2/               real vulnerabilities, each pinned to its maintainers' own fix commit
-mappings/              one file per tool: which of its rules claims which class, and how derived
-raw/                   every scanner's raw output and run logs, so numbers can be re-derived
+mappings/              one file per tool: which rule claims which class, and how it was derived
+raw/                   every scanner's raw output and run logs
 runs/                  dated history from the clock
 skills/                the method as three executable procedures
 ```
 
-**`raw/` is the point of the whole layout.** Every published number can be recomputed from what is
-in there, which is why the repository is 49 MB instead of 2.
-
-
-## Independence
-
-Three standing promises, made while this project has one measured scanner, no users and nobody
-offering it money: **the data is open and free, our own scanner stays free and open source, and we
-take no money from anyone we measure.** Full text and the reasoning in
-[`COMMITMENTS.md`](COMMITMENTS.md).
-
-## Why the ground truth is not a matter of opinion
-
-The corpus is [`coral-xyz/sealevel-attacks`](https://github.com/coral-xyz/sealevel-attacks),
-maintained by the Anchor team. Every vulnerability class ships the same program twice: once with the
-bug (`insecure`) and once with it fixed (`secure`, `recommended`).
-
-So a finding of class *C* on the fixed variant of class *C* is a false positive **by construction**.
-There is nothing to adjudicate. That property is what makes this measurable at all.
-
-We do not write the answer key. A benchmark whose author also writes the answer key is not a
-benchmark.
-
-## Run it
-
-```
-python verify.py          # re-derive the published headline from the raw data
-python verify.py --demo   # self-check the scoring logic on constructed cases
-python rb.py              # rerun the full benchmark (needs the corpus, see PROTOCOL.md)
-```
-
-`verify.py` exits non-zero if `benchmark-raw.json` does not reproduce what `RESULTS.md` claims.
-If they disagree, `RESULTS.md` is the thing that is wrong.
-
-## Contents
-
-| File | What it is |
-|---|---|
-| [`PROTOCOL.md`](PROTOCOL.md) | scoring rules, the class-to-rule mapping, what was corrected and what cannot be verified |
-| [`RESULTS.md`](RESULTS.md) | the numbers, per class |
-| `rb.py` | the harness |
-| `scanner.py` | the scanner under test, `sol-audit`, stdlib only |
-| `benchmark-raw.json` | raw per-class output |
-| `verify.py` | re-derives the headline; runnable check |
+**`raw/` is the point of the layout.** Every published number recomputes from what is in there,
+which is why this repository is 49 MB rather than 2.
 
 ## Honest limits
 
-- **One scanner has been measured. One is not a survey.** Extending this to VaultLint, sec3/Soteria,
-  Radar and others is the work that has not been done yet.
-- Eleven classes, from a corpus last updated in 2024. Extending it with real Anchor programs
-  carrying publicly disclosed vulnerabilities, where the fix commit is the answer key, is the
-  obvious next step.
-- Recall against a labelled corpus is a lower bound on real-world safety, not a measure of it.
-- Three of the eleven classes have no corresponding rule in the scanner under test at all. They are
-  counted as misses, because a scanner that cannot detect a bug does not detect it.
-- **The pre-registration of the mapping is not independently timestamped.** The workspace predates
-  this repository and had no version control. This is stated in full in `PROTOCOL.md` rather than
-  left for someone to notice.
+- **Nine real cases is a small corpus**, and it is our largest stated weakness. Growing it is
+  milestone 2.
+- **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
+  them in time. It is therefore systematically harder than the population of real bugs and
+  **understates every scanner measured on it**. It answers "do these catch the ones that cost
+  money". It cannot support "these tools do not work", and nothing here claims that.
+- **Every teaching-corpus score is in-sample**, including the 11/11 and our own 4/11, because that
+  corpus is public and at least two measured tools cite it in their own rules. A holdout is the only
+  real answer; round 1 is sealed but gives timestamp integrity, not concealment.
+- **Every third-party number is provisional.** Four right-of-reply threads are open with the vendors
+  we measured and none has answered. Our X-Ray mapping was wrong in a way only its authors could
+  have settled quickly, so this is not a formality.
+- **`sol-audit` still has no per-run coverage log** while Radar and VaultLint do. We closed other
+  people's tools more rigorously than our own; that is milestone 1.
+- **Recall against a labelled corpus is a lower bound on real-world safety**, not a measure of it.
+- **Nobody outside this project has reproduced any of it yet.** That is milestone 4, and its
+  criterion is deliberately outside our control.
+
+---
+
+## Independence
+
+Three standing promises, made while this project has no users and nobody offering it money: **the
+data is open and free forever, our own scanner stays free and open, and we take no money from anyone
+we measure.** Full text and reasoning in [`docs/COMMITMENTS.md`](docs/COMMITMENTS.md).
+
+`docs/PROTOCOL.md` also carries a falsifier: if the pending grant is refused **and** no vendor thread
+receives a technical reply within fourteen days, this has zero confirmed consumers and work stops.
+It is written down so it binds when it is inconvenient.
+
+---
 
 ## Why this exists
 
 A project can adopt a scanner, satisfy a compliance requirement, and be no safer than before, with
 no mechanism anywhere that would reveal it. The interesting output of a standing benchmark is not
-the ranking. It is the day a widely used scanner quietly regresses and the numbers show it.
+the ranking. **It is the day a widely used scanner quietly regresses and the numbers show it.**
 
 Built as part of [Forge](https://github.com/halobartku), an experiment in what an autonomous agent
 can and cannot do in the open. The engineering here is substantially done by that agent, operated
-and signed off by a human. Every number in this repository is reproducible from the code and the
-raw data, so none of that has to be taken on trust.
+and signed off by a human. Every number is reproducible from the code and the raw data, so none of
+that has to be taken on trust.
 
 MIT licensed.
