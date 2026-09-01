@@ -145,9 +145,17 @@ def demo():
     # rested on an instrument whose only observed output was zero. It does
     # work - confirmed against the real X-Ray finding on
     # squads-account-matching - but that was the luck of one tool happening to
-    # fire, not method. A synthetic case now drives the whole scoring path on
-    # every run, so a corpus of zeros can never again quietly mean a scorer
-    # that cannot say yes.
+    # fire, not method. A synthetic case now drives the scoring path on every
+    # run, so a corpus of zeros can never again quietly mean a scorer that
+    # cannot say yes.
+    #
+    # It stops short of `load_findings`: this control hands `score_case` a dict
+    # directly, so a parser that returns nothing still passes here. That gap was
+    # real and was found from outside on 2026-09-01 - the sol-audit branch of
+    # `load_findings` was disabled and every check in the repository stayed
+    # green. `test_all.py` now runs the same control from a findings file in
+    # each supported envelope, which is where a scanner's output actually
+    # starts.
     with tempfile.TemporaryDirectory() as d:
         case = os.path.join(d, "synthetic-case")
         vulnerable = "\n".join(["a", "b", "vulnerable_line", "d"]) + "\n"

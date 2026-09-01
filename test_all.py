@@ -165,6 +165,106 @@ def test_score2_class_prefix_normalised():
         "corpus 1 numbers its classes, corpus 2 does not; one mapping must serve both"
 
 
+# ------------------------------------------- the positive control, through the parser
+# Every test above hands `score_case` a dict that a human built, and so does `score2 --demo`.
+# Nothing crossed `load_findings`, the code that turns a scanner's own file into that dict. On
+# 2026-09-01 an external review disabled the sol-audit branch of `load_findings` so that it
+# appended nothing, and the whole self-checking surface stayed green: 94/94, the calibration
+# control asserting "every zero published from this corpus is a real zero", `verify.py` OK,
+# `unmapped_check` 0 candidates. Every corpus-2 verdict would have silently become `missed`.
+#
+# So the positive control now starts where a scanner's output starts: a file on disk, in that
+# tool's own envelope, parsed by the code that parses the real ones. One per supported format,
+# because a parser can break in one branch only.
+
+VARIANT_PATHS = {"insecure": "synthetic-case/insecure/src/lib.rs",
+                 "secure": "synthetic-case/secure/src/lib.rs"}
+
+
+def _findings_file(tmp, kind, rule, line):
+    """A findings file in `kind`'s own envelope, naming the fix site of the synthetic case."""
+    path = VARIANT_PATHS["insecure"]
+    blob = {
+        "radar": [{"name": rule, "description": "", "severity": "high",
+                   "locations": [f"{path}:{line}:1"]}],
+        "sol-audit": {"findings": [{"rule_id": rule, "file": path, "line": line}]},
+        "vaultlint": {"findings": [{"rule_id": rule, "file": path, "line": line}]},
+        "semgrep": {"results": [{"check_id": rule, "path": path, "start": {"line": line}}]},
+        "solsec": {"analysis_results": [{"rule_name": rule, "file_path": "./" + path,
+                                         "line_number": line}]},
+    }[kind]
+    dest = os.path.join(tmp, f"{kind}-findings.json")
+    with io.open(dest, "w", encoding="utf-8") as fh:
+        json.dump(blob, fh)
+    return dest
+
+
+def _detects_through_the_parser(kind):
+    """Parse a synthetic findings file of this kind and score it. Must come out `detected`."""
+    import score2
+    with tempfile.TemporaryDirectory() as t:
+        case, _, _ = _case(t, VULN, FIXED)
+        found = score2.load_findings(kind, _findings_file(t, kind, "RULE-X", 3))
+        assert found, f"load_findings({kind!r}) parsed a one-finding file into nothing"
+        verdict, _ = score2.score_case(case, "account-data-matching", MAP, found)
+        assert verdict == "detected", (
+            f"a real detection in {kind} format scored {verdict!r}. The parser, not the scanner, "
+            f"decides every corpus-2 zero, so this must be able to say yes.")
+
+
+def test_a_radar_findings_file_can_still_produce_a_detection():
+    _detects_through_the_parser("radar")
+
+
+def test_a_sol_audit_findings_file_can_still_produce_a_detection():
+    _detects_through_the_parser("sol-audit")
+
+
+def test_a_vaultlint_findings_file_can_still_produce_a_detection():
+    _detects_through_the_parser("vaultlint")
+
+
+def test_a_semgrep_findings_file_can_still_produce_a_detection():
+    _detects_through_the_parser("semgrep")
+
+
+def test_a_solsec_findings_file_can_still_produce_a_detection():
+    _detects_through_the_parser("solsec")
+
+
+def test_the_parser_still_separates_the_fixed_variant():
+    """A parser that loses the variant would turn every false positive into a detection.
+
+    The mirror of the tests above: the same rule at the same line on both variants must not
+    score `detected` after a round trip through the parser either.
+    """
+    import score2
+    for kind in ("radar", "sol-audit", "vaultlint", "semgrep", "solsec"):
+        with tempfile.TemporaryDirectory() as t:
+            case, _, _ = _case(t, VULN, FIXED)
+            path = os.path.join(t, "both.json")
+            src = _findings_file(t, kind, "RULE-X", 3)
+            blob = json.load(io.open(src, encoding="utf-8"))
+            text = json.dumps(blob).replace("/insecure/", "/secure/")
+            with io.open(path, "w", encoding="utf-8") as fh:
+                fh.write(json.dumps(json.loads(text)))
+            found = score2.load_findings(kind, src)
+            found.update(score2.load_findings(kind, path))
+            verdict, _ = score2.score_case(case, "account-data-matching", MAP, found)
+            assert verdict != "detected", \
+                f"{kind}: a rule firing on the fix too came out as a detection"
+
+
+def test_every_kind_run_all_reads_is_a_kind_the_parser_knows():
+    """`run_all` names a parser per findings file. An unknown one raises; a wrong one is silent."""
+    import run_all, score2
+    kinds = {kind for _, kind in run_all.SOURCES_CORPUS2.values()}
+    for kind in sorted(kinds):
+        with tempfile.TemporaryDirectory() as t:
+            found = score2.load_findings(kind, _findings_file(t, kind, "RULE-X", 3))
+            assert found, f"run_all reads a findings file with kind={kind!r} and it parses to nothing"
+
+
 # ------------------------------------------------------------- the controls
 # The claim that a score cannot be bought with volume rests entirely on this.
 
