@@ -17,10 +17,12 @@ thoroughly a tool has done a fixed piece of homework**, not whether it works on 
 
 An exam with the same questions for four years stops telling you who can do the subject.
 
-**So we built the other exam.** Nine real break-ins, each taken from the fix commit its own
-maintainers wrote; eight of them are built and measurable today, and the ninth is reported as
-`not-built` rather than quietly dropped from the denominator. The best scanner on the market scores **11/11 on the four-year-old paper and
-zero on the real one.**
+**So we built the other exam.** Real break-ins, each taken from the fix commit its own maintainers
+wrote. As of 2026-09-01 there are **17 valid cases**, **16 built** and **8 measured**: eight cases
+were added on 2026-09-01 and no scanner has been run over them yet, so they are not in the
+denominator of any figure on this page, and the one valid case that is not built is reported as
+`not-built` rather than quietly dropped. The best scanner on the market scores **11/11 on the
+four-year-old paper and zero on the real one.**
 
 ---
 
@@ -115,7 +117,7 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 
 | Scanner | Teaching corpus (2022, public) | Real vulnerabilities |
 |---|---|---|
-| `control-noisy`, 931 findings | **0 / 11** | **0**, despite 424,170 findings |
+| `control-noisy`, 931 findings | **0 / 11** | **0**, despite 1,413,620 findings |
 | **Radar** (Auditware) | **11 / 11** | 0 / 8 |
 | `sol-audit` (ours) | 4 / 11 | 0 / 8 |
 | `vaultlint` | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
@@ -125,6 +127,12 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 
 **Six scanners, eight real vulnerabilities, one detection between them** - and seeing that one
 required correcting a mapping error of our own.
+
+**Every "real vulnerabilities" figure above is out of the eight cases measured on 2026-09-01.**
+Eight further cases were added to the corpus later that day and **have not been measured by
+anything**. They are not counted as zeros, they are not counted at all: `run_all.py` reports them
+as `not-run` or `unknown` and drops the reporting scanner's status to `partial` until it is run
+again. The table will read out of sixteen when, and only when, there is a run behind it.
 
 **The control is what makes the table readable.** `control-noisy` flags every non-empty line. It
 would rank first on any metric that counts findings. Here it scores zero, so no score above was
@@ -146,8 +154,9 @@ So the interesting question is what happens off it, and answering that required 
 did not exist. Building it is the work:
 
 - **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit and
-  its parent, so the answer key is somebody else's. Nine valid cases, eight of them built, which is
-  why the table above reads out of eight.
+  its parent, so the answer key is somebody else's. 17 valid cases, 16 built, 8 measured, which is
+  why the table above reads out of eight. Class and repository concentration is recomputed from the
+  manifest in [`docs/CLASS-BALANCE.md`](docs/CLASS-BALANCE.md) rather than described in prose.
 - **Real crates**: the same bugs as whole projects rather than extracted files, built from each
   project's own `Cargo.toml` and sibling modules. This tests the packaging objection rather than
   arguing about it, and on the six pairs that could be scored it did not explain the result.
@@ -240,7 +249,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **104 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **109 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -262,7 +271,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            104 checks, mutation-verified. Run this first
+test_all.py            109 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person
@@ -300,8 +309,10 @@ which is why this repository is 49 MB rather than 2.
 
 ## Honest limits
 
-- **Nine real cases is a small corpus**, and only eight are built, so every score above is out of
-  eight. This is our largest stated weakness; growing it is milestone 2.
+- **Seventeen real cases is a small corpus**, and only eight of them have been measured, so every
+  score above is out of eight and not out of sixteen. This is our largest stated weakness; growing
+  it is milestone 2, and the eight cases added on 2026-09-01 are growth that has not yet been
+  measured rather than a better number.
 - **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
   them in time. It is therefore systematically harder than the population of real bugs and
   **understates every scanner measured on it**. It answers "do these catch the ones that cost

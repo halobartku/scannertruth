@@ -1,5 +1,5 @@
 {
- "scheme": "sha256 over canonical JSON of the case spec",
+ "scheme": "sha256 over canonical JSON of the case spec, which must carry a 256-bit hex nonce; the nonce is released with the spec",
  "why": "a holdout chosen or edited after seeing scores proves nothing",
  "rounds": [
   {
@@ -8,10 +8,13 @@
    "commitment": "fc525b66495c0f576d7d328e2b74eaa733f11fbe7fbfd2cf340de38b15835ec1",
    "released": false,
    "spec": null,
-   "note": "First sealed holdout. Spec released when round 1 is published."
+   "note": "First sealed holdout. Spec released when round 1 is published.",
+   "scheme": "sha256 over canonical JSON of the case spec, no nonce: timestamp integrity only, no concealment"
   }
  ],
  "what_this_proves": "The case that scored a round is the case sealed before it, unedited. Recompute sha256 over the canonical JSON of the released spec and compare.",
- "what_this_does_NOT_prove_in_round_1": "Concealment. Round 1's holdout is drawn from CANDIDATES-TRIAGE.md, which is public, so a determined vendor could tune against the whole shortlist. Round 1 therefore gives timestamp integrity and no secrecy. From round 2 the holdout is drawn from discovery that is not published until release. Stated here rather than left for a reader to notice.",
- "open_data_promise": "Every sealed spec is released when the round it scores is published, so the corpus stays open and free on a one-round delay. A permanently secret corpus would make this benchmark unauditable, which is worse than the problem a holdout solves."
+ "what_this_does_NOT_prove_in_round_1": "Concealment. Round 1's holdout is drawn from CANDIDATES-TRIAGE.md, which is public, so a determined vendor could tune against the whole shortlist. It was also sealed without a nonce, and every other field in the spec is public and low-entropy, so the preimage is brute-forceable at one hash per guess: round 1 gives timestamp integrity and no secrecy at all. This ledger previously said that from round 2 the holdout would be drawn from unpublished discovery and would therefore conceal. That was wrong, because the search space is public advisory databases rather than our notes. From round 2 a 256-bit nonce is required, and that, not the sourcing, is what makes concealment hold.",
+ "open_data_promise": "Every sealed spec is released when the round it scores is published, so the corpus stays open and free on a one-round delay. A permanently secret corpus would make this benchmark unauditable, which is worse than the problem a holdout solves.",
+ "nonce_required_from": 2,
+ "why_a_nonce": "Without a nonce the commitment conceals nothing. repo, fix, class and files are all public and enumerable, so a vendor guesses a candidate, hashes it and compares, at one hash per guess. Added 2026-09-01 after an external review pointed it out. Rounds sealed before then keep the scheme they were sealed under and are not re-sealed: rewriting a commitment is the one thing a commitment ledger may never do."
 }

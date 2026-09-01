@@ -15,7 +15,7 @@ number is in `ENGINEERING-LOG-2026-08-31.md`.
 ## Before anything: prove the harness works
 
 ```bash
-python test_all.py     # 104 checks, mutation-verified; expect "104 passed, 0 failed"
+python test_all.py     # 109 checks, mutation-verified; expect "109 passed, 0 failed"
 ```
 
 A harness that cannot check itself cannot tell you anything about somebody else's tool. If any check
@@ -146,7 +146,7 @@ python tools/control_c2.py                                     # controls must s
 
 ## 8. Check the controls, every time
 
-`control-noisy` flags every non-empty line: 931 findings on corpus 1, 424,170 on corpus 2, and
+`control-noisy` flags every non-empty line: 931 findings on corpus 1, 1,413,620 on corpus 2, and
 **zero real recall on both**. If it ever scores above zero, the scorer is crediting volume and every
 result is void. `control-null` establishes the floor.
 

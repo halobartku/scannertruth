@@ -174,10 +174,22 @@ promise: `holdout.py` publishes `sha256` over the canonical JSON of the case spe
 and releases the spec afterwards, so anyone can confirm the case that scored the round is the case
 sealed before it, unedited. The ledger is `COMMITMENTS-HOLDOUT.json`.
 
-**What round 1 does not give is concealment.** Its case is drawn from the public candidate
-shortlist, so it establishes timestamp integrity and nothing more; from round 2 the holdout comes
-from discovery that stays unpublished until release. Until a round has actually been scored against
-a concealed holdout, Until we do,
+**What round 1 does not give is concealment, and the reason is stronger than we first wrote.**
+Its case is drawn from the public candidate shortlist, so a vendor could tune against the whole
+shortlist. Worse, it was sealed with **no nonce**: the spec is four fields, `repo`, `fix`, `files`
+and `class`, every one of them public and enumerable, so the preimage can be brute-forced at one
+hash per guess, and `docs/CANDIDATES-TRIAGE.md` names the pending candidates, which puts round 1's
+search space at roughly two. **Round 1 therefore establishes timestamp integrity and nothing else.**
+
+This page previously said that from round 2 the holdout would come from discovery that stays
+unpublished until release, and that this would give concealment. It would not have: the search space
+is public advisory databases, not our notes. From round 2 the spec must carry a **256-bit hex
+nonce**, released with the spec so the commitment stays checkable, and that is what makes
+concealment hold. `holdout.py commit` refuses a spec without one; `python tools/holdout.py nonce`
+prints a fresh one. Any round sealed before 2026-09-01 keeps the scheme it was sealed under and is
+**not** re-sealed, because rewriting a commitment is the one thing a commitment ledger may never do.
+
+Until a round has actually been scored against a concealed holdout,
 **every score on corpus 1 in this repository should be read as in-sample**, including the 11/11, and
 including our own. Corpus 2 is out-of-sample by construction, which is why its numbers carry more
 weight despite being newer and smaller.

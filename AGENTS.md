@@ -18,7 +18,7 @@ the same program after its authors fixed it**? A rule that fires on both has det
 has recognised a shape of code that exists in working software too.
 
 The reference point is built in: `control-noisy` flags every non-empty line, produces 931 findings
-on the teaching corpus and 424,170 on the real one, and scores **zero** on both. If your measurement
+on the teaching corpus and 1,413,620 on the real one, and scores **zero** on both. If your measurement
 ever ranks it above zero, your measurement is broken, not the control.
 
 ---

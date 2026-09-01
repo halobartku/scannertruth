@@ -28,7 +28,7 @@ cd scannertruth
 python test_all.py
 ```
 
-Expect `104 passed, 0 failed`. **If anything fails, stop.** A harness that cannot check itself cannot
+Expect `109 passed, 0 failed`. **If anything fails, stop.** A harness that cannot check itself cannot
 tell you anything about somebody else's tool, and reporting a number from a broken harness is how
 this project produced a retraction.
 
@@ -184,7 +184,7 @@ Before believing any number you just produced:
 python tools/control_c2.py
 ```
 
-The noisy control flags every non-empty line: **424,170 findings, and it must score zero.** If your
+The noisy control flags every non-empty line: **1,413,620 findings, and it must score zero.** If your
 method would give it anything above zero, your method is counting volume. This is the check that
 separates a measurement from a marketing figure.
 
