@@ -699,3 +699,63 @@ and tells the model some programs are already fixed - which may suppress detecti
 for recall would score higher, and a prompt tuned against this corpus would be exactly the
 homework-tuning we criticise in vendors. The version string exists so that a better prompt produces
 a *new* measurement rather than quietly replacing this one.
+
+---
+
+## Error 39. Our noise figure counts true positives as noise, and the vendor found it
+
+**2026-09-01, 19:32-19:43.** Auditware's maintainer replied on `Auditware/radar#32` - the first
+technical reply from any measured vendor, on day fourteen of a fourteen-day falsifier. What the
+reply contains matters more than that it arrived.
+
+**They confirmed the mapping** ("all 11 class to rule entries are correct... please publish it
+as-is") and **agreed the 11/11 is in-sample**, going further than we had: they were fixing rules
+*while reading these exact files*, which is stronger than in-sample-by-training.
+
+**They reproduced our 46% noise figure independently before touching anything** - 23 of 50 firings,
+same rule breakdown - then shipped narrower rules in #33 and reported 46% to 35%.
+
+**Then they corrected themselves against their own interest.** They wrote adversarial fixtures of
+each class that are *not* in our corpus, tested the narrowed rules against them, and found all four
+had stopped detecting a real bug. Fixed in #34. The honest number they asked us to publish is
+**46% to 40%, recall unchanged at 13/13** - worse than the one that flattered them, published
+within eleven minutes of the first.
+
+**The defect in ours.** Their last point is a correction to our metric and it is right:
+
+> Some of the remaining 40% are **true positives, not false ones**. `9-closing-accounts/recommended`
+> has no signer at all and closes an account to a caller-supplied destination - anyone can call it
+> and drain it. Radar flagging it is correct. It scores as noise only because sealevel labels each
+> variant secure/recommended *for its own class*, not against every class.
+
+**We inherited a labelling assumption without stating it.** The corpus marks a variant secure with
+respect to the one class the directory is named after. We treated "fires on a secure variant" as
+noise for *any* class, so a scanner that correctly finds a different real flaw in a fixed file is
+penalised for being right. **Our noise figure is an upper bound, not a measurement**, and it was
+published as if it were a measurement.
+
+This is the same shape as error 38 earlier today: in both cases the number was easy to compute and
+the thing it claimed to mean required a check nobody had built.
+
+**Not yet fixed.** Correcting it needs a per-variant, per-class ground truth the corpus does not
+carry - which is exactly the work milestone 2 describes. Until then every noise figure we publish
+must be labelled as an upper bound with this reason attached.
+
+**They also offered to be scored cold on a holdout corpus, with no advance look.** We have a sealed
+holdout (`COMMITMENTS-HOLDOUT.json`). A vendor volunteering to be measured on unseen cases is the
+first thing in this project's history that looks like demand.
+
+## The falsifier: answered, and recorded before the outcome was convenient
+
+`docs/PROTOCOL.md` says work stops if the pending grant is refused **and** no open thread with a
+measured vendor draws a technical reply within fourteen days. Written 2026-08-31, so the clock ran
+to 2026-09-14.
+
+**A technical reply arrived on 2026-09-01**, from the vendor whose numbers we published, containing
+a reproduction of our figure, a correction of our mapping treatment, a self-correction, and an
+offer to be measured again. **The falsifier's second condition is not met and the benchmark
+continues.** The grant leg is unaffected and unresolved: two of three applications were refused and
+one remains open.
+
+Recorded here rather than only in the protocol, because a falsifier that is quietly declared
+satisfied is not a falsifier.

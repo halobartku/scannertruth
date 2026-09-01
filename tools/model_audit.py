@@ -21,6 +21,7 @@ that never happened look identical afterwards.
 """
 import argparse
 import json
+import os
 import pathlib
 import re
 import sys
@@ -34,6 +35,7 @@ CORPUS = ROOT / "corpus2"
 # two corpora have to be measured with one command and reported side by side.
 CORPUS1 = ROOT.parent / "sealevel-attacks" / "programs"
 OLLAMA = "http://localhost:11434/api/generate"
+OPENROUTER = "https://openrouter.ai/api/v1/chat/completions"
 
 # Versioned deliberately. A result measured under a different prompt is a different measurement,
 # and without recording which one ran, the number is not reproducible even for us.
@@ -58,18 +60,59 @@ def sources(case_dir, variant):
                        for f in files)
 
 
-def ask(model, code):
+def ask_openrouter(model, code, think=False):
+    """One call through OpenRouter, returning the answer and what it actually cost.
+
+    The key is read from the environment and never written to an artefact, a log line or the
+    console. `usage.include` makes the provider report real token counts and real cost per call,
+    so cost per detection is a measured number rather than an estimate - which matters, because
+    "this auditor finds 2 of 17 for four dollars" is a sentence a buyer cannot read anywhere today.
+    """
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if not key:
+        raise RuntimeError("OPENROUTER_API_KEY is not set")
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": PROMPT + code[:24000]}],
+        "temperature": 0,
+        "usage": {"include": True},
+    }
+    if not think:
+        # Only sent when we mean it; providers differ, and a silently ignored field would make
+        # think=False and think=True the same measurement under two different names.
+        payload["reasoning"] = {"exclude": True}
+    req = urllib.request.Request(
+        OPENROUTER, data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    with urllib.request.urlopen(req, timeout=1800) as r:
+        d = json.loads(r.read())
+    msg = (d.get("choices") or [{}])[0].get("message", {}) or {}
+    u = d.get("usage") or {}
+    return ((msg.get("content") or "").strip(),
+            (msg.get("reasoning") or ""),
+            (d.get("choices") or [{}])[0].get("finish_reason", ""),
+            {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
+             "cost_usd": u.get("cost")})
+
+
+def ask(model, code, think=False):
     body = json.dumps({
         "model": model,
         "prompt": PROMPT + code[:24000],
         "stream": False,
-        "think": False,
+        "think": think,
         "options": {"temperature": 0},
     }).encode()
     req = urllib.request.Request(OLLAMA, data=body, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=600) as r:
-        raw = (json.loads(r.read()).get("response") or "").strip()
-    return raw
+    with urllib.request.urlopen(req, timeout=1800) as r:
+        d = json.loads(r.read())
+    # With thinking on, ollama splits the reply: reasoning into `thinking`, the answer into
+    # `response`. On a large real crate the 9b model spent its whole budget reasoning and returned
+    # an EMPTY response, which the parser can only report as "no json" - indistinguishable from a
+    # crash. Both fields and the stop reason are recorded so an empty answer is diagnosable as
+    # "thought itself out of room" rather than filed as an unexplained failure.
+    return ((d.get("response") or "").strip(), (d.get("thinking") or ""),
+            d.get("done_reason", ""), {})
 
 
 def verdict(raw):
@@ -100,6 +143,13 @@ def main():
     ap.add_argument("--case", help="one case only, for a smoke test")
     ap.add_argument("--corpus", choices=("1", "2"), default="2",
                     help="1 = the teaching corpus everybody scores on, 2 = real vulnerabilities")
+    ap.add_argument("--provider", choices=("ollama", "openrouter"), default="ollama",
+                    help="openrouter reads OPENROUTER_API_KEY from the environment and records the "
+                         "real cost of every call; the key is never written anywhere")
+    ap.add_argument("--think", action="store_true",
+                    help="let the model reason before answering. Same model and same prompt with "
+                         "this flag is a controlled comparison: the only variable is the thinking, "
+                         "so a difference in the result is attributable to it and not to a model swap.")
     args = ap.parse_args()
 
     if args.corpus == "1":
@@ -119,11 +169,12 @@ def main():
             sys.exit(f"no such case: {args.case}")
 
     stamp = time.strftime("%Y-%m-%d")
-    out_dir = ROOT / "raw" / f"model-{args.model.replace(':', '-').replace('/', '-')}-c{args.corpus}-{stamp}"
+    think_tag = ("-think" if args.think else "") + ("-or" if args.provider == "openrouter" else "")
+    out_dir = ROOT / "raw" / f"model-{args.model.replace(':', '-').replace('/', '-')}{think_tag}-c{args.corpus}-{stamp}"
     out_dir.mkdir(parents=True, exist_ok=True)
     log = (out_dir / "runs.jsonl").open("a", encoding="utf-8")
 
-    print(f"model={args.model}  corpus={args.corpus}  prompt={PROMPT_VERSION}  runs={args.runs}  cases={len(cases)}")
+    print(f"model={args.model}  think={args.think}  corpus={args.corpus}  prompt={PROMPT_VERSION}  runs={args.runs}  cases={len(cases)}")
     print(f"artefacts: {out_dir}\n")
 
     detected = both = neither = missed = unusable = 0
@@ -141,17 +192,20 @@ def main():
             for i in range(args.runs):
                 t0 = time.time()
                 try:
-                    raw = ask(args.model, code)
+                    fn = ask_openrouter if args.provider == "openrouter" else ask
+                    raw, thinking, done, usage = fn(args.model, code, think=args.think)
                     err = None
                 except Exception as exc:  # noqa: BLE001
-                    raw, err = "", f"{type(exc).__name__}"
+                    raw, thinking, done, usage, err = "", "", "", {}, f"{type(exc).__name__}"
                 v, note = verdict(raw) if not err else (None, err)
                 log.write(json.dumps({
                     "corpus": args.corpus, "case": c["name"], "class": c.get("class", ""),
                     "variant": variant, "run": i + 1,
-                    "model": args.model, "prompt_version": PROMPT_VERSION,
+                    "model": args.model, "prompt_version": PROMPT_VERSION, "think": args.think,
                     "vulnerable": v, "note": note, "sec": round(time.time() - t0, 1),
-                    "raw": raw[:600],
+                    "raw": raw[:600], "done_reason": done,
+                    "thinking_chars": len(thinking), "thinking_tail": thinking[-300:],
+                    "provider": args.provider, **usage,
                 }, ensure_ascii=False) + "\n")
                 log.flush()
                 if v is None:
@@ -208,6 +262,7 @@ def demo():
     assert verdict('I think it might be unsafe')[0] is None      # prose is not a verdict
     assert verdict('{"vulnerable": "maybe"}')[0] is None         # neither is a hedge
     assert verdict('{broken')[0] is None
+    assert verdict('')[0] is None                                # an empty answer is not a verdict
     print("ok: prose and hedges are not detections, quoted booleans are")
 
 

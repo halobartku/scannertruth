@@ -1,0 +1,1 @@
+{"corpus": "2", "case": "metaplex-token-metadata", "class": "account-data-matching", "variant": "insecure", "run": 1, "model": "qwen3.5:9b", "prompt_version": "v1-2026-09-01", "think": true, "vulnerable": null, "note": "no json in response", "sec": 533.4, "raw": ""}
