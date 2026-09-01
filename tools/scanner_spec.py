@@ -461,7 +461,7 @@ def _stage(spec, source_dir, work_root, leaf):
 def _rewrite(path, mount, staged_prefix, path_prefix):
     """A container path back onto the corpus path the scorers use. Prefix only; nothing else."""
     p = str(path).replace("\\", "/")
-    mount = mount.rstrip("/")
+    mount = str(mount).replace("\\", "/").rstrip("/")
     rel = p[len(mount) + 1:] if p.startswith(mount + "/") else p.lstrip("/")
     if staged_prefix and rel.startswith(staged_prefix):
         rel = rel[len(staged_prefix):]
@@ -544,10 +544,14 @@ def run_leaf(spec, leaf, source_dir, path_prefix, artefact_root, tag="", tool_ro
         for f in parsed or []:
             findings.append({**f, "file": _rewrite(f["file"], mount, staged_prefix, path_prefix)})
 
+    try:
+        artefact = os.path.relpath(stdout_path, ROOT)
+    except ValueError:
+        # A path on another Windows drive has no relative form from the repository root.
+        artefact = stdout_path
     entry = {"leaf": leaf, "status": status, "exit_code": rc, "wall_seconds": wall,
              "files_seen": seen, "findings": len(findings) if status == "ok" else None,
-             "command": " ".join(cmd), "artefact": os.path.relpath(stdout_path, ROOT)
-             .replace("\\", "/")}
+             "command": " ".join(cmd), "artefact": artefact.replace("\\", "/")}
     if reason:
         entry["reason"] = reason
     return entry, findings
@@ -616,20 +620,21 @@ def run_measurement(spec, leaves, out_path, artefact_root, repeat=1, echo=True,
     passes = []
     for n in range(1, max(1, repeat) + 1):
         tag = "" if n == 1 else f".run{n}"
-        log, findings = [], []
+        log, findings, per_leaf = [], [], {}
         for leaf, source, prefix in leaves:
             entry, got = run_leaf(spec, leaf, source, prefix, artefact_root, tag,
                                   tool_root)
             log.append(entry)
             findings.extend(got)
+            per_leaf[leaf] = {_key(f) for f in got}
             if echo:
                 print(f"  {entry['status']:12} {leaf:52} exit={entry['exit_code']} "
                       f"files={entry['files_seen']} {entry['wall_seconds']}s "
                       f"{entry.get('reason', '')}".rstrip())
-        passes.append((tag, log, findings))
+        passes.append((tag, log, findings, per_leaf))
 
     envelope = spec["envelope"]
-    for tag, log, findings in passes:
+    for tag, log, findings, _per_leaf in passes:
         dest = out_path if not tag else out_path.replace(".json", tag + ".json")
         with open(dest, "w", encoding="utf-8", newline="\n") as fh:
             json.dump(WRITERS[envelope](findings), fh, indent=1)
@@ -650,21 +655,17 @@ def determinism(passes):
     if len(passes) < 2:
         return {"runs": len(passes), "verdict": "not-checked",
                 "reason": "run with --repeat 2 or more to answer this"}
-    base = {}
-    for f in passes[0][2]:
-        base.setdefault(f["file"].split("/")[0], set()).add(_key(f))
+    base = passes[0][3]
     differing = []
-    for tag, log, findings in passes[1:]:
-        other = {}
-        for f in findings:
-            other.setdefault(f["file"].split("/")[0], set()).add(_key(f))
-        for key in sorted(set(base) | set(other)):
-            if base.get(key, set()) != other.get(key, set()):
-                differing.append({"pass": tag or ".run1", "where": key,
-                                  "only_in_first": sorted(base.get(key, set())
-                                                          - other.get(key, set()))[:5],
-                                  "only_in_later": sorted(other.get(key, set())
-                                                          - base.get(key, set()))[:5]})
+    for entry in passes[1:]:
+        other = entry[3]
+        for leaf in sorted(set(base) | set(other)):
+            if base.get(leaf, set()) != other.get(leaf, set()):
+                differing.append({"pass": entry[0] or ".run1", "leaf": leaf,
+                                  "only_in_first": sorted(base.get(leaf, set())
+                                                          - other.get(leaf, set()))[:5],
+                                  "only_in_later": sorted(other.get(leaf, set())
+                                                          - base.get(leaf, set()))[:5]})
     total = sum(len(p[1]) for p in passes)
     return {"runs": len(passes), "invocations": total,
             "verdict": "deterministic" if not differing else "non-deterministic",
@@ -854,13 +855,11 @@ def demo():
         "corpus2/x/insecure/src/lib.rs"
 
     # 5. Determinism is a verdict, not an average.
-    a = ("", [{"leaf": "x/insecure", "status": "ok"}],
-         [{"rule_id": "R", "file": "corpus2/x/insecure/src/lib.rs", "line": 3, "col": 0}])
-    b = (".run2", [{"leaf": "x/insecure", "status": "ok"}],
-         [{"rule_id": "R", "file": "corpus2/x/insecure/src/lib.rs", "line": 3, "col": 0}])
+    def _pass(tag, line):
+        f = {"rule_id": "R", "file": "corpus2/x/insecure/src/lib.rs", "line": line, "col": 0}
+        return (tag, [{"leaf": "x/insecure", "status": "ok"}], [f], {"x/insecure": {_key(f)}})
+    a, b, c = _pass("", 3), _pass(".run2", 3), _pass(".run2", 9)
     assert determinism([a, b])["verdict"] == "deterministic"
-    c = (".run2", [{"leaf": "x/insecure", "status": "ok"}],
-         [{"rule_id": "R", "file": "corpus2/x/insecure/src/lib.rs", "line": 9, "col": 0}])
     bad = determinism([a, c])
     assert bad["verdict"] == "non-deterministic", bad
     assert bad["differing"], bad
