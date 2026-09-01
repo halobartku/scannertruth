@@ -65,23 +65,24 @@ the badge you are looking at may be green on the machinery and red on the number
 is deliberate and it is not a broken build. `selfcheck` says the machinery is sound; `coverage` says
 whether what is published today can account for itself.
 
-**It is red right now, and it exits 1.** Five of twenty measurements report `coverage_evidence:
-none`, thirteen problems in total. The five with no run log are corpus-1 `radar`, corpus-1
-`semgrep`, corpus-1 `vaultlint`, and `sol-audit` v2 on both corpora. Radar's 11 / 11 on the teaching
-corpus, the most quoted figure in this project, is one of them. The other eight problems are cases
-inside a denominator that no run log accounts for.
+**It is red right now, and it exits 1.** Run it: the counts move as rows are run and retired, so
+they are not repeated here. Two kinds of problem come out of it. Some rows report
+`coverage_evidence: none`, meaning no run log exists at all; Radar's 11 / 11 on the teaching corpus,
+the most quoted figure in this project, is one of those. The rest are cases inside a denominator
+that a run log does not account for, mostly the seventeenth corpus-2 case, which no scanner but
+VaultLint has seen.
 
 Read what that does and does not say:
 
-- It does **not** mean a check broke. It means five historical measurements were made the way the
-  documents used to teach, by hand, and the log was the step a person had to remember.
+- It does **not** mean a check broke. It means those measurements were made the way these documents
+  used to teach, by hand, and the run log was the step a person had to remember.
 - **A case recorded `unavailable` with a reason is not a failure here.** "Could not run" is a
   published outcome under this project's rules. `not-run` and `unknown` are the gaps.
 - It closes with **scanner runs, not with code**, and it is the acceptance check for milestone 1 in
   [`docs/ROADMAP.md`](docs/ROADMAP.md). Do not make it pass by relaxing it. If you cannot make a row
   pass, publish why.
 
-Any measurement you make from here must not add a sixth. Run it through the declaration described
+Any measurement you make from here must not add another. Run it through the declaration described
 below and it cannot: the log is written before the run returns.
 
 ---
@@ -182,7 +183,7 @@ than trusting the status column. And the determinism check runs **only if you as
 ```bash
 python tools/score2.py --scanner <name> --kind <name> --findings raw/c2-<name>.json
 python tools/unmapped_check.py --findings raw/c2-<name>.json --kind <name>
-python tools/run_all.py --verify-coverage                  # your row must not be a sixth gap
+python tools/run_all.py --verify-coverage                  # your row must not add a gap
 python tools/run_all.py                                    # appends a dated row to runs/
 ```
 - `detected` requires the mapped rule to fire **at the site the fix changed** and not on the fix.
