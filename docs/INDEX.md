@@ -84,8 +84,9 @@ The full key, including what every suffix means and which names are frozen, is
 ## Which mapping scores which row
 
 `adapters/<tool>.json` names the mapping and the raw file in its `measurements` block, and
-`tools/scanner_spec.py --list` prints this table derived. The hand copy here exists so a reader
-can see at a glance that the adapter and mapping names do not line up one to one.
+`python tools/scanner_spec.py --list` prints the adapter-to-row half of this table derived. The
+hand copy here exists so a reader can see at a glance that the adapter and mapping names do not
+line up one to one.
 
 | Clock row | Corpus | Adapter | Mapping | Findings | Run log |
 |---|---|---|---|---|---|
