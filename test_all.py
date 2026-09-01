@@ -1024,15 +1024,11 @@ def _documented_command_files():
 
     The engineering logs are excluded on purpose: a log records what was run on a date, and
     correcting a command in one would be rewriting history rather than fixing a document.
+
+    Same list as `_publication_documents`, and taken from the same place, so a document cannot be
+    live for one check and invisible to the other.
     """
-    import os
-    out = ["README.md", "AGENTS.md"]
-    for root in ("docs", "skills"):
-        for base, _, files in os.walk(root):
-            for f in sorted(files):
-                if f.endswith(".md") and not f.startswith("ENGINEERING-LOG"):
-                    out.append(os.path.join(base, f).replace("\\", "/"))
-    return sorted(out)
+    return _publication_documents()
 
 
 def _documented_scripts(text):
@@ -1239,15 +1235,29 @@ def _publication_documents():
     The engineering logs are excluded, and only they: they record what was believed on a date,
     including the wording later retracted, and a log that is edited to agree with today is not a
     log. Everything else is a live claim.
+
+    The list comes from `git ls-files` where there is a git history, not from a directory walk.
+    A walk picks up whatever else happens to be sitting in the working tree - during this work it
+    found nine unrelated scratch documents in an untracked directory - so what the check scans
+    would differ between a contributor's machine and CI. The same hazard applies to `mappings/`.
     """
-    import os
+    import os, subprocess
     out = []
-    for base, dirs, files in os.walk("."):
-        dirs[:] = [d for d in dirs if d not in (".git", "__pycache__", ".github")]
-        for f in sorted(files):
-            if f.endswith(".md") and not f.startswith("ENGINEERING-LOG"):
-                out.append(os.path.join(base, f).replace("\\", "/"))
-    return sorted(out)
+    try:
+        p = subprocess.run(["git", "ls-files", "*.md"], capture_output=True, text=True)
+        if p.returncode == 0 and p.stdout.strip():
+            out = [line.strip() for line in p.stdout.splitlines() if line.strip()]
+    except OSError:
+        out = []
+    if not out:
+        for base, dirs, files in os.walk("."):
+            dirs[:] = [d for d in dirs
+                       if not d.startswith(".") and d not in ("__pycache__",)]
+            for f in sorted(files):
+                if f.endswith(".md"):
+                    out.append(os.path.join(base, f).replace("\\", "/"))
+    return sorted(f for f in (x.replace("\\", "/") for x in out)
+                  if not os.path.basename(f).startswith("ENGINEERING-LOG"))
 
 
 def test_no_document_carries_a_superseded_claim():
