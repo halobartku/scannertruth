@@ -9,12 +9,12 @@ project has published both mistakes, in both directions, and they are errors 20,
 32 in the engineering log. So every row below says which kind of evidence exists, and the
 weak kinds are named rather than rounded up.
 
-**15 of 20 measurements have a per-run log.**
+**17 of 20 measurements have a per-run log.**
 
 | corpus | scanner | evidence | detail |
 |---|---|---|---|
 | corpus 1 | `radar` | findings only | raw/radar-full.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart |
-| corpus 1 | `semgrep` | findings only | raw/semgrep-c1.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart |
+| corpus 1 | `semgrep` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/semgrep-c1.json.log) |
 | corpus 1 | `semgrep-solana-standard` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-semgrep-solana-standard.json.log) |
 | corpus 1 | `semgrep-solana-standard-wide` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-semgrep-solana-standard.json.log) |
 | corpus 1 | `sol-audit` | findings only | raw/sol-audit.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart |
@@ -22,7 +22,7 @@ weak kinds are named rather than rounded up.
 | corpus 1 | `sol-audit-v3-all` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-sol-audit-v3-all.json.log) |
 | corpus 1 | `sol-audit-v3-broad` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-sol-audit-v3-broad.json.log) |
 | corpus 1 | `solsec` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-solsec-percase.json.log) |
-| corpus 1 | `vaultlint` | findings only | raw/vaultlint.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart |
+| corpus 1 | `vaultlint` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/vaultlint.json.log) |
 | corpus 1 | `xray` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/xray-c1-raw.json.log) |
 | corpus 2 | `radar` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-radar-current.json.log) |
 | corpus 2 | `semgrep-solana-standard-c2` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-semgrep-solana-standard.json.log) |
@@ -37,9 +37,7 @@ weak kinds are named rather than rounded up.
 ## What is still missing, said plainly
 
 - **radar, corpus 1**: raw/radar-full.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart
-- **semgrep, corpus 1**: raw/semgrep-c1.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart
 - **sol-audit, corpus 1**: raw/sol-audit.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart
-- **vaultlint, corpus 1**: raw/vaultlint.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart
 - **sol-audit, corpus 2**: raw/c2-sol-audit.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart
 
 A row with `findings only` is not a wrong number. It is a number whose denominator

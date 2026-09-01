@@ -171,20 +171,22 @@ section has.
 
 | scanner | verdicts compared | identical | differ | not comparable |
 |---|---|---|---|---|
-| sol-audit 3.0, strict | 16 | 16 | **0** | 1 |
-| sol-audit 3.0, broad | 16 | 16 | **0** | 1 |
-| sol-audit 3.0, all | 16 | 16 | **0** | 1 |
-| semgrep + SOL-0XX, narrow | 16 | 16 | **0** | 1 |
-| semgrep + SOL-0XX, wide | 16 | 16 | **0** | 1 |
-| solsec 0.2.1 | 16 | 16 | **0** | 1 |
+| sol-audit 3.0, strict | 17 | 17 | **0** | 0 |
+| sol-audit 3.0, broad | 17 | 17 | **0** | 0 |
+| sol-audit 3.0, all | 17 | 17 | **0** | 0 |
+| semgrep + SOL-0XX, narrow | 17 | 17 | **0** | 0 |
+| semgrep + SOL-0XX, wide | 17 | 17 | **0** | 0 |
+| solsec 0.2.1 | 17 | 17 | **0** | 0 |
 | Radar | 8 | 8 | **0** | 9 |
 | X-Ray, pre-registered map | 7 | 7 | **0** | 10 |
 | X-Ray, corrected map | 7 | 7 | **0** | 10 |
 
-**118 verdicts compared across the two packagings. Zero differ. 35 could not be compared**, and
-those 35 are named in the tool's output rather than rounded away: `spl-token-lending-rounding` has
-no corpus-2 run behind it yet for any of these tools, X-Ray's corpus-2 findings file predates eight
-of the cases, and Radar and X-Ray between them cannot finish eleven of the real crates. **Radar's
+**124 verdicts compared across the two packagings. Zero differ. 29 could not be compared**, and
+those 29 are named in the tool's output rather than rounded away: X-Ray's corpus-2 findings file
+predates eight of the cases, and Radar and X-Ray between them cannot finish eleven of the real
+crates. `spl-token-lending-rounding` was in that list until 2026-09-01, when the six rows above
+were re-run over all seventeen cases; Radar's corpus-2 row still has not been, which is why its
+line still reads eight and nine. **Radar's
 nine uncomparable cases are the point of the next section**: two of them are cases where it returns
 `unlocated` on the extracted file and cannot open the real crate at all.
 

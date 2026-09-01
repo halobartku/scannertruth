@@ -1,308 +1,342 @@
 [
  {
-  "leaf": "anchor-account-reload-owner/insecure",
-  "status": "ok",
-  "findings": 13,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/anchor-account-reload-owner.insecure.json"
- },
- {
-  "leaf": "anchor-account-reload-owner/secure",
-  "status": "ok",
-  "findings": 13,
-  "rc": 0,
-  "wall_s": 5.0,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/anchor-account-reload-owner.secure.json"
- },
- {
-  "leaf": "anchor-interface-account/insecure",
-  "status": "ok",
-  "findings": 14,
-  "rc": 0,
-  "wall_s": 4.7,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/anchor-interface-account.insecure.json"
- },
- {
-  "leaf": "anchor-interface-account/secure",
-  "status": "ok",
-  "findings": 11,
-  "rc": 0,
-  "wall_s": 4.9,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/anchor-interface-account.secure.json"
- },
- {
-  "leaf": "anchor-program-system/insecure",
-  "status": "ok",
-  "findings": 10,
-  "rc": 0,
-  "wall_s": 5.0,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/anchor-program-system.insecure.json"
- },
- {
-  "leaf": "anchor-program-system/secure",
-  "status": "ok",
-  "findings": 14,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/anchor-program-system.secure.json"
- },
- {
-  "leaf": "cashio-account-data/insecure",
-  "status": "ok",
-  "findings": 0,
-  "rc": 0,
-  "wall_s": 4.7,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/cashio-account-data.insecure.json"
- },
- {
-  "leaf": "cashio-account-data/secure",
-  "status": "ok",
-  "findings": 0,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/cashio-account-data.secure.json"
- },
- {
-  "leaf": "metaplex-bubblegum-creator/insecure",
-  "status": "ok",
-  "findings": 8,
-  "rc": 0,
-  "wall_s": 5.0,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/metaplex-bubblegum-creator.insecure.json"
- },
- {
-  "leaf": "metaplex-bubblegum-creator/secure",
-  "status": "ok",
-  "findings": 8,
-  "rc": 0,
-  "wall_s": 5.2,
-  "files_scanned": 2,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/metaplex-bubblegum-creator.secure.json"
- },
- {
-  "leaf": "metaplex-candy-machine/insecure",
-  "status": "ok",
-  "findings": 4,
-  "rc": 0,
-  "wall_s": 4.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/metaplex-candy-machine.insecure.json"
- },
- {
-  "leaf": "metaplex-candy-machine/secure",
-  "status": "ok",
-  "findings": 5,
-  "rc": 0,
-  "wall_s": 4.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/metaplex-candy-machine.secure.json"
- },
- {
-  "leaf": "metaplex-token-metadata/insecure",
-  "status": "ok",
-  "findings": 3,
-  "rc": 0,
-  "wall_s": 4.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/metaplex-token-metadata.insecure.json"
- },
- {
-  "leaf": "metaplex-token-metadata/secure",
-  "status": "ok",
-  "findings": 3,
-  "rc": 0,
-  "wall_s": 4.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/metaplex-token-metadata.secure.json"
- },
- {
-  "leaf": "solend-owner-checks/insecure",
-  "status": "ok",
-  "findings": 77,
-  "rc": 0,
-  "wall_s": 5.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/solend-owner-checks.insecure.json"
- },
- {
-  "leaf": "solend-owner-checks/secure",
-  "status": "ok",
-  "findings": 77,
-  "rc": 0,
-  "wall_s": 5.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/solend-owner-checks.secure.json"
- },
- {
-  "leaf": "solido-anker-arbitrary-cpi/insecure",
-  "status": "ok",
-  "findings": 1,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/solido-anker-arbitrary-cpi.insecure.json"
- },
- {
-  "leaf": "solido-anker-arbitrary-cpi/secure",
-  "status": "ok",
-  "findings": 1,
-  "rc": 0,
-  "wall_s": 4.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/solido-anker-arbitrary-cpi.secure.json"
- },
- {
-  "leaf": "solido-deposit-reserve-account/insecure",
-  "status": "ok",
-  "findings": 6,
-  "rc": 0,
-  "wall_s": 4.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/solido-deposit-reserve-account.insecure.json"
- },
- {
-  "leaf": "solido-deposit-reserve-account/secure",
-  "status": "ok",
-  "findings": 6,
-  "rc": 0,
-  "wall_s": 4.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/solido-deposit-reserve-account.secure.json"
- },
- {
-  "leaf": "spl-stake-pool-fee-rounding/insecure",
-  "status": "ok",
-  "findings": 0,
-  "rc": 0,
-  "wall_s": 4.4,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/spl-stake-pool-fee-rounding.insecure.json"
- },
- {
-  "leaf": "spl-stake-pool-fee-rounding/secure",
-  "status": "ok",
-  "findings": 0,
-  "rc": 0,
-  "wall_s": 4.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/spl-stake-pool-fee-rounding.secure.json"
- },
- {
-  "leaf": "spl-stake-pool-mint-decimals/insecure",
-  "status": "ok",
-  "findings": 86,
-  "rc": 0,
-  "wall_s": 5.9,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/spl-stake-pool-mint-decimals.insecure.json"
- },
- {
-  "leaf": "spl-stake-pool-mint-decimals/secure",
-  "status": "ok",
-  "findings": 86,
-  "rc": 0,
-  "wall_s": 5.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/spl-stake-pool-mint-decimals.secure.json"
- },
- {
-  "leaf": "squads-account-matching/insecure",
-  "status": "ok",
-  "findings": 20,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/squads-account-matching.insecure.json"
- },
- {
-  "leaf": "squads-account-matching/secure",
-  "status": "ok",
-  "findings": 20,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/squads-account-matching.secure.json"
- },
- {
-  "leaf": "squads-recursive-execute/insecure",
-  "status": "ok",
-  "findings": 22,
-  "rc": 0,
-  "wall_s": 4.9,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/squads-recursive-execute.insecure.json"
- },
- {
-  "leaf": "squads-recursive-execute/secure",
-  "status": "ok",
-  "findings": 22,
-  "rc": 0,
-  "wall_s": 4.8,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/squads-recursive-execute.secure.json"
- },
- {
-  "leaf": "squads-signer-auth/insecure",
-  "status": "ok",
-  "findings": 20,
-  "rc": 0,
-  "wall_s": 4.7,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/squads-signer-auth.insecure.json"
- },
- {
-  "leaf": "squads-signer-auth/secure",
-  "status": "ok",
-  "findings": 20,
-  "rc": 0,
-  "wall_s": 4.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/squads-signer-auth.secure.json"
- },
- {
-  "leaf": "token-2022-confidential-approve-mint/insecure",
-  "status": "ok",
-  "findings": 18,
-  "rc": 0,
-  "wall_s": 4.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/token-2022-confidential-approve-mint.insecure.json"
- },
- {
-  "leaf": "token-2022-confidential-approve-mint/secure",
-  "status": "ok",
-  "findings": 18,
-  "rc": 0,
-  "wall_s": 4.6,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/token-2022-confidential-approve-mint.secure.json"
- },
- {
   "leaf": "wormhole-sysvar/insecure",
   "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.19,
+  "files_seen": 1,
   "findings": 2,
-  "rc": 0,
-  "wall_s": 4.3,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/wormhole-sysvar.insecure.json"
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/wormhole-sysvar/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/wormhole-sysvar.insecure/stdout.log"
  },
  {
   "leaf": "wormhole-sysvar/secure",
   "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.92,
+  "files_seen": 1,
   "findings": 2,
-  "rc": 0,
-  "wall_s": 4.5,
-  "files_scanned": 1,
-  "artefact": "/root/st-fix-20260901/semgrep-out/c2/wormhole-sysvar.secure.json"
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/wormhole-sysvar/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/wormhole-sysvar.secure/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.79,
+  "files_seen": 1,
+  "findings": 77,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solend-owner-checks/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/solend-owner-checks.insecure/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.71,
+  "files_seen": 1,
+  "findings": 77,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solend-owner-checks/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/solend-owner-checks.secure/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.54,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-token-lending-rounding/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/spl-token-lending-rounding.insecure/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.83,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-token-lending-rounding/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/spl-token-lending-rounding.secure/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.91,
+  "files_seen": 1,
+  "findings": 20,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-signer-auth/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/squads-signer-auth.insecure/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.8,
+  "files_seen": 1,
+  "findings": 20,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-signer-auth/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/squads-signer-auth.secure/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.82,
+  "files_seen": 1,
+  "findings": 20,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-account-matching/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/squads-account-matching.insecure/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.9,
+  "files_seen": 1,
+  "findings": 20,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-account-matching/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/squads-account-matching.secure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.37,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-token-metadata/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/metaplex-token-metadata.insecure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.81,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-token-metadata/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/metaplex-token-metadata.secure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.8,
+  "files_seen": 1,
+  "findings": 4,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-candy-machine/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/metaplex-candy-machine.insecure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.65,
+  "files_seen": 1,
+  "findings": 5,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-candy-machine/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/metaplex-candy-machine.secure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.45,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-bubblegum-creator/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/metaplex-bubblegum-creator.insecure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.72,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-bubblegum-creator/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/metaplex-bubblegum-creator.secure/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.87,
+  "files_seen": 1,
+  "findings": 14,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-interface-account/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/anchor-interface-account.insecure/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.14,
+  "files_seen": 1,
+  "findings": 11,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-interface-account/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/anchor-interface-account.secure/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.84,
+  "files_seen": 1,
+  "findings": 10,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-program-system/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/anchor-program-system.insecure/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.85,
+  "files_seen": 1,
+  "findings": 14,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-program-system/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/anchor-program-system.secure/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.8,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-deposit-reserve-account/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/solido-deposit-reserve-account.insecure/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.92,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-deposit-reserve-account/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/solido-deposit-reserve-account.secure/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.66,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-anker-arbitrary-cpi/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/solido-anker-arbitrary-cpi.insecure/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.47,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-anker-arbitrary-cpi/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/solido-anker-arbitrary-cpi.secure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.96,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-fee-rounding/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.insecure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.94,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-fee-rounding/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.secure/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.73,
+  "files_seen": 1,
+  "findings": 18,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/token-2022-confidential-approve-mint/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/token-2022-confidential-approve-mint.insecure/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.19,
+  "files_seen": 1,
+  "findings": 18,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/token-2022-confidential-approve-mint/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/token-2022-confidential-approve-mint.secure/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.97,
+  "files_seen": 1,
+  "findings": 22,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-recursive-execute/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/squads-recursive-execute.insecure/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.76,
+  "files_seen": 1,
+  "findings": 22,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-recursive-execute/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/squads-recursive-execute.secure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.7,
+  "files_seen": 1,
+  "findings": 86,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-mint-decimals/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/spl-stake-pool-mint-decimals.insecure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 6.11,
+  "files_seen": 1,
+  "findings": 86,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-mint-decimals/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/spl-stake-pool-mint-decimals.secure/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 4.73,
+  "files_seen": 1,
+  "findings": 13,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-account-reload-owner/insecure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/anchor-account-reload-owner.insecure/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 5.14,
+  "files_seen": 1,
+  "findings": 13,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-account-reload-owner/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src",
+  "artefact": "raw/semgrep-ss-c2-2026-09-01-fw/anchor-account-reload-owner.secure/stdout.log"
  }
 ]

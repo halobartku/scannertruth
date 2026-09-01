@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:22.964511530Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 25,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 25,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 25
+    },
+    "files_with_issues": [
+      "/src/src/state.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 283,
+      "column": null,
+      "code_snippet": "if *authority_address == expected_address {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 393,
+      "column": null,
+      "code_snippet": "if *mint_info.key != self.pool_mint {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 404,
+      "column": null,
+      "code_snippet": "if *manager_info.key != self.manager {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 421,
+      "column": null,
+      "code_snippet": "if *staker_info.key != self.staker {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 441,
+      "column": null,
+      "code_snippet": "if *validator_list_info.key != self.validator_list {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 458,
+      "column": null,
+      "code_snippet": "if *reserve_stake_info.key != self.reserve_stake {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 830,
+      "column": null,
+      "code_snippet": "const LEN: usize = 1 + 4;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1229,
+      "column": null,
+      "code_snippet": "assert_eq!(ValidatorList::calculate_max_validators(size.saturating_add(get_packed_len::<ValidatorStakeInfo>())), (test_amount + 1)as usize);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1248,
+      "column": null,
+      "code_snippet": "(total_lamports - rewards, rewards)",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1260,
+      "column": null,
+      "code_snippet": "total_lamports: 100 * LAMPORTS_PER_SOL,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1261,
+      "column": null,
+      "code_snippet": "pool_token_supply: 100 * LAMPORTS_PER_SOL,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1265,
+      "column": null,
+      "code_snippet": "let reward_lamports = 10 * LAMPORTS_PER_SOL;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1274,
+      "column": null,
+      "code_snippet": "assert_eq!(fee_lamports, LAMPORTS_PER_SOL - 1); // off-by-one due to",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1321,
+      "column": null,
+      "code_snippet": "let epoch_rate = pool_token_value / last_epoch_pool_token_value - 1.0;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1322,
+      "column": null,
+      "code_snippet": "const SECONDS_PER_EPOCH: f64 = DEFAULT_SLOTS_PER_EPOCH as f64 * DEFAULT_S_PER_SLOT;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1323,
+      "column": null,
+      "code_snippet": "const EPOCHS_PER_YEAR: f64 = SECONDS_PER_DAY as f64 * 365.25 / SECONDS_PER_EPOCH;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1325,
+      "column": null,
+      "code_snippet": "let yearly_rate = epoch_rate * EPOCHS_PER_YEAR;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1326,
+      "column": null,
+      "code_snippet": "assert!((yearly_rate - 0.080355).abs() < EPSILON);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1357,
+      "column": null,
+      "code_snippet": "let epsilon = 2 + reward_lamports / total_lamports;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1358,
+      "column": null,
+      "code_snippet": "assert!(max_fee_lamports - fee_lamports <= epsilon,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1370,
+      "column": null,
+      "code_snippet": "(total_lamports - deposit_lamports, pool_token_supply.saturating_sub(deposit_lamports).max(1), deposit_lamports)",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1397,
+      "column": null,
+      "code_snippet": "let second_half_deposit = deposit_result - first_half_deposit; // do the whole thing",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1399,
+      "column": null,
+      "code_snippet": "assert!(first_withdraw_result + second_withdraw_result <= deposit_stake);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1423,
+      "column": null,
+      "code_snippet": "assert!(withdraw_result * 2 <= deposit_stake);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 1457,
+      "column": null,
+      "code_snippet": ".calc_lamports_withdraw_amount(pool_token_supply - 1)",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 25 overflow-prone locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

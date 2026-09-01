@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:02.117568007Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 6,
+    "critical_issues": 0,
+    "high_issues": 2,
+    "medium_issues": 4,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "reentrancy": 1,
+      "missing_signer_check": 1,
+      "integer_overflow": 4
+    },
+    "files_with_issues": [
+      "/src/src/processor.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2051,
+      "column": null,
+      "code_snippet": "fn assert_uninitialized<T: Pack + IsInitialized>(",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2077,
+      "column": null,
+      "code_snippet": "let mut end = start + length;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2089,
+      "column": null,
+      "code_snippet": "end = start + length;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2429,
+      "column": null,
+      "code_snippet": "E: 'static + std::error::Error + DecodeError<E> + PrintProgramError + FromPrimitive,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'process_instruction' may be missing signer validation",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 37,
+      "column": null,
+      "code_snippet": "pub fn process_instruction(",
+      "suggestion": "Add signer validation to function 'process_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 1882 after external call",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1873,
+      "column": null,
+      "code_snippet": "invoke(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "⚠️  2 high-severity issues require attention.",
+    "Consider using checked arithmetic operations for 4 overflow-prone locations.",
+    "Review 1 potential reentrancy vulnerabilities and implement guards.",
+    "Add signer validation to 1 instruction handlers.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

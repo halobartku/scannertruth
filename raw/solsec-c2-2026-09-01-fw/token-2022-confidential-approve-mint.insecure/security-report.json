@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:10.951570972Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 20,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 20,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 20
+    },
+    "files_with_issues": [
+      "/src/src/processor.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 244,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 326,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 337,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 430,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 625,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 693,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 751,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 821,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 920,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1082,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1087,
+      "column": null,
+      "code_snippet": "#[cfg(not(feature = \"zk-ops\"))]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1092,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1104,
+      "column": null,
+      "code_snippet": "#[cfg(not(feature = \"zk-ops\"))]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1109,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1123,
+      "column": null,
+      "code_snippet": "#[cfg(not(feature = \"zk-ops\"))]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1128,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1136,
+      "column": null,
+      "code_snippet": "#[cfg(not(feature = \"zk-ops\"))]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1159,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"zk-ops\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1181,
+      "column": null,
+      "code_snippet": "#[cfg(not(feature = \"zk-ops\"))]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 20 overflow-prone locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

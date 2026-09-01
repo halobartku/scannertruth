@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:24.071304199Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 14,
+    "critical_issues": 0,
+    "high_issues": 4,
+    "medium_issues": 10,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 10,
+      "missing_signer_check": 2,
+      "reentrancy": 2
+    },
+    "files_with_issues": [
+      "/src/src/lib.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 16,
+      "column": null,
+      "code_snippet": "policy: \"https://github.com/Squads-Protocol/squads-mpl/blob/main/SECURITY.md\",",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 18,
+      "column": null,
+      "code_snippet": "source_code: \"https://github.com/squads-protocol/squads-mpl\",",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 73,
+      "column": null,
+      "code_snippet": "if *multisig_account_info.owner != squads_mpl::ID {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 77,
+      "column": null,
+      "code_snippet": "let spots_left = ((curr_data_size - Ms::SIZE_WITHOUT_MEMBERS) / 32 ) - ctx.accounts.multisig.keys.len();",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 82,
+      "column": null,
+      "code_snippet": "let needed_len = curr_data_size + ( 10 * 32 );",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 389,
+      "column": null,
+      "code_snippet": "if *ix_account_info.key != *ctx.accounts.member.key {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 394,
+      "column": null,
+      "code_snippet": "if *ix_account_info.key != ix_keys[account_index].pubkey {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 545,
+      "column": null,
+      "code_snippet": "space = 8 + MsTransaction::initial_size_with_members(multisig.keys.len()),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 591,
+      "column": null,
+      "code_snippet": "space = 8 + instruction_data.get_max_size(),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 598,
+      "column": null,
+      "code_snippet": "constraint = 8 + instruction_data.get_max_size() <= MsInstruction::MAXIMUM_SIZE @MsError::InvalidTransactionState,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'add_instruction' may be missing signer validation",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 237,
+      "column": null,
+      "code_snippet": "pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'add_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'execute_instruction<'info>' may be missing signer validation",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 442,
+      "column": null,
+      "code_snippet": "pub fn execute_instruction<'info>(ctx: Context<'_,'_,'_,'info,ExecuteInstruction<'info>>) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'execute_instruction<'info>':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 422 after external call",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 415,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 502 after external call",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 493,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "⚠️  4 high-severity issues require attention.",
+    "Review 2 potential reentrancy vulnerabilities and implement guards.",
+    "Consider using checked arithmetic operations for 10 overflow-prone locations.",
+    "Add signer validation to 2 instruction handlers.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:20.347218848Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 7,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 7,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 1,
+      "unchecked_account": 6
+    },
+    "files_with_issues": [
+      "/src/src/program.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/program.rs",
+      "line_number": 119,
+      "column": null,
+      "code_snippet": "if *self.info.owner == bpf_loader_upgradeable::ID {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/program.rs",
+      "line_number": 100,
+      "column": null,
+      "code_snippet": "info: &'info AccountInfo<'info>,",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/program.rs",
+      "line_number": 169,
+      "column": null,
+      "code_snippet": "accounts: &mut &'info [AccountInfo<'info>],",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/program.rs",
+      "line_number": 195,
+      "column": null,
+      "code_snippet": "fn to_account_infos(&self) -> Vec<AccountInfo<'info>> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/program.rs",
+      "line_number": 200,
+      "column": null,
+      "code_snippet": "impl<'info, T> AsRef<AccountInfo<'info>> for Program<'info, T> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/program.rs",
+      "line_number": 201,
+      "column": null,
+      "code_snippet": "fn as_ref(&self) -> &AccountInfo<'info> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/program.rs",
+      "line_number": 207,
+      "column": null,
+      "code_snippet": "type Target = AccountInfo<'info>;",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 1 overflow-prone locations.",
+    "Implement proper account validation for 6 locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

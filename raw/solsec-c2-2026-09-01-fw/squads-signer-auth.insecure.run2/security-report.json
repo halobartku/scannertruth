@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:16.007188028Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 8,
+    "critical_issues": 0,
+    "high_issues": 2,
+    "medium_issues": 6,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 6,
+      "reentrancy": 1,
+      "missing_signer_check": 1
+    },
+    "files_with_issues": [
+      "/src/src/lib.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 49,
+      "column": null,
+      "code_snippet": "let next_len = curr_data_size + 32;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 51,
+      "column": null,
+      "code_snippet": "let needed_len = curr_data_size + ( 10 * 32 );",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 274,
+      "column": null,
+      "code_snippet": "let max_ix_index = ctx.accounts.transaction.instruction_index + 1;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 357,
+      "column": null,
+      "code_snippet": "space = 8 + Ms::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 384,
+      "column": null,
+      "code_snippet": "space = 8 + MsTransaction::initial_size_with_members(multisig.keys.len()),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 429,
+      "column": null,
+      "code_snippet": "space = 8 + MsInstruction::MAXIMUM_SIZE,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "missing_signer_check",
+      "severity": "high",
+      "message": "Instruction handler 'add_instruction' may be missing signer validation",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 183,
+      "column": null,
+      "code_snippet": "pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {",
+      "suggestion": "Add signer validation to function 'add_instruction':\n\n  Option 1 - In account constraints:\n  #[account(signer)]\n  pub authority: Signer<'info>,\n\n  Option 2 - Runtime validation:\n  require!(ctx.accounts.authority.is_signer, \"Authority must sign\");\n\n  Option 3 - Using has_one constraint:\n  #[account(has_one = authority)]\n  pub target_account: Account<'info, MyAccount>,"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 333 after external call",
+      "file_path": "/src/src/lib.rs",
+      "line_number": 327,
+      "column": null,
+      "code_snippet": "invoke_signed(",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "⚠️  2 high-severity issues require attention.",
+    "Add signer validation to 1 instruction handlers.",
+    "Consider using checked arithmetic operations for 6 overflow-prone locations.",
+    "Review 1 potential reentrancy vulnerabilities and implement guards.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

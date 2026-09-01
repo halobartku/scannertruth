@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:25.185910833Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 11,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 11,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 11
+    },
+    "files_with_issues": [
+      "/src/src/processor.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 138,
+      "column": null,
+      "code_snippet": "if *program_id != system_program::id() {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 152,
+      "column": null,
+      "code_snippet": "if *program_id != stake::program::id() {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 166,
+      "column": null,
+      "code_snippet": "if *program_id != inline_mpl_token_metadata::id() {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 183,
+      "column": null,
+      "code_snippet": "if *program_id != *account_info.owner {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 858,
+      "column": null,
+      "code_snippet": "if *reserve_stake_info.owner != stake::program::id() {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 1290,
+      "column": null,
+      "code_snippet": "let validator_list_data = &mut *validator_list_info.data.borrow_mut();",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2480,
+      "column": null,
+      "code_snippet": "if *validator_list_info.key != stake_pool.validator_list {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 2706,
+      "column": null,
+      "code_snippet": "if *stake_deposit_authority_info.key == stake_deposit_authority_program_address {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 3133,
+      "column": null,
+      "code_snippet": "let validator_list_item_info = if *stake_split_from.key == stake_pool.reserve_stake {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 3969,
+      "column": null,
+      "code_snippet": "E: 'static + std::error::Error + DecodeError<E> + PrintProgramError + FromPrimitive,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 4002,
+      "column": null,
+      "code_snippet": "StakePoolError::WithdrawalTooSmall => msg!(\"Error: Not enough pool tokens provided to withdraw 1-lamport stake\"),",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 11 overflow-prone locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

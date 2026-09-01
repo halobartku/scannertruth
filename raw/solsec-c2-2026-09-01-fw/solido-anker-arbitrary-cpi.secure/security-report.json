@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T12:56:09.790837134Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 8,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 8,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 8
+    },
+    "files_with_issues": [
+      "/src/src/state.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 90,
+      "column": null,
+      "code_snippet": "BorshSerialize::serialize(self, &mut *account.data.borrow_mut())?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 104,
+      "column": null,
+      "code_snippet": ".expect(\"Depends only on Anker-controlled values, should not fail.\");",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 106,
+      "column": null,
+      "code_snippet": "if *account_info.key != address {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 132,
+      "column": null,
+      "code_snippet": ".expect(\"Depends only on Anker-controlled values, should not fail.\");",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 134,
+      "column": null,
+      "code_snippet": "if *account_info.key != address {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 222,
+      "column": null,
+      "code_snippet": "if *provided_mint.owner != spl_token::id() {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 665,
+      "column": null,
+      "code_snippet": "(amount * rate).map(|x| BLamports(x.0))",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/state.rs",
+      "line_number": 687,
+      "column": null,
+      "code_snippet": "(amount * rate).map(|x| StLamports(x.0))",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 8 overflow-prone locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

@@ -1,0 +1,342 @@
+[
+ {
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.3,
+  "files_seen": 1,
+  "findings": 10,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/wormhole-sysvar/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/wormhole-sysvar.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/wormhole-sysvar.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.34,
+  "files_seen": 1,
+  "findings": 10,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/wormhole-sysvar/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/wormhole-sysvar.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/wormhole-sysvar.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solend-owner-checks/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/solend-owner-checks.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/solend-owner-checks.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solend-owner-checks/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/solend-owner-checks.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/solend-owner-checks.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.4,
+  "files_seen": 2,
+  "findings": 10,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-token-lending-rounding/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/spl-token-lending-rounding.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/spl-token-lending-rounding.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 2,
+  "findings": 10,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-token-lending-rounding/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/spl-token-lending-rounding.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/spl-token-lending-rounding.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-signer-auth/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/squads-signer-auth.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/squads-signer-auth.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-signer-auth/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/squads-signer-auth.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/squads-signer-auth.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.39,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-account-matching/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/squads-account-matching.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/squads-account-matching.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-account-matching/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/squads-account-matching.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/squads-account-matching.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-token-metadata/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/metaplex-token-metadata.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/metaplex-token-metadata.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-token-metadata/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/metaplex-token-metadata.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/metaplex-token-metadata.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-candy-machine/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/metaplex-candy-machine.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/metaplex-candy-machine.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-candy-machine/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/metaplex-candy-machine.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/metaplex-candy-machine.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-bubblegum-creator/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/metaplex-bubblegum-creator.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/metaplex-bubblegum-creator.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 2,
+  "findings": 3,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/metaplex-bubblegum-creator/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/metaplex-bubblegum-creator.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/metaplex-bubblegum-creator.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 19,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-interface-account/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/anchor-interface-account.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/anchor-interface-account.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 19,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-interface-account/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/anchor-interface-account.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/anchor-interface-account.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-program-system/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/anchor-program-system.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/anchor-program-system.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 10,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-program-system/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/anchor-program-system.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/anchor-program-system.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.39,
+  "files_seen": 1,
+  "findings": 14,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-deposit-reserve-account/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/solido-deposit-reserve-account.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/solido-deposit-reserve-account.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.36,
+  "files_seen": 1,
+  "findings": 14,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-deposit-reserve-account/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/solido-deposit-reserve-account.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/solido-deposit-reserve-account.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-anker-arbitrary-cpi/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/solido-anker-arbitrary-cpi.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/solido-anker-arbitrary-cpi.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.4,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/solido-anker-arbitrary-cpi/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/solido-anker-arbitrary-cpi.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/solido-anker-arbitrary-cpi.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 25,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-fee-rounding/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.34,
+  "files_seen": 1,
+  "findings": 25,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-fee-rounding/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.36,
+  "files_seen": 1,
+  "findings": 20,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/token-2022-confidential-approve-mint/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/token-2022-confidential-approve-mint.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/token-2022-confidential-approve-mint.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 21,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/token-2022-confidential-approve-mint/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/token-2022-confidential-approve-mint.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/token-2022-confidential-approve-mint.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 14,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-recursive-execute/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/squads-recursive-execute.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/squads-recursive-execute.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.41,
+  "files_seen": 1,
+  "findings": 14,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/squads-recursive-execute/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/squads-recursive-execute.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/squads-recursive-execute.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 11,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-mint-decimals/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/spl-stake-pool-mint-decimals.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/spl-stake-pool-mint-decimals.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 11,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-mint-decimals/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/spl-stake-pool-mint-decimals.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/spl-stake-pool-mint-decimals.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.34,
+  "files_seen": 1,
+  "findings": 23,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-account-reload-owner/insecure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/anchor-account-reload-owner.insecure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/anchor-account-reload-owner.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.29,
+  "files_seen": 1,
+  "findings": 23,
+  "command": "docker run --rm --network none -v /root/st-fw-20260901/corpus2/anchor-account-reload-owner/secure:/src:ro -v /root/st-fw-20260901/raw/solsec-c2-2026-09-01-fw/anchor-account-reload-owner.secure.run2:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open",
+  "artefact": "raw/solsec-c2-2026-09-01-fw/anchor-account-reload-owner.secure.run2/stdout.log"
+ }
+]

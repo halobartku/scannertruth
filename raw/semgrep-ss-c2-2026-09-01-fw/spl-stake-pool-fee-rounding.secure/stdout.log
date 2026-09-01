@@ -1,0 +1,10 @@
+COMMAND: docker run --rm --network none -v /root/st-fw-20260901/corpus2/spl-stake-pool-fee-rounding/secure:/src:ro -v /root/st-fw-20260901/raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml:/rules/solana-security-standard.yaml:ro -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src
+EXIT: 0
+WALL_SECONDS: 4.94
+
+STDOUT:
+{"version":"1.174.0","results":[],"errors":[],"paths":{"scanned":["/src/src/state.rs"]},"time":{"rules":[],"rules_parse_time":0.0038971900939941406,"profiling_times":{"config_time":0.6811206340789795,"core_time":0.5231928825378418,"ignores_time":0.00048828125,"total_time":1.2395074367523193},"parsing_time":{"total_time":0.0,"per_file_time":{"mean":0.0,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_files":[]},"scanning_time":{"total_time":0.0214540958404541,"per_file_time":{"mean":0.0214540958404541,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_files":[]},"matching_time":{"total_time":0.0,"per_file_and_rule_time":{"mean":0.0,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_rules_on_files":[]},"tainting_time":{"total_time":0.0,"per_def_and_rule_time":{"mean":0.0,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_rules_on_defs":[]},"fixpoint_timeouts":[],"prefiltering":{"project_level_time":0.0,"file_level_time":0.0,"rules_with_project_prefilters_ratio":0.0,"rules_with_file_prefilters_ratio":1.0,"rules_selected_ratio":0.0,"rules_matched_ratio":0.0},"targets":[],"total_bytes":0,"max_memory_bytes":86898816},"engine_requested":"OSS","skipped_rules":[],"profiling_results":[]}
+
+
+STDERR:
+
