@@ -22,8 +22,14 @@
 > it stood on 2026-08-31. Eight more were added on 2026-09-01, and `spl-token-lending-rounding`
 > was built later the same day, which makes seventeen. **Radar, solsec and semgrep with
 > the SOL-0XX pack have since been re-run per case over sixteen of those seventeen** and detect
-> nothing on any of them; `sol-audit` and `vaultlint` have not, so this page's denominator of
-> eight is still the right one for their rows and not for those three. Radar's own per-case
+> nothing on any of them. **`vaultlint` has since been re-run over all seventeen**, 36
+> invocations, 36 ok, zero unavailable, and its row on this page is superseded by
+> `RESULTS-all.md`: 0 / 17 as registered, and one `unmapped_check` candidate, VL002 on
+> `anchor-account-reload-owner`, differential and at the fix site. **The `sol-audit` v2 row on
+> this page is retired**, superseded by v3 on 2026-09-01; it never had a run log and 96 of its
+> 426 findings name files the corpus rebuild removed. The tables below are left exactly as
+> published on 2026-08-31; this page's denominator of eight is still the right one for reading
+> them as the record of that day, and the wrong one for reading them as a current result. Radar's own per-case
 > breakdown moved on the re-run: `squads-signer-auth` is `missed`, not `unlocated` (error 31).
 > The current corpus is `corpus2/manifest.json`, and its class and repository balance is recomputed
 > in [`../CLASS-BALANCE.md`](../CLASS-BALANCE.md).

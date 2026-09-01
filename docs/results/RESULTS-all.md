@@ -38,9 +38,9 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 | `control-noisy` (flags every line) | **0 / 11** | — | 81,928 findings, 11 / 11 nominal, zero real |
 | `control-null` (reports nothing) | **0 / 11** | — | the floor |
 | **`radar`** (Auditware) | **11 / 11** | **0 / 8**, and **0 / 16** on re-run | re-run 2026-09-01, run log 34/34; 2 `unlocated`, 7 missed, 7 no-rule, scoreable denominator 9 |
-| `sol-audit` v2 (ours) | 4 / 11 | **0 / 8** | ours, free and open forever, not a product; no run log on either corpus |
+| `sol-audit` v2 (ours) | 4 / 11 | *retired 2026-09-01* (was **0 / 8**) | ours, free and open forever, not a product. The corpus-2 cell is RETIRED, not deleted: it never had a run log on either corpus, 96 of its 426 findings name files the corpus rebuild removed, and v3 supersedes it with a log on both. The teaching-corpus 4 / 11 stands; it measures a different tool from v3 and is not superseded by it. |
 | `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** | re-run per case, run log 35/35 and 34/34, zero unavailable; scored with the mapping pre-registered for v2, which does not claim v3's fourteen new rules, so this understates it. `unmapped_check`: 0 candidates |
-| `vaultlint` 0.1.1 | 2 / 11 | **0 / 8** measured | run log, 18/18; 7 of 8 are `no-rule`, a stated coverage limit |
+| `vaultlint` 0.1.1 | 2 / 11 | **0 / 17 registered, 1 / 17 corrected** | re-run per case 2026-09-01, run log 36/36, **zero unavailable**, the only corpus-2 row with complete coverage; 15 of 17 `no-rule`, scoreable denominator 2. `unmapped_check`: **1 candidate**, VL002 on `anchor-account-reload-owner`, differential and at the fix site. The mapping points VL002 at `owner-checks`, this case is `owner-check-after-cpi`, so it scores zero as registered. Mapping left unedited; provisional until its authors reply. |
 | **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** | the one real detection anything has made; see below |
 | `solsec` 0.2.1 | 0 / 11 | **0 / 16** | re-run per case 2026-09-01, run log 34/34, **zero unavailable**; 14 no-rule, scoreable denominator 2 |
 | `semgrep` 1.174, own registry | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |

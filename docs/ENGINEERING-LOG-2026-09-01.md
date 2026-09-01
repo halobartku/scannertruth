@@ -499,6 +499,65 @@ the other direction: silence read as a measurement. This one is a measurement re
 The row is corrected on the front page and in `docs/SCANNERS.md`. The could-not-run table now
 carries only tools with no result behind them, which is what it claims to contain.
 
+---
+
+## Part 14: the seventeenth case, and a detection our own mapping refuses to count
+
+`spl-token-lending-rounding` was the one valid case that was not built, so every corpus-2 figure
+read out of sixteen. The manifest's `sha_correction` field already named the corrected SHA; both
+halves of its explanation were checked here rather than taken on trust, and both hold.
+`bf15464783aca0395d953165b68b143c4b8c984f` has **two** parents and
+`c2b287788b98b74dcec7436db107d66e6da91295` has **one**. The original failure reproduces exactly:
+`git show --name-only` on the merge prints nothing at all, which is why `built.json` recorded
+"fix touches no .rs file" about a commit whose diff contains both files. The blob ids in the fix
+commit's own diff headers, `c9564913..c404c8ff` and `c29fa280..fd51af49`, are the four files that
+were extracted, so the pair is the parent and the fix and not some other two commits.
+
+`build_corpus2.py` wrote corpus files in **text mode**, which on this Windows host turns every
+`\n` into `\r\n`. That is how eight cases stopped being upstream blobs this morning (error 34),
+`.gitattributes` only stops git rewriting them on **checkout**, and nothing stopped us writing them
+wrong in the first place. The two writes now pass `newline="\n"`. **39 of 39 corpus source files
+match the upstream blob exactly**, up from 35 of 35.
+
+**`vaultlint` has been re-run over all seventeen: 36 invocations, 36 ok, zero unavailable.** It is
+now the only corpus-2 row with complete coverage, and building the seventeenth case correctly
+dropped radar, solsec, semgrep-with-the-pack and sol-audit v3 to `partial` with the seventeenth
+case recorded as `not-run`. Coverage was read from vaultlint's own sentence, `analyzing N Rust
+file`, captured in a second human-format pass, because its JSON envelope carries no count of what
+it looked at. That is error 32's rule applied to a second tool. A third pass repeated every run and
+every leaf came back identical.
+
+**And it found something.** `unmapped_check.py` reports one candidate: VL002, `missing owner
+check`, on `anchor-account-reload-owner` at `insecure/src/account.rs:271`, inside the changed
+region and on the exact `try_deserialize` call that the fixed `reload()` guards. It fires once in
+the entire corpus and on no fixed variant anywhere. **That is real recall by this project's own
+definition.** Our pre-registered mapping points VL002 at `owner-checks`; the case is
+`owner-check-after-cpi`; so as registered the case reads `no-rule` and vaultlint scores zero.
+
+This is error 17 happening again, to a different vendor, and the response is the one the protocol
+already specifies rather than a new one: **the mapping is not edited**, both numbers are published,
+`0 / 17 registered and 1 / 17 corrected`, and the result is provisional until the vaultlint authors
+have been offered the mapping. A mapping rewritten after seeing the output it scores is not a
+pre-registration, and the temptation to "clarify" it is strongest precisely when the correction
+would be generous. Two of the eight scanners have now made a real detection, and **neither of them
+counts under the mapping we registered before the run**. That is a fact about our mappings at least
+as much as it is a fact about the tools.
+
+The calibration figure moved again with the corpus: `control-noisy` produces **2,629,968** findings
+on corpus 2, was 2,392,280, and still scores **zero against all fourteen mappings**, verified case
+by case. Six documents quoted the old figure and now quote the derived one.
+
+**The `sol-audit` v2 corpus-2 row is retired, not re-run.** Reasoning and what it costs are
+limitation 41. Briefly: it never had a run log on either corpus, 96 of its 426 findings name files
+the corpus rebuild removed, 9 of 17 cases can never be resolved from it, and v3 supersedes it with
+a log on both corpora under all three profiles. Re-running a superseded version of our own scanner
+could not have changed any third-party number and could not have moved a headline that is already
+zero for our current scanner. The row stays visible, marked retired, with what superseded it and
+the date; `raw/stale-findings-2026-09-01.json` keeps the 96 countable. Retiring it does **not**
+meet milestone 1: `python tools/run_all.py --verify-coverage` still fails, on four corpus-1 rows
+and on the seventeenth case, and it names them.
+
+
 ## What is still wrong
 
 **Error 37. The retraction in error 33 was applied to the front page and to nothing else.**
@@ -519,14 +578,28 @@ quantity against what it is a count of. The rewritten version failed on introduc
 documents nobody had looked at. Both directions are mutation-verified: the retracted findings count
 is caught, the legitimate line count is not.
 
-- **`spl-token-lending-rounding` is still not built.** Every corpus-2 figure reads out of sixteen
-  built valid cases, or out of eight for the two rows that have not been re-run.
-- **`sol-audit` v2 and `vaultlint` have not been re-run over the eight cases added today**, so
-  `run_all.py` reports them as `partial`, which is correct and should not be edited away. Radar,
-  solsec, semgrep-with-the-pack and sol-audit v3 have been, and detect nothing on any of them.
-- **`sol-audit` v2 still has no per-run coverage log on either corpus**, and 96 of the 426
-  findings in its corpus-2 file name files the corpus rebuild removed. The scorer now refuses to
-  score on them; `raw/stale-findings-2026-09-01.json` keeps the count visible.
+- ~~**`spl-token-lending-rounding` is still not built.** Every corpus-2 figure reads out of
+  sixteen built valid cases, or out of eight for the two rows that have not been re-run.~~
+  **CLOSED 2026-09-01**, Part 14. Seventeen valid cases, seventeen built.
+- ~~**`sol-audit` v2 and `vaultlint` have not been re-run over the eight cases added today**, so
+  `run_all.py` reports them as `partial`, which is correct and should not be edited away.~~
+  **CLOSED 2026-09-01** in two different ways, Part 14. `vaultlint` earned it away: 36 invocations
+  over all seventeen, 36 ok, zero unavailable. `sol-audit` v2's corpus-2 row is retired instead.
+  Radar, solsec, semgrep-with-the-pack and sol-audit v3 are now `partial` on the seventeenth case
+  and detect nothing on any of the others.
+- ~~**`sol-audit` v2 still has no per-run coverage log on either corpus**, and 96 of the 426
+  findings in its corpus-2 file name files the corpus rebuild removed.~~ **Still true, and now
+  the stated reason its corpus-2 row is retired** rather than an open task, Part 14 and
+  limitation 41. The scorer refuses to score on the stale findings;
+  `raw/stale-findings-2026-09-01.json` keeps the count visible.
+- **The corpus pin quoted in Part 11 cannot be recomputed from this repository.** Twenty methods
+  were tried against the tree it describes and none reproduces
+  `63982de746dbad71d498b8ee98acd07555ff43f7ea708fc138708bee016f300a`. Limitation 42. The
+  2026-09-01 vaultlint run was pinned a way that is reproducible instead, and the next person to
+  pin a corpus should commit the script that computes the pin.
+- **The vaultlint result is provisional and its authors have not been told**, which now matters
+  more than it did this morning, because the mapping we published understates their tool by a
+  detection rather than merely by a coverage gap. Limitation 40.
 - **Four of eight scanners have never been run on the real crates**, so the packaging objection is
   tested rather than retired.
 - **Radar cannot finish on the three largest real crates**, which biases that coverage toward small

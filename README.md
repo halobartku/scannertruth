@@ -119,19 +119,29 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 |---|---|---|
 | `control-noisy` | **0 / 11**, from 81,928 findings | **0**, despite 2,629,968 findings |
 | **Radar** (Auditware) | **11 / 11** | 0 / 8, re-run 2026-09-01: also **0 / 16** |
-| `sol-audit` v2 (ours) | 4 / 11 | 0 / 8 |
+| `sol-audit` v2 (ours) | 4 / 11 | *retired 2026-09-01, superseded by v3*; was 0 / 8 |
 | `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** |
-| `vaultlint` | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
+| `vaultlint` 0.1.1 | 2 / 11 | **0 / 17 registered, 1 / 17 corrected**; 15 of 17 `no-rule` |
 | **X-Ray** (sec3) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** |
 | `solsec` | 0 / 11 | **0 / 16**, zero unavailable |
 | `sol-azy` (FuzzingLabs) | 9 / 11 nominal, **4 / 11** real | **0 / 15 analysed**, 1 not run |
 | `semgrep`, own registry | no Solana rules in the registry | - |
 | `semgrep` + [SOL-0XX pack](https://github.com/Copenhagen0x/solana-security-standard) | 3 / 11 nominal, **0 / 11** real | **0 / 16** |
 
-**Eight scanners, one detection between them** - and seeing that one required correcting a
-mapping error of our own. On the eight cases every tool has been run against, the count is one.
-Three of the seven have now also been run against sixteen of the seventeen built cases and
-detect nothing there either.
+**Eight scanners, two detections between them, and neither one counts under the mapping we
+registered before the run.** Both were found by `unmapped_check.py`, which asks the question
+per-class scoring cannot: is a real detection hiding under a rule our mapping did not claim
+for this class. X-Ray's was the first, in August. VaultLint's is new on 2026-09-01: VL002,
+`missing owner check`, fires on `anchor-account-reload-owner` at the line the fix guards and
+is silent on the same function once the owner check is added, which is real recall by our own
+definition. Our mapping points VL002 at `owner-checks` and the case is `owner-check-after-cpi`,
+so **as registered the score is still zero**. Both numbers are published and neither mapping is
+edited, because a mapping rewritten after seeing output is not a pre-registration. Both results
+are provisional until their authors have been offered the mapping.
+
+VaultLint has now been run over all seventeen built cases and is the only row here with complete
+coverage. Radar, solsec, semgrep-with-the-pack and sol-audit v3 have been run over sixteen of
+the seventeen and detect nothing on any of them.
 
 `sol-azy` was published in the could-not-run table until 2026-09-01 with the reason "ships no
 default rule set, so it detects nothing out of the box". That reason was false: it has an internal
@@ -146,12 +156,14 @@ unavailable cases did not exist (error 35). `semgrep` was published as having *n
 all*; that is true of its own registry and false of semgrep, which loads a maintained MIT pack of
 30 Solana rules with one `--config`. Measured, that pack detects nothing either.
 
-**Two denominators, and which one a row uses is stated in the row.** Eight cases were measured on
-2026-08-31. Eight more were added on 2026-09-01. Radar, solsec and semgrep-with-the-pack have
-since been re-run per case over all sixteen built cases with a log per invocation, so they read
-out of sixteen. `sol-audit` and `vaultlint` have not, so they still read out of eight, and
-`run_all.py` reports them as `partial` with the unmeasured cases recorded as `not-run` or
-`unknown` rather than as zeros. A case nobody has run is not a case anybody failed.
+**Denominators differ by row, and which one a row uses is stated in the row.** Eight cases were
+measured on 2026-08-31, eight more were added on 2026-09-01, and the seventeenth was built later
+the same day. `vaultlint` has since been re-run per case over all seventeen with a log per
+invocation, so it reads out of seventeen. Radar, solsec, semgrep-with-the-pack and sol-audit v3
+read out of sixteen, and `run_all.py` reports every one of them `partial` because the
+seventeenth case is recorded as `not-run` rather than as a zero. X-Ray still reads out of eight.
+A case nobody has run is not a case anybody failed, and the `partial` is removed by running the
+case, never by editing the row.
 
 **The raw denominator is not the honest one either.** A class no scanner has a rule for is a
 coverage gap, not a failure, and `run_all.py` now publishes a `scoreable_denominator` beside every
@@ -339,10 +351,10 @@ which is why this repository is 49 MB rather than 2.
 
 ## Honest limits
 
-- **Seventeen real cases is a small corpus**, and only eight of them have been measured, so every
-  score above is out of eight and not out of seventeen. This is our largest stated weakness;
-  growing it is milestone 2, and the nine cases built on 2026-09-01 are growth rather than a
-  better number: no row in the table above is out of all of them.
+- **Seventeen real cases is a small corpus**, and only one row above, `vaultlint`, is out of all
+  seventeen. The rest are out of sixteen or out of eight, and each says which. This is our
+  largest stated weakness; growing it is milestone 2, and the nine cases built on 2026-09-01
+  are growth rather than a better number.
 - **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
   them in time. It is therefore systematically harder than the population of real bugs and
   **understates every scanner measured on it**. It answers "do these catch the ones that cost
@@ -359,8 +371,12 @@ which is why this repository is 49 MB rather than 2.
   documentation, and each carries its `derivation`, but the ordering rests on our word.
   `docs/PROTOCOL.md` 3a carries the retraction, and `python tools/preregistration_check.py` now
   enforces the rule going forward instead of asserting it.
-- **`sol-audit` still has no per-run coverage log** while Radar and VaultLint do. We closed other
-  people's tools more rigorously than our own; that is milestone 1.
+- **`sol-audit` v2 never got a per-run coverage log on either corpus**, and 96 of the 426
+  findings in its corpus-2 file name files the corpus rebuild removed. Its corpus-2 row was
+  retired on 2026-09-01 rather than restated: v3 supersedes it and has a log on both corpora,
+  and re-running a superseded version of our own scanner would have bought evidence about
+  nobody's tool but our own obsolete one. Four corpus-1 rows still have no run log, so
+  milestone 1 is not met and `python tools/run_all.py --verify-coverage` says so.
 - **Recall against a labelled corpus is a lower bound on real-world safety**, not a measure of it.
 - **Nobody outside this project has reproduced any of it yet.** That is milestone 4, and its
   criterion is deliberately outside our control.

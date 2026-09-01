@@ -296,7 +296,10 @@ a defensible distinction but a distinction a reviewer is entitled to challenge.
 **38. `raw/c2-control-noisy.json` is stale with respect to the enlarged corpus.** The published
 count was recomputed and the control was re-scored case by case, so the number and the zero are
 both current, but the artefact in `raw/` was left as it was because another agent was writing to
-that directory at the time. `python tools/control_c2.py` regenerates it.
+that directory at the time. `python tools/control_c2.py` regenerates it. **Regenerated
+2026-09-01** when the seventeenth case moved the count to 2,629,968 findings, still scoring
+zero against all fourteen mappings. The artefact is gitignored at 311 MB, so this is per
+machine and that command remains the answer for anybody else.
 
 **39. `score2.py` matches a finding to a case by filename alone, so one case's findings can be
 credited to another case with the same filename.** Logged as error 31 with the exact fix and the
@@ -307,3 +310,47 @@ the correction can be published as a correction, with the vendor's right of repl
 appearing silently in the same commit as a corpus change. Until then, treat every `unlocated` in a
 corpus-2 table as provisional. The clock is unaffected because `run_all` refuses to score a case
 its run log does not list.
+
+## Added 2026-09-01, on building the seventeenth case and re-running vaultlint
+
+**40. Our pre-registered vaultlint mapping is too narrow, and it costs vaultlint a real detection.**
+VL002, `missing owner check`, fires on `anchor-account-reload-owner` at
+`insecure/src/account.rs:271`, inside the region the fix changed, on the `try_deserialize` call
+that the fixed `reload()` guards with an owner check three lines above. It fires exactly once in
+the whole corpus and on no fixed variant anywhere, which is real recall by this project's own
+definition. `mappings/vaultlint.json` points VL002 at `owner-checks` and this case's class is
+`owner-check-after-cpi`, so **as registered the case reads `no-rule` and vaultlint scores zero**.
+This is the X-Ray situation again (limitation 7, error 17) with the roles unchanged: our reading of
+somebody else's rule is what is wrong, and only its authors can settle whether VL002 is meant to
+cover a reload path. **The mapping is deliberately left unedited** and both numbers are published,
+0 / 17 registered and 1 / 17 corrected. Editing it now would be tuning a mapping to a result we had
+already seen, which is the single thing this benchmark exists to refuse. The number is provisional
+until the vaultlint authors answer, and that thread has still not been opened.
+
+**41. The `sol-audit` v2 corpus-2 row is retired rather than re-run, and that is a judgement, not a
+measurement.** It never had a per-run coverage log on either corpus, 96 of its 426 corpus-2 findings
+name files the corpus rebuild removed, and 9 of 17 cases can never be resolved from that file
+because silence in it cannot be told from absence. v3 supersedes it, has a log on both corpora and
+all three profiles, and scores zero on corpus 2 under every one of them. **What retiring costs**: we
+no longer publish a corpus-2 number for the exact tool whose 4 / 11 teaching-corpus row we do still
+publish, so the two cells in that row now come from different measurement generations, and the row
+says so. The alternative was to re-run a superseded version of our own scanner, which could not have
+changed any third-party figure and could not have moved the headline, since our current scanner
+already detects none of the seventeen. A reader who thinks that trade is wrong is reading the same
+evidence we did. **The row is not deleted**: it stays visible on the front page and in
+`RESULTS-all.md` marked retired, with what superseded it and the date, and
+`raw/stale-findings-2026-09-01.json` keeps the 96 stale findings countable.
+
+**42. The corpus digest published in the 2026-09-01 engineering log cannot be recomputed from this
+repository.** The log pins the corpus at
+`63982de746dbad71d498b8ee98acd07555ff43f7ea708fc138708bee016f300a` and says it was verified on both
+machines. Twenty candidate methods were tried against the corpus tree as it stood at that commit,
+including per-file sha256 listings under three separators, concatenated contents, and name-only
+digests, over both the whole tree and the `.rs` files alone. **None of them reproduces it.** The pin
+is therefore a number a reader cannot check, which is error 23 in a new place. No claim behind it is
+withdrawn, because the thing the pin was evidence for was checked again a different way for the
+2026-09-01 vaultlint run: all 77 corpus files were hashed on the Windows host and on the VPS and
+compared file by file, and the rolled-up digest of that listing,
+`a5a7ff5f64085b9ec06dfed34ea981b15617c0e446d82807c5158d37570e637a`, is reproducible from the listing
+itself. **Whoever pins a corpus next should commit the script that computes the pin**, because a
+digest with no committed method is decoration.

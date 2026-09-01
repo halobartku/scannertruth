@@ -61,10 +61,10 @@ mapped rule fired on the vulnerable program **and stayed silent on the same prog
 | Tool | Teaching corpus (2022, public) | Real vulnerabilities |
 |---|---|---|
 | Radar | **11 / 11** | 0 / 8 |
-| sol-audit (ours) | 4 / 11 | 0 / 8 |
-| VaultLint | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
+| sol-audit v2 (ours) | 4 / 11 | *retired 2026-09-01, superseded by v3* |
+| VaultLint | 2 / 11 | 0 / 17 registered, **1 / 17** corrected; 15 of 17 `no-rule` |
 | X-Ray | 2 / 11 | 0 / 8 registered, **1 / 8** corrected |
-| solsec | 0 / 11 | 0 / 6, 3 unavailable |
+| solsec | 0 / 11 | ~~0 / 6, 3 unavailable~~ **0 / 16, zero unavailable** (error 35) |
 | semgrep, own registry | no Solana rules in the registry | - |
 | semgrep + SOL-0XX pack (MIT, 30 rules) | 3 / 11 nominal, 0 / 11 real | 0 / 16 |
 
