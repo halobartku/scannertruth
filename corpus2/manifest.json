@@ -21,7 +21,43 @@
    "files": [
     "solana/bridge/program/src/api/verify_signature.rs"
    ],
-   "contamination_note": "The fix commit is a monorepo-wide dependency bump (solana-program 1.7.0 to 1.9.4) plus a compiler attribute change across every crate. It touches 12 .rs files; only this one contains the security fix. The other 11 were noise in the first build."
+   "contamination_note": "The fix commit is a monorepo-wide dependency bump (solana-program 1.7.0 to 1.9.4) plus a compiler attribute change across every crate. It touches 12 .rs files; only this one contains the security fix. The other 11 were noise in the first build.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "116d29b4806ff25dd20dc866a339f5cd0f9698963298245b5ab5ae105f45f08d",
+     "git_blob": "261de86155b3a5bbd595d35335054680a1862c22",
+     "bytes": 109,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/verify_signature.rs": {
+     "sha256": "6cca4e6f58151fc3160ab30303de7fc48b0a022f6af78c3e9774d613dd91d316",
+     "git_blob": "ed3acac2467258b854180bbddc73683484431137",
+     "bytes": 6853,
+     "upstream": {
+      "repo": "wormhole-foundation/wormhole",
+      "commit": "79ab522f802ccc5ba34278d3c648fa62e06f4f1c",
+      "path": "solana/bridge/program/src/api/verify_signature.rs",
+      "verify": "git -C <clone of wormhole-foundation/wormhole> rev-parse 79ab522f802ccc5ba34278d3c648fa62e06f4f1c:solana/bridge/program/src/api/verify_signature.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "116d29b4806ff25dd20dc866a339f5cd0f9698963298245b5ab5ae105f45f08d",
+     "git_blob": "261de86155b3a5bbd595d35335054680a1862c22",
+     "bytes": 109,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/verify_signature.rs": {
+     "sha256": "40313745fd3e17a924b4287e5eb3399594176a9e1cf504a3fdc49abea67d0239",
+     "git_blob": "1c3d862a2801cda4f19347d92982cfe974a3945a",
+     "bytes": 6824,
+     "upstream": {
+      "repo": "wormhole-foundation/wormhole",
+      "commit": "7edbbd3677ee6ca681be8722a607bc576a3912c8",
+      "path": "solana/bridge/program/src/api/verify_signature.rs",
+      "verify": "git -C <clone of wormhole-foundation/wormhole> rev-parse 7edbbd3677ee6ca681be8722a607bc576a3912c8:solana/bridge/program/src/api/verify_signature.rs"
+     }
+    }
+   }
   },
   {
    "name": "cashio-account-data",
@@ -35,7 +71,43 @@
    ],
    "contamination_note": "programs/brrr/src/lib.rs in the same commit is a kill switch (invariant!(false)) disabling print_cash and burn_cash, not a logic fix. Excluded.",
    "valid": false,
-   "invalid_reason": "NOT A VALID PAIR. Commit 7df65818 does not fix the vulnerability: it adds vipers::invariant!(false, \"temporarily disabled\") to print_cash and burn_cash, which disables the program. It is an emergency shutdown, not a security fix. Verified by reading the diff and by git log: only three commits in the repository's history ever touched programs/brrr/src/lib.rs, the last of them is this one, and every commit after the exploit date is a dependency bump. Cashio never shipped a fix because the protocol was shut down. Consequence: the 'secure' variant is dead code, so findings disappear from it for reasons unrelated to the vulnerability, and any detection credited on this pair would be spurious. Found 2026-08-31 while checking why Radar produced 23 insecure-only findings on the real crate. EXCLUDED FROM ALL SCORING. Kept in the manifest so the error is visible rather than deleted from the record."
+   "invalid_reason": "NOT A VALID PAIR. Commit 7df65818 does not fix the vulnerability: it adds vipers::invariant!(false, \"temporarily disabled\") to print_cash and burn_cash, which disables the program. It is an emergency shutdown, not a security fix. Verified by reading the diff and by git log: only three commits in the repository's history ever touched programs/brrr/src/lib.rs, the last of them is this one, and every commit after the exploit date is a dependency bump. Cashio never shipped a fix because the protocol was shut down. Consequence: the 'secure' variant is dead code, so findings disappear from it for reasons unrelated to the vulnerability, and any detection credited on this pair would be spurious. Found 2026-08-31 while checking why Radar produced 23 insecure-only findings on the real crate. EXCLUDED FROM ALL SCORING. Kept in the manifest so the error is visible rather than deleted from the record.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "618cf701dc417afe79b34d5763d9fbb90d0e213ec490eb2039226f5d9e69f72e",
+     "git_blob": "2180b3efeca011d7e1daba828687439681e5e232",
+     "bytes": 113,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/mod.rs": {
+     "sha256": "a4af9162d5bbe427a08111a228328653294a0d9a7c1af69ab8143e92d51d276b",
+     "git_blob": "22d4eecaf6254bb914a4b9fc9c4220a125acd905",
+     "bytes": 743,
+     "upstream": {
+      "repo": "cashioapp/cashio",
+      "commit": "a51c3c59d544a5763b64abb4a8d82c49b0abd6d0",
+      "path": "programs/brrr/src/actions/mod.rs",
+      "verify": "git -C <clone of cashioapp/cashio> rev-parse a51c3c59d544a5763b64abb4a8d82c49b0abd6d0:programs/brrr/src/actions/mod.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "618cf701dc417afe79b34d5763d9fbb90d0e213ec490eb2039226f5d9e69f72e",
+     "git_blob": "2180b3efeca011d7e1daba828687439681e5e232",
+     "bytes": 113,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/mod.rs": {
+     "sha256": "8e269e42ce4d1a3766a8d3cd68662268f0d609ff74976fd7404045d3f0f9d957",
+     "git_blob": "03f599ad0563a81b7e085a46e12e1979ff271c50",
+     "bytes": 807,
+     "upstream": {
+      "repo": "cashioapp/cashio",
+      "commit": "7df658184c2610139fa2c0058363c66b28add4c4",
+      "path": "programs/brrr/src/actions/mod.rs",
+      "verify": "git -C <clone of cashioapp/cashio> rev-parse 7df658184c2610139fa2c0058363c66b28add4c4:programs/brrr/src/actions/mod.rs"
+     }
+    }
+   }
   },
   {
    "name": "solend-owner-checks",
@@ -45,7 +117,43 @@
    "source": "Kudelski audit, token-lending/audit/solend-audit-v1.0.pdf, finding KS-SOLEND-F-00",
    "files": [
     "token-lending/program/src/processor.rs"
-   ]
+   ],
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "996add688761a1346e15f2db4b2523ab92f9d6d02a2f53ce45eb0b823eef6054",
+     "git_blob": "1b78eee98b9c16962e3a7fe98f20ea9c5e3e6512",
+     "bytes": 113,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/processor.rs": {
+     "sha256": "4d78f4bf019e8312fe035bcbe40dd1391c6aeecfc84483da2d56ddcf7e638704",
+     "git_blob": "e5960308b423e53d3bd5db4bcc0172f3cf40478d",
+     "bytes": 99673,
+     "upstream": {
+      "repo": "solendprotocol/solana-program-library",
+      "commit": "132d74cf171dac66f896c4009ad6836f8c0b3799",
+      "path": "token-lending/program/src/processor.rs",
+      "verify": "git -C <clone of solendprotocol/solana-program-library> rev-parse 132d74cf171dac66f896c4009ad6836f8c0b3799:token-lending/program/src/processor.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "996add688761a1346e15f2db4b2523ab92f9d6d02a2f53ce45eb0b823eef6054",
+     "git_blob": "1b78eee98b9c16962e3a7fe98f20ea9c5e3e6512",
+     "bytes": 113,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/processor.rs": {
+     "sha256": "3da636651e64ed4fbc3a0eb57676d1afb9294a6a1ba2e33af49e14b588416b23",
+     "git_blob": "2ce62b0359a5b06e4b70e4ad06374325d2195b7c",
+     "bytes": 99853,
+     "upstream": {
+      "repo": "solendprotocol/solana-program-library",
+      "commit": "4c2d5c10e2240fd79398dbad586aa73fd9077f0f",
+      "path": "token-lending/program/src/processor.rs",
+      "verify": "git -C <clone of solendprotocol/solana-program-library> rev-parse 4c2d5c10e2240fd79398dbad586aa73fd9077f0f:token-lending/program/src/processor.rs"
+     }
+    }
+   }
   },
   {
    "name": "spl-token-lending-rounding",
@@ -67,7 +175,43 @@
    "source": "Bramah Systems, Squads_V3_Audit_Bramah.pdf in repo",
    "files": [
     "programs/squads-mpl/src/lib.rs"
-   ]
+   ],
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "c28cffe11f0b312b5c9240f1c6ce6a0fe6dd11968905f2882b2628d5fba181b2",
+     "git_blob": "b2127aaa0a9f176a10d3a0dd945b790084ec3a82",
+     "bytes": 112,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/lib.rs": {
+     "sha256": "6adafa42f48180dbad393d7c3ca06693db4130cf349b22f88eec017c81498f33",
+     "git_blob": "3e3935ebd91aa1bed2b6bd73fa9b2cbc1abc8ba6",
+     "bytes": 23350,
+     "upstream": {
+      "repo": "Squads-Protocol/squads-mpl",
+      "commit": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+      "path": "programs/squads-mpl/src/lib.rs",
+      "verify": "git -C <clone of Squads-Protocol/squads-mpl> rev-parse 352673d96c06d3c9450b9f3b20ed994aad74e4be:programs/squads-mpl/src/lib.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "c28cffe11f0b312b5c9240f1c6ce6a0fe6dd11968905f2882b2628d5fba181b2",
+     "git_blob": "b2127aaa0a9f176a10d3a0dd945b790084ec3a82",
+     "bytes": 112,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/lib.rs": {
+     "sha256": "9e64c55f7baba399ab5226ea36ff85634168ef5d7fdc69db0e1258f8005bf3bc",
+     "git_blob": "a5ec0c86497c72470f6fe7830f5ca7408cf53239",
+     "bytes": 23452,
+     "upstream": {
+      "repo": "Squads-Protocol/squads-mpl",
+      "commit": "4b5c0e9c7d043b27c4a89bb8ab0bbe743fef8f27",
+      "path": "programs/squads-mpl/src/lib.rs",
+      "verify": "git -C <clone of Squads-Protocol/squads-mpl> rev-parse 4b5c0e9c7d043b27c4a89bb8ab0bbe743fef8f27:programs/squads-mpl/src/lib.rs"
+     }
+    }
+   }
   },
   {
    "name": "squads-account-matching",
@@ -78,7 +222,43 @@
    "files": [
     "programs/squads-mpl/src/lib.rs"
    ],
-   "contamination_note": "The commit also deletes dead commented-out constraints in the same file. Unrelated to the flaw, but unavoidable since it is the same file."
+   "contamination_note": "The commit also deletes dead commented-out constraints in the same file. Unrelated to the flaw, but unavoidable since it is the same file.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "85ffa468f03347689d08b6e3c6aee9a939a35a399cdb2881b8b99165b8261a50",
+     "git_blob": "124ec3f2560744df8d82d8e9b237709f8fa3662c",
+     "bytes": 117,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/lib.rs": {
+     "sha256": "96edd98ba03083599fee0d6fab261134fa7a2964a7f29f07dcbbf13298337672",
+     "git_blob": "c31bbba8a9dd19c8d0f1980382abb10176a656d5",
+     "bytes": 23524,
+     "upstream": {
+      "repo": "Squads-Protocol/squads-mpl",
+      "commit": "336bdbd887bb5566fae4db9dcb05347f73961877",
+      "path": "programs/squads-mpl/src/lib.rs",
+      "verify": "git -C <clone of Squads-Protocol/squads-mpl> rev-parse 336bdbd887bb5566fae4db9dcb05347f73961877:programs/squads-mpl/src/lib.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "85ffa468f03347689d08b6e3c6aee9a939a35a399cdb2881b8b99165b8261a50",
+     "git_blob": "124ec3f2560744df8d82d8e9b237709f8fa3662c",
+     "bytes": 117,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/lib.rs": {
+     "sha256": "6adafa42f48180dbad393d7c3ca06693db4130cf349b22f88eec017c81498f33",
+     "git_blob": "3e3935ebd91aa1bed2b6bd73fa9b2cbc1abc8ba6",
+     "bytes": 23350,
+     "upstream": {
+      "repo": "Squads-Protocol/squads-mpl",
+      "commit": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+      "path": "programs/squads-mpl/src/lib.rs",
+      "verify": "git -C <clone of Squads-Protocol/squads-mpl> rev-parse 352673d96c06d3c9450b9f3b20ed994aad74e4be:programs/squads-mpl/src/lib.rs"
+     }
+    }
+   }
   },
   {
    "name": "metaplex-token-metadata",
@@ -89,7 +269,43 @@
    "files": [
     "token-metadata/program/src/processor/metadata/transfer.rs"
    ],
-   "contamination_note": "assertions/misc.rs in the same commit adds assert_keys_equal_with_error, which is never called in this diff. Dead code added ahead of use. Excluded."
+   "contamination_note": "assertions/misc.rs in the same commit adds assert_keys_equal_with_error, which is never called in this diff. Dead code added ahead of use. Excluded.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "ac54def0b192e7326d4335ae223aea1648a0036d9cb33a90fc81abfdffccb83c",
+     "git_blob": "c7db4416d27d003989822428321f27eaa449ad8a",
+     "bytes": 117,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/transfer.rs": {
+     "sha256": "717590b0925793ae3fadcd1468d38307b20eb3e2fb2927af2c61c347810093a4",
+     "git_blob": "f60def661ff8457a00977a67ff177b12d0cf2af9",
+     "bytes": 16472,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "b8735d98ad592ea5847631435ceff5d9b2881a01",
+      "path": "token-metadata/program/src/processor/metadata/transfer.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse b8735d98ad592ea5847631435ceff5d9b2881a01:token-metadata/program/src/processor/metadata/transfer.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "ac54def0b192e7326d4335ae223aea1648a0036d9cb33a90fc81abfdffccb83c",
+     "git_blob": "c7db4416d27d003989822428321f27eaa449ad8a",
+     "bytes": 117,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/transfer.rs": {
+     "sha256": "6dde2ab1367be594d47a80b970483a00e7b803c7bec438be88a70088b86aab05",
+     "git_blob": "bf50c1c77ca4c0231a32d38dc2a9d40e1514c43f",
+     "bytes": 16384,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "7f163a1777d2540af92d7cb5cf89ea0393094619",
+      "path": "token-metadata/program/src/processor/metadata/transfer.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse 7f163a1777d2540af92d7cb5cf89ea0393094619:token-metadata/program/src/processor/metadata/transfer.rs"
+     }
+    }
+   }
   },
   {
    "name": "metaplex-candy-machine",
@@ -99,7 +315,43 @@
    "source": "GHSA-9v25-r5q2-2p6w",
    "files": [
     "candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
-   ]
+   ],
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "939af202859a812f1cb45f8cf2f7312822fe7891f72aebf6eed8bab91b2afbd5",
+     "git_blob": "d672c5b70cb0640f711a5b498a0aa04f319f9ec9",
+     "bytes": 116,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/set_collection_during_mint.rs": {
+     "sha256": "6c9fbbcb33e07d58550ad698e4803c026865ee3ab0e74e735db263718d72ca8f",
+     "git_blob": "efd6aeaad43c0d4ef4fbe50c3c1eb18f7c068c9f",
+     "bytes": 6068,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+      "path": "candy-machine/program/src/processor/collection/set_collection_during_mint.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse c18591a7ce9bb561940cb94df4b7c35ef9cc0f57:candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "939af202859a812f1cb45f8cf2f7312822fe7891f72aebf6eed8bab91b2afbd5",
+     "git_blob": "d672c5b70cb0640f711a5b498a0aa04f319f9ec9",
+     "bytes": 116,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/set_collection_during_mint.rs": {
+     "sha256": "8ca8152d582e89a18b7b6068a5c6ba34ca86b88eeb9dd6e93401b58d47246b6e",
+     "git_blob": "0d311d0fe33857b7e4c2ed6f99d44f069f9005ee",
+     "bytes": 6353,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "e6b3aff603ac06236bf77c2ec21ead93c6836dce",
+      "path": "candy-machine/program/src/processor/collection/set_collection_during_mint.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse e6b3aff603ac06236bf77c2ec21ead93c6836dce:candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
+     }
+    }
+   }
   },
   {
    "name": "metaplex-bubblegum-creator",
@@ -111,7 +363,54 @@
     "token-metadata/program/src/utils/metadata.rs",
     "token-metadata/program/src/utils/compression.rs"
    ],
-   "contamination_note": "The noisiest case. The fix spans two packages and is bundled with unrelated hardening of assert_collection_update_is_valid and an unrelated v2-to-v3 API change. compression.rs is new in the fix, so it has no vulnerable counterpart and only metadata.rs forms a pair."
+   "contamination_note": "The noisiest case. The fix spans two packages and is bundled with unrelated hardening of assert_collection_update_is_valid and an unrelated v2-to-v3 API change. compression.rs is new in the fix, so it has no vulnerable counterpart and only metadata.rs forms a pair.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "bfdf9d6ab2704ca3538d484ae815e9ca40e30671d68e0a5625aedf7cb2718a57",
+     "git_blob": "93a55ce961fbe9145860844ad65889399abfb464",
+     "bytes": 120,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/metadata.rs": {
+     "sha256": "eb01d600dc78e34f1fad4937ddd03bb19f0e3de277bab101d6283f0caf26e5e3",
+     "git_blob": "d515d886b9d7db27b716f29803d8384ac1f4075c",
+     "bytes": 14742,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "ec23ef776f183d5b8aa0697eef07db7ecf5f4658",
+      "path": "token-metadata/program/src/utils/metadata.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse ec23ef776f183d5b8aa0697eef07db7ecf5f4658:token-metadata/program/src/utils/metadata.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "bfdf9d6ab2704ca3538d484ae815e9ca40e30671d68e0a5625aedf7cb2718a57",
+     "git_blob": "93a55ce961fbe9145860844ad65889399abfb464",
+     "bytes": 120,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/compression.rs": {
+     "sha256": "2e3c56d11e3bbc0b560979b3daccf0d4d1792e65c129a7f26d4aa0c37f660cef",
+     "git_blob": "6cf2e375be64c7498e750e0ac70864fdad46e6fb",
+     "bytes": 1019,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+      "path": "token-metadata/program/src/utils/compression.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse c18591a7ce9bb561940cb94df4b7c35ef9cc0f57:token-metadata/program/src/utils/compression.rs"
+     }
+    },
+    "secure/src/metadata.rs": {
+     "sha256": "47fd3e10799934f2b6ddf53c6625e0c82939e13141e9da2158aea6942a910d96",
+     "git_blob": "d338a0dc31643c14a15dc2ba09904f00cfe00dd4",
+     "bytes": 14335,
+     "upstream": {
+      "repo": "metaplex-foundation/metaplex-program-library",
+      "commit": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+      "path": "token-metadata/program/src/utils/metadata.rs",
+      "verify": "git -C <clone of metaplex-foundation/metaplex-program-library> rev-parse c18591a7ce9bb561940cb94df4b7c35ef9cc0f57:token-metadata/program/src/utils/metadata.rs"
+     }
+    }
+   }
   },
   {
    "name": "anchor-interface-account",
@@ -123,7 +422,43 @@
    "files": [
     "lang/src/accounts/interface_account.rs"
    ],
-   "contamination_note": "The other files in the commit are a newly added test-fixture program plus CI and build config."
+   "contamination_note": "The other files in the commit are a newly added test-fixture program plus CI and build config.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "d253ecac44140d8aa71815d7771dab588fad1d92c2a33329c9daf3c0fe1be807",
+     "git_blob": "abb9698a3a957bbd6342dfd94e54106572547afc",
+     "bytes": 118,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/interface_account.rs": {
+     "sha256": "c9a7956cfce32f480a6e7900a57f507142f9c7883a5d3f1a7266e4a75a1b8a6b",
+     "git_blob": "d12f8cd53793839dc04f1bb0670e1bf4907333b1",
+     "bytes": 12547,
+     "upstream": {
+      "repo": "otter-sec/anchor",
+      "commit": "6374139ba383d22a75cfacfdabd9506f4d390663",
+      "path": "lang/src/accounts/interface_account.rs",
+      "verify": "git -C <clone of otter-sec/anchor> rev-parse 6374139ba383d22a75cfacfdabd9506f4d390663:lang/src/accounts/interface_account.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "d253ecac44140d8aa71815d7771dab588fad1d92c2a33329c9daf3c0fe1be807",
+     "git_blob": "abb9698a3a957bbd6342dfd94e54106572547afc",
+     "bytes": 118,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/interface_account.rs": {
+     "sha256": "cba96ab2c66310b93df2ef835ec3870e41ef00fc5e5a49cf18e344d11c2f44af",
+     "git_blob": "4665c36de8bf353406f8bd814decfb9a9ccf2f6f",
+     "bytes": 11389,
+     "upstream": {
+      "repo": "otter-sec/anchor",
+      "commit": "26ef36968a62e28a1f028e7adae4806af30c747d",
+      "path": "lang/src/accounts/interface_account.rs",
+      "verify": "git -C <clone of otter-sec/anchor> rev-parse 26ef36968a62e28a1f028e7adae4806af30c747d:lang/src/accounts/interface_account.rs"
+     }
+    }
+   }
   },
   {
    "name": "anchor-program-system",
@@ -137,7 +472,43 @@
    ],
    "contamination_note": "The fix commit also adds an 80-line #[cfg(test)] module to the same file. It is kept rather than stripped, because stripping is packaging we would have invented, but it means the secure variant is materially longer than the insecure one and a comparison that is not shift-aware will read that as change. The only other file in the commit is a TypeScript integration test, which cannot be part of a Rust pair.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "f8d6b6c4dea6c1870b8bbab6261d475347422d5bf14d8b4145351b8427e04736",
+     "git_blob": "1b944020dff1d479dbcc0e0dccb996217c981bff",
+     "bytes": 115,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/program.rs": {
+     "sha256": "936ca827e5079b71b7f6697f1eff744e2d508061ec68ff81181f9413aba3334f",
+     "git_blob": "1d5bb9b9fddd5c83a77a1c573d611a339fe14f9a",
+     "bytes": 8153,
+     "upstream": {
+      "repo": "coral-xyz/anchor",
+      "commit": "415a16b57e7a7fee093a38dc4f2588b020324242",
+      "path": "lang/src/accounts/program.rs",
+      "verify": "git -C <clone of coral-xyz/anchor> rev-parse 415a16b57e7a7fee093a38dc4f2588b020324242:lang/src/accounts/program.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "f8d6b6c4dea6c1870b8bbab6261d475347422d5bf14d8b4145351b8427e04736",
+     "git_blob": "1b944020dff1d479dbcc0e0dccb996217c981bff",
+     "bytes": 115,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/program.rs": {
+     "sha256": "8b172fcf4a2bcfe01daf886e72347758f3cc54f31aec961087bde3cce77de7d1",
+     "git_blob": "4ff621a31a94356e28fad1d1e4df51c0ea2ed06b",
+     "bytes": 11240,
+     "upstream": {
+      "repo": "coral-xyz/anchor",
+      "commit": "3eb1fb0427d4fed0e944b627aef76db651a93aab",
+      "path": "lang/src/accounts/program.rs",
+      "verify": "git -C <clone of coral-xyz/anchor> rev-parse 3eb1fb0427d4fed0e944b627aef76db651a93aab:lang/src/accounts/program.rs"
+     }
+    }
+   }
   },
   {
    "name": "solido-deposit-reserve-account",
@@ -152,7 +523,43 @@
    "contamination_note": "The fix commit touches nothing else: one file, one line. The check it calls, Lido::check_reserve_account, lives in program/src/state.rs, which is not pinned, so the pair shows the call site appearing and not the callee. The parent commit f050f316 deliberately adds a failing regression test at program/tests/tests/deposit.rs; that file exists only on the vulnerable side and is not pinned. A build that compiles and runs the vulnerable crate's own tests will see a red test. That is the maintainers' intent, not a build error.",
    "sha_note": "The obvious SHA to take from the audit's PR reference is PR #383, whose merge commit d43e0f30e806dfeadadc7a020890929c1a9cf29a has TWO parents; git show on it prints a combined diff over 4 files and would drag two test files into the case. That is the mistake that cost this project the spl-token-lending case. The squash target 97fafb2b has exactly one parent, checked with git log -1 --format=%P before the diff was read.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "055b4020816a62423066f7384a09a7e230030eef1b7d7bcc0235b02ee1f707d9",
+     "git_blob": "521b2cb22b0b62f7d056d1e61dbb376195227749",
+     "bytes": 124,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/processor.rs": {
+     "sha256": "c0a0260e69b665180445d0a6a71a330a162435e6e96a27270e1b8db142768800",
+     "git_blob": "d7ea2221dabac6df455ada2612616469f835b434",
+     "bytes": 36099,
+     "upstream": {
+      "repo": "chorusone/solido",
+      "commit": "f050f316ebf2c075635ffec9ea2162b6362ed2e2",
+      "path": "program/src/processor.rs",
+      "verify": "git -C <clone of chorusone/solido> rev-parse f050f316ebf2c075635ffec9ea2162b6362ed2e2:program/src/processor.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "055b4020816a62423066f7384a09a7e230030eef1b7d7bcc0235b02ee1f707d9",
+     "git_blob": "521b2cb22b0b62f7d056d1e61dbb376195227749",
+     "bytes": 124,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/processor.rs": {
+     "sha256": "2f43a644be8802ce8cab05580d7f873a0e0df5ea181e4fc9f1dab8cde8985359",
+     "git_blob": "008383b57efbe43ab53f6c87597ef221242aac41",
+     "bytes": 36189,
+     "upstream": {
+      "repo": "chorusone/solido",
+      "commit": "97fafb2bbcf5d1179da887f36bac0b2916b988fe",
+      "path": "program/src/processor.rs",
+      "verify": "git -C <clone of chorusone/solido> rev-parse 97fafb2bbcf5d1179da887f36bac0b2916b988fe:program/src/processor.rs"
+     }
+    }
+   }
   },
   {
    "name": "solido-anker-arbitrary-cpi",
@@ -167,7 +574,43 @@
    "contamination_note": "anker/src/error.rs in the same commit changes one doc comment on an existing enum variant and cannot affect any analysis. Excluded. anker/src/processor.rs threads the new argument through process_change_token_swap_pool, where it passes the account's own owner and so makes the new check tautologically true at that call site; that is signature plumbing, not the fix. Excluded. The consequence is that the pinned file carries the missing check and its call site in check_token_swap, but NOT the sink: the invoke_signed the check protects is in anker/src/processor.rs. A scanner that needs to see the source and the sink in one file cannot see this bug in this pair.",
    "sha_note": "PR #512's merge commit 0ba466e5ed3a3bc46fa945ce46c6fc7c597cc598 has TWO parents and its branch head 5885e84e is several commits past the fix. Use 676d6bee, verified single-parent. The sibling commit 82761db, 'Add additional balance check in Anker::SellRewards', says in its own message that it would have limited rather than prevented the theft. It is defence in depth, not the fix, and is not folded in.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "59b08f22532e45b85b277509991051dd6f4ada8e918fcecfe5a2acde682a6e4f",
+     "git_blob": "a5960f26bbfccad3ab7ee0e0646146622314e6ff",
+     "bytes": 120,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/state.rs": {
+     "sha256": "c363c9f5af9c2fa459b889ebeb7886e691ffac9c56c7df707a63ef3a003a2d76",
+     "git_blob": "2042d1966a0b41e21d967b7716ead9ae6b92be1e",
+     "bytes": 25981,
+     "upstream": {
+      "repo": "chorusone/solido",
+      "commit": "b1257e44fc6bda7bbf6096b2d38e33fa3367af63",
+      "path": "anker/src/state.rs",
+      "verify": "git -C <clone of chorusone/solido> rev-parse b1257e44fc6bda7bbf6096b2d38e33fa3367af63:anker/src/state.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "59b08f22532e45b85b277509991051dd6f4ada8e918fcecfe5a2acde682a6e4f",
+     "git_blob": "a5960f26bbfccad3ab7ee0e0646146622314e6ff",
+     "bytes": 120,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/state.rs": {
+     "sha256": "62324c7391210f647889456475a5401de0307b2135aacd4bcf4af06e7e96b859",
+     "git_blob": "bc524b0f4a742149b539632cb8d23d96a44c4939",
+     "bytes": 26586,
+     "upstream": {
+      "repo": "chorusone/solido",
+      "commit": "676d6bee310b13c39b3c8e1adc6a26a4db2f8482",
+      "path": "anker/src/state.rs",
+      "verify": "git -C <clone of chorusone/solido> rev-parse 676d6bee310b13c39b3c8e1adc6a26a4db2f8482:anker/src/state.rs"
+     }
+    }
+   }
   },
   {
    "name": "spl-stake-pool-fee-rounding",
@@ -182,7 +625,43 @@
    "contamination_note": "The other three files in the commit are tests that adjust expected fee values to the new rounding direction. Excluded. state.rs here is over a thousand lines and the fix is a five-line function body, so this case says nothing under file-level matching and only means something under hunk-level matching (limitation 2).",
    "class_overlap_note": "This does not duplicate spl-token-lending-rounding, which is a Decimal/Rate precision bug in a lending market rather than an integer floor in a stake pool fee. But both are in solana-labs/solana-program-library, so counting both worsens the repository concentration recorded in docs/CLASS-BALANCE.md rather than improving it.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "fc3b492372f5c1dfcbc99d563e2cb940c00dccaaa9c5651e9fc66699e5dddc9f",
+     "git_blob": "e5bfcdf0339755d30da9de1c45a6f0b4e01de79c",
+     "bytes": 121,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/state.rs": {
+     "sha256": "0fc3429e930c272ac394d5f6dcbb0ba655858cae2f33f7eac7aa05a6cf8b90c9",
+     "git_blob": "31c2ef946654f73970142c8fe9fe32df5b0924cd",
+     "bytes": 53701,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "0d6832eddb0bf49706a9173521c8d09bfc2a52bc",
+      "path": "stake-pool/program/src/state.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse 0d6832eddb0bf49706a9173521c8d09bfc2a52bc:stake-pool/program/src/state.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "fc3b492372f5c1dfcbc99d563e2cb940c00dccaaa9c5651e9fc66699e5dddc9f",
+     "git_blob": "e5bfcdf0339755d30da9de1c45a6f0b4e01de79c",
+     "bytes": 121,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/state.rs": {
+     "sha256": "10fd6e86efddcca643c4bcf6c6101c7c2e9ac0e21cd93da7515e32c5d6ff7a6f",
+     "git_blob": "b453b1b5a30374ab54d3107dab5e4c69dcbea814",
+     "bytes": 53910,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "a17fffe70d6cc13742abfbc4a4a375b087580bc1",
+      "path": "stake-pool/program/src/state.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse a17fffe70d6cc13742abfbc4a4a375b087580bc1:stake-pool/program/src/state.rs"
+     }
+    }
+   }
   },
   {
    "name": "token-2022-confidential-approve-mint",
@@ -196,7 +675,43 @@
    ],
    "contamination_note": "The only other file in the commit is a test. Excluded. This is a large processor file in a crate with heavy dependencies including the zk proof crates, so the real-crate variant of this case should be expected to be slow to build, and has not been built here.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "4821e9d968fcc0eb315f88e0a046c63c01c035d7e587d0265ac18dd7743bb73f",
+     "git_blob": "6f3c987434a83964ad8a1cc75c21616f9a910177",
+     "bytes": 130,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/processor.rs": {
+     "sha256": "b3ffeaebe6a9ffe6e07691d1e5b193455f6a3f7a199005f1e84f40e305b45ef3",
+     "git_blob": "58a3140adb5f7162e74d98f7a8e76f7c7785cece",
+     "bytes": 48896,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "6ed80b3a353042df7a60353fa38d9460628b40de",
+      "path": "token/program-2022/src/extension/confidential_transfer/processor.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse 6ed80b3a353042df7a60353fa38d9460628b40de:token/program-2022/src/extension/confidential_transfer/processor.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "4821e9d968fcc0eb315f88e0a046c63c01c035d7e587d0265ac18dd7743bb73f",
+     "git_blob": "6f3c987434a83964ad8a1cc75c21616f9a910177",
+     "bytes": 130,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/processor.rs": {
+     "sha256": "f2d56faf57a433a64c194b4172d7f3e4ed680ff71e5f2a31a925b46267892858",
+     "git_blob": "f99b24014470812e71af539328804c73afc82771",
+     "bytes": 49007,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "b41094566e04c5b3e93f28cb92dd5d09ae9becc5",
+      "path": "token/program-2022/src/extension/confidential_transfer/processor.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse b41094566e04c5b3e93f28cb92dd5d09ae9becc5:token/program-2022/src/extension/confidential_transfer/processor.rs"
+     }
+    }
+   }
   },
   {
    "name": "squads-recursive-execute",
@@ -211,7 +726,43 @@
    "severity_note": "THE AUDITOR RATED THIS Info AND DISPUTED THAT IT HAS ANY IMPACT. Neodyme's table reads \"Info | Bypass of previous fix. No impact, except for inconsistency.\" and the report says: \"In our estimation, the original bug does not have any impact\", because at execution time all multisig accounts are owned by MPL, MPL has no close instruction, and so signing with the multisig PDA cannot move lamports. Neodyme states in the same passage that OtterSec's impact claim for the original OS-SQD-SUG-01 was wrong for that reason. So this is a hardening commit for a defence-in-depth bypass with no demonstrated exploit path, not a loss-of-funds bug. It is kept because the pair is clean, the class is one nothing else in the corpus covers, and a scanner that flags unbounded self-recursion in an authority-gated execute path is doing the right thing. Anyone quoting this case must quote this note with it. FLAGGED FOR A HUMAN DECISION: the dossier that proposed this case rejected a sibling commit (a2448c5, Neodyme MPL2) on the grounds that the auditor graded it Low and saw no immediate implications, and Info with no impact is a weaker grade than that. Applying that standard consistently would reject this case too.",
    "provenance_note": "The strongest provenance in the corpus. The Neodyme report states the audit started at commit 7ef3ed2bab2f68fb49d5db327854b2fccc092bb0, which is this case's parent, and then says verbatim: \"The Squads team blacklisted the execute instruction/transaction endpoints for the 0 authority in commit 09470403a684b8d4d83928a46dd76d2173de5c21. Neodyme verified this.\" Both statements were read out of the PDF text, not summarised from a web page.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "4170ccddbbd83e20b01222f83de99d215c517e488685aef716f1a85d10e261cc",
+     "git_blob": "95a4d006834de2fe548e2dea4e5780ab04c24649",
+     "bytes": 118,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/lib.rs": {
+     "sha256": "e10967e6b051655420415605cb602b8dfa3971028b30c477bd8b178729d2b1e1",
+     "git_blob": "1ef8a3129b42b52f6d26cfb0ddcb0dc0551edcfc",
+     "bytes": 31717,
+     "upstream": {
+      "repo": "Squads-Protocol/squads-mpl",
+      "commit": "7ef3ed2bab2f68fb49d5db327854b2fccc092bb0",
+      "path": "programs/squads-mpl/src/lib.rs",
+      "verify": "git -C <clone of Squads-Protocol/squads-mpl> rev-parse 7ef3ed2bab2f68fb49d5db327854b2fccc092bb0:programs/squads-mpl/src/lib.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "4170ccddbbd83e20b01222f83de99d215c517e488685aef716f1a85d10e261cc",
+     "git_blob": "95a4d006834de2fe548e2dea4e5780ab04c24649",
+     "bytes": 118,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/lib.rs": {
+     "sha256": "f16b402b967803a3f5192f744de50fe28965dafd0916a26d0a4436b5660b2095",
+     "git_blob": "fc00ef6f244fb7c332425b5695cfbce8030cf715",
+     "bytes": 32262,
+     "upstream": {
+      "repo": "Squads-Protocol/squads-mpl",
+      "commit": "09470403a684b8d4d83928a46dd76d2173de5c21",
+      "path": "programs/squads-mpl/src/lib.rs",
+      "verify": "git -C <clone of Squads-Protocol/squads-mpl> rev-parse 09470403a684b8d4d83928a46dd76d2173de5c21:programs/squads-mpl/src/lib.rs"
+     }
+    }
+   }
   },
   {
    "name": "spl-stake-pool-mint-decimals",
@@ -225,7 +776,43 @@
    ],
    "contamination_note": "stake-pool/program/src/error.rs in the same commit adds the IncorrectMintDecimals variant the new branch returns and its msg! arm. That is mechanically required by the fix rather than part of it, and unlike the metaplex assertions/misc.rs case the added code is reachable. It is excluded from the pair and must not be counted as part of the fix for scoring. The pinned processor.rs diff also carries the one-line native_mint import the check needs. Both test files are excluded.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "7510ad0ce74e0510b8115ca71ab97df6abf205b67f8aea3a0b55111c3b2b7fea",
+     "git_blob": "64ddd50dbf978e1abb21e43fdb9729ae3330987b",
+     "bytes": 122,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/processor.rs": {
+     "sha256": "dc41c541e8e4a1ef07c227a6e06d18485d15c1b74d842b5f290581a75b6134cf",
+     "git_blob": "d267d1e531e85a4d048fce3013e0f8bebfa730eb",
+     "bytes": 169581,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "7f2f11507e4a26d9bfbacba650334b7d86fa1514",
+      "path": "stake-pool/program/src/processor.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse 7f2f11507e4a26d9bfbacba650334b7d86fa1514:stake-pool/program/src/processor.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "7510ad0ce74e0510b8115ca71ab97df6abf205b67f8aea3a0b55111c3b2b7fea",
+     "git_blob": "64ddd50dbf978e1abb21e43fdb9729ae3330987b",
+     "bytes": 122,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/processor.rs": {
+     "sha256": "d10a03a01df36118bcc82bc6d35212f48056fae33126a1b6279d40291f5f0a78",
+     "git_blob": "167f19a540bc90f32d243df74b37b6bc766af1a5",
+     "bytes": 169878,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "c9edc4dbcc1981c27f94e786dc9ba15bb7174549",
+      "path": "stake-pool/program/src/processor.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse c9edc4dbcc1981c27f94e786dc9ba15bb7174549:stake-pool/program/src/processor.rs"
+     }
+    }
+   }
   },
   {
    "name": "anchor-account-reload-owner",
@@ -240,7 +827,43 @@
    "source_strength_note": "WEAKEST SOURCE IN THE CORPUS. Acceptance criterion 4 asks for a public description of the bug so that the label is not our opinion, and a pull request titled feat(...) is thinner than every other case here. It is admitted because the mechanism is unambiguous in the diff and the class is one nothing else covers, but a reviewer is right to push back, and this note exists so that the pushback lands on a recorded weakness rather than on a hidden one. Note the tension with rejection R8 in docs/CANDIDATES-TRIAGE.md, which turned down a comparable unsourced owner check.",
    "contamination_note": "lang/tests/account_reload.rs is a test and is excluded. lang/src/accounts/interface_account.rs is NOT excluded as noise: it carries the same owner check for the sibling type, and pinning both files would double-count one bug across two files and inflate any file-level score. It is excluded for that reason, which is different from every other exclusion in this manifest. Reading it also turned up something the dossier that proposed this case did not record: the same commit rewrites InterfaceAccount::try_from to delegate to try_from_unchecked, dropping the Anchor discriminator check on construction. That is a second, security-relevant change in the same commit, in the very file the existing anchor-interface-account case pins, and it is a further reason not to pin interface_account.rs here.",
    "measured": false,
-   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "80b66701ac01a779a22dc0d36d0f097fc7318683e08f0bbd61fb0fbf93a83367",
+     "git_blob": "1f5e2c93d5f954f9fb66c5a5236ce906f40cd5e2",
+     "bytes": 121,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/account.rs": {
+     "sha256": "f90bd965d0ab97e8865045677f5c8ae3575443802b3a355444ebedc05a31c332",
+     "git_blob": "84683b1ceaddfc0465c744dd82c7a62921026fef",
+     "bytes": 14472,
+     "upstream": {
+      "repo": "coral-xyz/anchor",
+      "commit": "2da41204735c944686a39bd18a50a0ff173425bb",
+      "path": "lang/src/accounts/account.rs",
+      "verify": "git -C <clone of coral-xyz/anchor> rev-parse 2da41204735c944686a39bd18a50a0ff173425bb:lang/src/accounts/account.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "80b66701ac01a779a22dc0d36d0f097fc7318683e08f0bbd61fb0fbf93a83367",
+     "git_blob": "1f5e2c93d5f954f9fb66c5a5236ce906f40cd5e2",
+     "bytes": 121,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/account.rs": {
+     "sha256": "662bc8f57b8e50386f9ed7b2054d02f653d2cb7048fc09110fe1ad03490b4149",
+     "git_blob": "e72916ac37be225bb70cd653d5252cf003690de7",
+     "bytes": 14787,
+     "upstream": {
+      "repo": "coral-xyz/anchor",
+      "commit": "3a799e2d32bd708f0b280c60baecac76418248b1",
+      "path": "lang/src/accounts/account.rs",
+      "verify": "git -C <clone of coral-xyz/anchor> rev-parse 3a799e2d32bd708f0b280c60baecac76418248b1:lang/src/accounts/account.rs"
+     }
+    }
+   }
   }
  ],
  "excluded": {
@@ -248,5 +871,6 @@
  },
  "file_selection": "Each case pins the file the public disclosure actually implicates, established by reading every fix commit's full diff against its advisory. The first build took every .rs file the commit touched, which packaged dependency bumps, kill switches, dead code and unrelated hardening as part of a vulnerability pair. Recorded in KNOWN-LIMITATIONS as limitation 3.",
  "scoring_note": "Cases with valid=false are excluded from every denominator. As of 2026-09-01 that is cashio-account-data only. Counts are derived rather than typed: run tools/class_balance.py, which reads this manifest and the corpus2/ directory and writes docs/CLASS-BALANCE.md.",
- "measurement_status": "A case carries \"measured\": false until a scanner has actually been run over it. Absence of the field means measured, which is true of every case built on 2026-08-31. Published corpus-2 scores are out of the MEASURED cases only. The unmeasured ones are reported by run_all.py and score2.py as not-run or unknown, never as a zero, and they drop the reporting scanner's status to partial until it is re-run. Eight cases were added on 2026-09-01 and none of them has been measured."
+ "measurement_status": "A case carries \"measured\": false until a scanner has actually been run over it. Absence of the field means measured, which is true of every case built on 2026-08-31. Published corpus-2 scores are out of the MEASURED cases only. The unmeasured ones are reported by run_all.py and score2.py as not-run or unknown, never as a zero, and they drop the reporting scanner's status to partial until it is re-run. Eight cases were added on 2026-09-01 and none of them has been measured.",
+ "file_hashes_note": "Added 2026-09-01. sha256 detects any local edit with no network; git_blob is git's own object id, so `git cat-file blob <git_blob>` in a clone of the named repository resolves the same bytes, and `git rev-parse <commit>:<path>` proves the blob is the one that commit produced. Recompute and check with `python tools/corpus_hashes.py`. Before this existed, a one-character edit to any corpus file passed every check in the repository and changed every verdict."
 }

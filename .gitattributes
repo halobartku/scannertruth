@@ -1,0 +1,15 @@
+# The corpus is the answer key, and the answer key is a byte-for-byte copy of an upstream git
+# blob. `git config core.autocrlf` is `true` on the Windows machine this project is developed on,
+# which on 2026-09-01 meant that eight of seventeen corpus-2 cases were checked out with CRLF line
+# endings and no longer matched the blob they are supposed to be. Nothing could catch it until
+# corpus2/manifest.json started carrying content hashes; then it was obvious within minutes.
+# That is error 34.
+#
+# `-text` switches newline conversion off entirely for these paths, on every platform, so what a
+# scanner reads is what the upstream repository holds and the recorded sha256 and git blob id are
+# reproducible on Windows, Linux and macOS alike.
+corpus2/** -text
+
+# Findings files, run logs and raw scanner output are records of what a tool actually emitted.
+# Rewriting their line endings on checkout would change their hashes for no reason.
+raw/** -text

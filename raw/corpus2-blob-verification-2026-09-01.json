@@ -1,0 +1,253 @@
+{
+ "checked_at": "2026-09-01",
+ "method": "GET raw.githubusercontent.com/<repo>/<commit>/<path>, then git blob id and sha256 computed locally and compared with corpus2/manifest.json file_hashes",
+ "match": 35,
+ "mismatch_or_error": 0,
+ "rows": [
+  {
+   "case": "wormhole-sysvar",
+   "file": "insecure/src/verify_signature.rs",
+   "result": "MATCH",
+   "detail": "ed3acac24672",
+   "url": "https://raw.githubusercontent.com/wormhole-foundation/wormhole/79ab522f802ccc5ba34278d3c648fa62e06f4f1c/solana/bridge/program/src/api/verify_signature.rs"
+  },
+  {
+   "case": "wormhole-sysvar",
+   "file": "secure/src/verify_signature.rs",
+   "result": "MATCH",
+   "detail": "1c3d862a2801",
+   "url": "https://raw.githubusercontent.com/wormhole-foundation/wormhole/7edbbd3677ee6ca681be8722a607bc576a3912c8/solana/bridge/program/src/api/verify_signature.rs"
+  },
+  {
+   "case": "cashio-account-data",
+   "file": "insecure/src/mod.rs",
+   "result": "MATCH",
+   "detail": "22d4eecaf625",
+   "url": "https://raw.githubusercontent.com/cashioapp/cashio/a51c3c59d544a5763b64abb4a8d82c49b0abd6d0/programs/brrr/src/actions/mod.rs"
+  },
+  {
+   "case": "cashio-account-data",
+   "file": "secure/src/mod.rs",
+   "result": "MATCH",
+   "detail": "03f599ad0563",
+   "url": "https://raw.githubusercontent.com/cashioapp/cashio/7df658184c2610139fa2c0058363c66b28add4c4/programs/brrr/src/actions/mod.rs"
+  },
+  {
+   "case": "solend-owner-checks",
+   "file": "insecure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "e5960308b423",
+   "url": "https://raw.githubusercontent.com/solendprotocol/solana-program-library/132d74cf171dac66f896c4009ad6836f8c0b3799/token-lending/program/src/processor.rs"
+  },
+  {
+   "case": "solend-owner-checks",
+   "file": "secure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "2ce62b0359a5",
+   "url": "https://raw.githubusercontent.com/solendprotocol/solana-program-library/4c2d5c10e2240fd79398dbad586aa73fd9077f0f/token-lending/program/src/processor.rs"
+  },
+  {
+   "case": "squads-signer-auth",
+   "file": "insecure/src/lib.rs",
+   "result": "MATCH",
+   "detail": "3e3935ebd91a",
+   "url": "https://raw.githubusercontent.com/Squads-Protocol/squads-mpl/352673d96c06d3c9450b9f3b20ed994aad74e4be/programs/squads-mpl/src/lib.rs"
+  },
+  {
+   "case": "squads-signer-auth",
+   "file": "secure/src/lib.rs",
+   "result": "MATCH",
+   "detail": "a5ec0c86497c",
+   "url": "https://raw.githubusercontent.com/Squads-Protocol/squads-mpl/4b5c0e9c7d043b27c4a89bb8ab0bbe743fef8f27/programs/squads-mpl/src/lib.rs"
+  },
+  {
+   "case": "squads-account-matching",
+   "file": "insecure/src/lib.rs",
+   "result": "MATCH",
+   "detail": "c31bbba8a9dd",
+   "url": "https://raw.githubusercontent.com/Squads-Protocol/squads-mpl/336bdbd887bb5566fae4db9dcb05347f73961877/programs/squads-mpl/src/lib.rs"
+  },
+  {
+   "case": "squads-account-matching",
+   "file": "secure/src/lib.rs",
+   "result": "MATCH",
+   "detail": "3e3935ebd91a",
+   "url": "https://raw.githubusercontent.com/Squads-Protocol/squads-mpl/352673d96c06d3c9450b9f3b20ed994aad74e4be/programs/squads-mpl/src/lib.rs"
+  },
+  {
+   "case": "metaplex-token-metadata",
+   "file": "insecure/src/transfer.rs",
+   "result": "MATCH",
+   "detail": "f60def661ff8",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/b8735d98ad592ea5847631435ceff5d9b2881a01/token-metadata/program/src/processor/metadata/transfer.rs"
+  },
+  {
+   "case": "metaplex-token-metadata",
+   "file": "secure/src/transfer.rs",
+   "result": "MATCH",
+   "detail": "bf50c1c77ca4",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/7f163a1777d2540af92d7cb5cf89ea0393094619/token-metadata/program/src/processor/metadata/transfer.rs"
+  },
+  {
+   "case": "metaplex-candy-machine",
+   "file": "insecure/src/set_collection_during_mint.rs",
+   "result": "MATCH",
+   "detail": "efd6aeaad43c",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/c18591a7ce9bb561940cb94df4b7c35ef9cc0f57/candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
+  },
+  {
+   "case": "metaplex-candy-machine",
+   "file": "secure/src/set_collection_during_mint.rs",
+   "result": "MATCH",
+   "detail": "0d311d0fe338",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/e6b3aff603ac06236bf77c2ec21ead93c6836dce/candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
+  },
+  {
+   "case": "metaplex-bubblegum-creator",
+   "file": "insecure/src/metadata.rs",
+   "result": "MATCH",
+   "detail": "d515d886b9d7",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/ec23ef776f183d5b8aa0697eef07db7ecf5f4658/token-metadata/program/src/utils/metadata.rs"
+  },
+  {
+   "case": "metaplex-bubblegum-creator",
+   "file": "secure/src/compression.rs",
+   "result": "MATCH",
+   "detail": "6cf2e375be64",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/c18591a7ce9bb561940cb94df4b7c35ef9cc0f57/token-metadata/program/src/utils/compression.rs"
+  },
+  {
+   "case": "metaplex-bubblegum-creator",
+   "file": "secure/src/metadata.rs",
+   "result": "MATCH",
+   "detail": "d338a0dc3164",
+   "url": "https://raw.githubusercontent.com/metaplex-foundation/metaplex-program-library/c18591a7ce9bb561940cb94df4b7c35ef9cc0f57/token-metadata/program/src/utils/metadata.rs"
+  },
+  {
+   "case": "anchor-interface-account",
+   "file": "insecure/src/interface_account.rs",
+   "result": "MATCH",
+   "detail": "d12f8cd53793",
+   "url": "https://raw.githubusercontent.com/otter-sec/anchor/6374139ba383d22a75cfacfdabd9506f4d390663/lang/src/accounts/interface_account.rs"
+  },
+  {
+   "case": "anchor-interface-account",
+   "file": "secure/src/interface_account.rs",
+   "result": "MATCH",
+   "detail": "4665c36de8bf",
+   "url": "https://raw.githubusercontent.com/otter-sec/anchor/26ef36968a62e28a1f028e7adae4806af30c747d/lang/src/accounts/interface_account.rs"
+  },
+  {
+   "case": "anchor-program-system",
+   "file": "insecure/src/program.rs",
+   "result": "MATCH",
+   "detail": "1d5bb9b9fddd",
+   "url": "https://raw.githubusercontent.com/coral-xyz/anchor/415a16b57e7a7fee093a38dc4f2588b020324242/lang/src/accounts/program.rs"
+  },
+  {
+   "case": "anchor-program-system",
+   "file": "secure/src/program.rs",
+   "result": "MATCH",
+   "detail": "4ff621a31a94",
+   "url": "https://raw.githubusercontent.com/coral-xyz/anchor/3eb1fb0427d4fed0e944b627aef76db651a93aab/lang/src/accounts/program.rs"
+  },
+  {
+   "case": "solido-deposit-reserve-account",
+   "file": "insecure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "d7ea2221daba",
+   "url": "https://raw.githubusercontent.com/chorusone/solido/f050f316ebf2c075635ffec9ea2162b6362ed2e2/program/src/processor.rs"
+  },
+  {
+   "case": "solido-deposit-reserve-account",
+   "file": "secure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "008383b57efb",
+   "url": "https://raw.githubusercontent.com/chorusone/solido/97fafb2bbcf5d1179da887f36bac0b2916b988fe/program/src/processor.rs"
+  },
+  {
+   "case": "solido-anker-arbitrary-cpi",
+   "file": "insecure/src/state.rs",
+   "result": "MATCH",
+   "detail": "2042d1966a0b",
+   "url": "https://raw.githubusercontent.com/chorusone/solido/b1257e44fc6bda7bbf6096b2d38e33fa3367af63/anker/src/state.rs"
+  },
+  {
+   "case": "solido-anker-arbitrary-cpi",
+   "file": "secure/src/state.rs",
+   "result": "MATCH",
+   "detail": "bc524b0f4a74",
+   "url": "https://raw.githubusercontent.com/chorusone/solido/676d6bee310b13c39b3c8e1adc6a26a4db2f8482/anker/src/state.rs"
+  },
+  {
+   "case": "spl-stake-pool-fee-rounding",
+   "file": "insecure/src/state.rs",
+   "result": "MATCH",
+   "detail": "31c2ef946654",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/0d6832eddb0bf49706a9173521c8d09bfc2a52bc/stake-pool/program/src/state.rs"
+  },
+  {
+   "case": "spl-stake-pool-fee-rounding",
+   "file": "secure/src/state.rs",
+   "result": "MATCH",
+   "detail": "b453b1b5a303",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/a17fffe70d6cc13742abfbc4a4a375b087580bc1/stake-pool/program/src/state.rs"
+  },
+  {
+   "case": "token-2022-confidential-approve-mint",
+   "file": "insecure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "58a3140adb5f",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/6ed80b3a353042df7a60353fa38d9460628b40de/token/program-2022/src/extension/confidential_transfer/processor.rs"
+  },
+  {
+   "case": "token-2022-confidential-approve-mint",
+   "file": "secure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "f99b24014470",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/b41094566e04c5b3e93f28cb92dd5d09ae9becc5/token/program-2022/src/extension/confidential_transfer/processor.rs"
+  },
+  {
+   "case": "squads-recursive-execute",
+   "file": "insecure/src/lib.rs",
+   "result": "MATCH",
+   "detail": "1ef8a3129b42",
+   "url": "https://raw.githubusercontent.com/Squads-Protocol/squads-mpl/7ef3ed2bab2f68fb49d5db327854b2fccc092bb0/programs/squads-mpl/src/lib.rs"
+  },
+  {
+   "case": "squads-recursive-execute",
+   "file": "secure/src/lib.rs",
+   "result": "MATCH",
+   "detail": "fc00ef6f244f",
+   "url": "https://raw.githubusercontent.com/Squads-Protocol/squads-mpl/09470403a684b8d4d83928a46dd76d2173de5c21/programs/squads-mpl/src/lib.rs"
+  },
+  {
+   "case": "spl-stake-pool-mint-decimals",
+   "file": "insecure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "d267d1e531e8",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/7f2f11507e4a26d9bfbacba650334b7d86fa1514/stake-pool/program/src/processor.rs"
+  },
+  {
+   "case": "spl-stake-pool-mint-decimals",
+   "file": "secure/src/processor.rs",
+   "result": "MATCH",
+   "detail": "167f19a540bc",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/c9edc4dbcc1981c27f94e786dc9ba15bb7174549/stake-pool/program/src/processor.rs"
+  },
+  {
+   "case": "anchor-account-reload-owner",
+   "file": "insecure/src/account.rs",
+   "result": "MATCH",
+   "detail": "84683b1ceadd",
+   "url": "https://raw.githubusercontent.com/coral-xyz/anchor/2da41204735c944686a39bd18a50a0ff173425bb/lang/src/accounts/account.rs"
+  },
+  {
+   "case": "anchor-account-reload-owner",
+   "file": "secure/src/account.rs",
+   "result": "MATCH",
+   "detail": "e72916ac37be",
+   "url": "https://raw.githubusercontent.com/coral-xyz/anchor/3a799e2d32bd708f0b280c60baecac76418248b1/lang/src/accounts/account.rs"
+  }
+ ]
+}
