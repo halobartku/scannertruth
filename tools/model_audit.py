@@ -26,6 +26,7 @@ import pathlib
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -99,6 +100,51 @@ def ask_openrouter(model, code, think=False):
             (d.get("choices") or [{}])[0].get("finish_reason", ""),
             {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
              "cost_usd": u.get("cost")})
+
+
+ZAI = os.environ.get("GLM_BASE_URL", "https://api.z.ai/api/coding/paas/v4").rstrip("/") + "/chat/completions"
+
+
+def ask_zai(model, code, think=False):
+    """One call to Z.ai's OpenAI-compatible endpoint, the one the VPS agent's coding plan pays for.
+
+    Same shape as the OpenRouter call, two differences worth stating. Z.ai's switch for reasoning
+    is `thinking: {type: disabled}`, not OpenRouter's `reasoning`; `max_tokens` stays as the second
+    belt. And the response carries token counts but no price, because a coding plan is a quota, not
+    a meter - the line records the tokens and says the cost basis is the plan. A 429 is the plan's
+    quota, shared with the agent's own cron jobs, so the call waits and retries a few times rather
+    than filing the case as unusable on the first refusal.
+    """
+    key = os.environ.get("GLM_API_KEY")
+    if not key:
+        raise RuntimeError("GLM_API_KEY is not set")
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": PROMPT + code[:24000]}],
+        "temperature": 0,
+    }
+    if not think:
+        payload["thinking"] = {"type": "disabled"}
+        payload["max_tokens"] = 400
+    req = urllib.request.Request(
+        ZAI, data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(req, timeout=1800) as r:
+                d = json.loads(r.read())
+            break
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 5:
+                raise
+            time.sleep(30 * (attempt + 1))
+    msg = (d.get("choices") or [{}])[0].get("message", {}) or {}
+    u = d.get("usage") or {}
+    return ((msg.get("content") or "").strip(),
+            (msg.get("reasoning_content") or ""),
+            (d.get("choices") or [{}])[0].get("finish_reason", ""),
+            {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
+             "cost_usd": None, "cost_basis": "z.ai coding plan quota, no per-call price"})
 
 
 def ask_claude_code(model, code, think=False):
@@ -187,7 +233,7 @@ def main():
     ap.add_argument("--case", help="one case only, for a smoke test")
     ap.add_argument("--corpus", choices=("1", "2"), default="2",
                     help="1 = the teaching corpus everybody scores on, 2 = real vulnerabilities")
-    ap.add_argument("--provider", choices=("ollama", "openrouter", "claude-code"), default="ollama",
+    ap.add_argument("--provider", choices=("ollama", "openrouter", "claude-code", "zai"), default="ollama",
                     help="openrouter reads OPENROUTER_API_KEY from the environment and records the "
                          "real cost of every call; the key is never written anywhere")
     ap.add_argument("--think", action="store_true",
@@ -213,7 +259,7 @@ def main():
             sys.exit(f"no such case: {args.case}")
 
     stamp = time.strftime("%Y-%m-%d")
-    think_tag = ("-think" if args.think else "") + {"openrouter": "-or", "claude-code": "-cc"}.get(args.provider, "")
+    think_tag = ("-think" if args.think else "") + {"openrouter": "-or", "claude-code": "-cc", "zai": "-zai"}.get(args.provider, "")
     out_dir = ROOT / "raw" / f"model-{args.model.replace(':', '-').replace('/', '-')}{think_tag}-c{args.corpus}-{stamp}"
     out_dir.mkdir(parents=True, exist_ok=True)
     log = (out_dir / "runs.jsonl").open("a", encoding="utf-8")
@@ -236,7 +282,7 @@ def main():
             for i in range(args.runs):
                 t0 = time.time()
                 try:
-                    fn = {"openrouter": ask_openrouter, "claude-code": ask_claude_code}.get(args.provider, ask)
+                    fn = {"openrouter": ask_openrouter, "claude-code": ask_claude_code, "zai": ask_zai}.get(args.provider, ask)
                     raw, thinking, done, usage = fn(args.model, code, think=args.think)
                     err = None
                 except Exception as exc:  # noqa: BLE001
