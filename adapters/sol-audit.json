@@ -16,7 +16,9 @@
  },
  "layout": "unrecorded",
  "coverage": {
-  "ok_exit_codes": [0],
+  "ok_exit_codes": [
+   0
+  ],
   "evidence": {
    "absent": true,
    "reason": "no run log exists for either v2 row, so which cases were analysed cannot be answered from this repository. run_all reports the corpus-2 row as `partial` with 8 cases `unknown`, which is the honest verdict rather than a guess in either direction."
@@ -55,7 +57,7 @@
    "raw": "c2-sol-audit.json",
    "mapping": "sol-audit",
    "envelope": "sol-audit",
-   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it today."
+   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it today. Retired on the published pages on 2026-09-01 (docs/KNOWN-LIMITATIONS.md 41) in favour of v3, and marked retired rather than deleted, so it stays on the clock and stays countable."
   }
  ]
 }
