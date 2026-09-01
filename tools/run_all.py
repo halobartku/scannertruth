@@ -270,17 +270,129 @@ def diff_against(prev, results):
     return notes or ["no change since the previous run"]
 
 
+def coverage_rows(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"):
+    """One row per clock measurement: what evidence exists that it analysed what it claims to.
+
+    `coverage_evidence` uses exactly the vocabulary `measure_corpus2` already writes into every
+    run file:
+
+        run log   a `<findings>.log` exists, with one entry per invocation, and it is the authority
+        none      there is no such log, so which cases were analysed cannot be answered at all
+
+    A findings file is not evidence of coverage and is not graded as a third level here. A case
+    that was analysed and came back empty leaves exactly the same silence as a case nobody opened,
+    and this project has published that mistake in both directions on the same day: error 35 read
+    silence as a measurement, error 36 read a measurement as silence.
+
+    For corpus 2 the row also carries the cases that are still unresolved, which is the other half
+    of the question. `unavailable` is a case the tool attempted and could not complete, which is a
+    permitted outcome as long as it is published with its reason. `not-run` and `unknown` are not
+    outcomes; they are gaps.
+    """
+    c2_by_row = {r.get("scanner"): r
+                 for r in measure_corpus2(raw_dir, corpus_dir, mappings_dir) if "scanner" in r}
+    rows = []
+    for corpus, sources in (("corpus1", SOURCES), ("corpus2", SOURCES_CORPUS2)):
+        for scanner, (filename, _kind) in sorted(sources.items()):
+            path = os.path.join(raw_dir, filename)
+            log = path + ".log"
+            entries = None
+            if os.path.exists(log):
+                try:
+                    entries = json.load(open(log, encoding="utf-8"))
+                except Exception:
+                    entries = None
+            row = {"corpus": corpus, "scanner": scanner, "raw": "raw/" + filename,
+                   "coverage_evidence": "run log" if entries is not None else "none"}
+            if entries is None:
+                row["reason"] = (
+                    "no run log at raw/" + os.path.basename(log) + ", so 'the tool ran this case "
+                    "and found nothing' and 'the tool never saw this case' cannot be told apart")
+            else:
+                ok = sum(1 for e in entries if e.get("status") == "ok")
+                row["invocations"] = len(entries)
+                row["ok"] = ok
+                row["not_ok"] = len(entries) - ok
+            if corpus == "corpus2" and scanner in c2_by_row:
+                m = c2_by_row[scanner]
+                row["unresolved"] = {k: m[k] for k in ("unknown", "not-run", "unavailable")
+                                     if m.get(k)}
+                row["scoreable_denominator"] = m.get("scoreable_denominator")
+            rows.append(row)
+    return rows
+
+
+def verify_coverage(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings", echo=True):
+    """Milestone 1's acceptance check. Returns (rows, failures); failures being empty is the pass.
+
+    The roadmap words it as `reports zero coverage_evidence: none`, and that is the first of the
+    two conditions below. The second follows from the same sentence in the same milestone - "no
+    empty cells afterwards, and anything that cannot run is listed with a reason" - because a run
+    log that covers eight of seventeen cases answers the question for eight of them and leaves
+    nine as silence, which is the thing the log exists to prevent.
+
+    A case recorded `unavailable` with a reason is NOT a failure. "Could not run" is a permitted
+    and published outcome; it is `not-run` and `unknown` that are gaps.
+    """
+    rows = coverage_rows(raw_dir, corpus_dir, mappings_dir)
+    failures = []
+    for r in rows:
+        if r["coverage_evidence"] == "none":
+            failures.append(f"{r['corpus']} {r['scanner']}: coverage_evidence: none - {r['reason']}")
+        gaps = r.get("unresolved") or {}
+        for kind in ("not-run", "unknown"):
+            if gaps.get(kind):
+                failures.append(
+                    f"{r['corpus']} {r['scanner']}: {gaps[kind]} cases {kind}, so its denominator "
+                    "rests on cases nobody can show were analysed")
+    if echo:
+        print("coverage evidence, one row per measurement on the clock\n")
+        print(f"{'corpus':9} {'scanner':32} {'evidence':9} detail")
+        for r in rows:
+            if r["coverage_evidence"] == "run log":
+                detail = f"{r['invocations']} invocations, {r['ok']} ok, {r['not_ok']} not ok"
+                gaps = r.get("unresolved") or {}
+                if gaps:
+                    detail += "; " + ", ".join(f"{v} {k}" for k, v in sorted(gaps.items()))
+            else:
+                detail = r["reason"]
+            print(f"{r['corpus']:9} {r['scanner']:32} {r['coverage_evidence']:9} {detail}")
+        none = sum(1 for r in rows if r["coverage_evidence"] == "none")
+        print(f"\ncoverage_evidence: none      {none} of {len(rows)} measurements")
+        print(f"coverage_evidence: run log   {len(rows) - none} of {len(rows)} measurements")
+    return rows, failures
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--raw", default="raw")
     ap.add_argument("--mappings", default="mappings")
     ap.add_argument("--out", default="runs")
     ap.add_argument("--demo", action="store_true")
+    ap.add_argument("--verify-coverage", action="store_true",
+                    help="milestone 1's acceptance check: every measurement has a run log and no "
+                         "case is left unresolved. Exits non-zero and says which rows fail.")
     args = ap.parse_args()
 
     if args.demo:
         demo()
         return 0
+
+    if args.verify_coverage:
+        _rows, failures = verify_coverage(args.raw, "corpus2", args.mappings)
+        if not failures:
+            print("\nPASS: every measurement on the clock has a per-run log and no case is "
+                  "unresolved.")
+            return 0
+        print(f"\nFAIL: {len(failures)} problem(s). Milestone 1 is not met.\n")
+        for f in failures:
+            print("  -", f)
+        print("\nThis is not a warning to read past. A denominator that rests on silence is the "
+              "\ndefect that produced this project's retractions: two published numbers were "
+              "\nextrapolated from one case each (error 20), a clean zero was published as an "
+              "\noutage (error 36), and an outage that never happened was published as a "
+              "\ndenominator (error 35).")
+        return 1
 
     results = measure(args.raw, args.mappings)
     results_c2 = measure_corpus2(args.raw, "corpus2", args.mappings)
