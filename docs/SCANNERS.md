@@ -22,8 +22,13 @@ installing it, go to their documentation.
 
 ## The tools
 
-Measured 2026-09-01. Popularity figures are **weak signals** and are marked as such; they say
-something about attention, not about quality.
+**Scanners measured 2026-08-31**, which is the date on every artefact in `raw/`. The header here
+read 2026-09-01 until then, which is the date of the market survey below, not of any measurement.
+Two different questions were asked on two different days and the page gave one date for both.
+
+**Market survey (the popularity figures and the "alive?" column) checked 2026-09-01.** Those are
+**weak signals** and are marked as such; they say something about attention, not about quality, and
+unlike the measurements they have no artefact in this repository.
 
 | Tool | Where it lives | Shape | Needs | Alive? |
 |---|---|---|---|---|

@@ -222,8 +222,9 @@ what the clock in this repository does.
 
 ### The market context, measured rather than assumed
 
-Of six tools measured on 2026-09-01: **one is actively developed**, two have been silent for half a
-year, and one is effectively abandoned despite 77,684 lifetime downloads against 56 recent ones.
+Of the six tools measured on 2026-08-31, surveyed for activity on 2026-09-01: **one is actively
+developed**, two have been silent for half a year, and one is effectively abandoned despite 77,684
+lifetime downloads against 56 recent ones.
 [`docs/SCANNERS.md`](docs/SCANNERS.md) has the table.
 
 **That is not a mature market. It is missing infrastructure.** Which is the whole argument for

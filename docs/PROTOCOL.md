@@ -50,10 +50,16 @@ For each of the 11 classes:
 between them is the whole point of this benchmark: a scanner that fires on both the bug and its fix
 is matching a code shape, not detecting a vulnerability, and its nominal score is meaningless.
 
-Two further rules, both of which cost the scanner under test rather than help it:
+One further rule, which costs the scanner under test rather than helping it:
 
-- **A crash counts as a miss, never an excuse.** If the scanner throws on a file, that file yields
-  no detection.
+- ~~**A crash counts as a miss, never an excuse.** If the scanner throws on a file, that file yields
+  no detection.~~ **Superseded on 2026-09-01.** It contradicts the rule that outranks it,
+  `AGENTS.md` rule 3, **unavailable is not zero**, and this project has already resolved that
+  contradiction the wrong way once: an `UNAVAILABLE rc=0 no-parseable-output` line in a per-case run
+  log became `status: ok, findings: 0` in the log that scores. A crash is **unavailable**: it goes
+  in the could-not-run table with its reason and leaves the denominator, because a tool that could
+  not run has not been measured. Errors 20 and 21 in the engineering log were bought with exactly
+  this distinction.
 - **A class with no corresponding rule counts as a miss.** A scanner that cannot detect a bug does
   not detect it. Three of the eleven classes have no corresponding rule in the scanner under test
   and are recorded as structural gaps: `6-duplicate-mutable-accounts`, `9-closing-accounts`,

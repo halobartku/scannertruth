@@ -92,8 +92,14 @@ def score(label, findings_file, cases):
 def main():
     cases = json.load(open(MANIFEST, encoding="utf-8"))["cases"]
     cases = [c for c in cases if c.get("valid", True)]
+    # The header counted the manifest and every row below counts the directory, so this tool
+    # printed one denominator and then scored against another, with no reconciliation, in the
+    # tool whose whole job is to make the denominator trustworthy. Say all three.
+    built = [c for c in cases if os.path.isdir(os.path.join(CORPUS, c["name"]))]
     rules = every_rule()
-    print(f"corpus 2: {len(cases)} valid cases; {len(rules)} distinct mapped rules\n")
+    print(f"corpus 2: {len(cases)} valid cases, {len(built)} built, "
+          f"{len(cases) - len(built)} not-built; every row below is scored over the "
+          f"{len(built)} built. {len(rules)} distinct mapped rules\n")
 
     noisy = noisy_findings(cases, rules)
     with open("raw/c2-control-noisy.json", "w", encoding="utf-8") as fh:
