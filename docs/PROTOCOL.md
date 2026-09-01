@@ -90,8 +90,30 @@ A mapping of somebody else's rules is an interpretation of their work, and an in
 after seeing the scores is worthless. So, for every scanner other than the first:
 
 1. The mapping is committed to `mappings/<scanner>.json` **in its own commit, before the scanner is
-   run.** The commit timestamp is the pre-registration. This is what the first result could not
-   offer and is the reason this file admits that gap above.
+   run.** The commit timestamp is the pre-registration.
+
+   **Retracted on 2026-09-01, for every mapping committed before that date.** This rule was written
+   as though it had already been followed, and it had not been. An external review checked it and
+   found that each of the seven mappings measured on 2026-08-31 first appears in the same commit as
+   the result it scores, three of them in the commit carrying the headline. So the timestamps do not
+   separate the mapping from the score, and this document was claiming process evidence it did not
+   have. What is true is weaker and is all we can support: **each mapping was derived from the
+   tool's own rule names and documentation before its run, and every mapping's `derivation` field
+   records how - but for those seven the ordering rests on our word, exactly as it does for the
+   first result above, not on a timestamp anyone can check.** The X-Ray correction (`0/8` registered
+   beside `1/8` corrected) should be read in that light: the pre-registered map is preserved
+   unedited and the correction is published beside it, which is the right shape, but it is not
+   backed by a separable timestamp either.
+
+   From 2026-09-01 the rule is enforced rather than asserted. `tools/preregistration_check.py` reads
+   the git history and requires that **a commit adding `mappings/*.json` touches nothing outside
+   `mappings/`**. It runs in CI and in the test suite. Mappings added before that date are reported
+   as `unproven` and are not counted as evidence; they are not rewritten, because rewriting history
+   to make an old claim true is worse than the claim. Run it yourself:
+
+   ```bash
+   python tools/preregistration_check.py
+   ```
 2. The mapping is derived from the tool's **own rule names and documentation**, never from which of
    its rules happened to fire.
 3. `no-rule` is a permitted outcome. A class the tool does not claim to cover is a coverage gap, not

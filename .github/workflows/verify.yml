@@ -36,6 +36,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The pre-registration check reads which commit first added each mapping, and the
+          # default shallow clone cannot answer that. Depth 0 or the check reports "cannot
+          # check" and the rule stops being enforced without anyone noticing.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -50,6 +55,13 @@ jobs:
           python tools/build_corpus2.py --demo
           python tools/unmapped_check.py --demo
           python tools/corpus_ghsa.py --demo
+          python tools/preregistration_check.py --demo
+
+      # The claim this replaces was retracted on 2026-09-01: the seven mappings published the day
+      # before each arrived in the same commit as the result they scored, so no timestamp separated
+      # them. Those are reported as unproven. A mapping added from now on must arrive alone.
+      - name: A mapping's commit must touch nothing outside mappings/
+        run: python tools/preregistration_check.py
 
       # NOTE: verify.py checks RESULTS.md only - run 1, sol-audit v1, 2/11 nominal and 0/11
       # real. It does NOT check the six-scanner table in RESULTS-all.md, and the step used to be

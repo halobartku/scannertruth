@@ -52,7 +52,10 @@ corpus **read-only**.
 ### 3. Write the mapping BEFORE you run it
 Create `mappings/<scanner>.json` mapping the tool's rule ids to corpus classes, derived from **the
 tool's own rule names and documentation**, never from which rules happened to fire. Commit it in its
-own commit before the run; that timestamp is the pre-registration.
+own commit before the run; that timestamp is the pre-registration. **That commit must touch nothing
+outside `mappings/`.** `python tools/preregistration_check.py` fails otherwise, and it exists
+because the seven mappings published on 2026-08-31 each arrived in the same commit as the result
+they scored, which cost this project the pre-registration claim (`docs/PROTOCOL.md` 3a).
 
 `no-rule` and `unmappable` are permitted outcomes. Do not force a mapping for every class.
 

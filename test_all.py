@@ -241,6 +241,42 @@ def test_mappings_declare_their_derivation():
     assert not missing, f"mappings with no derivation recorded: {missing}"
 
 
+def test_no_mapping_arrives_in_the_same_commit_as_a_result():
+    """Pre-registration means a timestamp somebody else can read, or it means nothing.
+
+    This repository claimed it and did not have it: every mapping published on 2026-08-31 first
+    appears in the commit that published the score. The wording is retracted in `PROTOCOL.md` 3a;
+    this is the enforcement that replaces it, so the claim cannot decay back into prose.
+    """
+    import preregistration_check as pre
+    records, why = pre.audit(".")
+    if why:
+        # A shallow clone or an unpacked tarball cannot answer the question. CI fetches the full
+        # history so this branch does not hide a violation there.
+        return
+    assert records, "mappings/ is tracked, so the audit must return records"
+    bad = [r for r in records if r["status"] in ("VIOLATION", "untracked")]
+    assert not bad, ("a mapping was committed alongside something outside mappings/: "
+                     + "; ".join(f"{r['mapping']} in {r.get('sha')}" for r in bad))
+
+
+def test_the_pre_registration_retraction_is_still_on_the_record():
+    """The seven unproven mappings must stay named as unproven, in the document that claimed them."""
+    import preregistration_check as pre
+    protocol = io.open(os.path.join("docs", "PROTOCOL.md"), encoding="utf-8").read()
+    assert "Retracted on 2026-09-01" in protocol, \
+        "PROTOCOL.md 3a must keep the pre-registration retraction"
+    assert "preregistration_check.py" in protocol, \
+        "PROTOCOL.md 3a must point at the check that replaced the claim"
+    records, why = pre.audit(".")
+    if why:
+        return
+    unproven = [r for r in records if r["status"] == "unproven"]
+    assert len(unproven) == 7, (
+        "seven mappings predate the rule and that number is history, so it cannot change. "
+        f"Found {len(unproven)}: {[r['mapping'] for r in unproven]}")
+
+
 # --------------------------------------------------------------- unmapped
 def test_unmapped_check_finds_the_known_positive():
     """A check that returns zero everywhere may simply be broken."""

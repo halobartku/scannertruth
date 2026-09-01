@@ -24,7 +24,13 @@ below is checkable in thirty seconds.
 ### Measurement, done
 
 - **Six scanners measured** with one protocol on the same day, plus **two calibration controls**.
-- **Seven pre-registered mappings**, committed before their runs.
+- **A published mapping per tool**, each derived from the tool's own rule names and documentation
+  and carrying a written `derivation`. The seven measured on 2026-08-31 were committed in the same
+  commit as the result they score, so their ordering rests on our word rather than on a timestamp.
+  This page claimed them as "pre-registered, committed before their runs" until 2026-09-01; that is
+  retracted, and the rule is enforced from here on rather than asserted. Which mappings have git
+  evidence and which do not is output, not prose: `python tools/preregistration_check.py`, and
+  `docs/PROTOCOL.md` 3a.
 - **Three corpora**: the public teaching set (pinned at `24555d04`), **9 real vulnerabilities**
   taken from their maintainers' own fix commits, and the same bugs rebuilt as **real crates**
   (927 `.rs` files).

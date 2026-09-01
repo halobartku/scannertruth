@@ -108,6 +108,11 @@ in-sample**, including ours. Say so before anyone asks.
 names and documentation**, committed **in its own commit before the run** so the timestamp is the
 pre-registration.
 
+- **The commit must contain nothing but `mappings/`.** Run `python tools/preregistration_check.py`
+  after committing it; a mapping that arrives beside a results page, a run file or a raw findings
+  file is not pre-registered, whatever the commit message says. This is enforced because it was
+  once only asserted: the seven mappings published on 2026-08-31 each arrived in the same commit as
+  their result, and the claim had to be retracted (`docs/PROTOCOL.md` 3a).
 - Use the ids the tool actually emits.
 - `no-rule` and `unmappable` are permitted outcomes. Forcing a mapping for every class
   manufactures failures.

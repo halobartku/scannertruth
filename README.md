@@ -240,7 +240,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **94 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **96 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -262,7 +262,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            94 checks, mutation-verified. Run this first
+test_all.py            96 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person
@@ -285,6 +285,7 @@ tools/
   corpus_ghsa.py       propose corpus candidates from advisory databases
   shiftaware.py        compare findings across a fix without being fooled by line shift
   unmapped_check.py    find a detection hiding under a rule the mapping missed
+  preregistration_check.py  a mapping's commit must touch nothing but mappings/
   adapters.py          one normalised Finding shape, plus the two controls
 
 corpus2/               real vulnerabilities, each pinned to its maintainers' own fix commit
@@ -311,6 +312,12 @@ which is why this repository is 49 MB rather than 2.
 - **Every third-party number is provisional.** Four right-of-reply threads are open with the vendors
   we measured and none has answered. Our X-Ray mapping was wrong in a way only its authors could
   have settled quickly, so this is not a formality.
+- **The mappings published on 2026-08-31 are not pre-registered in any way a stranger can check.**
+  We claimed they were committed before their runs. The history says each one first appears in the
+  same commit as the result it scores. They were written from the tools' own rule names and
+  documentation, and each carries its `derivation`, but the ordering rests on our word.
+  `docs/PROTOCOL.md` 3a carries the retraction, and `python tools/preregistration_check.py` now
+  enforces the rule going forward instead of asserting it.
 - **`sol-audit` still has no per-run coverage log** while Radar and VaultLint do. We closed other
   people's tools more rigorously than our own; that is milestone 1.
 - **Recall against a labelled corpus is a lower bound on real-world safety**, not a measure of it.
