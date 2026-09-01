@@ -151,9 +151,13 @@ verifier are in this repository.
 - It does not measure real-world safety. Recall against a labelled corpus is a lower bound and a
   comparable one. Nothing more is claimed.
 - It does not cover vulnerability classes outside the corpus.
-- The corpus was last updated in 2024 and eleven classes is a small sample. ~~Extending it with
-  real Anchor programs ... is not done yet.~~ **Done:** corpus 2 holds ten production
-  vulnerabilities where the maintainers' own fix commit is the answer key. See `docs/results/RESULTS-corpus2.md`.
+- The teaching corpus was last touched on **2022-07-16**, at `24555d04`, and eleven classes is a
+  small sample. ~~Extending it with real Anchor programs ... is not done yet.~~ **Done:** corpus 2
+  holds production vulnerabilities where the maintainers' own fix commit is the answer key. How
+  many, and how many of them are built, is read from `corpus2/manifest.json` and the directory
+  rather than typed here. See `docs/results/RESULTS-corpus2.md`.
+  (Until 2026-09-01 this line dated the corpus to 2024, four sections after section 1 pinned it
+  to 2022-07-16.)
 - ~~One scanner has been measured. One is not a survey.~~ **Six have been**, plus two controls.
   Six is still not a survey. See `docs/results/RESULTS-all.md`.
 

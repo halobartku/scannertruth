@@ -1008,19 +1008,31 @@ def test_no_document_carries_a_stray_control_character():
 
 def test_the_real_vulnerability_denominator_is_reconciled_on_the_front_page():
     """Nine valid cases, eight built: the table reads out of eight. A reader who sees
-    both numbers without explanation is right to distrust the whole page."""
+    both numbers without explanation is right to distrust the whole page.
+
+    Rewritten 2026-09-01, when eight cases were added and none of them was measured.
+    The old derivation read the results denominator off the BUILT set, so adding a
+    case would have silently restated every published zero as out of sixteen without
+    a scanner having seen one of them. Built and measured are separate numbers now,
+    and the results table is pinned to the measured one, because that is the only
+    set a score can honestly be out of."""
     import io as _io, json, os
     cases = json.load(open("corpus2/manifest.json"))
     cases = cases["cases"] if isinstance(cases, dict) else cases
     valid = [c for c in cases if c.get("valid", True)]
     built = [c for c in valid if os.path.isdir(os.path.join("corpus2", c["name"]))]
+    measured = [c for c in built if c.get("measured", True)]
     s = _io.open("README.md", encoding="utf-8").read()
-    if len(built) != len(valid):
-        assert "eight of them built" in s or "eight of them are built" in s, (
-            f"{len(valid)} valid cases but {len(built)} built, and the README never "
-            "reconciles the two; a reader cannot tell why scores read out of "
-            f"{len(built)}")
-    assert f"0 / {len(built)}" in s or f"out of {['zero','one','two','three','four','five','six','seven','eight','nine'][len(built)]}" in s,         "the README result table denominator no longer matches the built corpus"
+    for n, phrase in ((len(valid), "valid cases"), (len(built), "built"),
+                      (len(measured), "measured")):
+        assert f"{n} {phrase}" in s, (
+            f"the README must reconcile the three counts a reader needs: {len(valid)} "
+            f"valid, {len(built)} built, {len(measured)} measured. It never says "
+            f"'{n} {phrase}', so a reader cannot tell why a score reads out of "
+            f"{len(measured)}")
+    assert f"0 / {len(measured)}" in s, (
+        "the README result table denominator must be the MEASURED corpus, not the "
+        f"built one; expected '0 / {len(measured)}'")
 
 
 def test_every_relative_link_in_every_document_resolves():
@@ -1044,6 +1056,74 @@ def test_every_relative_link_in_every_document_resolves():
     assert not broken, "documents link to missing files: " + repr(sorted(broken))
 
 
+# ------------------------------------------- claims banned everywhere, not on the front page
+# Three checks used to ban an overclaim in README.md and nowhere else, so each of them stood
+# corrected on the front page and uncorrected one link away: "the packaging objection is now
+# retired" in RESULTS-all, "927 `.rs` files" in RESULTS-all, RESULTS-realcrates and ROADMAP,
+# "ten production vulnerabilities" in RESULTS-all and PROTOCOL, "the corpus was last updated in
+# 2024" in PROTOCOL four sections after the same document pins it to 2022-07-16. Error 22 in the
+# engineering log is this pattern and was diagnosed as a README problem rather than a scoping
+# problem. A claim is banned in the repository or it is not banned.
+
+def _publication_documents():
+    """Every markdown document that speaks in the present tense.
+
+    The engineering logs are excluded, and only they: they record what was believed on a date,
+    including the wording later retracted, and a log that is edited to agree with today is not a
+    log. Everything else is a live claim.
+    """
+    import os
+    out = []
+    for base, dirs, files in os.walk("."):
+        dirs[:] = [d for d in dirs if d not in (".git", "__pycache__", ".github")]
+        for f in sorted(files):
+            if f.endswith(".md") and not f.startswith("ENGINEERING-LOG"):
+                out.append(os.path.join(base, f).replace("\\", "/"))
+    return sorted(out)
+
+
+def test_no_document_carries_a_superseded_claim():
+    """Each entry here was true once and was corrected somewhere. This is where it stays corrected."""
+    import io as _io, re as _re
+    banned = {
+        "One scanner has been measured": "six are measured",
+        "corpus last updated in 2024": "the teaching corpus is pinned at 2022-07-16",
+        "last updated in 2024": "the teaching corpus is pinned at 2022-07-16",
+        "packaging objection is now retired": "six pairs and two scanners test it, they do not retire it",
+        "retires the packaging objection": "six pairs and two scanners test it, they do not retire it",
+        "retired the packaging objection": "six pairs and two scanners test it, they do not retire it",
+        "ten production vulnerabilities": "the corpus-2 denominator is read from the manifest, never typed",
+        "Ten real cases": "the corpus-2 denominator is read from the manifest, never typed",
+    }
+    hits = []
+    for doc in _publication_documents():
+        # ~~struck through~~ is this project's marker for wording it has publicly retracted, kept
+        # beside the correction on purpose. Banning what a retraction quotes would force the
+        # retraction to be deleted, which is the opposite of the rule.
+        s = _re.sub(r"~~.*?~~", "", _io.open(doc, encoding="utf-8").read(), flags=_re.S)
+        for phrase, why in banned.items():
+            if phrase in s:
+                hits.append(f"{doc}: {phrase!r} ({why})")
+    assert not hits, "superseded claims still published:\n  " + "\n  ".join(hits)
+
+
+def test_no_document_quotes_an_uncheckable_rs_file_count():
+    """927 `.rs` files was error 23: the real crates are built on demand and never committed, so
+    the figure is not checkable from the repository by anyone. Withdrawn from the README and left
+    standing in three other documents, which is how a retraction becomes decorative."""
+    import io as _io, os, re
+    on_disk = sum(len([f for f in fs if f.endswith(".rs")]) for _, _, fs in os.walk("corpus2"))
+    bad = []
+    for doc in _publication_documents():
+        s = _io.open(doc, encoding="utf-8").read()
+        for n in re.findall(r"(\d[\d,]{2,})\s*`?\.rs`?\s*files", s):
+            if int(n.replace(",", "")) != on_disk:
+                bad.append(f"{doc}: {n}")
+    assert not bad, (
+        f"{on_disk} .rs files are committed under corpus2/; these documents quote a count nobody "
+        f"can check: {bad}. Cite the per-case table in docs/results/RESULTS-realcrates.md instead.")
+
+
 def test_readme_does_not_overstate_the_real_crates_result():
     """The results page states six scoreable pairs, two scanners, three cases
     unmeasurable. A one-line summary on the front page must not drop those."""
@@ -1056,22 +1136,6 @@ def test_readme_does_not_overstate_the_real_crates_result():
     assert "two scanners" in bullet.lower(),         "the real-crates claim must say only two of six scanners were run on them"
     for banned in ("retires the packaging objection", "retired the packaging objection"):
         assert banned not in bullet.lower(),             f"unqualified claim {banned!r}: six pairs tests an objection, it does not retire it"
-
-
-def test_real_crate_counts_are_not_quoted_as_a_committed_fact():
-    """927 .rs files was quoted on the front page while corpus2/ holds 19: the real
-    crates are built on demand into /tmp and were never committed, so no reader
-    could check the number, and it counted a case since excluded as invalid."""
-    import io as _io, os, re
-    s = _io.open("README.md", encoding="utf-8").read()
-    on_disk = sum(len([f for f in fs if f.endswith(".rs")])
-                  for _, _, fs in os.walk("corpus2"))
-    for n in re.findall(r"(\d[\d,]{2,})\s*`?\.rs`?\s*files", s):
-        count = int(n.replace(",", ""))
-        assert count == on_disk, (
-            f"README quotes {count} .rs files but {on_disk} are committed under corpus2/. "
-            "Real-crate counts are not reproducible from the repository; cite the "
-            "per-case table in docs/results/RESULTS-realcrates.md instead.")
 
 
 def test_skills_referenced_by_agents_md_exist():
@@ -1225,21 +1289,6 @@ def test_every_file_named_in_ci_exists():
     assert not missing, f"CI references files that do not exist: {missing}"
 
 
-def test_readme_does_not_carry_superseded_claims():
-    """The README's tail once still said 'one scanner has been measured' long after six were, and
-    dated the corpus to 2024 after we had pinned it to 2022. A front page contradicting its own
-    result table is the most expensive kind of staleness."""
-    import io as _io
-    s = _io.open("README.md", encoding="utf-8").read()
-    banned = {
-        "One scanner has been measured": "six are measured",
-        "One is not a survey": "superseded phrasing",
-        "corpus last updated in 2024": "the corpus is pinned at 2022-07-16",
-    }
-    hits = [f"{k} ({why})" for k, why in banned.items() if k in s]
-    assert not hits, f"README carries superseded claims: {hits}"
-
-
 def test_readme_result_table_matches_the_clock():
     """If the front page and the measurement disagree, the front page is what people read."""
     import io as _io, sys, os
@@ -1260,6 +1309,83 @@ def test_layout_block_lists_directories_that_exist():
     dirs = set(re.findall(r"^([a-z_0-9]+)/", block, re.M))
     missing = [d for d in sorted(dirs) if not os.path.isdir(d)]
     assert not missing, f"README describes directories that do not exist: {missing}"
+
+
+# ------------------------------------------------- corpus growth, 2026-09-01
+# Eight cases were added on 2026-09-01. Adding a case changes the denominator of every
+# figure computed over the corpus, and the front page has already been wrong twice for
+# exactly that reason. These two derive the affected figures rather than trusting them.
+
+def _corpus2_noisy_finding_count():
+    """What control-noisy produces on corpus 2 today: every mapped rule id, on every
+    non-empty line, of every .rs file, in both variants of every valid built case.
+
+    Computed arithmetically rather than by materialising the findings, because the
+    list is over a million entries and this runs on every suite.
+    """
+    import io as _io, json, os, sys
+    sys.path.insert(0, "tools")
+    import control_c2
+    rules = len(control_c2.every_rule())
+    cases = [c for c in json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+             if c.get("valid", True)]
+    total = 0
+    for c in cases:
+        for variant in ("insecure", "secure"):
+            d = os.path.join("corpus2", c["name"], variant, "src")
+            if not os.path.isdir(d):
+                continue
+            for fn in sorted(os.listdir(d)):
+                if not fn.endswith(".rs"):
+                    continue
+                with _io.open(os.path.join(d, fn), encoding="utf-8", errors="replace") as fh:
+                    total += sum(1 for line in fh if line.strip()) * rules
+    return total
+
+
+def test_the_noisy_control_count_is_derived_from_the_corpus():
+    """The calibration sentence quotes a finding count, and that count is a property of
+    the corpus and the mapping set, both of which grow. It was 424,170 with seven
+    mappings and eight cases; adding mappings moved it and adding cases moved it again.
+    A quoted figure that nothing recomputes is the freshness defect this project keeps
+    paying for, so every document that quotes one is checked against the corpus."""
+    import io as _io, os, re
+    expected = _corpus2_noisy_finding_count()
+    allowed = {expected, 931}  # 931 is the teaching corpus, computed the same way
+    wrong = []
+    for root, dirs, files in os.walk("."):
+        dirs[:] = [d for d in dirs if d not in (".git", ".omc", "__pycache__",
+                                                "node_modules", "raw", "runs")]
+        for fn in files:
+            if not fn.endswith(".md"):
+                continue
+            doc = os.path.join(root, fn)
+            s = _io.open(doc, encoding="utf-8", errors="replace").read()
+            for m in re.finditer(r"noisy", s, re.I):
+                window = s[m.end():m.end() + 200]
+                for n in re.findall(r"\b(\d{1,3}(?:,\d{3})+)\b", window):
+                    if int(n.replace(",", "")) not in allowed:
+                        wrong.append(f"{doc}: {n}")
+    assert not wrong, (
+        f"control-noisy produces {expected:,} findings on corpus 2 today, but these "
+        f"documents still quote something else: {sorted(set(wrong))}. Regenerate with "
+        "`python tools/control_c2.py` and quote what it prints.")
+
+
+def test_class_balance_document_is_derived_from_the_manifest():
+    """Class and repository concentration is the corpus's largest stated weakness, so
+    the table that reports it must be recomputed rather than typed. Added 2026-09-01
+    with the eight new cases, whose whole purpose was to move these two numbers."""
+    import io as _io, os, sys
+    sys.path.insert(0, "tools")
+    import class_balance
+    assert os.path.exists("docs/CLASS-BALANCE.md"), \
+        "the class balance record is missing; run python tools/class_balance.py"
+    on_disk = _io.open("docs/CLASS-BALANCE.md", encoding="utf-8").read()
+    assert class_balance.render() == on_disk, (
+        "docs/CLASS-BALANCE.md no longer matches the manifest it is derived from; "
+        "run python tools/class_balance.py")
+
 
 # -------------------------------------------------------------------- main
 def main():

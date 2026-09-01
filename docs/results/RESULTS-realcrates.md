@@ -7,7 +7,9 @@ for our reasons rather than its own. It was a fair objection, and evidenced, sin
 
 So the corpus was rebuilt from the **real crates**: the entire directory containing the implicated
 file, at the fix commit and its parent, with the project's own `Cargo.toml` and every sibling
-module. 927 `.rs` files in total.
+module. The per-case file counts are in the table below; a repository-wide total is not quoted,
+because the real crates are built on demand and never committed, so no reader could check it
+(error 23).
 
 ## What happened when Radar was run over them
 

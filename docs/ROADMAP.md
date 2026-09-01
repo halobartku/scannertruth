@@ -15,7 +15,7 @@ below is checkable in thirty seconds.
 
 | | |
 |---|---|
-| **2165 lines** of Python across **15 tools**, plus a suite of **104 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **2165 lines** of Python across **15 tools**, plus a suite of **106 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
 | **46 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
@@ -31,9 +31,10 @@ below is checkable in thirty seconds.
   retracted, and the rule is enforced from here on rather than asserted. Which mappings have git
   evidence and which do not is output, not prose: `python tools/preregistration_check.py`, and
   `docs/PROTOCOL.md` 3a.
-- **Three corpora**: the public teaching set (pinned at `24555d04`), **9 real vulnerabilities**
-  taken from their maintainers' own fix commits, and the same bugs rebuilt as **real crates**
-  (927 `.rs` files).
+- **Three corpora**: the public teaching set (pinned at `24555d04`), the real vulnerabilities in
+  `corpus2/manifest.json` taken from their maintainers' own fix commits, and the same bugs rebuilt
+  as **real crates**, per-case counts in `docs/results/RESULTS-realcrates.md`. The real crates are
+  built on demand rather than committed, so a total file count is not quoted here (error 23).
 - **26 raw output files** published, so every number can be re-derived rather than believed.
 - **A clock** that re-measures on a schedule and diffs against the previous run, with two dated
   entries already published. A ranking can be produced once; a regression only shows up if the
@@ -41,7 +42,7 @@ below is checkable in thirty seconds.
 
 ### The parts that make it a measurement rather than an opinion
 
-- **`control-noisy`**: flags every non-empty line, 931 findings on one corpus and **424,170** on the
+- **`control-noisy`**: flags every non-empty line, 931 findings on one corpus and **1,413,620** on the
   other, and scores **zero real recall on both**. Proof the metric cannot be bought with volume.
 - **A positive control on the scorer itself**, because until it was added the scorer had never once
   returned a detection and nobody had checked that it could.

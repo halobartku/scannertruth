@@ -39,8 +39,9 @@ score on the corpus everybody uses detects nothing on the bugs that actually cos
 single real detection in the whole exercise came from a different tool, under a rule we had mapped
 to the wrong class.
 
-Measured against ten production vulnerabilities with public fix commits, under a protocol that
-requires the detection to land where the fix actually changed something.
+Measured on 2026-08-31 against the eight built cases of corpus 2, each a production vulnerability
+with a public fix commit, under a protocol that requires the detection to land where the fix
+actually changed something.
 
 ## The one real detection, and our error that hid it
 
@@ -158,14 +159,18 @@ every third-party number below is provisional, and the X-Ray correction shows th
 formality.
 
 Every result here is provisional until each tool's authors have been offered their mapping for
-correction, which `docs/PROTOCOL.md` requires and which has not yet happened for anyone. Ten real cases
-is a small corpus. The teaching corpus is public and known to be tuned against. Our own packaging
+correction, which `docs/PROTOCOL.md` requires and which has not yet happened for anyone. Eight
+built cases is a small corpus. The teaching corpus is public and known to be tuned against. Our own packaging
 was tested on the strongest case and did not explain the result, but has not been tested on all of
 them.
 
-**The packaging objection is now retired.** Rebuilt as real crates (927 `.rs` files, each project's
-own `Cargo.toml` and sibling modules) Radar detects nothing across six scoreable pairs, and cannot
-complete at all on the three largest. [`docs/results/RESULTS-realcrates.md`](../../docs/results/RESULTS-realcrates.md).
+**The packaging objection was tested and does not explain the result.** Rebuilt as real crates,
+each with the project's own `Cargo.toml` and sibling modules, Radar detects nothing across six
+scoreable pairs and cannot complete at all on the three largest. Six pairs and two of six
+scanners test the objection; they do not retire it, and this page said they did until
+2026-09-01. The per-case file counts are in the table on that page; the 927 figure quoted here
+was not checkable from this repository, because the real crates are built on demand and never
+committed (error 23). [`docs/results/RESULTS-realcrates.md`](../../docs/results/RESULTS-realcrates.md).
 
 Full list in [`docs/KNOWN-LIMITATIONS.md`](../../docs/KNOWN-LIMITATIONS.md); how it was all built, with every
 mistake, in [`docs/ENGINEERING-LOG-2026-08-31.md`](../../docs/ENGINEERING-LOG-2026-08-31.md).
