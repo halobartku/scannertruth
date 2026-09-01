@@ -223,12 +223,25 @@ def ask(model, code, think=False):
 
 def verdict(raw):
     """Parse the model's answer. An unparseable answer is NOT a detection - it is recorded as such."""
-    m = re.search(r'\{.*?\}', raw, re.S)
-    if not m:
+    # The answer is one JSON object, but a model that writes a long `why` can put a brace inside
+    # it (a code fragment, a struct literal), and the first `{`-to-first-`}` span is then not the
+    # object. On 2026-09-02 Claude Fable 5.1 answered solend-owner-checks with a valid object whose
+    # `why` did exactly that, and the old regex filed a real answer as "no json in response". So:
+    # start at the first `{` and try every closing brace from the LAST one backwards; the first
+    # span that parses is the object. An answer with no parseable span is still not a detection.
+    start = raw.find("{")
+    if start < 0:
         return None, "no json in response"
-    try:
-        d = json.loads(m.group(0))
-    except json.JSONDecodeError:
+    d = None
+    for end in range(len(raw) - 1, start, -1):
+        if raw[end] != "}":
+            continue
+        try:
+            d = json.loads(raw[start:end + 1])
+            break
+        except json.JSONDecodeError:
+            continue
+    if d is None:
         return None, "malformed json"
     v = d.get("vulnerable")
     if isinstance(v, str):
@@ -309,7 +322,7 @@ def main():
                     "variant": variant, "run": i + 1,
                     "model": args.model, "prompt_version": PROMPT_VERSION, "think": args.think,
                     "vulnerable": v, "note": note, "sec": round(time.time() - t0, 1),
-                    "raw": raw[:600], "done_reason": done,
+                    "raw": raw[:600] if v is not None else raw[:6000], "done_reason": done,
                     "thinking_chars": len(thinking), "thinking_tail": thinking[-300:],
                     "provider": args.provider, **usage,
                 }, ensure_ascii=False) + "\n")

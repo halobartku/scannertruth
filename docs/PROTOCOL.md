@@ -226,3 +226,55 @@ refused and the open thread with a measured vendor draws no technical reply with
 this benchmark has zero confirmed consumers and work on it stops.** Adding a third corpus or a
 seventh scanner before that line is answered would be building supply for a demand we have not
 demonstrated.
+
+
+## 7. Model-backed auditors, measured the same way
+
+Written 2026-09-02, after the first night of running language models as auditors. Everything in
+sections 1 to 6 applies; this section says what is different about a model and what is fixed so
+that two runs are comparable.
+
+**Same corpus, same pairing, same verdict rule.** A model is asked about the vulnerable variant and
+about the same program after its maintainers fixed it, three invocations each. A "verdict right" on
+a case means it called the vulnerable variant vulnerable on at least one run and never called the
+fixed variant vulnerable. That is necessary and not sufficient: **a verdict is a detection only if
+the class the model named is the class present**, adjudicated by hand in `mappings/` and published
+with both readings when they differ. A scanner is credited only when its mapped rule fires; a model
+that names the wrong class for the right file gets the same treatment (error 38).
+
+**The prompt is versioned and never silently improved.** `tools/model_audit.py` carries
+`PROMPT_VERSION`; every artefact line records it. A better prompt is a new measurement under a new
+version, published beside the old one. A prompt tuned against the corpus is the vendor's sin turned
+on ourselves (section 3, "never tune to produce a result").
+
+**Temperature 0 wherever the API accepts it.** Local models through ollama and OpenRouter accept
+it; the Claude Code harness does not expose it, and that row says so.
+
+**Reasoning is a regime, recorded per line, never mixed in one row.** Two regimes exist:
+`suppressed` (the provider was asked not to reason and given a 400-token belt; the 2026-09-01 rows)
+and `allowed` or `requested` (the owner's rule since 2026-09-02: a model that can think, thinks;
+ceiling 128,000 tokens, falling back to the model's own maximum where a provider refuses that
+value). Every line records `reasoning`, `max_tokens` and `thinking_chars`, and a line that reasoned
+despite a request not to is counted, not discarded. Rows from different regimes are different rows.
+
+**Provider is part of the row.** The same model through ollama, OpenRouter, the Z.ai coding plan or
+the Claude Code subscription harness is a different measurement, because context, effort defaults
+and hidden system prompts differ. The Claude Code route runs from an empty directory with settings,
+MCP servers and tools disabled, because from the project directory the same call carried 88,750
+tokens of this repository's own documentation, including this protocol, into the model's context.
+
+**Cost is recorded on the line and its basis is named.** Real money per call for OpenRouter; the
+harness's own API-price estimate for the subscription route, labelled as paid by the subscription;
+no per-call price for a coding plan quota; none for a local model.
+
+**One artefact per invocation, before the call returns.** `raw/model-<model>-<provider>-c<corpus>-
+<date>/runs.jsonl` holds one JSON line per call: case, variant, run, verdict, class named, raw
+answer, stop reason, tokens, cost, regime. A directory suffixed `-partial` or `-calibration` is
+kept and never scored as a sweep. `tools/model_results.py` derives the results table from these
+lines; the page that shows the table does not type its numbers.
+
+**What this cannot yet say.** With prompt v1 the strongest claim on this page is that no model
+detected a real vulnerability under its own named class; a better prompt can weaken that claim and
+must be run as v2, not as a correction. The teaching corpus is public and four years old, so a model
+that names its classes with the directory names has been trained on it, and scores there measure
+recall of the corpus, not of the class (`RESULTS-models.md`).
