@@ -56,8 +56,9 @@ fixed.** The offenders are its generic rules rather than its class detectors:
 > reverted part of it (#34). The figure they asked us to publish for the current release is
 > **46% to 40%, recall unchanged at 13/13**. The 46% in the table is our measurement of the `main`
 > we installed on 2026-08-31, before #33 and #34; the 40% is theirs, on code we have not run, and
-> it stays vendor-reported until we re-measure that release as a new row. The mapping was confirmed
-> by them without changes and stays as pre-registered.
+> it stays vendor-reported until we re-measure that release as a new row. The mapping stays as
+> pre-registered; the vendor has not commented on it either way (an earlier version of this note
+> said they had confirmed it, which the thread does not support; error 41).
 
 | Radar rule | findings on fixed code |
 |---|---|

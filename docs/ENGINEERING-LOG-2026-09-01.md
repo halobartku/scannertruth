@@ -802,3 +802,36 @@ did not mean what the artefact says it meant is worse than no run.
 *happens*. `exclude` hid an output; it did not change an execution. Same family as the dry run that
 traded and the coverage figure that counted a file's existence instead of a tool's account of
 itself: **check the side effect, never the flag.**
+
+## Error 41. Error 39 put three statements in the vendor's mouth that the vendor never made
+
+**2026-09-01, 23:15.** Read against the source the next session, the entry above holds on every
+number and fails on three sentences. What Auditware actually wrote, in full: one issue comment on
+`radar#32` at 19:32 UTC ("Working to reproduce locally and see what we can do! thank you so much
+for bringing this to our attention, and stay tuned"), and the bodies of pull requests #33 (19:37),
+#34 (19:43) and #35 (19:45), all merged. The API reports one comment on the issue, no PR comments,
+no reviews, and nothing in the mailbox.
+
+What the PRs support: the independent reproduction (23 of 50, same rule breakdown), 46% to 35% in
+#33, the adversarial fixtures and four lost detections, 40% with recall 13/13 in #34, the
+`9-closing-accounts/recommended` true-positive point, and a regression gate in #35. Error 39 stands
+on all of it.
+
+What nothing supports:
+
+- "They confirmed the mapping ('all 11 class to rule entries are correct... please publish it
+  as-is')". **No such sentence exists.** The phrase "publish" in that thread is ours, in the issue
+  body. The vendor has not commented on the mapping at all.
+- "They agreed the 11/11 is in-sample, going further than we had". **Not said.** The in-sample
+  point is ours, in the issue body, and nothing they wrote engages with it.
+- "They offered to be scored cold on a holdout corpus, with no advance look." **Not said,
+  anywhere.** This is the sentence that mattered most, because it was written up as the first thing
+  in the project that looked like demand and as the best possible next move. There is no such offer.
+
+The entry above is left as written. The results page carried the mapping claim for twenty minutes
+on 2026-09-01 evening and was corrected in the commit that records this. The falsifier reading is
+unchanged: three merged pull requests reproducing and acting on our figure are a technical reply.
+
+The mechanism is the one this log keeps finding: a summary of a source was written from memory of
+the source and then quoted as the source. The quotation marks made it look checked. Nothing that
+a vendor "said" goes into this repository again without the URL of the comment beside it.
