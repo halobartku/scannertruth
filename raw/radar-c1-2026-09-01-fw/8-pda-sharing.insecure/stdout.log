@@ -1,0 +1,39 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/8-pda-sharing.insecure.pkg -f none -o /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/8-pda-sharing.insecure/radar.json
+EXIT: 0
+WALL_SECONDS: 53.18
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [94mMedium[0m ] Missing Token Mint Constraint found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/8-pda-sharing.insecure.pkg/pkg/src/lib.rs:21:12-19
+
+
+[ [92mLow[0m ] Missing Transfer Amount Validation found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/8-pda-sharing.insecure.pkg/pkg/src/lib.rs:13:16-24
+
+
+[ [92mLow[0m ] PDA Sharing found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/8-pda-sharing.insecure.pkg/pkg/src/lib.rs:13:16-24
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/8-pda-sharing.insecure/radar.json
+
+
+STDERR:
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+

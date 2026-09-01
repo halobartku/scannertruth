@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/5-arbitrary-cpi.insecure.pkg/pkg/src/lib.rs:10:12-15"
+        ]
+    },
+    {
+        "name": "Missing Signer Check",
+        "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/5-arbitrary-cpi.insecure.pkg/pkg/src/lib.rs:29:3-9"
+        ]
+    }
+]

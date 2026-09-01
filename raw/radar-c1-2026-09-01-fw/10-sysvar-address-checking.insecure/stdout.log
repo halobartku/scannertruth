@@ -1,0 +1,35 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/10-sysvar-address-checking.insecure.pkg -f none -o /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/10-sysvar-address-checking.insecure/radar.json
+EXIT: 0
+WALL_SECONDS: 49.72
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/10-sysvar-address-checking.insecure.pkg/pkg/src/lib.rs:15:3-9
+
+
+[ [92mLow[0m ] Unvalidated Sysvar Account found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/10-sysvar-address-checking.insecure.pkg/pkg/src/lib.rs:17:11-22
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/10-sysvar-address-checking.insecure/radar.json
+
+
+STDERR:
+ Container postgres  Running
+ Container radar-rabbitmq-1  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+

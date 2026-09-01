@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Missing has_one Constraint",
+        "description": "An account holding an authority Pubkey should be tied to the signer that claims it, either with a has_one constraint or an explicit key comparison. Without one, any signer can act on another account's behalf.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/4-initialization.recommended.pkg/pkg/src/lib.rs:16:3-9"
+        ]
+    }
+]

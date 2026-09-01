@@ -1,0 +1,31 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/9-closing-accounts.recommended.pkg -f none -o /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/9-closing-accounts.recommended.run2/radar.json
+EXIT: 0
+WALL_SECONDS: 53.71
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/9-closing-accounts.recommended.pkg/pkg/src/lib.rs:14:3-9
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/9-closing-accounts.recommended.run2/radar.json
+
+
+STDERR:
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+

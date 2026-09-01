@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/9-closing-accounts.secure.pkg/pkg/src/lib.rs:36:28-43"
+        ]
+    },
+    {
+        "name": "Missing Signer Check",
+        "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/9-closing-accounts.secure.pkg/pkg/src/lib.rs:56:3-9",
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/9-closing-accounts.secure.pkg/pkg/src/lib.rs:62:3-9"
+        ]
+    }
+]

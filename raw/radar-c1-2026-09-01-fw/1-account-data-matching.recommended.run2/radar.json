@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Missing Token Mint Constraint",
+        "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/1-account-data-matching.recommended.pkg/pkg/src/lib.rs:19:12-19"
+        ]
+    }
+]

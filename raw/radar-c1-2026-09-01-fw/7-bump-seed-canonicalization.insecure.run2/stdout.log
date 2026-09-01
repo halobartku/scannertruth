@@ -1,0 +1,35 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/7-bump-seed-canonicalization.insecure.pkg -f none -o /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/7-bump-seed-canonicalization.insecure.run2/radar.json
+EXIT: 0
+WALL_SECONDS: 53.42
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [94mMedium[0m ] Missing Bump Seed Canonicalization found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/7-bump-seed-canonicalization.insecure.pkg/pkg/src/lib.rs:11:13-19
+
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/7-bump-seed-canonicalization.insecure.pkg/pkg/src/lib.rs:22:3-9
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/7-bump-seed-canonicalization.insecure.run2/radar.json
+
+
+STDERR:
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+

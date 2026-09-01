@@ -75,17 +75,17 @@ machine-checked, not asserted: `python tools/run_all.py --verify-coverage` is a 
   and the determinism check come for free. Nine declarations exist. Adding one is a config file.
 - **DONE. A run log for everything, including our own.** This was the gap we were most exposed on:
   we had held other people's tools to a standard we had not met ourselves.
-- **DONE, with one gap named. Every tool across both corpora.** **18 of 19 live measurements now
-  carry a run log.** The one remaining is **`corpus1 radar`**, which has no log at
-  `raw/radar-full.json.log`, so "ran it and found nothing" and "never saw it" cannot be told apart
-  there. It is listed rather than quietly rounded away. One measurement is **retired**
-  (`corpus2 sol-audit`, superseded by v3): reported, still visible, not counted.
+- **DONE. Every tool across both corpora.** **19 of 19 live measurements carry a run log**, and no
+  case on either corpus is unresolved. `corpus1 radar` was the last one and was re-run on
+  2026-09-01: 35 invocations, 35 ok, and the 11/11 reproduced location for location. One
+  measurement is **retired** (`corpus2 sol-audit`, superseded by v3): reported, still visible, not
+  counted.
 - **DONE. A published results page where every number is derived.** The headline figures are
   recomputed from raw data by the test suite, which **fails if a page states a number the tools do
   not produce.** That check has fired for real: it caught a stale packaging figure the same day.
 
 **Check:** `python tools/run_all.py --verify-coverage` reports zero `coverage_evidence: none`.
-**Currently 1, and it is `corpus1 radar`.** The gate runs in CI as a second, deliberately separate
+**Currently 0. It passes.** The gate runs in CI as a second, deliberately separate
 dial: `selfcheck` (is the machinery sound) can be green while `coverage` (is the state complete) is
 red, because those are different questions and merging them would let one hide the other.
 

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Missing Token Mint Constraint",
+        "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/5-arbitrary-cpi.recommended.pkg/pkg/src/lib.rs:17:13-20"
+        ]
+    },
+    {
+        "name": "Missing Transfer Amount Validation",
+        "description": "Ensure that token transfers validate the amount being transferred. Transfers should not allow negative values or amounts exceeding the account balance.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/5-arbitrary-cpi.recommended.pkg/pkg/src/lib.rs:11:16-24"
+        ]
+    }
+]

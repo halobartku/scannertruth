@@ -5,12 +5,17 @@
 **Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 151
 checks on three operating systems and four Python versions. `coverage` says whether every number
 published here can show what it analysed, by running
-`python tools/run_all.py --verify-coverage`. **`coverage` is red today and that is not a broken
-build.** Five of twenty measurements have no run log behind them, so for those five "the tool read
-this case and found nothing" and "the tool never saw this case" cannot be told apart. Those five are
-what Milestone 1 closes, and it closes with scanner runs rather than with code.
+`python tools/run_all.py --verify-coverage`. **`coverage` went green on 2026-09-01**: all 19 live
+measurements now carry a per-run log and no case on either corpus is unresolved, so "the tool read
+this case and found nothing" and "the tool never saw this case" can be told apart everywhere. It
+closed with scanner runs rather than with code: ten measurements re-run per case and per variant,
+each of them twice. One measurement is retired and reported as such rather than counted.
 
-A single badge covering both would have gone green and told you nothing.
+The per-row invocation counts are in `docs/COVERAGE.md`, which is generated from `raw/` rather
+than typed, because a count in prose goes stale the next time a row is re-run.
+
+It was red the day before, and a single badge covering both would have gone green and told you
+nothing.
 
 An independent, repeatable measurement of Solana security scanners.
 
@@ -392,8 +397,11 @@ which is why this repository is 49 MB rather than 2.
   findings in its corpus-2 file name files the corpus rebuild removed. Its corpus-2 row was
   retired on 2026-09-01 rather than restated: v3 supersedes it and has a log on both corpora,
   and re-running a superseded version of our own scanner would have bought evidence about
-  nobody's tool but our own obsolete one. Four corpus-1 rows still have no run log, so
-  milestone 1 is not met and `python tools/run_all.py --verify-coverage` says so.
+  nobody's tool but our own obsolete one. Its **corpus-1** row is still published, so on
+  2026-09-01 it was given the log it never had: 35 invocations reproducing all 44 findings and
+  the 4 / 11, driven from a worktree at the v2 commit through `tools/emit_sol_audit.py`. A row on
+  the front page that cannot show what it analysed is the defect the gate exists to catch,
+  superseded or not.
 - **Recall against a labelled corpus is a lower bound on real-world safety**, not a measure of it.
 - **Nobody outside this project has reproduced any of it yet.** That is milestone 4, and its
   criterion is deliberately outside our control.

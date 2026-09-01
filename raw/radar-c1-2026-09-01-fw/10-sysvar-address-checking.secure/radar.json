@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Missing Signer Check",
+        "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c1-2026-09-01-fw/_staged/10-sysvar-address-checking.secure.pkg/pkg/src/lib.rs:16:3-9"
+        ]
+    }
+]
