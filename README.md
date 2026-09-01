@@ -186,6 +186,7 @@ tests/                 the checks themselves, one module per concern; test_all.p
 docs/
   INDEX.md             the map: every script and who calls it, generated files, raw/ names, results pages
   GETTING-STARTED.md   entry point for a person
+  WHY.md               why the benchmark exists, and why the corpus everyone grades on cannot answer it
   WALKTHROUGH.md       worked example: measure a scanner yourself, step by step
   SCANNERS.md          registry: every tool we know of, what it needs, what we measured
   PROTOCOL.md          the rules, and what makes a result provisional
