@@ -30,21 +30,17 @@ def variants(case_dir):
     return ins, sec
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--findings", required=True)
-    ap.add_argument("--kind", required=True)
-    ap.add_argument("--manifest", default="corpus2/manifest.json")
-    ap.add_argument("--corpus", default="corpus2")
-    args = ap.parse_args()
+def candidates(cases, corpus_dir, findings):
+    """Rules that fire at the fix site on the vulnerable variant and nowhere on the fixed one.
 
-    cases = json.load(open(args.manifest, encoding="utf-8"))["cases"]
-    cases = [c for c in cases if c.get("valid", True)]
-    findings = score2.load_findings(args.kind, args.findings)
-
-    candidates = 0
+    Returned rather than printed, so the decision this makes can be tested. Until 2026-09-01 the
+    only test named for this module called `score2.changed_lines` and never imported this one, so
+    deleting the "fires on the fix too" guard below - the entire difference between a candidate
+    detection and a shape match - changed nothing anybody could see.
+    """
+    out = []
     for c in cases:
-        d = os.path.join(args.corpus, c["name"])
+        d = os.path.join(corpus_dir, c["name"])
         if not os.path.isdir(d):
             continue
         ins, sec = variants(d)
@@ -69,23 +65,62 @@ def main():
                 continue  # fires on the fix too, so it distinguishes nothing
             at_fix = [l for l in lines if any(abs(l - ch) <= score2.TOLERANCE for ch in changed)]
             if at_fix:
-                candidates += 1
-                print(f"CANDIDATE  {c['name']:30} rule={rid:24} lines={at_fix} "
-                      f"class={c.get('class')}")
+                out.append({"case": c["name"], "rule": rid, "lines": at_fix,
+                            "class": c.get("class")})
+    return out
 
-    print(f"\n{args.kind}: {candidates} candidate(s) — differential AND at the fix site, "
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--findings", required=True)
+    ap.add_argument("--kind", required=True)
+    ap.add_argument("--manifest", default="corpus2/manifest.json")
+    ap.add_argument("--corpus", default="corpus2")
+    args = ap.parse_args()
+
+    cases = json.load(open(args.manifest, encoding="utf-8"))["cases"]
+    cases = [c for c in cases if c.get("valid", True)]
+    findings = score2.load_findings(args.kind, args.findings)
+
+    found = candidates(cases, args.corpus, findings)
+    for c in found:
+        print(f"CANDIDATE  {c['case']:30} rule={c['rule']:24} lines={c['lines']} "
+              f"class={c['class']}")
+
+    print(f"\n{args.kind}: {len(found)} candidate(s) - differential AND at the fix site, "
           f"under any rule")
-    if candidates:
+    if found:
         print("Read each one before crediting it, and ask the tool's authors what the rule covers.")
     return 0
 
 
 def demo():
-    """A rule that fires on both variants must never be a candidate, however well located."""
-    assert score2.TOLERANCE >= 0
-    changed = {100}
-    assert any(abs(101 - c) <= score2.TOLERANCE for c in changed)
-    assert not any(abs(200 - c) <= score2.TOLERANCE for c in changed)
+    """A rule that fires on both variants must never be a candidate, however well located.
+
+    Driven through `candidates` itself. This used to re-implement the tolerance arithmetic beside
+    the module instead of calling into it, so it agreed with itself no matter what the module did.
+    """
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        case = os.path.join(d, "case")
+        for variant, text in (("insecure", "a\nb\nBUG\nd\n"),
+                              ("secure", "a\nb\nguard()\nBUG\nd\n")):
+            sub = os.path.join(case, variant, "src")
+            os.makedirs(sub)
+            with open(os.path.join(sub, "lib.rs"), "w", encoding="utf-8") as fh:
+                fh.write(text)
+        cases = [{"name": "case", "class": "owner-checks"}]
+        ins = "case/insecure/src/lib.rs"
+        sec = "case/secure/src/lib.rs"
+
+        hit = candidates(cases, d, {ins: [("ANY-RULE", 3)]})
+        assert len(hit) == 1 and hit[0]["rule"] == "ANY-RULE", hit
+
+        both = candidates(cases, d, {ins: [("ANY-RULE", 3)], sec: [("ANY-RULE", 3)]})
+        assert both == [], f"a rule firing on the fix too is not a candidate: {both}"
+
+        far = candidates(cases, d, {ins: [("ANY-RULE", 400)]})
+        assert far == [], f"a finding nowhere near the fix is not a candidate: {far}"
     print("unmapped_check: OK")
 
 

@@ -159,14 +159,75 @@ def build_case(case, cache, out_root):
             "files": sorted(set(paths)), "written": written}
 
 
+def throwaway_repo(cache, repo="local/fixture"):
+    """A two-commit git repository, offline, laid out where `ensure_clone` will find it.
+
+    The parent commit contains the bug and the child fixes it, which is the orientation the whole
+    corpus depends on. Building it here rather than in the test means `--demo` and the test suite
+    exercise the same fixture, and neither needs the network.
+
+    Returns (repo, fix_sha, cache).
+    """
+    env = {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
+    d = os.path.join(cache, repo.replace("/", "__"))
+    os.makedirs(os.path.join(d, "src"), exist_ok=True)
+    os.makedirs(os.path.join(d, "tests"), exist_ok=True)
+
+    def g(*args):
+        p = subprocess.run(["git"] + list(args), cwd=d, capture_output=True, text=True,
+                           env=dict(os.environ, **env))
+        if p.returncode != 0:
+            raise RuntimeError(f"git {' '.join(args)}: {p.stderr.strip()[:200]}")
+        return p.stdout
+
+    g("init", "-q", ".")
+    with open(os.path.join(d, "src", "lib.rs"), "w", encoding="utf-8") as fh:
+        fh.write("fn transfer() {\n    // no owner check\n}\n")
+    with open(os.path.join(d, "tests", "t.rs"), "w", encoding="utf-8") as fh:
+        fh.write("// test file, never part of a corpus case\n")
+    with open(os.path.join(d, "README.md"), "w", encoding="utf-8") as fh:
+        fh.write("not rust\n")
+    g("add", "-A")
+    g("commit", "-q", "-m", "the vulnerable state")
+
+    with open(os.path.join(d, "src", "lib.rs"), "w", encoding="utf-8") as fh:
+        fh.write("fn transfer() {\n    require_owner();\n}\n")
+    with open(os.path.join(d, "README.md"), "w", encoding="utf-8") as fh:
+        fh.write("still not rust\n")
+    with open(os.path.join(d, "tests", "t.rs"), "w", encoding="utf-8") as fh:
+        fh.write("// touched by the fix, and still not a corpus file\n")
+    g("add", "-A")
+    g("commit", "-q", "-m", "the fix")
+    return repo, g("rev-parse", "HEAD").strip(), cache
+
+
 def demo():
-    """Self-check the logic that decides whether a pair is usable."""
-    # A fix that only adds a file cannot yield a vulnerable variant of that file; the case must be
-    # skipped rather than shipped as an empty 'insecure'.
-    assert build_case.__doc__ is None or True
-    names = ["a.rs", "b/c.rs", "tests/d.rs", "readme.md", "e/tests/f.rs"]
-    kept = [n for n in names if n.endswith(".rs") and "/tests/" not in n and not n.startswith("tests/")]
-    assert kept == ["a.rs", "b/c.rs"], kept
+    """Self-check the logic that decides whether a pair is usable.
+
+    This used to open with `assert build_case.__doc__ is None or True`, which cannot fail, and then
+    re-implement the `.rs` filter inline instead of calling `rs_files_in_commit`. CI ran it as a
+    self-check. Swapping `parent` and `fix` in `build_case` - which inverts the ground truth of
+    every case built from then on - survived the whole suite. It runs against a real two-commit
+    repository now, and calls the functions it claims to check.
+    """
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        repo, fix, cache = throwaway_repo(d)
+        repo_dir = ensure_clone(repo, cache)
+
+        kept = rs_files_in_commit(repo_dir, fix)
+        assert kept == ["src/lib.rs"], f"the fix touched src/lib.rs, tests/t.rs and README.md: {kept}"
+
+        out = os.path.join(d, "out")
+        r = build_case({"name": "case", "repo": repo, "fix": fix, "class": "owner-checks"},
+                       cache, out)
+        assert r["status"] == "built", r
+        ins = open(os.path.join(out, "case", "insecure", "src", "lib.rs"), encoding="utf-8").read()
+        sec = open(os.path.join(out, "case", "secure", "src", "lib.rs"), encoding="utf-8").read()
+        assert "no owner check" in ins, f"insecure must hold the PARENT of the fix commit: {ins!r}"
+        assert "require_owner" in sec, f"secure must hold the FIX commit: {sec!r}"
+        assert "require_owner" not in ins, "the vulnerable variant must not contain the fix"
     print("build_corpus2: OK")
 
 

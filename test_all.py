@@ -282,10 +282,42 @@ def test_noisy_control_scores_zero_on_a_synthetic_case():
 
 
 def test_noisy_control_would_win_a_findings_count_ranking():
-    """The control is only meaningful if it beats everyone on the naive metric."""
-    import control_c2
-    rules = control_c2.every_rule()
+    """`len(every_rule()) > 10` was the whole check, and it cannot see the property that matters.
+
+    The corpus-2 control is meaningful only because it emits under **every** rule id any mapping
+    claims, on every non-empty line of both variants. That is exactly what the corpus-1 control
+    does not do, which is why its published nominal figure is worthless. So check the property:
+    every mapped rule appears, and on a case of n non-empty lines the control produces
+    rules * lines * variants findings, which no real scanner will ever approach.
+    """
+    import json, control_c2
+    rules = set(control_c2.every_rule())
     assert len(rules) > 10, f"expected many mapped rules to fire, got {len(rules)}"
+    for fn in sorted(os.listdir("mappings")):
+        if not fn.endswith(".json"):
+            continue
+        m = json.load(io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
+        for cls, claimed in m.items():
+            missing = [r for r in claimed if r not in rules]
+            assert not missing, (
+                f"{fn}/{cls}: the noisy control never emits {missing}, so a scanner using those "
+                "rules is measured against a control that stays silent where it fires")
+
+    with tempfile.TemporaryDirectory() as t:
+        _case(t, VULN, FIXED)
+        cases = [{"name": "case"}]
+        prev = control_c2.CORPUS
+        try:
+            control_c2.CORPUS = t
+            noisy = control_c2.noisy_findings(cases, sorted(rules))
+        finally:
+            control_c2.CORPUS = prev
+    non_empty = len([l for l in VULN.split("\n") if l.strip()]) + \
+        len([l for l in FIXED.split("\n") if l.strip()])
+    assert len(noisy) == len(rules) * non_empty, (
+        f"the control produced {len(noisy)} findings; every rule on every non-empty line of both "
+        f"variants is {len(rules) * non_empty}. A control that flags less than everything is not "
+        "the ceiling the front page says it is.")
 
 
 # ----------------------------------------------------------------- holdout
@@ -321,12 +353,35 @@ def test_manifest_invalid_cases_are_excluded_everywhere():
 
 
 def test_every_published_scanner_has_a_mapping():
+    """Despite its name this only ever iterated `mappings/` and checked each file was non-empty.
+
+    It never checked the direction the name promises: that every scanner carrying a published
+    score has a mapping to check it against. A scored cell whose mapping is missing is a number
+    with no derivation at all.
+    """
     for fn in os.listdir("mappings"):
         if not fn.endswith(".json"):
             continue
         m = json.load(io.open(os.path.join("mappings", fn), encoding="utf-8"))
         assert "map" in m, f"{fn} has no map"
         assert isinstance(m["map"], dict) and m["map"], f"{fn} has an empty map"
+
+    have = {fn[:-5] for fn in os.listdir("mappings") if fn.endswith(".json")}
+    scored = set()
+    runs = sorted(f for f in os.listdir("runs") if f.endswith(".json")) if os.path.isdir("runs") \
+        else []
+    for fn in runs:
+        row = json.load(io.open(os.path.join("runs", fn), encoding="utf-8"))
+        for key in ("scanners", "corpus1", "corpus2", "results", "results_corpus2"):
+            block = row.get(key)
+            if isinstance(block, dict):
+                scored |= set(block)
+            elif isinstance(block, list):
+                scored |= {r.get("scanner") for r in block if isinstance(r, dict)}
+    scored = {s for s in scored if s and not s.startswith("control")}
+    missing = sorted(scored - have)
+    assert not missing, (
+        f"the clock records a score for {missing} and there is no mapping to derive it from")
 
 
 def test_mappings_declare_their_derivation():
@@ -378,14 +433,80 @@ def test_the_pre_registration_retraction_is_still_on_the_record():
 
 
 # --------------------------------------------------------------- unmapped
-def test_unmapped_check_finds_the_known_positive():
-    """A check that returns zero everywhere may simply be broken."""
-    import score2
+# `unmapped_check.py` changed a published number once: it is what found the X-Ray detection hiding
+# under a rule the mapping pointed at the wrong class. Until 2026-09-01 the only test named for it
+# called `score2.changed_lines` and never imported it, so removing the "fires on the fix too" guard
+# - the entire difference between a candidate and a shape match - passed every check.
+
+def _unmapped_fixture(tmp):
+    case, _, _ = _case(tmp, VULN, FIXED)
+    del case
+    return ([{"name": "case", "class": "owner-checks"}], tmp,
+            "case/insecure/src/lib.rs", "case/secure/src/lib.rs")
+
+
+def test_unmapped_check_reports_a_differential_hit_at_the_fix_site():
+    """The shape of the one real detection this project has ever recorded."""
+    import unmapped_check
     with tempfile.TemporaryDirectory() as t:
-        case, ins, _ = _case(t, VULN, FIXED)
-        ch = score2.changed_lines(ins, os.path.join(case, "secure", "src", "lib.rs"))
-        assert any(abs(3 - c) <= score2.TOLERANCE for c in ch), \
-            "the fix site must be locatable, or unmapped_check can never fire"
+        cases, corpus, ins, _ = _unmapped_fixture(t)
+        got = unmapped_check.candidates(cases, corpus, {ins: [("UNMAPPED-RULE", 3)]})
+        assert len(got) == 1, got
+        assert got[0]["rule"] == "UNMAPPED-RULE" and got[0]["case"] == "case", got
+
+
+def test_unmapped_check_rejects_a_rule_that_fires_on_the_fix_too():
+    """This is the guard whose removal survived the whole suite before it had a test."""
+    import unmapped_check
+    with tempfile.TemporaryDirectory() as t:
+        cases, corpus, ins, sec = _unmapped_fixture(t)
+        got = unmapped_check.candidates(
+            cases, corpus, {ins: [("UNMAPPED-RULE", 3)], sec: [("UNMAPPED-RULE", 3)]})
+        assert got == [], \
+            f"a rule that fires on the repaired code distinguishes nothing, yet it was offered: {got}"
+
+
+def test_unmapped_check_rejects_a_hit_away_from_the_fix_site():
+    import unmapped_check
+    with tempfile.TemporaryDirectory() as t:
+        cases, corpus, ins, _ = _unmapped_fixture(t)
+        got = unmapped_check.candidates(cases, corpus, {ins: [("UNMAPPED-RULE", 400)]})
+        assert got == [], f"a finding nowhere near the fix is not a candidate detection: {got}"
+
+
+def test_build_case_puts_the_parent_in_insecure_and_the_fix_in_secure():
+    """The orientation every case in corpus 2 depends on, and nothing checked it.
+
+    Swapping `parent` and `fix` in `build_case` would make every newly built case's vulnerable
+    variant the repaired code. The committed corpus would not change, so the suite passed, and the
+    next case added would be silently backwards.
+    """
+    import build_corpus2
+    with tempfile.TemporaryDirectory() as t:
+        repo, fix, cache = build_corpus2.throwaway_repo(t)
+        out = os.path.join(t, "out")
+        r = build_corpus2.build_case(
+            {"name": "case", "repo": repo, "fix": fix, "class": "owner-checks"}, cache, out)
+        assert r["status"] == "built", r
+        ins = io.open(os.path.join(out, "case", "insecure", "src", "lib.rs"),
+                      encoding="utf-8").read()
+        sec = io.open(os.path.join(out, "case", "secure", "src", "lib.rs"),
+                      encoding="utf-8").read()
+        assert "no owner check" in ins and "require_owner" not in ins, \
+            f"insecure must be the commit BEFORE the fix: {ins!r}"
+        assert "require_owner" in sec, f"secure must be the fix commit: {sec!r}"
+        assert r["parent"] != fix and r["fix"] == fix, r
+
+
+def test_build_case_takes_its_file_list_from_the_commit_and_skips_tests():
+    """The paths are derived from the fix commit so a mistake in our notes cannot produce a pair."""
+    import build_corpus2
+    with tempfile.TemporaryDirectory() as t:
+        repo, fix, cache = build_corpus2.throwaway_repo(t)
+        repo_dir = build_corpus2.ensure_clone(repo, cache)
+        got = build_corpus2.rs_files_in_commit(repo_dir, fix)
+        assert got == ["src/lib.rs"], \
+            f"the fix touched src/lib.rs, tests/t.rs and README.md; only the first is a case: {got}"
 
 
 
@@ -508,16 +629,37 @@ def test_score1_windows_paths_are_handled():
     assert nominal, "backslash paths must score identically to forward slashes"
 
 
-def test_score1_real_never_exceeds_nominal():
-    """An invariant: you cannot have real recall on a class without nominal recall."""
+def test_score1_separates_real_from_nominal_on_every_published_mapping():
+    """`score.py` computes `real = nominal and ...`, so asserting "real implies nominal" is a
+    tautology and the old test could never fail whatever the mapping said.
+
+    The property worth checking is the one the benchmark exists for: with a real mapping loaded,
+    a rule that fires only on the vulnerable variant must score real, and the same rule firing on
+    the fixed variant as well must score nominal and **not** real. A mapping whose rule ids no
+    longer match what the scanner emits fails this, which is the defect the first result had.
+    """
     import score, json, io as _io, os
+    checked = 0
     for fn in sorted(os.listdir("mappings")):
         if not fn.endswith(".json"):
             continue
         m = json.load(_io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
-        rows = score.score([("R", "/x/2-owner-checks/insecure/a.rs")], m)
-        for cls, ins, sec, rec, nominal, real in rows:
-            assert not (real and not nominal), f"{fn}/{cls}: real without nominal is impossible"
+        cls = sorted(k for k, v in m.items() if v)
+        if not cls:
+            continue
+        cls = cls[0]
+        rule = m[cls][0]
+        clean = {r[0]: (r[4], r[5]) for r in
+                 score.score([(rule, f"/x/{cls}/insecure/a.rs")], m)}
+        assert clean[cls] == (True, True), \
+            f"{fn}: {rule!r} firing only on the vulnerable variant of {cls} must score real: {clean[cls]}"
+        both = {r[0]: (r[4], r[5]) for r in
+                score.score([(rule, f"/x/{cls}/insecure/a.rs"),
+                             (rule, f"/x/{cls}/secure/a.rs")], m)}
+        assert both[cls] == (True, False), \
+            f"{fn}: {rule!r} firing on the fix too must be nominal and not real: {both[cls]}"
+        checked += 1
+    assert checked, "no mapping was exercised, so this check proved nothing"
 
 
 # --------------------------------------------------------- run_all extractors
@@ -667,14 +809,40 @@ def test_published_corpus1_numbers_still_reproduce():
         assert got[name] == want, f"{name}: published {want}, now {got[name]}"
 
 
-def test_the_noisy_control_still_produces_931_on_corpus_one():
-    """The figure quoted in two results pages and in the call materials."""
+def test_the_corpus_one_noisy_control_scores_zero_real_recall_when_actually_scored():
+    """This used to assert `len(findings) == 931` and nothing else: it checked that a file existed
+    at the right size and never once scored it.
+
+    Scoring it is the whole claim. `control-noisy` is on the front page as the reason no score above
+    it was bought with volume, so the number that has to hold is its **real recall**, and it has to
+    hold against every mapping in the repository rather than against a file size.
+
+    Read the handover before trusting the nominal figure beside it: the file's only rule id is
+    `NOISY-ALL`, which appears in no mapping, so `score.py` discards all 931 findings and the
+    published `11/11 nominal` for this control does not reproduce. Correcting that means
+    regenerating `raw/c1-control-noisy.json` to emit under every mapped rule id, the way
+    `control_c2.every_rule()` already does for corpus 2. That is a separate change to a file this
+    check deliberately only reads.
+    """
     import json, io as _io, os
+    import score
     if not os.path.exists("raw/c1-control-noisy.json"):
         raise AssertionError("the control's raw data is missing; the 931 figure is unbacked")
     d = json.load(_io.open("raw/c1-control-noisy.json", encoding="utf-8"))
     n = len(d["findings"])
     assert n == 931, f"published 931 findings, raw file now has {n}"
+
+    findings = [(x.get("rule_id", ""), x.get("file", "")) for x in d["findings"]]
+    for fn in sorted(os.listdir("mappings")):
+        if not fn.endswith(".json"):
+            continue
+        m = json.load(_io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
+        rows = score.score(findings, m)
+        real = sum(1 for r in rows if r[5])
+        assert real == 0, (
+            f"{fn}: the noisy control scored {real} real detections. A scorer that credits a tool "
+            "which flags every line of the fixed code as loudly as the vulnerable one is crediting "
+            "volume, and every published number rests on it not doing that.")
 
 
 def test_corpus_commit_is_pinned_in_the_protocol():
@@ -1146,15 +1314,25 @@ def test_skills_referenced_by_agents_md_exist():
     assert not missing, f"AGENTS.md references missing skills: {missing}"
 
 
-def test_every_skill_has_a_name_and_description():
-    """A skill without frontmatter will never be surfaced to an agent."""
-    import io as _io, os
+def test_every_skill_names_itself_correctly_and_says_when_to_use_it():
+    """Frontmatter presence was all this checked, so a skill named after the wrong directory or
+    carrying a one-word description passed. A skill is only reachable through its description."""
+    import io as _io, os, re
     for d in sorted(os.listdir("skills")):
         p = os.path.join("skills", d, "SKILL.md")
         assert os.path.exists(p), f"{d} has no SKILL.md"
-        head = _io.open(p, encoding="utf-8").read()[:600]
-        assert head.startswith("---"), f"{d}: no frontmatter"
-        assert "name:" in head and "description:" in head, f"{d}: incomplete frontmatter"
+        text = _io.open(p, encoding="utf-8").read()
+        assert text.startswith("---"), f"{d}: no frontmatter"
+        front = text.split("---", 2)[1]
+        name = re.search(r"^name:\s*(.+)$", front, re.M)
+        desc = re.search(r"^description:\s*(.+)$", front, re.M)
+        assert name and desc, f"{d}: incomplete frontmatter"
+        assert name.group(1).strip() == d, \
+            f"{d}: frontmatter name is {name.group(1).strip()!r}; an agent looks it up by directory"
+        assert len(desc.group(1).split()) >= 12, \
+            f"{d}: the description is what decides whether this skill is ever used, and it is "
+        assert "use when" in desc.group(1).lower() or "when " in desc.group(1).lower(), \
+            f"{d}: the description must say when to use the skill, not only what it is"
 
 
 # ------------------------------------------------------------ CI honesty
@@ -1186,18 +1364,47 @@ def test_protocol_warns_that_corpus_one_is_in_sample():
     assert "in-sample" in s, "every corpus-1 score must carry the in-sample warning"
 
 
-def test_limitations_document_is_not_empty_or_shrinking():
-    """Limitations should accumulate. A suspiciously short file means someone tidied them away."""
-    import io as _io
-    n = len(_io.open("docs/KNOWN-LIMITATIONS.md", encoding="utf-8").read().split("\n"))
-    assert n > 60, f"KNOWN-LIMITATIONS has only {n} lines; limitations do not disappear"
+def test_every_numbered_limitation_has_a_body():
+    """This asserted `> 60 lines`, which a file of blank lines satisfies.
+
+    What matters is that each numbered limitation still says something. A limitation resolved by
+    deleting its text, or by leaving a heading with nothing under it, is a limitation tidied away.
+    """
+    import io as _io, re
+    s = _io.open("docs/KNOWN-LIMITATIONS.md", encoding="utf-8").read()
+    sections = re.split(r"^## ", s, flags=re.M)[1:]
+    numbered = [x for x in sections if re.match(r"\d+\.", x)]
+    assert len(numbered) >= 8, \
+        f"KNOWN-LIMITATIONS lists {len(numbered)} numbered limitations; they do not disappear"
+    thin = []
+    for sec in numbered:
+        head, _, body = sec.partition("\n")
+        if len(body.strip()) < 80:
+            thin.append(head.strip()[:60])
+    assert not thin, f"limitations with no substance under the heading: {thin}"
 
 
-def test_commitments_are_still_stated():
-    import io as _io
-    s = _io.open("docs/COMMITMENTS.md", encoding="utf-8").read().lower()
-    assert "free" in s and ("no money" in s or "take no" in s), \
-        "the open-data and no-money-from-those-we-measure commitments must stay stated"
+def test_each_commitment_is_stated_with_its_reasoning():
+    """A substring search for "free" and "no money" passes on a document that has been gutted.
+
+    Three promises are made in COMMITMENTS.md and quoted on the front page. Each must still be a
+    section with text under it, because the promise is the argument, not the phrase.
+    """
+    import io as _io, re
+    s = _io.open("docs/COMMITMENTS.md", encoding="utf-8").read()
+    sections = re.split(r"^## ", s, flags=re.M)[1:]
+    numbered = {}
+    for sec in sections:
+        m = re.match(r"(\d+)\.\s*(.+)", sec)
+        if m:
+            numbered[int(m.group(1))] = sec
+    assert set(numbered) >= {1, 2, 3}, f"three promises are made; the file has {sorted(numbered)}"
+    for i, sec in sorted(numbered.items()):
+        body = sec.partition("\n")[2].strip()
+        assert len(body) > 120, f"promise {i} has no reasoning under it, only a heading"
+    lower = s.lower()
+    for phrase in ("free", "open", "no money"):
+        assert phrase in lower, f"the commitments no longer contain {phrase!r}"
 
 
 # --------------------------------------------------------- corpus/case sanity
@@ -1335,12 +1542,23 @@ def test_unreleased_holdout_specs_are_not_in_the_repository():
 
 # ------------------------------------------------------------ candidate triage
 def test_rejected_candidates_carry_a_written_reason():
-    import io as _io, os
+    """This asserted that the strings "REJECT" and "out of scope" appeared somewhere in the file,
+    which one rejection among fifty acceptances satisfies. Now every rejection is checked."""
+    import io as _io, os, re
     if not os.path.exists("docs/CANDIDATES-TRIAGE.md"):
         return
-    s = _io.open("docs/CANDIDATES-TRIAGE.md", encoding="utf-8").read()
-    assert "REJECT" in s, "the triage file records acceptances only, which hides the judgement calls"
-    assert "out of scope" in s.lower(), "rejections must say why, not just that"
+    lines = _io.open("docs/CANDIDATES-TRIAGE.md", encoding="utf-8").read().split("\n")
+    rejects = [l for l in lines if "REJECT" in l]
+    assert rejects, "the triage file records acceptances only, which hides the judgement calls"
+    unexplained = []
+    for line in rejects:
+        # A rejection is a reason plus the words. Strip the marker and the table furniture, and
+        # something has to be left.
+        rest = re.sub(r"\*\*|`|\|", " ", line)
+        rest = re.sub(r"REJECT[^A-Za-z]*", " ", rest)
+        if len(rest.split()) < 6:
+            unexplained.append(line.strip()[:70])
+    assert not unexplained, f"rejections that say that, not why: {unexplained}"
 
 
 def test_every_file_named_in_ci_exists():
