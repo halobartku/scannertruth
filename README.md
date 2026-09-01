@@ -124,13 +124,20 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 | `vaultlint` | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
 | **X-Ray** (sec3) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** |
 | `solsec` | 0 / 11 | **0 / 16**, zero unavailable |
+| `sol-azy` (FuzzingLabs) | 9 / 11 nominal, **4 / 11** real | **0 / 15 analysed**, 1 not run |
 | `semgrep`, own registry | no Solana rules in the registry | - |
 | `semgrep` + [SOL-0XX pack](https://github.com/Copenhagen0x/solana-security-standard) | 3 / 11 nominal, **0 / 11** real | **0 / 16** |
 
-**Seven scanners, one detection between them** - and seeing that one required correcting a
+**Eight scanners, one detection between them** - and seeing that one required correcting a
 mapping error of our own. On the eight cases every tool has been run against, the count is one.
 Three of the seven have now also been run against all sixteen built cases and detect nothing
 there either.
+
+`sol-azy` was published in the could-not-run table until 2026-09-01 with the reason "ships no
+default rule set, so it detects nothing out of the box". That reason was false: it has an internal
+rule set, it was measured on 2026-09-01 with a mapping committed before the run, and it scores
+4 / 11 real on the teaching corpus, which is not nothing. Recorded as error 36. This is the
+project's own most-repeated rule inverted: we published "could not run" about a tool we had run.
 
 The `solsec` and `semgrep` rows moved on 2026-09-01 and neither zero moved with them. `solsec`
 was published as `0 / 6, 3 unavailable`; run per case with a log it is **34 invocations, 34
@@ -281,7 +288,7 @@ what the bug was.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[35 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
+- **[36 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.

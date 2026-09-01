@@ -477,6 +477,28 @@ number.
   own sol-audit 3.0
 - **coverage evidence from 3 of 12 measurements to 15 of 20**, in a matrix that is generated
 
+**Error 36. `sol-azy` was published in the could-not-run table with the reason "ships no default
+rule set, so it detects nothing out of the box", on the same day it was measured, with the raw
+output, the run logs and three pre-registered mappings sitting in this repository.** It has an
+internal rule set. It was invoked as `sol-azy sast -d <case-dir> -s` in a `rust:slim` container
+with the corpus mounted read only and no network, against corpus 1 pinned at `24555d04` and
+corpus 2 pinned by file digest and verified byte-identical on two machines before any run. It
+scores **9 / 11 nominal and 4 / 11 real** on the teaching corpus, which is the same real recall
+our own v2 scanner had, and **0 detected on the expanded corpus 2, 15 of 17 cases analysed, one
+not built and one not run**.
+
+Found on 2026-09-01 while refreshing the Polish briefing documents, by an agent checking every
+figure in them against the repository rather than against the previous version of the document.
+
+**This is the project's own most-repeated rule inverted.** We say, in the README, in AGENTS.md and
+in three skills, that "could not run" and "found nothing" are different observations and that
+conflating them is how a benchmark misleads. Here we published *could not run* about a tool we had
+run, whose result we held, and which was not nothing. Errors 20 and 35 were the same confusion in
+the other direction: silence read as a measurement. This one is a measurement read as silence.
+
+The row is corrected on the front page and in `docs/SCANNERS.md`. The could-not-run table now
+carries only tools with no result behind them, which is what it claims to contain.
+
 ## What is still wrong
 
 - **`spl-token-lending-rounding` is still not built.** Every corpus-2 figure reads out of sixteen

@@ -99,7 +99,6 @@ Conflating those two is one of the main ways a benchmark misleads, so they get t
 |---|---|
 | solana-lints | dylint toolchain would not build in our container within the session |
 | anchor-sentinel | needs `anchor build` and a generated IDL; our corpora are bare crates |
-| sol-azy | ships no default rule set, so it detects nothing out of the box |
 | L3X | requires a paid API key; not deterministic static analysis |
 | cargo-audit, cargo-deny | audit dependencies, not contract logic. Different job |
 
