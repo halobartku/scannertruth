@@ -46,6 +46,51 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 | `semgrep` 1.174, own registry | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
 | `semgrep` + SOL-0XX pack | 3 / 11 nominal, **0 / 11** real | **0 / 16** | new 2026-09-01, mapping pre-registered before the run, run log 35/35 and 34/34; 3 `unlocated`, all of them "fires at the fix site but also on the fix" |
 
+## Beside the table
+
+These paragraphs stood beside the same table on the front page until 2026-09-02 and were moved
+here verbatim; `README.md` keeps the table and links here for them.
+
+VaultLint has now been run over all seventeen built cases and is the only row here with complete
+coverage. Radar, solsec, semgrep-with-the-pack and sol-audit v3 have been run over sixteen of
+the seventeen and detect nothing on any of them.
+
+`sol-azy` was published in the could-not-run table until 2026-09-01 with the reason "ships no
+default rule set, so it detects nothing out of the box". That reason was false: it has an internal
+rule set, it was measured on 2026-09-01 with a mapping committed before the run, and it scores
+4 / 11 real on the teaching corpus, which is not nothing. Recorded as error 36. This is the
+project's own most-repeated rule inverted: we published "could not run" about a tool we had run.
+
+The `solsec` and `semgrep` rows moved on 2026-09-01 and neither zero moved with them. `solsec`
+was published as `0 / 6, 3 unavailable`; run per case with a log it is **34 invocations, 34
+successes, zero unavailable**, so the denominator was inferred from silence and the three
+unavailable cases did not exist (error 35). `semgrep` was published as having *no Solana rules at
+all*; that is true of its own registry and false of semgrep, which loads a maintained MIT pack of
+30 Solana rules with one `--config`. Measured, that pack detects nothing either.
+
+**Denominators differ by row, and which one a row uses is stated in the row.** Eight cases were
+measured on 2026-08-31, eight more were added on 2026-09-01, and the seventeenth was built later
+the same day. `vaultlint` has since been re-run per case over all seventeen with a log per
+invocation, so it reads out of seventeen. Radar, solsec, semgrep-with-the-pack and sol-audit v3
+read out of sixteen, and `run_all.py` reports every one of them `partial` because the
+seventeenth case is recorded as `not-run` rather than as a zero. X-Ray still reads out of eight.
+A case nobody has run is not a case anybody failed, and the `partial` is removed by running the
+case, never by editing the row.
+
+**The raw denominator is not the honest one either.** A class no scanner has a rule for is a
+coverage gap, not a failure, and `run_all.py` now publishes a `scoreable_denominator` beside every
+tally: Radar 9 of 16, semgrep-with-the-pack 8 narrow and 16 wide, solsec **2**. Both numbers are
+published because only one of them is fair and only the other is comparable.
+
+**The control is what makes the table readable.** `control-noisy` flags every non-empty line under
+every rule id any mapping in this repository claims: 81,928 findings on the teaching corpus and
+2,629,968 on the real one. It would rank first on any metric that counts findings. It reaches
+**11 / 11 nominal recall** and **0 / 11 real**, so nominal recall demonstrably can be bought with
+volume, which is why this project does not publish it as a result, and real recall demonstrably
+cannot. Until 2026-09-01 the teaching-corpus control emitted under one rule id that no mapping
+knew, so the scorer discarded all 931 of its findings and it proved nothing at all while being
+cited here as the reason nothing above it was bought with volume. That is error 33.
+
 ## What this says
 
 **Seven scanners and two controls. The denominator below is eight because that is what was measured

@@ -8,6 +8,47 @@ Ordered by how much damage each one does.
 
 ---
 
+## Honest limits: the front page's short list
+
+Moved here verbatim from `README.md` on 2026-09-02. "The rows above" are the result table, which
+stays on the front page and in [`results/RESULTS-all.md`](results/RESULTS-all.md). The numbered
+limitations that follow are the long form.
+
+- **Seventeen real cases is a small corpus**, and only one row above, `vaultlint`, is out of all
+  seventeen. The rest are out of sixteen or out of eight, and each says which. This is our
+  largest stated weakness; growing it is milestone 2, and the nine cases built on 2026-09-01
+  are growth rather than a better number.
+- **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
+  them in time. It is therefore systematically harder than the population of real bugs and
+  **understates every scanner measured on it**. It answers "do these catch the ones that cost
+  money". It cannot support "these tools do not work", and nothing here claims that.
+- **Every teaching-corpus score is in-sample**, including the 11/11 and our own 4/11, because that
+  corpus is public and at least two measured tools cite it in their own rules. A holdout is the only
+  real answer; round 1 is sealed but gives timestamp integrity, not concealment.
+- **Every third-party number is provisional.** Four right-of-reply threads are open with the vendors
+  we measured and none has answered. Our X-Ray mapping was wrong in a way only its authors could
+  have settled quickly, so this is not a formality.
+- **The mappings published on 2026-08-31 are not pre-registered in any way a stranger can check.**
+  We claimed they were committed before their runs. The history says each one first appears in the
+  same commit as the result it scores. They were written from the tools' own rule names and
+  documentation, and each carries its `derivation`, but the ordering rests on our word.
+  `docs/PROTOCOL.md` 3a carries the retraction, and `python tools/preregistration_check.py` now
+  enforces the rule going forward instead of asserting it.
+- **`sol-audit` v2 never got a per-run coverage log on either corpus**, and 96 of the 426
+  findings in its corpus-2 file name files the corpus rebuild removed. Its corpus-2 row was
+  retired on 2026-09-01 rather than restated: v3 supersedes it and has a log on both corpora,
+  and re-running a superseded version of our own scanner would have bought evidence about
+  nobody's tool but our own obsolete one. Its **corpus-1** row is still published, so on
+  2026-09-01 it was given the log it never had: 35 invocations reproducing all 44 findings and
+  the 4 / 11, driven from a worktree at the v2 commit through `tools/emit_sol_audit.py`. A row on
+  the front page that cannot show what it analysed is the defect the gate exists to catch,
+  superseded or not.
+- **Recall against a labelled corpus is a lower bound on real-world safety**, not a measure of it.
+- **Nobody outside this project has reproduced any of it yet.** That is milestone 4, and its
+  criterion is deliberately outside our control.
+
+---
+
 ## 1. Two different metrics were reported side by side as if comparable. **Our error.**
 
 On the teaching corpus, "nominal" means *a rule mapped to that vulnerability class fired*. On

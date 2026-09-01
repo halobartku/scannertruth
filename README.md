@@ -32,31 +32,8 @@ It was red the day before, and a single badge covering both would have gone gree
 nothing. Per-row invocation counts are in `docs/COVERAGE.md`, generated from `raw/` rather than
 typed, because a count in prose goes stale the next time a row is re-run.
 
-## Every Solana scanner is graded on the same test paper, and it has not changed since 2022
-
-`coral-xyz/sealevel-attacks`, the corpus the entire category is measured against, was last modified
-**16 July 2022**, at commit `24555d04`. Eleven hand-written teaching programs. Four years. Public
-the whole time.
-
-At least two of the tools we measured cite that corpus **in their own rule tables**. One vendor
-merged pull requests closing the last gaps in it **on the day we measured them**. None of that is
-dishonest; it is what any engineer would do. But it means a score on that corpus measures **how
-thoroughly a tool has done a fixed piece of homework**, not whether it works on anything else.
-
-An exam with the same questions for four years stops telling you who can do the subject.
-
-**So we built the other exam.** Real break-ins, each taken from the fix commit its own maintainers
-wrote. As of 2026-09-01 there are **17 valid cases**, **17 built** and **8 measured**. Eight is the
-floor: it is the set every row in the table below covers, and a row that has since been re-run
-over more says so and states its own larger denominator. No case is ever quietly dropped, and a
-case a given scanner has not been run over is reported as `not-run`, never as a zero. The best scanner on the market scores **11/11 on the
-four-year-old paper and zero on the real one.**
-
----
-
-Vendors publish finding counts. **A finding count is not recall.** A scanner that flags fixed code
-as often as vulnerable code produces an impressive number and catches nothing. We know because we
-measured it on our own product first, and published the result that killed the claim.
+Why this benchmark exists, and why the corpus every Solana scanner is graded on cannot answer the
+question, is in [`docs/WHY.md`](docs/WHY.md).
 
 ---
 
@@ -82,49 +59,10 @@ whose results cannot be reproduced because a package version drifted is not a be
 
 ---
 
-## Will this run on your system?
-
-**The verification path runs on Windows, macOS and Linux, and CI proves it on all three.** It is
-pure Python standard library with no install step, so there is no package version that can drift
-between your machine and ours.
-
-| What you want to do | Windows | macOS | Linux | What you need |
-|---|---|---|---|---|
-| **Check our numbers** - `test_all.py`, `verify.py`, `control_c2.py` | yes | yes | yes | Python 3.9-3.12, nothing else |
-| **Score findings you already have** - `score.py`, `score2.py` | yes | yes | yes | the same |
-| **Build the real crates** - `build_corpus2.py --crates` | no | yes | yes | `git`, and a POSIX temp path |
-| **Run the scanners themselves** | via WSL2 | mostly | yes | Docker, Rust, or a vendor key - see [`docs/SCANNERS.md`](docs/SCANNERS.md) |
-
-**Why the split.** Checking a result and producing one are different jobs with different costs.
-Verification reads JSON we already published, so it can afford to depend on nothing. Measuring has
-to clone repositories and drive somebody else's tool, and those tools are Linux-first: Radar ships
-as a Docker image, and one AI auditor needs a paid model key. That is their constraint, not ours,
-and it is recorded in the registry rather than hidden behind an install script of our own.
-
-**The remaining POSIX assumption is ours and it is written down**: `build_corpus2.py`, `rb.py` and
-`shiftaware.py` default to `/tmp` paths, which do not exist on Windows. Pass `--cache` and `--out`
-explicitly, or use WSL2. Nothing on the verification path has that problem.
-
-**How, on each system:**
-
-```bash
-# macOS / Linux - python3, because bare `python` may not exist
-git clone https://github.com/halobartku/scannertruth && cd scannertruth
-python3 test_all.py && python3 tools/verify.py && python3 tools/control_c2.py
-```
-
-```powershell
-# Windows PowerShell - && is not a chain operator in Windows PowerShell 5.1
-git clone https://github.com/halobartku/scannertruth; cd scannertruth
-python test_all.py; python tools\verify.py; python tools\control_c2.py
-```
-
-Two minutes, no network after the clone. If any check fails on your machine and not on ours, that
-is a bug we want: **a benchmark that only reproduces on the author's laptop is not reproducible.**
-
-**Windows is in CI deliberately.** Paths are the one thing a scorer can get quietly wrong, and a
-finding located by a backslash path has to map to the same case as a forward-slash one. That is
-tested rather than assumed.
+**Will this run on your system?** The verification path runs on Windows, macOS and Linux with
+Python 3.9-3.12 and nothing else. The per-task table, the one POSIX assumption that is ours, and the
+commands for each system are in
+[`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md#will-this-run-on-your-system).
 
 ---
 
@@ -167,45 +105,9 @@ so **as registered the score is still zero**. Both numbers are published and nei
 edited, because a mapping rewritten after seeing output is not a pre-registration. Both results
 are provisional until their authors have been offered the mapping.
 
-VaultLint has now been run over all seventeen built cases and is the only row here with complete
-coverage. Radar, solsec, semgrep-with-the-pack and sol-audit v3 have been run over sixteen of
-the seventeen and detect nothing on any of them.
-
-`sol-azy` was published in the could-not-run table until 2026-09-01 with the reason "ships no
-default rule set, so it detects nothing out of the box". That reason was false: it has an internal
-rule set, it was measured on 2026-09-01 with a mapping committed before the run, and it scores
-4 / 11 real on the teaching corpus, which is not nothing. Recorded as error 36. This is the
-project's own most-repeated rule inverted: we published "could not run" about a tool we had run.
-
-The `solsec` and `semgrep` rows moved on 2026-09-01 and neither zero moved with them. `solsec`
-was published as `0 / 6, 3 unavailable`; run per case with a log it is **34 invocations, 34
-successes, zero unavailable**, so the denominator was inferred from silence and the three
-unavailable cases did not exist (error 35). `semgrep` was published as having *no Solana rules at
-all*; that is true of its own registry and false of semgrep, which loads a maintained MIT pack of
-30 Solana rules with one `--config`. Measured, that pack detects nothing either.
-
-**Denominators differ by row, and which one a row uses is stated in the row.** Eight cases were
-measured on 2026-08-31, eight more were added on 2026-09-01, and the seventeenth was built later
-the same day. `vaultlint` has since been re-run per case over all seventeen with a log per
-invocation, so it reads out of seventeen. Radar, solsec, semgrep-with-the-pack and sol-audit v3
-read out of sixteen, and `run_all.py` reports every one of them `partial` because the
-seventeenth case is recorded as `not-run` rather than as a zero. X-Ray still reads out of eight.
-A case nobody has run is not a case anybody failed, and the `partial` is removed by running the
-case, never by editing the row.
-
-**The raw denominator is not the honest one either.** A class no scanner has a rule for is a
-coverage gap, not a failure, and `run_all.py` now publishes a `scoreable_denominator` beside every
-tally: Radar 9 of 16, semgrep-with-the-pack 8 narrow and 16 wide, solsec **2**. Both numbers are
-published because only one of them is fair and only the other is comparable.
-
-**The control is what makes the table readable.** `control-noisy` flags every non-empty line under
-every rule id any mapping in this repository claims: 81,928 findings on the teaching corpus and
-2,629,968 on the real one. It would rank first on any metric that counts findings. It reaches
-**11 / 11 nominal recall** and **0 / 11 real**, so nominal recall demonstrably can be bought with
-volume, which is why this project does not publish it as a result, and real recall demonstrably
-cannot. Until 2026-09-01 the teaching-corpus control emitted under one rule id that no mapping
-knew, so the scorer discarded all 931 of its findings and it proved nothing at all while being
-cited here as the reason nothing above it was bought with volume. That is error 33.
+What each row's denominator is, why two rows moved on 2026-09-01 without their zeros moving, and
+what the control proves are in
+[`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md#beside-the-table), verbatim from this page.
 
 ---
 
@@ -249,73 +151,6 @@ nothing here.
 variance harness for **AI auditors**, which are non-deterministic and so cannot be measured the way
 a conventional scanner is. Measuring one once, which is what everyone does today, says almost
 nothing.
-
----
-
-## Who this is for, and why it matters
-
-### The harm is not missing tools. It is false assurance.
-
-A team buys a scanner, runs it, gets a clean report, ticks "we have security tooling" in the
-documentation, tells investors "it's been scanned", and **sleeps better while being exactly as
-exposed as before.**
-
-That is not hypothetical. Our own scanner produced 194 findings on one repository and detected
-nothing. The best tool on the market scores a perfect 11/11 on the corpus everyone uses and **zero
-on eight real break-ins**. A clean report from a tool of unmeasured effectiveness is not
-information; it is noise that people act on, usually by deciding *not* to spend money on a human
-audit.
-
-### Who this helps
-
-**Teams building on Solana.** Today you choose a scanner by its marketing. With a measured real
-recall you know what a green report is worth, and whether it justifies skipping a human review.
-That is a budget decision, and right now it is made blind.
-
-**Teams already paying for audits.** You can ask your auditor: *what is the measured effectiveness
-of the tooling you use, and how do you know?* Until now that question had no possible answer.
-
-**Grant programmes and foundations.** They fund security tooling and have **no instrument to
-evaluate what the funding produced.** Not carelessness, an absent measuring device. A benchmark lets
-a programme compare applications and ask a grantee for measured real recall instead of a finding
-count.
-
-**Honest tool vendors, and this is not a courtesy.** Our measurement *confirmed* VaultLint's
-precision claim: everything it detected, it detected correctly. That is an asset they earned. Today
-a good tool and a loud tool look identical, because the only visible number is a finding count and
-that number rewards noise. Which is also why every vendor here gets a
-[right of reply](docs/PROTOCOL.md) before a result is treated as final.
-
-**The ecosystem, before the AI-audit wave lands.** It has already started: one tool is in our
-could-not-run table because it needs a paid model key. There is currently **no way to compare these
-tools at all**, so the choice will be made on marketing. Worse, an AI auditor is
-*non-deterministic*: the same code can give a different answer tomorrow, so the single measurement
-everyone performs today says almost nothing. Repeated measurement is the only honest form, and it is
-what the clock in this repository does.
-
-### The market context, measured rather than assumed
-
-Of the six tools measured on 2026-08-31, surveyed for activity on 2026-09-01: **one is actively
-developed**, two have been silent for half a year, and one is effectively abandoned despite 77,684
-lifetime downloads against 56 recent ones.
-[`docs/SCANNERS.md`](docs/SCANNERS.md) has the table.
-
-**That is not a mature market. It is missing infrastructure.** Which is the whole argument for
-building this now rather than in two years.
-
----
-
-## Why the ground truth is not a matter of opinion
-
-The teaching corpus is maintained by the Anchor team. Every class ships the same program twice: with
-the bug (`insecure`) and with it fixed (`secure`, `recommended`). A finding of class *C* on the
-fixed variant of class *C* is a false positive **by construction**. Nothing to adjudicate.
-
-Corpus 2 works the same way one step harder: each pair is a real program immediately before and
-after the fix **its own maintainers wrote** in response to a public disclosure. We do not decide
-what the bug was.
-
-**A benchmark whose author also writes the answer key is not a benchmark.**
 
 ---
 
@@ -420,38 +255,9 @@ artefacts, and the rule that existing names are frozen because tests pin them.
 
 ## Honest limits
 
-- **Seventeen real cases is a small corpus**, and only one row above, `vaultlint`, is out of all
-  seventeen. The rest are out of sixteen or out of eight, and each says which. This is our
-  largest stated weakness; growing it is milestone 2, and the nine cases built on 2026-09-01
-  are growth rather than a better number.
-- **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
-  them in time. It is therefore systematically harder than the population of real bugs and
-  **understates every scanner measured on it**. It answers "do these catch the ones that cost
-  money". It cannot support "these tools do not work", and nothing here claims that.
-- **Every teaching-corpus score is in-sample**, including the 11/11 and our own 4/11, because that
-  corpus is public and at least two measured tools cite it in their own rules. A holdout is the only
-  real answer; round 1 is sealed but gives timestamp integrity, not concealment.
-- **Every third-party number is provisional.** Four right-of-reply threads are open with the vendors
-  we measured and none has answered. Our X-Ray mapping was wrong in a way only its authors could
-  have settled quickly, so this is not a formality.
-- **The mappings published on 2026-08-31 are not pre-registered in any way a stranger can check.**
-  We claimed they were committed before their runs. The history says each one first appears in the
-  same commit as the result it scores. They were written from the tools' own rule names and
-  documentation, and each carries its `derivation`, but the ordering rests on our word.
-  `docs/PROTOCOL.md` 3a carries the retraction, and `python tools/preregistration_check.py` now
-  enforces the rule going forward instead of asserting it.
-- **`sol-audit` v2 never got a per-run coverage log on either corpus**, and 96 of the 426
-  findings in its corpus-2 file name files the corpus rebuild removed. Its corpus-2 row was
-  retired on 2026-09-01 rather than restated: v3 supersedes it and has a log on both corpora,
-  and re-running a superseded version of our own scanner would have bought evidence about
-  nobody's tool but our own obsolete one. Its **corpus-1** row is still published, so on
-  2026-09-01 it was given the log it never had: 35 invocations reproducing all 44 findings and
-  the 4 / 11, driven from a worktree at the v2 commit through `tools/emit_sol_audit.py`. A row on
-  the front page that cannot show what it analysed is the defect the gate exists to catch,
-  superseded or not.
-- **Recall against a labelled corpus is a lower bound on real-world safety**, not a measure of it.
-- **Nobody outside this project has reproduced any of it yet.** That is milestone 4, and its
-  criterion is deliberately outside our control.
+The short list this page used to carry is now the top of
+[`docs/KNOWN-LIMITATIONS.md`](docs/KNOWN-LIMITATIONS.md), above the numbered limitations it
+summarises. Read it before quoting any number here.
 
 ---
 
@@ -469,9 +275,7 @@ It is written down so it binds when it is inconvenient.
 
 ## Why this exists
 
-A project can adopt a scanner, satisfy a compliance requirement, and be no safer than before, with
-no mechanism anywhere that would reveal it. The interesting output of a standing benchmark is not
-the ranking. **It is the day a widely used scanner quietly regresses and the numbers show it.**
+The argument is in [`docs/WHY.md`](docs/WHY.md).
 
 Built as part of [Forge](https://github.com/halobartku), an experiment in what an autonomous agent
 can and cannot do in the open. The engineering here is substantially done by that agent, operated
