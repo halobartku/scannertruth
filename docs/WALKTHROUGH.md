@@ -97,11 +97,13 @@ EOF
 Ten to twenty minutes. Pin the version: an unpinned build measures whatever shipped today and your
 number stops being comparable to anyone else's.
 
-Then find out how it wants to be called, because guessing wastes a whole run:
+Then find out how it wants to be called, because guessing wastes a whole run. **Save the output**,
+because the next step has to cite it:
 
 ```bash
-docker run --rm --entrypoint vaultlint vaultlint-runner:local --help
-docker run --rm --entrypoint vaultlint vaultlint-runner:local scan --help
+mkdir -p raw
+docker run --rm --entrypoint vaultlint vaultlint-runner:local --help       > raw/my-vaultlint-help.txt
+docker run --rm --entrypoint vaultlint vaultlint-runner:local scan --help >> raw/my-vaultlint-help.txt
 ```
 
 **We got this wrong and it cost 18 runs.** We passed `--format json` to the binary when it belongs
@@ -109,53 +111,177 @@ to the `scan` subcommand. All 18 failed identically. The harness correctly recor
 **unavailable rather than as zeros**, which is the whole point of the distinction, but the run was
 still wasted.
 
+While you are here, run the tool once against any directory and **watch for the line where it says
+how many files it read**. That one line is what separates "found nothing" from "never ran", it is
+the field the next step cannot be written without, and nothing but the tool itself can tell you what
+it looks like.
+
 ---
 
-## Step 4. Run it per case, per variant, with a log per run
+## Step 4. Declare it, instead of writing the runner
 
-**This is the step whose absence caused us to retract a published headline.** Do not run the tool
-once over the whole corpus. Run it separately on each case and each variant, and write down what
-happened each time.
+Until this afternoon this walkthrough handed you a shell loop here: twenty lines that walked
+`corpus2/*/`, invoked the container per variant, redirected stdout to a file and appended a line to
+`out/run.log`. It worked, and it is gone, because **four of its defects have each cost this project
+a published number**:
 
-Why: a findings file cannot prove a case was analysed. **A tool that ran and found nothing leaves
-exactly the same silence as a tool that never saw the case.** We published "0 of 8" for two
-scanners when the data behind it covered one case, because nothing recorded the difference.
+- it enumerated directories rather than reading `corpus2/manifest.json`, so it would have run cases
+  the manifest marks invalid and missed the fact that the case count has been 9, then 16, then 17
+- `echo "rc=$?"` after a redirect reports the exit code of the redirect, not of the tool
+- if the loop died halfway, the cases it never reached left no trace at all
+- and it left the hardest decision, zero versus outage, to you at the end, from files that no longer
+  remembered what the tool had said
+
+All four are the same defect wearing different hats, and the fix is not a better loop. It is to stop
+writing loops. `tools/scanner_spec.py` holds the loop, once; `adapters/<tool>.json` holds what is
+different about your tool. [`docs/ADAPTERS.md`](ADAPTERS.md) is the reference and adds an eighth tool
+end to end.
+
+### The declaration
 
 ```bash
-mkdir -p out
-for d in corpus2/*/; do
-  n=$(basename "$d")
-  for v in insecure secure; do
-    [ -d "$d/$v" ] || continue
-    docker run --rm --network none -v "$PWD/$d/$v":/work:ro -w /work \
-      vaultlint-runner:local scan --format json --fail-on never /work \
-      > "out/$n.$v.json" 2> "out/$n.$v.log"
-    echo "$n $v rc=$?" >> out/run.log
-  done
-done
+python tools/scanner_spec.py --list       # what is already declared, and what each row feeds
 ```
 
-Note `--network none`: the tool has no reason to reach the internet while reading local files.
+Copy the shape and write `adapters/my-vaultlint.json`:
 
-### Classifying each run, and this is where people get it wrong in both directions
+```json
+{
+ "name": "my-vaultlint",
+ "version": "0.1.1",
+ "homepage": "https://github.com/vaultlint/vaultlint",
+ "provenance": {
+  "repository": "https://github.com/vaultlint/vaultlint",
+  "install": "cargo install vaultlint --version 0.1.1 --locked, inside rust:slim",
+  "install_documented_at": "the crate's own page and repository README",
+  "checked_on": "the date you did step 1"
+ },
+ "run": {
+  "engine": "docker",
+  "image": "vaultlint-runner:local",
+  "network": "none",
+  "mount": "/src",
+  "command": ["scan", "--format", "json", "--fail-on", "never", "{mount}"],
+  "timeout_seconds": 900,
+  "invocation_evidence": "raw/my-vaultlint-help.txt, the --help output saved in step 3"
+ },
+ "layout": "variant-dir",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "pattern": "PUT THE LINE YOU SAW IN STEP 3 HERE, capturing the count as group 1",
+   "minimum": 1,
+   "means": "vaultlint's own count of the files it opened"
+  }
+ },
+ "output": {"from": "stdout", "format": "vaultlint"},
+ "envelope": "vaultlint",
+ "positive_control": {
+  "rule_id": "VL002",
+  "sample": {"findings": [{"rule_id": "VL002", "file": "{path}", "line": "{line}"}]}
+ },
+ "measurements": [
+  {"row": "my-vaultlint", "corpus": "corpus2", "raw": "c2-my-vaultlint.json",
+   "mapping": "my-vaultlint", "on_clock": false}
+ ]
+}
+```
+
+**Three traps in that file, and we hit all three.**
+
+`"on_clock": false` keeps your row off the published tables. Leave it out and your row joins the
+clock, a golden check compares the derived tables against the committed ones, and the suite tells
+you a published row moved. It is not wrong to put a row on the clock; it is wrong to do it by
+accident.
+
+`invocation_evidence` must name a file that exists in this repository. The suite refuses a
+declaration that states a command and cites nothing, because a command typed from memory is the same
+class of claim as a number typed from memory. Before the run the thing you have to cite is the
+`--help` transcript from step 3, so save it: `docker run ... --help > raw/my-vaultlint-help.txt`.
+
+**`coverage.evidence.pattern` is the one field you cannot copy from us**, and this is the honest
+part of the walkthrough. Our own `adapters/vaultlint.json` says `"engine": "unrecorded"` and
+`"evidence": {"absent": true, ...}`. Nobody wrote down how VaultLint was invoked on 2026-08-31 or
+what it prints when it has read files, so we cannot hand you a working `--run vaultlint`, and our own
+corpus-1 VaultLint row is one of the rows `--verify-coverage` fails on. If you find that line, you
+have recovered something we lost. If VaultLint turns out to print no such line at all, say so with
+`{"absent": true, "reason": "..."}` and every run comes back `unknown`, which is the honest verdict
+when the question cannot be answered, and can never quietly become a zero.
+
+### Check the declaration before you run anything
+
+```bash
+python tools/scanner_spec.py --self-check
+```
+
+This plants `VL002` at the fix site of a synthetic vulnerable/fixed pair, parses it with VaultLint's
+parser, writes it in VaultLint's envelope, reads it back with the same code that reads every
+committed findings file, and requires the scorer to say `detected`. Then it plants the same finding
+on the fixed variant too and requires the answer to stop being a detection.
+
+**If this fails, stop.** A parser that silently returns nothing is indistinguishable from a tool that
+found nothing, and that exact failure once kept every check in this repository green while turning
+every corpus-2 verdict into a miss.
+
+---
+
+## Step 5. Run it
+
+```bash
+python tools/scanner_spec.py --run my-vaultlint --corpus corpus2 --out raw/c2-my-vaultlint.json --repeat 2
+```
+
+One invocation per case, per variant, with the case list read from the manifest on every run. Three
+files come out:
+
+```
+raw/c2-my-vaultlint.json                    the findings, in vaultlint's own envelope
+raw/c2-my-vaultlint.json.log                one entry per invocation: command, exit code, wall time, status
+raw/c2-my-vaultlint.json.determinism.json   deterministic, non-deterministic, or not-checked
+```
+
+### What you no longer have to remember
+
+**The run log.** This was the step whose absence caused us to retract a published headline: a
+findings file cannot prove a case was analysed, because a tool that ran and found nothing leaves
+exactly the same silence as a tool that never saw the case. We published "0 of 8" for two scanners
+when the data behind it covered one case each. The framework writes the tool's complete stdout and
+stderr, plus a log entry carrying the exact command, the exit code and the wall time, **before it
+returns, on success, on crash and on timeout**. There is no path through it that produces a findings
+file and no log.
+
+**The classification.** We used to get this wrong in both directions: we scored invocation errors as
+"did not detect", and then, in the harness written to prevent that, we scored a clean zero as
+unavailable. It is one function now, and the four outcomes stay four different facts:
 
 | What happened | What it is |
 |---|---|
-| Output exists and parses | a result |
-| **Exit 0, no output, tool says it found nothing** | **a clean zero** |
-| Error, timeout, crash, bad arguments | **unavailable, never zero** |
+| The tool said it read the files and reported nothing | `ok`, and a **clean zero** |
+| Exit 0 having said nothing | `unavailable`, **never zero** |
+| Error, timeout, crash, bad arguments, output no parser can read | `unavailable`, **never zero** |
+| Your declaration admits the tool prints no coverage line | `unknown`, **never zero** |
 
-We have made both mistakes. We scored invocation errors as "did not detect" (a retraction), and
-then, in the harness written to prevent that, we scored a clean zero as unavailable. **Read the
-tool's own last log line before deciding which one you are looking at.**
+**The determinism check.** `--repeat 2` runs every invocation twice and compares findings by rule,
+file, line and column. Both passes stay on disk and nothing is averaged.
+
+### What is still yours, and do not skip it
+
+The status column is only as good as the `coverage.evidence` pattern you wrote. Open two or three of
+the artefacts under `raw/c2-my-vaultlint-runs/` and read the tool's own words against the verdict
+the framework gave them. If your pattern never matches, every case comes back `unavailable` and you
+have an outage, not a measurement. If it matches something it should not, you have manufactured
+clean zeros, which is worse.
+
+And `--repeat 2` is a flag, not a default. Without it the determinism file says `not-checked`, which
+is an unanswered question rather than an answer.
 
 ---
 
-## Step 5. Score it
+## Step 6. Score it
 
 ```bash
-python tools/score2.py --scanner my-vaultlint --kind sol-audit --findings out/merged.json
-python tools/unmapped_check.py --findings out/merged.json --kind sol-audit
+python tools/score2.py --scanner my-vaultlint --kind vaultlint --findings raw/c2-my-vaultlint.json
+python tools/unmapped_check.py --findings raw/c2-my-vaultlint.json --kind vaultlint
 ```
 
 You will get one verdict per case:
@@ -172,18 +298,43 @@ a rule we had mapped to the wrong class.
 
 ---
 
-## Step 6. Compare to ours
+## Step 7. Check your row can show what it analysed
 
-Our published result: **VaultLint scores 0 of 8 on the real-vulnerability corpus, with 7 of those 8
-being `no-rule`** - a stated coverage limit rather than a failure. On the teaching corpus it scores
-2/11 real recall with 4 findings across 35 files, and **its precision claim held**: everything it
-detected, it detected correctly.
+```bash
+python tools/run_all.py --verify-coverage
+```
 
-If your numbers differ, one of us is wrong and we would like to know which. Open an issue.
+This asks of every measurement on the clock the one question a findings file cannot answer: can this
+row show what it analysed? It runs in CI as its own job, and it is **red today**, because several
+rows published before this framework existed were run by hand and nobody wrote the log. Our own
+corpus-1 VaultLint row is one of them.
+
+Your row is off the clock while `"on_clock": false` is in your declaration, so this will not list it.
+Read your own `raw/c2-my-vaultlint.json.log` instead and answer the same question of it: is there one
+entry per case per variant, and does every entry that is not `ok` carry a reason?
 
 ---
 
-## Step 7. Sanity-check yourself against the controls
+## Step 8. Compare to ours
+
+Our published result on the real-vulnerability corpus: **0 of 17 as registered, 1 of 17 corrected**,
+with **15 of the 17 `no-rule`**, which is a stated coverage limit rather than a failure. That leaves
+a scoreable denominator of two. The corrected one is VL002, `missing owner check`, which fires on
+`anchor-account-reload-owner` at the line the fix guards and is silent once the owner check is added.
+Our pre-registered mapping points VL002 at a different class, so as registered it scores zero, and
+both numbers are published with the mapping left unedited.
+
+VaultLint is currently the only row measured over all seventeen built cases. On the teaching corpus
+it scores 2/11 real recall with 4 findings across 35 files, and **its precision claim held**:
+everything it detected, it detected correctly.
+
+Denominators move here as cases are built and rows are re-run, so take the current ones from
+`python tools/run_all.py` rather than from this page. If your numbers differ from what it prints,
+one of us is wrong and we would like to know which. Open an issue.
+
+---
+
+## Step 9. Sanity-check yourself against the controls
 
 Before believing any number you just produced:
 
@@ -210,6 +361,10 @@ Not just the number. All five:
 **If you cannot produce item 2, you do not have a measurement yet.** Say that instead of publishing
 a number. We learned this the expensive way and it is written into
 [`docs/PROTOCOL.md`](../docs/PROTOCOL.md).
+
+Items 2 and 4 are now the framework's: they are the `.log` file beside your findings, and it is
+written whether the run succeeds, crashes or times out. Items 1, 3 and 5 are yours, and item 5 is
+the one nothing will ever produce for you.
 
 ---
 

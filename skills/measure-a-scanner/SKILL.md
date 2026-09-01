@@ -35,10 +35,11 @@ python tools/run_all.py --verify-coverage   # exits 1: some published rows canno
 
 It asks whether every measurement on the clock can show what it analysed, it runs in CI as its own
 job (`coverage`, separate from `selfcheck`), and it is red because several historical measurements
-were made by hand and the run log was the step a person had to remember. Run it for the current
-list rather than trusting a count written here; rows are being run and retired. A red `coverage` beside a green `selfcheck` is not a
-broken build: the machinery is sound and the numbers are not all accounted for. It closes with
-scanner runs, never with a code change and never by relaxing it.
+were made by hand and the run log was the step a person had to remember. Read the current list
+off the command rather than off a count written here; rows are being run and retired. A red
+`coverage` beside a green `selfcheck` is not a broken build: the machinery is sound and the
+numbers are not all accounted for. It closes with scanner runs, never with a code change and
+never by relaxing it.
 
 `AGENTS.md` at the repo root is the condensed executable form of this skill, written so an agent
 handed the repository can act without reading further. `docs/WALKTHROUGH.md` is the same procedure
@@ -256,9 +257,8 @@ result is void. `control-null` establishes the floor.
 Run each scanner **twice** and compare findings by rule and location before trusting anything over
 time. `--repeat 2` does the comparison for you, per leaf, by rule, file, line and column, and writes
 the verdict beside the findings; both passes stay on disk and nothing is averaged. Without the flag
-the verdict is `not-checked` and you have not answered the question. **No measurement in this
-repository has yet been repeated through the framework**, so a `deterministic` verdict here would be
-the first.
+the verdict is `not-checked` and you have not answered the question, and `not-checked` is what most
+of this repository's determinism files still say.
 
 ## 9. Never tune to produce a result
 
