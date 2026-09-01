@@ -725,6 +725,35 @@ def test_documents_linked_from_the_readme_exist():
     assert not missing, f"README links to missing files: {missing}"
 
 
+def test_the_advertised_check_count_matches_the_suite():
+    """The README said 82 while the suite ran 88. Adding tests without updating the
+    figure is the easiest way to make the front page lie, so the figure is derived."""
+    import io as _io, re
+    actual = len([n for n in globals() if n.startswith("test_")])
+    for doc in ("README.md", "AGENTS.md"):
+        s = _io.open(doc, encoding="utf-8").read()
+        for n in re.findall(r"(\d+)\s+checks", s):
+            assert int(n) == actual, (
+                f"{doc} advertises {n} checks but the suite defines {actual}")
+
+
+def test_the_real_vulnerability_denominator_is_reconciled_on_the_front_page():
+    """Nine valid cases, eight built: the table reads out of eight. A reader who sees
+    both numbers without explanation is right to distrust the whole page."""
+    import io as _io, json, os
+    cases = json.load(open("corpus2/manifest.json"))
+    cases = cases["cases"] if isinstance(cases, dict) else cases
+    valid = [c for c in cases if c.get("valid", True)]
+    built = [c for c in valid if os.path.isdir(os.path.join("corpus2", c["name"]))]
+    s = _io.open("README.md", encoding="utf-8").read()
+    if len(built) != len(valid):
+        assert "eight of them built" in s or "eight of them are built" in s, (
+            f"{len(valid)} valid cases but {len(built)} built, and the README never "
+            "reconciles the two; a reader cannot tell why scores read out of "
+            f"{len(built)}")
+    assert f"0 / {len(built)}" in s or f"out of {['zero','one','two','three','four','five','six','seven','eight','nine'][len(built)]}" in s,         "the README result table denominator no longer matches the built corpus"
+
+
 def test_every_relative_link_in_every_document_resolves():
     """The README-only, .md-only check missed a link to a .log inside docs/results/.
 

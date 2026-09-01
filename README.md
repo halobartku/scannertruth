@@ -18,7 +18,8 @@ thoroughly a tool has done a fixed piece of homework**, not whether it works on 
 An exam with the same questions for four years stops telling you who can do the subject.
 
 **So we built the other exam.** Nine real break-ins, each taken from the fix commit its own
-maintainers wrote. The best scanner on the market scores **11/11 on the four-year-old paper and
+maintainers wrote; eight of them are built and measurable today, and the ninth is reported as
+`not-built` rather than quietly dropped from the denominator. The best scanner on the market scores **11/11 on the four-year-old paper and
 zero on the real one.**
 
 ---
@@ -99,7 +100,8 @@ So the interesting question is what happens off it, and answering that required 
 did not exist. Building it is the work:
 
 - **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit and
-  its parent, so the answer key is somebody else's. Nine valid cases.
+  its parent, so the answer key is somebody else's. Nine valid cases, eight of them built, which is
+  why the table above reads out of eight.
 - **Real crates**: the same bugs as whole projects rather than extracted files, built from each
   project's own `Cargo.toml` and sibling modules. This tests the packaging objection rather than
   arguing about it, and on the six pairs that could be scored it did not explain the result.
@@ -192,7 +194,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **82 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **90 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **[21 of our own errors](docs/ENGINEERING-LOG-2026-08-31.md), with dates**, including a headline we
@@ -208,7 +210,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            82 checks, mutation-verified. Run this first
+test_all.py            90 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person
@@ -245,8 +247,8 @@ which is why this repository is 49 MB rather than 2.
 
 ## Honest limits
 
-- **Nine real cases is a small corpus**, and it is our largest stated weakness. Growing it is
-  milestone 2.
+- **Nine real cases is a small corpus**, and only eight are built, so every score above is out of
+  eight. This is our largest stated weakness; growing it is milestone 2.
 - **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
   them in time. It is therefore systematically harder than the population of real bugs and
   **understates every scanner measured on it**. It answers "do these catch the ones that cost
