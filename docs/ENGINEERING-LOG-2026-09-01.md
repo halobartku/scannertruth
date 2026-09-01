@@ -1,6 +1,6 @@
 # Engineering log, 2026-09-01
 
-Seven more errors, numbered 22 to 28, continuing from
+Nine more errors, numbered 22 to 30, continuing from
 [the log of 2026-08-31](ENGINEERING-LOG-2026-08-31.md).
 
 **Every one of them was a freshness defect, not a computation defect.** Nothing here was calculated
@@ -9,8 +9,9 @@ being true when the thing it described changed. That is a different failure mode
 before it, and it needed a different fix: the numbers on the front page are now **derived from the
 repository rather than typed beside it**.
 
-Five of the seven were on the README. That is not a coincidence. **The front page is read by
-everyone and verified by no one**, so it rots fastest and costs the most when it rots.
+Five of the first seven were on the README. That is not a coincidence. **The front page is read by
+everyone and verified by no one**, so it rots fastest and costs the most when it rots. The last two,
+29 and 30, are the same shape one level down, in the document that decides what enters the corpus.
 
 ---
 
@@ -117,6 +118,81 @@ this document says vendor threads are being led, that has to be true.
 
 ---
 
+## Part 6: two stale statements in the triage document, found while adding eight cases
+
+Both were found by a candidate hunt on 2026-09-01, and both were re-verified against the
+repositories here before being written down. Neither was a miscalculation. Both are the same
+freshness shape as errors 22 to 27: a sentence that was a reasonable guess when it was written,
+that nobody rechecked, and that would have sent the next reader somewhere wrong.
+
+**Error 29. `CANDIDATES-TRIAGE.md` pointed the GHSA-c6rc-8jpp-2fgc fix at the wrong pull request.**
+The row said the fix "needs one hop through PR #3837". It does not. In a clone of
+`coral-xyz/anchor`, `git log --all --grep="#3837"` returns exactly one commit, `3a799e2d`, subject
+`feat(account): Check Owner on Reload (#3837)`, first tag `v1.0.0`. That is a different bug, and it
+is now in the corpus in its own right as `anchor-account-reload-owner`. The GHSA-c6rc fix is
+`3eb1fb04`, `fix(lang): Improve Program generic key checking logic`, which carries no PR number and
+whose first tag is `v1.0.2`, matching the advisory's stated patched version exactly.
+
+**The cost had this not been caught**: a case built under a CVE number from the wrong commit. The
+pair would have looked perfectly clean, and the label would have been wrong in the one way this
+project cannot detect after the fact, because the answer key would have been ours rather than the
+maintainers'.
+
+*Cause: the advisory does not name a commit, so a plausible-looking PR number was written down as
+if it were a resolution rather than as a lead still to be checked. The row now records the commit,
+and the manifest records the first tag it shipped in.*
+
+**Error 30. The triage document projected a corpus size that could never have been reached.** It
+said two accepted candidates would take corpus 2 "from 9 valid cases to 11". One of the two,
+GHSA-h6xm-c6r4-vmwf in `spl-token-swap`, has no fix and is not getting one: the advisory records no
+patched version, and the pointer cast it reports is still present at HEAD today, at
+`token-swap/program/src/instruction.rs:627`. Checked with `git grep` at HEAD rather than read off
+the advisory. The package was deprecated rather than patched. The honest figure from that day's
+triage was 10.
+
+**Why this matters more than a number being two out.** It is a *forward* claim about the corpus,
+which is the asset this project says is the whole point, and a forward claim about the asset is the
+one a reader has no way to check. It is now corrected in place, with the strike-through visible
+rather than the sentence rewritten, because that is how this project has handled every other
+correction.
+
+*Cause: a candidate was accepted as "pending build" on the strength of the advisory existing,
+without anyone establishing that a fix commit existed to build against. Acceptance now requires the
+fix commit, not the advisory.*
+
+---
+
+## Part 7: what adding eight cases did to every published denominator
+
+Not an error. Recorded here because it is the exact shape of the defect this day was spent on, and
+it was avoided rather than committed.
+
+Eight cases were added to corpus 2 on 2026-09-01. Every score published on this page is a fraction
+whose denominator is the corpus, so **adding a case silently changes every published figure unless
+something stops it.** The suite already had the check that would have caught the sloppy version of
+this: `test_the_real_vulnerability_denominator_is_reconciled_on_the_front_page`.
+
+But that check derived the results-table denominator from the **built** set, and it was right to
+until today. A case can now be valid, built, and never analysed by anything. Deriving the
+denominator from the built set would have restated every published zero as "0 / 16" the moment the
+files landed on disk, which is not a stale number but a **fabricated** one: a zero out of sixteen
+that no scanner ever produced. The check now separates built from measured and pins the table to
+the measured set, and the manifest carries `"measured": false` per case so the distinction is data
+rather than prose.
+
+The calibration figure moved too. `control-noisy` produced 424,170 findings on corpus 2 when that
+sentence was written; it produces **1,413,620** today, because both the corpus and the mapping set
+have grown. Six documents quoted the old number. They now quote the derived one, and a check
+recomputes it from the corpus and the mappings and fails any document that has drifted. The control
+still scores **zero against all ten mappings** on the enlarged corpus, verified case by case before
+the number was changed.
+
+**`raw/c2-control-noisy.json` is stale as of this commit** and regenerates with
+`python tools/control_c2.py`. It is a generated artefact, not a measurement of anybody's tool, and
+it was left alone only because another agent was writing to `raw/` at the same time.
+
+---
+
 ## What this day produced
 
 - 92 checks, up from 82, running on three operating systems and three Python versions
@@ -126,8 +202,12 @@ this document says vendor threads are being led, that has to be true.
 
 ## What is still wrong
 
-- **`spl-token-lending-rounding` is still not built**, so every real-vulnerability score reads out
-  of eight rather than nine.
+- **`spl-token-lending-rounding` is still not built**, and eight further cases are built but have
+  never been measured, so every real-vulnerability score reads out of **eight of seventeen valid
+  cases**. The corpus grew today; the measurement did not.
+- **Nothing has been run over the eight cases added today.** Until a scanner is, `run_all.py` will
+  report `radar`, `vaultlint` and `sol-audit` on corpus 2 as `partial` rather than `measured`, which
+  is correct and should not be edited away.
 - **Four of six scanners have never been run on the real crates**, so the packaging objection is
   tested rather than retired.
 - **Radar cannot finish on the three largest real crates**, which biases that coverage toward small
