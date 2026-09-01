@@ -15,7 +15,7 @@ number is in `ENGINEERING-LOG-2026-08-31.md`.
 ## Before anything: prove the harness works
 
 ```bash
-python test_all.py     # 120 checks, mutation-verified; expect "120 passed, 0 failed"
+python test_all.py     # 122 checks, mutation-verified; expect "122 passed, 0 failed"
 ```
 
 A harness that cannot check itself cannot tell you anything about somebody else's tool. If any check

@@ -1111,6 +1111,39 @@ def test_every_documented_command_names_a_script_that_exists():
     assert not missing, f"documents name scripts that do not exist: {missing}"
 
 
+def test_every_command_in_the_readme_is_runnable():
+    """The README's quickstart is the front door: a command naming a script
+    that does not exist breaks the two-minute promise on the first paste.
+    Backslash paths are normalised, because the Windows block is legitimate."""
+    import io as _io, os, re
+    s = _io.open("README.md", encoding="utf-8").read()
+    scripts = set(p.replace("\\", "/") for p in re.findall(r"python3? ([\w./\\-]+\.py)", s))
+    missing = [x for x in sorted(scripts) if not os.path.exists(x)]
+    assert not missing, f"README names scripts that do not exist: {missing}"
+
+
+def test_no_control_bytes_hiding_in_any_document():
+    """The Windows quickstart shipped a vertical tab inside `tools\verify.py`,
+    so the command read `python tools\x0berify.py` and failed when pasted.
+    A control byte is invisible in every renderer and corrupts whatever a
+    reader copies. Markdown has no legitimate use for one."""
+    import os
+    bad = []
+    for root, dirs, files in os.walk("."):
+        dirs[:] = [d for d in dirs if d not in (".git", ".omc", "__pycache__", "node_modules")]
+        for fn in files:
+            if not fn.endswith(".md"):
+                continue
+            path = os.path.join(root, fn)
+            data = open(path, "rb").read()
+            for off, b in enumerate(data):
+                if b < 0x20 and b not in (0x09, 0x0A, 0x0D):
+                    line = data.count(b"\n", 0, off) + 1
+                    bad.append(f"{path}:{line} byte 0x{b:02x}")
+                    break
+    assert not bad, f"control bytes inside documents: {bad}"
+
+
 def test_documents_linked_from_the_readme_exist():
     import io as _io, os, re
     s = _io.open("README.md", encoding="utf-8").read()
