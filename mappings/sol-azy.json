@@ -1,0 +1,47 @@
+{
+  "scanner": "sol-azy",
+  "homepage": "https://github.com/FuzzingLabs/sol-azy",
+  "version_note": "git clone of FuzzingLabs/sol-azy pinned to commit 362327a798e5dad6e12aa9abf3ed9ed52c17ef6a (master head, authored 2026-03-02T16:28:32Z). Built in a rust:slim container. There is no crates.io package named sol-azy (crates.io API returns 404), so the only install path is the one the project's own README documents: git clone + cargo build --release. The repository ships no Cargo.lock (it is gitignored) and has no build CI, so the dependency set is not pinned by the vendor; see build_note.",
+  "derivation": "Mapping derived from sol-azy's OWN rule files in rules/syn_ast/*.star at the pinned commit, read BEFORE any corpus run. Each .star file carries a RULE_METADATA dict with a 'name' field; that name and the file stem are both listed for every class, because the identifier the tool emits in its output was not yet known when this file was written and listing both forms avoids a mapping that silently matches nothing. Not derived from which rules happened to fire.",
+  "rule_inventory": [
+    "Account Data Matching (account_data_matching)",
+    "Unsafe Account Data Reallocation (account_data_reallocation)",
+    "Account Reinitialization (account_reinitialization)",
+    "Arbitrary Cross-Program Invocation (arbitrary_cpi)",
+    "Raw unwrapping checked arithmetic (checked_arithm_unwrap)",
+    "Closing Accounts Insecurely (closing_accounts)",
+    "Duplicate Mutable Accounts (duplicate_mutable_accounts)",
+    "Missing Bump Seed Canonicalization (missing_bump_seed_canonicalization)",
+    "Missing Owner Check (missing_owner_check)",
+    "Missing Signer Check (missing_signer_check)",
+    "PDA Sharing (pda_sharing)",
+    "Saturating math operation usage (saturating_math_usage)",
+    "Type Cosplay (type_cosplay)",
+    "Unvalidated Sysvar Account (unvalidated_sysvar_accounts)"
+  ],
+  "right_of_reply": "Not sent to FuzzingLabs. Under PROTOCOL.md this mapping must be offered to the tool's authors for correction before the result is treated as final, and their correction published. Until then every number produced with it is provisional.",
+  "in_sample_warning": "sol-azy's syn_ast rule set is named class-for-class after coral-xyz/sealevel-attacks (Missing Signer Check, Account Data Matching, Missing Owner Check, Type Cosplay, Account Reinitialization, Arbitrary CPI, Duplicate Mutable Accounts, Missing Bump Seed Canonicalization, PDA Sharing, Closing Accounts Insecurely, Unvalidated Sysvar Account: eleven rules for the eleven sealevel classes). Any score on corpus 1 is in-sample for this tool to at least the same degree as Radar, X-Ray and solana-lints.",
+  "map": {
+    "0-signer-authorization": ["Missing Signer Check", "missing_signer_check"],
+    "1-account-data-matching": ["Account Data Matching", "account_data_matching"],
+    "2-owner-checks": ["Missing Owner Check", "missing_owner_check"],
+    "3-type-cosplay": ["Type Cosplay", "type_cosplay"],
+    "4-initialization": ["Account Reinitialization", "account_reinitialization"],
+    "5-arbitrary-cpi": ["Arbitrary Cross-Program Invocation", "arbitrary_cpi"],
+    "6-duplicate-mutable-accounts": ["Duplicate Mutable Accounts", "duplicate_mutable_accounts"],
+    "7-bump-seed-canonicalization": ["Missing Bump Seed Canonicalization", "missing_bump_seed_canonicalization"],
+    "8-pda-sharing": ["PDA Sharing", "pda_sharing"],
+    "9-closing-accounts": ["Closing Accounts Insecurely", "closing_accounts"],
+    "10-sysvar-address-checking": ["Unvalidated Sysvar Account", "unvalidated_sysvar_accounts"],
+    "instruction-introspection": [],
+    "arithmetic-rounding-drain": []
+  },
+  "unmapped_rules": [
+    "Unsafe Account Data Reallocation",
+    "Raw unwrapping checked arithmetic",
+    "Saturating math operation usage"
+  ],
+  "unmapped_note": "These three rules name no class in either corpus. They are excluded from per-class scoring, which is the correct treatment: a scanner is not penalised for detecting things the corpus does not label. Their firing behaviour is still reported separately, because firing on fixed code is informative regardless.",
+  "structural_gaps": "Two corpus-2 classes get an empty list and therefore score `no-rule`: `instruction-introspection` (metaplex-candy-machine) and `arithmetic-rounding-drain` (spl-token-lending-rounding, which is not built on disk anyway). No sol-azy rule names either class. See sol-azy-wide.json for a second, ALSO pre-registered reading of instruction-introspection, written at the same time and before any run, which credits `Unvalidated Sysvar Account` for that class because that rule's own source enumerates `instructions` among the sysvars it checks. Both numbers will be published. This deliberately avoids repeating error 17, where a generic rule was narrowed on the strength of a vendor blog post and a real detection was scored zero.",
+  "build_note": "sol-azy does not build out of the box at this commit on current stable Rust: with no Cargo.lock, cargo resolves allocative 0.3.6 (which uses hashbrown 0.16) against starlark_map 0.13.0 (which uses hashbrown 0.14.5), and the Allocative trait bounds then fail (E0277, `there are multiple different versions of crate hashbrown in the dependency graph`). The first build attempt failed exactly this way and the log is kept. The build was made to work with `cargo update -p allocative --precise 0.3.4`, which unifies both on hashbrown 0.14.5. That changes the dependency resolution only; no rule, threshold, argument or source file of the tool was modified."
+}
