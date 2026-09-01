@@ -101,6 +101,44 @@ def ask_openrouter(model, code, think=False):
              "cost_usd": u.get("cost")})
 
 
+def ask_claude_code(model, code, think=False):
+    """One call through the Claude Code CLI in headless mode (`claude -p`), paid by the
+    subscription rather than by an API key.
+
+    Two things make this a measurement rather than a chat. First, it runs from an empty
+    directory with settings, MCP servers and tools switched off: on 2026-09-01 the same call made
+    from the project directory carried 88,750 tokens of CLAUDE.md, memory and the skills list into
+    the model's context - including this benchmark's own skills - before it judged the code. From
+    a clean directory it carries about 3,300, which is the prompt. Second, effort is pinned to the
+    API default so the row is comparable with an API run of the same model. Thinking cannot be
+    turned off on these models by any route, so `think` is ignored and the thinking token count is
+    recorded instead. The cost recorded is the CLI's own estimate at API prices; what was actually
+    paid is the subscription, and the line says so.
+    """
+    import subprocess, tempfile
+    if not hasattr(ask_claude_code, "cwd"):
+        ask_claude_code.cwd = tempfile.mkdtemp(prefix="model-audit-clean-")
+    cmd = ["claude", "-p", "--model", model, "--output-format", "json", "--no-session-persistence",
+           "--effort", "high", "--tools", "", "--setting-sources", "", "--strict-mcp-config",
+           "--mcp-config", '{"mcpServers":{}}',
+           "--system-prompt", "You answer with one JSON object and nothing else."]
+    r = subprocess.run(cmd, input=PROMPT + code[:24000], capture_output=True, text=True,
+                       encoding="utf-8", timeout=1800, cwd=ask_claude_code.cwd, shell=(os.name == "nt"))
+    if r.returncode != 0 and not r.stdout.strip():
+        raise RuntimeError(f"claude -p rc={r.returncode}: {r.stderr.strip()[:200]}")
+    d = json.loads(r.stdout)
+    u = d.get("usage") or {}
+    ctx = (u.get("input_tokens") or 0) + (u.get("cache_creation_input_tokens") or 0) + (u.get("cache_read_input_tokens") or 0)
+    stop = d.get("stop_reason") or d.get("subtype") or ""
+    return ((d.get("result") or "").strip() if not d.get("is_error") else "",
+            "",
+            stop,
+            {"prompt_tokens": ctx, "completion_tokens": u.get("output_tokens"),
+             "thinking_tokens": (u.get("output_tokens_details") or {}).get("thinking_tokens"),
+             "cost_usd": d.get("total_cost_usd"), "cost_basis": "api-equivalent estimate, paid by subscription",
+             "effort": "high", "is_error": bool(d.get("is_error")), "api_error_status": d.get("api_error_status")})
+
+
 def ask(model, code, think=False):
     body = json.dumps({
         "model": model,
@@ -149,7 +187,7 @@ def main():
     ap.add_argument("--case", help="one case only, for a smoke test")
     ap.add_argument("--corpus", choices=("1", "2"), default="2",
                     help="1 = the teaching corpus everybody scores on, 2 = real vulnerabilities")
-    ap.add_argument("--provider", choices=("ollama", "openrouter"), default="ollama",
+    ap.add_argument("--provider", choices=("ollama", "openrouter", "claude-code"), default="ollama",
                     help="openrouter reads OPENROUTER_API_KEY from the environment and records the "
                          "real cost of every call; the key is never written anywhere")
     ap.add_argument("--think", action="store_true",
@@ -175,7 +213,7 @@ def main():
             sys.exit(f"no such case: {args.case}")
 
     stamp = time.strftime("%Y-%m-%d")
-    think_tag = ("-think" if args.think else "") + ("-or" if args.provider == "openrouter" else "")
+    think_tag = ("-think" if args.think else "") + {"openrouter": "-or", "claude-code": "-cc"}.get(args.provider, "")
     out_dir = ROOT / "raw" / f"model-{args.model.replace(':', '-').replace('/', '-')}{think_tag}-c{args.corpus}-{stamp}"
     out_dir.mkdir(parents=True, exist_ok=True)
     log = (out_dir / "runs.jsonl").open("a", encoding="utf-8")
@@ -198,7 +236,7 @@ def main():
             for i in range(args.runs):
                 t0 = time.time()
                 try:
-                    fn = ask_openrouter if args.provider == "openrouter" else ask
+                    fn = {"openrouter": ask_openrouter, "claude-code": ask_claude_code}.get(args.provider, ask)
                     raw, thinking, done, usage = fn(args.model, code, think=args.think)
                     err = None
                 except Exception as exc:  # noqa: BLE001
