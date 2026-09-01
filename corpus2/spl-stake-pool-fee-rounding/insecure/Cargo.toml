@@ -1,0 +1,7 @@
+[package]
+name = "spl-stake-pool-fee-rounding"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+solana-program = "1.9"

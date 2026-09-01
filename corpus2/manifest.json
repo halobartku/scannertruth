@@ -124,11 +124,129 @@
     "lang/src/accounts/interface_account.rs"
    ],
    "contamination_note": "The other files in the commit are a newly added test-fixture program plus CI and build config."
+  },
+  {
+   "name": "anchor-program-system",
+   "repo": "coral-xyz/anchor",
+   "fix": "3eb1fb0427d4fed0e944b627aef76db651a93aab",
+   "class": "program-account-validation",
+   "source": "GHSA-c6rc-8jpp-2fgc, CVE-2026-45137, RUSTSEC-2026-0144",
+   "note": "Program<'info, System> skipped its own program-id check. The untyped Program<'info, ()> shorthand was implemented by giving () an Id of Pubkey::default(), used as a sentinel meaning 'do not check the id', and Pubkey::default() is the System program's own address. System::id() therefore collided with the sentinel, so any executable account passed in that slot was accepted as the System program. The fix deletes the sentinel and gives Program<'info, ()> its own TryFrom that skips the key check by construction, so the typed path always compares the key.",
+   "files": [
+    "lang/src/accounts/program.rs"
+   ],
+   "contamination_note": "The fix commit also adds an 80-line #[cfg(test)] module to the same file. It is kept rather than stripped, because stripping is packaging we would have invented, but it means the secure variant is materially longer than the insecure one and a comparison that is not shift-aware will read that as change. The only other file in the commit is a TypeScript integration test, which cannot be part of a Rust pair.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "solido-deposit-reserve-account",
+   "repo": "chorusone/solido",
+   "fix": "97fafb2bbcf5d1179da887f36bac0b2916b988fe",
+   "class": "pda-derived-address-validation",
+   "source": "Neodyme, Security Audit: Lido on Solana, 2021, finding \"Attackers Can Mint Unlimited stSOL due to Missing Reserve Account Check (Critical)\". PDF committed in the repository at audit/2021-08-03-neodyme.pdf. Also https://github.com/ChorusOne/solido/pull/383",
+   "note": "process_deposit transferred the user's SOL to whatever account occupied the reserve_account slot and minted stSOL in proportion, without ever checking that the slot held the real reserve. The fix adds one line that re-derives the reserve program-derived address from the program id and the Solido instance address and rejects any account whose key does not match.",
+   "files": [
+    "program/src/processor.rs"
+   ],
+   "contamination_note": "The fix commit touches nothing else: one file, one line. The check it calls, Lido::check_reserve_account, lives in program/src/state.rs, which is not pinned, so the pair shows the call site appearing and not the callee. The parent commit f050f316 deliberately adds a failing regression test at program/tests/tests/deposit.rs; that file exists only on the vulnerable side and is not pinned. A build that compiles and runs the vulnerable crate's own tests will see a red test. That is the maintainers' intent, not a build error.",
+   "sha_note": "The obvious SHA to take from the audit's PR reference is PR #383, whose merge commit d43e0f30e806dfeadadc7a020890929c1a9cf29a has TWO parents; git show on it prints a combined diff over 4 files and would drag two test files into the case. That is the mistake that cost this project the spl-token-lending case. The squash target 97fafb2b has exactly one parent, checked with git log -1 --format=%P before the diff was read.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "solido-anker-arbitrary-cpi",
+   "repo": "chorusone/solido",
+   "fix": "676d6bee310b13c39b3c8e1adc6a26a4db2f8482",
+   "class": "arbitrary-cpi",
+   "source": "Neodyme, Security Audit: Anker on Solana, 2022, finding \"Missing Token Program validation in SellRewards (Critical; Resolved)\". PDF committed in the repository at audit/2022-04-06-neodyme.pdf. Also https://github.com/ChorusOne/solido/pull/512",
+   "note": "SellRewards is permissionless and built an spl_token_swap swap instruction whose program id came straight from a caller-supplied account, then invoke_signed it with the Anker reserve authority PDA seeds, handing an attacker's program a signature over the reserve. The fix does not hardcode a program id, which would break multi-cluster testing; it requires that the program about to be invoked is the owner of the swap-pool state account, and the swap-pool address is stored in Anker's state and changeable only by the manager.",
+   "files": [
+    "anker/src/state.rs"
+   ],
+   "contamination_note": "anker/src/error.rs in the same commit changes one doc comment on an existing enum variant and cannot affect any analysis. Excluded. anker/src/processor.rs threads the new argument through process_change_token_swap_pool, where it passes the account's own owner and so makes the new check tautologically true at that call site; that is signature plumbing, not the fix. Excluded. The consequence is that the pinned file carries the missing check and its call site in check_token_swap, but NOT the sink: the invoke_signed the check protects is in anker/src/processor.rs. A scanner that needs to see the source and the sink in one file cannot see this bug in this pair.",
+   "sha_note": "PR #512's merge commit 0ba466e5ed3a3bc46fa945ce46c6fc7c597cc598 has TWO parents and its branch head 5885e84e is several commits past the fix. Use 676d6bee, verified single-parent. The sibling commit 82761db, 'Add additional balance check in Anker::SellRewards', says in its own message that it would have limited rather than prevented the theft. It is defence in depth, not the fix, and is not folded in.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "spl-stake-pool-fee-rounding",
+   "repo": "solana-labs/solana-program-library",
+   "fix": "a17fffe70d6cc13742abfbc4a4a375b087580bc1",
+   "class": "arithmetic-rounding-drain",
+   "source": "https://github.com/solana-labs/solana-program-library/pull/6153, Halborn finding HAL-01, named in the commit title. The Halborn report itself was not obtained, so the description of HAL-01 here is the commit title plus our own reading of the code, not the auditor's prose.",
+   "note": "Fee::apply computed amt * numerator / denominator with integer division, which floors. Any operation small enough that amt * numerator was below the denominator paid exactly zero fee, so splitting an operation into many small ones avoided the fee entirely. The fix switches to ceiling division so any non-zero chargeable amount pays at least one.",
+   "files": [
+    "stake-pool/program/src/state.rs"
+   ],
+   "contamination_note": "The other three files in the commit are tests that adjust expected fee values to the new rounding direction. Excluded. state.rs here is over a thousand lines and the fix is a five-line function body, so this case says nothing under file-level matching and only means something under hunk-level matching (limitation 2).",
+   "class_overlap_note": "This does not duplicate spl-token-lending-rounding, which is a Decimal/Rate precision bug in a lending market rather than an integer floor in a stake pool fee. But both are in solana-labs/solana-program-library, so counting both worsens the repository concentration recorded in docs/CLASS-BALANCE.md rather than improving it.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "token-2022-confidential-approve-mint",
+   "repo": "solana-labs/solana-program-library",
+   "fix": "b41094566e04c5b3e93f28cb92dd5d09ae9becc5",
+   "class": "account-data-matching",
+   "source": "https://github.com/solana-labs/solana-program-library/pull/5901, OtterSec finding OS-SPL-ADV-03, named in the commit title.",
+   "note": "process_approve_account for the confidential-transfer extension unpacked a token account and, separately, a mint account, then applied the mint's confidential-transfer authority to the token account without establishing that the two belonged together. An attacker could present a token account for one mint alongside a mint they control and self-approve. The fix compares the mint account's key against the token account's own mint before any of the mint's configuration is read.",
+   "files": [
+    "token/program-2022/src/extension/confidential_transfer/processor.rs"
+   ],
+   "contamination_note": "The only other file in the commit is a test. Excluded. This is a large processor file in a crate with heavy dependencies including the zk proof crates, so the real-crate variant of this case should be expected to be slow to build, and has not been built here.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "squads-recursive-execute",
+   "repo": "Squads-Protocol/squads-mpl",
+   "fix": "09470403a684b8d4d83928a46dd76d2173de5c21",
+   "class": "cpi-recursion",
+   "source": "Neodyme, Security Audit: Squads MPL Multisig, finding \"MPL3: Bypass of OS-SQD-SUG-01 fix via recursion\". PDF committed in the repository as Squads_V3_MPL_Audit_Neodyme.pdf.",
+   "note": "MPL refuses to sign for a foreign program under the special authority index 0 by comparing ix.program_id against its own program id. The bypass is to aim the instruction at MPL itself: a nested execute_transaction passes that check trivially, and Solana carries the parent's PDA signatures into the child, so a third level reaches an attacker contract holding both. The fix blacklists the execute_transaction and execute_instruction discriminators from being the target of a 0-authority execution.",
+   "files": [
+    "programs/squads-mpl/src/lib.rs"
+   ],
+   "severity_note": "THE AUDITOR RATED THIS Info AND DISPUTED THAT IT HAS ANY IMPACT. Neodyme's table reads \"Info | Bypass of previous fix. No impact, except for inconsistency.\" and the report says: \"In our estimation, the original bug does not have any impact\", because at execution time all multisig accounts are owned by MPL, MPL has no close instruction, and so signing with the multisig PDA cannot move lamports. Neodyme states in the same passage that OtterSec's impact claim for the original OS-SQD-SUG-01 was wrong for that reason. So this is a hardening commit for a defence-in-depth bypass with no demonstrated exploit path, not a loss-of-funds bug. It is kept because the pair is clean, the class is one nothing else in the corpus covers, and a scanner that flags unbounded self-recursion in an authority-gated execute path is doing the right thing. Anyone quoting this case must quote this note with it. FLAGGED FOR A HUMAN DECISION: the dossier that proposed this case rejected a sibling commit (a2448c5, Neodyme MPL2) on the grounds that the auditor graded it Low and saw no immediate implications, and Info with no impact is a weaker grade than that. Applying that standard consistently would reject this case too.",
+   "provenance_note": "The strongest provenance in the corpus. The Neodyme report states the audit started at commit 7ef3ed2bab2f68fb49d5db327854b2fccc092bb0, which is this case's parent, and then says verbatim: \"The Squads team blacklisted the execute instruction/transaction endpoints for the 0 authority in commit 09470403a684b8d4d83928a46dd76d2173de5c21. Neodyme verified this.\" Both statements were read out of the PDF text, not summarised from a web page.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "spl-stake-pool-mint-decimals",
+   "repo": "solana-labs/solana-program-library",
+   "fix": "c9edc4dbcc1981c27f94e786dc9ba15bb7174549",
+   "class": "mint-configuration-validation",
+   "source": "https://github.com/solana-labs/solana-program-library/pull/5085, Halborn finding HAL-03, named in the commit title. The Halborn report itself was not obtained, so the description of HAL-03 here is the commit title plus our own reading of the code, not the auditor's prose.",
+   "note": "The stake pool mints pool tokens against SOL at an exchange rate that assumes both sides use 9 decimals, because that is native_mint::DECIMALS. A pool initialised with a mint of, say, 6 decimals leaves every conversion between lamports and pool tokens off by a factor of a thousand. The fix rejects a non-9-decimal mint at initialisation, which is the only place it can be fixed because the mint cannot be changed afterwards.",
+   "files": [
+    "stake-pool/program/src/processor.rs"
+   ],
+   "contamination_note": "stake-pool/program/src/error.rs in the same commit adds the IncorrectMintDecimals variant the new branch returns and its msg! arm. That is mechanically required by the fix rather than part of it, and unlike the metaplex assertions/misc.rs case the added code is reachable. It is excluded from the pair and must not be counted as part of the fix for scoring. The pinned processor.rs diff also carries the one-line native_mint import the check needs. Both test files are excluded.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
+  },
+  {
+   "name": "anchor-account-reload-owner",
+   "repo": "coral-xyz/anchor",
+   "fix": "3a799e2d32bd708f0b280c60baecac76418248b1",
+   "class": "owner-check-after-cpi",
+   "source": "https://github.com/coral-xyz/anchor/pull/3837, \"feat(account): Check Owner on Reload\". No advisory and no audit finding exist for it; the label rests on the pull request title, the added doc comment and our own reading of the diff. First tag containing it: v1.0.0.",
+   "note": "Account<T>'s safety story is that the owner is checked once during account validation. reload() exists precisely to re-read an account after a CPI, which is exactly the window in which ownership can have changed, so re-deserialising the bytes without re-checking the owner leaves a program trusting T-shaped data in an account now owned by somebody else. The fix moves reload() into the T: Owner impl block and re-runs the owner check inside it.",
+   "files": [
+    "lang/src/accounts/account.rs"
+   ],
+   "source_strength_note": "WEAKEST SOURCE IN THE CORPUS. Acceptance criterion 4 asks for a public description of the bug so that the label is not our opinion, and a pull request titled feat(...) is thinner than every other case here. It is admitted because the mechanism is unambiguous in the diff and the class is one nothing else covers, but a reviewer is right to push back, and this note exists so that the pushback lands on a recorded weakness rather than on a hidden one. Note the tension with rejection R8 in docs/CANDIDATES-TRIAGE.md, which turned down a comparable unsourced owner check.",
+   "contamination_note": "lang/tests/account_reload.rs is a test and is excluded. lang/src/accounts/interface_account.rs is NOT excluded as noise: it carries the same owner check for the sibling type, and pinning both files would double-count one bug across two files and inflate any file-level score. It is excluded for that reason, which is different from every other exclusion in this manifest. Reading it also turned up something the dossier that proposed this case did not record: the same commit rewrites InterfaceAccount::try_from to delegate to try_from_unchecked, dropping the Anchor discriminator check on construction. That is a second, security-relevant change in the same commit, in the very file the existing anchor-interface-account case pins, and it is a further reason not to pin interface_account.rs here.",
+   "measured": false,
+   "measurement_note": "Added 2026-09-01 and NOT YET MEASURED by any scanner. Every published corpus-2 score is out of the cases measured on 2026-09-01, which do not include this one. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero."
   }
  ],
  "excluded": {
-  "anchor-program-system": "CVE-2026-45137. The only reference we have is a release commit rather than a surgical fix, so the pair would not isolate the change. Needs the actual fixing commit in lang/src/accounts/program.rs before it can be used."
+  "anchor-program-system-RETIRED": "RETIRED 2026-09-01. This entry said the only reference we had was a release commit rather than a surgical fix. That was wrong: the surgical fix is 3eb1fb0427d4fed0e944b627aef76db651a93aab, one non-test Rust file, single parent, and the case is now built and listed above. Kept as a line rather than deleted so the record shows the exclusion was resolved rather than forgotten."
  },
  "file_selection": "Each case pins the file the public disclosure actually implicates, established by reading every fix commit's full diff against its advisory. The first build took every .rs file the commit touched, which packaged dependency bumps, kill switches, dead code and unrelated hardening as part of a vulnerability pair. Recorded in KNOWN-LIMITATIONS as limitation 3.",
- "scoring_note": "Cases with valid=false are excluded from every denominator. As of 2026-08-31 that is cashio-account-data only, leaving 9 valid cases of the 10 built."
+ "scoring_note": "Cases with valid=false are excluded from every denominator. As of 2026-09-01 that is cashio-account-data only. Counts are derived rather than typed: run tools/class_balance.py, which reads this manifest and the corpus2/ directory and writes docs/CLASS-BALANCE.md.",
+ "measurement_status": "A case carries \"measured\": false until a scanner has actually been run over it. Absence of the field means measured, which is true of every case built on 2026-08-31. Published corpus-2 scores are out of the MEASURED cases only. The unmeasured ones are reported by run_all.py and score2.py as not-run or unknown, never as a zero, and they drop the reporting scanner's status to partial until it is re-run. Eight cases were added on 2026-09-01 and none of them has been measured."
 }

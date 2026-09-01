@@ -149,5 +149,133 @@
    "insecure/interface_account.rs",
    "secure/interface_account.rs"
   ]
+ },
+ {
+  "name": "anchor-program-system",
+  "status": "built",
+  "repo": "coral-xyz/anchor",
+  "fix": "3eb1fb0427d4fed0e944b627aef76db651a93aab",
+  "parent": "415a16b57e7a7fee093a38dc4f2588b020324242",
+  "class": "program-account-validation",
+  "source": "GHSA-c6rc-8jpp-2fgc, CVE-2026-45137, RUSTSEC-2026-0144",
+  "files": [
+   "lang/src/accounts/program.rs"
+  ],
+  "written": [
+   "insecure/program.rs",
+   "secure/program.rs"
+  ]
+ },
+ {
+  "name": "solido-deposit-reserve-account",
+  "status": "built",
+  "repo": "chorusone/solido",
+  "fix": "97fafb2bbcf5d1179da887f36bac0b2916b988fe",
+  "parent": "f050f316ebf2c075635ffec9ea2162b6362ed2e2",
+  "class": "pda-derived-address-validation",
+  "source": "Neodyme, Security Audit: Lido on Solana, 2021, finding \"Attackers Can Mint Unlimited stSOL due to Missing Reserve Account Check (Critical)\". PDF committed in the repository at audit/2021-08-03-neodyme.pdf. Also https://github.com/ChorusOne/solido/pull/383",
+  "files": [
+   "program/src/processor.rs"
+  ],
+  "written": [
+   "insecure/processor.rs",
+   "secure/processor.rs"
+  ]
+ },
+ {
+  "name": "solido-anker-arbitrary-cpi",
+  "status": "built",
+  "repo": "chorusone/solido",
+  "fix": "676d6bee310b13c39b3c8e1adc6a26a4db2f8482",
+  "parent": "b1257e44fc6bda7bbf6096b2d38e33fa3367af63",
+  "class": "arbitrary-cpi",
+  "source": "Neodyme, Security Audit: Anker on Solana, 2022, finding \"Missing Token Program validation in SellRewards (Critical; Resolved)\". PDF committed in the repository at audit/2022-04-06-neodyme.pdf. Also https://github.com/ChorusOne/solido/pull/512",
+  "files": [
+   "anker/src/state.rs"
+  ],
+  "written": [
+   "insecure/state.rs",
+   "secure/state.rs"
+  ]
+ },
+ {
+  "name": "spl-stake-pool-fee-rounding",
+  "status": "built",
+  "repo": "solana-labs/solana-program-library",
+  "fix": "a17fffe70d6cc13742abfbc4a4a375b087580bc1",
+  "parent": "0d6832eddb0bf49706a9173521c8d09bfc2a52bc",
+  "class": "arithmetic-rounding-drain",
+  "source": "https://github.com/solana-labs/solana-program-library/pull/6153, Halborn finding HAL-01, named in the commit title. The Halborn report itself was not obtained, so the description of HAL-01 here is the commit title plus our own reading of the code, not the auditor's prose.",
+  "files": [
+   "stake-pool/program/src/state.rs"
+  ],
+  "written": [
+   "insecure/state.rs",
+   "secure/state.rs"
+  ]
+ },
+ {
+  "name": "token-2022-confidential-approve-mint",
+  "status": "built",
+  "repo": "solana-labs/solana-program-library",
+  "fix": "b41094566e04c5b3e93f28cb92dd5d09ae9becc5",
+  "parent": "6ed80b3a353042df7a60353fa38d9460628b40de",
+  "class": "account-data-matching",
+  "source": "https://github.com/solana-labs/solana-program-library/pull/5901, OtterSec finding OS-SPL-ADV-03, named in the commit title.",
+  "files": [
+   "token/program-2022/src/extension/confidential_transfer/processor.rs"
+  ],
+  "written": [
+   "insecure/processor.rs",
+   "secure/processor.rs"
+  ]
+ },
+ {
+  "name": "squads-recursive-execute",
+  "status": "built",
+  "repo": "Squads-Protocol/squads-mpl",
+  "fix": "09470403a684b8d4d83928a46dd76d2173de5c21",
+  "parent": "7ef3ed2bab2f68fb49d5db327854b2fccc092bb0",
+  "class": "cpi-recursion",
+  "source": "Neodyme, Security Audit: Squads MPL Multisig, finding \"MPL3: Bypass of OS-SQD-SUG-01 fix via recursion\". PDF committed in the repository as Squads_V3_MPL_Audit_Neodyme.pdf.",
+  "files": [
+   "programs/squads-mpl/src/lib.rs"
+  ],
+  "written": [
+   "insecure/lib.rs",
+   "secure/lib.rs"
+  ]
+ },
+ {
+  "name": "spl-stake-pool-mint-decimals",
+  "status": "built",
+  "repo": "solana-labs/solana-program-library",
+  "fix": "c9edc4dbcc1981c27f94e786dc9ba15bb7174549",
+  "parent": "7f2f11507e4a26d9bfbacba650334b7d86fa1514",
+  "class": "mint-configuration-validation",
+  "source": "https://github.com/solana-labs/solana-program-library/pull/5085, Halborn finding HAL-03, named in the commit title. The Halborn report itself was not obtained, so the description of HAL-03 here is the commit title plus our own reading of the code, not the auditor's prose.",
+  "files": [
+   "stake-pool/program/src/processor.rs"
+  ],
+  "written": [
+   "insecure/processor.rs",
+   "secure/processor.rs"
+  ]
+ },
+ {
+  "name": "anchor-account-reload-owner",
+  "status": "built",
+  "repo": "coral-xyz/anchor",
+  "fix": "3a799e2d32bd708f0b280c60baecac76418248b1",
+  "parent": "2da41204735c944686a39bd18a50a0ff173425bb",
+  "class": "owner-check-after-cpi",
+  "source": "https://github.com/coral-xyz/anchor/pull/3837, \"feat(account): Check Owner on Reload\". No advisory and no audit finding exist for it; the label rests on the pull request title, the added doc comment and our own reading of the diff. First tag containing it: v1.0.0.",
+  "files": [
+   "lang/src/accounts/account.rs"
+  ],
+  "written": [
+   "insecure/account.rs",
+   "secure/account.rs"
+  ]
  }
 ]
