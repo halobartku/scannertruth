@@ -1,0 +1,78 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container postgres  Running
+ Container radar-rabbitmq-1  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 33 files (entrypoint.rs,error.rs,instruction.rs,lib.rs,common.rs,decimal.rs,mod.rs,rate.rs,processor.rs,pyth.rs,last_update.rs,lending_market.rs,mod.rs,obligation.rs,reserve.rs,borrow_obligation_liquidity.rs,deposit_obligation_collateral.rs,deposit_reserve_liquidity.rs,flash_loan.rs,flash_loan_receiver.rs,genesis.rs,mod.rs,init_lending_market.rs,init_obligation.rs,init_reserve.rs,liquidate_obligation.rs,obligation_end_to_end.rs,redeem_reserve_collateral.rs,refresh_obligation.rs,refresh_reserve.rs,repay_obligation_liquidity.rs,set_lending_market_owner.rs,withdraw_obligation_collateral.rs)
+
+[ [91mHigh[0m ] Missing Pyth Confidence Interval found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:309:24-33
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:449:38-47
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:2113:4-13
+
+
+[ [91mHigh[0m ] Unvalidated Price Data Account found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:2128:43-58
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:2182:45-60
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:2266:9-22
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:96:9-22
+
+
+[ [94mMedium[0m ] Unrestricted Token Minting found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/state/reserve.rs:509:12-16
+
+
+[ [92mLow[0m ] Account Data Matching found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:42:43-49
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:2068:11-17
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:48:57-63
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:746:24-30
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:805:36-42
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:935:18-24
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1041:21-27
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1066:21-27
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1094:21-27
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1347:32-38
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/obligation_end_to_end.rs:254:21-27
+
+
+[ [92mLow[0m ] Account Precreation DoS found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/instruction.rs:698:8-27
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:131:4-31
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:194:4-24
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:733:4-27
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/processor.rs:2217:4-26
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/state/lending_market.rs:39:12-16
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/src/state/obligation.rs:57:12-16
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:482:18-22
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:778:18-22
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:985:18-22
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/init_lending_market.rs:36:10-34
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/init_reserve.rs:86:10-34
+
+
+[ [92mLow[0m ] Missing Security Documentation found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:58:8-34
+
+
+[ [92mLow[0m ] Random Authority Generation found at:
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:97:41-51
+ * /tmp/c2crates/solend-owner-checks/secure/token-lending/program/tests/set_lending_market_owner.rs:34:29-39
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at 76 locations, see output file for more details.
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2crates-radar/solend-owner-checks.secure.json

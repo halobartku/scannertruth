@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Unconstrained UncheckedAccount",
+        "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:91:26-42",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:151:29-45"
+        ]
+    },
+    {
+        "name": "Duplicate Mutable Accounts",
+        "description": "When there are two or more accounts with mutable data, a check must be in place to ensure mutation of each account is differentiated properly, to avoid unintended data modification of other accounts.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:60:20-27",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:62:25-32",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:64:24-31",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:66:24-31",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:68:24-31",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:83:31-38",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:87:31-38",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:97:19-26",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:100:25-32",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:103:26-33",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:107:25-32",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:111:38-45",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:135:33-40",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:139:35-42"
+        ]
+    },
+    {
+        "name": "Missing Token Mint Constraint",
+        "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:66:24-31",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:68:24-31",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:83:31-38",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:87:31-38",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:111:38-45",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:135:33-40",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:139:35-42",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:143:33-40"
+        ]
+    },
+    {
+        "name": "Missing Signer Check",
+        "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:57:3-9",
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:94:3-9"
+        ]
+    },
+    {
+        "name": "Missing Transfer Amount Validation",
+        "description": "Ensure that token transfers validate the amount being transferred. Transfers should not allow negative values or amounts exceeding the account balance.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/actions/print_cash.rs:29:28-36"
+        ]
+    },
+    {
+        "name": "PDA Sharing",
+        "description": "Reuse of a PDA across multiple authority domains can lead to unauthorized data or funds access.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/cashio-account-data/secure/programs/brrr/src/actions/print_cash.rs:29:28-36"
+        ]
+    }
+]

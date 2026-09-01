@@ -1,0 +1,123 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 101 files (lib.rs,id.rs,lazy.rs,lib.rs,lib.rs,lib.rs,lib.rs,common.rs,mod.rs,accounts.rs,client.rs,constants.rs,cpi.rs,errors.rs,events.rs,internal.rs,mod.rs,parsers.rs,program.rs,types.rs,lib.rs,lib.rs,lazy.rs,lib.rs,lib.rs,account_meta.rs,account.rs,account_info.rs,account_loader.rs,boxed.rs,interface.rs,interface_account.rs,lazy_account.rs,mod.rs,option.rs,program.rs,signer.rs,system_account.rs,sysvar.rs,unchecked_account.rs,bpf_upgradeable_state.rs,bpf_writer.rs,common.rs,context.rs,error.rs,event.rs,idl.rs,lazy.rs,lib.rs,ed25519.rs,mod.rs,secp256k1.rs,system_program.rs,vec.rs,__client_accounts.rs,__cpi_client_accounts.rs,bumps.rs,constraints.rs,exit.rs,mod.rs,to_account_infos.rs,to_account_metas.rs,try_accounts.rs,error.rs,mod.rs,accounts.rs,common.rs,cpi.rs,dispatch.rs,entry.rs,handlers.rs,idl.rs,instruction.rs,mod.rs,hash.rs,accounts.rs,address.rs,common.rs,constant.rs,defined.rs,error.rs,event.rs,external.rs,mod.rs,program.rs,lib.rs,constraints.rs,event_cpi.rs,mod.rs,context.rs,docs.rs,error.rs,mod.rs,instructions.rs,mod.rs,account_reload.rs,generics_test.rs,macros.rs,seeds_compile.rs,serialization.rs,space.rs)
+
+[ [91mHigh[0m ] SPL Token Mint Consistency found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:139:38-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:167:21-33
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:1662:38-50
+
+
+[ [91mHigh[0m ] Unconstrained UncheckedAccount found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/tests/generics_test.rs:14:22-38
+
+
+[ [91mHigh[0m ] Unvalidated Price Data Account found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/accounts/account_loader.rs:155:34-49
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/accounts/lazy_account.rs:215:26-41
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:262:45-60
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:1656:43-58
+
+
+[ [94mMedium[0m ] Closing Accounts Insecurely found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/common.rs:11:21-31
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/attribute/event/src/lib.rs:186:51-64
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/attribute/program/src/declare_program/mods/cpi.rs:87:55-68
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:24:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:51:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:77:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:99:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:123:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:146:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:173:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:203:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:229:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:269:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:309:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:337:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:362:37-50
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/program/cpi.rs:62:63-76
+
+
+[ [94mMedium[0m ] Missing Rent Exemption Check found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:166:57-71
+
+
+[ [92mLow[0m ] Account Data Matching found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:1657:63-69
+
+
+[ [92mLow[0m ] Account Precreation DoS found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:478:4-34
+
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:36:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:59:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:85:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:107:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:131:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:154:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:181:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:211:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:247:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:291:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:317:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:345:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:376:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/vec.rs:46:7-13
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/tests/generics_test.rs:12:3-9
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/tests/generics_test.rs:17:3-9
+
+
+[ [92mLow[0m ] PDA Sharing found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:455:50-58
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/syn/src/codegen/accounts/constraints.rs:1712:46-54
+
+
+[ [92mLow[0m ] Random Authority Generation found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/tests/account_reload.rs:36:31-41
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/attribute/account/src/lazy.rs:127:63-77
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/attribute/program/src/declare_program/mods/cpi.rs:113:20-34
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/attribute/program/src/declare_program/mods/parsers.rs:81:31-45
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/attribute/program/src/declare_program/mods/parsers.rs:175:56-70
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/accounts/account.rs:305:27-42
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/accounts/account.rs:320:34-49
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/bpf_upgradeable_state.rs:14:8-23
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/bpf_upgradeable_state.rs:67:8-23
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/lib.rs:346:8-23
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at 39 locations, see output file for more details.
+
+
+[ [92mLow[0m ] Unvalidated Sysvar Account found at:
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:40:29-40
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:251:29-40
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:252:15-26
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:296:29-40
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:297:15-26
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:380:29-40
+ * /tmp/c2crates/anchor-interface-account/insecure/lang/src/system_program.rs:381:15-26
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2crates-radar/anchor-interface-account.insecure.json

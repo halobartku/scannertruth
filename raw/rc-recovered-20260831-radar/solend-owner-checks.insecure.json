@@ -1,0 +1,184 @@
+[
+    {
+        "name": "Missing Pyth Confidence Interval",
+        "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:309:24-33",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:449:38-47",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:2109:4-13"
+        ]
+    },
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:2124:43-58",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:2178:45-60"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:2262:9-22",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:96:9-22"
+        ]
+    },
+    {
+        "name": "Unrestricted Token Minting",
+        "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/state/reserve.rs:509:12-16"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:42:43-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:2064:11-17",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:48:57-63",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:746:24-30",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:805:36-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:935:18-24",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1041:21-27",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1066:21-27",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1094:21-27",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1347:32-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:254:21-27"
+        ]
+    },
+    {
+        "name": "Account Precreation DoS",
+        "description": "Detects unsafe account owner assignments without prior validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/instruction.rs:698:8-27",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:131:4-31",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:194:4-24",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:733:4-27",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/processor.rs:2213:4-26",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/state/lending_market.rs:39:12-16",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/state/obligation.rs:57:12-16",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:482:18-22",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:778:18-22",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:985:18-22",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/init_lending_market.rs:36:10-34",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/init_reserve.rs:86:10-34"
+        ]
+    },
+    {
+        "name": "Missing Security Documentation",
+        "description": "Security-critical functions without documentation make auditing harder and can hide vulnerabilities.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:58:8-34"
+        ]
+    },
+    {
+        "name": "Random Authority Generation",
+        "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:97:41-51",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/set_lending_market_owner.rs:34:29-39"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/math/decimal.rs:54:12-24",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/math/rate.rs:60:12-24",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/state/obligation.rs:146:26-29",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/src/state/obligation.rs:188:26-29",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:33:11-39",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:38:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:39:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:40:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:180:11-41",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:181:9-14",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:182:11-37",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:183:11-45",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:184:11-41",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:312:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:312:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:313:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:313:48-53",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:314:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:315:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:29:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:29:46-48",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:30:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:32:13-34",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:33:13-29",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:45:10-17",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/flash_loan.rs:29:11-28",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/flash_loan.rs:140:10-22",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/flash_loan.rs:147:11-28",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/genesis.rs:36:12-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/genesis.rs:46:33-34",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/genesis.rs:60:14-29",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:139:8-22",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:238:8-19",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:408:13-19",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:31:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:31:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:33:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:37:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:37:50-52",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:39:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:40:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:40:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:40:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:43:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:44:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/redeem_reserve_collateral.rs:32:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/redeem_reserve_collateral.rs:33:11-28",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:34:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:35:9-27",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:36:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:37:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:38:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_reserve.rs:30:11-41",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/refresh_reserve.rs:31:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:30:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:30:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:31:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:32:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:33:11-44",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:33:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:34:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:11-26",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:34-37",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:159:11-41",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:160:9-14",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:161:11-45",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:11-38",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:46-49",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:266:11-40",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:267:11-42",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:11-26",
+            "/tmp/c2crates/solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:35-38"
+        ]
+    }
+]

@@ -1,0 +1,40 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container postgres  Running
+ Container radar-rabbitmq-1  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 4 files (errors.rs,lib.rs,mod.rs,ms.rs)
+
+[ [94mMedium[0m ] Anchor Admin Without Timelock found at:
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/state/ms.rs:75:14-23
+
+
+[ [94mMedium[0m ] Arbitrary Cross-Program Invocation found at:
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:38:12-22
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:327:20-33
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:285:55-70
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at:
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:19:12-18
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:38:12-22
+ * /tmp/c2crates/squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:51:30-44
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2crates-radar/squads-signer-auth.secure.json

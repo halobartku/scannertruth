@@ -1,0 +1,50 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 23 files (accounts.rs,bridge.rs,claim.rs,fee_collector.rs,guardian_set.rs,posted_message.rs,posted_vaa.rs,sequence.rs,signature_set.rs,api.rs,governance.rs,initialize.rs,post_message.rs,post_vaa.rs,verify_signature.rs,error.rs,instructions.rs,lib.rs,types.rs,vaa.rs,wasm.rs,common.rs,integration.rs)
+
+[ [94mMedium[0m ] Anchor Admin Without Timelock found at:
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:225:24-27
+
+
+[ [94mMedium[0m ] Arbitrary Cross-Program Invocation found at:
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/post_message.rs:75:8-20
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/verify_signature.rs:68:8-25
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:116:5-18
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:291:5-18
+
+
+[ [94mMedium[0m ] Missing Rent Exemption Check found at:
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/post_message.rs:132:50-64
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/api/verify_signature.rs:179:54-68
+
+
+[ [92mLow[0m ] Random Authority Generation found at:
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/tests/integration.rs:1042:32-42
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:324:43-57
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:337:38-52
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:366:41-55
+ * /tmp/c2crates/wormhole-sysvar/insecure/solana/bridge/program/tests/common.rs:153:12-26
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at 21 locations, see output file for more details.
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2crates-radar/wormhole-sysvar.insecure.json

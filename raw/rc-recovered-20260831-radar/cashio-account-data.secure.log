@@ -1,0 +1,64 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 8 files (lib.rs,burn_cash.rs,mod.rs,print_cash.rs,addresses.rs,events.rs,lib.rs,saber.rs)
+
+[ [91mHigh[0m ] Unconstrained UncheckedAccount found at:
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:91:26-42
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:151:29-45
+
+
+[ [94mMedium[0m ] Duplicate Mutable Accounts found at:
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:60:20-27
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:62:25-32
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:64:24-31
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:66:24-31
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:68:24-31
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:83:31-38
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:87:31-38
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:97:19-26
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:100:25-32
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:103:26-33
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:107:25-32
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:111:38-45
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:135:33-40
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:139:35-42
+
+
+[ [94mMedium[0m ] Missing Token Mint Constraint found at:
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:66:24-31
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:68:24-31
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:83:31-38
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:87:31-38
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:111:38-45
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:135:33-40
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:139:35-42
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:143:33-40
+
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:57:3-9
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/lib.rs:94:3-9
+
+
+[ [92mLow[0m ] Missing Transfer Amount Validation found at:
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/actions/print_cash.rs:29:28-36
+
+
+[ [92mLow[0m ] PDA Sharing found at:
+ * /tmp/c2crates/cashio-account-data/secure/programs/brrr/src/actions/print_cash.rs:29:28-36
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2crates-radar/cashio-account-data.secure.json

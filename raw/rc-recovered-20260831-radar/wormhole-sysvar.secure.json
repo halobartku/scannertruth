@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Anchor Admin Without Timelock",
+        "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:225:24-27"
+        ]
+    },
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/post_message.rs:75:8-20",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:68:8-25"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:116:5-18",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:291:5-18"
+        ]
+    },
+    {
+        "name": "Missing Rent Exemption Check",
+        "description": "Account creation via system_program without verifying rent exemption lamports can produce accounts that are garbage-collected by the Solana runtime, causing fund loss or program failures.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/post_message.rs:132:50-64",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:179:54-68"
+        ]
+    },
+    {
+        "name": "Random Authority Generation",
+        "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:1042:32-42"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:324:43-57",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:337:38-52",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:366:41-55",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/tests/common.rs:153:12-26"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:145:8-28",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:151:30-35",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:156:20-38",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:165:13-18",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/post_vaa.rs:104:8-16",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/post_vaa.rs:131:20-23",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:68:8-25",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:204:14-23",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:114:8-30",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:209:8-28",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:237:30-33",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:249:27-28",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:250:30-41",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:258:18-27",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:258:45-56",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:262:18-27",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:262:45-56",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:114:8-12",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:156:4-19",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:372:4-28",
+            "/tmp/c2crates/wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:991:44-48"
+        ]
+    }
+]
