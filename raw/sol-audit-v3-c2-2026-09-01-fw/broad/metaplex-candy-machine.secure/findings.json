@@ -1,0 +1,91 @@
+{
+ "files_scanned": 1,
+ "total_findings": 4,
+ "counts": {
+  "HIGH": 3,
+  "MEDIUM": 1
+ },
+ "by_rule": {
+  "SOL-027": 2,
+  "SOL-010": 1,
+  "SOL-019": 1
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-027",
+   "title": "Introspected instruction never checked against an expected program id",
+   "severity": "HIGH",
+   "cwe": "CWE-345",
+   "file": "src\\set_collection_during_mint.rs",
+   "line": 43,
+   "snippet": "let current_instruction = get_instruction_relative(0, ixs)?;",
+   "fix": "Compare `ix.program_id` with the program you expect before trusting the instruction.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-027",
+   "title": "Introspected instruction never checked against an expected program id",
+   "severity": "HIGH",
+   "cwe": "CWE-345",
+   "file": "src\\set_collection_during_mint.rs",
+   "line": 51,
+   "snippet": "let previous_instruction = get_instruction_relative(-1, ixs)?;",
+   "fix": "Compare `ix.program_id` with the program you expect before trusting the instruction.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\set_collection_during_mint.rs",
+   "line": 160,
+   "snippet": "invoke_signed(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\set_collection_during_mint.rs",
+   "line": 28,
+   "snippet": "instructions: UncheckedAccount<'info>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "broad",
+ "rules_run": 23,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-006",
+  "SOL-007",
+  "SOL-009",
+  "SOL-010",
+  "SOL-014",
+  "SOL-015",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

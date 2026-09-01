@@ -1,0 +1,64 @@
+{
+ "files_scanned": 1,
+ "total_findings": 2,
+ "counts": {
+  "LOW": 2
+ },
+ "by_rule": {
+  "SOL-009": 2
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\program.rs",
+   "line": 276,
+   "snippet": ".expect(\"non-system key must be rejected\");",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\program.rs",
+   "line": 307,
+   "snippet": ".expect(\"non-executable account must be rejected\");",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  }
+ ],
+ "profile": "broad",
+ "rules_run": 23,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-006",
+  "SOL-007",
+  "SOL-009",
+  "SOL-010",
+  "SOL-014",
+  "SOL-015",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

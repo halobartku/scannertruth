@@ -1,0 +1,342 @@
+[
+ {
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\wormhole-sysvar\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\wormhole-sysvar.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\wormhole-sysvar.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/wormhole-sysvar.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\wormhole-sysvar\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\wormhole-sysvar.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\wormhole-sysvar.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/wormhole-sysvar.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.13,
+  "files_seen": 1,
+  "findings": 74,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\solend-owner-checks\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\solend-owner-checks.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\solend-owner-checks.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/solend-owner-checks.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.14,
+  "files_seen": 1,
+  "findings": 74,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\solend-owner-checks\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\solend-owner-checks.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\solend-owner-checks.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/solend-owner-checks.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.13,
+  "files_seen": 2,
+  "findings": 22,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\spl-token-lending-rounding\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-token-lending-rounding.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-token-lending-rounding.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/spl-token-lending-rounding.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.12,
+  "files_seen": 2,
+  "findings": 22,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\spl-token-lending-rounding\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-token-lending-rounding.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-token-lending-rounding.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/spl-token-lending-rounding.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 29,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\squads-signer-auth\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-signer-auth.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-signer-auth.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/squads-signer-auth.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 29,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\squads-signer-auth\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-signer-auth.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-signer-auth.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/squads-signer-auth.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 29,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\squads-account-matching\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-account-matching.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-account-matching.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/squads-account-matching.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 29,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\squads-account-matching\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-account-matching.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-account-matching.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/squads-account-matching.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\metaplex-token-metadata\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-token-metadata.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-token-metadata.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/metaplex-token-metadata.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\metaplex-token-metadata\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-token-metadata.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-token-metadata.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/metaplex-token-metadata.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 8,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\metaplex-candy-machine\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-candy-machine.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-candy-machine.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/metaplex-candy-machine.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 9,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\metaplex-candy-machine\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-candy-machine.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-candy-machine.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/metaplex-candy-machine.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\metaplex-bubblegum-creator\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-bubblegum-creator.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-bubblegum-creator.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/metaplex-bubblegum-creator.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 2,
+  "findings": 9,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\metaplex-bubblegum-creator\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-bubblegum-creator.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\metaplex-bubblegum-creator.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/metaplex-bubblegum-creator.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\anchor-interface-account\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-interface-account.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-interface-account.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/anchor-interface-account.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\anchor-interface-account\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-interface-account.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-interface-account.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/anchor-interface-account.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\anchor-program-system\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-program-system.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-program-system.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/anchor-program-system.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\anchor-program-system\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-program-system.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-program-system.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/anchor-program-system.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.11,
+  "files_seen": 1,
+  "findings": 38,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\solido-deposit-reserve-account\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-deposit-reserve-account.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-deposit-reserve-account.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/solido-deposit-reserve-account.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.11,
+  "files_seen": 1,
+  "findings": 38,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\solido-deposit-reserve-account\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-deposit-reserve-account.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-deposit-reserve-account.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/solido-deposit-reserve-account.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.1,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\solido-anker-arbitrary-cpi\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-anker-arbitrary-cpi.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-anker-arbitrary-cpi.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/solido-anker-arbitrary-cpi.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.1,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\solido-anker-arbitrary-cpi\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-anker-arbitrary-cpi.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\solido-anker-arbitrary-cpi.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/solido-anker-arbitrary-cpi.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.11,
+  "files_seen": 1,
+  "findings": 19,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\spl-stake-pool-fee-rounding\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-fee-rounding.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-fee-rounding.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/spl-stake-pool-fee-rounding.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.12,
+  "files_seen": 1,
+  "findings": 19,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\spl-stake-pool-fee-rounding\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-fee-rounding.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-fee-rounding.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/spl-stake-pool-fee-rounding.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.12,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\token-2022-confidential-approve-mint\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\token-2022-confidential-approve-mint.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\token-2022-confidential-approve-mint.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/token-2022-confidential-approve-mint.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.13,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\token-2022-confidential-approve-mint\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\token-2022-confidential-approve-mint.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\token-2022-confidential-approve-mint.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/token-2022-confidential-approve-mint.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 30,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\squads-recursive-execute\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-recursive-execute.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-recursive-execute.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/squads-recursive-execute.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 30,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\squads-recursive-execute\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-recursive-execute.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\squads-recursive-execute.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/squads-recursive-execute.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.18,
+  "files_seen": 1,
+  "findings": 59,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\spl-stake-pool-mint-decimals\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-mint-decimals.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-mint-decimals.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/spl-stake-pool-mint-decimals.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.18,
+  "files_seen": 1,
+  "findings": 59,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\spl-stake-pool-mint-decimals\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-mint-decimals.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\spl-stake-pool-mint-decimals.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/spl-stake-pool-mint-decimals.secure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.09,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\anchor-account-reload-owner\\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-account-reload-owner.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-account-reload-owner.insecure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/anchor-account-reload-owner.insecure.run2/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python D:\\Users\\stank\\Desktop\\Forge\\sol-audit-v2/cli.py D:\\Users\\stank\\Desktop\\Forge\\scannertruth\\corpus2\\anchor-account-reload-owner\\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-account-reload-owner.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\\anchor-account-reload-owner.secure.run2/files.log --fail-on none --quiet",
+  "artefact": "raw/sol-audit-v3-c2-2026-09-01-fw/all/anchor-account-reload-owner.secure.run2/stdout.log"
+ }
+]

@@ -1,0 +1,150 @@
+{
+ "files_scanned": 1,
+ "total_findings": 9,
+ "counts": {
+  "MEDIUM": 4,
+  "LOW": 5
+ },
+ "by_rule": {
+  "SOL-019": 4,
+  "SOL-009": 5
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 447,
+   "snippet": "clock: AccountInfo<'a>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 474,
+   "snippet": "clock: AccountInfo<'a>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 516,
+   "snippet": "clock: AccountInfo<'a>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 562,
+   "snippet": "clock: AccountInfo<'a>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\processor.rs",
+   "line": 1155,
+   "snippet": "let mut validator_stake_info = maybe_validator_stake_info.unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\processor.rs",
+   "line": 1305,
+   "snippet": "let mut validator_stake_info = maybe_validator_stake_info.unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\processor.rs",
+   "line": 1418,
+   "snippet": "let stake_history_info = maybe_stake_history_info.unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\processor.rs",
+   "line": 1566,
+   "snippet": "let mut validator_stake_info = maybe_validator_stake_info.unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\processor.rs",
+   "line": 1891,
+   "snippet": "let mut validator_stake_info = maybe_validator_stake_info.unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  }
+ ],
+ "profile": "broad",
+ "rules_run": 23,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-006",
+  "SOL-007",
+  "SOL-009",
+  "SOL-010",
+  "SOL-014",
+  "SOL-015",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

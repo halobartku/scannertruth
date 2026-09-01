@@ -1,0 +1,122 @@
+{
+ "files_scanned": 1,
+ "total_findings": 6,
+ "counts": {
+  "HIGH": 3,
+  "LOW": 3
+ },
+ "by_rule": {
+  "SOL-020": 2,
+  "SOL-022": 1,
+  "SOL-009": 3
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-020",
+   "title": "PDA derived with create_program_address and a non-canonical bump",
+   "severity": "HIGH",
+   "cwe": "CWE-345",
+   "file": "src\\state.rs",
+   "line": 100,
+   "snippet": "let address = Pubkey::create_program_address(",
+   "fix": "Use `find_program_address`, which returns the canonical bump, or Anchor's `#[account(seeds = [..], bump)]`.",
+   "category": "pda",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-020",
+   "title": "PDA derived with create_program_address and a non-canonical bump",
+   "severity": "HIGH",
+   "cwe": "CWE-345",
+   "file": "src\\state.rs",
+   "line": 128,
+   "snippet": "let address = Pubkey::create_program_address(",
+   "fix": "Use `find_program_address`, which returns the canonical bump, or Anchor's `#[account(seeds = [..], bump)]`.",
+   "category": "pda",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-022",
+   "title": "Account data deserialised by hand with no discriminator distinguishing types",
+   "severity": "HIGH",
+   "cwe": "CWE-843",
+   "file": "src\\state.rs",
+   "line": 337,
+   "snippet": "spl_token_swap::state::SwapV1::unpack(&token_swap_account.data.borrow()[1..])",
+   "fix": "Use `Account<'info, T>`, or add a type tag as the first field and compare it before trusting the rest.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\state.rs",
+   "line": 104,
+   "snippet": ".expect(\"Depends only on Anker-controlled values, should not fail.\");",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\state.rs",
+   "line": 132,
+   "snippet": ".expect(\"Depends only on Anker-controlled values, should not fail.\");",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\state.rs",
+   "line": 699,
+   "snippet": "BorshSerialize::serialize(&instance, &mut writer).unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  }
+ ],
+ "profile": "all",
+ "rules_run": 30,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-005",
+  "SOL-006",
+  "SOL-007",
+  "SOL-008",
+  "SOL-009",
+  "SOL-010",
+  "SOL-011",
+  "SOL-012",
+  "SOL-013",
+  "SOL-014",
+  "SOL-015",
+  "SOL-016",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-026",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

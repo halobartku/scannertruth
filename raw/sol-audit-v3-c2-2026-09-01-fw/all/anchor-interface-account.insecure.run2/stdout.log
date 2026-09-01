@@ -1,0 +1,9 @@
+COMMAND: python D:\Users\stank\Desktop\Forge\sol-audit-v2/cli.py D:\Users\stank\Desktop\Forge\scannertruth\corpus2\anchor-interface-account\insecure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\anchor-interface-account.insecure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\anchor-interface-account.insecure.run2/files.log --fail-on none --quiet
+EXIT: 0
+WALL_SECONDS: 0.08
+
+STDOUT:
+
+
+STDERR:
+

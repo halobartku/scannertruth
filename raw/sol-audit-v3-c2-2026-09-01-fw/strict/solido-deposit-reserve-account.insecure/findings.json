@@ -1,0 +1,154 @@
+{
+ "files_scanned": 1,
+ "total_findings": 10,
+ "counts": {
+  "HIGH": 10
+ },
+ "by_rule": {
+  "SOL-006": 5,
+  "SOL-010": 5
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-006",
+   "title": "Raw CPI without account owner verification in file",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 322,
+   "snippet": "invoke_signed(",
+   "fix": "Verify `account.to_account_info().owner == &expected_program` before every invoke, or use Anchor CPI crates.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 322,
+   "snippet": "invoke_signed(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-006",
+   "title": "Raw CPI without account owner verification in file",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 378,
+   "snippet": "invoke_signed(",
+   "fix": "Verify `account.to_account_info().owner == &expected_program` before every invoke, or use Anchor CPI crates.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 378,
+   "snippet": "invoke_signed(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-006",
+   "title": "Raw CPI without account owner verification in file",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 443,
+   "snippet": "invoke_signed(",
+   "fix": "Verify `account.to_account_info().owner == &expected_program` before every invoke, or use Anchor CPI crates.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 443,
+   "snippet": "invoke_signed(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-006",
+   "title": "Raw CPI without account owner verification in file",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 555,
+   "snippet": "invoke_signed(",
+   "fix": "Verify `account.to_account_info().owner == &expected_program` before every invoke, or use Anchor CPI crates.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 555,
+   "snippet": "invoke_signed(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-006",
+   "title": "Raw CPI without account owner verification in file",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 727,
+   "snippet": "invoke_signed(",
+   "fix": "Verify `account.to_account_info().owner == &expected_program` before every invoke, or use Anchor CPI crates.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 727,
+   "snippet": "invoke_signed(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "strict",
+ "rules_run": 16,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-006",
+  "SOL-007",
+  "SOL-010",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

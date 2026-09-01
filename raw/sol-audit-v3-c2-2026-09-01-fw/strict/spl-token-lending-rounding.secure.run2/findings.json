@@ -1,0 +1,28 @@
+{
+ "files_scanned": 2,
+ "total_findings": 0,
+ "counts": {},
+ "by_rule": {},
+ "errors": [],
+ "findings": [],
+ "profile": "strict",
+ "rules_run": 16,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-006",
+  "SOL-007",
+  "SOL-010",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

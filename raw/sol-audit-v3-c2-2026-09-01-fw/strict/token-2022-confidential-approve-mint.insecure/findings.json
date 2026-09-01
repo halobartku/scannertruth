@@ -1,0 +1,45 @@
+{
+ "files_scanned": 1,
+ "total_findings": 1,
+ "counts": {
+  "HIGH": 1
+ },
+ "by_rule": {
+  "SOL-028": 1
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-028",
+   "title": "Initialise handler with no initialised flag or discriminator to stop a rerun",
+   "severity": "HIGH",
+   "cwe": "CWE-665",
+   "file": "src\\processor.rs",
+   "line": 37,
+   "snippet": "fn process_initialize_mint(",
+   "fix": "Check `is_initialized` and set it, or use Anchor's `init` constraint.",
+   "category": "accounts",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "strict",
+ "rules_run": 16,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-006",
+  "SOL-007",
+  "SOL-010",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

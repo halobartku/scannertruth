@@ -1,0 +1,9 @@
+COMMAND: python D:\Users\stank\Desktop\Forge\sol-audit-v2/cli.py D:\Users\stank\Desktop\Forge\scannertruth\corpus2\metaplex-token-metadata\secure --profile all --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/all\metaplex-token-metadata.secure/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/all\metaplex-token-metadata.secure/files.log --fail-on none --quiet
+EXIT: 0
+WALL_SECONDS: 0.09
+
+STDOUT:
+
+
+STDERR:
+

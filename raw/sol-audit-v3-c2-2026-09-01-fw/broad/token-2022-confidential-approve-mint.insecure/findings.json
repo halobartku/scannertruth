@@ -1,0 +1,80 @@
+{
+ "files_scanned": 1,
+ "total_findings": 3,
+ "counts": {
+  "HIGH": 1,
+  "MEDIUM": 1,
+  "LOW": 1
+ },
+ "by_rule": {
+  "SOL-028": 1,
+  "SOL-025": 1,
+  "SOL-009": 1
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-028",
+   "title": "Initialise handler with no initialised flag or discriminator to stop a rerun",
+   "severity": "HIGH",
+   "cwe": "CWE-665",
+   "file": "src\\processor.rs",
+   "line": 37,
+   "snippet": "fn process_initialize_mint(",
+   "fix": "Check `is_initialized` and set it, or use Anchor's `init` constraint.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-025",
+   "title": "Token amount narrowed with an `as` cast, which truncates silently",
+   "severity": "MEDIUM",
+   "cwe": "CWE-197",
+   "file": "src\\processor.rs",
+   "line": 331,
+   "snippet": "let deposit_amount_lo = amount & (u16::MAX as u64);",
+   "fix": "Use `u64::try_from(x)?` / `x.try_into()?` so an out-of-range value errors instead of wrapping.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\processor.rs",
+   "line": 332,
+   "snippet": "let deposit_amount_hi = amount.checked_shr(u16::BITS).unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  }
+ ],
+ "profile": "broad",
+ "rules_run": 23,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-006",
+  "SOL-007",
+  "SOL-009",
+  "SOL-010",
+  "SOL-014",
+  "SOL-015",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

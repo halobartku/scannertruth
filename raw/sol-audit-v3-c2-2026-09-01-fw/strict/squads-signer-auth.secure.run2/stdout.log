@@ -1,0 +1,9 @@
+COMMAND: python D:\Users\stank\Desktop\Forge\sol-audit-v2/cli.py D:\Users\stank\Desktop\Forge\scannertruth\corpus2\squads-signer-auth\secure --profile strict --format json --out raw/sol-audit-v3-c2-2026-09-01-fw/strict\squads-signer-auth.secure.run2/findings.json --log raw/sol-audit-v3-c2-2026-09-01-fw/strict\squads-signer-auth.secure.run2/files.log --fail-on none --quiet
+EXIT: 0
+WALL_SECONDS: 0.08
+
+STDOUT:
+
+
+STDERR:
+
