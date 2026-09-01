@@ -125,7 +125,13 @@ def ask_zai(model, code, think=False):
     }
     if not think:
         payload["thinking"] = {"type": "disabled"}
-        payload["max_tokens"] = 400
+        # The switch holds on a trivial prompt (zero reasoning tokens, measured 2026-09-02) and is
+        # ignored on the audit prompt often enough to matter: glm-5.3 reasoned 1,734 characters
+        # into `reasoning_content` on wormhole-sysvar with it set, spent the 400-token belt on that
+        # and returned no answer. The belt is wider here so the answer still arrives when the
+        # provider reasons anyway; every line records `thinking_chars`, and the scorer counts those
+        # calls as "reasoned despite the request" rather than pretending they were clean.
+        payload["max_tokens"] = 2000
     req = urllib.request.Request(
         ZAI, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
