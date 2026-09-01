@@ -28,7 +28,7 @@ that name it; "nothing" means no CI step, no test and no live document does.
 
 | Script | Job | Command from the root | Who calls it |
 |---|---|---|---|
-| `adapters.py` | one normalised `Finding` shape and the two control adapters, `null` and `noisy` | `python tools/adapters.py --demo` | `tests/data_integrity.py`, `tests/adapter_framework.py`; README, KNOWN-LIMITATIONS, `results/RESULTS-scanners.md`. No tool imports it; `adapters/*.json` are the declarations the framework reads |
+| `controls.py` | one normalised `Finding` shape and the two control adapters, `null` and `noisy`; `tools/adapters.py` until 2026-09-02, renamed so it stops sharing a name with the `adapters/` declarations | `python tools/controls.py --demo` | `tests/data_integrity.py`, `tests/adapter_framework.py`; README, KNOWN-LIMITATIONS, `results/RESULTS-scanners.md`. No tool imports it; `adapters/*.json` are the declarations the framework reads |
 | `build_corpus2.py` | build corpus 2 from each fix commit and its parent; `--crates` builds the real crates | `python tools/build_corpus2.py --manifest corpus2/manifest.json --out corpus2` | CI `--demo`; `tests/unmapped.py`; README, CANDIDATES-TRIAGE, KNOWN-LIMITATIONS, `results/RESULTS-corpus2.md`, `results/RESULTS-realcrates.md` |
 | `class_balance.py` | recompute class and repository concentration from the manifest into `CLASS-BALANCE.md` | `python tools/class_balance.py` (`--check` exits 1 if stale) | `tests/corpus_growth.py`; `CLASS-BALANCE.md` |
 | `control_c1.py` | rebuild and score the calibration controls on the teaching corpus from the committed line inventory | `python tools/control_c1.py` | `tests/published_numbers.py`, `tests/corpus_growth.py`, `tests/documented_commands.py`; no live document names it |

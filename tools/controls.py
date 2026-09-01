@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scanner adapters.
+"""Scanner controls: one normalised Finding shape, plus the null and noisy adapters.
 
 A benchmark that can only measure its author's tool is a self-assessment. This module is the seam
 that lets it measure anyone's: every scanner is wrapped so it produces the same normalised output.
@@ -17,7 +17,7 @@ recall, and `null` must score zero on both. If the metric ever fails to put `noi
 the metric is broken and the scanner rankings computed with it are worthless.
 
 Usage:
-    python tools/adapters.py            # self-check, then which adapters are available here
+    python tools/controls.py            # self-check, then which adapters are available here
 
 No tool imports this module; the declarations the framework runs are `adapters/*.json`.
 """
@@ -263,7 +263,7 @@ def demo():
         missing.binary = "definitely-not-installed-xyz"
         assert not missing.available()
 
-    print("adapters: OK")
+    print("controls: OK")
 
 
 if __name__ == "__main__":
