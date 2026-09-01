@@ -346,6 +346,7 @@ what the bug was.
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
 test_all.py            151 checks, mutation-verified. Run this first
+tests/                 the checks themselves, one module per concern; test_all.py imports them all
 
 docs/
   INDEX.md             the map: every script and who calls it, generated files, raw/ names, results pages
@@ -356,23 +357,48 @@ docs/
   ROADMAP.md           what exists today, and four funded milestones
   ADAPTERS.md          adding a scanner: the declaration, and what comes for free
   KNOWN-LIMITATIONS.md what this measurement cannot tell you
+  COVERAGE.md          generated: which measurement can show what it analysed, derived from raw/
+  CLASS-BALANCE.md     generated: class and repository concentration of corpus 2, from the manifest
   ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 10 more on 2026-09-01
   COMMITMENTS.md       three standing promises
   CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
   results/             the measurements themselves
+    RESULTS-all.md         current: every scanner, both corpora, the table the front page reads
+    RESULTS-corpus2.md     current: corpus 2 verdict by verdict
+    RESULTS-realcrates.md  current: the packaging objection tested on whole crates
+    RESULTS-models.md      current: model-backed auditors, three runs per variant
+    RESULTS-wormhole.md    frozen: the first out-of-sample case
+    RESULTS-scanners.md    superseded by RESULTS-all.md: the first multi-scanner run
+    RESULTS-v2.md          frozen: run 2, sol-audit v2
+    RESULTS.md             frozen: run 1, sol-audit v1; verify.py re-derives it
 
 tools/
   score.py score2.py   the scorers; score2 is the strict one, for real vulnerabilities
   run_all.py           the clock: re-measures on a schedule, diffs against the previous run
-  control_c2.py        the calibration controls, which must score zero
-  verify.py            re-derives a published result from raw data
+  control_c1.py        the calibration controls on the teaching corpus, rebuilt from a line inventory
+  control_c2.py        the calibration controls on corpus 2, which must score zero
+  verify.py            re-derives the run-1 result from raw data; that page only
   holdout.py           seal a holdout by hash before the round it scores
   corpus_ghsa.py       propose corpus candidates from advisory databases
+  corpus_radar.py      propose corpus candidates from public sources; never adds one
+  corpus_hashes.py     pin every corpus-2 file to a content hash and its upstream blob
+  build_corpus2.py     build corpus 2 from each fix commit and its parent; --crates builds the real crates
+  class_balance.py     writes docs/CLASS-BALANCE.md
+  coverage_matrix.py   writes docs/COVERAGE.md
   shiftaware.py        compare findings across a fix without being fooled by line shift
   unmapped_check.py    find a detection hiding under a rule the mapping missed
+  stale_findings.py    count findings that name a corpus file the rebuild removed
   preregistration_check.py  a mapping's commit must touch nothing but mappings/
   adapters.py          one normalised Finding shape, plus the two controls
   scanner_spec.py      the adapter framework: run, classify, log, check determinism
+  spec/                the framework's code; scanner_spec.py is the name everything imports
+  emit_sol_audit.py    run our own scanner and emit findings in the envelope the clock reads
+  normalise_runs.py    turn a directory of per-run artefacts into a findings file and a run log
+  rb.py                the first-day scorer for sol-audit against the teaching corpus
+  rc_run.py            run a scanner over the real crates, one invocation per case per variant
+  rc_score.py          score a real-crate run with score2's semantics
+  rc_compare.py        extracted file versus real crate, verdict by verdict
+  model_audit.py       measure a model-backed auditor the way a scanner is measured
 
 adapters/              one declaration per scanner: provenance, invocation, parser, rows
 corpus2/               real vulnerabilities, each pinned to its maintainers' own fix commit
