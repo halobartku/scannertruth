@@ -84,8 +84,9 @@ jobs:
   # a single badge answering both would answer neither.
   #
   # This job is allowed to be red while `selfcheck` is green, and that combination is not a broken
-  # build. It means: the checks work, and five of twenty measurements do not yet have a run log
-  # behind them. Milestone 1 in docs/ROADMAP.md closes when this goes green, and it closes with
+  # build. It means: the checks work, and some measurement cannot show what it analysed. That was
+  # the state on the morning of 2026-09-01, when five of twenty measurements had no run log behind
+  # them; it went green the same day. Milestone 1 in docs/ROADMAP.md closed when it did, with
   # scanner runs rather than with code.
   #
   # It exists because the machinery was proved with fixtures and nothing asserted the live state.

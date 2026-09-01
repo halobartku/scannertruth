@@ -124,7 +124,12 @@ def test_the_error_count_matches_the_logs():
     logged = 0
     for f in sorted(glob.glob("docs/ENGINEERING-LOG-*.md")):
         s = _io.open(f, encoding="utf-8").read()
-        logged = max(logged, *[int(n) for n in re.findall(r"\*\*Error (\d+)", s)] or [0])
+        # Two heading schemes: `**Error N.` inline up to error 37, `## Error N.` from 38 on. The
+        # regex saw only the first until 2026-09-01 and the README understated the record by
+        # four while this check passed. Both forms count; a number is counted once whichever
+        # form it uses, or both.
+        numbers = {int(n) for n in re.findall(r"(?:\*\*|^#+ )Error (\d+)", s, re.M)}
+        logged = max(logged, *numbers) if numbers else logged
     s = _io.open("README.md", encoding="utf-8").read()
     claimed = re.search(r"\*\*\[(\d+) of our own errors\]", s)
     assert claimed, "the README no longer states an error count; that claim is load-bearing"

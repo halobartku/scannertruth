@@ -35,8 +35,8 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 
 | Scanner | Teaching corpus, real recall | Real vulnerabilities, detected | Notes |
 |---|---|---|---|
-| `control-noisy` (flags every line) | **0 / 11** | — | 81,928 findings, 11 / 11 nominal, zero real |
-| `control-null` (reports nothing) | **0 / 11** | — | the floor |
+| `control-noisy` (flags every line) | **0 / 11** | - | 81,928 findings, 11 / 11 nominal, zero real |
+| `control-null` (reports nothing) | **0 / 11** | - | the floor |
 | **`radar`** (Auditware) | **11 / 11** | **0 / 8**, and **0 / 16** on re-run | re-run 2026-09-01, run log 34/34; 2 `unlocated`, 7 missed, 7 no-rule, scoreable denominator 9 |
 | `sol-audit` v2 (ours) | 4 / 11 | *retired 2026-09-01* (was **0 / 8**) | ours, free and open forever, not a product. The corpus-2 cell is RETIRED, not deleted: it never had a run log on either corpus, 96 of its 426 findings name files the corpus rebuild removed, and v3 supersedes it with a log on both. The teaching-corpus 4 / 11 stands; it measures a different tool from v3 and is not superseded by it. |
 | `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** | re-run per case, run log 35/35 and 34/34, zero unavailable; scored with the mapping pre-registered for v2, which does not claim v3's fourteen new rules, so this understates it. `unmapped_check`: 0 candidates |
@@ -72,7 +72,7 @@ that catches the Wormhole hack. That is an example of the rule, not its scope, a
 our mistake.
 
 On corpus 2 it fired once, on `squads-account-matching/insecure` at `src/lib.rs:310`. The fix
-changed lines **309 and 311** — it added the check that the instruction account keys match the
+changed lines **309 and 311** - it added the check that the instruction account keys match the
 submitted keys. It did not fire on the fixed variant. That is a detection of a real vulnerability,
 at the fix site, differential.
 

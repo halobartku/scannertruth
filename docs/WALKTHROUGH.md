@@ -309,9 +309,10 @@ python tools/run_all.py --verify-coverage
 ```
 
 This asks of every measurement on the clock the one question a findings file cannot answer: can this
-row show what it analysed? It runs in CI as its own job, and it is **red today**, because several
-rows published before this framework existed were run by hand and nobody wrote the log. Our own
-corpus-1 VaultLint row is one of them.
+row show what it analysed? It runs in CI as its own job. It was **red on the morning of
+2026-09-01**, because several rows published before this framework existed were run by hand and
+nobody wrote the log; our own corpus-1 VaultLint row was one of them. It went green the same day
+once those rows were re-run per case.
 
 Your row is off the clock while `"on_clock": false` is in your declaration, so this will not list it.
 Read your own `raw/c2-my-vaultlint.json.log` instead and answer the same question of it: is there one

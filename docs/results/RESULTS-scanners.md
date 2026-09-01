@@ -9,8 +9,8 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 |---|---|---|---|---|
 | `control-noisy` (flags every line) | 11 / 11 | **0 / 11** | 81,928 | almost all |
 | `control-null` (reports nothing) | 0 / 11 | **0 / 11** | 0 | 0 |
-| `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | — | 15 |
-| `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | — | 23 |
+| `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | - | 15 |
+| `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | - | 23 |
 | **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, not yet re-measured by us) |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
 
@@ -22,7 +22,7 @@ the whole reason to have one.
 They are not filler. They are what makes the rest of the table mean anything.
 
 `control-noisy` flags every non-empty line of every file. It produces **81,928 findings** and a
-**perfect nominal recall of 11/11** — and **zero real recall**. Any metric based on counting
+**perfect nominal recall of 11/11** - and **zero real recall**. Any metric based on counting
 findings would rank it first. Ours ranks it last, which is the point.
 
 `control-null` reports nothing and scores zero on both.

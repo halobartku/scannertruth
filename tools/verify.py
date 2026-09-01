@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Re-derive the headline numbers in RESULTS.md from benchmark-raw.json.
 
-Run: python verify.py
+Usage:
+    python tools/verify.py          # from the repository root
+    python tools/verify.py --demo
+
 Exits non-zero if the raw data does not reproduce the published result, so this doubles as a
 regression check on the claim rather than only a pretty-printer.
 

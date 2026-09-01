@@ -1,4 +1,4 @@
-# RESULTS, run 2 — sol-audit v2, 2026-08-31
+# RESULTS, run 2 - sol-audit v2, 2026-08-31
 
 Second dated run of the same benchmark, same corpus, same scoring rules as `docs/PROTOCOL.md`.
 **Run 1 in `docs/results/RESULTS.md` is not modified.** A benchmark that rewrites its own history is worthless.

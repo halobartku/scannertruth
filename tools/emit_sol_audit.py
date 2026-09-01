@@ -4,6 +4,11 @@
 Exists so sol-audit is measured by exactly the same pipeline as everyone else's tool. Until now our
 own scores were computed by hand and were therefore not on the clock, which meant we could detect a
 regression in somebody else's scanner and miss one in our own.
+
+Usage:
+    python tools/emit_sol_audit.py <sol-audit checkout> <corpus dir> [raw/<out>.json]
+
+The first argument is put on `sys.path` so `import scanner` resolves; there is no `--demo`.
 """
 import json, os, sys
 

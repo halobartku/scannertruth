@@ -46,10 +46,10 @@ python tools/control_c2.py                                 # controls must score
 If all of those pass, the harness is sound and you can trust what it tells you next. If any fails,
 **stop and report that** rather than measuring anything.
 
-There is a seventh command, and it is the one that does **not** pass today:
+There is a seventh command, and until 2026-09-01 it was the one that did **not** pass:
 
 ```bash
-python tools/run_all.py --verify-coverage                  # exits 1 on purpose. Read the next section.
+python tools/run_all.py --verify-coverage                  # green since 2026-09-01. Read the next section.
 ```
 
 ---
@@ -65,25 +65,26 @@ the badge you are looking at may be green on the machinery and red on the number
 is deliberate and it is not a broken build. `selfcheck` says the machinery is sound; `coverage` says
 whether what is published today can account for itself.
 
-**It is red right now, and it exits 1.** Run it: the counts move as rows are run and retired, so
-they are not repeated here. Two kinds of problem come out of it. Some rows report
-`coverage_evidence: none`, meaning no run log exists at all; Radar's 11 / 11 on the teaching corpus,
-the most quoted figure in this project, is one of those. The rest are cases inside a denominator
-that a run log does not account for, mostly the seventeenth corpus-2 case, which no scanner but
-VaultLint has seen.
+**It is green, and it exits 0.** It went green on 2026-09-01; on the morning of that day it was
+red and exited 1. Run it rather than trusting this sentence: the counts move as rows are run and
+retired, so they are not repeated here. When it was red, two kinds of problem came out of it. Some
+rows reported `coverage_evidence: none`, meaning no run log existed at all; Radar's 11 / 11 on the
+teaching corpus, the most quoted figure in this project, was one of those until it was re-run per
+case. The rest were cases inside a denominator that a run log did not account for, mostly the
+seventeenth corpus-2 case, which for a time no scanner but VaultLint had seen.
 
-Read what that does and does not say:
+Read what a red result does and does not say:
 
-- It does **not** mean a check broke. It means those measurements were made the way these documents
+- It does **not** mean a check broke. It means a measurement was made the way these documents
   used to teach, by hand, and the run log was the step a person had to remember.
 - **A case recorded `unavailable` with a reason is not a failure here.** "Could not run" is a
   published outcome under this project's rules. `not-run` and `unknown` are the gaps.
-- It closes with **scanner runs, not with code**, and it is the acceptance check for milestone 1 in
-  [`docs/ROADMAP.md`](docs/ROADMAP.md). Do not make it pass by relaxing it. If you cannot make a row
-  pass, publish why.
+- It closes with **scanner runs, not with code**, and it was the acceptance check for milestone 1 in
+  [`docs/ROADMAP.md`](docs/ROADMAP.md), passed on 2026-09-01 by re-running rows and retiring one.
+  Do not make it pass by relaxing it. If you cannot make a row pass, publish why.
 
-Any measurement you make from here must not add another. Run it through the declaration described
-below and it cannot: the log is written before the run returns.
+Any measurement you make from here must not turn it red again. Run it through the declaration
+described below and it cannot: the log is written before the run returns.
 
 ---
 

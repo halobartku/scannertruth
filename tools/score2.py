@@ -20,6 +20,14 @@ Three outcomes per case, and the middle one is the interesting one:
 
 `unlocated` exists because collapsing it into `detected` is exactly the flattery this benchmark is
 supposed to remove, and collapsing it into `missed` would be unfair to the tool.
+
+Usage:
+    python tools/score2.py --scanner radar --kind radar --findings raw/c2-radar-current.json
+    python tools/score2.py --demo
+
+`--scanner` names the file in `mappings/`, `--kind` the envelope the findings are in; the two
+differ when one adapter is scored under several readings (`--scanner sol-azy-c2ext --kind sol-audit`).
+`--corpus` and `--manifest` default to `corpus2` and `corpus2/manifest.json`.
 """
 import argparse
 import difflib

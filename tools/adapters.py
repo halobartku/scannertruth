@@ -15,6 +15,11 @@ and conflating them is how benchmarks lie.
 flags every line. They calibrate the metric: `noisy` must score high nominal recall and ZERO real
 recall, and `null` must score zero on both. If the metric ever fails to put `noisy` at the bottom,
 the metric is broken and the scanner rankings computed with it are worthless.
+
+Usage:
+    python tools/adapters.py            # self-check, then which adapters are available here
+
+No tool imports this module; the declarations the framework runs are `adapters/*.json`.
 """
 import json
 import os
