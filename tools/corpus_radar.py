@@ -184,7 +184,7 @@ def main():
         lines.append("_No new candidates passed all four requirements this run._")
     lines += ["", f"## Rejected ({len(rejected)})", ""]
     for r in rejected:
-        lines.append(f"- `{r['key']}` — {r['rejected_because']}")
+        lines.append(f"- `{r['key']}` - {r['rejected_because']}")
     if outages:
         lines += ["", "## Search outages, treat as missing coverage not as absence", ""]
         lines += [f"- `{q[:60]}`: {e}" for q, e in outages]

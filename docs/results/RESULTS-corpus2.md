@@ -72,8 +72,8 @@ class fires **at the site the fix changed**, on the vulnerable variant, and not 
 
 Two intermediate verdicts exist so that nothing is flattered or unfairly punished:
 
-- **unlocated** — the mapped rule fires somewhere in the file, but not where the bug was
-- **no-rule** — the scanner has no rule for this class at all, which is a coverage gap, not a failure
+- **unlocated** - the mapped rule fires somewhere in the file, but not where the bug was
+- **no-rule** - the scanner has no rule for this class at all, which is a coverage gap, not a failure
 
 ## The result
 

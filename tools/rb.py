@@ -17,11 +17,11 @@ CORPUS = "/tmp/sealevel-attacks/programs"
 sys.path.insert(0, "/workspace/forge/x402/sol-audit")
 import scanner  # noqa: E402
 
-# FIXED BEFORE RUNNING — see PROTOCOL.md. Do not widen these to rescue a result.
+# FIXED BEFORE RUNNING - see PROTOCOL.md. Do not widen these to rescue a result.
 # CORRECTED MAPPING. The first version guessed semantic rule ids (SOL-MISSING-SIGNER); the
 # scanner actually emits numeric codes (SOL-001..SOL-016), so nothing could ever match. This
-# remap is derived from each rule's OWN description in scanner.RULES — what the rule says it
-# detects — NOT from which rules happened to fire. Three corpus classes have NO corresponding
+# remap is derived from each rule's OWN description in scanner.RULES - what the rule says it
+# detects - NOT from which rules happened to fire. Three corpus classes have NO corresponding
 # rule in the scanner at all; they are recorded as structural gaps, and they still count as
 # misses because a scanner that cannot detect a bug does not detect it.
 MAP = {
@@ -64,7 +64,7 @@ def scan_dir(d):
                     raise RuntimeError("no scan entrypoint found in scanner.py: " + str([x for x in dir(scanner) if 'scan' in x.lower()]))
                 items = (res.get("findings") if isinstance(res, dict) else res) or []
                 for f2 in items:
-                    # scanner.py returns `Finding` dataclasses, not dicts. Normalise before use —
+                    # scanner.py returns `Finding` dataclasses, not dicts. Normalise before use -
                     # the first version of this harness assumed dicts, threw on every file that
                     # actually had findings, and silently scored 0/11. A broken harness that
                     # reports FAIL is worse than no harness.
@@ -133,11 +133,11 @@ rc = 100 * fp_variants / max(considered, 1)
 rr = 100 * detected / max(n, 1)
 print("\nVERDICT under the pre-registered decision rule:")
 if rc > 30 or rr < 50:
-    print("  FAIL — the scanner is not our specialization. Do not pitch Superteam with it.")
+    print("  FAIL - the scanner is not our specialization. Do not pitch Superteam with it.")
 elif rr >= 70 and rc <= 20:
-    print("  PASS — defensible claim, real grant application.")
+    print("  PASS - defensible claim, real grant application.")
 else:
-    print("  MIDDLING — commodity scanner. The grant pitch must rest on something else.")
+    print("  MIDDLING - commodity scanner. The grant pitch must rest on something else.")
 
 json.dump(rows, open("/tmp/benchmark-raw.json", "w"), indent=1, default=str)
 print("\nraw output: /tmp/benchmark-raw.json")
