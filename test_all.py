@@ -1253,6 +1253,12 @@ def test_no_document_states_a_noisy_control_figure_the_tools_do_not_produce():
 
     So the noun decides. `931 findings` is the retracted claim; `931 non-empty lines` is the fact
     it was derived from. Each quantity is checked against what it is a count OF.
+
+    Known limit, stated rather than left for someone to discover: this keys on the word "noisy",
+    so a sentence that discusses the control without naming it is out of scope. AGENTS.md contains
+    one such sentence on purpose, describing what the broken artefact used to emit, in the past
+    tense. Widening the match to catch it would mean teaching the check to recognise historical
+    narration, and a check that learns exceptions to prose stops guarding anything.
     """
     import io as _io, re
     q = _noisy_control_quantities()
