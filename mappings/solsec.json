@@ -5,19 +5,31 @@
   "derivation": "Mapping derived from solsec's OWN rule descriptions in docs/SECURITY_CHECKS.md, fetched and read BEFORE any corpus run, not from which rules happened to fire.",
   "right_of_reply": "Not sent to the solsec author. Under PROTOCOL.md this mapping should be offered to them for correction before the result is treated as final, and their correction published.",
   "map": {
-    "0-signer-authorization": ["missing_signer_check", "privilege_escalation"],
+    "0-signer-authorization": [
+      "missing_signer_check",
+      "privilege_escalation"
+    ],
     "1-account-data-matching": [],
     "2-owner-checks": [],
     "3-type-cosplay": [],
     "4-initialization": [],
     "5-arbitrary-cpi": [],
     "6-duplicate-mutable-accounts": [],
-    "7-bump-seed-canonicalization": ["pda_validation"],
+    "7-bump-seed-canonicalization": [
+      "pda_validation"
+    ],
     "8-pda-sharing": [],
     "9-closing-accounts": [],
     "10-sysvar-address-checking": []
   },
-  "unmapped_rules": ["unchecked_account", "reentrancy", "insufficient_validation", "integer_overflow", "unsafe_arithmetic"],
+  "unmapped_rules": [
+    "unchecked_account",
+    "reentrancy",
+    "insufficient_validation",
+    "integer_overflow",
+    "unsafe_arithmetic"
+  ],
   "unmapped_note": "solsec's remaining 5 rules target memory-safety (unsafe transmute/pointer ops), reentrancy (CEI pattern), generic bounds checking, and arithmetic overflow. None of these name a class in this corpus by the rule's own description, so none are mapped even though 'unchecked_account' brushes up against account-data-matching in spirit; its description (unsafe transmute/raw pointer access) is a narrower and different bug than 1-account-data-matching's actual pattern (missing owner check before typed deserialisation via try_from_slice), so it was not mapped on a strict reading of the rule's own text.",
-  "structural_gaps": "8 of 11 classes have no solsec rule at all under this reading: 1-account-data-matching, 2-owner-checks, 3-type-cosplay, 4-initialization, 5-arbitrary-cpi, 6-duplicate-mutable-accounts, 8-pda-sharing, 9-closing-accounts, 10-sysvar-address-checking. solsec's 8 rules target a different, broader slice of Rust/Solana security hygiene (memory safety, reentrancy, generic input validation, arithmetic) than the 11 sealevel-attacks classes, and only 2 of the 11 classes have any corresponding rule."
+  "structural_gaps": "9 of 11 classes have no solsec rule at all under this reading: 1-account-data-matching, 2-owner-checks, 3-type-cosplay, 4-initialization, 5-arbitrary-cpi, 6-duplicate-mutable-accounts, 8-pda-sharing, 9-closing-accounts, 10-sysvar-address-checking. solsec's 8 rules target a different, broader slice of Rust/Solana security hygiene (memory safety, reentrancy, generic input validation, arithmetic) than the 11 sealevel-attacks classes, and only 2 of the 11 classes have any corresponding rule.",
+  "count_correction_2026_09_01": "This field said '8 of 11 classes' and then listed nine of them. Corrected on 2026-09-01 to 9 of 11, derived from the map above rather than typed. A typed count in a project whose standing rule is 'never type a count a machine can compute'. Row 31 of the 2026-09-01 audit. The mapping itself is unchanged: not one rule was added, removed or moved."
 }

@@ -465,22 +465,38 @@ number.
 
 ## What this day produced
 
-- 92 checks, up from 82, running on three operating systems and three Python versions
+- 120 checks, up from 82, running on three operating systems and three Python versions
 - five broken links closed, and a link check that can see all of them
 - two front-page figures converted from typed to derived
 - one over-stated claim qualified and one unverifiable number withdrawn
+- **five more errors found and published: 31 to 35**, one of which was the external audit getting
+  a correction backwards and one of which was found by the very check the audit asked for
+- **the whole corpus tied to upstream**: 35 of 35 source files match the upstream git blob exactly
+- **four measurements added or replaced**, all per case, all with a log per invocation: Radar
+  re-run on the current corpus, semgrep with the SOL-0XX pack as an eighth tool, solsec, and our
+  own sol-audit 3.0
+- **coverage evidence from 3 of 12 measurements to 15 of 20**, in a matrix that is generated
 
 ## What is still wrong
 
-- **`spl-token-lending-rounding` is still not built**, and eight further cases are built but have
-  never been measured, so every real-vulnerability score reads out of **eight of seventeen valid
-  cases**. The corpus grew today; the measurement did not.
-- **Nothing has been run over the eight cases added today.** Until a scanner is, `run_all.py` will
-  report `radar`, `vaultlint` and `sol-audit` on corpus 2 as `partial` rather than `measured`, which
-  is correct and should not be edited away.
-- **Four of six scanners have never been run on the real crates**, so the packaging objection is
+- **`spl-token-lending-rounding` is still not built.** Every corpus-2 figure reads out of sixteen
+  built valid cases, or out of eight for the two rows that have not been re-run.
+- **`sol-audit` v2 and `vaultlint` have not been re-run over the eight cases added today**, so
+  `run_all.py` reports them as `partial`, which is correct and should not be edited away. Radar,
+  solsec, semgrep-with-the-pack and sol-audit v3 have been, and detect nothing on any of them.
+- **`sol-audit` v2 still has no per-run coverage log on either corpus**, and 96 of the 426
+  findings in its corpus-2 file name files the corpus rebuild removed. The scorer now refuses to
+  score on them; `raw/stale-findings-2026-09-01.json` keeps the count visible.
+- **Four of eight scanners have never been run on the real crates**, so the packaging objection is
   tested rather than retired.
 - **Radar cannot finish on the three largest real crates**, which biases that coverage toward small
   projects and is itself a finding we owe Auditware.
-- **`sol-audit` still has no per-run coverage log** while Radar and VaultLint do.
-- **Still no vendor reply**, from any of the four threads.
+- **Corpus 2 cannot be compiled by any compiler-based analyser**, and corpus 1 no longer resolves
+  its dependencies at all (`anchor-lang 0.20.1` is yanked). X-Ray and solana-lints are being scored
+  against corpora they cannot open.
+- **Nine classes of sixteen have no rule in any mapping**, so the raw denominator is not the honest
+  one. `run_all.py` now publishes a `scoreable_denominator` beside every tally; the results pages
+  quote it for some rows and not yet for all.
+- **Still no vendor reply**, from any of the threads, and none has been opened with Copenhagen0x
+  for the SOL-0XX pack or with the solsec author about the corrected denominator. Every result
+  here is provisional until they have been.
