@@ -11,7 +11,9 @@ were wrong. The order below is what survived that audit. Steps 4 and 6 exist bec
 produced retractions.
 
 Repo: `github.com/halobartku/scannertruth`. Protocol: `PROTOCOL.md`. Every error referenced by
-number is in `ENGINEERING-LOG-2026-08-31.md`.
+number is in `ENGINEERING-LOG-2026-08-31.md` (errors 1 to 21) or `ENGINEERING-LOG-2026-09-01.md`
+(from 22). This file is the one home of the procedure: `AGENTS.md`, `docs/WALKTHROUGH.md` and
+`docs/ADAPTERS.md` keep what is specific to each of them and link into the steps below.
 
 ## Before anything: prove the harness works
 
@@ -125,7 +127,8 @@ replace it with the successful run.
 **`invocation_evidence` must cite a file in this repository**, not describe a memory. A command
 typed from memory is the same class of claim as a number typed from memory, and the suite fails a
 declaration that cites nothing. If nobody wrote the command down, the honest declaration says
-`"engine": "unrecorded"` with a reason. Three published rows are in exactly that state.
+`"engine": "unrecorded"` with a reason. One published row, X-Ray, is still in that state; two more
+were until 2026-09-01, and `docs/ADAPTERS.md` says how each command was recovered.
 
 Then, before running the tool at all:
 
@@ -203,7 +206,7 @@ Worth knowing about the teaching corpus: `sealevel-attacks` was last touched **2
 least two measured tools cite its class pages in their own rule tables. **Every score on it is
 in-sample**, including ours. Say so before anyone asks.
 
-## 6. Write the mapping down before you score, and check the scorer can say yes
+## 6. Write the mapping down before you run, and check the scorer can say yes
 
 `mappings/<scanner>.json` maps the tool's rule ids to classes, derived from **the tool's own rule
 names and documentation**, committed **in its own commit before the run** so the timestamp is the
@@ -311,7 +314,7 @@ and their own skill:
 | "I'll adjust the mapping so the result makes sense" | The mapping is pre-registered, and it is theirs to correct, not ours to tune. |
 | "The scorer returns zero everywhere, so nothing detects anything" | Prove the scorer can return a positive first. |
 | "One case is enough to say scanners don't work" | n=1 is a direction to test. Two headlines were extrapolated from n=1 and had to be retracted. |
-| "There is a declaration for this tool, so I can run it" | Three declarations say `engine: unrecorded`. Nobody wrote the command down, and `command_for` refuses rather than inventing one. |
+| "There is a declaration for this tool, so I can run it" | X-Ray's declaration says `engine: unrecorded`. Nobody wrote the command down, and `command_for` refuses rather than inventing one. |
 | "The framework wrote a run log, so coverage is proved" | It proves the invocation happened and records what the tool said. Whether `ok` was the right verdict depends on the `coverage.evidence` pattern **you** wrote. Read the artefacts. |
 | "The determinism file is there, so the tool is deterministic" | Without `--repeat 2` it says `not-checked`. That is an unanswered question, not an answer. |
 | "The framework classified it, so I don't need to look at stdout" | `run_leaf` keeps the complete stdout and stderr of every invocation for exactly this. Looking is the cheapest check in the project. |

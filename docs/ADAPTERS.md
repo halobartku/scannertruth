@@ -58,15 +58,13 @@ whole job.
 
 ### 1. Provenance, before anything is downloaded
 
-Find its own repository and take the install path it documents. `cargo install radar` nearly
-installed an unrelated 2021 crate by a different author. Check that any registry package maps to
-that repository: author, repo link, publish date.
+Find its own repository and take the install path it documents, and check that any registry package
+maps to that repository. [`measure-a-scanner`, step 1](../skills/measure-a-scanner/SKILL.md#1-provenance-before-anything-is-downloaded).
 
 ### 2. Check its argument shape and its coverage line
 
-Ten seconds of `--help` on the binary *and* on the subcommand, then one run on any directory, to
-answer two questions the declaration has to state: what does it print when it has read files, and
-what does its output look like?
+`--help` on the binary *and* on the subcommand, then one run on any directory, to learn what it prints
+when it has read files and what its output looks like. [`measure-a-scanner`, step 2](../skills/measure-a-scanner/SKILL.md#2-read-the-tools-argument-shape-and-its-coverage-line-yours-and-only-yours).
 
 ### 3. Write `adapters/solguard.json`
 
@@ -125,14 +123,9 @@ is the one part of adding a tool that is still code.
 python tools/scanner_spec.py --self-check
 ```
 
-This plants `SG-014` at the fix site of a synthetic vulnerable/fixed pair, parses it with
-solguard's parser, writes it in solguard's envelope, reads it back with the same code that reads
-every committed findings file, and requires the scorer to say `detected`. Then it plants the same
-finding on the fixed variant too and requires the answer to stop being a detection.
-
-If this fails, stop. A parser that silently returns nothing is indistinguishable from a tool that
-found nothing, and that exact failure once kept every check in this repository green while turning
-every corpus-2 verdict into a miss.
+This plants `SG-014` at the fix site of a synthetic vulnerable/fixed pair, runs it through solguard's
+parser and envelope, and requires the scorer to say `detected`, then to stop saying it on the fixed
+variant. If this fails, stop; why is in [`measure-a-scanner`, step 3](../skills/measure-a-scanner/SKILL.md#3-declare-the-adapter-and-check-the-declaration-before-running-anything).
 
 ### 5. Pre-register the mapping, in its own commit
 
@@ -217,8 +210,9 @@ having disappeared.
 
 ## Related
 
-- [`AGENTS.md`](../AGENTS.md) is the procedure this framework is meant to make cheap, not replace.
-  Read it first; nothing here removes a step from it.
+- [`skills/measure-a-scanner/SKILL.md`](../skills/measure-a-scanner/SKILL.md) is the procedure this
+  framework is meant to make cheap, not replace; nothing here removes a step from it.
+  [`AGENTS.md`](../AGENTS.md) is its executable order for an agent. Read one of them first.
 - [`docs/COVERAGE.md`](COVERAGE.md) is the derived matrix of which measurement can show what it
   analysed.
 - [`docs/PROTOCOL.md`](PROTOCOL.md) carries the pre-registration rule and the right of reply.

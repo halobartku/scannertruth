@@ -36,9 +36,8 @@ this project produced a retraction.
 
 ## Step 1. Find the tool's real home before downloading anything
 
-Do not search a package registry and install the first name that matches. `cargo install radar`
-would have installed **an unrelated 2021 crate by a different author**, and we would have measured a
-random package and called it a competitor.
+Do not search a package registry and install the first name that matches; what to check, and the
+unrelated crate `cargo install radar` nearly measured, are in [`measure-a-scanner`, step 1](../skills/measure-a-scanner/SKILL.md#1-provenance-before-anything-is-downloaded).
 
 For VaultLint: the crate on crates.io, its listed repository, and the version. Check that the name
 maps to the project you think it is.
@@ -62,11 +61,9 @@ git commit -m "pre-register mapping for vaultlint"
 python tools/preregistration_check.py
 ```
 
-That second command is not decoration. A mapping commit may contain **nothing but `mappings/`**. If
-it arrives beside a results page, a run file or a raw findings file, it is not pre-registered
-whatever the commit message says, and CI rejects it. This is enforced because it was once only
-asserted: the seven mappings published on 2026-08-31 each arrived in the same commit as the result
-they scored, and the claim had to be retracted. See `docs/PROTOCOL.md` 3a.
+That second command is not decoration. A mapping commit may contain **nothing but `mappings/`**, and
+CI rejects one that does not; why that rule is enforced rather than asserted is in
+[`measure-a-scanner`, step 6](../skills/measure-a-scanner/SKILL.md#6-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes) and `docs/PROTOCOL.md` 3a.
 
 **Commit it on its own, before the run.** The commit timestamp is the pre-registration, and it is
 the only thing that stops you from quietly adjusting the mapping once you dislike the score.
@@ -75,10 +72,8 @@ Two outcomes are allowed and you should use them:
 - `no-rule`: the tool never claimed to cover this class. A coverage gap, not a failure.
 - `unmappable`: the rule's description is too broad to tie to one class.
 
-**A trap we fell into.** X-Ray has a rule called "the account may not be properly validated". We
-mapped it to one narrow class because the vendor's blog presented it as catching one specific hack.
-That was an example of the rule, not its scope. It detected a real vulnerability and our mapping
-scored it zero. Map from the rule's own name and docs, not from marketing.
+**A trap we fell into**, mapping a generic X-Ray rule to one narrow class on the strength of a vendor
+blog post, is in [`measure-a-scanner`, step 6](../skills/measure-a-scanner/SKILL.md#6-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes). Map from the rule's own name and docs, not from marketing.
 
 ---
 
@@ -106,10 +101,9 @@ docker run --rm --entrypoint vaultlint vaultlint-runner:local --help       > raw
 docker run --rm --entrypoint vaultlint vaultlint-runner:local scan --help >> raw/my-vaultlint-help.txt
 ```
 
-**We got this wrong and it cost 18 runs.** We passed `--format json` to the binary when it belongs
-to the `scan` subcommand. All 18 failed identically. The harness correctly recorded them as
-**unavailable rather than as zeros**, which is the whole point of the distinction, but the run was
-still wasted.
+**We got this wrong and it cost 18 runs**: a flag passed to the binary when it belonged to the `scan`
+subcommand. The harness recorded them as unavailable rather than as zeros, but the run was still
+wasted. [`measure-a-scanner`, step 2](../skills/measure-a-scanner/SKILL.md#2-read-the-tools-argument-shape-and-its-coverage-line-yours-and-only-yours).
 
 While you are here, run the tool once against any directory and **watch for the line where it says
 how many files it read**. That one line is what separates "found nothing" from "never ran", it is
@@ -218,14 +212,9 @@ the honest verdict when the question cannot be answered, and can never quietly b
 python tools/scanner_spec.py --self-check
 ```
 
-This plants `VL002` at the fix site of a synthetic vulnerable/fixed pair, parses it with VaultLint's
-parser, writes it in VaultLint's envelope, reads it back with the same code that reads every
-committed findings file, and requires the scorer to say `detected`. Then it plants the same finding
-on the fixed variant too and requires the answer to stop being a detection.
-
-**If this fails, stop.** A parser that silently returns nothing is indistinguishable from a tool that
-found nothing, and that exact failure once kept every check in this repository green while turning
-every corpus-2 verdict into a miss.
+This plants `VL002` at the fix site of a synthetic vulnerable/fixed pair, runs it through VaultLint's
+parser and envelope, and requires the scorer to say `detected`, then to stop saying it on the fixed
+variant. **If this fails, stop**; why is in [`measure-a-scanner`, step 3](../skills/measure-a-scanner/SKILL.md#3-declare-the-adapter-and-check-the-declaration-before-running-anything).
 
 ---
 
@@ -246,38 +235,16 @@ raw/c2-my-vaultlint.json.determinism.json   deterministic, non-deterministic, or
 
 ### What you no longer have to remember
 
-**The run log.** This was the step whose absence caused us to retract a published headline: a
-findings file cannot prove a case was analysed, because a tool that ran and found nothing leaves
-exactly the same silence as a tool that never saw the case. We published "0 of 8" for two scanners
-when the data behind it covered one case each. The framework writes the tool's complete stdout and
-stderr, plus a log entry carrying the exact command, the exit code and the wall time, **before it
-returns, on success, on crash and on timeout**. There is no path through it that produces a findings
-file and no log.
-
-**The classification.** We used to get this wrong in both directions: we scored invocation errors as
-"did not detect", and then, in the harness written to prevent that, we scored a clean zero as
-unavailable. It is one function now, and the four outcomes stay four different facts:
-
-| What happened | What it is |
-|---|---|
-| The tool said it read the files and reported nothing | `ok`, and a **clean zero** |
-| Exit 0 having said nothing | `unavailable`, **never zero** |
-| Error, timeout, crash, bad arguments, output no parser can read | `unavailable`, **never zero** |
-| Your declaration admits the tool prints no coverage line | `unknown`, **never zero** |
-
-**The determinism check.** `--repeat 2` runs every invocation twice and compares findings by rule,
-file, line and column. Both passes stay on disk and nothing is averaged.
+The run log, the zero-versus-outage classification and the determinism check are the framework's,
+written before the run returns. What each one guarantees, the four outcomes it keeps apart, and the
+retraction the missing log once caused are in [`measure-a-scanner`, step 4](../skills/measure-a-scanner/SKILL.md#4-run-it-and-let-the-log-be-structural-rather-than-remembered).
 
 ### What is still yours, and do not skip it
 
 The status column is only as good as the `coverage.evidence` pattern you wrote. Open two or three of
 the artefacts under `raw/c2-my-vaultlint-runs/` and read the tool's own words against the verdict
-the framework gave them. If your pattern never matches, every case comes back `unavailable` and you
-have an outage, not a measurement. If it matches something it should not, you have manufactured
-clean zeros, which is worse.
-
-And `--repeat 2` is a flag, not a default. Without it the determinism file says `not-checked`, which
-is an unanswered question rather than an answer.
+the framework gave them. And `--repeat 2` is a flag, not a default: without it the determinism file
+says `not-checked`. Both are spelled out in [`measure-a-scanner`, step 4](../skills/measure-a-scanner/SKILL.md#4-run-it-and-let-the-log-be-structural-rather-than-remembered).
 
 ---
 
@@ -309,10 +276,9 @@ python tools/run_all.py --verify-coverage
 ```
 
 This asks of every measurement on the clock the one question a findings file cannot answer: can this
-row show what it analysed? It runs in CI as its own job. It was **red on the morning of
-2026-09-01**, because several rows published before this framework existed were run by hand and
-nobody wrote the log; our own corpus-1 VaultLint row was one of them. It went green the same day
-once those rows were re-run per case.
+row show what it analysed? It runs in CI as its own job and has been green since 2026-09-01. It was
+red that morning because rows run by hand before this framework existed had no log, our own corpus-1
+VaultLint row among them; what red means, and why it is not a broken build, is in [`measure-a-scanner`, before anything](../skills/measure-a-scanner/SKILL.md#before-anything-prove-the-harness-works).
 
 Your row is off the clock while `"on_clock": false` is in your declaration, so this will not list it.
 Read your own `raw/c2-my-vaultlint.json.log` instead and answer the same question of it: is there one
@@ -378,5 +344,4 @@ the one nothing will ever produce for you.
 **If changing a threshold, a mapping, or a target would turn a zero into a number, the zero is the
 finding.**
 
-This benchmark exists because vendors tune against the corpus they are measured on. The moment you
-do the same, your measurement is worth exactly what theirs is.
+Why, and the two things that were nearly tuned on 2026-08-31: [`measure-a-scanner`, step 9](../skills/measure-a-scanner/SKILL.md#9-never-tune-to-produce-a-result).
