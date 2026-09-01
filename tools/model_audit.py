@@ -83,8 +83,9 @@ def ask_openrouter(model, code, think=False):
     # Reasoning is the provider's default otherwise, and it gets room. The first sweeps on
     # 2026-09-01 suppressed it (`reasoning.enabled: false`, 400-token belt) to match ollama's
     # think=False; those rows carry no `reasoning` field. On 2026-09-02 the owner's rule became:
-    # if a model thinks, let it think, and record how much. `max_tokens` is only a ceiling now.
-    payload["max_tokens"] = 8000
+    # if a model thinks, let it think, and record how much. `max_tokens` is only a ceiling now,
+    # and 8,000 was not enough: glm-5.3 thought 33,813 characters on wormhole-sysvar and hit it.
+    payload["max_tokens"] = 32000
     req = urllib.request.Request(
         OPENROUTER, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
@@ -96,7 +97,8 @@ def ask_openrouter(model, code, think=False):
             (msg.get("reasoning") or ""),
             (d.get("choices") or [{}])[0].get("finish_reason", ""),
             {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
-             "cost_usd": u.get("cost"), "reasoning": "requested" if think else "allowed"})
+             "cost_usd": u.get("cost"), "reasoning": "requested" if think else "allowed",
+             "max_tokens": payload.get("max_tokens")})
 
 
 ZAI = os.environ.get("GLM_BASE_URL", "https://api.z.ai/api/coding/paas/v4").rstrip("/") + "/chat/completions"
@@ -125,7 +127,7 @@ def ask_zai(model, code, think=False):
     # Same rule as OpenRouter since 2026-09-02: reasoning is the model's default and gets room.
     # (With `thinking.type: disabled` glm-5.3 obeyed on a trivial prompt and reasoned 1,734
     # characters anyway on the audit prompt, so "suppressed" was never a clean label here.)
-    payload["max_tokens"] = 8000
+    payload["max_tokens"] = 32000
     req = urllib.request.Request(
         ZAI, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
@@ -145,7 +147,7 @@ def ask_zai(model, code, think=False):
             (d.get("choices") or [{}])[0].get("finish_reason", ""),
             {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
              "cost_usd": None, "cost_basis": "z.ai coding plan quota, no per-call price",
-             "reasoning": "requested" if think else "allowed"})
+             "reasoning": "requested" if think else "allowed", "max_tokens": payload.get("max_tokens")})
 
 
 def ask_claude_code(model, code, think=False):
