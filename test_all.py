@@ -1567,7 +1567,10 @@ def test_every_file_named_in_ci_exists():
     import io as _io, os, re
     s = _io.open(".github/workflows/verify.yml", encoding="utf-8").read()
     refs = set(re.findall(r"--findings\s+([A-Za-z0-9_./-]+)", s))
-    refs |= set(re.findall(r"python\s+([A-Za-z0-9_-]+\.py)", s))
+    # `[A-Za-z0-9_-]+` matched neither a dot nor a slash, so every `python tools/<x>.py` step in
+    # the workflow was silently skipped by the check written to verify them. Same blindness as the
+    # documented-command check had.
+    refs |= set(re.findall(r"python3?\s+([A-Za-z0-9_./-]+\.py)", s))
     missing = [r for r in sorted(refs) if not os.path.exists(r)]
     assert not missing, f"CI references files that do not exist: {missing}"
 
