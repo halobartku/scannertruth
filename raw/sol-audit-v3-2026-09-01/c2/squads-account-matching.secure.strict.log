@@ -1,0 +1,6 @@
+COMMAND: C:\Users\stank\AppData\Local\Programs\Python\Python313\python.exe D:/Users/stank/Desktop/Forge/sol-audit-v2\cli.py D:/Users/stank/Desktop/Forge/scannertruth\corpus2\squads-account-matching\secure --profile strict --format json --out D:/Users/stank/Desktop/Forge/scannertruth\raw\sol-audit-v3-2026-09-01\c2\squads-account-matching.secure.strict.json --log D:/Users/stank/Desktop/Forge/scannertruth\raw\sol-audit-v3-2026-09-01\c2\squads-account-matching.secure.strict.filelog --fail-on none --quiet
+RC: 0
+WALL: 0.1s
+STDOUT:
+
+STDERR:

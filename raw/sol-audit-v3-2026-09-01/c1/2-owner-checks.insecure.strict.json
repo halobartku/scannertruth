@@ -1,0 +1,59 @@
+{
+ "files_scanned": 1,
+ "total_findings": 2,
+ "counts": {
+  "HIGH": 1,
+  "MEDIUM": 1
+ },
+ "by_rule": {
+  "SOL-022": 1,
+  "SOL-002": 1
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-022",
+   "title": "Account data deserialised by hand with no discriminator distinguishing types",
+   "severity": "HIGH",
+   "cwe": "CWE-843",
+   "file": "src\\lib.rs",
+   "line": 13,
+   "snippet": "let token = SplTokenAccount::unpack(&ctx.accounts.token.data.borrow())?;",
+   "fix": "Use `Account<'info, T>`, or add a type tag as the first field and compare it before trusting the rest.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-002",
+   "title": "Raw AccountInfo field - no owner/type validation enforced by deserialization",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\lib.rs",
+   "line": 24,
+   "snippet": "token: AccountInfo<'info>,",
+   "fix": "Use `Account<'info, T>` / `Program<'info, T>` types, or manually check `.owner == expected_program_id` and `.key()`.",
+   "category": "authorization",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "strict",
+ "rules_run": 16,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-006",
+  "SOL-007",
+  "SOL-010",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

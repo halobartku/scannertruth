@@ -1,0 +1,123 @@
+{
+ "files_scanned": 1,
+ "total_findings": 6,
+ "counts": {
+  "HIGH": 2,
+  "LOW": 4
+ },
+ "by_rule": {
+  "SOL-022": 1,
+  "SOL-027": 1,
+  "SOL-016": 1,
+  "SOL-009": 3
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-022",
+   "title": "Account data deserialised by hand with no discriminator distinguishing types",
+   "severity": "HIGH",
+   "cwe": "CWE-843",
+   "file": "src\\transfer.rs",
+   "line": 209,
+   "snippet": "let token = Account::unpack(&ctx.accounts.token_info.try_borrow_data()?)?;",
+   "fix": "Use `Account<'info, T>`, or add a type tag as the first field and compare it before trusting the rest.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-027",
+   "title": "Introspected instruction never checked against an expected program id",
+   "severity": "HIGH",
+   "cwe": "CWE-345",
+   "file": "src\\transfer.rs",
+   "line": 241,
+   "snippet": "get_instruction_relative(0, ctx.accounts.sysvar_instructions_info).unwrap();",
+   "fix": "Compare `ix.program_id` with the program you expect before trusting the instruction.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-016",
+   "title": "PDA seeds not anchored to a program-owned namespace literal",
+   "severity": "LOW",
+   "cwe": "CWE-327",
+   "file": "src\\transfer.rs",
+   "line": 204,
+   "snippet": "authority_signer_seeds: None,",
+   "fix": "Prefix seeds with byte literals (b\"...\") unique to your program; avoid fully user-controlled seeds.",
+   "category": "pda",
+   "kind": "heuristic"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\transfer.rs",
+   "line": 241,
+   "snippet": "get_instruction_relative(0, ctx.accounts.sysvar_instructions_info).unwrap();",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\transfer.rs",
+   "line": 361,
+   "snippet": "owner_token_record.delegate_role.unwrap().into()",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-009",
+   "title": "unwrap()/expect() on account/instruction data - panic DoS",
+   "severity": "LOW",
+   "cwe": "CWE-248",
+   "file": "src\\transfer.rs",
+   "line": 412,
+   "snippet": "mpl_utils::token::spl_token_transfer(token_transfer_params).unwrap()",
+   "fix": "Use `try_from`/`Deref` with error propagation instead of unwrap on external input.",
+   "category": "hygiene",
+   "kind": "shape"
+  }
+ ],
+ "profile": "all",
+ "rules_run": 30,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-005",
+  "SOL-006",
+  "SOL-007",
+  "SOL-008",
+  "SOL-009",
+  "SOL-010",
+  "SOL-011",
+  "SOL-012",
+  "SOL-013",
+  "SOL-014",
+  "SOL-015",
+  "SOL-016",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-026",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

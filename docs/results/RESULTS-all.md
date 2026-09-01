@@ -4,6 +4,15 @@
 > variant, over every case, with a log per run**. Both now carry `coverage_evidence: run log`, the
 > strongest form: 18 runs each, 36 in total, **36 successes, zero unavailable**.
 >
+> **That sentence is true and its evidence was defective, 2026-09-01 (error 32).** The runner
+> decided `ok` versus `UNAVAILABLE` by asking whether radar had written an output file, and radar
+> writes no output file when it finds nothing. One of the 36 was recorded as `UNAVAILABLE` in
+> `raw/c2-radar-percase.log` and as `ok, findings: 0` in the log that actually scores, and nothing
+> compared the two. radar's own stdout for all 18 runs is now committed at
+> `raw/radar-c2-2026-08-31-stdout/`; every one reports `radar completed successfully` with a
+> non-zero `Scanned N file` count, so the count stands at 36 and 36. Two checks now compare the
+> two logs, and compare the run log with the tool's own account of what it did.
+>
 > **The conclusion held. Nothing detects anything on corpus 2** except the single X-Ray finding
 > under a corrected mapping. But two details were wrong before and are worth more than the
 > headline: Radar's mapped rule was said to "never fire at all" on eight of nine cases - it in fact
@@ -26,14 +35,16 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 
 | Scanner | Teaching corpus, real recall | Real vulnerabilities, detected | Notes |
 |---|---|---|---|
-| `control-noisy` (flags every line) | **0 / 11** | — | 931 findings, perfect nominal, zero real |
+| `control-noisy` (flags every line) | **0 / 11** | — | 81,928 findings, 11 / 11 nominal, zero real |
 | `control-null` (reports nothing) | **0 / 11** | — | the floor |
-| **`radar`** (Auditware) | **11 / 11** | **0 / 8** measured | run log, 18/18; 2 `unlocated`, 5 missed, 1 no-rule |
-| `sol-audit` v2 (ours) | 4 / 11 | **0 / 8** | ours, free and open forever, not a product |
+| **`radar`** (Auditware) | **11 / 11** | **0 / 8**, and **0 / 16** on re-run | re-run 2026-09-01, run log 34/34; 2 `unlocated`, 7 missed, 7 no-rule, scoreable denominator 9 |
+| `sol-audit` v2 (ours) | 4 / 11 | **0 / 8** | ours, free and open forever, not a product; no run log on either corpus |
+| `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** | re-run per case, run log 35/35 and 34/34, zero unavailable; scored with the mapping pre-registered for v2, which does not claim v3's fourteen new rules, so this understates it. `unmapped_check`: 0 candidates |
 | `vaultlint` 0.1.1 | 2 / 11 | **0 / 8** measured | run log, 18/18; 7 of 8 are `no-rule`, a stated coverage limit |
 | **`x-ray`** (sec3, formerly Soteria) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** | the one real detection anything has made; see below |
-| `solsec` 0.2.1 | 0 / 11 | **0 / 6**, 3 unavailable | 108 findings, every one fires on the fix too |
-| `semgrep` 1.174 | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
+| `solsec` 0.2.1 | 0 / 11 | **0 / 16** | re-run per case 2026-09-01, run log 34/34, **zero unavailable**; 14 no-rule, scoreable denominator 2 |
+| `semgrep` 1.174, own registry | 0 | 0 | not a miss: `p/rust` has 11 rules and none concern Solana |
+| `semgrep` + SOL-0XX pack | 3 / 11 nominal, **0 / 11** real | **0 / 16** | new 2026-09-01, mapping pre-registered before the run, run log 35/35 and 34/34; 3 `unlocated`, all of them "fires at the fix site but also on the fix" |
 
 ## What this says
 

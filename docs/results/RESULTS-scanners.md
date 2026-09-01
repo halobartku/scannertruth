@@ -7,7 +7,7 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 
 | Scanner | Nominal recall | **Real recall** | Findings | On already-fixed code |
 |---|---|---|---|---|
-| `control-noisy` (flags every line) | 11 / 11 | **0 / 11** | 931 | almost all |
+| `control-noisy` (flags every line) | 11 / 11 | **0 / 11** | 81,928 | almost all |
 | `control-null` (reports nothing) | 0 / 11 | **0 / 11** | 0 | 0 |
 | `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | — | 15 |
 | `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | — | 23 |

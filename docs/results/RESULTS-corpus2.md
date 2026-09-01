@@ -4,6 +4,12 @@
 > variant, over every case, with a log per run**. Both now carry `coverage_evidence: run log`, the
 > strongest form: 18 runs each, 36 in total, **36 successes, zero unavailable**.
 >
+> **The evidence behind that sentence was defective, 2026-09-01 (error 32).** The runner decided
+> `ok` versus `UNAVAILABLE` by asking whether radar had written an output file, and radar writes
+> none when it finds nothing. radar's own stdout for all 18 runs is now committed at
+> `raw/radar-c2-2026-08-31-stdout/` and confirms 36 and 36; two checks now compare the human log,
+> the log that scores, and the tool's own account of what it did.
+>
 > **The conclusion held. Nothing detects anything on corpus 2** except the single X-Ray finding
 > under a corrected mapping. But two details were wrong before and are worth more than the
 > headline: Radar's mapped rule was said to "never fire at all" on eight of nine cases - it in fact
@@ -13,8 +19,11 @@
 
 
 > **THE CORPUS GREW AFTER THIS MEASUREMENT, 2026-09-01.** The table of cases below is the corpus as
-> it stood on 2026-08-31. Eight more were added on 2026-09-01 and **none of them has been measured
-> by anything**, so this page's denominator of eight is still the right one for the numbers on it.
+> it stood on 2026-08-31. Eight more were added on 2026-09-01. **Radar, solsec and semgrep with
+> the SOL-0XX pack have since been re-run per case over all sixteen built cases** and detect
+> nothing on any of them; `sol-audit` and `vaultlint` have not, so this page's denominator of
+> eight is still the right one for their rows and not for those three. Radar's own per-case
+> breakdown moved on the re-run: `squads-signer-auth` is `missed`, not `unlocated` (error 31).
 > The current corpus is `corpus2/manifest.json`, and its class and repository balance is recomputed
 > in [`../CLASS-BALANCE.md`](../CLASS-BALANCE.md).
 

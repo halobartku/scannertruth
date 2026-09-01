@@ -117,26 +117,48 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 
 | Scanner | Teaching corpus (2022, public) | Real vulnerabilities |
 |---|---|---|
-| `control-noisy`, 931 findings | **0 / 11** | **0**, despite 1,413,620 findings |
-| **Radar** (Auditware) | **11 / 11** | 0 / 8 |
-| `sol-audit` (ours) | 4 / 11 | 0 / 8 |
+| `control-noisy` | **0 / 11**, from 81,928 findings | **0**, despite 2,392,280 findings |
+| **Radar** (Auditware) | **11 / 11** | 0 / 8, re-run 2026-09-01: also **0 / 16** |
+| `sol-audit` v2 (ours) | 4 / 11 | 0 / 8 |
+| `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** |
 | `vaultlint` | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
 | **X-Ray** (sec3) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** |
-| `solsec` | 0 / 11 | 0 / 6, 3 unavailable |
-| `semgrep` | no Solana rules at all | - |
+| `solsec` | 0 / 11 | **0 / 16**, zero unavailable |
+| `semgrep`, own registry | no Solana rules in the registry | - |
+| `semgrep` + [SOL-0XX pack](https://github.com/Copenhagen0x/solana-security-standard) | 3 / 11 nominal, **0 / 11** real | **0 / 16** |
 
-**Six scanners, eight real vulnerabilities, one detection between them** - and seeing that one
-required correcting a mapping error of our own.
+**Seven scanners, one detection between them** - and seeing that one required correcting a
+mapping error of our own. On the eight cases every tool has been run against, the count is one.
+Three of the seven have now also been run against all sixteen built cases and detect nothing
+there either.
 
-**Every "real vulnerabilities" figure above is out of the eight cases measured on 2026-09-01.**
-Eight further cases were added to the corpus later that day and **have not been measured by
-anything**. They are not counted as zeros, they are not counted at all: `run_all.py` reports them
-as `not-run` or `unknown` and drops the reporting scanner's status to `partial` until it is run
-again. The table will read out of sixteen when, and only when, there is a run behind it.
+The `solsec` and `semgrep` rows moved on 2026-09-01 and neither zero moved with them. `solsec`
+was published as `0 / 6, 3 unavailable`; run per case with a log it is **34 invocations, 34
+successes, zero unavailable**, so the denominator was inferred from silence and the three
+unavailable cases did not exist (error 35). `semgrep` was published as having *no Solana rules at
+all*; that is true of its own registry and false of semgrep, which loads a maintained MIT pack of
+30 Solana rules with one `--config`. Measured, that pack detects nothing either.
 
-**The control is what makes the table readable.** `control-noisy` flags every non-empty line. It
-would rank first on any metric that counts findings. Here it scores zero, so no score above was
-bought with volume.
+**Two denominators, and which one a row uses is stated in the row.** Eight cases were measured on
+2026-08-31. Eight more were added on 2026-09-01. Radar, solsec and semgrep-with-the-pack have
+since been re-run per case over all sixteen built cases with a log per invocation, so they read
+out of sixteen. `sol-audit` and `vaultlint` have not, so they still read out of eight, and
+`run_all.py` reports them as `partial` with the unmeasured cases recorded as `not-run` or
+`unknown` rather than as zeros. A case nobody has run is not a case anybody failed.
+
+**The raw denominator is not the honest one either.** A class no scanner has a rule for is a
+coverage gap, not a failure, and `run_all.py` now publishes a `scoreable_denominator` beside every
+tally: Radar 9 of 16, semgrep-with-the-pack 8 narrow and 16 wide, solsec **2**. Both numbers are
+published because only one of them is fair and only the other is comparable.
+
+**The control is what makes the table readable.** `control-noisy` flags every non-empty line under
+every rule id any mapping in this repository claims: 81,928 findings on the teaching corpus and
+2,392,280 on the real one. It would rank first on any metric that counts findings. It reaches
+**11 / 11 nominal recall** and **0 / 11 real**, so nominal recall demonstrably can be bought with
+volume, which is why this project does not publish it as a result, and real recall demonstrably
+cannot. Until 2026-09-01 the teaching-corpus control emitted under one rule id that no mapping
+knew, so the scorer discarded all 931 of its findings and it proved nothing at all while being
+cited here as the reason nothing above it was bought with volume. That is error 33.
 
 ---
 
@@ -250,7 +272,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **113 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **120 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -259,7 +281,7 @@ what the bug was.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[31 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
+- **[35 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.
@@ -272,7 +294,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            113 checks, mutation-verified. Run this first
+test_all.py            120 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person

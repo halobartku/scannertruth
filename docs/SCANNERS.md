@@ -37,7 +37,7 @@ unlike the measurements they have no artefact in this repository.
 | **solana-lints** | Trail of Bits, `crytic/solana-lints` | dylint toolchain | Rust nightly + dylint | quiet since February 2026 |
 | **VaultLint** | crates.io `vaultlint` | plain binary, `scan` subcommand | Rust, or a container to build it in | new, released July 2026 |
 | **solsec** | crates.io `solsec` | plain binary | Rust | last release June 2025 |
-| **semgrep** | `semgrep.dev` | generic multi-language scanner | Docker or pip | very much alive, but **no Solana rules** |
+| **semgrep** | `semgrep.dev` | generic multi-language scanner | Docker or pip | very much alive; **no Solana rules in its own registry**, but the MIT [SOL-0XX pack](https://github.com/Copenhagen0x/solana-security-standard) is 30 Solana rules loaded with one `--config <raw url>`, measured 2026-09-01 |
 | **L3X** | model-backed | AI auditor | **paid OpenAI key** | see the note on AI tools below |
 | **sol-audit** | `github.com/halobartku/sol-audit` | ours, plain Python | Python 3 | free and open forever, not a product |
 
@@ -65,7 +65,8 @@ mapped rule fired on the vulnerable program **and stayed silent on the same prog
 | VaultLint | 2 / 11 | 0 / 8, of which 7 are `no-rule` |
 | X-Ray | 2 / 11 | 0 / 8 registered, **1 / 8** corrected |
 | solsec | 0 / 11 | 0 / 6, 3 unavailable |
-| semgrep | no Solana rules at all | - |
+| semgrep, own registry | no Solana rules in the registry | - |
+| semgrep + SOL-0XX pack (MIT, 30 rules) | 3 / 11 nominal, 0 / 11 real | 0 / 16 |
 
 Every teaching-corpus figure is **in-sample**: that corpus is public, four years old, and at least
 two of these tools cite it in their own rule tables. Every third-party figure is **provisional**

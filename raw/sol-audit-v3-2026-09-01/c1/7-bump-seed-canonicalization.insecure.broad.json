@@ -1,0 +1,52 @@
+{
+ "files_scanned": 1,
+ "total_findings": 1,
+ "counts": {
+  "HIGH": 1
+ },
+ "by_rule": {
+  "SOL-020": 1
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-020",
+   "title": "PDA derived with create_program_address and a non-canonical bump",
+   "severity": "HIGH",
+   "cwe": "CWE-345",
+   "file": "src\\lib.rs",
+   "line": 11,
+   "snippet": "Pubkey::create_program_address(&[key.to_le_bytes().as_ref(), &[bump]], ctx.program_id)?;",
+   "fix": "Use `find_program_address`, which returns the canonical bump, or Anchor's `#[account(seeds = [..], bump)]`.",
+   "category": "pda",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "broad",
+ "rules_run": 23,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-006",
+  "SOL-007",
+  "SOL-009",
+  "SOL-010",
+  "SOL-014",
+  "SOL-015",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

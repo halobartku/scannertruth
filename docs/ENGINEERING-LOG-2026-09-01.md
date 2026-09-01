@@ -186,10 +186,12 @@ the measured set, and the manifest carries `"measured": false` per case so the d
 rather than prose.
 
 The calibration figure moved too. `control-noisy` produced 424,170 findings on corpus 2 when that
-sentence was written; it produces **1,413,620** today, because both the corpus and the mapping set
-have grown. Six documents quoted the old number. They now quote the derived one, and a check
+sentence was written; it produced **1,413,620** when this entry was written and **2,392,280**
+after the SOL-0XX Semgrep mapping was pre-registered on 2026-09-01, because both the corpus
+and the mapping set have grown. Six documents quoted the old number. They now quote the derived one, and a check
 recomputes it from the corpus and the mappings and fails any document that has drifted. The control
-still scores **zero against all ten mappings** on the enlarged corpus, verified case by case before
+still scores **zero against all ten mappings** on the enlarged corpus (fourteen after
+the Semgrep pre-registration, still zero), verified case by case before
 the number was changed.
 
 **`raw/c2-control-noisy.json` is stale as of this commit** and regenerates with
@@ -235,6 +237,229 @@ The clock is not affected, and that is not luck: `run_all.measure_corpus2` consu
 first and never scores a case the log does not list, so a case with no run behind it can never pick
 up another case's findings. The exposure is `score2.py` used directly, which is what `AGENTS.md`
 step 6 tells an agent to do.
+
+---
+
+## Part 9: the rule this project repeats most often, broken in the artefact built to enforce it, and then nearly broken again in the opposite direction
+
+**Error 32. The runner that decided `ok` versus `UNAVAILABLE` for every Radar corpus-2 run asked
+whether radar had written an output file. radar writes no output file when it finds nothing.** So a
+clean zero and a failed run were the same observation to the only thing that classified them, which
+is the exact confusion "unavailable is not zero" exists to prevent, inside the artefact that was
+built to enforce it.
+
+It surfaced as a disagreement. `raw/c2-radar-percase.log` line 1 said:
+
+```
+anchor-interface-account insecure UNAVAILABLE rc=0 no-parseable-output
+```
+
+`raw/c2-radar-complete.json.log`, the log `run_all.py` treats as the authority on which cases were
+analysed, said `{"leaf": "anchor-interface-account/insecure", "status": "ok", "findings": 0}`. One
+run, two records, and they contradicted each other for a day with nothing in the repository able to
+say which was right.
+
+**The external audit read the human log and prescribed correcting the machine one**: mark the run
+unavailable, drop Radar's corpus-2 denominator from eight to seven, and correct the "36 successes,
+zero unavailable" banner. That fix was applied here first, and then reverted, because it is
+backwards. radar's own stdout for that run was recovered from the machine it ran on and is now in
+the repository at
+`raw/radar-c2-2026-08-31-stdout/anchor-interface-account.insecure.log`:
+
+```
+[i] Ran 57 templates
+[i] Scanned 1 file (interface_account.rs)
+[i] radar completed successfully. No results found.
+```
+
+The case was analysed. Fifty-seven templates ran against it. The zero is real. **The human log was
+wrong, the machine log was right, and following the audit would have removed a real zero from a
+third-party tool's denominator** - a correction in the direction that flatters the tool, arrived at
+by trusting a classifier that could not see the difference it was classifying.
+
+All eighteen stdout logs from that run were checked the same way. Every one reports
+`radar completed successfully` with a non-zero `Scanned N file` count, so **"18 runs each, 36 in
+total, 36 successes, zero unavailable" is true**. It was true by luck: the sentence rested on a
+classifier that had already mislabelled one of the thirty-six.
+
+The defect reproduced on demand. A fresh per-case run on 2026-09-01, with a runner written before
+any of this was known, classified the same leaf `UNAVAILABLE` again, along with four others that
+radar had in fact analysed and found nothing in.
+
+**What changed.** `raw/c2-radar-percase.log` line 1 now records `ok rc=0 findings=0`, with the
+original line, the reason and the evidence kept underneath it rather than rewritten away. The
+eighteen stdout artefacts are committed. `tools/normalise_runs.py` classifies a radar run from
+radar's own stdout and never from the presence of a file, and its `--demo` asserts that a run which
+found nothing and wrote nothing is `ok`. Two new checks: the two logs for one run must agree on
+every leaf, and the run log must agree with the tool's own account of what it did.
+
+**What this is really about.** A log is only evidence if something outside the log can contradict
+it. Two records of one run were written and never compared; one was derived from a proxy for the
+thing it claimed to measure. The lesson is not "radar is unusual". It is that a coverage classifier
+must read the tool's own statement about what it did, and that the second record exists to be
+diffed against the first.
+
+---
+
+## Part 10: the calibration control on the teaching corpus proved nothing, and had proved nothing since the day it was written
+
+**Error 33. `raw/c1-control-noisy.json` emitted all 931 of its findings under one invented rule id,
+`NOISY-ALL`, which appears in no mapping. `tools/score.py` discards a finding whose rule is not
+mapped, so it discarded all 931 before scoring.** The corpus-1 noisy control therefore scored
+**0/11 nominal**, not the `11 / 11 nominal, 0 / 11 real` published on the front page, in two
+results pages and in the roadmap.
+
+The arithmetic error is the small half. The large half is that the control **demonstrated nothing
+at all**. An unmapped rule id scores zero by construction. The control existed to show that a tool
+which flags every line cannot buy a score, and instead it showed that a rule nobody maps scores
+zero, which is true of any string. Meanwhile README:129 cited it as the reason no score in the table
+was bought with volume, and `docs/PROTOCOL.md` built the "what the controls do and do not close"
+argument on it.
+
+`tools/control_c2.py` had this right for corpus 2 from the day it was written: `every_rule()` emits
+the control under **every rule id any mapping claims**. Nobody noticed the two controls were built
+differently. The check that guarded the corpus-1 control asserted `len(findings) == 931` and never
+scored the file, so it verified that a file existed at the right size.
+
+**What changed.** `tools/control_c1.py` is the corpus-1 half of `control_c2.py`. It rebuilds the
+control under every mapped rule id, from a real checkout of `coral-xyz/sealevel-attacks` at the
+pinned commit `24555d044802db4022112a94d6d70e74291a4b6d` where one is available, and from the
+recorded line inventory where it is not. The regenerated control is **81,928 findings: 931 flagged
+lines times 88 mapped rule ids.**
+
+**The corrected figure, and it is the published one.** Scored against every mapping in the
+repository, the control now reaches **11 / 11 nominal and 0 / 11 real**. The number that was
+published was right; the artefact behind it was not, and for a day the repository could not have
+produced it. Nominal recall can be bought with volume, which is exactly why this project does not
+publish nominal recall as a result. Real recall cannot, and now there is evidence for that on both
+corpora rather than on one.
+
+A second, smaller thing fell out of the rebuild. The old artefact's line numbers were sequential
+ordinals, 1..N, not the line numbers of the non-empty lines it claimed to have flagged. It never
+mattered, because `score.py` scores on rule and path only. It is now the real line numbers.
+
+The replacement check derives the count instead of typing it, asserts the control emits under
+exactly the mapped rule set, asserts it reaches 11/11 nominal, and asserts 0 real against every
+mapping. A control that cannot reach nominal recall is not a ceiling, and until today nothing said
+so.
+
+---
+
+## Part 11: eight corpus files were not the upstream blobs they are supposed to be
+
+**Error 34. Of the seventeen built corpus-2 cases, the eight added on 2026-09-01 did not match
+their upstream blobs. Every `.rs` file in them had CRLF line endings; upstream has LF.** Content
+was otherwise byte-identical. `build_corpus2.py` extracts with git, and git on Windows converted
+the line endings on the way out.
+
+Nothing in the repository could have caught this, which is the point of row 9 of the audit: the
+manifest carried commit SHAs, and the check on them asserted that they looked like SHAs. Nothing
+tied `corpus2/<case>/<variant>/src/*.rs` to any blob. A one-character edit to any corpus file
+passed every check and changed every verdict.
+
+It was found within minutes of hashes existing.
+
+**Why it is not cosmetic.** The corpus is the answer key, and the claim is that the answer key is
+the project's own fix. Eight of seventeen cases were a re-encoding of it. A scanner reading `\r`
+at the end of every line is reading different bytes from the ones the disclosure was written
+against, and the corpus was internally inconsistent: ten cases LF, eight CRLF, in one benchmark.
+Two of the eight are among the largest files in the corpus.
+
+**What changed.** The eight cases are normalised back to LF, which is byte-for-byte the upstream
+blob. `corpus2/manifest.json` now records, per file, a `sha256`, git's own blob id, and the
+upstream repository, commit and path the file was extracted from, so provenance is one command:
+
+```
+git -C <clone> rev-parse <commit>:<path>      # must equal the recorded git_blob
+```
+
+`tools/corpus_hashes.py` writes and rechecks them and `test_all.py` recomputes them on every run.
+The result of actually asking upstream is committed at
+`raw/corpus2-blob-verification-2026-09-01.json`: **35 of 35 source files match the upstream blob
+exactly**, where before the normalisation 19 matched and 16 did not.
+
+No published number moves. All eight cases carry `"measured": false` and are in nobody's
+denominator. Every scanner run in this session was made against the normalised corpus, pinned by
+digest `63982de746dbad71d498b8ee98acd07555ff43f7ea708fc138708bee016f300a` on both machines before
+any tool ran.
+
+---
+
+## Part 12: solsec's denominator was inferred from silence, and the silence was not there
+
+**Error 35. `solsec` was published as `0 / 6` on corpus 2 with "three cases produced no output at
+all, with no log explaining why, so its denominator is six". There was no solsec run log anywhere
+in the repository, solsec was absent from `run_all.SOURCES_CORPUS2`, and no committed code path
+produced the tally.** The three unavailable cases were inferred from the absence of entries in a
+findings file. That is error 20 republished under a different scanner, on the same page that
+retracts error 20.
+
+solsec 0.2.1 was rebuilt from crates.io in a container and run per case, per variant, over both
+corpora, with one artefact and one log line per invocation. Coverage was read from solsec's own
+output line, `Found N Rust files to analyze`, rather than from whether a file appeared.
+
+**Corpus 2: 34 invocations, 34 ok, zero unavailable, 356 findings.** There were no cases solsec
+could not analyse. The published "3 unavailable" was an artefact of reading silence, and so was the
+denominator of six. Measured: **0 detected**, 1 `unlocated`, 1 `missed`, 14 `no-rule`, 1 not built.
+The honest scoreable denominator is **2**, not 6: solsec has a mapped rule for two of the sixteen
+built classes and the other fourteen are a coverage gap rather than a failure.
+
+**Corpus 1: 35 invocations, 35 ok, zero unavailable, 28 findings, 0 / 11 nominal and 0 / 11 real.**
+The published corpus-1 figure reproduces exactly. It now has a run log behind it, which it did not
+before.
+
+The zero did not move. The reason the zero can be trusted did.
+
+---
+
+## Part 13: our own scanner, re-run per case, and the one number that went up
+
+The corpus-2 findings file for `sol-audit` had no run log, so its denominator rested on the
+absence of entries in a file, and 96 of its 426 findings named files the corpus rebuild removed.
+It was the last row on the coverage matrix with no evidence behind it.
+
+It was also nearly recorded as unfixable. The commit that re-measured Radar, solsec and semgrep
+said "sol-audit cannot be re-run: its source is not on this machine or the build host". **That is
+wrong.** The source is at `Forge/sol-audit-v2`, and a search that looked for a directory called
+`sol-audit` did not find it. The claim is corrected here rather than quietly dropped, because "we
+could not run it" is exactly the sentence this project treats as a result, and a wrong one is
+worse than no claim at all.
+
+**sol-audit 3.0, 34 invocations on corpus 2 and 35 on corpus 1, all three profiles, one artefact
+and one log line per run, 207 invocations in total, zero unavailable.**
+
+| corpus | profile | result |
+|---|---|---|
+| 1 | strict | 6 / 11 nominal, **5 / 11 real** |
+| 1 | broad | 6 / 11 nominal, **5 / 11 real** |
+| 1 | all | 7 / 11 nominal, **5 / 11 real** |
+| 2 | strict, broad and all | **0 detected**, 1 `unlocated`, 8 missed, 7 `no-rule`, 1 not built |
+
+**Corpus 2 is zero under every profile**, and `unmapped_check` reports **0 candidates**, so no
+detection is hiding under a rule the mapping does not claim. Our own tool, rewritten to 30 rules
+tonight, detects none of the sixteen real vulnerabilities. That is the same answer every
+third-party tool has given, and it is the answer its own README already leads with.
+
+**Corpus 1 went up, from 4 / 11 to 5 / 11, and it is published as a new row rather than as a
+correction.** v2's 4 / 11 is not wrong; it is a measurement of a different tool. A number that
+moved because the tool changed is a different fact from a number that moved because the corpus
+changed, and collapsing the two is how a benchmark stops being able to say which happened. Both
+rows stand, both dated, and the clock now records the source file and the mapping behind each.
+
+Three things were held fixed, and none of them is the tool:
+
+- the mapping is `mappings/sol-audit.json` **as pre-registered for v2 on 2026-08-31**. v3 added
+  SOL-020 to SOL-030; the mapping does not claim them and will not be extended to claim them,
+  because a mapping written after both the rules and the corpus are known is not a
+  pre-registration. **The row therefore understates v3, deliberately.**
+- every profile the CLI offers was run, and all three are published. Nothing was chosen after
+  seeing output.
+- the titles of SOL-001 to SOL-019 were read and checked against the mapping before the run,
+  because a renumbered rule id would have made the mapping measure something else in silence.
+
+`run_all.py` now records the `source` file and the `mapping` behind every row it writes, so a
+reader comparing two dated runs can see whether the artefact or the mapping moved underneath the
+number.
 
 ---
 

@@ -1,0 +1,85 @@
+{
+ "files_scanned": 1,
+ "total_findings": 3,
+ "counts": {
+  "MEDIUM": 1,
+  "LOW": 2
+ },
+ "by_rule": {
+  "SOL-012": 1,
+  "SOL-016": 2
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-012",
+   "title": "Transfer with amount from instruction args (possible uncapped drain)",
+   "severity": "MEDIUM",
+   "cwe": "CWE-770",
+   "file": "src\\lib.rs",
+   "line": 13,
+   "snippet": "token::transfer(ctx.accounts.transfer_ctx().with_signer(&[seeds]), amount)",
+   "fix": "Cap amount (`require!(amount <= MAX)`), derive from on-chain state, or check source authority + balance.",
+   "category": "arithmetic",
+   "kind": "heuristic"
+  },
+  {
+   "rule_id": "SOL-016",
+   "title": "PDA seeds not anchored to a program-owned namespace literal",
+   "severity": "LOW",
+   "cwe": "CWE-327",
+   "file": "src\\lib.rs",
+   "line": 12,
+   "snippet": "let seeds = &[ctx.accounts.pool.mint.as_ref(), &[ctx.accounts.pool.bump]];",
+   "fix": "Prefix seeds with byte literals (b\"...\") unique to your program; avoid fully user-controlled seeds.",
+   "category": "pda",
+   "kind": "heuristic"
+  },
+  {
+   "rule_id": "SOL-016",
+   "title": "PDA seeds not anchored to a program-owned namespace literal",
+   "severity": "LOW",
+   "cwe": "CWE-327",
+   "file": "src\\lib.rs",
+   "line": 13,
+   "snippet": "token::transfer(ctx.accounts.transfer_ctx().with_signer(&[seeds]), amount)",
+   "fix": "Prefix seeds with byte literals (b\"...\") unique to your program; avoid fully user-controlled seeds.",
+   "category": "pda",
+   "kind": "heuristic"
+  }
+ ],
+ "profile": "all",
+ "rules_run": 30,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-005",
+  "SOL-006",
+  "SOL-007",
+  "SOL-008",
+  "SOL-009",
+  "SOL-010",
+  "SOL-011",
+  "SOL-012",
+  "SOL-013",
+  "SOL-014",
+  "SOL-015",
+  "SOL-016",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-026",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

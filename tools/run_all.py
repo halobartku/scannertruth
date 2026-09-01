@@ -30,20 +30,53 @@ SOURCES = {
     # Published in RESULTS-all.md but absent from the clock until 2026-09-01, which meant a
     # regression in any of them could never have shown up in history.
     "xray": ("xray-c1-raw.json", "xray"),
-    "solsec": ("solsec-c1-raw.json", "solsec"),
+    # sol-audit 3.0, measured 2026-09-01, scored with the SAME mapping pre-registered for v2 on
+    # 2026-08-31. It is a separate row, not a replacement: v2's 4 / 11 is not wrong, it is a
+    # different tool. v3 gained fourteen rules, SOL-020 to SOL-030, which that mapping does not
+    # claim and will not be extended to claim, because a mapping written after the rules and the
+    # corpus are both known is not a pre-registration. The row therefore understates v3.
+    "sol-audit-v3": ("c1-sol-audit-v3-strict.json", "sol-audit"),
+    "sol-audit-v3-broad": ("c1-sol-audit-v3-broad.json", "sol-audit"),
+    "sol-audit-v3-all": ("c1-sol-audit-v3-all.json", "sol-audit"),
+    # Superseded 2026-09-01 by a per-case run with a log per invocation. The old file had no
+    # coverage evidence at all, which is what row 8 of the audit was about.
+    "solsec": ("c1-solsec-percase.json", "solsec"),
     "semgrep": ("semgrep-c1.json", "semgrep"),
+    # semgrep's registry has no Solana rules, which is what the `semgrep` row above measures and
+    # it remains true. semgrep loaded with the MIT SOL-0XX pack is a different tool and is
+    # measured separately rather than allowed to overwrite that row.
+    "semgrep-solana-standard": ("c1-semgrep-solana-standard.json", "semgrep"),
+    "semgrep-solana-standard-wide": ("c1-semgrep-solana-standard.json", "semgrep"),
 }
 
 # Corpus 2 is scored by score2.py, which is stricter: mapped rules only, and the finding must land
 # at the site the fix changed. Tracked separately because the two corpora answer different
 # questions and a single blended number would hide which one moved.
 SOURCES_CORPUS2 = {
-    # c2-radar.json covered one case; superseded 2026-08-31 by a per-case run over all nine
-    # with a log per run. The old file is kept for the record, not for scoring.
-    "radar": ("c2-radar-complete.json", "sol-audit"),
+    # c2-radar.json covered one case. c2-radar-complete.json replaced it on 2026-08-31 with a
+    # per-case run, but it was produced BEFORE the corpus was rebuilt to pin one file per case,
+    # so 161 of its 238 findings named files that no longer exist, and it was hand-converted into
+    # the sol-audit envelope by a script nobody committed. Superseded 2026-09-01 by a per-case
+    # re-run against the current corpus, kept in radar's OWN envelope, assembled by the committed
+    # tools/normalise_runs.py. Both older files stay on disk for the record, not for scoring.
+    "radar": ("c2-radar-current.json", "radar"),
     # c2-vaultlint.json covered one case; superseded 2026-08-31 by a per-case run with a log.
     "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
+    # sol-audit 3.0, per case, with a log. The v2 row above has no run log at all and 96 of its
+    # 426 findings name files the corpus rebuild removed, so it is the weakest evidence on this
+    # page; it stays because deleting a superseded run is not how this project corrects things.
+    "sol-audit-v3": ("c2-sol-audit-v3-strict.json", "sol-audit"),
+    "sol-audit-v3-broad": ("c2-sol-audit-v3-broad.json", "sol-audit"),
+    "sol-audit-v3-all": ("c2-sol-audit-v3-all.json", "sol-audit"),
+    # New on 2026-09-01. solsec was published as "0 / 6, 3 unavailable" with no run log, no code
+    # path and a denominator inferred from silence in a findings file (row 8, error 20 under a
+    # different scanner). It now has one invocation per case per variant and a log per run.
+    "solsec": ("c2-solsec-percase.json", "solsec"),
+    # The eighth tool: semgrep loaded with the MIT SOL-0XX Solana pack. Mapping pre-registered in
+    # commit cc9a7c7, before the first run.
+    "semgrep-solana-standard-c2": ("c2-semgrep-solana-standard.json", "semgrep"),
+    "semgrep-solana-standard-c2-wide": ("c2-semgrep-solana-standard.json", "semgrep"),
 }
 
 
@@ -59,7 +92,16 @@ def extract(kind, blob):
         findings = blob.get("findings") if isinstance(blob, dict) else blob
         return [(x.get("rule_id", ""), x.get("file", "")) for x in findings or []]
     if kind in ("xray", "solsec"):
-        # Both emit {name, locations:["path:line:col"]}, the same envelope Radar uses.
+        # solsec's own report is {"analysis_results": [{rule_name, file_path, line_number}]}.
+        # The 2026-08-31 corpus-1 file had been converted into the {name, locations} envelope
+        # X-Ray and Radar use, by a script that was not committed. Both shapes are read here, so
+        # the tool's own output can be scored without a conversion step nobody can reproduce.
+        if isinstance(blob, dict) and isinstance(blob.get("analysis_results"), list):
+            out = []
+            for item in blob["analysis_results"]:
+                fp = str(item.get("file_path", ""))
+                out.append((item.get("rule_name", ""), fp[2:] if fp.startswith("./") else fp))
+            return out
         out = []
         for item in blob or []:
             for loc in item.get("locations") or []:
@@ -71,7 +113,20 @@ def extract(kind, blob):
     raise ValueError(kind)
 
 
+# A row may be scored with another row's mapping. That is how one tool can appear twice, at two
+# versions or under two invocations, without a second mapping file being written after the fact.
+# A mapping created to score a run that has already happened is not a pre-registration, and
+# tools/preregistration_check.py cannot tell the difference, so the rule is kept here instead.
+MAPPING_ALIAS = {
+    "sol-audit-v3": "sol-audit",
+    "sol-audit-v3-broad": "sol-audit",
+    "sol-audit-v3-all": "sol-audit",
+    "semgrep-solana-standard-c2": "semgrep-solana-standard-c2",
+}
+
+
 def load_mapping(name, mappings_dir="mappings"):
+    name = MAPPING_ALIAS.get(name, name)
     with open(os.path.join(mappings_dir, f"{name}.json"), encoding="utf-8") as fh:
         return json.load(fh)
 
@@ -100,6 +155,8 @@ def measure(raw_dir="raw", mappings_dir="mappings"):
         results.append({
             "scanner": name,
             "status": "measured",
+            "source": filename,
+            "mapping": MAPPING_ALIAS.get(name, name),
             "classes": len(rows),
             "nominal": sum(1 for r in rows if r[4]),
             "real": sum(1 for r in rows if r[5]),
@@ -133,8 +190,7 @@ def measure_corpus2(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"
                         "reason": f"no raw output at {path}"})
             continue
         try:
-            mapping = json.load(open(os.path.join(mappings_dir, f"{name}.json"),
-                                    encoding="utf-8"))["map"]
+            mapping = load_mapping(name, mappings_dir)["map"]
             findings = score2.load_findings(kind, path)
         except Exception as exc:
             out.append({"scanner": name, "corpus": "corpus2", "status": "error",
@@ -149,13 +205,23 @@ def measure_corpus2(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"
         #
         # So: if <filename>.log exists, it is the authority. If not, we say plainly that the
         # question is unanswerable rather than guessing in either direction.
+        # A case is analysed only if EVERY variant of it ran. This used to read "any leaf with
+        # status ok", which let one good variant vouch for a broken one: Radar's
+        # anchor-interface-account/insecure produced no parseable output, its /secure ran fine,
+        # and the case was scored `missed` off the back of the variant that worked. That is
+        # error 32, and it is rule 3 broken inside the artefact built to enforce rule 3. A run
+        # that did not happen cannot contribute a zero to anybody's denominator.
         log_path = os.path.join(raw_dir, filename + ".log")
-        analysed, evidence = None, "none"
+        analysed, unavailable, evidence = None, set(), "none"
         if os.path.exists(log_path):
             try:
                 entries = json.load(open(log_path, encoding="utf-8"))
-                analysed = {str(e.get("leaf", "")).split("/")[0]
-                            for e in entries if e.get("status") == "ok"}
+                by_case = {}
+                for e in entries:
+                    case = str(e.get("leaf", "")).split("/")[0]
+                    by_case.setdefault(case, []).append(e.get("status"))
+                analysed = {c for c, st in by_case.items() if st and all(s == "ok" for s in st)}
+                unavailable = {c for c in by_case if c not in analysed}
                 evidence = "run log"
             except Exception:
                 analysed = None
@@ -174,6 +240,11 @@ def measure_corpus2(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"
                 tally["not-built"] = tally.get("not-built", 0) + 1
                 continue
             if analysed is not None:
+                if c["name"] in unavailable:
+                    # The log says a variant of this case was attempted and produced nothing
+                    # usable. That is not a zero and it is not "never run" either.
+                    tally["unavailable"] = tally.get("unavailable", 0) + 1
+                    continue
                 if c["name"] not in analysed:
                     tally["not-run"] = tally.get("not-run", 0) + 1
                     continue
@@ -185,16 +256,28 @@ def measure_corpus2(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"
             verdict, _ = score2.score_case(d, c["class"], mapping, findings)
             tally[verdict] = tally.get(verdict, 0) + 1
 
-        unresolved = tally.get("unknown", 0) + tally.get("not-run", 0)
+        unresolved = (tally.get("unknown", 0) + tally.get("not-run", 0)
+                      + tally.get("unavailable", 0))
         status = "measured" if not unresolved else "partial"
+        # The scoreable denominator, published beside the raw tally: a case nobody could run,
+        # nobody has built, or nobody has a rule for is not a case this tool failed.
+        scoreable = sum(v for k, v in tally.items()
+                        if k in ("detected", "unlocated", "missed"))
         entry = {"scanner": name, "corpus": "corpus2", "status": status,
-                 "coverage_evidence": evidence, **tally}
+                 "source": filename, "mapping": MAPPING_ALIAS.get(name, name),
+                 "coverage_evidence": evidence, "scoreable_denominator": scoreable, **tally}
         if status == "partial":
-            entry["reason"] = (
-                f"{unresolved} of {len(cases)} cases unresolved"
-                + (f" (run log says not run)" if tally.get("not-run") else
-                   f"; no run log for {filename}, so 'found nothing' and 'never analysed' "
-                   f"cannot be told apart"))
+            reasons = []
+            if tally.get("unavailable"):
+                reasons.append(f"{tally['unavailable']} attempted but produced no usable output")
+            if tally.get("not-run"):
+                reasons.append(f"{tally['not-run']} the run log says were never run")
+            if tally.get("unknown"):
+                reasons.append(
+                    f"{tally['unknown']} with no run log for {filename}, so 'found nothing' "
+                    "and 'never analysed' cannot be told apart")
+            entry["reason"] = (f"{unresolved} of {len(cases)} cases unresolved: "
+                               + "; ".join(reasons))
         out.append(entry)
     return out
 

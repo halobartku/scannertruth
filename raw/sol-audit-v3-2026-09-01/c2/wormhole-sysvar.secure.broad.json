@@ -1,0 +1,124 @@
+{
+ "files_scanned": 1,
+ "total_findings": 7,
+ "counts": {
+  "MEDIUM": 7
+ },
+ "by_rule": {
+  "SOL-004": 7
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 123,
+   "snippet": "index += 2;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 125,
+   "snippet": "index += 1;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 127,
+   "snippet": "index += 2;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 129,
+   "snippet": "index += 1;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 131,
+   "snippet": "index += 2;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 133,
+   "snippet": "index += 2;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  },
+  {
+   "rule_id": "SOL-004",
+   "title": "Unchecked compound arithmetic - overflow panic (DoS) / wraparound",
+   "severity": "MEDIUM",
+   "cwe": "CWE-190",
+   "file": "src\\verify_signature.rs",
+   "line": 135,
+   "snippet": "index += 1;",
+   "fix": "Use checked_add/checked_sub/checked_mul or the `checked` math pattern; anchor 0.29+ `#[access_control]` won't save you here.",
+   "category": "arithmetic",
+   "kind": "shape"
+  }
+ ],
+ "profile": "broad",
+ "rules_run": 23,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-006",
+  "SOL-007",
+  "SOL-009",
+  "SOL-010",
+  "SOL-014",
+  "SOL-015",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

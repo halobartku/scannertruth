@@ -1,0 +1,59 @@
+{
+ "files_scanned": 1,
+ "total_findings": 1,
+ "counts": {
+  "MEDIUM": 1
+ },
+ "by_rule": {
+  "SOL-002": 1
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-002",
+   "title": "Raw AccountInfo field - no owner/type validation enforced by deserialization",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\lib.rs",
+   "line": 20,
+   "snippet": "authority: AccountInfo<'info>,",
+   "fix": "Use `Account<'info, T>` / `Program<'info, T>` types, or manually check `.owner == expected_program_id` and `.key()`.",
+   "category": "authorization",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "all",
+ "rules_run": 30,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-003",
+  "SOL-004",
+  "SOL-005",
+  "SOL-006",
+  "SOL-007",
+  "SOL-008",
+  "SOL-009",
+  "SOL-010",
+  "SOL-011",
+  "SOL-012",
+  "SOL-013",
+  "SOL-014",
+  "SOL-015",
+  "SOL-016",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-024",
+  "SOL-025",
+  "SOL-026",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

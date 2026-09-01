@@ -372,6 +372,17 @@ def test_every_published_scanner_has_a_mapping():
         assert isinstance(m["map"], dict) and m["map"], f"{fn} has an empty map"
 
     have = {fn[:-5] for fn in os.listdir("mappings") if fn.endswith(".json")}
+    # A row may declare that it is scored with another row's mapping: that is how one tool appears
+    # twice, at two versions or under two invocations, without a second mapping file being written
+    # after the run it scores. The alias must still resolve to a real mapping on disk, and the
+    # alias table is read from the code rather than repeated here.
+    import sys
+    sys.path.insert(0, "tools")
+    import run_all
+    for alias, target in run_all.MAPPING_ALIAS.items():
+        assert target in have, \
+            f"run_all aliases {alias!r} to mapping {target!r}, which does not exist"
+        have.add(alias)
     scored = set()
     runs = sorted(f for f in os.listdir("runs") if f.endswith(".json")) if os.path.isdir("runs") \
         else []
@@ -1685,9 +1696,16 @@ def test_the_noisy_control_count_is_derived_from_the_corpus():
     The engineering logs are exempt, and only they. Their whole job is to record the
     value that turned out to be wrong, next to the date it was found; a log that could
     not quote a superseded number could not record the error at all."""
-    import io as _io, os, re
+    import io as _io, os, re, sys
+    sys.path.insert(0, "tools")
+    import control_c1, control_c2
     expected = _corpus2_noisy_finding_count()
-    allowed = {expected, 931}  # 931 is the teaching corpus, computed the same way
+    # The teaching corpus figure is derived the same way and was a typed 931 until 2026-09-01,
+    # when it turned out 931 was the count of flagged LINES and the control had never emitted a
+    # finding any mapping could see (error 33). Both the line count and the finding count are
+    # legitimate to quote, so both are derived here and neither is typed.
+    c1_lines = sum(len(v) for v in control_c1.inventory_from_artefact().values())
+    allowed = {expected, c1_lines, c1_lines * len(control_c2.every_rule())}
     wrong = []
     for root, dirs, files in os.walk("."):
         dirs[:] = [d for d in dirs if d not in (".git", ".omc", "__pycache__",
@@ -1706,6 +1724,35 @@ def test_the_noisy_control_count_is_derived_from_the_corpus():
         f"control-noisy produces {expected:,} findings on corpus 2 today, but these "
         f"documents still quote something else: {sorted(set(wrong))}. Regenerate with "
         "`python tools/control_c2.py` and quote what it prints.")
+
+
+def test_the_coverage_matrix_is_derived_from_what_is_in_raw():
+    """Coverage evidence existed for 3 of 12 measurements when it was last counted from outside,
+    and the README admitted one gap of the nine. A prose list of gaps goes stale the moment a run
+    happens; this one is recomputed from `raw/` and the failure message names what moved."""
+    import io as _io, os, sys
+    sys.path.insert(0, "tools")
+    import coverage_matrix
+    assert os.path.exists(coverage_matrix.DOC),         f"{coverage_matrix.DOC} is missing; run python tools/coverage_matrix.py --write"
+    on_disk = _io.open(coverage_matrix.DOC, encoding="utf-8").read()
+    assert coverage_matrix.render() == on_disk, (
+        f"{coverage_matrix.DOC} no longer matches what is in raw/; run "
+        "python tools/coverage_matrix.py --write")
+
+
+def test_no_measurement_claims_a_run_log_it_does_not_have():
+    """`coverage_evidence: run log` is the strongest claim this project makes about a number, so
+    it must be false unless a machine-readable log with one entry per invocation is on disk."""
+    import os, sys
+    sys.path.insert(0, "tools")
+    import run_all
+    for row in run_all.measure_corpus2():
+        if row.get("coverage_evidence") != "run log":
+            continue
+        src = row.get("source")
+        assert src and os.path.exists(os.path.join("raw", src + ".log")), (
+            f"{row['scanner']} claims coverage_evidence 'run log' and raw/{src}.log does not "
+            "exist")
 
 
 def test_class_balance_document_is_derived_from_the_manifest():
@@ -1773,7 +1820,8 @@ def test_no_verdict_rests_on_a_finding_about_a_file_that_is_not_in_the_corpus():
                 resolvable[p] = items
             else:
                 saw_stale += len(items)
-        mapping = _json.load(_io.open(f"mappings/{scanner}.json", encoding="utf-8"))["map"]
+        import run_all as _ra
+        mapping = _ra.load_mapping(scanner)["map"]
         for c in cases:
             d = os.path.join("corpus2", c["name"])
             if not os.path.isdir(d):

@@ -1,0 +1,119 @@
+{
+ "files_scanned": 1,
+ "total_findings": 7,
+ "counts": {
+  "HIGH": 5,
+  "MEDIUM": 2
+ },
+ "by_rule": {
+  "SOL-010": 5,
+  "SOL-019": 2
+ },
+ "errors": [],
+ "findings": [
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 1877,
+   "snippet": "invoke(",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 2231,
+   "snippet": "let result = invoke(&ix, &[account, mint, owner, rent, token_program]);",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 2252,
+   "snippet": "let result = invoke(&ix, &[mint, rent, token_program]);",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 2264,
+   "snippet": "invoke(instruction, account_infos)",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-010",
+   "title": "invoke() with program/instruction from accounts (arbitrary CPI)",
+   "severity": "HIGH",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 2266,
+   "snippet": "invoke_signed(instruction, account_infos, &[authority_signer_seeds])",
+   "fix": "Hardcode expected program IDs (`declare_id!`/static Pubkey) and validate `program.key() == EXPECTED` before CPI.",
+   "category": "cpi",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 2389,
+   "snippet": "rent: AccountInfo<'a>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  },
+  {
+   "rule_id": "SOL-019",
+   "title": "Sysvar passed as a raw account and never validated against its known address",
+   "severity": "MEDIUM",
+   "cwe": "CWE-20",
+   "file": "src\\processor.rs",
+   "line": 2399,
+   "snippet": "rent: AccountInfo<'a>,",
+   "fix": "Use `Sysvar<'info, T>`, or `require_eq!(account.key(), sysvar::rent::ID)`.",
+   "category": "accounts",
+   "kind": "guarded"
+  }
+ ],
+ "profile": "strict",
+ "rules_run": 16,
+ "rule_ids": [
+  "SOL-001",
+  "SOL-002",
+  "SOL-006",
+  "SOL-007",
+  "SOL-010",
+  "SOL-017",
+  "SOL-018",
+  "SOL-019",
+  "SOL-020",
+  "SOL-021",
+  "SOL-022",
+  "SOL-023",
+  "SOL-027",
+  "SOL-028",
+  "SOL-029",
+  "SOL-030"
+ ]
+}

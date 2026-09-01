@@ -15,7 +15,7 @@ below is checkable in thirty seconds.
 
 | | |
 |---|---|
-| **2165 lines** of Python across **15 tools**, plus a suite of **113 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **2165 lines** of Python across **15 tools**, plus a suite of **120 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
 | **46 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
@@ -42,7 +42,7 @@ below is checkable in thirty seconds.
 
 ### The parts that make it a measurement rather than an opinion
 
-- **`control-noisy`**: flags every non-empty line, 931 findings on one corpus and **1,413,620** on the
+- **`control-noisy`**: flags every non-empty line, 931 findings on one corpus and **2,392,280** on the
   other, and scores **zero real recall on both**. Proof the metric cannot be bought with volume.
 - **A positive control on the scorer itself**, because until it was added the scorer had never once
   returned a detection and nobody had checked that it could.

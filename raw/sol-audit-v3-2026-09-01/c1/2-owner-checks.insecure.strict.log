@@ -1,0 +1,6 @@
+COMMAND: C:\Users\stank\AppData\Local\Programs\Python\Python313\python.exe D:/Users/stank/Desktop/Forge/sol-audit-v2\cli.py C:/Users/stank/AppData/Local/Temp/claude/D--/a4e769cc-40a1-4cc2-8a83-9cf40dd200b5/scratchpad/fix/c1/sealevel-attacks-24555d044802db4022112a94d6d70e74291a4b6d\programs\2-owner-checks\insecure --profile strict --format json --out D:/Users/stank/Desktop/Forge/scannertruth\raw\sol-audit-v3-2026-09-01\c1\2-owner-checks.insecure.strict.json --log D:/Users/stank/Desktop/Forge/scannertruth\raw\sol-audit-v3-2026-09-01\c1\2-owner-checks.insecure.strict.filelog --fail-on none --quiet
+RC: 0
+WALL: 0.1s
+STDOUT:
+
+STDERR:
