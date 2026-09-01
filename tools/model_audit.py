@@ -78,16 +78,13 @@ def ask_openrouter(model, code, think=False):
         "temperature": 0,
         "usage": {"include": True},
     }
-    if not think:
-        # `exclude` HIDES the reasoning; it does not stop it. On 2026-09-01 deepseek-v4-flash
-        # answered in 280 characters while billing 1875 completion tokens - about 1800 tokens of
-        # reasoning we had asked not to have, paid for, waited 51s per call for, and never saw.
-        # That is not only slow: it makes the measurement dishonest, because the local runs use
-        # ollama's think=False, which really does disable it. Comparing one against the other and
-        # calling both "without thinking" compares two different things. `enabled: False` turns it
-        # off at the provider; `max_tokens` is a second belt, since one JSON object needs ~80.
-        payload["reasoning"] = {"enabled": False}
-        payload["max_tokens"] = 400
+    if think:
+        payload["reasoning"] = {"enabled": True}
+    # Reasoning is the provider's default otherwise, and it gets room. The first sweeps on
+    # 2026-09-01 suppressed it (`reasoning.enabled: false`, 400-token belt) to match ollama's
+    # think=False; those rows carry no `reasoning` field. On 2026-09-02 the owner's rule became:
+    # if a model thinks, let it think, and record how much. `max_tokens` is only a ceiling now.
+    payload["max_tokens"] = 8000
     req = urllib.request.Request(
         OPENROUTER, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
@@ -99,7 +96,7 @@ def ask_openrouter(model, code, think=False):
             (msg.get("reasoning") or ""),
             (d.get("choices") or [{}])[0].get("finish_reason", ""),
             {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
-             "cost_usd": u.get("cost")})
+             "cost_usd": u.get("cost"), "reasoning": "requested" if think else "allowed"})
 
 
 ZAI = os.environ.get("GLM_BASE_URL", "https://api.z.ai/api/coding/paas/v4").rstrip("/") + "/chat/completions"
@@ -123,15 +120,12 @@ def ask_zai(model, code, think=False):
         "messages": [{"role": "user", "content": PROMPT + code[:24000]}],
         "temperature": 0,
     }
-    if not think:
-        payload["thinking"] = {"type": "disabled"}
-        # The switch holds on a trivial prompt (zero reasoning tokens, measured 2026-09-02) and is
-        # ignored on the audit prompt often enough to matter: glm-5.3 reasoned 1,734 characters
-        # into `reasoning_content` on wormhole-sysvar with it set, spent the 400-token belt on that
-        # and returned no answer. The belt is wider here so the answer still arrives when the
-        # provider reasons anyway; every line records `thinking_chars`, and the scorer counts those
-        # calls as "reasoned despite the request" rather than pretending they were clean.
-        payload["max_tokens"] = 2000
+    if think:
+        payload["thinking"] = {"type": "enabled"}
+    # Same rule as OpenRouter since 2026-09-02: reasoning is the model's default and gets room.
+    # (With `thinking.type: disabled` glm-5.3 obeyed on a trivial prompt and reasoned 1,734
+    # characters anyway on the audit prompt, so "suppressed" was never a clean label here.)
+    payload["max_tokens"] = 8000
     req = urllib.request.Request(
         ZAI, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
@@ -150,7 +144,8 @@ def ask_zai(model, code, think=False):
             (msg.get("reasoning_content") or ""),
             (d.get("choices") or [{}])[0].get("finish_reason", ""),
             {"prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
-             "cost_usd": None, "cost_basis": "z.ai coding plan quota, no per-call price"})
+             "cost_usd": None, "cost_basis": "z.ai coding plan quota, no per-call price",
+             "reasoning": "requested" if think else "allowed"})
 
 
 def ask_claude_code(model, code, think=False):
@@ -161,8 +156,9 @@ def ask_claude_code(model, code, think=False):
     directory with settings, MCP servers and tools switched off: on 2026-09-01 the same call made
     from the project directory carried 88,750 tokens of CLAUDE.md, memory and the skills list into
     the model's context - including this benchmark's own skills - before it judged the code. From
-    a clean directory it carries about 3,300, which is the prompt. Second, effort is pinned to the
-    API default so the row is comparable with an API run of the same model. Thinking cannot be
+    a clean directory it carries about 3,300, which is the prompt. Second, effort is pinned to
+    `max`: the owner's rule since 2026-09-02 is that a model that can think gets to think, and the
+    calibration rows at effort `high` are kept beside this as the cheaper point. Thinking cannot be
     turned off on these models by any route, so `think` is ignored and the thinking token count is
     recorded instead. The cost recorded is the CLI's own estimate at API prices; what was actually
     paid is the subscription, and the line says so.
@@ -171,7 +167,7 @@ def ask_claude_code(model, code, think=False):
     if not hasattr(ask_claude_code, "cwd"):
         ask_claude_code.cwd = tempfile.mkdtemp(prefix="model-audit-clean-")
     cmd = ["claude", "-p", "--model", model, "--output-format", "json", "--no-session-persistence",
-           "--effort", "high", "--tools", "", "--setting-sources", "", "--strict-mcp-config",
+           "--effort", "max", "--tools", "", "--setting-sources", "", "--strict-mcp-config",
            "--mcp-config", '{"mcpServers":{}}',
            "--system-prompt", "You answer with one JSON object and nothing else."]
     r = subprocess.run(cmd, input=PROMPT + code[:24000], capture_output=True, text=True,
@@ -188,7 +184,7 @@ def ask_claude_code(model, code, think=False):
             {"prompt_tokens": ctx, "completion_tokens": u.get("output_tokens"),
              "thinking_tokens": (u.get("output_tokens_details") or {}).get("thinking_tokens"),
              "cost_usd": d.get("total_cost_usd"), "cost_basis": "api-equivalent estimate, paid by subscription",
-             "effort": "high", "is_error": bool(d.get("is_error")), "api_error_status": d.get("api_error_status")})
+             "effort": "max", "reasoning": "allowed", "is_error": bool(d.get("is_error")), "api_error_status": d.get("api_error_status")})
 
 
 def ask(model, code, think=False):
