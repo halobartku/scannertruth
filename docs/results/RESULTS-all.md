@@ -104,7 +104,10 @@ above was bought with volume, and a zero in the right-hand column is a real zero
 ## What each tool is actually doing
 
 **Radar** has excellent class detectors and noisy generic rules: 11/11 on the teaching corpus, and
-46% of its findings there land on already-fixed code. Its own README uses that corpus as its usage
+46% of its findings there land on already-fixed code (an upper bound, see error 39: the corpus
+labels variants secure only for their own class, so some of that 46% is Radar being right about a
+different flaw; the maintainer reproduced the figure, then reported 40% after narrowing rules in
+#34, which we have not re-measured). Its own README uses that corpus as its usage
 example, and its maintainer merged four pull requests titled "Close the last corpus gaps" on the
 day we measured it. The 11/11 is in-sample and we say so.
 

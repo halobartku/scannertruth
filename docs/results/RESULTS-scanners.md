@@ -11,7 +11,7 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 | `control-null` (reports nothing) | 0 / 11 | **0 / 11** | 0 | 0 |
 | `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | — | 15 |
 | `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | — | 23 |
-| **`radar`** (Auditware) | **11 / 11** | **11 / 11** | 52 | 24 (46%) |
+| **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, not yet re-measured by us) |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
 
 Two scanners, two opposite strategies, and the benchmark separates them cleanly. That separation is
@@ -40,6 +40,24 @@ properly is roughly three times better than ours on the axis that matters.
 
 But the second column matters too. **24 of Radar's 52 findings, 46%, land on code that is already
 fixed.** The offenders are its generic rules rather than its class detectors:
+
+> **Correction, 2026-09-01 (error 39).** The 46% is an **upper bound, not a measurement**, for
+> every scanner in this table. The corpus labels a variant secure *with respect to its own class*,
+> and this column counts every firing on a secure variant as noise. A scanner that correctly finds a
+> different real flaw in a fixed file is therefore penalised for being right. Auditware's maintainer
+> pointed this out on `radar#32` with an example: `9-closing-accounts/recommended` has no signer
+> check and lets any caller drain it, and Radar flagging it is correct. Fixing the metric needs a
+> per-variant, per-class ground truth the corpus does not carry, so the column keeps its label and
+> gains this note.
+>
+> **Vendor reply, same thread.** Before changing anything they reproduced this figure independently
+> (23 of 50 firings, same rule breakdown). They then narrowed the rules (#33, reported 35%), wrote
+> adversarial fixtures outside our corpus, found the narrowing had broken four real detections, and
+> reverted part of it (#34). The figure they asked us to publish for the current release is
+> **46% to 40%, recall unchanged at 13/13**. The 46% in the table is our measurement of the `main`
+> we installed on 2026-08-31, before #33 and #34; the 40% is theirs, on code we have not run, and
+> it stays vendor-reported until we re-measure that release as a new row. The mapping was confirmed
+> by them without changes and stays as pre-registered.
 
 | Radar rule | findings on fixed code |
 |---|---|

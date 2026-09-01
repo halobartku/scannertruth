@@ -412,3 +412,15 @@ imported from `score2` rather than reimplemented, and both have the same positiv
 change to the semantics moves both. What is not shared is the file resolution itself, which is the
 one thing that differs, and a defect there would show up as real-crate verdicts that disagree with
 corpus 2. `rc_compare.py` is the check on that: 118 verdicts compared, zero disagreements.
+
+## Added 2026-09-01, evening. Found by the vendor, not by us.
+
+**47. The noise column is an upper bound, and it was published as a measurement.** The corpus
+labels each variant secure or recommended *with respect to the one class its directory is named
+after*, and the "findings on already-fixed code" column counts every firing on such a variant as
+noise for any class. A scanner that correctly finds a different real flaw in a fixed file is
+therefore charged for being right. Auditware's maintainer showed one on `radar#32`:
+`9-closing-accounts/recommended` has no signer check and closes an account to a caller-supplied
+destination, and Radar flagging it is correct. Every noise figure on every results page is now
+labelled as an upper bound. Fixing the metric needs a per-variant, per-class ground truth the corpus
+does not carry, which is milestone 2 work and is not done. Error 39.
