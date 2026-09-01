@@ -22,62 +22,25 @@ import sys
 
 from score import score
 
-# Where each scanner's raw output is expected, and how to pull (rule_id, path) pairs out of it.
-SOURCES = {
-    "radar": ("radar-full.json", "radar"),
-    "vaultlint": ("vaultlint.json", "vaultlint"),
-    "sol-audit": ("sol-audit.json", "sol-audit"),
-    # Published in RESULTS-all.md but absent from the clock until 2026-09-01, which meant a
-    # regression in any of them could never have shown up in history.
-    "xray": ("xray-c1-raw.json", "xray"),
-    # sol-audit 3.0, measured 2026-09-01, scored with the SAME mapping pre-registered for v2 on
-    # 2026-08-31. It is a separate row, not a replacement: v2's 4 / 11 is not wrong, it is a
-    # different tool. v3 gained fourteen rules, SOL-020 to SOL-030, which that mapping does not
-    # claim and will not be extended to claim, because a mapping written after the rules and the
-    # corpus are both known is not a pre-registration. The row therefore understates v3.
-    "sol-audit-v3": ("c1-sol-audit-v3-strict.json", "sol-audit"),
-    "sol-audit-v3-broad": ("c1-sol-audit-v3-broad.json", "sol-audit"),
-    "sol-audit-v3-all": ("c1-sol-audit-v3-all.json", "sol-audit"),
-    # Superseded 2026-09-01 by a per-case run with a log per invocation. The old file had no
-    # coverage evidence at all, which is what row 8 of the audit was about.
-    "solsec": ("c1-solsec-percase.json", "solsec"),
-    "semgrep": ("semgrep-c1.json", "semgrep"),
-    # semgrep's registry has no Solana rules, which is what the `semgrep` row above measures and
-    # it remains true. semgrep loaded with the MIT SOL-0XX pack is a different tool and is
-    # measured separately rather than allowed to overwrite that row.
-    "semgrep-solana-standard": ("c1-semgrep-solana-standard.json", "semgrep"),
-    "semgrep-solana-standard-wide": ("c1-semgrep-solana-standard.json", "semgrep"),
-}
+# Where each scanner's raw output is expected, how to pull (rule_id, path) pairs out of it, and
+# which mapping scores it. All three used to be literals maintained here by hand. They are derived
+# from `adapters/*.json` instead, so that adding a tool is a declaration rather than an edit in
+# three places, and so that every row on the clock has a file behind it saying where the tool came
+# from, how it was invoked, how a run that could not happen is told from a run that found nothing,
+# and what its parser is. The long provenance notes that used to live in this file live in those
+# declarations now, beside the tool they describe.
+#
+# `test_all.py` pins the derived tables against the literals they replaced, so this cannot move a
+# published row without the suite naming the row.
+#
+# A row may still be scored with another row's mapping - that is how one tool appears twice, at
+# two versions or under two invocations, without a mapping file being written after the fact. A
+# mapping created to score a run that has already happened is not a pre-registration, and
+# `tools/preregistration_check.py` cannot tell the difference, so the rule is kept by not creating
+# the file at all: each measurement names the mapping it is scored with.
+import scanner_spec  # noqa: E402
 
-# Corpus 2 is scored by score2.py, which is stricter: mapped rules only, and the finding must land
-# at the site the fix changed. Tracked separately because the two corpora answer different
-# questions and a single blended number would hide which one moved.
-SOURCES_CORPUS2 = {
-    # c2-radar.json covered one case. c2-radar-complete.json replaced it on 2026-08-31 with a
-    # per-case run, but it was produced BEFORE the corpus was rebuilt to pin one file per case,
-    # so 161 of its 238 findings named files that no longer exist, and it was hand-converted into
-    # the sol-audit envelope by a script nobody committed. Superseded 2026-09-01 by a per-case
-    # re-run against the current corpus, kept in radar's OWN envelope, assembled by the committed
-    # tools/normalise_runs.py. Both older files stay on disk for the record, not for scoring.
-    "radar": ("c2-radar-current.json", "radar"),
-    # c2-vaultlint.json covered one case; superseded 2026-08-31 by a per-case run with a log.
-    "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
-    "sol-audit": ("c2-sol-audit.json", "sol-audit"),
-    # sol-audit 3.0, per case, with a log. The v2 row above has no run log at all and 96 of its
-    # 426 findings name files the corpus rebuild removed, so it is the weakest evidence on this
-    # page; it stays because deleting a superseded run is not how this project corrects things.
-    "sol-audit-v3": ("c2-sol-audit-v3-strict.json", "sol-audit"),
-    "sol-audit-v3-broad": ("c2-sol-audit-v3-broad.json", "sol-audit"),
-    "sol-audit-v3-all": ("c2-sol-audit-v3-all.json", "sol-audit"),
-    # New on 2026-09-01. solsec was published as "0 / 6, 3 unavailable" with no run log, no code
-    # path and a denominator inferred from silence in a findings file (row 8, error 20 under a
-    # different scanner). It now has one invocation per case per variant and a log per run.
-    "solsec": ("c2-solsec-percase.json", "solsec"),
-    # The eighth tool: semgrep loaded with the MIT SOL-0XX Solana pack. Mapping pre-registered in
-    # commit cc9a7c7, before the first run.
-    "semgrep-solana-standard-c2": ("c2-semgrep-solana-standard.json", "semgrep"),
-    "semgrep-solana-standard-c2-wide": ("c2-semgrep-solana-standard.json", "semgrep"),
-}
+SOURCES, SOURCES_CORPUS2, MAPPING_ALIAS, ROW_NOTES = scanner_spec.clock_tables()
 
 
 def extract(kind, blob):
@@ -111,18 +74,6 @@ def extract(kind, blob):
         return [(r.get("check_id", ""), r.get("path", ""))
                 for r in (blob or {}).get("results", [])]
     raise ValueError(kind)
-
-
-# A row may be scored with another row's mapping. That is how one tool can appear twice, at two
-# versions or under two invocations, without a second mapping file being written after the fact.
-# A mapping created to score a run that has already happened is not a pre-registration, and
-# tools/preregistration_check.py cannot tell the difference, so the rule is kept here instead.
-MAPPING_ALIAS = {
-    "sol-audit-v3": "sol-audit",
-    "sol-audit-v3-broad": "sol-audit",
-    "sol-audit-v3-all": "sol-audit",
-    "semgrep-solana-standard-c2": "semgrep-solana-standard-c2",
-}
 
 
 def load_mapping(name, mappings_dir="mappings"):
