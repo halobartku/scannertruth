@@ -257,8 +257,9 @@ result is void. `control-null` establishes the floor.
 Run each scanner **twice** and compare findings by rule and location before trusting anything over
 time. `--repeat 2` does the comparison for you, per leaf, by rule, file, line and column, and writes
 the verdict beside the findings; both passes stay on disk and nothing is averaged. Without the flag
-the verdict is `not-checked` and you have not answered the question, and `not-checked` is what most
-of this repository's determinism files still say.
+the verdict is `not-checked` and you have not answered the question. Most measurements here
+predate the framework and have no determinism file at all, so check `raw/` before assuming a
+published row has been repeated.
 
 ## 9. Never tune to produce a result
 
