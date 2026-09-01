@@ -61,6 +61,31 @@ def sources(case_dir, variant):
                        for f in files)
 
 
+def _post_with_ceiling_fallback(url, payload, key):
+    """POST a chat completion. A 400 that names `max_tokens` means the provider caps output below
+    the ceiling we asked for; the call is repeated with no ceiling (the model's own maximum) and
+    `payload["max_tokens"]` is set to None so the artefact line says so. A 429 is a shared quota
+    (Z.ai's coding plan is also the VPS agent's) and is waited out a few times."""
+    def post(body):
+        req = urllib.request.Request(url, data=json.dumps(body).encode(),
+                                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+        with urllib.request.urlopen(req, timeout=3600) as r:
+            return json.loads(r.read())
+    for attempt in range(6):
+        try:
+            return post({k: v for k, v in payload.items() if v is not None})
+        except urllib.error.HTTPError as e:
+            text = e.read().decode("utf-8", "replace")[:400]
+            if e.code == 400 and "max_tokens" in text and payload.get("max_tokens") is not None:
+                payload["max_tokens"] = None
+                continue
+            if e.code == 429 and attempt < 5:
+                time.sleep(30 * (attempt + 1))
+                continue
+            raise RuntimeError(f"HTTP {e.code}: {text[:200]}")
+    raise RuntimeError("gave up after six attempts")
+
+
 def ask_openrouter(model, code, think=False):
     """One call through OpenRouter, returning the answer and what it actually cost.
 
@@ -85,12 +110,10 @@ def ask_openrouter(model, code, think=False):
     # think=False; those rows carry no `reasoning` field. On 2026-09-02 the owner's rule became:
     # if a model thinks, let it think, and record how much. `max_tokens` is only a ceiling now,
     # and 8,000 was not enough: glm-5.3 thought 33,813 characters on wormhole-sysvar and hit it.
-    payload["max_tokens"] = 32000
-    req = urllib.request.Request(
-        OPENROUTER, data=json.dumps(payload).encode(),
-        headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
-    with urllib.request.urlopen(req, timeout=1800) as r:
-        d = json.loads(r.read())
+    # 128,000 since 2026-09-02 01:40 (owner: "for everyone, 128k"); a provider that rejects the
+    # value gets the call again with no ceiling at all, and the line records which happened.
+    payload["max_tokens"] = 128000
+    d = _post_with_ceiling_fallback(OPENROUTER, payload, key)
     msg = (d.get("choices") or [{}])[0].get("message", {}) or {}
     u = d.get("usage") or {}
     return ((msg.get("content") or "").strip(),
@@ -127,19 +150,8 @@ def ask_zai(model, code, think=False):
     # Same rule as OpenRouter since 2026-09-02: reasoning is the model's default and gets room.
     # (With `thinking.type: disabled` glm-5.3 obeyed on a trivial prompt and reasoned 1,734
     # characters anyway on the audit prompt, so "suppressed" was never a clean label here.)
-    payload["max_tokens"] = 32000
-    req = urllib.request.Request(
-        ZAI, data=json.dumps(payload).encode(),
-        headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
-    for attempt in range(6):
-        try:
-            with urllib.request.urlopen(req, timeout=1800) as r:
-                d = json.loads(r.read())
-            break
-        except urllib.error.HTTPError as e:
-            if e.code != 429 or attempt == 5:
-                raise
-            time.sleep(30 * (attempt + 1))
+    payload["max_tokens"] = 128000
+    d = _post_with_ceiling_fallback(ZAI, payload, key)
     msg = (d.get("choices") or [{}])[0].get("message", {}) or {}
     u = d.get("usage") or {}
     return ((msg.get("content") or "").strip(),
