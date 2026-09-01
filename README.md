@@ -18,10 +18,10 @@ thoroughly a tool has done a fixed piece of homework**, not whether it works on 
 An exam with the same questions for four years stops telling you who can do the subject.
 
 **So we built the other exam.** Real break-ins, each taken from the fix commit its own maintainers
-wrote. As of 2026-09-01 there are **17 valid cases**, **16 built** and **8 measured**: eight cases
-were added on 2026-09-01 and no scanner has been run over them yet, so they are not in the
-denominator of any figure on this page, and the one valid case that is not built is reported as
-`not-built` rather than quietly dropped. The best scanner on the market scores **11/11 on the
+wrote. As of 2026-09-01 there are **17 valid cases**, **17 built** and **8 measured**. Eight is the
+floor: it is the set every row in the table below covers, and a row that has since been re-run
+over more says so and states its own larger denominator. No case is ever quietly dropped, and a
+case a given scanner has not been run over is reported as `not-run`, never as a zero. The best scanner on the market scores **11/11 on the
 four-year-old paper and zero on the real one.**
 
 ---
@@ -117,7 +117,7 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 
 | Scanner | Teaching corpus (2022, public) | Real vulnerabilities |
 |---|---|---|
-| `control-noisy` | **0 / 11**, from 81,928 findings | **0**, despite 2,392,280 findings |
+| `control-noisy` | **0 / 11**, from 81,928 findings | **0**, despite 2,629,968 findings |
 | **Radar** (Auditware) | **11 / 11** | 0 / 8, re-run 2026-09-01: also **0 / 16** |
 | `sol-audit` v2 (ours) | 4 / 11 | 0 / 8 |
 | `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** |
@@ -130,8 +130,8 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 
 **Eight scanners, one detection between them** - and seeing that one required correcting a
 mapping error of our own. On the eight cases every tool has been run against, the count is one.
-Three of the seven have now also been run against all sixteen built cases and detect nothing
-there either.
+Three of the seven have now also been run against sixteen of the seventeen built cases and
+detect nothing there either.
 
 `sol-azy` was published in the could-not-run table until 2026-09-01 with the reason "ships no
 default rule set, so it detects nothing out of the box". That reason was false: it has an internal
@@ -160,7 +160,7 @@ published because only one of them is fair and only the other is comparable.
 
 **The control is what makes the table readable.** `control-noisy` flags every non-empty line under
 every rule id any mapping in this repository claims: 81,928 findings on the teaching corpus and
-2,392,280 on the real one. It would rank first on any metric that counts findings. It reaches
+2,629,968 on the real one. It would rank first on any metric that counts findings. It reaches
 **11 / 11 nominal recall** and **0 / 11 real**, so nominal recall demonstrably can be bought with
 volume, which is why this project does not publish it as a result, and real recall demonstrably
 cannot. Until 2026-09-01 the teaching-corpus control emitted under one rule id that no mapping
@@ -183,7 +183,7 @@ So the interesting question is what happens off it, and answering that required 
 did not exist. Building it is the work:
 
 - **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit and
-  its parent, so the answer key is somebody else's. 17 valid cases, 16 built, 8 measured, which is
+  its parent, so the answer key is somebody else's. 17 valid cases, 17 built, 8 measured, which is
   why the table above reads out of eight. Class and repository concentration is recomputed from the
   manifest in [`docs/CLASS-BALANCE.md`](docs/CLASS-BALANCE.md) rather than described in prose.
 - **Real crates**: the same bugs as whole projects rather than extracted files, built from each
@@ -340,9 +340,9 @@ which is why this repository is 49 MB rather than 2.
 ## Honest limits
 
 - **Seventeen real cases is a small corpus**, and only eight of them have been measured, so every
-  score above is out of eight and not out of sixteen. This is our largest stated weakness; growing
-  it is milestone 2, and the eight cases added on 2026-09-01 are growth that has not yet been
-  measured rather than a better number.
+  score above is out of eight and not out of seventeen. This is our largest stated weakness;
+  growing it is milestone 2, and the nine cases built on 2026-09-01 are growth rather than a
+  better number: no row in the table above is out of all of them.
 - **Corpus 2 is drawn from public postmortems**, which are famous precisely because nobody caught
   them in time. It is therefore systematically harder than the population of real bugs and
   **understates every scanner measured on it**. It answers "do these catch the ones that cost

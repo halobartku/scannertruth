@@ -139,12 +139,17 @@ def build_case(case, cache, out_root):
                 continue
             dest = os.path.join(out_root, name, variant, "src", os.path.basename(path))
             os.makedirs(os.path.dirname(dest), exist_ok=True)
-            with open(dest, "w", encoding="utf-8") as fh:
+            # newline="\n" is not cosmetic. The default translates every "\n" to "\r\n" on Windows,
+            # so the extracted file stops being the upstream blob it claims to be. That is how
+            # eight cases were re-encoded on 2026-09-01 (error 34). .gitattributes stops git
+            # rewriting them on checkout; this stops us writing them wrong in the first place.
+            with open(dest, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(content)
             written.append(f"{variant}/{os.path.basename(path)}")
         manifest_dir = os.path.join(out_root, name, variant)
         if os.path.isdir(manifest_dir):
-            with open(os.path.join(manifest_dir, "Cargo.toml"), "w", encoding="utf-8") as fh:
+            with open(os.path.join(manifest_dir, "Cargo.toml"), "w", encoding="utf-8",
+                      newline="\n") as fh:
                 fh.write(CARGO.format(name=name.replace("_", "-")))
 
     ins = os.path.join(out_root, name, "insecure", "src")

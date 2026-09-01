@@ -49,8 +49,22 @@
  },
  {
   "name": "spl-token-lending-rounding",
-  "status": "skipped",
-  "reason": "fix touches no .rs file"
+  "status": "built",
+  "repo": "solana-labs/solana-program-library",
+  "fix": "c2b287788b98b74dcec7436db107d66e6da91295",
+  "parent": "c24bc966f133fbac5c789f7fb2841e47764ee0f2",
+  "class": "arithmetic-rounding-drain",
+  "source": "https://neodyme.io/en/blog/lending_disclosure",
+  "files": [
+   "token-lending/program/src/math/rate.rs",
+   "token-lending/program/src/state/reserve.rs"
+  ],
+  "written": [
+   "insecure/rate.rs",
+   "insecure/reserve.rs",
+   "secure/rate.rs",
+   "secure/reserve.rs"
+  ]
  },
  {
   "name": "squads-signer-auth",

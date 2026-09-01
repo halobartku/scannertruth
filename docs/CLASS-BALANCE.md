@@ -9,16 +9,14 @@
 | cases listed | 18 |
 | valid | 17 |
 | invalid, kept in the manifest so the error stays visible | 1 |
-| built | 16 |
+| built | 17 |
 | measured by at least one scanner | 8 |
-| built but not yet measured | 8 |
-| valid but not built | 1 |
+| built but not yet measured | 9 |
+| valid but not built | 0 |
 | distinct classes among the valid cases | 13 |
 | distinct repositories among the valid cases | 8 |
 
-Not yet measured, and therefore not in the denominator of any published score: `anchor-account-reload-owner`, `anchor-program-system`, `solido-anker-arbitrary-cpi`, `solido-deposit-reserve-account`, `spl-stake-pool-fee-rounding`, `spl-stake-pool-mint-decimals`, `squads-recursive-execute`, `token-2022-confidential-approve-mint`.
-
-Valid but not built, reported as `not-built` rather than skipped: `spl-token-lending-rounding`.
+Not yet measured, and therefore not in the denominator of any published score: `anchor-account-reload-owner`, `anchor-program-system`, `solido-anker-arbitrary-cpi`, `solido-deposit-reserve-account`, `spl-stake-pool-fee-rounding`, `spl-stake-pool-mint-decimals`, `spl-token-lending-rounding`, `squads-recursive-execute`, `token-2022-confidential-approve-mint`.
 
 ## By class
 

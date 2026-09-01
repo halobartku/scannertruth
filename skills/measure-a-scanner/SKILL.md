@@ -146,7 +146,7 @@ python tools/control_c2.py                                     # controls must s
 
 ## 8. Check the controls, every time
 
-`control-noisy` flags every non-empty line: 81,928 findings on corpus 1, 2,392,280 on corpus 2, and
+`control-noisy` flags every non-empty line: 81,928 findings on corpus 1, 2,629,968 on corpus 2, and
 **zero real recall on both**. If it ever scores above zero, the scorer is crediting volume and every
 result is void. `control-null` establishes the floor.
 

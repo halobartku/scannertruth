@@ -8,8 +8,8 @@ err.log
 err2.log
 
 # The calibration controls are generated, not measured. `control-noisy` is every mapped rule id
-# on every non-empty line of both variants of every case: 81,928 findings on corpus 1 and 2,392,280
-# on corpus 2, which is 296 MB. It regenerates byte-identically from what IS committed - the rule
+# on every non-empty line of both variants of every case: 81,928 findings on corpus 1 and 2,629,968
+# on corpus 2, which is 311 MB. It regenerates byte-identically from what IS committed - the rule
 # set in mappings/ and, for the teaching corpus, raw/c1-control-inventory.json - with one command:
 #     python tools/control_c1.py     python tools/control_c2.py
 # Committing it once made this repository 49 MB, 45 of which was one generated file (audit row 47).

@@ -42,7 +42,7 @@ below is checkable in thirty seconds.
 
 ### The parts that make it a measurement rather than an opinion
 
-- **`control-noisy`**: flags every non-empty line, 81,928 findings on one corpus and **2,392,280** on the
+- **`control-noisy`**: flags every non-empty line, 81,928 findings on one corpus and **2,629,968** on the
   other, and scores **zero real recall on both**. Proof the metric cannot be bought with volume.
 - **A positive control on the scorer itself**, because until it was added the scorer had never once
   returned a detection and nobody had checked that it could.

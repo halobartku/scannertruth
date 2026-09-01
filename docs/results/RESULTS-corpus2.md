@@ -19,8 +19,9 @@
 
 
 > **THE CORPUS GREW AFTER THIS MEASUREMENT, 2026-09-01.** The table of cases below is the corpus as
-> it stood on 2026-08-31. Eight more were added on 2026-09-01. **Radar, solsec and semgrep with
-> the SOL-0XX pack have since been re-run per case over all sixteen built cases** and detect
+> it stood on 2026-08-31. Eight more were added on 2026-09-01, and `spl-token-lending-rounding`
+> was built later the same day, which makes seventeen. **Radar, solsec and semgrep with
+> the SOL-0XX pack have since been re-run per case over sixteen of those seventeen** and detect
 > nothing on any of them; `sol-audit` and `vaultlint` have not, so this page's denominator of
 > eight is still the right one for their rows and not for those three. Radar's own per-case
 > breakdown moved on the re-run: `squads-signer-auth` is `missed`, not `unlocated` (error 31).

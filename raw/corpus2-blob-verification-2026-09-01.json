@@ -1,7 +1,7 @@
 {
  "checked_at": "2026-09-01",
  "method": "GET raw.githubusercontent.com/<repo>/<commit>/<path>, then git blob id and sha256 computed locally and compared with corpus2/manifest.json file_hashes",
- "match": 35,
+ "match": 39,
  "mismatch_or_error": 0,
  "rows": [
   {
@@ -248,6 +248,35 @@
    "result": "MATCH",
    "detail": "e72916ac37be",
    "url": "https://raw.githubusercontent.com/coral-xyz/anchor/3a799e2d32bd708f0b280c60baecac76418248b1/lang/src/accounts/account.rs"
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "file": "insecure/src/rate.rs",
+   "result": "MATCH",
+   "detail": "c956491337d9",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/c24bc966f133fbac5c789f7fb2841e47764ee0f2/token-lending/program/src/math/rate.rs"
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "file": "insecure/src/reserve.rs",
+   "result": "MATCH",
+   "detail": "c29fa280a7a3",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/c24bc966f133fbac5c789f7fb2841e47764ee0f2/token-lending/program/src/state/reserve.rs"
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "file": "secure/src/rate.rs",
+   "result": "MATCH",
+   "detail": "c404c8ff2b8c",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/c2b287788b98b74dcec7436db107d66e6da91295/token-lending/program/src/math/rate.rs"
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "file": "secure/src/reserve.rs",
+   "result": "MATCH",
+   "detail": "fd51af49ce5b",
+   "url": "https://raw.githubusercontent.com/solana-labs/solana-program-library/c2b287788b98b74dcec7436db107d66e6da91295/token-lending/program/src/state/reserve.rs"
   }
- ]
+ ],
+ "appended": "2026-09-01, later the same day: the four source files of spl-token-lending-rounding, which did not exist when the first 35 rows were written because the case was not built. Same method, same day, appended rather than regenerated so the earlier rows are untouched."
 }

@@ -44,10 +44,10 @@ python tools/control_c2.py      # the calibration controls must score zero
 
 **What you should see.** `test_all.py` ends with `123 passed, 0 failed`. `verify.py` prints a table
 and `OK: raw data reproduces the published result`. `control_c2.py` prints
-`CONTROLS PASS: noisy scores 0 despite 2,392,280 findings`.
+`CONTROLS PASS: noisy scores 0 despite 2,629,968 findings`.
 
 **What that last one means, and it is the important one.** We keep a fake scanner that flags every
-non-empty line of every file. It produces 2,392,280 findings, so any ranking based on counting
+non-empty line of every file. It produces 2,629,968 findings, so any ranking based on counting
 findings would put it first. Our metric gives it **zero**. If it ever scored above zero, our metric
 would be broken, and you just checked that it is not.
 

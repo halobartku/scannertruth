@@ -165,7 +165,70 @@
     "token-lending/program/src/math/rate.rs",
     "token-lending/program/src/state/reserve.rs"
    ],
-   "sha_correction": "The manifest first carried bf15464783aca0395d953165b68b143c4b8c984f, the head of PR #1883's branch. That is a MERGE commit with two parents, and `git show` on a merge without -m prints the combined diff, which omits files identical to either parent. rate.rs and reserve.rs matched the feature-branch parent exactly, so the diff appeared empty and the case was dropped. We recorded the cause as 'almost certainly an artefact of shallow cloning'. That guess was wrong and was disproved by testing it. The correct SHA is the squash-merge commit, which has a single parent."
+   "note": "Rate::try_round_u64 rounded half-up, and CollateralExchangeRate::collateral_to_liquidity and liquidity_to_collateral both used it. Converting between collateral and liquidity therefore rounded in the depositor's favour, so an amount chosen to sit just above a half-unit boundary came back worth more than it went in, and the difference was paid out of the reserve. Repeated, that drains the pool one rounding unit at a time. The fix floors both conversions with try_floor_u64, so rounding always favours the protocol, removes try_round_u64 from Rate entirely, and applies the minimum borrow fee in Decimal before rounding rather than after.",
+   "contamination_note": "The fix commit touches exactly these two non-test .rs files and no others, so nothing was excluded. Both are pinned rather than one, because neither is the bug on its own: rate.rs carries only the deletion of try_round_u64 and reserve.rs carries only the call sites that stopped using it. Under file-level matching rate.rs is a pure deletion and says nothing, which is limitation 2 again; the case means something only under hunk-level matching, and the scoreable evidence is in reserve.rs. The pin is the one the manifest already carried before the case was built, and it was not revised after seeing what the commit contained.",
+   "measured": false,
+   "measurement_note": "Built 2026-09-01, later than the eight cases added the same day, and NOT YET MEASURED by most scanners. Corpus-2 scores published before it was built are out of sixteen built valid cases and do not include it. run_all.py reports it as not-run for a scanner that has a run log and unknown for one that does not, and drops that scanner's status to partial, so it can never be counted as a zero.",
+   "build_note": "Built on 2026-09-01 from the corrected SHA, after the parent count was verified rather than assumed: `git rev-list --parents -n 1 c2b28778` returns one parent, and the same command on the merge commit bf15464783aca0395d953165b68b143c4b8c984f returns two. The original failure reproduces exactly, `git show --name-only` on the merge prints nothing at all, which is why built.json recorded 'fix touches no .rs file'. The blob ids in the fix commit's own diff headers, c9564913..c404c8ff for rate.rs and c29fa280..fd51af49 for reserve.rs, match the four extracted files, so the pair is the parent and the fix and not some other two commits.",
+   "sha_correction": "The manifest first carried bf15464783aca0395d953165b68b143c4b8c984f, the head of PR #1883's branch. That is a MERGE commit with two parents, and `git show` on a merge without -m prints the combined diff, which omits files identical to either parent. rate.rs and reserve.rs matched the feature-branch parent exactly, so the diff appeared empty and the case was dropped. We recorded the cause as 'almost certainly an artefact of shallow cloning'. That guess was wrong and was disproved by testing it. The correct SHA is the squash-merge commit, which has a single parent.",
+   "file_hashes": {
+    "insecure/Cargo.toml": {
+     "sha256": "4dd18f31656943d7dbcce43031d0d29ecec2c66ab96cbefec4eff7b32a5c2b8e",
+     "git_blob": "9af3daf3ecc3000251a51b436182e3d432e1cc9d",
+     "bytes": 120,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "insecure/src/rate.rs": {
+     "sha256": "7e6b3f43ccf8af38fdb01b3c7a3f28c81ae9b6c22cc2ec488bf632043ce3a75f",
+     "git_blob": "c956491337d948b02245cefe981ee3746ca2f070",
+     "bytes": 5334,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "c24bc966f133fbac5c789f7fb2841e47764ee0f2",
+      "path": "token-lending/program/src/math/rate.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse c24bc966f133fbac5c789f7fb2841e47764ee0f2:token-lending/program/src/math/rate.rs"
+     }
+    },
+    "insecure/src/reserve.rs": {
+     "sha256": "9e51560d30d5dd140bc283c246e519b08a425207f4adc40837e5ad84a2bce798",
+     "git_blob": "c29fa280a7a392c52801b74dafdd3bc32143e9c5",
+     "bytes": 49445,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "c24bc966f133fbac5c789f7fb2841e47764ee0f2",
+      "path": "token-lending/program/src/state/reserve.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse c24bc966f133fbac5c789f7fb2841e47764ee0f2:token-lending/program/src/state/reserve.rs"
+     }
+    },
+    "secure/Cargo.toml": {
+     "sha256": "4dd18f31656943d7dbcce43031d0d29ecec2c66ab96cbefec4eff7b32a5c2b8e",
+     "git_blob": "9af3daf3ecc3000251a51b436182e3d432e1cc9d",
+     "bytes": 120,
+     "generated_by": "tools/build_corpus2.py, not an upstream file: the manifest is synthesised around the extracted source"
+    },
+    "secure/src/rate.rs": {
+     "sha256": "4e35a8c614e2599fd51cd37e815289f92c6c2a075f6a3932036a91e2154ca7f1",
+     "git_blob": "c404c8ff2b8c8914d67c16cfb35e384c890af8a1",
+     "bytes": 4812,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "c2b287788b98b74dcec7436db107d66e6da91295",
+      "path": "token-lending/program/src/math/rate.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse c2b287788b98b74dcec7436db107d66e6da91295:token-lending/program/src/math/rate.rs"
+     }
+    },
+    "secure/src/reserve.rs": {
+     "sha256": "28b79e07ca910eaa3fbef1c7902ed769f7d4a355d6347af8dcce32b4463abd85",
+     "git_blob": "fd51af49ce5bf9a7b59e5c2c2b0534cfb7e77eb0",
+     "bytes": 49625,
+     "upstream": {
+      "repo": "solana-labs/solana-program-library",
+      "commit": "c2b287788b98b74dcec7436db107d66e6da91295",
+      "path": "token-lending/program/src/state/reserve.rs",
+      "verify": "git -C <clone of solana-labs/solana-program-library> rev-parse c2b287788b98b74dcec7436db107d66e6da91295:token-lending/program/src/state/reserve.rs"
+     }
+    }
+   }
   },
   {
    "name": "squads-signer-auth",
@@ -871,6 +934,6 @@
  },
  "file_selection": "Each case pins the file the public disclosure actually implicates, established by reading every fix commit's full diff against its advisory. The first build took every .rs file the commit touched, which packaged dependency bumps, kill switches, dead code and unrelated hardening as part of a vulnerability pair. Recorded in KNOWN-LIMITATIONS as limitation 3.",
  "scoring_note": "Cases with valid=false are excluded from every denominator. As of 2026-09-01 that is cashio-account-data only. Counts are derived rather than typed: run tools/class_balance.py, which reads this manifest and the corpus2/ directory and writes docs/CLASS-BALANCE.md.",
- "measurement_status": "A case carries \"measured\": false until a scanner has actually been run over it. Absence of the field means measured, which is true of every case built on 2026-08-31. Published corpus-2 scores are out of the MEASURED cases only. The unmeasured ones are reported by run_all.py and score2.py as not-run or unknown, never as a zero, and they drop the reporting scanner's status to partial until it is re-run. Eight cases were added on 2026-09-01 and none of them has been measured.",
+ "measurement_status": "A case carries \"measured\": false until a scanner has actually been run over it. Absence of the field means measured, which is true of every case built on 2026-08-31. Published corpus-2 scores are out of the MEASURED cases only. The unmeasured ones are reported by run_all.py and score2.py as not-run or unknown, never as a zero, and they drop the reporting scanner's status to partial until it is re-run. Eight cases were added on 2026-09-01 and none of them had been measured when that was written. spl-token-lending-rounding was built later the same day and is the seventeenth built valid case; consult run_all.py for which scanner has covered which case, and never this sentence.",
  "file_hashes_note": "Added 2026-09-01. sha256 detects any local edit with no network; git_blob is git's own object id, so `git cat-file blob <git_blob>` in a clone of the named repository resolves the same bytes, and `git rev-parse <commit>:<path>` proves the blob is the one that commit produced. Recompute and check with `python tools/corpus_hashes.py`. Before this existed, a one-character edit to any corpus file passed every check in the repository and changed every verdict."
 }

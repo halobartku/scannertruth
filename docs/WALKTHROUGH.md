@@ -191,7 +191,7 @@ Before believing any number you just produced:
 python tools/control_c2.py
 ```
 
-The noisy control flags every non-empty line: **2,392,280 findings, and it must score zero.** If your
+The noisy control flags every non-empty line: **2,629,968 findings, and it must score zero.** If your
 method would give it anything above zero, your method is counting volume. This is the check that
 separates a measurement from a marketing figure.
 
