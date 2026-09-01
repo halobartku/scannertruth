@@ -30,12 +30,13 @@ One command in this repository is **expected to fail**, and you should run it an
 surprised by it later:
 
 ```bash
-python tools/run_all.py --verify-coverage   # exits 1: five of twenty rows cannot show what they analysed
+python tools/run_all.py --verify-coverage   # exits 1: some published rows cannot show what they analysed
 ```
 
 It asks whether every measurement on the clock can show what it analysed, it runs in CI as its own
-job (`coverage`, separate from `selfcheck`), and it is red because five historical measurements were
-made by hand and nobody wrote the run log. A red `coverage` beside a green `selfcheck` is not a
+job (`coverage`, separate from `selfcheck`), and it is red because several historical measurements
+were made by hand and the run log was the step a person had to remember. Run it for the current
+list rather than trusting a count written here; rows are being run and retired. A red `coverage` beside a green `selfcheck` is not a
 broken build: the machinery is sound and the numbers are not all accounted for. It closes with
 scanner runs, never with a code change and never by relaxing it.
 
@@ -188,7 +189,7 @@ determinism check. And a tool whose output shape is new needs a parser, which is
 `<findings>.log` exists and is the authority, `none` when the question is unanswerable. A scanner
 with unresolved cases drops to status `partial` with the reason attached, rather than reporting a
 confident number over cases nobody can prove were analysed. Check your own row with
-`python tools/run_all.py --verify-coverage` before publishing anything; it must not add a sixth gap.
+`python tools/run_all.py --verify-coverage` before publishing anything; it must not add another gap.
 
 ## 5. Pin the corpus, and say when you pinned it
 
@@ -308,3 +309,7 @@ and their own skill:
 | "I'll adjust the mapping so the result makes sense" | The mapping is pre-registered, and it is theirs to correct, not ours to tune. |
 | "The scorer returns zero everywhere, so nothing detects anything" | Prove the scorer can return a positive first. |
 | "One case is enough to say scanners don't work" | n=1 is a direction to test. Two headlines were extrapolated from n=1 and had to be retracted. |
+| "There is a declaration for this tool, so I can run it" | Three declarations say `engine: unrecorded`. Nobody wrote the command down, and `command_for` refuses rather than inventing one. |
+| "The framework wrote a run log, so coverage is proved" | It proves the invocation happened and records what the tool said. Whether `ok` was the right verdict depends on the `coverage.evidence` pattern **you** wrote. Read the artefacts. |
+| "The determinism file is there, so the tool is deterministic" | Without `--repeat 2` it says `not-checked`. That is an unanswered question, not an answer. |
+| "The framework classified it, so I don't need to look at stdout" | `run_leaf` keeps the complete stdout and stderr of every invocation for exactly this. Looking is the cheapest check in the project. |
