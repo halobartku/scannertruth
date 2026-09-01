@@ -854,6 +854,17 @@ def test_rejected_candidates_carry_a_written_reason():
     assert "REJECT" in s, "the triage file records acceptances only, which hides the judgement calls"
     assert "out of scope" in s.lower(), "rejections must say why, not just that"
 
+
+def test_every_file_named_in_ci_exists():
+    """CI caught a stale path that the suite did not, because the suite never invoked that CLI.
+    Now it checks the workflow's own arguments, so the next move is caught before pushing."""
+    import io as _io, os, re
+    s = _io.open(".github/workflows/verify.yml", encoding="utf-8").read()
+    refs = set(re.findall(r"--findings\s+([A-Za-z0-9_./-]+)", s))
+    refs |= set(re.findall(r"python\s+([A-Za-z0-9_-]+\.py)", s))
+    missing = [r for r in sorted(refs) if not os.path.exists(r)]
+    assert not missing, f"CI references files that do not exist: {missing}"
+
 # -------------------------------------------------------------------- main
 def main():
     print("running the checks that stand between a defect and a published number\n")

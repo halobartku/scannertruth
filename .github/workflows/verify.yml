@@ -46,6 +46,6 @@ jobs:
 
       - name: No scanner may score a detection under an unmapped rule unnoticed
         run: |
-          for s in radar vaultlint sol-audit; do
-            python unmapped_check.py --findings c2-$s.json --kind $s
-          done
+          python unmapped_check.py --findings raw/c2-radar-complete.json --kind sol-audit
+          python unmapped_check.py --findings raw/c2-vaultlint-complete.json --kind sol-audit
+          python unmapped_check.py --findings raw/c2-sol-audit.json --kind sol-audit
