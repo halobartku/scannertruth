@@ -396,7 +396,7 @@ tools/
   scanner_spec.py      the adapter framework: run, classify, log, check determinism
   spec/                the framework's code; scanner_spec.py is the name everything imports
   emit_sol_audit.py    run our own scanner and emit findings in the envelope the clock reads
-  normalise_runs.py    turn a directory of per-run artefacts into a findings file and a run log
+  legacy/              normalise_runs.py, the hand-run-to-findings converter behind two 2026-09-01 artefacts; superseded by scanner_spec.py
   rb.py                the first-day scorer for sol-audit against the teaching corpus
   rc_run.py            run a scanner over the real crates, one invocation per case per variant
   rc_score.py          score a real-crate run with score2's semantics
