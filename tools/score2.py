@@ -68,6 +68,36 @@ def rules_for(mapping, class_name):
     return set()
 
 
+def resolve_in_case(path, case_dir):
+    """Does this finding belong to THIS case, and does the file it names still exist?
+
+    Returns `(in_case, on_disk_path_or_None)`.
+
+    Two defects live here and both were open on 2026-09-01.
+
+    **Error 31.** Until today a finding was matched to a case by BASENAME alone. The case
+    directory located the pair and computed the fix site, and was then never used to decide
+    whether a finding belonged to the case at all. With nine cases and nearly distinct filenames
+    that was nearly harmless. After the additions of 2026-09-01, `processor.rs` appears in four
+    cases, `state.rs` in two and `lib.rs` in three, and a finding in one case decided a verdict
+    in another.
+
+    **Row 5 of the audit.** A findings file can outlive the corpus it was produced against, and
+    one did. The path is resolved relative to the case directory rather than the process's
+    working directory, so a relative finding path is not mistaken for a missing file, which is
+    the way an existence check turns a real detection into a silent nothing.
+    """
+    p = path.replace("\\", "/")
+    case = os.path.basename(os.path.normpath(case_dir))
+    parts = [x for x in p.split("/") if x not in ("", ".")]
+    if case not in parts:
+        return False, None
+    i = len(parts) - 1 - parts[::-1].index(case)
+    parent = os.path.dirname(os.path.normpath(case_dir)) or "."
+    candidate = os.path.join(parent, *parts[i:])
+    return True, (candidate if os.path.exists(candidate) else None)
+
+
 def score_case(case_dir, class_name, mapping, findings_by_path):
     """findings_by_path: {absolute-ish path: [(rule_id, line), ...]}"""
     rules = rules_for(mapping, class_name)
@@ -81,6 +111,12 @@ def score_case(case_dir, class_name, mapping, findings_by_path):
     fired_anywhere = False
     fired_at_site = False
     fired_on_fixed = False
+    # A finding recorded against a file that is not in the corpus is not evidence about the file
+    # that replaced it. `raw/c2-radar-complete.json` was produced before the corpus was rebuilt to
+    # pin one file per case, and 161 of its 238 findings name paths that no longer resolve. Those
+    # are counted here and never scored, so a case whose only mapped evidence is stale comes back
+    # `unknown` rather than as a miss the tool never earned. Row 5 of the 2026-09-01 audit.
+    stale = 0
 
     for name in sorted(os.listdir(ins_dir)):
         if not name.endswith(".rs"):
@@ -93,10 +129,17 @@ def score_case(case_dir, class_name, mapping, findings_by_path):
             p = path.replace("\\", "/")
             if not p.endswith("/" + name):
                 continue
+            in_case, on_disk = resolve_in_case(p, case_dir)
+            if not in_case:
+                continue
+            mapped = [(r, ln) for r, ln in items if (r or "").lower() in rules]
+            if not mapped:
+                continue
+            if on_disk is None:
+                stale += len(mapped)
+                continue
             on_fixed = "/secure/" in p
-            for rule_id, line in items:
-                if (rule_id or "").lower() not in rules:
-                    continue
+            for rule_id, line in mapped:
                 if on_fixed:
                     fired_on_fixed = True
                     continue
@@ -110,6 +153,9 @@ def score_case(case_dir, class_name, mapping, findings_by_path):
         return "unlocated", {"reason": "fires at the fix site but also on the fixed variant"}
     if fired_anywhere:
         return "unlocated", {"reason": "mapped rule fires in the file but not at the fix site"}
+    if stale:
+        return "unknown", {"reason": f"{stale} mapped findings for this case name files that are "
+                                     "not in the corpus, so there is no evidence either way"}
     return "missed", {}
 
 

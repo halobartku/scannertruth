@@ -1,4 +1,4 @@
-anchor-interface-account insecure UNAVAILABLE rc=0 no-parseable-output
+anchor-interface-account insecure ok rc=0 findings=0
 anchor-interface-account secure ok rc=0 findings=2
 cashio-account-data insecure ok rc=0 findings=4
 cashio-account-data secure ok rc=0 findings=4
@@ -17,3 +17,21 @@ squads-signer-auth secure ok rc=0 findings=4
 wormhole-sysvar insecure ok rc=0 findings=4
 wormhole-sysvar secure ok rc=0 findings=4
 C2_PERCASE_DONE
+
+# CORRECTION 2026-09-01, engineering log error 32.
+# Line 1 of this file read, from 2026-08-31 until now:
+#   anchor-interface-account insecure UNAVAILABLE rc=0 no-parseable-output
+# It was wrong, and it was wrong in the direction that would have taken a real zero
+# out of Radar's denominator. The runner that wrote this file decided ok versus
+# UNAVAILABLE by asking whether radar had written an output file. radar writes no
+# output file when it finds nothing, so a clean zero and a failed run look identical
+# to that test. radar's own stdout for this run, kept at
+# raw/radar-c2-2026-08-31-stdout/anchor-interface-account.insecure.log, says:
+#   [i] Ran 57 templates
+#   [i] Scanned 1 file (interface_account.rs)
+#   [i] radar completed successfully. No results found.
+# The case was analysed. The zero is real. raw/c2-radar-complete.json.log, which is
+# the log that actually scores, recorded it correctly as {status: ok, findings: 0}
+# and was not changed.
+# All 18 runs in this file are confirmed ok against radar's own stdout: every one
+# reports 'radar completed successfully' with a non-zero 'Scanned N file' count.

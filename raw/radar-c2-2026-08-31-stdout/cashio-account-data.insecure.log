@@ -1,0 +1,55 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container postgres  Running
+ Container radar-rabbitmq-1  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 2 files (lib.rs,mod.rs)
+
+[ [91mHigh[0m ] Unconstrained UncheckedAccount found at:
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:89:26-42
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:149:29-45
+
+
+[ [94mMedium[0m ] Duplicate Mutable Accounts found at:
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:58:20-27
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:60:25-32
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:62:24-31
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:64:24-31
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:66:24-31
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:81:31-38
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:85:31-38
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:95:19-26
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:98:25-32
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:101:26-33
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:105:25-32
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:109:38-45
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:133:33-40
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:137:35-42
+
+
+[ [94mMedium[0m ] Missing Token Mint Constraint found at:
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:64:24-31
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:66:24-31
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:81:31-38
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:85:31-38
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:109:38-45
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:133:33-40
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:137:35-42
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:141:33-40
+
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:55:3-9
+ * /tmp/c2radar/cashio-account-data/insecure/crate/src/lib.rs:92:3-9
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2-radar-percase/cashio-account-data.insecure.json

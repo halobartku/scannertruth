@@ -1,0 +1,35 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 3 files (lib.rs,main.rs,verify_signature.rs)
+
+[ [94mMedium[0m ] Arbitrary Cross-Program Invocation found at:
+ * /tmp/c2radar/wormhole-sysvar/insecure/crate/src/verify_signature.rs:68:8-25
+
+
+[ [94mMedium[0m ] Missing Rent Exemption Check found at:
+ * /tmp/c2radar/wormhole-sysvar/insecure/crate/src/verify_signature.rs:179:54-68
+
+
+[ [92mLow[0m ] Account Precreation DoS found at:
+ * /tmp/c2radar/wormhole-sysvar/insecure/crate/src/main.rs:72:4-23
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at:
+ * /tmp/c2radar/wormhole-sysvar/insecure/crate/src/main.rs:72:4-23
+ * /tmp/c2radar/wormhole-sysvar/insecure/crate/src/verify_signature.rs:68:8-25
+ * /tmp/c2radar/wormhole-sysvar/insecure/crate/src/verify_signature.rs:204:14-23
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2-radar-percase/wormhole-sysvar.insecure.json

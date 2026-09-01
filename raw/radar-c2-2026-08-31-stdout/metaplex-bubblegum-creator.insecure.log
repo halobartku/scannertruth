@@ -1,0 +1,53 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container radar-rabbitmq-1  Healthy
+ Container postgres  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 6 files (collection.rs,error.rs,lib.rs,metadata.rs,mod.rs,pda.rs)
+
+[ [91mHigh[0m ] Unconstrained UncheckedAccount found at 40 locations, see output file for more details.
+
+
+[ [91mHigh[0m ] Unvalidated Price Data Account found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/collection.rs:62:48-63
+
+
+[ [94mMedium[0m ] Duplicate Mutable Accounts found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:393:23-30
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:395:29-36
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:775:9-22
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:1427:21-34
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/mod.rs:106:5-18
+
+
+[ [94mMedium[0m ] Unchecked Close Target found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:305:17-27
+
+
+[ [92mLow[0m ] Missing Signer Check found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:126:3-9
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/lib.rs:208:3-9
+
+
+[ [92mLow[0m ] Random Authority Generation found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/mod.rs:206:39-49
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at:
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/mod.rs:83:8-25
+ * /tmp/c2radar/metaplex-bubblegum-creator/insecure/crate/src/mod.rs:159:8-20
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2-radar-percase/metaplex-bubblegum-creator.insecure.json

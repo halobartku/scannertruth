@@ -1,0 +1,25 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 2 files (misc.rs,transfer.rs)
+
+[ [91mHigh[0m ] Unvalidated Price Data Account found at:
+ * /tmp/c2radar/metaplex-token-metadata/insecure/crate/src/transfer.rs:197:58-73
+
+
+[ [92mLow[0m ] Account Data Matching found at:
+ * /tmp/c2radar/metaplex-token-metadata/insecure/crate/src/transfer.rs:197:26-32
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2-radar-percase/metaplex-token-metadata.insecure.json

@@ -1,0 +1,35 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [94mMedium[0m ] Arbitrary Cross-Program Invocation found at:
+ * /tmp/c2radar/squads-signer-auth/secure/crate/src/lib.rs:38:12-22
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/c2radar/squads-signer-auth/secure/crate/src/lib.rs:327:20-33
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /tmp/c2radar/squads-signer-auth/secure/crate/src/lib.rs:285:55-70
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at:
+ * /tmp/c2radar/squads-signer-auth/secure/crate/src/lib.rs:19:12-18
+ * /tmp/c2radar/squads-signer-auth/secure/crate/src/lib.rs:38:12-22
+ * /tmp/c2radar/squads-signer-auth/secure/crate/src/lib.rs:51:30-44
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /tmp/c2-radar-percase/squads-signer-auth.secure.json

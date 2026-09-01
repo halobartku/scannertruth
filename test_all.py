@@ -177,8 +177,13 @@ def test_score2_class_prefix_normalised():
 # tool's own envelope, parsed by the code that parses the real ones. One per supported format,
 # because a parser can break in one branch only.
 
-VARIANT_PATHS = {"insecure": "synthetic-case/insecure/src/lib.rs",
-                 "secure": "synthetic-case/secure/src/lib.rs"}
+# The directory name has to be the one `_case` actually creates. It said `synthetic-case` until
+# 2026-09-01, and the control still passed, because `score_case` matched a finding to a case by
+# basename and ignored every directory above it (error 31). Once the scorer started requiring the
+# finding to be inside the case it scores, the fixture stopped naming the case under test. The
+# assertions below are unchanged; only the path the fixture writes is now coherent.
+VARIANT_PATHS = {"insecure": "case/insecure/src/lib.rs",
+                 "secure": "case/secure/src/lib.rs"}
 
 
 def _findings_file(tmp, kind, rule, line):
@@ -817,32 +822,63 @@ def test_the_corpus_one_noisy_control_scores_zero_real_recall_when_actually_scor
     it was bought with volume, so the number that has to hold is its **real recall**, and it has to
     hold against every mapping in the repository rather than against a file size.
 
-    Read the handover before trusting the nominal figure beside it: the file's only rule id is
-    `NOISY-ALL`, which appears in no mapping, so `score.py` discards all 931 findings and the
-    published `11/11 nominal` for this control does not reproduce. Correcting that means
-    regenerating `raw/c1-control-noisy.json` to emit under every mapped rule id, the way
-    `control_c2.every_rule()` already does for corpus 2. That is a separate change to a file this
-    check deliberately only reads.
-    """
-    import json, io as _io, os
-    import score
-    if not os.path.exists("raw/c1-control-noisy.json"):
-        raise AssertionError("the control's raw data is missing; the 931 figure is unbacked")
-    d = json.load(_io.open("raw/c1-control-noisy.json", encoding="utf-8"))
-    n = len(d["findings"])
-    assert n == 931, f"published 931 findings, raw file now has {n}"
+    The handover that stood here on 2026-09-01 was acted on. The file's only rule id was
+    `NOISY-ALL`, which appears in no mapping, so `score.py` discarded all 931 findings and the
+    published `11/11 nominal` did not reproduce: the control scored 0/11 nominal and demonstrated
+    nothing. `tools/control_c1.py` regenerates it the way `control_c2.every_rule()` already builds
+    the corpus-2 control, under **every** mapped rule id. Error 33.
 
-    findings = [(x.get("rule_id", ""), x.get("file", "")) for x in d["findings"]]
+    Three things are asserted, and the middle one is the one that was missing for a day:
+
+    1. the finding count is **derived** (line positions times mapped rules), never typed;
+    2. the control reaches **11/11 nominal** under at least one mapping, so it is demonstrably
+       loud enough to be discarded on the merits rather than on an unmapped identifier;
+    3. its **real recall is zero** under every mapping, which is the claim the front page makes.
+
+    The control itself is built here in memory rather than read off disk. It is 81,928 findings
+    and its corpus-2 twin is 296 MB; both regenerate byte-identically from the rule set in
+    `mappings/` and the committed line inventory, so what is committed is the inventory, which is
+    9 KB and is the only part that cannot be recomputed without the network.
+    """
+    import json, io as _io, os, sys
+    sys.path.insert(0, "tools")
+    import score, control_c1, control_c2
+    if not os.path.exists(control_c1.INVENTORY):
+        raise AssertionError(
+            f"{control_c1.INVENTORY} is missing, so the teaching corpus's control cannot be "
+            "rebuilt and the published control figure is unbacked")
+    inventory = control_c1.inventory_from_artefact()
+    lines = sum(len(v) for v in inventory.values())
+    rules = control_c2.every_rule()
+    assert lines == 931, (
+        f"the teaching corpus has 931 non-empty .rs lines at the pinned commit; the control "
+        f"now covers {lines}")
+    built = control_c1.noisy_findings(inventory, rules)
+    assert len(built) == lines * len(rules), (
+        f"the control built {len(built)} findings; every mapped rule id on every one of {lines} "
+        f"flagged lines is {lines * len(rules)}. A control that flags less than everything is "
+        "not a ceiling.")
+    assert {x["rule_id"] for x in built} == set(rules), (
+        "the control does not emit under exactly the mapped rule set. An unmapped rule id scores "
+        "zero by construction, which is what made this control prove nothing until 2026-09-01.")
+
+    findings = [(x["rule_id"], x["file"]) for x in built]
+    best_nominal = 0
     for fn in sorted(os.listdir("mappings")):
         if not fn.endswith(".json"):
             continue
         m = json.load(_io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
         rows = score.score(findings, m)
+        best_nominal = max(best_nominal, sum(1 for r in rows if r[4]))
         real = sum(1 for r in rows if r[5])
         assert real == 0, (
             f"{fn}: the noisy control scored {real} real detections. A scorer that credits a tool "
             "which flags every line of the fixed code as loudly as the vulnerable one is crediting "
             "volume, and every published number rests on it not doing that.")
+    assert best_nominal == 11, (
+        f"the noisy control reaches {best_nominal}/11 nominal recall. It has to reach 11/11 for "
+        "its zero real recall to mean anything: a control that scores zero because nothing it "
+        "says is mapped proves only that unmapped rules score zero.")
 
 
 def test_corpus_commit_is_pinned_in_the_protocol():
@@ -1685,6 +1721,227 @@ def test_class_balance_document_is_derived_from_the_manifest():
     assert class_balance.render() == on_disk, (
         "docs/CLASS-BALANCE.md no longer matches the manifest it is derived from; "
         "run python tools/class_balance.py")
+
+
+# -------------------------------- findings must land on files that exist, 2026-09-01, row 5
+
+# Every corpus-2 findings file the clock scores, and the envelope it is read with.
+_CORPUS2_FINDINGS = [
+    ("radar", "raw/c2-radar-current.json", "sol-audit"),
+    ("vaultlint", "raw/c2-vaultlint-complete.json", "sol-audit"),
+    ("sol-audit", "raw/c2-sol-audit.json", "sol-audit"),
+]
+
+
+def test_no_verdict_rests_on_a_finding_about_a_file_that_is_not_in_the_corpus():
+    """A findings file can outlive the corpus it was produced against, and two did.
+
+    `raw/c2-radar-complete.json`, the file behind the published Radar corpus-2 row, was produced
+    on 2026-08-31 against the corpus **before** it was rebuilt to pin one file per case. 161 of
+    its 238 findings named files that no longer exist. `raw/c2-sol-audit.json` has the same
+    problem on three cases, which the 2026-09-01 audit did not notice. Nothing said so, because
+    `score_case` matched on the basename and ignored every directory above it.
+
+    Deleting the stale artefacts is not the answer: this project keeps superseded runs on
+    purpose. The property that has to hold is narrower and stronger than "every path resolves",
+    and it is the one an outside reader cares about: **a finding about a file that is not in the
+    corpus must never move a verdict.** Scored twice, once as recorded and once with the
+    unresolvable paths removed, the two must agree for every case of every scanner.
+
+    The stale counts themselves are reported by `tools/stale_findings.py` and recorded in
+    `raw/stale-findings-2026-09-01.json`, so they stay visible rather than becoming invisible
+    once the scorer stops being fooled by them."""
+    import io as _io, json as _json, os, sys
+    sys.path.insert(0, "tools")
+    import score2
+    cases = [c for c in _json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+             if c.get("valid", True)]
+    moved, saw_stale = [], 0
+    for scanner, path, kind in _CORPUS2_FINDINGS:
+        assert os.path.exists(path), \
+            f"{scanner}: {path} is missing, so the clock scores nothing for it"
+        findings = score2.load_findings(kind, path)
+        resolvable = {}
+        for p, items in findings.items():
+            norm = str(p).replace("\\", "/")
+            if os.path.exists(norm):
+                resolvable[p] = items
+            else:
+                saw_stale += len(items)
+        mapping = _json.load(_io.open(f"mappings/{scanner}.json", encoding="utf-8"))["map"]
+        for c in cases:
+            d = os.path.join("corpus2", c["name"])
+            if not os.path.isdir(d):
+                continue
+            a, _ = score2.score_case(d, c["class"], mapping, findings)
+            b, _ = score2.score_case(d, c["class"], mapping, resolvable)
+            if a != b:
+                moved.append(f"{scanner}/{c['name']}: as recorded {a!r}, with the stale paths "
+                             f"dropped {b!r}")
+    assert not moved, (
+        "verdicts that depend on findings about files that are not in the corpus:\n  "
+        + "\n  ".join(moved)
+        + "\nRe-run the scanner against the current corpus, or record the case as unknown.")
+    assert saw_stale, (
+        "no stale finding path was found anywhere, so this check just passed vacuously. If the "
+        "artefacts were genuinely refreshed, delete this assertion and say so in the commit.")
+
+
+# ------------------------------------------ corpus content is pinned, 2026-09-01, row 9
+
+def test_every_corpus_file_matches_the_hash_recorded_in_the_manifest():
+    """The benchmark's whole pitch is that you can check it rather than trust it, and until
+    2026-09-01 the one thing nobody could check was the ground truth. The manifest carried
+    commit SHAs; `test_fix_commits_look_like_shas` checked they looked like SHAs. Nothing
+    tied `corpus2/<case>/<variant>/src/*.rs` to any blob. A one-character edit to any corpus
+    file passed every check in this repository and changed every verdict.
+
+    `tools/corpus_hashes.py` records a sha256 and git's own blob id per file. This recomputes
+    them. It is deliberately the cheapest possible check: it needs no network and no clone."""
+    import sys
+    sys.path.insert(0, "tools")
+    import corpus_hashes
+    problems = corpus_hashes.report()
+    assert not problems, (
+        "the corpus no longer matches the hashes recorded in corpus2/manifest.json:\n  "
+        + "\n  ".join(problems)
+        + "\nIf the corpus was changed on purpose, rerun `python tools/corpus_hashes.py --write` "
+          "and say in the commit message what moved and why.")
+
+
+def test_every_built_case_records_the_upstream_blob_it_came_from():
+    """A sha256 proves the file has not changed since we hashed it. It does not prove the file
+    is the upstream blob. The git blob id does, in one command against a clone, so every
+    vulnerable variant must name the parent commit and every fixed variant the fix commit.
+
+    Checked offline. `raw/corpus2-blob-verification-2026-09-01.json` holds the result of
+    actually asking GitHub, which is the part that needs the network."""
+    import io as _io, json as _json, os
+    manifest = _json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))
+    built = {e["name"]: e for e in _json.load(_io.open("corpus2/built.json", encoding="utf-8"))}
+    missing = []
+    for case in manifest["cases"]:
+        hashes = case.get("file_hashes")
+        if not hashes:
+            continue
+        b = built.get(case["name"], {})
+        for rel, meta in sorted(hashes.items()):
+            if not rel.endswith(".rs"):
+                continue
+            up = meta.get("upstream")
+            if not up:
+                missing.append(f"{case['name']}/{rel}: no upstream blob recorded")
+                continue
+            want = b.get("parent") if rel.startswith("insecure/") else b.get("fix")
+            if up.get("commit") != want:
+                missing.append(
+                    f"{case['name']}/{rel}: recorded upstream commit {up.get('commit')} but "
+                    f"built.json says {want}")
+    assert not missing, (
+        "these corpus files are not tied to an upstream blob, so their ground truth cannot be "
+        "checked by anybody outside this repository:\n  " + "\n  ".join(missing))
+
+
+# ------------------------------------------- two logs for one run, 2026-09-01, error 32
+
+def _parse_percase_text_log(path):
+    """The human-readable per-case log: `<case> <variant> <ok|UNAVAILABLE> rc=N [findings=N]`."""
+    import io as _io
+    out = {}
+    for line in _io.open(path, encoding="utf-8"):
+        line = line.strip()
+        if not line or line.startswith("#") or line.endswith("_DONE"):
+            continue
+        parts = line.split()
+        if len(parts) < 3:
+            continue
+        case, variant, status = parts[0], parts[1], parts[2]
+        if variant not in ("insecure", "secure", "recommended"):
+            continue
+        out[f"{case}/{variant}"] = "ok" if status == "ok" else "unavailable"
+    return out
+
+
+def _parse_percase_json_log(path):
+    import io as _io, json as _json
+    return {str(e.get("leaf", "")): ("ok" if e.get("status") == "ok" else "unavailable")
+            for e in _json.load(_io.open(path, encoding="utf-8"))}
+
+
+# Every scanner that has both a human log and the machine log that actually scores.
+_PAIRED_LOGS = [
+    ("radar", "raw/c2-radar-percase.log", "raw/c2-radar-complete.json.log"),
+    ("vaultlint", "raw/c2-vaultlint-percase.log", "raw/c2-vaultlint-complete.json.log"),
+]
+
+
+def test_the_two_logs_for_one_run_agree_on_every_leaf():
+    """A run is recorded twice: once for a person and once for the scorer. Until 2026-09-01
+    nothing compared them, and they disagreed.
+
+    `raw/c2-radar-percase.log` line 1 said Radar's `anchor-interface-account/insecure` was
+    `UNAVAILABLE`; `raw/c2-radar-complete.json.log`, the log `run_all.py` treats as the
+    authority on which cases were analysed, said `{status: ok, findings: 0}`. One of the two
+    was wrong for a full day and nothing in the repository could tell which. That is the
+    whole point of writing a fact down twice.
+
+    Which one was wrong is recorded as error 32 and is not the point of this check. The point
+    is that two records of one run must never be allowed to disagree in silence again."""
+    import os
+    for scanner, text_log, json_log in _PAIRED_LOGS:
+        if not (os.path.exists(text_log) and os.path.exists(json_log)):
+            continue
+        a = _parse_percase_text_log(text_log)
+        b = _parse_percase_json_log(json_log)
+        assert a, f"{text_log} parsed to nothing; the check would pass vacuously"
+        assert set(a) == set(b), (
+            f"{scanner}: the two logs cover different leaves. "
+            f"only in {text_log}: {sorted(set(a) - set(b))}; "
+            f"only in {json_log}: {sorted(set(b) - set(a))}")
+        disagree = {k: (a[k], b[k]) for k in a if a[k] != b[k]}
+        assert not disagree, (
+            f"{scanner}: the human log and the log that scores disagree about whether a run "
+            f"happened: {disagree}. One of them is wrong, and until this check existed nothing "
+            "said which. 'Could not run' and 'found nothing' are different observations and a "
+            "denominator depends on the difference.")
+
+
+def test_radars_run_log_is_corroborated_by_radars_own_output():
+    """A log is only evidence if something outside the log agrees with it.
+
+    `raw/radar-c2-2026-08-31-stdout/` holds radar's own stdout for all 18 runs of the
+    2026-08-31 corpus-2 measurement, recovered on 2026-09-01. radar prints `Scanned N file`
+    and `radar completed successfully` for a run that happened, and it writes **no output
+    file at all** when it finds nothing, which is exactly why the runner's
+    file-exists-therefore-it-ran test could not tell a clean zero from a failure.
+
+    So the run log is checked against the tool's own account of what it did, rather than
+    against the artefact whose absence caused the defect."""
+    import io as _io, os, re
+    d = "raw/radar-c2-2026-08-31-stdout"
+    if not os.path.isdir(d):
+        raise AssertionError(
+            f"{d} is missing: radar's own account of the 18 runs behind the published "
+            "corpus-2 result is the evidence that they happened")
+    logged = _parse_percase_json_log("raw/c2-radar-complete.json.log")
+    seen = {}
+    for fn in sorted(os.listdir(d)):
+        if not fn.endswith(".log"):
+            continue
+        s = re.sub(r"\x1b\[[0-9;]*m", "",
+                   _io.open(os.path.join(d, fn), encoding="utf-8", errors="replace").read())
+        leaf = fn[:-4].replace(".", "/", 1)
+        scanned = re.search(r"Scanned (\d+) file", s)
+        ran = bool(scanned) and int(scanned.group(1)) > 0 and \
+            "radar completed successfully" in s
+        seen[leaf] = ran
+    assert set(seen) == set(logged), (
+        f"stdout artefacts and the run log cover different leaves: "
+        f"{sorted(set(seen) ^ set(logged))}")
+    for leaf, ran in sorted(seen.items()):
+        assert ran == (logged[leaf] == "ok"), (
+            f"{leaf}: the run log says {logged[leaf]!r} but radar's own stdout says "
+            f"{'it scanned files and completed' if ran else 'it did not'}")
 
 
 # -------------------------------------------------------------------- main
