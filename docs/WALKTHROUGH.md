@@ -28,7 +28,7 @@ cd scannertruth
 python test_all.py
 ```
 
-Expect `139 passed, 0 failed`. **If anything fails, stop.** A harness that cannot check itself cannot
+Expect `140 passed, 0 failed`. **If anything fails, stop.** A harness that cannot check itself cannot
 tell you anything about somebody else's tool, and reporting a number from a broken harness is how
 this project produced a retraction.
 

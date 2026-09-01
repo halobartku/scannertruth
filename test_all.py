@@ -2541,6 +2541,50 @@ def test_no_declaration_claims_an_invocation_it_cannot_show():
                 missing.append(f"{name}: {path}")
     assert not missing, f"invocation evidence naming files that do not exist: {missing}"
 
+
+def test_the_frameworks_parser_reproduces_a_committed_findings_file_from_the_raw_runs():
+    """The migration proof for the half a golden table cannot reach: the parser itself.
+
+    `raw/c2-sol-azy.json` and `raw/c2ext-sol-azy.json` were produced on 2026-09-01 by a runner
+    written for that one sweep and kept in a scratch directory. The framework's `text-regex`
+    parser, driven from `adapters/sol-azy.json` alone, reads the same committed per-run artefacts.
+    If the two disagree, the declaration is not describing the tool that produced the published
+    file, and the next run under it would quietly measure something else.
+
+    sol-azy is the tool this can be checked on, because it is the only one whose per-invocation
+    raw output is committed in the tool's own words rather than already normalised.
+    """
+    import scanner_spec
+    spec = scanner_spec.load("adapters/sol-azy.json")
+    patterns = spec["output"]["patterns"]
+    checked = 0
+    for runs, committed in (("raw/solazy-2026-09-01/c2", "raw/c2-sol-azy.json"),
+                            ("raw/solazy-2026-09-01/c2-extended", "raw/c2ext-sol-azy.json")):
+        if not os.path.isdir(runs) or not os.path.exists(committed):
+            continue
+        got = []
+        for fn in sorted(os.listdir(runs)):
+            leaf = fn[:-4]
+            if not fn.endswith(".txt") or leaf.endswith("-run2") or "__" not in leaf:
+                continue
+            case, variant = leaf.split("__")[0], leaf.split("__")[1]
+            with io.open(os.path.join(runs, fn), encoding="utf-8", errors="replace") as fh:
+                for f in scanner_spec.parse_text_regex(fh.read(), patterns):
+                    rel = f["file"][len("/work/"):] if f["file"].startswith("/work/") \
+                        else f["file"]
+                    got.append((f["rule_id"], f"corpus2/{case}/{variant}/{rel}",
+                                f["line"], f["col"]))
+        with io.open(committed, encoding="utf-8") as fh:
+            want = [(x["rule_id"], x["file"], x["line"], x.get("col", 0))
+                    for x in json.load(fh)["findings"]]
+        assert sorted(got) == sorted(want), (
+            f"the declaration's parser reads {len(got)} findings out of {runs} where the "
+            f"committed {committed} has {len(want)}; "
+            f"only in the parse: {sorted(set(got) - set(want))[:3]}, "
+            f"only in the file: {sorted(set(want) - set(got))[:3]}")
+        checked += 1
+    assert checked, "neither sol-azy run directory is present, so this proved nothing"
+
 # -------------------------------------------------------------------- main
 def main():
     print("running the checks that stand between a defect and a published number\n")
