@@ -1,0 +1,26 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/metaplex-bubblegum-creator.insecure.pkg -f none -o /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/metaplex-bubblegum-creator.insecure/radar.json
+EXIT: 0
+WALL_SECONDS: 53.34
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (metadata.rs)
+[i] radar completed successfully. No results found.
+[i] Results written to /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/metaplex-bubblegum-creator.insecure/radar.json
+
+
+STDERR:
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+

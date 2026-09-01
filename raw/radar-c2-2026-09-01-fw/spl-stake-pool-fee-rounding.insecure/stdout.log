@@ -1,0 +1,44 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg -f none -o /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.insecure/radar.json
+EXIT: 0
+WALL_SECONDS: 56.99
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (state.rs)
+
+[ [91mHigh[0m ] Unvalidated Price Data Account found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:396:39-54
+
+
+[ [94mMedium[0m ] Anchor Admin Without Timelock found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:482:15-18
+
+
+[ [92mLow[0m ] Account Data Matching found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:397:53-59
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:747:14-28
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:754:14-28
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:774:30-44
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/spl-stake-pool-fee-rounding.insecure/radar.json
+
+
+STDERR:
+ Container postgres  Running
+ Container radar-rabbitmq-1  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+

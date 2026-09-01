@@ -1,0 +1,40 @@
+[
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:38:12-22"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:327:20-33"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:285:55-70"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:19:12-18",
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:38:12-22",
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:51:30-44"
+        ]
+    }
+]

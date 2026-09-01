@@ -1,0 +1,44 @@
+COMMAND: radar scan -p /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg -f none -o /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/squads-signer-auth.insecure.run2/radar.json
+EXIT: 0
+WALL_SECONDS: 56.21
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [94mMedium[0m ] Arbitrary Cross-Program Invocation found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:38:12-22
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:327:20-33
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:285:55-70
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at:
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:19:12-18
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:38:12-22
+ * /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:51:30-44
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/squads-signer-auth.insecure.run2/radar.json
+
+
+STDERR:
+ Container postgres  Running
+ Container radar-rabbitmq-1  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+

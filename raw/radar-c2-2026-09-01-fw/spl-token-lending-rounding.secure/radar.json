@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Unrestricted Token Minting",
+        "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/reserve.rs:508:12-16"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/rate.rs:55:12-24",
+            "/root/st-fw-20260901/raw/radar-c2-2026-09-01-fw/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/rate.rs:99:24-30"
+        ]
+    }
+]
