@@ -1001,6 +1001,8 @@ def test_no_external_python_dependencies():
         return
     stdlib = set(sys.stdlib_module_names)
     local = {f[:-3] for f in os.listdir("tools") if f.endswith(".py")}
+    local |= {d for d in os.listdir("tools")           # packages under tools/, e.g. spec
+             if os.path.isfile(os.path.join("tools", d, "__init__.py"))}
     local |= {"scanner", "make_fixtures"}      # our own, and optional
     external = {}
     for fn in sorted(f for f in os.listdir("tools") if f.endswith(".py")):
