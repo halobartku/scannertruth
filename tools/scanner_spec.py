@@ -529,6 +529,15 @@ def run_leaf(spec, leaf, source_dir, path_prefix, artefact_root, tag="", tool_ro
     The artefact is written whatever happens, including on a crash and on a timeout, because the
     run that failed is the one somebody will want to read.
     """
+    # Absolute from here down, and this is not tidiness. `wrapped-pkg` hands the tool a directory
+    # under `<artefact_root>/_staged`, and `_rewrite` strips that directory off the paths the tool
+    # reports by prefix. A tool reports absolute paths; a relative `--artefacts` made the prefix
+    # relative, no path matched, and every finding in a 34-invocation radar run came back as
+    # `corpus2/<case>/<variant>/root/st-fw-.../_staged/...`. Nothing crashed. `score2` refused to
+    # score a path that is not on disk and returned `unknown` for three cases, which is the only
+    # reason this was noticed rather than published.
+    artefact_root = os.path.abspath(artefact_root)
+    source_dir = os.path.abspath(source_dir)
     artefact_dir = os.path.join(artefact_root, leaf.replace("/", ".") + tag)
     os.makedirs(artefact_dir, exist_ok=True)
     work_root = os.path.join(artefact_root, "_staged")
@@ -1005,6 +1014,35 @@ def demo():
                             os.path.join(tmp, "artefacts2"))
         assert [f["rule_id"] for f in got2] == ["rules.R1"], (
             "the prefix was stripped without the declaration asking for it")
+
+    # 3f. `wrapped-pkg` staging survives a relative --artefacts. The staged directory is what
+    # `_rewrite` strips off by prefix, so a relative one matches nothing a tool reports and every
+    # finding keeps the whole staging path glued to the corpus path. A 34-invocation radar run
+    # produced 31 such paths, all of them plausible-looking and none of them on disk.
+    with tempfile.TemporaryDirectory() as tmp:
+        was = os.getcwd()
+        try:
+            os.chdir(tmp)
+            src = os.path.join(tmp, "insecure", "src")
+            os.makedirs(src)
+            with open(os.path.join(tmp, "insecure", "__main__.py"), "w", encoding="utf-8",
+                      newline="\n") as fh:
+                fh.write('import json, os, sys\n'
+                         'here = os.path.dirname(os.path.abspath(__file__))\n'
+                         'print("fixture scanned 1 files", file=sys.stderr)\n'
+                         'print(json.dumps({"findings": [{"rule_id": "FIX-001",\n'
+                         '    "file": os.path.join(here, "src", "lib.rs"), "line": 3}]}))\n')
+            with open(os.path.join(src, "lib.rs"), "w", encoding="utf-8", newline="\n") as fh:
+                fh.write("fn main() {}\n")
+            wrapped = json.loads(json.dumps(_FIXTURE_SPEC))
+            wrapped["layout"] = "wrapped-pkg"
+            wrapped["run"]["command"] = [sys.executable, "{mount}/pkg"]
+            _entry, got = run_leaf(load(wrapped), "case/insecure",
+                                   os.path.join(tmp, "insecure"), "corpus/case/insecure",
+                                   "relative-artefacts")
+            assert [f["file"] for f in got] == ["corpus/case/insecure/src/lib.rs"], got
+        finally:
+            os.chdir(was)
 
     # 4. Path rewriting is a prefix operation and nothing else.
     assert _rewrite("/src/src/lib.rs", "/src", "", "corpus2/x/insecure") == \
