@@ -1,0 +1,334 @@
+[
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/anchor-account-reload-owner.insecure",
+  "files_opened": 98,
+  "why": "rc=1 files=98 report=parsed",
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "unavailable",
+  "reason": "rc=1 files=98 report=parsed"
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/anchor-account-reload-owner.secure",
+  "files_opened": 99,
+  "why": "rc=1 files=99 report=parsed",
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "unavailable",
+  "reason": "rc=1 files=99 report=parsed"
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/anchor-interface-account.insecure",
+  "files_opened": 101,
+  "why": "rc=1 files=101 report=parsed",
+  "leaf": "anchor-interface-account/insecure",
+  "status": "unavailable",
+  "reason": "rc=1 files=101 report=parsed"
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/anchor-interface-account.secure",
+  "files_opened": 101,
+  "why": "rc=1 files=101 report=parsed",
+  "leaf": "anchor-interface-account/secure",
+  "status": "unavailable",
+  "reason": "rc=1 files=101 report=parsed"
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/anchor-program-system.insecure",
+  "files_opened": 99,
+  "why": "rc=1 files=99 report=parsed",
+  "leaf": "anchor-program-system/insecure",
+  "status": "unavailable",
+  "reason": "rc=1 files=99 report=parsed"
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/anchor-program-system.secure",
+  "files_opened": 99,
+  "why": "rc=1 files=99 report=parsed",
+  "leaf": "anchor-program-system/secure",
+  "status": "unavailable",
+  "reason": "rc=1 files=99 report=parsed"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/cashio-account-data.insecure",
+  "files_opened": 8,
+  "leaf": "cashio-account-data/insecure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/cashio-account-data.secure",
+  "files_opened": 8,
+  "leaf": "cashio-account-data/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/metaplex-bubblegum-creator.insecure",
+  "files_opened": 111,
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "findings": 147
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/metaplex-bubblegum-creator.secure",
+  "files_opened": 112,
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "findings": 148
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/metaplex-candy-machine.insecure",
+  "files_opened": 34,
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "findings": 70
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/metaplex-candy-machine.secure",
+  "files_opened": 34,
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "findings": 70
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/metaplex-token-metadata.insecure",
+  "files_opened": 145,
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "findings": 212
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.5,
+  "artefact": "/root/rc-20260901/probe/solsec/metaplex-token-metadata.secure",
+  "files_opened": 145,
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "findings": 212
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.3,
+  "artefact": "/root/rc-20260901/probe/solsec/solend-owner-checks.insecure",
+  "files_opened": 33,
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "findings": 138
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/solend-owner-checks.secure",
+  "files_opened": 33,
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "findings": 138
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/solido-anker-arbitrary-cpi.insecure",
+  "files_opened": 17,
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "findings": 22
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/solido-anker-arbitrary-cpi.secure",
+  "files_opened": 17,
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "findings": 22
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/solido-deposit-reserve-account.insecure",
+  "files_opened": 33,
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "findings": 135
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/solido-deposit-reserve-account.secure",
+  "files_opened": 33,
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "findings": 135
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/spl-stake-pool-fee-rounding.insecure",
+  "files_opened": 38,
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "findings": 329
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/spl-stake-pool-fee-rounding.secure",
+  "files_opened": 38,
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "findings": 327
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/spl-stake-pool-mint-decimals.insecure",
+  "files_opened": 38,
+  "why": "rc=1 files=38 report=parsed",
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "unavailable",
+  "reason": "rc=1 files=38 report=parsed"
+ },
+ {
+  "rc": 1,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/spl-stake-pool-mint-decimals.secure",
+  "files_opened": 38,
+  "why": "rc=1 files=38 report=parsed",
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "unavailable",
+  "reason": "rc=1 files=38 report=parsed"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/spl-token-lending-rounding.insecure",
+  "files_opened": 33,
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "findings": 139
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/spl-token-lending-rounding.secure",
+  "files_opened": 33,
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "findings": 139
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/squads-account-matching.insecure",
+  "files_opened": 4,
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "findings": 12
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/squads-account-matching.secure",
+  "files_opened": 4,
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "findings": 12
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/squads-recursive-execute.insecure",
+  "files_opened": 4,
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "findings": 18
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.3,
+  "artefact": "/root/rc-20260901/probe/solsec/squads-recursive-execute.secure",
+  "files_opened": 4,
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "findings": 18
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/squads-signer-auth.insecure",
+  "files_opened": 4,
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "findings": 12
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/squads-signer-auth.secure",
+  "files_opened": 4,
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "findings": 12
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/token-2022-confidential-approve-mint.insecure",
+  "files_opened": 63,
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "findings": 342
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/token-2022-confidential-approve-mint.secure",
+  "files_opened": 63,
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "findings": 343
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/wormhole-sysvar.insecure",
+  "files_opened": 23,
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "findings": 30
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/solsec/wormhole-sysvar.secure",
+  "files_opened": 23,
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "findings": 30
+ }
+]

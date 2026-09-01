@@ -1,0 +1,131 @@
+{
+ "scanner": "semgrep-solana-standard-c2-wide",
+ "findings_file": "raw/rc-semgrep-solana-standard.json",
+ "log": "raw/rc-semgrep-solana-standard.json.log",
+ "map_key": "map",
+ "tally": {
+  "missed": 14,
+  "excluded": 1,
+  "unlocated": 3
+ },
+ "cases": [
+  {
+   "case": "wormhole-sysvar",
+   "class": "sysvar-address-checking",
+   "verdict": "missed",
+   "candidates": [
+    {
+     "rule": "solana-security-standard.sol-010-init-if-needed",
+     "file": "solana/bridge/program/src/api/verify_signature.rs",
+     "line": 93,
+     "mapped": false
+    },
+    {
+     "rule": "solana-security-standard.sol-010-init-if-needed",
+     "file": "solana/bridge/program/src/api/verify_signature.rs",
+     "line": 103,
+     "mapped": false
+    }
+   ]
+  },
+  {
+   "case": "solend-owner-checks",
+   "class": "owner-checks",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "class": "arithmetic-rounding-drain",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "squads-signer-auth",
+   "class": "signer-authorization",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "squads-account-matching",
+   "class": "account-data-matching",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-token-metadata",
+   "class": "account-data-matching",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-candy-machine",
+   "class": "instruction-introspection",
+   "verdict": "unlocated",
+   "reason": "fires at the fix site but also on the fixed variant",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-bubblegum-creator",
+   "class": "signer-authorization",
+   "verdict": "unlocated",
+   "reason": "fires at the fix site but also on the fixed variant",
+   "candidates": []
+  },
+  {
+   "case": "anchor-interface-account",
+   "class": "type-cosplay",
+   "verdict": "unlocated",
+   "reason": "fires at the fix site but also on the fixed variant",
+   "candidates": []
+  },
+  {
+   "case": "anchor-program-system",
+   "class": "program-account-validation",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "solido-deposit-reserve-account",
+   "class": "pda-derived-address-validation",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "solido-anker-arbitrary-cpi",
+   "class": "arbitrary-cpi",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "spl-stake-pool-fee-rounding",
+   "class": "arithmetic-rounding-drain",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "token-2022-confidential-approve-mint",
+   "class": "account-data-matching",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "squads-recursive-execute",
+   "class": "cpi-recursion",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "spl-stake-pool-mint-decimals",
+   "class": "mint-configuration-validation",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "anchor-account-reload-owner",
+   "class": "owner-check-after-cpi",
+   "verdict": "missed",
+   "candidates": []
+  }
+ ]
+}

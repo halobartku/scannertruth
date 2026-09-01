@@ -1,0 +1,132 @@
+{
+ "scanner": "solsec",
+ "findings_file": "raw/rc-solsec.json",
+ "log": "raw/rc-solsec.json.log",
+ "map_key": "map",
+ "tally": {
+  "no-rule": 15,
+  "excluded": 1,
+  "unlocated": 1,
+  "missed": 1
+ },
+ "cases": [
+  {
+   "case": "wormhole-sysvar",
+   "class": "sysvar-address-checking",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'sysvar-address-checking'",
+   "candidates": []
+  },
+  {
+   "case": "solend-owner-checks",
+   "class": "owner-checks",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'owner-checks'",
+   "candidates": []
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "class": "arithmetic-rounding-drain",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'arithmetic-rounding-drain'",
+   "candidates": []
+  },
+  {
+   "case": "squads-signer-auth",
+   "class": "signer-authorization",
+   "verdict": "unlocated",
+   "reason": "mapped rule fires in the file but not at the fix site",
+   "candidates": []
+  },
+  {
+   "case": "squads-account-matching",
+   "class": "account-data-matching",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'account-data-matching'",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-token-metadata",
+   "class": "account-data-matching",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'account-data-matching'",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-candy-machine",
+   "class": "instruction-introspection",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'instruction-introspection'",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-bubblegum-creator",
+   "class": "signer-authorization",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "anchor-interface-account",
+   "class": "type-cosplay",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'type-cosplay'",
+   "candidates": []
+  },
+  {
+   "case": "anchor-program-system",
+   "class": "program-account-validation",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'program-account-validation'",
+   "candidates": []
+  },
+  {
+   "case": "solido-deposit-reserve-account",
+   "class": "pda-derived-address-validation",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'pda-derived-address-validation'",
+   "candidates": []
+  },
+  {
+   "case": "solido-anker-arbitrary-cpi",
+   "class": "arbitrary-cpi",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'arbitrary-cpi'",
+   "candidates": []
+  },
+  {
+   "case": "spl-stake-pool-fee-rounding",
+   "class": "arithmetic-rounding-drain",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'arithmetic-rounding-drain'",
+   "candidates": []
+  },
+  {
+   "case": "token-2022-confidential-approve-mint",
+   "class": "account-data-matching",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'account-data-matching'",
+   "candidates": []
+  },
+  {
+   "case": "squads-recursive-execute",
+   "class": "cpi-recursion",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'cpi-recursion'",
+   "candidates": []
+  },
+  {
+   "case": "spl-stake-pool-mint-decimals",
+   "class": "mint-configuration-validation",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'mint-configuration-validation'",
+   "candidates": []
+  },
+  {
+   "case": "anchor-account-reload-owner",
+   "class": "owner-check-after-cpi",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'owner-check-after-cpi'",
+   "candidates": []
+  }
+ ]
+}

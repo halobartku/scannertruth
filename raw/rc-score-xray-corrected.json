@@ -1,0 +1,130 @@
+{
+ "scanner": "xray",
+ "findings_file": "raw/rc-xray.json",
+ "log": "raw/rc-xray.json.log",
+ "map_key": "corrected_map",
+ "tally": {
+  "missed": 7,
+  "excluded": 1,
+  "no-rule": 6,
+  "detected": 1,
+  "unavailable": 3
+ },
+ "cases": [
+  {
+   "case": "wormhole-sysvar",
+   "class": "sysvar-address-checking",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "solend-owner-checks",
+   "class": "owner-checks",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "spl-token-lending-rounding",
+   "class": "arithmetic-rounding-drain",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'arithmetic-rounding-drain'",
+   "candidates": []
+  },
+  {
+   "case": "squads-signer-auth",
+   "class": "signer-authorization",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "squads-account-matching",
+   "class": "account-data-matching",
+   "verdict": "detected",
+   "candidates": [
+    {
+     "rule": "1019",
+     "file": "programs/squads-mpl/src/lib.rs",
+     "line": 310,
+     "mapped": true
+    }
+   ]
+  },
+  {
+   "case": "metaplex-token-metadata",
+   "class": "account-data-matching",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-candy-machine",
+   "class": "instruction-introspection",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'instruction-introspection'",
+   "candidates": []
+  },
+  {
+   "case": "metaplex-bubblegum-creator",
+   "class": "signer-authorization",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "anchor-interface-account",
+   "class": "type-cosplay",
+   "verdict": "unavailable",
+   "reason": "run log says anchor-interface-account/insecure is unavailable"
+  },
+  {
+   "case": "anchor-program-system",
+   "class": "program-account-validation",
+   "verdict": "unavailable",
+   "reason": "run log says anchor-program-system/insecure is unavailable"
+  },
+  {
+   "case": "solido-deposit-reserve-account",
+   "class": "pda-derived-address-validation",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'pda-derived-address-validation'",
+   "candidates": []
+  },
+  {
+   "case": "solido-anker-arbitrary-cpi",
+   "class": "arbitrary-cpi",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "spl-stake-pool-fee-rounding",
+   "class": "arithmetic-rounding-drain",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'arithmetic-rounding-drain'",
+   "candidates": []
+  },
+  {
+   "case": "token-2022-confidential-approve-mint",
+   "class": "account-data-matching",
+   "verdict": "missed",
+   "candidates": []
+  },
+  {
+   "case": "squads-recursive-execute",
+   "class": "cpi-recursion",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'cpi-recursion'",
+   "candidates": []
+  },
+  {
+   "case": "spl-stake-pool-mint-decimals",
+   "class": "mint-configuration-validation",
+   "verdict": "no-rule",
+   "reason": "the pre-registered mapping claims no rule for class 'mint-configuration-validation'",
+   "candidates": []
+  },
+  {
+   "case": "anchor-account-reload-owner",
+   "class": "owner-check-after-cpi",
+   "verdict": "unavailable",
+   "reason": "run log says anchor-account-reload-owner/insecure is unavailable"
+  }
+ ]
+}

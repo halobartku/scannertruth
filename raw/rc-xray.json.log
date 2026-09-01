@@ -1,0 +1,362 @@
+[
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/xray/anchor-account-reload-owner.insecure",
+  "files_opened": 0,
+  "why": "rc=0 no .ll.json report produced",
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "unavailable",
+  "reason": "rc=0 no .ll.json report produced"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/xray/anchor-account-reload-owner.secure",
+  "files_opened": 0,
+  "why": "rc=0 no .ll.json report produced",
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "unavailable",
+  "reason": "rc=0 no .ll.json report produced"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/xray/anchor-interface-account.insecure",
+  "files_opened": 0,
+  "why": "rc=0 no .ll.json report produced",
+  "leaf": "anchor-interface-account/insecure",
+  "status": "unavailable",
+  "reason": "rc=0 no .ll.json report produced"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.3,
+  "artefact": "/root/rc-20260901/probe/xray/anchor-interface-account.secure",
+  "files_opened": 0,
+  "why": "rc=0 no .ll.json report produced",
+  "leaf": "anchor-interface-account/secure",
+  "status": "unavailable",
+  "reason": "rc=0 no .ll.json report produced"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/xray/anchor-program-system.insecure",
+  "files_opened": 0,
+  "why": "rc=0 no .ll.json report produced",
+  "leaf": "anchor-program-system/insecure",
+  "status": "unavailable",
+  "reason": "rc=0 no .ll.json report produced"
+ },
+ {
+  "rc": 0,
+  "wall_s": 0.4,
+  "artefact": "/root/rc-20260901/probe/xray/anchor-program-system.secure",
+  "files_opened": 0,
+  "why": "rc=0 no .ll.json report produced",
+  "leaf": "anchor-program-system/secure",
+  "status": "unavailable",
+  "reason": "rc=0 no .ll.json report produced"
+ },
+ {
+  "rc": 0,
+  "wall_s": 1.9,
+  "artefact": "/root/rc-20260901/probe/xray/cashio-account-data.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "cashio-account-data/insecure",
+  "status": "ok",
+  "findings": 10
+ },
+ {
+  "rc": 0,
+  "wall_s": 2.2,
+  "artefact": "/root/rc-20260901/probe/xray/cashio-account-data.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "cashio-account-data/secure",
+  "status": "ok",
+  "findings": 10
+ },
+ {
+  "rc": 0,
+  "wall_s": 46.7,
+  "artefact": "/root/rc-20260901/probe/xray/metaplex-bubblegum-creator.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "findings": 21
+ },
+ {
+  "rc": 0,
+  "wall_s": 43.5,
+  "artefact": "/root/rc-20260901/probe/xray/metaplex-bubblegum-creator.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "findings": 21
+ },
+ {
+  "rc": 0,
+  "wall_s": 17.3,
+  "artefact": "/root/rc-20260901/probe/xray/metaplex-candy-machine.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "findings": 4
+ },
+ {
+  "rc": 0,
+  "wall_s": 16.6,
+  "artefact": "/root/rc-20260901/probe/xray/metaplex-candy-machine.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "findings": 4
+ },
+ {
+  "rc": 0,
+  "wall_s": 73.7,
+  "artefact": "/root/rc-20260901/probe/xray/metaplex-token-metadata.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 74.0,
+  "artefact": "/root/rc-20260901/probe/xray/metaplex-token-metadata.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 23.0,
+  "artefact": "/root/rc-20260901/probe/xray/solend-owner-checks.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "findings": 3
+ },
+ {
+  "rc": 0,
+  "wall_s": 23.1,
+  "artefact": "/root/rc-20260901/probe/xray/solend-owner-checks.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "findings": 2
+ },
+ {
+  "rc": 0,
+  "wall_s": 5.4,
+  "artefact": "/root/rc-20260901/probe/xray/solido-anker-arbitrary-cpi.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "findings": 2
+ },
+ {
+  "rc": 0,
+  "wall_s": 5.2,
+  "artefact": "/root/rc-20260901/probe/xray/solido-anker-arbitrary-cpi.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "findings": 2
+ },
+ {
+  "rc": 0,
+  "wall_s": 16.4,
+  "artefact": "/root/rc-20260901/probe/xray/solido-deposit-reserve-account.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "findings": 10
+ },
+ {
+  "rc": 0,
+  "wall_s": 16.0,
+  "artefact": "/root/rc-20260901/probe/xray/solido-deposit-reserve-account.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "findings": 10
+ },
+ {
+  "rc": 0,
+  "wall_s": 52.9,
+  "artefact": "/root/rc-20260901/probe/xray/spl-stake-pool-fee-rounding.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 52.0,
+  "artefact": "/root/rc-20260901/probe/xray/spl-stake-pool-fee-rounding.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 51.6,
+  "artefact": "/root/rc-20260901/probe/xray/spl-stake-pool-mint-decimals.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "findings": 2
+ },
+ {
+  "rc": 0,
+  "wall_s": 52.8,
+  "artefact": "/root/rc-20260901/probe/xray/spl-stake-pool-mint-decimals.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "findings": 2
+ },
+ {
+  "rc": 0,
+  "wall_s": 22.2,
+  "artefact": "/root/rc-20260901/probe/xray/spl-token-lending-rounding.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "findings": 1
+ },
+ {
+  "rc": 0,
+  "wall_s": 19.6,
+  "artefact": "/root/rc-20260901/probe/xray/spl-token-lending-rounding.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "findings": 1
+ },
+ {
+  "rc": 0,
+  "wall_s": 3.3,
+  "artefact": "/root/rc-20260901/probe/xray/squads-account-matching.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "findings": 1
+ },
+ {
+  "rc": 0,
+  "wall_s": 3.3,
+  "artefact": "/root/rc-20260901/probe/xray/squads-account-matching.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 4.4,
+  "artefact": "/root/rc-20260901/probe/xray/squads-recursive-execute.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 4.4,
+  "artefact": "/root/rc-20260901/probe/xray/squads-recursive-execute.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 3.2,
+  "artefact": "/root/rc-20260901/probe/xray/squads-signer-auth.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 3.1,
+  "artefact": "/root/rc-20260901/probe/xray/squads-signer-auth.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 54.2,
+  "artefact": "/root/rc-20260901/probe/xray/token-2022-confidential-approve-mint.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 51.4,
+  "artefact": "/root/rc-20260901/probe/xray/token-2022-confidential-approve-mint.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "findings": 0
+ },
+ {
+  "rc": 0,
+  "wall_s": 8.4,
+  "artefact": "/root/rc-20260901/probe/xray/wormhole-sysvar.insecure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "findings": 1
+ },
+ {
+  "rc": 0,
+  "wall_s": 8.2,
+  "artefact": "/root/rc-20260901/probe/xray/wormhole-sysvar.secure",
+  "files_opened": 1,
+  "reports": 1,
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "findings": 1
+ }
+]
