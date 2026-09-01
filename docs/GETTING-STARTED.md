@@ -50,9 +50,10 @@ to clone repositories and drive somebody else's tool, and those tools are Linux-
 as a Docker image, and one AI auditor needs a paid model key. That is their constraint, not ours,
 and it is recorded in the registry rather than hidden behind an install script of our own.
 
-**The remaining POSIX assumption is ours and it is written down**: `build_corpus2.py`, `rb.py` and
-`shiftaware.py` default to `/tmp` paths, which do not exist on Windows. Pass `--cache` and `--out`
-explicitly, or use WSL2. Nothing on the verification path has that problem.
+**The remaining POSIX assumption is ours and it is written down**: `build_corpus2.py`, `rb.py`,
+`rc_run.py` and `shiftaware.py` default to `/tmp` paths, which do not exist on Windows. Pass
+`--cache`, `--crates` and `--out` explicitly, or use WSL2. Nothing on the verification path has
+that problem.
 
 **How, on each system:**
 

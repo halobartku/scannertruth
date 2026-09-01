@@ -55,24 +55,24 @@ def test_results_pages_do_not_contradict_the_clock_on_radar():
     assert "11 / 11" in s or "11/11" in s, "Radar's teaching-corpus score vanished from RESULTS-all"
 
 
-# --------------------------------------------------------------- adapters.py
+# --------------------------------------------------------------- controls.py
 def test_finding_is_a_three_field_record():
-    import adapters
-    f = adapters.Finding("R", "a.rs", 3)
+    import controls
+    f = controls.Finding("R", "a.rs", 3)
     assert (f.rule_id, f.path, f.line) == ("R", "a.rs", 3)
 
 
 def test_null_control_produces_nothing():
-    import adapters, tempfile
-    n = adapters.NullScanner()
+    import controls, tempfile
+    n = controls.NullScanner()
     assert n.available()
     with tempfile.TemporaryDirectory() as t:
         assert list(n.run(t)) == [], "the null control must be silent by construction"
 
 
 def test_noisy_control_flags_every_non_empty_line():
-    import adapters, tempfile, os, io as _io
+    import controls, tempfile, os, io as _io
     with tempfile.TemporaryDirectory() as t:
         _io.open(os.path.join(t, "a.rs"), "w", encoding="utf-8").write("one\n\ntwo\n")
-        out = list(adapters.NoisyScanner().run(t))
+        out = list(controls.NoisyScanner().run(t))
         assert len(out) == 2, f"two non-empty lines should give two findings, got {len(out)}"

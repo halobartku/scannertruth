@@ -30,9 +30,9 @@ pass. That is the same discipline error 32 forced on radar: the tool's own accou
 never the presence of an artefact. Its paths are container paths, `/work/src/x.rs`, and the case
 and variant are known from the artefact filename rather than guessed from the path.
 
-    python tools/normalise_runs.py --kind radar --runs <dir> --out raw/c2-radar-current.json
-    python tools/normalise_runs.py --kind vaultlint --runs <dir> --out raw/c2-vaultlint-complete.json
-    python tools/normalise_runs.py --demo
+    python tools/legacy/normalise_runs.py --kind radar --runs <dir> --out raw/c2-radar-current.json
+    python tools/legacy/normalise_runs.py --kind vaultlint --runs <dir> --out raw/c2-vaultlint-complete.json
+    python tools/legacy/normalise_runs.py --demo
 """
 import argparse
 import json

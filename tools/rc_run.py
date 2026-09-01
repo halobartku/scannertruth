@@ -20,10 +20,12 @@ and it follows the same protocol as every other run in this repository:
 
 Usage:
     python tools/rc_run.py --tool semgrep --crates <real-crates dir> --out <artefact dir>
+    python tools/rc_run.py --tool sol-audit --crates <dir> --out <dir> --tool-dir <sol-audit checkout>
     python tools/rc_run.py --demo
 
-Run from the repository root. The argparse defaults for `--out`, `--rules` and `--tool-dir` are
-the paths of the machine the 2026-09-01 run happened on; pass all three explicitly elsewhere.
+Run from the repository root. `--out` is required; `--tool-dir` is required for sol-audit, which
+runs from a checkout this repository does not carry; `--rules` defaults to the committed copy of
+the semgrep ruleset under raw/, the same file adapters/semgrep-solana-standard.json mounts.
 """
 import argparse
 import glob
@@ -35,6 +37,8 @@ import subprocess
 import sys
 import time
 
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SEMGREP_RULES = os.path.join(REPO, "raw", "semgrep-solana-standard-2026-09-01")
 SEMGREP_IMAGE = "semgrep/semgrep:latest"
 SOLSEC_IMAGE = "solsec-runner:0.2.1"
 XRAY_IMAGE = "ghcr.io/sec3-product/x-ray:latest"
@@ -350,11 +354,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tool", choices=sorted(ENVELOPE))
     ap.add_argument("--crates", default="/tmp/rc-crates")
-    ap.add_argument("--out", default="/root/rc-20260901/out")
+    ap.add_argument("--out", help="artefact directory; required unless --demo")
     ap.add_argument("--findings")
     ap.add_argument("--log")
-    ap.add_argument("--rules", default="/root/st-fix-20260901/rules")
-    ap.add_argument("--tool-dir", default="/root/rc-20260901/sol-audit")
+    ap.add_argument("--rules", default=SEMGREP_RULES,
+                    help="directory holding solana-security-standard.yaml for semgrep")
+    ap.add_argument("--tool-dir", help="a sol-audit checkout; required for --tool sol-audit")
     ap.add_argument("--profile", default="strict")
     ap.add_argument("--network", default="none")
     ap.add_argument("--timeout", type=int, default=1800)
@@ -365,6 +370,10 @@ def main():
         return 0
     if not args.tool:
         ap.error("--tool is required unless --demo")
+    if not args.out:
+        ap.error("--out is required unless --demo")
+    if args.tool == "sol-audit" and not args.tool_dir:
+        ap.error("--tool-dir is required for --tool sol-audit")
     stem = args.tool + ("-" + args.profile if args.tool == "sol-audit" else "")
     findings = args.findings or os.path.join(args.out, "rc-%s.json" % stem)
     log = args.log or (findings + ".log")

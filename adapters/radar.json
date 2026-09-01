@@ -13,7 +13,7 @@
   "engine": "local",
   "command": ["radar", "scan", "-p", "{mount}", "-f", "none", "-o", "{out}/radar.json"],
   "timeout_seconds": 1800,
-  "invocation_evidence": "the 2026-09-01 re-run recorded in tools/normalise_runs.py and its 34 stdout artefacts under raw/radar-c2-2026-09-01/. radar starts its own containers, so the isolation is radar's rather than ours, which is stated rather than claimed otherwise."
+  "invocation_evidence": "the 2026-09-01 re-run recorded in tools/legacy/normalise_runs.py and its 34 stdout artefacts under raw/radar-c2-2026-09-01/. radar starts its own containers, so the isolation is radar's rather than ours, which is stated rather than claimed otherwise."
  },
  "layout": "wrapped-pkg",
  "layout_reason": "radar refuses a target whose Cargo.toml sits at the root of the path it is given, answering `No Cargo.toml files found in any subdirectories` while exiting 0 and writing nothing. Every case is therefore staged as <case>.<variant>/pkg/{Cargo.toml,src} and the wrapper prefix is removed from the locations afterwards. Getting this wrong produces a silent zero that looks exactly like a clean miss.",
