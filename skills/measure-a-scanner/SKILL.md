@@ -26,20 +26,21 @@ fails, **stop and report that** rather than measuring. The suite is mutation-ver
 deliberate defects were introduced and all five were caught, including one that reported a published
 number changing under a refactor.
 
-One command in this repository is **expected to fail**, and you should run it anyway so you are not
-surprised by it later:
+One command in this repository was **expected to fail** until 2026-09-01, and you should run it
+anyway so you know what it says today:
 
 ```bash
-python tools/run_all.py --verify-coverage   # exits 1: some published rows cannot show what they analysed
+python tools/run_all.py --verify-coverage   # green since 2026-09-01: every published row can show what it analysed
 ```
 
-It asks whether every measurement on the clock can show what it analysed, it runs in CI as its own
-job (`coverage`, separate from `selfcheck`), and it is red because several historical measurements
-were made by hand and the run log was the step a person had to remember. Read the current list
-off the command rather than off a count written here; rows are being run and retired. A red
+It asks whether every measurement on the clock can show what it analysed, and it runs in CI as its
+own job (`coverage`, separate from `selfcheck`). It was red on the morning of 2026-09-01 because
+several historical measurements had been made by hand and the run log was the step a person had
+to remember; it went green the same day by re-running those rows per case and retiring one. Read
+the current list off the command rather than off this sentence; rows are run and retired. A red
 `coverage` beside a green `selfcheck` is not a broken build: the machinery is sound and the
 numbers are not all accounted for. It closes with scanner runs, never with a code change and
-never by relaxing it.
+never by relaxing it, and your row must not turn it red again.
 
 `AGENTS.md` at the repo root is the condensed executable form of this skill, written so an agent
 handed the repository can act without reading further. `docs/WALKTHROUGH.md` is the same procedure

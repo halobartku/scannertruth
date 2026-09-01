@@ -33,9 +33,10 @@ python tools/run_all.py --verify-coverage
 ```
 
 It asks of every row on the clock whether it can show what it analysed, and it runs in CI as its own
-job. **It is red today**, because rows published before the adapter framework existed were run by
-hand and the run log was a step somebody had to remember. Two rules follow from that. Do not publish
-a new row that adds to the list: run it through `tools/scanner_spec.py`, which writes the log before
+job. **It is green, since 2026-09-01.** On the morning of that day it was red, because rows
+published before the adapter framework existed were run by hand and the run log was a step somebody
+had to remember; they were re-run per case the same day. Two rules follow from that. Do not publish
+a new row that turns it red: run it through `tools/scanner_spec.py`, which writes the log before
 it returns. And do not make the gate pass by relaxing it, which is the tuning rule pointed at our own
 instrument. If a row cannot pass, publish why it cannot.
 
