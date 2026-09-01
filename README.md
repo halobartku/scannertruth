@@ -4,6 +4,25 @@
 
 An independent, repeatable measurement of Solana security scanners.
 
+## Every Solana scanner is graded on the same test paper, and it has not changed since 2022
+
+`coral-xyz/sealevel-attacks`, the corpus the entire category is measured against, was last modified
+**16 July 2022**, at commit `24555d04`. Eleven hand-written teaching programs. Four years. Public
+the whole time.
+
+At least two of the tools we measured cite that corpus **in their own rule tables**. One vendor
+merged pull requests closing the last gaps in it **on the day we measured them**. None of that is
+dishonest; it is what any engineer would do. But it means a score on that corpus measures **how
+thoroughly a tool has done a fixed piece of homework**, not whether it works on anything else.
+
+An exam with the same questions for four years stops telling you who can do the subject.
+
+**So we built the other exam.** Nine real break-ins, each taken from the fix commit its own
+maintainers wrote. The best scanner on the market scores **11/11 on the four-year-old paper and
+zero on the real one.**
+
+---
+
 Vendors publish finding counts. **A finding count is not recall.** A scanner that flags fixed code
 as often as vulnerable code produces an impressive number and catches nothing. We know because we
 measured it on our own product first, and published the result that killed the claim.
