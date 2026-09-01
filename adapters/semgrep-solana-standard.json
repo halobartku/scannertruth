@@ -59,7 +59,8 @@
  },
  "output": {
   "from": "stdout",
-  "format": "semgrep"
+  "format": "semgrep",
+  "rule_id_strip_prefix": "rules."
  },
  "envelope": "semgrep",
  "rule_id_note": "semgrep prefixes a rule id with `rules.` when the config is a local file and does not when the same ruleset is loaded by URL. The pre-registered mapping holds the URL form. Both forms were observed on the same file with the same finding before the measurement, and the prefix is stripped as envelope normalisation. No rule id was renamed to make anything match.",

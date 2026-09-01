@@ -289,6 +289,11 @@ def _problems(spec):
             bad.append("output.from must be 'stdout' or 'file'")
         if out.get("from") == "file" and not out.get("name"):
             bad.append("output.from is 'file' but output.name does not say which file")
+    if out.get("rule_id_strip_prefix") and not spec.get("rule_id_note"):
+        bad.append("output.rule_id_strip_prefix rewrites every rule id this tool emits, so the "
+                   "declaration must carry a `rule_id_note` saying why the tool emits two forms "
+                   "of the same id and where both were observed. A silent rewrite is how a "
+                   "mapping gets fitted to a result.")
     fmt = out.get("format")
     if fmt not in PARSERS:
         bad.append(f"output.format {fmt!r} is not a parser this project has: {sorted(PARSERS)}")
@@ -419,9 +424,13 @@ def command_for(spec, target_dir, artefact_dir, tool_root=None, args=None):
     cmd = ["docker", "run", "--rm"]
     if run.get("network", "none"):
         cmd += ["--network", run.get("network", "none")]
-    cmd += ["-v", f"{target_dir}:{mount}:ro"]
+    # Absolute, because docker reads a relative bind source as the NAME of a named volume. Passing
+    # `--artefacts raw/solsec-c2` produced `docker: invalid characters for a local volume name` on
+    # all 34 invocations of a solsec run. The framework classified every one of them `unavailable`
+    # rather than a zero, which is what it is for, but the run still had to be done twice.
+    cmd += ["-v", f"{os.path.abspath(target_dir)}:{mount}:ro"]
     if out_mount:
-        cmd += ["-v", f"{artefact_dir}:{out_mount}"]
+        cmd += ["-v", f"{os.path.abspath(artefact_dir)}:{out_mount}"]
     # A file or directory this MEASUREMENT needs inside the container that is not the corpus and
     # not the tool: semgrep's ruleset is the case that forced it. Without this the declaration
     # named `--config /rules/solana-security-standard.yaml` and nothing put a ruleset there, so
@@ -587,8 +596,20 @@ def run_leaf(spec, leaf, source_dir, path_prefix, artefact_root, tag="", tool_ro
     findings = []
     if status == "ok":
         mount = spec["run"].get("mount", "/src") if spec["run"]["engine"] == "docker" else target
+        # semgrep prefixes a rule id with `rules.` when its config is a local file and does not
+        # when the same ruleset is loaded by URL, and the mapping pre-registered before the run
+        # holds the URL form. Stripping it is envelope normalisation, declared once and applied
+        # to every id alike; it is not a rename to make anything match, and the declaration that
+        # asks for it has to say so in `rule_id_note`. Without this the first framework run of
+        # semgrep-solana-standard turned three `unlocated` verdicts into `missed` while the tool,
+        # the ruleset and the corpus were all byte-identical to the run that published them.
+        strip = spec["output"].get("rule_id_strip_prefix")
         for f in parsed or []:
-            findings.append({**f, "file": _rewrite(f["file"], mount, staged_prefix, path_prefix)})
+            rid = f["rule_id"]
+            if strip and rid.startswith(strip):
+                rid = rid[len(strip):]
+            findings.append({**f, "rule_id": rid,
+                             "file": _rewrite(f["file"], mount, staged_prefix, path_prefix)})
 
     try:
         artefact = os.path.relpath(stdout_path, ROOT)
@@ -632,16 +653,22 @@ def corpus_leaves(corpus, root=None, manifest=None, path_prefix=None, variants=N
         return out
 
     # Corpus 1 is not committed here; it is fetched at its pinned commit and its classes are the
-    # directories under programs/. Same rule: enumerate, never assume.
+    # directories under programs/. Same rule: enumerate, never assume - and that means the
+    # variants too. `9-closing-accounts` ships five (`insecure-still` and `insecure-still-still`
+    # as well as the usual three), so a hard-coded triple recorded 33 invocations where the runs
+    # already published record 35, and the two directories it skipped left no trace of having
+    # been skipped. `score.variant_of` ignores those two either way, which is exactly why a
+    # run log has to say the corpus has them rather than quietly agreeing with the scorer.
     if not root:
         raise ValueError("corpus1 is not in this repository; pass --corpus-root to the checkout")
     path_prefix = path_prefix or "/tmp/sealevel-attacks/programs"
-    variants = variants or ("insecure", "secure", "recommended")
     out = []
     for cls in sorted(os.listdir(root)):
         if not os.path.isdir(os.path.join(root, cls)):
             continue
-        for variant in variants:
+        for variant in sorted(os.listdir(os.path.join(root, cls))):
+            if variants and variant not in variants:
+                continue
             d = os.path.join(root, cls, variant)
             if os.path.isdir(os.path.join(d, "src")):
                 out.append((f"{cls}/{variant}", d, f"{path_prefix}/{cls}/{variant}"))
@@ -919,9 +946,16 @@ def demo():
                       "mounts": [{"from": "adapters/radar.json", "to": "/rules/r.json"}],
                       "command": ["scan", "{mount}"], "timeout_seconds": 60,
                       "invocation_evidence": "tools/scanner_spec.py demo"}
-    argv = command_for(load(mounted), "/t", "/o")
+    argv = command_for(load(mounted), "relative/target", "relative/out")
     assert any(a.endswith("adapters" + os.sep + "radar.json:/rules/r.json:ro")
                or a.endswith("adapters/radar.json:/rules/r.json:ro") for a in argv), argv
+    # Every bind source docker is given is absolute. A relative one is read as the name of a
+    # named volume, not as a directory, and 34 invocations died on that before this line existed.
+    for i, a in enumerate(argv):
+        if a == "-v":
+            assert not argv[i + 1].startswith("relative"), (
+                "a relative bind source reached docker, which reads it as a volume NAME: "
+                + argv[i + 1])
     mounted["run"]["mounts"] = [{"from": "adapters/does-not-exist.json", "to": "/rules/r.json"}]
     try:
         load(mounted)
@@ -929,6 +963,48 @@ def demo():
                              "have created an empty directory and the run would look like a zero")
     except ValueError as exc:
         assert "not in this repository" in str(exc), exc
+
+    # 3d. Corpus 1's variants are enumerated, not assumed. Two of the five directories under
+    # `9-closing-accounts` are not in the usual triple, and a run log that omits them says the
+    # corpus is smaller than it is.
+    with tempfile.TemporaryDirectory() as tmp:
+        for cls, variant in (("9-closing-accounts", "insecure"),
+                             ("9-closing-accounts", "insecure-still"),
+                             ("9-closing-accounts", "secure"),
+                             ("0-signer-authorization", "insecure")):
+            os.makedirs(os.path.join(tmp, cls, variant, "src"))
+        leaves = {leaf for leaf, _d, _p in corpus_leaves("corpus1", root=tmp)}
+        assert "9-closing-accounts/insecure-still" in leaves, leaves
+        assert len(leaves) == 4, leaves
+
+    # 3e. A declared rule-id prefix is stripped on the way into the envelope, and only when the
+    # declaration says why. semgrep emits `rules.<id>` for a local config and `<id>` for the same
+    # ruleset by URL; the mapping registered before the run holds the second form. The first
+    # framework run without this turned three `unlocated` verdicts into `missed` with the tool,
+    # the ruleset and the corpus all byte-identical to the run that published them.
+    with tempfile.TemporaryDirectory() as tmp:
+        target = os.path.join(tmp, "case")
+        os.makedirs(target)
+        with open(os.path.join(target, "__main__.py"), "w", encoding="utf-8",
+                  newline="\n") as fh:
+            # The coverage line goes to stderr so stdout stays parseable JSON: the same split
+            # vaultlint's declaration relies on.
+            fh.write('import sys\n'
+                     'print("fixture scanned 1 files", file=sys.stderr)\n'
+                     'print(\'{"findings": [{"rule_id": "rules.R1", "file": "src/lib.rs",'
+                     ' "line": 3}]}\')\n')
+        striking = json.loads(json.dumps(_FIXTURE_SPEC))
+        striking["output"]["rule_id_strip_prefix"] = "rules."
+        striking["rule_id_note"] = "the fixture emits both forms, as semgrep does"
+        entry, got = run_leaf(load(striking), "case/insecure", target, "corpus/case/insecure",
+                              os.path.join(tmp, "artefacts"))
+        assert entry["status"] == "ok", entry
+        assert [f["rule_id"] for f in got] == ["R1"], got
+        striking["output"].pop("rule_id_strip_prefix")
+        _e, got2 = run_leaf(load(striking), "case/insecure", target, "corpus/case/insecure",
+                            os.path.join(tmp, "artefacts2"))
+        assert [f["rule_id"] for f in got2] == ["rules.R1"], (
+            "the prefix was stripped without the declaration asking for it")
 
     # 4. Path rewriting is a prefix operation and nothing else.
     assert _rewrite("/src/src/lib.rs", "/src", "", "corpus2/x/insecure") == \
