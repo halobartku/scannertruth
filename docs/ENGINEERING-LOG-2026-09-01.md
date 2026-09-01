@@ -759,3 +759,46 @@ one remains open.
 
 Recorded here rather than only in the protocol, because a falsifier that is quietly declared
 satisfied is not a falsifier.
+
+---
+
+## Error 40. We asked a provider not to reason, it agreed, and it reasoned anyway
+
+**2026-09-01, late.** Running the model audit through OpenRouter, the first API model took a
+**median 51 seconds per call** against 4-7 seconds for the same shape of work on a local 9B model.
+Bartosz asked the obvious question: why is a hosted frontier-class model thirty times slower than
+a laptop?
+
+**Because it was reasoning, and we were paying for reasoning we had explicitly disabled.**
+
+    the answer we received      280 characters, about 70 tokens
+    completion_tokens billed    1875, median 3006 across the run
+
+The ~1800 token gap is chain-of-thought. We had sent `reasoning: {"exclude": true}`, which is a
+**display** setting: it removes the reasoning from the response body. The model still generates it,
+the clock still runs, and the meter still counts.
+
+**The speed was the symptom. The measurement integrity was the defect.** The local runs use
+ollama's `think=False`, which really does disable reasoning. Had this shipped, the results page
+would have compared a genuinely non-reasoning local model against a reasoning hosted model and
+labelled both "without thinking". Two different experiments under one name, and the hosted one
+would have looked better for a reason the page did not state.
+
+**Fixed** with `reasoning: {"enabled": false}`, which turns it off at the provider, plus
+`max_tokens: 400` as a second belt since one JSON object needs about eighty. Measured immediately
+after, same model, same case:
+
+    before   51 s median   1875-3006 completion tokens   $0.0016 per call
+    after    4-11 s        59-69 completion tokens       $0.00019 per call
+
+Thirty times faster, thirty times fewer output tokens, eight times cheaper - and only now is it the
+same measurement as the local one. The full four-model sweep goes from an estimated nine hours to
+roughly twenty minutes.
+
+**The contaminated records were deleted rather than kept**, because a run whose reasoning setting
+did not mean what the artefact says it meant is worse than no run.
+
+**Generalisation worth carrying:** a flag named for what you *see* is not a flag for what
+*happens*. `exclude` hid an output; it did not change an execution. Same family as the dry run that
+traded and the coverage figure that counted a file's existence instead of a tool's account of
+itself: **check the side effect, never the flag.**

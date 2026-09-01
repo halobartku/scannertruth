@@ -78,9 +78,15 @@ def ask_openrouter(model, code, think=False):
         "usage": {"include": True},
     }
     if not think:
-        # Only sent when we mean it; providers differ, and a silently ignored field would make
-        # think=False and think=True the same measurement under two different names.
-        payload["reasoning"] = {"exclude": True}
+        # `exclude` HIDES the reasoning; it does not stop it. On 2026-09-01 deepseek-v4-flash
+        # answered in 280 characters while billing 1875 completion tokens - about 1800 tokens of
+        # reasoning we had asked not to have, paid for, waited 51s per call for, and never saw.
+        # That is not only slow: it makes the measurement dishonest, because the local runs use
+        # ollama's think=False, which really does disable it. Comparing one against the other and
+        # calling both "without thinking" compares two different things. `enabled: False` turns it
+        # off at the provider; `max_tokens` is a second belt, since one JSON object needs ~80.
+        payload["reasoning"] = {"enabled": False}
+        payload["max_tokens"] = 400
     req = urllib.request.Request(
         OPENROUTER, data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
