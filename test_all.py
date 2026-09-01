@@ -639,7 +639,15 @@ def test_noisy_control_flags_every_non_empty_line():
 # command fails and the whole "you can check our work" claim goes with it.
 
 def test_no_external_python_dependencies():
+    # sys.stdlib_module_names arrived in 3.10. That is a limit of how this check is
+    # written, not of the code it checks: on 3.9 the other 91 checks pass and the tools
+    # run. The CI matrix runs 3.11 and 3.12, so the check still executes on every push;
+    # skipping here keeps 3.9 genuinely supported instead of dropping it to suit a test.
     import ast, os, sys
+    if not hasattr(sys, "stdlib_module_names"):
+        print("    skipped on Python %d.%d: needs sys.stdlib_module_names (3.10+); "
+              "CI runs this check on 3.11 and 3.12" % sys.version_info[:2])
+        return
     stdlib = set(sys.stdlib_module_names)
     local = {f[:-3] for f in os.listdir("tools") if f.endswith(".py")}
     local |= {"scanner", "make_fixtures"}      # our own, and optional
