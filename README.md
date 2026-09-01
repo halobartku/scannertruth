@@ -348,6 +348,7 @@ AGENTS.md              entry point for an AI agent asked to measure something
 test_all.py            151 checks, mutation-verified. Run this first
 
 docs/
+  INDEX.md             the map: every script and who calls it, generated files, raw/ names, results pages
   GETTING-STARTED.md   entry point for a person
   WALKTHROUGH.md       worked example: measure a scanner yourself, step by step
   SCANNERS.md          registry: every tool we know of, what it needs, what we measured
@@ -376,13 +377,18 @@ tools/
 adapters/              one declaration per scanner: provenance, invocation, parser, rows
 corpus2/               real vulnerabilities, each pinned to its maintainers' own fix commit
 mappings/              one file per tool: which rule claims which class, and how it was derived
-raw/                   every scanner's raw output and run logs
+raw/                   every scanner's raw output and run logs; raw/README.md is the naming key
 runs/                  dated history from the clock
 skills/                the method as three executable procedures
 ```
 
 **`raw/` is the point of the layout.** Every published number recomputes from what is in there,
 which is why this repository is 49 MB rather than 2.
+
+[`docs/INDEX.md`](docs/INDEX.md) is the map: every script in `tools/` with the command that runs it
+and who calls it, which files are generated and by what, which results page is current, and which
+numbers on this page a test derives. [`raw/README.md`](raw/README.md) is the naming key for the raw
+artefacts, and the rule that existing names are frozen because tests pin them.
 
 ## Honest limits
 
