@@ -2,6 +2,16 @@
 
 [![verify](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml/badge.svg)](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml)
 
+**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 140
+checks on three operating systems and four Python versions. `coverage` says whether every number
+published here can show what it analysed, by running
+`python tools/run_all.py --verify-coverage`. **`coverage` is red today and that is not a broken
+build.** Five of twenty measurements have no run log behind them, so for those five "the tool read
+this case and found nothing" and "the tool never saw this case" cannot be told apart. Those five are
+what Milestone 1 closes, and it closes with scanner runs rather than with code.
+
+A single badge covering both would have gone green and told you nothing.
+
 An independent, repeatable measurement of Solana security scanners.
 
 ## Every Solana scanner is graded on the same test paper, and it has not changed since 2022

@@ -78,3 +78,26 @@ jobs:
           python tools/unmapped_check.py --findings raw/c2-radar-complete.json --kind sol-audit
           python tools/unmapped_check.py --findings raw/c2-vaultlint-complete.json --kind sol-audit
           python tools/unmapped_check.py --findings raw/c2-sol-audit.json --kind sol-audit
+
+  # A SECOND DIAL, on purpose. `selfcheck` says the machinery is sound; this says whether the
+  # numbers currently published can each show what they analysed. They are different questions and
+  # a single badge answering both would answer neither.
+  #
+  # This job is allowed to be red while `selfcheck` is green, and that combination is not a broken
+  # build. It means: the checks work, and five of twenty measurements do not yet have a run log
+  # behind them. Milestone 1 in docs/ROADMAP.md closes when this goes green, and it closes with
+  # scanner runs rather than with code.
+  #
+  # It exists because the machinery was proved with fixtures and nothing asserted the live state.
+  # A guard that is only ever exercised on synthetic data is a guard nobody has pointed at the
+  # thing it guards.
+  coverage:
+    needs: selfcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Every published row can show what it analysed (Milestone 1 acceptance)
+        run: python tools/run_all.py --verify-coverage
