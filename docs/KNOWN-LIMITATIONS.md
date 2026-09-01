@@ -78,6 +78,15 @@ fixed variant.
 So the failure survives the most favourable conditions we know how to give the tool, and the
 packaging objection does not explain it. The original entry is kept below as the record.
 
+**Widened 2026-09-01, from one tool on one case to five tools on seventeen.** The four scanners
+that had never been run on a real crate were, per case and per variant, and Radar was re-run over
+the current build. Corpus 2 and the real crates now hold the same seventeen valid cases, so
+`tools/rc_compare.py` puts the verdicts side by side: **118 compared, zero differ, 35 not
+comparable**. The heading above claims more than one case could carry when it was written; it is
+now carried by the comparison rather than by that case. Still not carried for VaultLint or
+`sol-azy`, and carried for Radar only over the 5 scoreable crates it can finish.
+`docs/results/RESULTS-realcrates.md`.
+
 **Original entry:**
 
 Each variant is a single directory of loose `.rs` files with a synthetic `Cargo.toml` we wrote. The
@@ -174,6 +183,18 @@ retry budget on the bigger projects and, when it does, still prints `Results wri
 a file it did not write. Those pairs are recorded as **unavailable**, never as zero. This is a real
 limit on measuring tools against real code, and it means our real-crate coverage is biased toward
 small projects.
+
+**Quantified 2026-09-01, and the original wording was wrong.** This entry and the results page both
+said the pattern was "everything above roughly a hundred files". A re-run over all eighteen current
+crates says otherwise: **36 invocations, 20 completed, 16 could not finish, and it fails at 38 `.rs`
+files** (`spl-stake-pool`) and at 63 (`token-2022`). The nine valid crates it finishes run from 4 to
+34 `.rs` files and from 33 KB to 393 KB of Rust; the eight it cannot finish run from 38 files and
+688 KB upward. Nothing in the corpus sits between those bands, so the run cannot say whether Radar
+is hitting a file count or a source volume - only that the threshold is far lower than we published.
+**Radar's real-crate evidence is 9 of 17 cases and 21 percent of the corpus by source volume**, its
+scoreable denominator is 5 of 17, and two of the cases it cannot open are ones where it returns
+`unlocated` on the extracted file. Artefacts: `raw/rc-radar.json{,.log}`,
+`raw/rc-crate-bytes-2026-09-01.json`.
 
 **22. Every corpus-1 result is in-sample.** Stated in `docs/PROTOCOL.md` and repeated here because it is
 the single most load-bearing caveat in the project. The teaching corpus is public, at least two of
@@ -354,3 +375,40 @@ compared file by file, and the rolled-up digest of that listing,
 `a5a7ff5f64085b9ec06dfed34ea981b15617c0e446d82807c5158d37570e637a`, is reproducible from the listing
 itself. **Whoever pins a corpus next should commit the script that computes the pin**, because a
 digest with no committed method is decoration.
+
+## Added 2026-09-01, on running the four scanners that had never seen a real crate
+
+**43. X-Ray cannot open three of the seventeen real crates, and on those three the extracted
+corpus flatters it.** `anchor-interface-account`, `anchor-program-system` and
+`anchor-account-reload-owner` are all `anchor-lang`, whose manifest has no
+`[lib] crate-type = ["cdylib"]`: it is a library other programs link, and X-Ray compiles deployable
+programs. Its own message, `No Xargo.toml or Cargo.toml file found in: /workspace`, names the wrong
+cause, and pointing it at the crate root instead of the parent produces the identical line. Six
+invocations are recorded **unavailable**, never as three zeros, and X-Ray's real-crate denominator
+is 8 of 17. The uncomfortable half: on corpus 2 those same three cases are extracted single files
+with a synthetic manifest, which X-Ray opens without complaint. **The packaging objection runs in
+both directions**, and on these three our packaging is what lets the tool score at all.
+
+**44. Only one of the four real-crate runs was repeated.** solsec was run twice, because the first
+runner misclassified its CI exit code, and the 28 invocations common to both agree on all 3212
+findings by file, rule and line. semgrep, sol-audit and X-Ray were each run once. Repeating them
+while Radar was measuring would have contended for the same eight cores, and Radar's failure mode
+is a time limit, so a rerun could have manufactured one of its "could not finish" results. The
+determinism evidence on the real crates is therefore one tool out of four.
+
+**45. Two rows still rest on evidence the others would not accept.** Radar was re-run over the
+current build, so its coverage is now 9 of 17 cases rather than 6 of 9 - but it is still 5
+scoreable cases and still the small end of the corpus (limitation 21). VaultLint's real-crate
+evidence is unchanged: a single whole-corpus invocation on a nine-case build in which five of ten
+cases cannot distinguish "found nothing" from "never analysed". **`sol-azy` has never been run on
+a real crate at all**, and is not in `tools/run_all.py`, so the coverage matrix cannot show that
+gap either.
+
+**46. The real-crate scores are produced by a second scorer, and two scorers can drift.**
+`rc_score.py` exists because `score2.py` resolves the implicated file at
+`<case>/<variant>/src/<basename>`, which is the extracted layout and not a real crate's. Every
+function that decides a verdict - `changed_lines`, `near`, `rules_for`, `load_findings` - is
+imported from `score2` rather than reimplemented, and both have the same positive control, so a
+change to the semantics moves both. What is not shared is the file resolution itself, which is the
+one thing that differs, and a defect there would show up as real-crate verdicts that disagree with
+corpus 2. `rc_compare.py` is the check on that: 118 verdicts compared, zero disagreements.

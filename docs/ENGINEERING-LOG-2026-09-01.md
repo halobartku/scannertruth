@@ -600,8 +600,14 @@ is caught, the legitimate line count is not.
 - **The vaultlint result is provisional and its authors have not been told**, which now matters
   more than it did this morning, because the mapping we published understates their tool by a
   detection rather than merely by a coverage gap. Limitation 40.
-- **Four of eight scanners have never been run on the real crates**, so the packaging objection is
-  tested rather than retired.
+- ~~**Four of eight scanners have never been run on the real crates**, so the packaging objection is
+  tested rather than retired.~~ **Closed later the same day**: sol-audit 3.0 in three profiles,
+  semgrep with the SOL-0XX pack, solsec and X-Ray were run over all eighteen real crates, per case
+  per variant, and `rc_compare.py` puts 110 case verdicts side by side across the two packagings
+  with **zero disagreements**. The objection is retired **for those four**. It is not retired for
+  Radar or VaultLint, whose real-crate evidence is unchanged, and **`sol-azy` still has no
+  real-crate run at all** - it postdates the sentence above and is not in `run_all.py`, so nothing
+  derived could have shown that gap. `docs/results/RESULTS-realcrates.md`.
 - **Radar cannot finish on the three largest real crates**, which biases that coverage toward small
   projects and is itself a finding we owe Auditware.
 - **Corpus 2 cannot be compiled by any compiler-based analyser**, and corpus 1 no longer resolves

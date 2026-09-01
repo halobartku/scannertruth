@@ -2,7 +2,7 @@
 
 [![verify](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml/badge.svg)](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml)
 
-**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 140
+**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 149
 checks on three operating systems and four Python versions. `coverage` says whether every number
 published here can show what it analysed, by running
 `python tools/run_all.py --verify-coverage`. **`coverage` is red today and that is not a broken
@@ -210,9 +210,13 @@ did not exist. Building it is the work:
   manifest in [`docs/CLASS-BALANCE.md`](docs/CLASS-BALANCE.md) rather than described in prose.
 - **Real crates**: the same bugs as whole projects rather than extracted files, built from each
   project's own `Cargo.toml` and sibling modules. This tests the packaging objection rather than
-  arguing about it, and on the six pairs that could be scored it did not explain the result.
-  Two scanners, not six; three of the largest cases could not be measured at all. The crates are
-  built on demand rather than committed, so counts come from
+  arguing about it. Four scanners were run over all seventeen valid cases in both packagings on
+  2026-09-01 and **every verdict that could be compared came out the same**, so for those four the
+  packaging does not explain the result. Radar was re-run too and agrees on the eight cases it can
+  be compared on, but it cannot finish eight of the seventeen real crates and its scoreable
+  denominator there is five. VaultLint's row is still one whole-corpus invocation over a nine-case
+  build.
+  The crates are built on demand rather than committed, so counts come from
   [`docs/results/RESULTS-realcrates.md`](docs/results/RESULTS-realcrates.md) per case.
 - **Acquisition**: `corpus_ghsa.py` reads advisory databases, where a fix commit is a structured
   field rather than prose to be mined. It has scanned 1,200 advisories.
@@ -301,7 +305,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **140 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **149 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -323,7 +327,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            140 checks, mutation-verified. Run this first
+test_all.py            149 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person
