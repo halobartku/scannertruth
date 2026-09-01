@@ -48,7 +48,9 @@ Six scanners and two calibration controls, measured with one protocol on the sam
 
 ## What this says
 
-**Six scanners, eight real vulnerabilities, one detection between them, and it took a correction to
+**Seven scanners and two controls. The denominator below is eight because that is what was measured
+on 2026-08-31; the re-runs later that week cover sixteen and seventeen, and the conclusion did not
+move. One detection between them, and it took a correction to
 our own mapping to see it.**
 
 An earlier version of this page said no scanner detected anything. That was wrong, and the error

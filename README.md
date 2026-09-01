@@ -12,7 +12,8 @@ Seven scanners, run against real vulnerabilities taken from their maintainers' o
     python test_all.py                        # 151 checks, no dependencies
     python tools/run_all.py --verify-coverage # every number can show what it analysed
 
-Start with [`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md) for the table, or
+Start with [`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md) for the scanner table,
+[`docs/results/RESULTS-models.md`](docs/results/RESULTS-models.md) for the AI auditors, or
 [`docs/PROTOCOL.md`](docs/PROTOCOL.md) for how a detection is scored and why a rule that also
 fires on the fixed code has detected nothing.
 
