@@ -28,7 +28,7 @@ cd scannertruth
 python test_all.py
 ```
 
-Expect `81 passed, 0 failed`. **If anything fails, stop.** A harness that cannot check itself cannot
+Expect `104 passed, 0 failed`. **If anything fails, stop.** A harness that cannot check itself cannot
 tell you anything about somebody else's tool, and reporting a number from a broken harness is how
 this project produced a retraction.
 
@@ -147,8 +147,8 @@ tool's own last log line before deciding which one you are looking at.**
 ## Step 5. Score it
 
 ```bash
-python ../tools/score2.py --scanner my-vaultlint --kind sol-audit --findings out/merged.json
-python ../tools/unmapped_check.py --findings out/merged.json --kind sol-audit
+python tools/score2.py --scanner my-vaultlint --kind sol-audit --findings out/merged.json
+python tools/unmapped_check.py --findings out/merged.json --kind sol-audit
 ```
 
 You will get one verdict per case:
@@ -181,7 +181,7 @@ If your numbers differ, one of us is wrong and we would like to know which. Open
 Before believing any number you just produced:
 
 ```bash
-python ../tools/control_c2.py
+python tools/control_c2.py
 ```
 
 The noisy control flags every non-empty line: **424,170 findings, and it must score zero.** If your

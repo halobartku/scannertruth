@@ -15,7 +15,7 @@ number is in `ENGINEERING-LOG-2026-08-31.md`.
 ## Before anything: prove the harness works
 
 ```bash
-python test_all.py     # 81 checks, mutation-verified; expect "81 passed, 0 failed"
+python test_all.py     # 104 checks, mutation-verified; expect "104 passed, 0 failed"
 ```
 
 A harness that cannot check itself cannot tell you anything about somebody else's tool. If any check
@@ -127,10 +127,11 @@ pre-registration.
 ## 7. Score with the scorers, and compare shift-aware
 
 ```
-python score.py  --demo && python score2.py --demo      # includes the positive control
-python score2.py --scanner <name> --kind <name> --findings c2-<name>.json
-python unmapped_check.py --findings <raw>.json --kind <name>
-python control_c2.py                                    # controls must score zero
+# from the repository root
+python tools/score.py --demo && python tools/score2.py --demo  # includes the positive control
+python tools/score2.py --scanner <name> --kind <name> --findings raw/c2-<name>.json
+python tools/unmapped_check.py --findings raw/<file>.json --kind <name>
+python tools/control_c2.py                                     # controls must score zero
 ```
 
 - **Real recall** is the only number that means anything: the mapped rule fires on the vulnerable

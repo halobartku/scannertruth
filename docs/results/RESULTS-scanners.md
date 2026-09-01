@@ -105,7 +105,8 @@ informative whether or not the corpus has a label for it.
 ## Reproduce
 
 ```
-python ../../tools/score.py --demo                              # self-check the scoring logic
-python ../../tools/score.py mappings/radar.json radar-full.json # rescore Radar from raw output
-python ../../tools/adapters.py                                  # which scanners are available here
+# from the repository root
+python tools/score.py --demo                                  # self-check the scoring logic
+python tools/score.py mappings/radar.json raw/radar-full.json # rescore Radar from raw output
+python tools/adapters.py                                      # which scanners are available here
 ```

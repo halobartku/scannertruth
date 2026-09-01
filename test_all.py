@@ -844,21 +844,60 @@ def test_every_module_imports_without_side_effects():
 
 
 # ------------------------------------------------- documented commands still exist
-def test_every_command_in_getting_started_is_runnable():
+# This check existed and could not see the defect it was written for. Its regex was
+# `python (\w[\w-]*\.py)`, and `\w` matches neither `.` nor `/`, so `python ../tools/verify.py`
+# matched nothing at all and was silently skipped. Two of the three commands in the documented
+# entry point for a human resolved above the repository root, three more in the walkthrough did,
+# the README's only Windows block said `toolserify.py`, and every one of them was invisible here.
+# Found from outside on 2026-09-01.
+
+def _documented_command_files():
+    """Every document that tells a reader to run something.
+
+    The engineering logs are excluded on purpose: a log records what was run on a date, and
+    correcting a command in one would be rewriting history rather than fixing a document.
+    """
+    import os
+    out = ["README.md", "AGENTS.md"]
+    for root in ("docs", "skills"):
+        for base, _, files in os.walk(root):
+            for f in sorted(files):
+                if f.endswith(".md") and not f.startswith("ENGINEERING-LOG"):
+                    out.append(os.path.join(base, f).replace("\\", "/"))
+    return sorted(out)
+
+
+def _documented_scripts(text):
+    import re
+    return set(re.findall(r"python3?\s+([A-Za-z0-9_./\\-]+\.py)", text))
+
+
+def test_every_documented_command_runs_from_the_repository_root():
+    """One working directory for every documented command, or a reader has to guess which.
+
+    Error 25 was a reproduce block that mixed two working directories, and neither reading of it
+    ran. `../tools/verify.py` is the same defect: correct if you are standing somewhere the
+    document never names, broken from the place it tells you to stand.
+    """
+    import io as _io
+    bad = []
+    for doc in _documented_command_files():
+        for script in sorted(_documented_scripts(_io.open(doc, encoding="utf-8").read())):
+            if ".." in script.split("/") or ".." in script.split("\\"):
+                bad.append(f"{doc}: {script}")
+    assert not bad, ("documented commands must be written from the repository root, "
+                     f"not relative to wherever the reader happens to be: {bad}")
+
+
+def test_every_documented_command_names_a_script_that_exists():
     """A quickstart that names a script that no longer exists is a broken promise."""
-    import io as _io, os, re
-    s = _io.open("docs/GETTING-STARTED.md", encoding="utf-8").read()
-    scripts = set(re.findall(r"python (\w[\w-]*\.py)", s))
-    missing = [x for x in sorted(scripts) if not os.path.exists(x)]
-    assert not missing, f"GETTING-STARTED names scripts that do not exist: {missing}"
-
-
-def test_every_command_in_agents_md_is_runnable():
-    import io as _io, os, re
-    s = _io.open("AGENTS.md", encoding="utf-8").read()
-    scripts = set(re.findall(r"python (\w[\w-]*\.py)", s))
-    missing = [x for x in sorted(scripts) if not os.path.exists(x)]
-    assert not missing, f"AGENTS.md names scripts that do not exist: {missing}"
+    import io as _io, os
+    missing = []
+    for doc in _documented_command_files():
+        for script in sorted(_documented_scripts(_io.open(doc, encoding="utf-8").read())):
+            if not os.path.exists(script.replace("\\", "/")):
+                missing.append(f"{doc}: {script}")
+    assert not missing, f"documents name scripts that do not exist: {missing}"
 
 
 def test_documents_linked_from_the_readme_exist():
@@ -929,14 +968,42 @@ def test_the_readme_links_the_newest_engineering_log():
 
 def test_the_advertised_check_count_matches_the_suite():
     """The README said 82 while the suite ran 88. Adding tests without updating the
-    figure is the easiest way to make the front page lie, so the figure is derived."""
+    figure is the easiest way to make the front page lie, so the figure is derived.
+
+    Scoped to README and AGENTS until 2026-09-01, when an external review pointed out that
+    GETTING-STARTED said 59, WALKTHROUGH said 81, ROADMAP said 81 and all three skills said 81,
+    while the suite ran 94 - and that the skills' own instruction on a mismatch is to stop and
+    report, so the project was telling its agents to halt. The fix that mattered was not the
+    numbers; it was that the derived check covered two documents out of seven.
+    """
     import io as _io, re
     actual = len([n for n in globals() if n.startswith("test_")])
-    for doc in ("README.md", "AGENTS.md"):
+    wrong = []
+    for doc in _documented_command_files():
         s = _io.open(doc, encoding="utf-8").read()
-        for n in re.findall(r"(\d+)\s+checks", s):
-            assert int(n) == actual, (
-                f"{doc} advertises {n} checks but the suite defines {actual}")
+        for n in re.findall(r"(\d+)\s+checks", s) + re.findall(r"(\d+)\s+passed", s):
+            if int(n) != actual:
+                wrong.append(f"{doc}: {n}")
+    assert not wrong, (f"the suite defines {actual} checks; these documents say otherwise: {wrong}")
+
+
+def test_no_document_carries_a_stray_control_character():
+    """`python tools\\verify.py` was stored with a literal 0x0B where the backslash belonged.
+
+    The README's only Windows code block therefore read `toolserify.py` and could not run, and no
+    check saw it: the regex that looks for documented commands cannot match across a control
+    character, so the line silently contributed nothing. A whole section of the front page argues
+    that Windows is supported.
+    """
+    import io as _io
+    allowed = {"\n", "\t"}
+    bad = []
+    for doc in _documented_command_files():
+        s = _io.open(doc, encoding="utf-8", newline="").read()
+        for i, ch in enumerate(s):
+            if ch < " " and ch not in allowed and ch != "\r":
+                bad.append(f"{doc}: {ch!r} at offset {i}")
+    assert not bad, f"control characters in documents that tell a reader what to run: {bad}"
 
 
 def test_the_real_vulnerability_denominator_is_reconciled_on_the_front_page():

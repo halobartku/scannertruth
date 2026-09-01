@@ -124,8 +124,9 @@ Full list, including code-level gaps, in [`docs/KNOWN-LIMITATIONS.md`](../../doc
 ## Reproduce
 
 ```
-python ../../tools/build_corpus2.py --manifest corpus2/manifest.json --out corpus2
-python ../../tools/score2.py --demo
-python ../../tools/score2.py --scanner radar --kind radar --findings c2-radar.json
-python ../../tools/score2.py --scanner vaultlint --kind vaultlint --findings c2-vaultlint.json
+# from the repository root
+python tools/build_corpus2.py --manifest corpus2/manifest.json --out corpus2
+python tools/score2.py --demo
+python tools/score2.py --scanner radar --kind radar --findings raw/c2-radar.json
+python tools/score2.py --scanner vaultlint --kind vaultlint --findings raw/c2-vaultlint.json
 ```

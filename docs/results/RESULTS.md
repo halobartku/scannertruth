@@ -2,7 +2,7 @@
 
 Scanner under test: **`sol-audit`**, our own static security scanner for Solana / Anchor programs.
 Corpus: `coral-xyz/sealevel-attacks`, 11 vulnerability classes.
-Scoring: see `docs/PROTOCOL.md`. Raw output: `benchmark-raw.json`. Re-derive with `python ../../tools/verify.py`.
+Scoring: see `docs/PROTOCOL.md`. Raw output: `benchmark-raw.json`. Re-derive from the repository root with `python tools/verify.py`.
 
 ## Headline
 

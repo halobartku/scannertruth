@@ -86,7 +86,7 @@ python3 test_all.py && python3 tools/verify.py && python3 tools/control_c2.py
 ```powershell
 # Windows PowerShell - && is not a chain operator in Windows PowerShell 5.1
 git clone https://github.com/halobartku/scannertruth; cd scannertruth
-python test_all.py; python toolserify.py; python tools\control_c2.py
+python test_all.py; python tools\verify.py; python tools\control_c2.py
 ```
 
 Two minutes, no network after the clone. If any check fails on your machine and not on ours, that
@@ -240,7 +240,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **103 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **104 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -262,7 +262,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            103 checks, mutation-verified. Run this first
+test_all.py            104 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person

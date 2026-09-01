@@ -15,7 +15,7 @@ below is checkable in thirty seconds.
 
 | | |
 |---|---|
-| **2165 lines** of Python across **15 tools**, plus a suite of **81 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **2165 lines** of Python across **15 tools**, plus a suite of **104 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
 | **46 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
@@ -77,7 +77,7 @@ somebody other than us** (today the answer to "has anyone outside verified it" i
   the real crates. No empty cells afterwards, and anything that cannot run is listed with a reason.
 - **`report.py` and a published results page**, where every number links to the raw data behind it.
 
-**Check:** `python ../tools/run_all.py --verify-coverage` reports zero `coverage_evidence: none`, and the
+**Check:** `python tools/run_all.py --verify-coverage` reports zero `coverage_evidence: none`, and the
 page resolves with every figure traceable to its raw file.
 
 ---
@@ -127,7 +127,8 @@ has started.
   definition of real recall for a tool that answers differently each time is exactly the thing that
   must not be decided after seeing scores.
 
-**Check:** `python variance.py --scanner <tool> --runs 10 --case <case>` reports detections, spread
+**Check:** `tools/variance.py --scanner <tool> --runs 10 --case <case>`, which does not exist
+yet, reports detections, spread
 and cost; the results page carries a repeatability column; the protocol change is committed before
 the first measurement.
 
