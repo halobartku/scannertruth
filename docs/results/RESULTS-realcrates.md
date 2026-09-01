@@ -350,7 +350,7 @@ of the tools that carry one, and it narrows that explanation on a fifth.
 python tools/build_corpus2.py --manifest corpus2/manifest.json --out /tmp/rc-crates --crates
 python tools/rc_run.py   --tool semgrep   --crates /tmp/rc-crates --out /tmp/rc-out
 python tools/rc_run.py   --tool solsec    --crates /tmp/rc-crates --out /tmp/rc-out
-python tools/rc_run.py   --tool sol-audit --crates /tmp/rc-crates --out /tmp/rc-out --profile strict
+python tools/rc_run.py   --tool sol-audit --crates /tmp/rc-crates --out /tmp/rc-out --profile strict                          --tool-dir /tmp/sol-audit   # a checkout of the sol-audit repository
 python tools/rc_run.py   --tool xray      --crates /tmp/rc-crates --out /tmp/rc-out
 python tools/rc_run.py   --tool radar     --crates /tmp/rc-crates --out /tmp/rc-out
 python tools/rc_score.py --scanner solsec --kind solsec --findings raw/rc-solsec.json \
