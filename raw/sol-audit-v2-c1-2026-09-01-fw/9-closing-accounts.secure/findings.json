@@ -1,0 +1,19 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-009",
+   "file": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 18
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 28
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 49
+  }
+ ]
+}

@@ -419,7 +419,7 @@ def command_for(spec, target_dir, artefact_dir, tool_root=None, args=None):
     extra = _args_for(spec, args)
     if run["engine"] == "local":
         tokens = {"mount": target_dir, "target": target_dir, "tool_root": root,
-                  "out": artefact_dir, "artefact_dir": artefact_dir, **extra}
+                  "out": artefact_dir, "artefact_dir": artefact_dir, "root": ROOT, **extra}
         return [_subst(a, tokens) for a in run["command"]]
     cmd = ["docker", "run", "--rm"]
     if run.get("network", "none"):
@@ -448,7 +448,7 @@ def command_for(spec, target_dir, artefact_dir, tool_root=None, args=None):
         cmd += ["--entrypoint", run["entrypoint"]]
     cmd += [run["image"]]
     tokens = {"mount": mount, "out": out_mount or "", "target": mount, "tool_root": root,
-              "artefact_dir": out_mount or "", **extra}
+              "artefact_dir": out_mount or "", "root": ROOT, **extra}
     return cmd + [_subst(a, tokens) for a in run["command"]]
 
 

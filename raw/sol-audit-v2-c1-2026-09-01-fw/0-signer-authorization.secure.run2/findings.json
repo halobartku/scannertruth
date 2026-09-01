@@ -1,0 +1,9 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-002",
+   "file": "/tmp/sealevel-attacks/programs/0-signer-authorization/secure/src/lib.rs",
+   "line": 20
+  }
+ ]
+}

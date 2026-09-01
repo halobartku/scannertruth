@@ -1,0 +1,9 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-009",
+   "file": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs",
+   "line": 14
+  }
+ ]
+}

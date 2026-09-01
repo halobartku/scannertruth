@@ -1,6 +1,6 @@
 {
  "name": "sol-audit",
- "version": "v2, guard-aware rules, measured 2026-08-31",
+ "version": "v2 at sol-audit commit 1a2ffb1c20d0d3aeb938a4d6086aa339e39175f7, guard-aware rules, published 2026-08-31",
  "homepage": "https://github.com/halobartku/sol-audit",
  "provenance": {
   "repository": "https://github.com/halobartku/sol-audit",
@@ -10,22 +10,37 @@
   "note": "Superseded in the working tree by 3.0. Its rows stay because deleting a superseded run is not how this project corrects things."
  },
  "run": {
-  "engine": "unrecorded",
-  "reason": "Nobody wrote down the command. The v2 rows were produced on 2026-08-31 by a run whose invocation exists in no artefact in this repository, and v2's source is no longer the working tree. Re-running it needs a checkout of the old version, which has not been done.",
-  "invocation_evidence": "What is known: it was our own Python scanner at v2, run over both corpora on 2026-08-31, and it produced raw/sol-audit.json and raw/c2-sol-audit.json. There is no per-run log for either, and 96 of the 426 findings in the corpus-2 file name files the corpus rebuild removed."
+  "engine": "local",
+  "tool_root": "../sol-audit-v2-src",
+  "tool_root_note": "a git worktree of https://github.com/halobartku/sol-audit at 1a2ffb1, the commit whose message is `sol-audit v2: guard-aware rules. Real recall 0/11 -> 4/11`. v2 is not the working tree any more; v3 is, and v3 has its own declaration.",
+  "command": [
+   "{python}",
+   "{root}/tools/emit_sol_audit.py",
+   "{tool_root}",
+   "{mount}",
+   "{out}/findings.json"
+  ],
+  "timeout_seconds": 600,
+  "invocation_evidence": "tools/emit_sol_audit.py, committed in this repository. v2 has no command line at all - it is a Python module, and the bench script committed alongside it emits per-class totals, not findings - so this adapter is the only thing that produces the shape raw/sol-audit.json holds: {\"findings\": [{rule_id, file, line}]}, with `file` the walked path. Its scanner.scan_text entry point exists at 1a2ffb1 and is the one this script calls. What this is NOT evidence for: the exact argv of the 2026-08-31 run, which nobody wrote down. It is evidence that the published file can be reproduced from a committed script and a pinned commit, which is a weaker claim, and it is the claim being made.",
+  "arg_defaults": {
+   "python": "python"
+  },
+  "arg_defaults_note": "the interpreter is a declared token because the corpus-1 checkout lives on a host whose only python is `python3`. The first attempt hard-coded `python`, all 35 invocations failed to launch, and the framework recorded 35 `unavailable` rather than 35 zeros. Pass --arg python=python3 there."
  },
- "layout": "unrecorded",
+ "layout": "variant-dir",
  "coverage": {
   "ok_exit_codes": [
    0
   ],
   "evidence": {
-   "absent": true,
-   "reason": "no run log exists for either v2 row, so which cases were analysed cannot be answered from this repository. run_all reports the corpus-2 row as `partial` with every case it cannot resolve counted as `unknown`, which is the honest verdict rather than a guess in either direction. The count is not written here because it moves with the corpus: `python tools/run_all.py --verify-coverage` prints it."
+   "pattern": "read (\\d+) Rust files",
+   "minimum": 1,
+   "means": "the number of .rs files the adapter opened AND carried through scanner.scan_text without an exception. A file the scanner threw on is not counted, because a crash is an outage and not a clean zero. v2 prints nothing of its own, so this line is the adapter speaking for it, and that is said here rather than implied."
   }
  },
  "output": {
-  "from": "unrecorded",
+  "from": "file",
+  "name": "findings.json",
   "format": "sol-audit"
  },
  "envelope": "sol-audit",
@@ -49,7 +64,7 @@
    "raw": "sol-audit.json",
    "mapping": "sol-audit",
    "envelope": "sol-audit",
-   "note": "4 / 11 real. No per-run log. Named in docs/COVERAGE.md as one of the five measurements without one."
+   "note": "4 / 11 real as published on 2026-08-31 with no per-run log. Re-run per case, per variant, through the framework on 2026-09-01 from the pinned v2 worktree. Still published while its corpus-2 twin is retired (KNOWN-LIMITATIONS 41), which is why it needed a log: a row on the front page that cannot show what it analysed is the defect the coverage gate exists to catch."
   },
   {
    "row": "sol-audit",
@@ -57,7 +72,7 @@
    "raw": "c2-sol-audit.json",
    "mapping": "sol-audit",
    "envelope": "sol-audit",
-   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only corpus-2 row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it twice over: no run log, and every case it cannot resolve. Retired on the published pages on 2026-09-01 (docs/KNOWN-LIMITATIONS.md 41) in favour of v3, and marked retired rather than deleted, so it stays on the clock and stays countable.",
+   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only corpus-2 row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it twice over: no run log, and every case it cannot resolve. Retired on the published pages on 2026-09-01 (docs/KNOWN-LIMITATIONS.md 41) in favour of v3, and marked retired rather than deleted, so it stays on the clock and stays countable. The run block above is how v2 can be driven now; this row was not produced by it and is retired rather than re-run.",
    "retired": {
     "on": "2026-09-01",
     "by": "sol-audit v3, measured per case on all three profiles, 207 invocations",

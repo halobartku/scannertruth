@@ -1,0 +1,9 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-012",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended/src/lib.rs",
+   "line": 11
+  }
+ ]
+}

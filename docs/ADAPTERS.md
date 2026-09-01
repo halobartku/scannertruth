@@ -190,13 +190,21 @@ Everything in this list is a judgement, not a keystroke, which is why none of it
 
 ## The declarations that exist
 
-`python tools/scanner_spec.py --list` prints this, derived. Nine tools are declared; four can be
+`python tools/scanner_spec.py --list` prints this, derived. Nine tools are declared; eight can be
 run from the declaration alone.
 
-Three carry `"engine": "unrecorded"`: sol-audit v2, VaultLint and X-Ray. Nobody wrote down how they
-were invoked, so those published rows cannot be reproduced from this repository. The declaration
-says that in a field rather than leaving it as a silence, and `--verify-coverage` and the suite
-both treat a stated command with no evidence behind it as an error.
+Three carried `"engine": "unrecorded"` until 2026-09-01: sol-audit v2, VaultLint and X-Ray. Two of
+them no longer do. VaultLint's command was recovered from its own committed artefacts, and
+sol-audit v2's from `tools/emit_sol_audit.py`, which is committed here and is the only thing that
+produces the shape its findings file holds, because v2 has no command line at all. Neither recovery
+is evidence of the exact argv somebody typed on 2026-08-31. Each is evidence that the published
+file can be reproduced from a committed script and a pinned commit, which is the weaker claim, and
+each declaration says which of the two it is making.
+
+**X-Ray still carries it.** Its 2026-08-31 invocation is in no artefact here, and re-running it is
+blocked on the corpus rather than on the command: neither corpus currently compiles to LLVM IR. The
+declaration says that in a field rather than leaving it as a silence, and `--verify-coverage` and
+the suite both treat a stated command with no evidence behind it as an error.
 
 One declaration, `sol-azy`, is deliberately **off the clock**: it is measured, it has a run log and
 a two-run determinism check, and putting it on the clock is a decision somebody should take rather

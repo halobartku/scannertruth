@@ -1,0 +1,14 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-002",
+   "file": "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "line": 30
+  },
+  {
+   "rule_id": "SOL-009",
+   "file": "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "line": 21
+  }
+ ]
+}

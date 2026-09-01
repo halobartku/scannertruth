@@ -1,0 +1,352 @@
+[
+ {
+  "leaf": "0-signer-authorization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/0-signer-authorization/insecure raw/sol-audit-v2-c1-2026-09-01-fw/0-signer-authorization.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/0-signer-authorization.insecure/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/0-signer-authorization/recommended raw/sol-audit-v2-c1-2026-09-01-fw/0-signer-authorization.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/0-signer-authorization.recommended/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/0-signer-authorization/secure raw/sol-audit-v2-c1-2026-09-01-fw/0-signer-authorization.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/0-signer-authorization.secure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/1-account-data-matching/insecure raw/sol-audit-v2-c1-2026-09-01-fw/1-account-data-matching.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/1-account-data-matching.insecure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/1-account-data-matching/recommended raw/sol-audit-v2-c1-2026-09-01-fw/1-account-data-matching.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/1-account-data-matching.recommended/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/1-account-data-matching/secure raw/sol-audit-v2-c1-2026-09-01-fw/1-account-data-matching.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/1-account-data-matching.secure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure raw/sol-audit-v2-c1-2026-09-01-fw/10-sysvar-address-checking.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/10-sysvar-address-checking.insecure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/10-sysvar-address-checking/recommended raw/sol-audit-v2-c1-2026-09-01-fw/10-sysvar-address-checking.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/10-sysvar-address-checking.recommended/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/10-sysvar-address-checking/secure raw/sol-audit-v2-c1-2026-09-01-fw/10-sysvar-address-checking.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/10-sysvar-address-checking.secure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/2-owner-checks/insecure raw/sol-audit-v2-c1-2026-09-01-fw/2-owner-checks.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/2-owner-checks.insecure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/2-owner-checks/recommended raw/sol-audit-v2-c1-2026-09-01-fw/2-owner-checks.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/2-owner-checks.recommended/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/2-owner-checks/secure raw/sol-audit-v2-c1-2026-09-01-fw/2-owner-checks.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/2-owner-checks.secure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/3-type-cosplay/insecure raw/sol-audit-v2-c1-2026-09-01-fw/3-type-cosplay.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/3-type-cosplay.insecure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/3-type-cosplay/recommended raw/sol-audit-v2-c1-2026-09-01-fw/3-type-cosplay.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/3-type-cosplay.recommended/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/3-type-cosplay/secure raw/sol-audit-v2-c1-2026-09-01-fw/3-type-cosplay.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/3-type-cosplay.secure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/4-initialization/insecure raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.insecure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/4-initialization/recommended raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.recommended/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/4-initialization/secure raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.secure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure raw/sol-audit-v2-c1-2026-09-01-fw/5-arbitrary-cpi.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/5-arbitrary-cpi.insecure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended raw/sol-audit-v2-c1-2026-09-01-fw/5-arbitrary-cpi.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/5-arbitrary-cpi.recommended/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 5,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure raw/sol-audit-v2-c1-2026-09-01-fw/5-arbitrary-cpi.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/5-arbitrary-cpi.secure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure raw/sol-audit-v2-c1-2026-09-01-fw/6-duplicate-mutable-accounts.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/6-duplicate-mutable-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/recommended raw/sol-audit-v2-c1-2026-09-01-fw/6-duplicate-mutable-accounts.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/6-duplicate-mutable-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/secure raw/sol-audit-v2-c1-2026-09-01-fw/6-duplicate-mutable-accounts.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/6-duplicate-mutable-accounts.secure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure raw/sol-audit-v2-c1-2026-09-01-fw/7-bump-seed-canonicalization.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/7-bump-seed-canonicalization.insecure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended raw/sol-audit-v2-c1-2026-09-01-fw/7-bump-seed-canonicalization.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/7-bump-seed-canonicalization.recommended/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/secure raw/sol-audit-v2-c1-2026-09-01-fw/7-bump-seed-canonicalization.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/7-bump-seed-canonicalization.secure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/8-pda-sharing/insecure raw/sol-audit-v2-c1-2026-09-01-fw/8-pda-sharing.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/8-pda-sharing.insecure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 4,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/8-pda-sharing/recommended raw/sol-audit-v2-c1-2026-09-01-fw/8-pda-sharing.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/8-pda-sharing.recommended/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/8-pda-sharing/secure raw/sol-audit-v2-c1-2026-09-01-fw/8-pda-sharing.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/8-pda-sharing.secure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/9-closing-accounts/insecure raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.insecure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.insecure-still/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.insecure-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.insecure-still-still/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.insecure-still-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.08,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/9-closing-accounts/recommended raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.recommended/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/9-closing-accounts/secure raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.secure/findings.json",
+  "artefact": "raw/sol-audit-v2-c1-2026-09-01-fw/9-closing-accounts.secure/stdout.log"
+ }
+]

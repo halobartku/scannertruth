@@ -1,0 +1,24 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-012",
+   "file": "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 12
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 16
+  },
+  {
+   "rule_id": "SOL-016",
+   "file": "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 25
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-001",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 33
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 31
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 32
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 33
+  },
+  {
+   "rule_id": "SOL-002",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 34
+  },
+  {
+   "rule_id": "SOL-006",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 11
+  },
+  {
+   "rule_id": "SOL-010",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 11
+  }
+ ]
+}

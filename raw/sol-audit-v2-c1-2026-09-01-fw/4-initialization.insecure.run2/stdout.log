@@ -1,0 +1,11 @@
+COMMAND: python3 /root/st-fw-20260901/tools/emit_sol_audit.py /root/sol-audit-v2-src /tmp/sealevel-attacks/programs/4-initialization/insecure raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.insecure.run2/findings.json
+EXIT: 0
+WALL_SECONDS: 0.06
+
+STDOUT:
+read 1 Rust files
+2 findings -> raw/sol-audit-v2-c1-2026-09-01-fw/4-initialization.insecure.run2/findings.json
+
+
+STDERR:
+

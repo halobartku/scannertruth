@@ -1,0 +1,9 @@
+{
+ "findings": [
+  {
+   "rule_id": "SOL-016",
+   "file": "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended/src/lib.rs",
+   "line": 28
+  }
+ ]
+}

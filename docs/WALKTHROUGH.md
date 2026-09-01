@@ -200,13 +200,17 @@ class of claim as a number typed from memory. Before the run the thing you have 
 `--help` transcript from step 3, so save it: `docker run ... --help > raw/my-vaultlint-help.txt`.
 
 **`coverage.evidence.pattern` is the one field you cannot copy from us**, and this is the honest
-part of the walkthrough. Our own `adapters/vaultlint.json` says `"engine": "unrecorded"` and
-`"evidence": {"absent": true, ...}`. Nobody wrote down how VaultLint was invoked on 2026-08-31 or
-what it prints when it has read files, so we cannot hand you a working `--run vaultlint`, and our own
-corpus-1 VaultLint row is one of the rows `--verify-coverage` fails on. If you find that line, you
-have recovered something we lost. If VaultLint turns out to print no such line at all, say so with
-`{"absent": true, "reason": "..."}` and every run comes back `unknown`, which is the honest verdict
-when the question cannot be answered, and can never quietly become a zero.
+part of the walkthrough. Our own `adapters/vaultlint.json` said `"engine": "unrecorded"` and
+`"evidence": {"absent": true, ...}` until 2026-09-01, because nobody had written down how VaultLint
+was invoked on 2026-08-31 or what it prints when it has read files. That line has since been
+recovered, by reading the committed artefacts rather than by remembering, and it is worth showing
+you what it turned out to be: VaultLint has no single argv that answers both questions. `--format
+json` gives the findings and no file count; the human formatter gives `analyzing N Rust file` and
+nothing a parser can read. So the declaration runs the tool twice inside one container, human
+output to stderr for what it read and json to stdout for what it found, and the pattern reads the
+first. Expect your tool to make you work for this field too. If it turns out to print no such line
+at all, say so with `{"absent": true, "reason": "..."}` and every run comes back `unknown`, which is
+the honest verdict when the question cannot be answered, and can never quietly become a zero.
 
 ### Check the declaration before you run anything
 
