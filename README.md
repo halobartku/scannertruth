@@ -332,7 +332,7 @@ what the bug was.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[37 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
+- **[41 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.
@@ -359,7 +359,7 @@ docs/
   KNOWN-LIMITATIONS.md what this measurement cannot tell you
   COVERAGE.md          generated: which measurement can show what it analysed, derived from raw/
   CLASS-BALANCE.md     generated: class and repository concentration of corpus 2, from the manifest
-  ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 10 more on 2026-09-01
+  ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 20 more on 2026-09-01
   COMMITMENTS.md       three standing promises
   CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
   results/             the measurements themselves
