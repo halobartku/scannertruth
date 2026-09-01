@@ -86,7 +86,7 @@ python3 test_all.py && python3 tools/verify.py && python3 tools/control_c2.py
 ```powershell
 # Windows PowerShell - && is not a chain operator in Windows PowerShell 5.1
 git clone https://github.com/halobartku/scannertruth; cd scannertruth
-python test_all.py; python toolserify.py; python tools\control_c2.py
+python test_all.py; python tools\verify.py; python tools\control_c2.py
 ```
 
 Two minutes, no network after the clone. If any check fails on your machine and not on ours, that
