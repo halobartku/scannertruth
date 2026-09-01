@@ -15,6 +15,49 @@ flags fixed code as often as vulnerable code will produce an impressive number a
 
 We know this because we measured it on our own product.
 
+## Start here
+
+**A person?** [`GETTING-STARTED.md`](GETTING-STARTED.md) - what you need (Python 3, nothing else),
+how to verify our numbers offline in two minutes, and the one concept that makes them mean anything.
+
+**An AI agent handed this repo?** [`AGENTS.md`](AGENTS.md) - the full measurement procedure,
+written to be followed unsupervised, including the three steps whose absence produced retractions.
+
+```bash
+git clone https://github.com/halobartku/scannertruth && cd scannertruth
+python test_all.py && python verify.py && python control_c2.py
+```
+
+No pip install. **Every dependency is in the Python standard library**, deliberately: a benchmark
+whose results cannot be reproduced because a package version drifted is not a benchmark.
+
+
+**Six scanners, eight real vulnerabilities, one detection between them.** Radar, VaultLint,
+X-Ray (sec3), solsec, semgrep and ours, measured with one protocol on the same day. Full table:
+[`RESULTS-all.md`](RESULTS-all.md).
+
+**Run 5, 2026-08-31: eight valid real vulnerabilities.** Corpus 2 is built from
+production Solana programs at the maintainers' own fix commit and its parent: Wormhole, Cashio,
+Solend, Squads, three Metaplex advisories and one against Anchor itself. Radar scores **11/11 on the
+teaching corpus and 0/8 here**; ours scores 4/11 and 0/8. Scored more strictly than corpus 1: a
+detection must fire at the site the fix changed. [`RESULTS-corpus2.md`](RESULTS-corpus2.md).
+
+**Run 4, 2026-08-31: the first out-of-sample case, and nobody caught it.** The Wormhole
+sysvar-check bug, 320 million dollars, taken from the real fix commit and its parent. Radar scores
+11/11 on the teaching corpus and **does not detect it**; every finding it produces fires identically
+on the vulnerable and the fixed program. So does ours. VaultLint reports nothing.
+[`RESULTS-wormhole.md`](RESULTS-wormhole.md).
+
+**How all of this was actually built, mistakes included:**
+[`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md) is the full record of the day this
+benchmark was made, in order, with fifteen errors recorded. Eleven were caught by measurement,
+four by a person noticing, and two would have put a false statement in a funding application.
+
+**What is wrong with all of this:** [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md) lists every
+weakness we know of in our own method and code, ordered by how much damage each does. It opens with
+an error we made and published on the same day. A measurement project that only documents other
+people's flaws is not a measurement project.
+
 ## The result
 
 `sol-audit`, our own static scanner for Solana and Anchor programs, which we were selling:
@@ -106,31 +149,7 @@ each case was checked. That is the asset, and it is also the thing that decides 
 project deserves to continue: if the corpus stops growing, there is nothing here.
 
 
-**Six scanners, eight real vulnerabilities, one detection between them.** Radar, VaultLint,
-X-Ray (sec3), solsec, semgrep and ours, measured with one protocol on the same day. Full table:
-[`RESULTS-all.md`](RESULTS-all.md).
 
-**Run 5, 2026-08-31: eight valid real vulnerabilities.** Corpus 2 is built from
-production Solana programs at the maintainers' own fix commit and its parent: Wormhole, Cashio,
-Solend, Squads, three Metaplex advisories and one against Anchor itself. Radar scores **11/11 on the
-teaching corpus and 0/8 here**; ours scores 4/11 and 0/8. Scored more strictly than corpus 1: a
-detection must fire at the site the fix changed. [`RESULTS-corpus2.md`](RESULTS-corpus2.md).
-
-**Run 4, 2026-08-31: the first out-of-sample case, and nobody caught it.** The Wormhole
-sysvar-check bug, 320 million dollars, taken from the real fix commit and its parent. Radar scores
-11/11 on the teaching corpus and **does not detect it**; every finding it produces fires identically
-on the vulnerable and the fixed program. So does ours. VaultLint reports nothing.
-[`RESULTS-wormhole.md`](RESULTS-wormhole.md).
-
-**How all of this was actually built, mistakes included:**
-[`ENGINEERING-LOG-2026-08-31.md`](ENGINEERING-LOG-2026-08-31.md) is the full record of the day this
-benchmark was made, in order, with fifteen errors recorded. Eleven were caught by measurement,
-four by a person noticing, and two would have put a false statement in a funding application.
-
-**What is wrong with all of this:** [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md) lists every
-weakness we know of in our own method and code, ordered by how much damage each does. It opens with
-an error we made and published on the same day. A measurement project that only documents other
-people's flaws is not a measurement project.
 
 ## Independence
 

@@ -18,7 +18,8 @@ defects were introduced and all three were caught: widening the line tolerance t
 checks; returning an unsplit location from the Radar extractor broke one; and dropping the
 "silent on the fixed variant" half of real recall broke three, including the golden test, which
 reported `sol-audit: published (6, 4), now (6, 6)` - a published number changing under a refactor,
-which is exactly what these exist to catch.
+which is exactly what these exist to catch. Two later mutations were caught the same way: a fake
+`import requests` and a quickstart naming a script that does not exist.
 """
 import io
 import json
@@ -615,6 +616,243 @@ def test_noisy_control_flags_every_non_empty_line():
         _io.open(os.path.join(t, "a.rs"), "w", encoding="utf-8").write("one\n\ntwo\n")
         out = list(adapters.NoisyScanner().run(t))
         assert len(out) == 2, f"two non-empty lines should give two findings, got {len(out)}"
+
+
+# ============================================================================ WAVE 3
+# Documentation that drifts from the code is worse than no documentation: it tells a stranger to
+# expect something the repository no longer does. These check that the promises in GETTING-STARTED
+# and AGENTS.md are still true, and cover the paths waves 1 and 2 left alone.
+
+
+# --------------------------------------------------- the "no dependencies" promise
+# GETTING-STARTED says Python 3 and nothing else. If that stops being true, a stranger's first
+# command fails and the whole "you can check our work" claim goes with it.
+
+def test_no_external_python_dependencies():
+    import ast, os, sys
+    stdlib = set(sys.stdlib_module_names)
+    local = {f[:-3] for f in os.listdir(".") if f.endswith(".py")}
+    local |= {"scanner", "make_fixtures"}      # our own, and optional
+    external = {}
+    for fn in sorted(f for f in os.listdir(".") if f.endswith(".py")):
+        tree = ast.parse(open(fn, encoding="utf-8").read())
+        for node in ast.walk(tree):
+            names = []
+            if isinstance(node, ast.Import):
+                names = [a.name.split(".")[0] for a in node.names]
+            elif isinstance(node, ast.ImportFrom) and node.module and node.level == 0:
+                names = [node.module.split(".")[0]]
+            for n in names:
+                if n not in stdlib and n not in local:
+                    external.setdefault(n, set()).add(fn)
+    assert not external, \
+        f"GETTING-STARTED promises no pip install, but these are external: {external}"
+
+
+def test_the_optional_scanner_import_is_guarded():
+    """`scanner` is our own tool and may be absent. Anything importing it unguarded breaks a
+    stranger's clone."""
+    import ast, os
+    unguarded = []
+    for fn in sorted(f for f in os.listdir(".") if f.endswith(".py")):
+        src = open(fn, encoding="utf-8").read()
+        if "import scanner" not in src:
+            continue
+        tree = ast.parse(src)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import) and any(a.name == "scanner" for a in node.names):
+                # module level means col_offset 0 and not inside a try
+                if node.col_offset == 0:
+                    unguarded.append(fn)
+    # rb.py is the original harness and is allowed to require it; nothing else may
+    assert set(unguarded) <= {"rb.py"}, f"unguarded `import scanner` in {unguarded}"
+
+
+def test_every_module_imports_without_side_effects():
+    """shiftaware.py used to run its whole analysis at import time, which is why it had no tests.
+    Nothing may do that again."""
+    import importlib, os, sys
+    skip = {"rb.py", "emit_sol_audit.py", "test_all.py"}   # these need `scanner` or are this file
+    failed = {}
+    for fn in sorted(f for f in os.listdir(".") if f.endswith(".py")):
+        if fn in skip:
+            continue
+        name = fn[:-3]
+        try:
+            if name in sys.modules:
+                del sys.modules[name]
+            importlib.import_module(name)
+        except SystemExit as e:
+            failed[fn] = f"called sys.exit({e.code}) at import"
+        except Exception as e:
+            failed[fn] = f"{type(e).__name__}: {e}"
+    assert not failed, f"modules with import-time side effects or errors: {failed}"
+
+
+# ------------------------------------------------- documented commands still exist
+def test_every_command_in_getting_started_is_runnable():
+    """A quickstart that names a script that no longer exists is a broken promise."""
+    import io as _io, os, re
+    s = _io.open("GETTING-STARTED.md", encoding="utf-8").read()
+    scripts = set(re.findall(r"python (\w[\w-]*\.py)", s))
+    missing = [x for x in sorted(scripts) if not os.path.exists(x)]
+    assert not missing, f"GETTING-STARTED names scripts that do not exist: {missing}"
+
+
+def test_every_command_in_agents_md_is_runnable():
+    import io as _io, os, re
+    s = _io.open("AGENTS.md", encoding="utf-8").read()
+    scripts = set(re.findall(r"python (\w[\w-]*\.py)", s))
+    missing = [x for x in sorted(scripts) if not os.path.exists(x)]
+    assert not missing, f"AGENTS.md names scripts that do not exist: {missing}"
+
+
+def test_documents_linked_from_the_readme_exist():
+    import io as _io, os, re
+    s = _io.open("README.md", encoding="utf-8").read()
+    links = set(re.findall(r"\]\((?!http)([A-Za-z0-9_./-]+\.md)\)", s))
+    missing = [x for x in sorted(links) if not os.path.exists(x)]
+    assert not missing, f"README links to missing files: {missing}"
+
+
+def test_skills_referenced_by_agents_md_exist():
+    import io as _io, os, re
+    s = _io.open("AGENTS.md", encoding="utf-8").read()
+    links = set(re.findall(r"\]\((skills/[A-Za-z0-9_./-]+)\)", s))
+    missing = [x for x in sorted(links) if not os.path.exists(x)]
+    assert not missing, f"AGENTS.md references missing skills: {missing}"
+
+
+def test_every_skill_has_a_name_and_description():
+    """A skill without frontmatter will never be surfaced to an agent."""
+    import io as _io, os
+    for d in sorted(os.listdir("skills")):
+        p = os.path.join("skills", d, "SKILL.md")
+        assert os.path.exists(p), f"{d} has no SKILL.md"
+        head = _io.open(p, encoding="utf-8").read()[:600]
+        assert head.startswith("---"), f"{d}: no frontmatter"
+        assert "name:" in head and "description:" in head, f"{d}: incomplete frontmatter"
+
+
+# ------------------------------------------------------------ CI honesty
+def test_ci_runs_the_test_suite():
+    import io as _io
+    s = _io.open(".github/workflows/verify.yml", encoding="utf-8").read()
+    assert "test_all.py" in s, "CI does not run the test suite, so the badge overstates"
+
+
+def test_ci_step_names_do_not_overclaim():
+    """A step called 'published headline reproduces' that only checks run 1 is a false badge."""
+    import io as _io
+    s = _io.open(".github/workflows/verify.yml", encoding="utf-8").read()
+    assert "NOT the current headline" in s, \
+        "the verify.py step must say what it does not cover"
+
+
+# ---------------------------------------------------- protocol / results consistency
+def test_protocol_states_the_falsifier_with_a_date():
+    import io as _io, re
+    s = _io.open("PROTOCOL.md", encoding="utf-8").read()
+    assert "fourteen days" in s or "14 days" in s or "2026-09-14" in s, \
+        "the stop condition must stay stated, and it only binds if it is written down"
+
+
+def test_protocol_warns_that_corpus_one_is_in_sample():
+    import io as _io
+    s = _io.open("PROTOCOL.md", encoding="utf-8").read().lower()
+    assert "in-sample" in s, "every corpus-1 score must carry the in-sample warning"
+
+
+def test_limitations_document_is_not_empty_or_shrinking():
+    """Limitations should accumulate. A suspiciously short file means someone tidied them away."""
+    import io as _io
+    n = len(_io.open("KNOWN-LIMITATIONS.md", encoding="utf-8").read().split("\n"))
+    assert n > 60, f"KNOWN-LIMITATIONS has only {n} lines; limitations do not disappear"
+
+
+def test_commitments_are_still_stated():
+    import io as _io
+    s = _io.open("COMMITMENTS.md", encoding="utf-8").read().lower()
+    assert "free" in s and ("no money" in s or "take no" in s), \
+        "the open-data and no-money-from-those-we-measure commitments must stay stated"
+
+
+# --------------------------------------------------------- corpus/case sanity
+def test_no_case_is_both_valid_and_unexplained_when_excluded():
+    import json, io as _io
+    man = json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+    for c in man:
+        if c.get("valid", True) is False:
+            assert len(c.get("invalid_reason", "")) > 40, \
+                f"{c['name']} excluded with a reason too short to audit"
+
+
+def test_case_names_are_unique():
+    import json, io as _io
+    man = json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+    names = [c["name"] for c in man]
+    assert len(names) == len(set(names)), "duplicate case names would double-count a denominator"
+
+
+def test_pinned_files_look_like_source_paths():
+    import json, io as _io
+    man = json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+    for c in man:
+        for f in c.get("files", []):
+            assert f.endswith(".rs"), f"{c['name']} pins a non-Rust file: {f}"
+            assert not f.startswith("/"), f"{c['name']} pins an absolute path: {f}"
+
+
+def test_fix_commits_look_like_shas():
+    import json, io as _io, re
+    man = json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+    for c in man:
+        fix = c["fix"]
+        if fix.startswith("PENDING"):
+            continue
+        assert re.fullmatch(r"[0-9a-f]{7,40}", fix), f"{c['name']} has a malformed fix sha: {fix}"
+
+
+# ------------------------------------------------------- holdout ledger sanity
+def test_holdout_ledger_never_seals_a_round_twice():
+    import json, io as _io, os
+    if not os.path.exists("COMMITMENTS-HOLDOUT.json"):
+        return
+    d = json.load(_io.open("COMMITMENTS-HOLDOUT.json", encoding="utf-8"))
+    rounds = [r["round"] for r in d.get("rounds", [])]
+    assert len(rounds) == len(set(rounds)), \
+        "a round sealed twice would let a disappointing holdout be replaced"
+
+
+def test_holdout_ledger_admits_what_round_one_does_not_prove():
+    import json, io as _io, os
+    if not os.path.exists("COMMITMENTS-HOLDOUT.json"):
+        return
+    d = json.load(_io.open("COMMITMENTS-HOLDOUT.json", encoding="utf-8"))
+    key = [k for k in d if "NOT_prove" in k or "not_prove" in k.lower()]
+    assert key, "the ledger must state that round 1 gives timestamp integrity, not concealment"
+
+
+def test_unreleased_holdout_specs_are_not_in_the_repository():
+    """A sealed spec sitting in the repo is not sealed."""
+    import json, io as _io, os
+    if not os.path.exists("COMMITMENTS-HOLDOUT.json"):
+        return
+    d = json.load(_io.open("COMMITMENTS-HOLDOUT.json", encoding="utf-8"))
+    for r in d.get("rounds", []):
+        if not r.get("released"):
+            assert r.get("spec") is None, \
+                f"round {r['round']} is unreleased but its spec is stored in the repo"
+
+
+# ------------------------------------------------------------ candidate triage
+def test_rejected_candidates_carry_a_written_reason():
+    import io as _io, os
+    if not os.path.exists("CANDIDATES-TRIAGE.md"):
+        return
+    s = _io.open("CANDIDATES-TRIAGE.md", encoding="utf-8").read()
+    assert "REJECT" in s, "the triage file records acceptances only, which hides the judgement calls"
+    assert "out of scope" in s.lower(), "rejections must say why, not just that"
 
 # -------------------------------------------------------------------- main
 def main():
