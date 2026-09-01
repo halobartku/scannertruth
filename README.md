@@ -375,6 +375,8 @@ docs/
 tools/
   score.py score2.py   the scorers; score2 is the strict one, for real vulnerabilities
   run_all.py           the clock: re-measures on a schedule, diffs against the previous run
+  clock_corpus1.py     the clock's corpus-1 scoring and source tables; run_all.py re-exports it
+  clock_corpus2.py     the clock's corpus-2 scoring; run_all.py re-exports it
   control_c1.py        the calibration controls on the teaching corpus, rebuilt from a line inventory
   control_c2.py        the calibration controls on corpus 2, which must score zero
   verify.py            re-derives the run-1 result from raw data; that page only

@@ -1,3 +1,1 @@
-PARTIAL. 3 of 102 invocations, then the process died with the session that started it (last line
-22:50 CEST, 2026-09-01). Not scored. The complete sweep for this model lives in the directory
-without the -partial suffix. Kept because a run that happened must leave its artefact.
+﻿PARTIAL, merged from three interrupted starts (session death 22:50, policy change ~01:00, and the restart that appended here by mistake for a minute), 11 lines in total, mixed reasoning policies. Not scored. The clean re-run under the reasoning-allowed policy lives in the directory dated 2026-09-02 or later.
