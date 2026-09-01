@@ -1,0 +1,129 @@
+{
+  "scanner": "semgrep-solana-standard-c2-wide",
+  "homepage": "https://github.com/Copenhagen0x/solana-security-standard",
+  "ruleset": "https://raw.githubusercontent.com/Copenhagen0x/solana-security-standard/main/semgrep/solana-security-standard.yaml",
+  "ruleset_pinned": {
+    "repo_head_at_registration": "f6b6a1374984e0e491b644b65418da4e8e420686",
+    "repo_head_date": "2026-07-02T18:06:49Z",
+    "file_last_changed": "2026-07-02T17:43:10Z (11d0426fd503)",
+    "repo_pushed_at": "2026-08-19T09:34:34Z",
+    "file_sha256": "babf91199fa640b024edc6cf1f89ea82204a0d91d2141b8afda0abe0d347d02e",
+    "file_bytes": 65364,
+    "rules": 30,
+    "license": "MIT",
+    "note": "The audit that prompted this measurement dated the ruleset 2026-08-19. That is the repository's pushed_at, not the ruleset's. The semgrep YAML itself was last changed 2026-07-02. Both dates are recorded so the next reader does not have to re-derive which field was read."
+  },
+  "engine": "semgrep/semgrep:latest, run in a container with --network none and the corpus mounted read-only",
+  "right_of_reply": "Not yet sent to the ruleset's maintainer (Copenhagen0x) or to Semgrep. Under docs/PROTOCOL.md this result is provisional until it has been, and their correction is published whatever it says.",
+  "reading": "wide",
+  "derivation": "Derived from the ruleset's own 30 id and message fields, read in full before semgrep was run on any corpus file, and committed in this commit before the first run. Each corpus class was matched to the rule whose own message states that it detects that class. Where no rule's message names the class, the entry is empty and the class scores no-rule, which is a coverage gap and not a failure. Every rule id is listed twice, in the fully qualified form semgrep is expected to emit (solana-security-standard.sol-006-...) and in the bare form, because the emitted identifier was not known at writing time and a mapping that silently matches nothing is indistinguishable from a tool that detects nothing.",
+  "two_readings": "Two readings are registered together, before any run, for the reason error 17 exists: a generic rule narrowed after the fact is a mapping fitted to an output. NARROW credits a class only where a rule's own message names that class. WIDE additionally credits a rule whose stated subject matter contains the class without naming it. Both are scored and both are published, whatever the two numbers turn out to be.",
+  "corpus": "every class in corpus 2 as of 2026-09-01, plus the corpus-1 keys that score2 normalises onto them",
+  "wide_entries_and_why": {
+    "1-account-data-matching": "sol-007 tells the reader an attacker can pass a same-length account. It names owner validation, not the stored-authority comparison this class is about, so it is credited only under the wide reading.",
+    "5-arbitrary-cpi": "sol-009 fires on invoke_signed and asks the reader to check caller authority. It does not ask whether the CALLEE program id was validated, which is what this class is. Credited wide only.",
+    "8-pda-sharing": "sol-038 is about two adjacent variable-length seeds colliding, not about a PDA shared across users. Same seed-design subject matter, different bug. Credited wide only.",
+    "arithmetic-rounding-drain": "sol-014 fires on unchecked add, sub and mul. The class is integer division truncation. Same subject matter, different operator. Credited wide only.",
+    "pda-derived-address-validation": "sol-038 and sol-016 both concern how a PDA address is formed and re-used; neither states that the derived address must be re-derived and compared. Credited wide only.",
+    "cpi-recursion": "sol-042 is about an attacker-controlled loop bound exhausting compute, sol-039 about a swallowed CPI result. Recursive self-invocation is neither, but sits inside unbounded caller-controlled work in a handler. Credited wide only.",
+    "mint-configuration-validation": "sol-013 asks for the typed token-program constant so the typed account validates. It says nothing about mint decimals. The weakest entry in either reading, and it is wide-only for that reason.",
+    "owner-check-after-cpi": "sol-033 names this class outright and is narrow in both files. sol-007 is added wide because the fix is an owner check."
+  },
+  "map": {
+    "0-signer-authorization": [
+      "solana-security-standard.sol-006-raw-account-info",
+      "sol-006-raw-account-info"
+    ],
+    "1-account-data-matching": [
+      "solana-security-standard.sol-007-raw-data-borrow",
+      "sol-007-raw-data-borrow"
+    ],
+    "2-owner-checks": [
+      "solana-security-standard.sol-007-raw-data-borrow",
+      "sol-007-raw-data-borrow"
+    ],
+    "3-type-cosplay": [
+      "solana-security-standard.sol-019-try-deserialize-unchecked",
+      "sol-019-try-deserialize-unchecked",
+      "solana-security-standard.sol-017-unsafe-transmute",
+      "sol-017-unsafe-transmute"
+    ],
+    "4-initialization": [
+      "solana-security-standard.sol-010-init-if-needed",
+      "sol-010-init-if-needed"
+    ],
+    "5-arbitrary-cpi": [
+      "solana-security-standard.sol-009-invoke-signed",
+      "sol-009-invoke-signed"
+    ],
+    "6-duplicate-mutable-accounts": [],
+    "7-bump-seed-canonicalization": [
+      "solana-security-standard.sol-016-bump-field-read",
+      "sol-016-bump-field-read"
+    ],
+    "8-pda-sharing": [
+      "solana-security-standard.sol-038-pda-seed-collision",
+      "sol-038-pda-seed-collision"
+    ],
+    "9-closing-accounts": [
+      "solana-security-standard.sol-011-close-attr",
+      "sol-011-close-attr",
+      "solana-security-standard.sol-034-manual-lamport-mutation",
+      "sol-034-manual-lamport-mutation"
+    ],
+    "10-sysvar-address-checking": [
+      "solana-security-standard.sol-025-sysvar-raw-deserialize",
+      "sol-025-sysvar-raw-deserialize"
+    ],
+    "instruction-introspection": [
+      "solana-security-standard.sol-035-instructions-sysvar-substitution",
+      "sol-035-instructions-sysvar-substitution"
+    ],
+    "arithmetic-rounding-drain": [
+      "solana-security-standard.sol-014-unchecked-arithmetic",
+      "sol-014-unchecked-arithmetic"
+    ],
+    "program-account-validation": [
+      "solana-security-standard.sol-018-hardcoded-system-program",
+      "sol-018-hardcoded-system-program"
+    ],
+    "pda-derived-address-validation": [
+      "solana-security-standard.sol-038-pda-seed-collision",
+      "sol-038-pda-seed-collision",
+      "solana-security-standard.sol-016-bump-field-read",
+      "sol-016-bump-field-read"
+    ],
+    "cpi-recursion": [
+      "solana-security-standard.sol-042-compute-budget-dos",
+      "sol-042-compute-budget-dos",
+      "solana-security-standard.sol-039-partial-cpi-state",
+      "sol-039-partial-cpi-state"
+    ],
+    "mint-configuration-validation": [
+      "solana-security-standard.sol-013-hardcoded-token-program",
+      "sol-013-hardcoded-token-program"
+    ],
+    "owner-check-after-cpi": [
+      "solana-security-standard.sol-033-stale-read-after-cpi",
+      "sol-033-stale-read-after-cpi",
+      "solana-security-standard.sol-007-raw-data-borrow",
+      "sol-007-raw-data-borrow"
+    ]
+  },
+  "unmapped_rules": [
+    "sol-001-unauth-now-slot",
+    "sol-002-cross-market-counter",
+    "sol-005-realloc-no-guard",
+    "sol-020-set-authority",
+    "sol-024-oracle-price-unchecked",
+    "sol-029-skip-preflight",
+    "sol-030-static-priority-fee",
+    "sol-031-jupiter-quote-freshness",
+    "sol-044-hardcoded-slot-time-rate",
+    "sol-046-hand-rolled-dispatch",
+    "sol-049-struct-padding-flag",
+    "sol-051-predictable-onchain-entropy"
+  ],
+  "unmapped_note": "These rules name no class in either corpus under either reading. They are excluded from per-class scoring, which is the correct treatment: a scanner is not penalised for detecting things the corpus does not label. Anything they fire on the fixed variant is still reported as noise.",
+  "front_page_claim_this_replaces": "The README headline table and docs/SCANNERS.md published: semgrep, no Solana rules at all. That was measured against semgrep's own registry under --config auto and is true of the registry. It is not true of semgrep as a tool: this MIT ruleset is 30 Solana rules loadable with a single --config <raw url>. This mapping exists so the claim can be replaced by a measurement rather than by a different assertion."
+}
