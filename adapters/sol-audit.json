@@ -57,7 +57,13 @@
    "raw": "c2-sol-audit.json",
    "mapping": "sol-audit",
    "envelope": "sol-audit",
-   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only corpus-2 row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it twice over: no run log, and every case it cannot resolve. Retired on the published pages on 2026-09-01 (docs/KNOWN-LIMITATIONS.md 41) in favour of v3, and marked retired rather than deleted, so it stays on the clock and stays countable."
+   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only corpus-2 row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it twice over: no run log, and every case it cannot resolve. Retired on the published pages on 2026-09-01 (docs/KNOWN-LIMITATIONS.md 41) in favour of v3, and marked retired rather than deleted, so it stays on the clock and stays countable.",
+   "retired": {
+    "on": "2026-09-01",
+    "by": "sol-audit v3, measured per case on all three profiles, 207 invocations",
+    "reason": "Superseded. This row has no run log on either corpus and 96 of its 426 findings name files the corpus rebuild removed. Re-running a superseded version of our own scanner would be work that flatters us and informs nobody.",
+    "where_published": "docs/KNOWN-LIMITATIONS.md 41"
+   }
   }
  ]
 }

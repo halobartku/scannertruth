@@ -1283,6 +1283,52 @@ def test_no_document_states_a_noisy_control_figure_the_tools_do_not_produce():
     assert not wrong, ("a noisy-control figure must be a quantity the tools produce, counted as "
                        f"the thing it is named as: {wrong}")
 
+
+def test_a_retirement_must_be_signed_or_the_gate_refuses_it():
+    """The escape hatch added on 2026-09-01 must not become the way inconvenient rows go quiet.
+
+    A measurement may declare itself retired and `--verify-coverage` then reports it instead of
+    failing on it. That is only defensible while a retirement is a statement somebody signed, so
+    every one must name the date, what supersedes it, the reason, and where it was published.
+    A retirement missing any of those is refused here rather than trusted.
+    """
+    import scanner_spec
+    required = ("on", "by", "reason", "where_published")
+    bad = []
+    for name, spec in sorted(scanner_spec.load_all().items()):
+        for m in spec.get("measurements", []):
+            r = m.get("retired")
+            if not r:
+                continue
+            missing = [k for k in required if not str(r.get(k, "")).strip()]
+            if missing:
+                bad.append(f"{name}/{m.get('corpus')}/{m.get('row')}: missing {missing}")
+    assert not bad, f"a retirement must be signed: {bad}"
+
+
+def test_a_retired_row_is_reported_and_not_counted_but_still_visible():
+    """Both halves, because either one alone is a defect.
+
+    Not counted: a row we have publicly retired must not hold the coverage gate red, or the badge
+    stops meaning anything. Still visible: a retired row that vanished from the output would be a
+    deletion dressed as a correction, which is the one thing this project does not do.
+    """
+    import io, run_all
+    rows, failures = run_all.verify_coverage(echo=False)
+    retired = [r for r in rows if r.get("retired")]
+    assert retired, "the sol-audit v2 corpus-2 row is retired and should appear as such"
+    for r in retired:
+        tag = f"{r['corpus']} {r['scanner']}:"
+        # The colon matters. Without it this prefix also matches `sol-audit-v3`,
+        # and the first version of this test read a live row's gap as the
+        # retired row holding the gate red.
+        assert not any(f.startswith(tag) for f in failures),             f"{tag} is retired and must not hold the gate red"
+    buf = io.StringIO()
+    import contextlib
+    with contextlib.redirect_stdout(buf):
+        run_all.verify_coverage(echo=True)
+    assert "RETIRED" in buf.getvalue(), "a retired row must stay visible in the output"
+
 def test_the_advertised_check_count_matches_the_suite():
     """The README said 82 while the suite ran 88. Adding tests without updating the
     figure is the easiest way to make the front page lie, so the figure is derived.

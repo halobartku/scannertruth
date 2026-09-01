@@ -2,7 +2,7 @@
 
 [![verify](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml/badge.svg)](https://github.com/halobartku/scannertruth/actions/workflows/verify.yml)
 
-**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 149
+**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 151
 checks on three operating systems and four Python versions. `coverage` says whether every number
 published here can show what it analysed, by running
 `python tools/run_all.py --verify-coverage`. **`coverage` is red today and that is not a broken
@@ -305,7 +305,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **149 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **151 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -327,7 +327,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            149 checks, mutation-verified. Run this first
+test_all.py            151 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person

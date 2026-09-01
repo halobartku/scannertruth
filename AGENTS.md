@@ -35,7 +35,7 @@ demonstrated nothing, while being cited as the reason volume cannot buy a score.
 ## The ten-minute version
 
 ```bash
-python test_all.py                                   # the full suite, 149 checks
+python test_all.py                                   # the full suite
 python tools/score.py --demo && python tools/score2.py --demo    # self-checks, incl. the positive control
 python tools/scanner_spec.py --demo                        # the adapter framework's own checks
 python tools/scanner_spec.py --self-check                  # every declaration's positive control

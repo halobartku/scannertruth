@@ -5,9 +5,10 @@ description: Use when adding a security scanner to the ScannerTruth benchmark, o
 
 # Measuring a scanner
 
-Adding a scanner is this project's one repeatable unit of work. It has been done six times, and on
-2026-08-31 an audit found that two published headline numbers were wrong. The order below is what
-survived that audit. Steps 3 and 6 exist because skipping them produced retractions.
+Adding a scanner is this project's one repeatable unit of work. `adapters/` holds a declaration for
+every tool measured so far, and on 2026-08-31 an audit found that two published headline numbers
+were wrong. The order below is what survived that audit. Steps 4 and 6 exist because skipping them
+produced retractions.
 
 Repo: `github.com/halobartku/scannertruth`. Protocol: `PROTOCOL.md`. Every error referenced by
 number is in `ENGINEERING-LOG-2026-08-31.md`.
@@ -15,7 +16,9 @@ number is in `ENGINEERING-LOG-2026-08-31.md`.
 ## Before anything: prove the harness works
 
 ```bash
-python test_all.py     # 149 checks, mutation-verified; expect "149 passed, 0 failed"
+python test_all.py                          # 151 checks, mutation-verified; expect "151 passed, 0 failed"
+python tools/scanner_spec.py --demo         # the adapter framework's own checks
+python tools/scanner_spec.py --self-check   # every declaration's positive control
 ```
 
 A harness that cannot check itself cannot tell you anything about somebody else's tool. If any check
@@ -23,9 +26,43 @@ fails, **stop and report that** rather than measuring. The suite is mutation-ver
 deliberate defects were introduced and all five were caught, including one that reported a published
 number changing under a refactor.
 
+One command in this repository is **expected to fail**, and you should run it anyway so you are not
+surprised by it later:
+
+```bash
+python tools/run_all.py --verify-coverage   # exits 1: five of twenty rows cannot show what they analysed
+```
+
+It asks whether every measurement on the clock can show what it analysed, it runs in CI as its own
+job (`coverage`, separate from `selfcheck`), and it is red because five historical measurements were
+made by hand and nobody wrote the run log. A red `coverage` beside a green `selfcheck` is not a
+broken build: the machinery is sound and the numbers are not all accounted for. It closes with
+scanner runs, never with a code change and never by relaxing it.
+
 `AGENTS.md` at the repo root is the condensed executable form of this skill, written so an agent
-handed the repository can act without reading further. `WALKTHROUGH.md` is the same procedure for a
-person, with a worked example on a tool already measured.
+handed the repository can act without reading further. `docs/WALKTHROUGH.md` is the same procedure
+for a person, with a worked example on a tool already measured. `docs/ADAPTERS.md` is the
+declaration in full.
+
+## What the framework does, and what is still yours
+
+Since 2026-09-01 the per-case loop is a **declaration**, not a script you write.
+`adapters/<tool>.json` says what is different about the tool; `tools/scanner_spec.py` holds what is
+the same about all of them.
+
+**The protocol below has not changed. Only who performs each step has.** That distinction is the
+whole reason this section exists: an agent that believes the framework does something it does not is
+worse off than one that does everything by hand.
+
+| The framework does this, before it returns | You still do this, and nothing checks it for you |
+|---|---|
+| the per-case, per-variant loop, with the case list read from the manifest every run | provenance: the tool's own repository and its documented install path |
+| one artefact and one log line per invocation, on success, on crash and on timeout | the container image, where the vendor ships none |
+| `ok` / `unavailable` / `unknown`, from the rule you declared | **the coverage pattern and the layout**, both read off the tool |
+| rewriting container paths back onto corpus paths | the mapping, pre-registered in its own commit |
+| the determinism verdict, **only when `--repeat 2` asks for it** | scoring, `unmapped_check.py`, the controls |
+| the positive control across your parser, envelope and scorer | a parser, if the output shape is not one of the six already here |
+| putting the row on the clock, from `measurements` | right of reply, and publishing |
 
 ## The rule that outranks the rest
 
@@ -45,12 +82,69 @@ real tool was not published to that registry at all.
 - If an install script is piped to a shell, **download and read it in full first**, and say so.
 - Name mismatch, or a package whose repo does not mention the tool: stop and report.
 
-## 2. Run it in a container, never on the host
+## 2. Read the tool's argument shape and its coverage line. Yours, and only yours.
 
-Standing constraint: nothing untrusted executes on the host. Prefer the tool's official image;
-otherwise build inside `rust:slim` or equivalent, with the corpus mounted **read-only**.
+**Check the tool's argument shape before the run, not after.** We passed a flag to a binary when it
+belonged to a subcommand, and all 18 runs failed identically. The harness correctly recorded them as
+unavailable rather than as zeros, which is the point of the distinction, but the run was wasted.
+`--help` on the binary *and* on the subcommand costs ten seconds.
 
-## 3. Prove every case was analysed. This is the step that was missing.
+Then one run against any directory, to answer the two questions the declaration has to state and
+nothing can answer for you:
+
+- **What does the tool print when it has read files?** `solsec` prints `Found N Rust files to
+  analyze`; `radar` prints `Scanned N file`; `sol-azy` prints `N files scanned`. This is the line
+  that separates a zero from an outage, and you are the one who reads it off the tool.
+- **What shape is its output?** One of six the project already parses, or a seventh that needs a
+  parser written. The seventh is the real limit on "adding a tool is a config file".
+
+## 3. Declare the adapter, and check the declaration before running anything
+
+Write `adapters/<tool>.json`. `docs/ADAPTERS.md` adds an eighth tool end to end and is the reference;
+what follows is what this skill enforces about it.
+
+**The container is a field, not a habit.** `"engine": "docker"`, `"network": "none"`, the corpus
+mounted read-only by the framework. Standing constraint unchanged: nothing untrusted executes on the
+host. Prefer the tool's official image; otherwise build inside `rust:slim` or equivalent, which is
+still your job because the vendor may ship none.
+
+**`coverage.evidence` decides every zero this tool will ever produce.** `validate` refuses a
+declaration that omits it. A tool that prints no such line at all must say so with
+`{"absent": true, "reason": "..."}`, and then every run is `unknown`, never a zero.
+
+**`layout` is the other field you read off the tool.** Radar returned `400 Bad Request` on a bare
+`.rs` file until a `Cargo.toml` was supplied, and later `No Cargo.toml files found in any
+subdirectories` on a crate whose manifest sat at the **root** of the path it was given. It needs the
+manifest in a *subdirectory*, which is `"layout": "wrapped-pkg"`. Every case laid out the other way
+was an invocation error being scored as a miss. Record the first failed attempt; do not quietly
+replace it with the successful run.
+
+**`invocation_evidence` must cite a file in this repository**, not describe a memory. A command
+typed from memory is the same class of claim as a number typed from memory, and the suite fails a
+declaration that cites nothing. If nobody wrote the command down, the honest declaration says
+`"engine": "unrecorded"` with a reason. Three published rows are in exactly that state.
+
+Then, before running the tool at all:
+
+```bash
+python tools/scanner_spec.py --self-check
+```
+
+It plants your declared rule id at the fix site of a synthetic case, parses it with your parser,
+writes it in your envelope, reads it back with the reader the clock uses, and requires the scorer to
+say `detected`; then plants the same finding on the fixed variant and requires the answer to stop
+being a detection. **If this fails, stop.** A parser that silently returns nothing is
+indistinguishable from a tool that found nothing, and that exact defect once kept every check in the
+repository green while turning every corpus-2 verdict into a miss.
+
+Two traps before the suite finds them for you: a declaration must carry at least one entry in
+`measurements`, and a measurement is on the clock unless you write `"on_clock": false`. Putting a
+row on the clock changes the published tables, and a golden check will name the row that moved.
+
+A tool that cannot run at all still goes in the **could-not-run** table with its reason. That table
+is published.
+
+## 4. Run it, and let the log be structural rather than remembered
 
 **Error 20, the worst of the day.** We published that two scanners detected nothing across eight
 real vulnerabilities. Both numbers were **extrapolated from one case each**. The findings files
@@ -59,38 +153,42 @@ covered a single case, no run log existed, and nothing noticed.
 **A findings file cannot prove coverage.** A tool that ran a case and found nothing leaves exactly
 the same silence as one that never saw it.
 
-So, before scoring anything:
+That is why this no longer depends on anyone remembering:
 
-- Run **per case, per variant**, one invocation each, and write a log line per invocation recording
-  that it was attempted and how it ended.
-- Print success **only after the output file exists and parses**. Radar prints
-  `Results written to <path>` for files it did not write.
-- **Exit code 0 with no output is a clean zero, not an outage** - error 21, made in the harness
-  built to prevent error 20, four hours later. Read the tool's own log line before classifying.
-- Absent or unparseable output is **unavailable**, never zero. With no log at all the honest
-  verdict is **unknown**; guessing either way has already been wrong once in each direction.
-- **Check the tool's argument shape before the run, not after.** We passed a flag to a binary when
-  it belonged to a subcommand, and all 18 runs failed identically. The harness correctly recorded
-  them as unavailable rather than as zeros, which is the point of the distinction, but the run was
-  wasted. `--help` on the binary *and* on the subcommand costs ten seconds.
+```bash
+python tools/scanner_spec.py --run <tool> --corpus corpus2 --out raw/c2-<tool>.json --repeat 2
+```
+
+`run_leaf` writes the tool's complete stdout and stderr, plus a log entry carrying the exact
+command, the exit code and the wall time, **before it returns, on success, on crash and on timeout**.
+A log entry whose status is not `ok` carries `"findings": null`, not `0`, so an outage has no
+findings count for anything downstream to read as a zero. One invocation per case, per variant, with
+the case list read from `corpus2/manifest.json` on every run: it has been 9, then 16, then 17, and
+it changed under a measurement once already.
+
+Classification comes from the rule you declared, and the four outcomes stay four different facts:
+
+- the tool said it read the files and reported nothing -> `ok`, and a zero here is a real zero
+- **exit 0 having said nothing is `unavailable`, never a zero** - error 35, silence read as a
+  measurement
+- a crash, a timeout, or output no parser can read -> `unavailable`, never a zero
+- the declaration admits the tool prints no coverage line -> `unknown`, never a zero
+
+Error 21 is the same defect facing the other way: a clean zero recorded as an outage, made in the
+harness built to prevent error 20, four hours later. Both directions are now one function,
+`classify`, with a check that drives all four observations through it.
+
+**Three things here are still yours.** The classification is only as good as the
+`coverage.evidence` pattern you wrote, so read the first few `stdout.log` artefacts against the
+tool's own words rather than trusting the status column. The determinism check runs **only if you
+ask for it**: without `--repeat 2` the verdict file says `not-checked`, which is honest and is not a
+determinism check. And a tool whose output shape is new needs a parser, which is code.
 
 `run_all.py` records how coverage was established as `coverage_evidence`: `run log` when a
 `<findings>.log` exists and is the authority, `none` when the question is unanswerable. A scanner
 with unresolved cases drops to status `partial` with the reason attached, rather than reporting a
-confident number over cases nobody can prove were analysed.
-
-## 4. Give the tool what it expects before judging it
-
-Radar returned `400 Bad Request` on a bare `.rs` file until a `Cargo.toml` was supplied, and later
-`No Cargo.toml files found in any subdirectories` on a crate whose manifest sat at the **root** of
-the path it was given. It needs the manifest in a *subdirectory*. Every case laid out the other way
-was an invocation error being scored as a miss.
-
-- Supply the manifest, workspace or build artefact the tool documents, and check the layout it
-  expects rather than the one that seems obvious.
-- Record the first failed attempt; do not quietly replace it with the successful run.
-- A tool that cannot run at all goes in the **could-not-run** table with its reason. That table is
-  published.
+confident number over cases nobody can prove were analysed. Check your own row with
+`python tools/run_all.py --verify-coverage` before publishing anything; it must not add a sixth gap.
 
 ## 5. Pin the corpus, and say when you pinned it
 
@@ -122,16 +220,20 @@ pre-registration.
   scored it zero (error 17). Publish both numbers and leave the pre-registered map unedited.
 - **Validate the scorer against a known positive before believing its zeros.** Until 2026-08-31
   this project's corpus-2 scorer had never once returned `detected`, and nobody had checked that it
-  could. `score2.py --demo` now drives a synthetic case end to end on every run.
+  could. `score2.py --demo` drives a synthetic case end to end on every run, and
+  `scanner_spec.py --self-check` does the same **per declaration**, because a parser can break in
+  one branch only and every other branch stays green while it does.
 
 ## 7. Score with the scorers, and compare shift-aware
 
 ```
 # from the repository root
 python tools/score.py --demo && python tools/score2.py --demo  # includes the positive control
+python tools/scanner_spec.py --self-check                      # the same proof, per declaration
 python tools/score2.py --scanner <name> --kind <name> --findings raw/c2-<name>.json
 python tools/unmapped_check.py --findings raw/<file>.json --kind <name>
 python tools/control_c2.py                                     # controls must score zero
+python tools/run_all.py --verify-coverage                      # your row must show what it analysed
 ```
 
 - **Real recall** is the only number that means anything: the mapped rule fires on the vulnerable
@@ -151,7 +253,11 @@ python tools/control_c2.py                                     # controls must s
 result is void. `control-null` establishes the floor.
 
 Run each scanner **twice** and compare findings by rule and location before trusting anything over
-time.
+time. `--repeat 2` does the comparison for you, per leaf, by rule, file, line and column, and writes
+the verdict beside the findings; both passes stay on disk and nothing is averaged. Without the flag
+the verdict is `not-checked` and you have not answered the question. **No measurement in this
+repository has yet been repeated through the framework**, so a `deterministic` verdict here would be
+the first.
 
 ## 9. Never tune to produce a result
 

@@ -15,7 +15,7 @@ against are different jobs with different ways of going wrong.
 ## 0. Run the suite first
 
 ```bash
-python test_all.py     # 149 checks, several of which guard the corpus itself
+python test_all.py     # 151 checks, several of which guard the corpus itself
 ```
 
 Among them: every case must name its fix commit, its repository and its class; case names must be

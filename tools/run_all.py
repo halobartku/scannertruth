@@ -313,6 +313,9 @@ def coverage_rows(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"):
                 row["invocations"] = len(entries)
                 row["ok"] = ok
                 row["not_ok"] = len(entries) - ok
+            retired = _retired_declaration(corpus, scanner)
+            if retired:
+                row["retired"] = retired
             if corpus == "corpus2" and scanner in c2_by_row:
                 m = c2_by_row[scanner]
                 row["unresolved"] = {k: m[k] for k in ("unknown", "not-run", "unavailable")
@@ -320,6 +323,30 @@ def coverage_rows(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"):
                 row["scoreable_denominator"] = m.get("scoreable_denominator")
             rows.append(row)
     return rows
+
+
+def _retired_declaration(corpus, scanner):
+    """A measurement may declare itself retired, and the gate reports it without failing on it.
+
+    Added 2026-09-01 because the gate demanded a run log for the `sol-audit` v2 corpus-2 row on the
+    same day that row was retired as superseded by v3. A red badge for a reason we had already
+    published and acted on is worse than no badge: it teaches a reader to ignore the colour.
+
+    The hatch is deliberately narrow. A retirement names a date, what supersedes it, a reason and
+    where it was published, and a check refuses one that does not. Retiring is a statement somebody
+    signs, not a way to quiet an inconvenient line, and the row keeps appearing in the output marked
+    RETIRED so nothing disappears.
+    """
+    import scanner_spec
+    # load_all returns a dict keyed by name, so iterate values. Writing this as a bare
+    # `for spec in load_all()` walked the keys and every lookup silently returned None,
+    # which a broad `except Exception` then hid completely. The except is narrow now: a
+    # declaration this cannot read is a bug worth crashing on, not one worth swallowing.
+    for spec in scanner_spec.load_all().values():
+        for m in spec.get("measurements", []):
+            if m.get("corpus") == corpus and m.get("row") == scanner and m.get("retired"):
+                return m["retired"]
+    return None
 
 
 def verify_coverage(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings", echo=True):
@@ -337,6 +364,8 @@ def verify_coverage(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"
     rows = coverage_rows(raw_dir, corpus_dir, mappings_dir)
     failures = []
     for r in rows:
+        if r.get("retired"):
+            continue
         if r["coverage_evidence"] == "none":
             failures.append(f"{r['corpus']} {r['scanner']}: coverage_evidence: none - {r['reason']}")
         gaps = r.get("unresolved") or {}
@@ -356,10 +385,17 @@ def verify_coverage(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"
                     detail += "; " + ", ".join(f"{v} {k}" for k, v in sorted(gaps.items()))
             else:
                 detail = r["reason"]
+            if r.get("retired"):
+                detail = ("RETIRED " + r["retired"]["on"] + ", superseded by "
+                          + r["retired"]["by"] + "; not counted against this check")
             print(f"{r['corpus']:9} {r['scanner']:32} {r['coverage_evidence']:9} {detail}")
-        none = sum(1 for r in rows if r["coverage_evidence"] == "none")
-        print(f"\ncoverage_evidence: none      {none} of {len(rows)} measurements")
-        print(f"coverage_evidence: run log   {len(rows) - none} of {len(rows)} measurements")
+        live = [r for r in rows if not r.get("retired")]
+        retired_n = len(rows) - len(live)
+        none = sum(1 for r in live if r["coverage_evidence"] == "none")
+        print(f"\ncoverage_evidence: none      {none} of {len(live)} live measurements")
+        print(f"coverage_evidence: run log   {len(live) - none} of {len(live)} live measurements")
+        if retired_n:
+            print(f"retired, reported and not counted   {retired_n}")
     return rows, failures
 
 
