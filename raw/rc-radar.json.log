@@ -1,0 +1,346 @@
+[
+ {
+  "rc": 2,
+  "wall_s": 128.8,
+  "artefact": "/root/rc-20260901/probe/radar/anchor-account-reload-owner.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 128.1,
+  "artefact": "/root/rc-20260901/probe/radar/anchor-account-reload-owner.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 128.5,
+  "artefact": "/root/rc-20260901/probe/radar/anchor-interface-account.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "anchor-interface-account/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 128.7,
+  "artefact": "/root/rc-20260901/probe/radar/anchor-interface-account.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "anchor-interface-account/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 128.7,
+  "artefact": "/root/rc-20260901/probe/radar/anchor-program-system.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "anchor-program-system/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 130.7,
+  "artefact": "/root/rc-20260901/probe/radar/anchor-program-system.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "anchor-program-system/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 0,
+  "wall_s": 53.3,
+  "artefact": "/root/rc-20260901/probe/radar/cashio-account-data.insecure.json",
+  "files_opened": null,
+  "raw_findings": 6,
+  "leaf": "cashio-account-data/insecure",
+  "status": "ok",
+  "findings": 6
+ },
+ {
+  "rc": 0,
+  "wall_s": 53.3,
+  "artefact": "/root/rc-20260901/probe/radar/cashio-account-data.secure.json",
+  "files_opened": null,
+  "raw_findings": 6,
+  "leaf": "cashio-account-data/secure",
+  "status": "ok",
+  "findings": 6
+ },
+ {
+  "rc": 2,
+  "wall_s": 125.9,
+  "artefact": "/root/rc-20260901/probe/radar/metaplex-bubblegum-creator.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 125.5,
+  "artefact": "/root/rc-20260901/probe/radar/metaplex-bubblegum-creator.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 0,
+  "wall_s": 70.9,
+  "artefact": "/root/rc-20260901/probe/radar/metaplex-candy-machine.insecure.json",
+  "files_opened": null,
+  "raw_findings": 12,
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "findings": 12
+ },
+ {
+  "rc": 0,
+  "wall_s": 70.9,
+  "artefact": "/root/rc-20260901/probe/radar/metaplex-candy-machine.secure.json",
+  "files_opened": null,
+  "raw_findings": 12,
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "findings": 12
+ },
+ {
+  "rc": 2,
+  "wall_s": 131.5,
+  "artefact": "/root/rc-20260901/probe/radar/metaplex-token-metadata.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 133.1,
+  "artefact": "/root/rc-20260901/probe/radar/metaplex-token-metadata.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 0,
+  "wall_s": 110.7,
+  "artefact": "/root/rc-20260901/probe/radar/solend-owner-checks.insecure.json",
+  "files_opened": null,
+  "raw_findings": 9,
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "findings": 9
+ },
+ {
+  "rc": 0,
+  "wall_s": 110.1,
+  "artefact": "/root/rc-20260901/probe/radar/solend-owner-checks.secure.json",
+  "files_opened": null,
+  "raw_findings": 9,
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "findings": 9
+ },
+ {
+  "rc": 0,
+  "wall_s": 63.9,
+  "artefact": "/root/rc-20260901/probe/radar/solido-anker-arbitrary-cpi.insecure.json",
+  "files_opened": null,
+  "raw_findings": 7,
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "findings": 7
+ },
+ {
+  "rc": 0,
+  "wall_s": 63.3,
+  "artefact": "/root/rc-20260901/probe/radar/solido-anker-arbitrary-cpi.secure.json",
+  "files_opened": null,
+  "raw_findings": 6,
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "findings": 6
+ },
+ {
+  "rc": 0,
+  "wall_s": 98.9,
+  "artefact": "/root/rc-20260901/probe/radar/solido-deposit-reserve-account.insecure.json",
+  "files_opened": null,
+  "raw_findings": 8,
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "findings": 8
+ },
+ {
+  "rc": 0,
+  "wall_s": 99.3,
+  "artefact": "/root/rc-20260901/probe/radar/solido-deposit-reserve-account.secure.json",
+  "files_opened": null,
+  "raw_findings": 8,
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "findings": 8
+ },
+ {
+  "rc": 2,
+  "wall_s": 131.0,
+  "artefact": "/root/rc-20260901/probe/radar/spl-stake-pool-fee-rounding.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 131.5,
+  "artefact": "/root/rc-20260901/probe/radar/spl-stake-pool-fee-rounding.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 130.9,
+  "artefact": "/root/rc-20260901/probe/radar/spl-stake-pool-mint-decimals.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 130.4,
+  "artefact": "/root/rc-20260901/probe/radar/spl-stake-pool-mint-decimals.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 0,
+  "wall_s": 103.0,
+  "artefact": "/root/rc-20260901/probe/radar/spl-token-lending-rounding.insecure.json",
+  "files_opened": null,
+  "raw_findings": 8,
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "findings": 8
+ },
+ {
+  "rc": 0,
+  "wall_s": 105.9,
+  "artefact": "/root/rc-20260901/probe/radar/spl-token-lending-rounding.secure.json",
+  "files_opened": null,
+  "raw_findings": 8,
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "findings": 8
+ },
+ {
+  "rc": 0,
+  "wall_s": 53.3,
+  "artefact": "/root/rc-20260901/probe/radar/squads-account-matching.insecure.json",
+  "files_opened": null,
+  "raw_findings": 5,
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "findings": 5
+ },
+ {
+  "rc": 0,
+  "wall_s": 56.4,
+  "artefact": "/root/rc-20260901/probe/radar/squads-account-matching.secure.json",
+  "files_opened": null,
+  "raw_findings": 5,
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "findings": 5
+ },
+ {
+  "rc": 0,
+  "wall_s": 56.4,
+  "artefact": "/root/rc-20260901/probe/radar/squads-recursive-execute.insecure.json",
+  "files_opened": null,
+  "raw_findings": 5,
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "findings": 5
+ },
+ {
+  "rc": 0,
+  "wall_s": 56.5,
+  "artefact": "/root/rc-20260901/probe/radar/squads-recursive-execute.secure.json",
+  "files_opened": null,
+  "raw_findings": 5,
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "findings": 5
+ },
+ {
+  "rc": 0,
+  "wall_s": 53.1,
+  "artefact": "/root/rc-20260901/probe/radar/squads-signer-auth.insecure.json",
+  "files_opened": null,
+  "raw_findings": 5,
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "findings": 5
+ },
+ {
+  "rc": 0,
+  "wall_s": 53.2,
+  "artefact": "/root/rc-20260901/probe/radar/squads-signer-auth.secure.json",
+  "files_opened": null,
+  "raw_findings": 5,
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "findings": 5
+ },
+ {
+  "rc": 2,
+  "wall_s": 132.9,
+  "artefact": "/root/rc-20260901/probe/radar/token-2022-confidential-approve-mint.insecure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 2,
+  "wall_s": 134.8,
+  "artefact": "/root/rc-20260901/probe/radar/token-2022-confidential-approve-mint.secure.json",
+  "why": "Exceeded maximum retries. Tasks did not complete in time.",
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "unavailable",
+  "reason": "Exceeded maximum retries. Tasks did not complete in time."
+ },
+ {
+  "rc": 0,
+  "wall_s": 73.6,
+  "artefact": "/root/rc-20260901/probe/radar/wormhole-sysvar.insecure.json",
+  "files_opened": null,
+  "raw_findings": 7,
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "findings": 7
+ },
+ {
+  "rc": 0,
+  "wall_s": 73.5,
+  "artefact": "/root/rc-20260901/probe/radar/wormhole-sysvar.secure.json",
+  "files_opened": null,
+  "raw_findings": 7,
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "findings": 7
+ }
+]

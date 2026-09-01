@@ -1,0 +1,2128 @@
+[
+ {
+  "name": "Unconstrained UncheckedAccount",
+  "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:89:26-42",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:149:29-45"
+  ]
+ },
+ {
+  "name": "Duplicate Mutable Accounts",
+  "description": "When there are two or more accounts with mutable data, a check must be in place to ensure mutation of each account is differentiated properly, to avoid unintended data modification of other accounts.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:58:20-27",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:60:25-32",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:62:24-31",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:64:24-31",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:66:24-31",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:81:31-38",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:85:31-38",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:95:19-26",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:98:25-32",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:101:26-33",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:105:25-32",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:109:38-45",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:133:33-40",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:137:35-42"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:64:24-31",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:66:24-31",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:81:31-38",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:85:31-38",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:109:38-45",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:133:33-40",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:137:35-42",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:141:33-40"
+  ]
+ },
+ {
+  "name": "Missing Signer Check",
+  "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:55:3-9",
+   "cashio-account-data/insecure/programs/brrr/src/lib.rs:92:3-9"
+  ]
+ },
+ {
+  "name": "Missing Transfer Amount Validation",
+  "description": "Ensure that token transfers validate the amount being transferred. Transfers should not allow negative values or amounts exceeding the account balance.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/insecure/programs/brrr/src/actions/print_cash.rs:29:28-36"
+  ]
+ },
+ {
+  "name": "PDA Sharing",
+  "description": "Reuse of a PDA across multiple authority domains can lead to unauthorized data or funds access.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/insecure/programs/brrr/src/actions/print_cash.rs:29:28-36"
+  ]
+ },
+ {
+  "name": "Unconstrained UncheckedAccount",
+  "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:91:26-42",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:151:29-45"
+  ]
+ },
+ {
+  "name": "Duplicate Mutable Accounts",
+  "description": "When there are two or more accounts with mutable data, a check must be in place to ensure mutation of each account is differentiated properly, to avoid unintended data modification of other accounts.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:60:20-27",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:62:25-32",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:64:24-31",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:66:24-31",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:68:24-31",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:83:31-38",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:87:31-38",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:97:19-26",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:100:25-32",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:103:26-33",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:107:25-32",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:111:38-45",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:135:33-40",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:139:35-42"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:66:24-31",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:68:24-31",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:83:31-38",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:87:31-38",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:111:38-45",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:135:33-40",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:139:35-42",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:143:33-40"
+  ]
+ },
+ {
+  "name": "Missing Signer Check",
+  "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:57:3-9",
+   "cashio-account-data/secure/programs/brrr/src/lib.rs:94:3-9"
+  ]
+ },
+ {
+  "name": "Missing Transfer Amount Validation",
+  "description": "Ensure that token transfers validate the amount being transferred. Transfers should not allow negative values or amounts exceeding the account balance.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/secure/programs/brrr/src/actions/print_cash.rs:29:28-36"
+  ]
+ },
+ {
+  "name": "PDA Sharing",
+  "description": "Reuse of a PDA across multiple authority domains can lead to unauthorized data or funds access.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "cashio-account-data/secure/programs/brrr/src/actions/print_cash.rs:29:28-36"
+  ]
+ },
+ {
+  "name": "Unconstrained UncheckedAccount",
+  "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/remove_collection.rs:22:15-31",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/remove_collection.rs:24:11-27",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/remove_collection.rs:27:34-50",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection.rs:30:15-31",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection.rs:32:11-27",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection.rs:34:14-30",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection.rs:37:34-50",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:19:15-31",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:30:22-38",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:32:26-42",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:34:32-48",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:36:16-32",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:38:34-50",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/thaw_nft.rs:19:20-36",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/thaw_nft.rs:23:12-28",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/thaw_nft.rs:26:14-30",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/unlock_funds.rs:18:13-29",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/initialize.rs:19:13-29",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/initialize.rs:21:16-32",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:52:13-29",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:57:15-31",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:60:11-27",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:65:21-37",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:76:25-41",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/update.rs:18:13-29"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/remove_collection.rs:33:8-32",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection.rs:43:8-29"
+  ]
+ },
+ {
+  "name": "Division Before Multiplication",
+  "description": "Performing division before multiplication causes precision loss due to truncation, leading to incorrect calculations in financial operations.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helper_transactions.rs:49:15-16"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:152:5-18",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/thaw_nft.rs:66:9-22",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:598:5-18",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/utils.rs:92:18-31",
+   "metaplex-candy-machine/insecure/candy-machine/program/src/utils.rs:162:18-31"
+  ]
+ },
+ {
+  "name": "Missing Freeze Authority Check",
+  "description": "Programs that accept token deposits without verifying the mint freeze_authority is None allow token issuers to freeze user accounts and trap deposited funds.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/thaw_nft.rs:24:5-9"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/thaw_nft.rs:21:20-27"
+  ]
+ },
+ {
+  "name": "Unchecked Close Target",
+  "description": "Anchor close constraints that direct lamports to an unvalidated target can let attackers choose an arbitrary beneficiary when the close target is not proven to be the legitimate owner.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/freeze/unlock_funds.rs:21:28-34"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/core/helpers.rs:49:35-41",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/core/helpers.rs:115:11-17"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/utils.rs:290:28-38",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/mint.rs:109:23-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/candy_manager.rs:634:23-38",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/candy_manager.rs:639:24-39",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/candy_manager.rs:644:20-35",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helper_transactions.rs:215:23-38"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/state.rs:62:16-33",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/core/helpers.rs:18:10-22",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/freeze.rs:30:10-36",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/freeze.rs:141:10-23",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/freeze.rs:315:13-25",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/initialize.rs:97:10-44",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/candy_manager.rs:951:18-44",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/candy_manager.rs:1031:28-32",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helper_transactions.rs:33:14-38",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helper_transactions.rs:45:9-27",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helper_transactions.rs:49:15-16",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helper_transactions.rs:202:14-34",
+   "metaplex-candy-machine/insecure/candy-machine/program/tests/utils/helpers.rs:35:8-11"
+  ]
+ },
+ {
+  "name": "Unvalidated Sysvar Account",
+  "description": "A sysvar passed as a raw AccountInfo or UncheckedAccount is not checked against the sysvar's well-known address, so a caller can substitute an account of their own and control what the instruction reads. Anchor's Sysvar type or an address constraint pins it.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/insecure/candy-machine/program/src/processor/mint.rs:76:25-41"
+  ]
+ },
+ {
+  "name": "Unconstrained UncheckedAccount",
+  "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/remove_collection.rs:22:15-31",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/remove_collection.rs:24:11-27",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/remove_collection.rs:27:34-50",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection.rs:30:15-31",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection.rs:32:11-27",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection.rs:34:14-30",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection.rs:37:34-50",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:19:15-31",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:30:22-38",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:32:26-42",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:34:32-48",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:36:16-32",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:38:34-50",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/thaw_nft.rs:19:20-36",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/thaw_nft.rs:23:12-28",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/thaw_nft.rs:26:14-30",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/unlock_funds.rs:18:13-29",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/initialize.rs:19:13-29",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/initialize.rs:21:16-32",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:52:13-29",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:57:15-31",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:60:11-27",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:65:21-37",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:76:25-41",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/update.rs:18:13-29"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/remove_collection.rs:33:8-32",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection.rs:43:8-29"
+  ]
+ },
+ {
+  "name": "Division Before Multiplication",
+  "description": "Performing division before multiplication causes precision loss due to truncation, leading to incorrect calculations in financial operations.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helper_transactions.rs:49:15-16"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/collection/set_collection_during_mint.rs:160:5-18",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/thaw_nft.rs:66:9-22",
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:598:5-18",
+   "metaplex-candy-machine/secure/candy-machine/program/src/utils.rs:92:18-31",
+   "metaplex-candy-machine/secure/candy-machine/program/src/utils.rs:162:18-31"
+  ]
+ },
+ {
+  "name": "Missing Freeze Authority Check",
+  "description": "Programs that accept token deposits without verifying the mint freeze_authority is None allow token issuers to freeze user accounts and trap deposited funds.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/thaw_nft.rs:24:5-9"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "Anchor account structs that accept TokenAccount fields without token::mint constraints can allow wrong-mint token accounts to be passed into sensitive flows.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/thaw_nft.rs:21:20-27"
+  ]
+ },
+ {
+  "name": "Unchecked Close Target",
+  "description": "Anchor close constraints that direct lamports to an unvalidated target can let attackers choose an arbitrary beneficiary when the close target is not proven to be the legitimate owner.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/freeze/unlock_funds.rs:21:28-34"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/tests/core/helpers.rs:49:35-41",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/core/helpers.rs:115:11-17"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/utils.rs:290:28-38",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/mint.rs:109:23-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/candy_manager.rs:634:23-38",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/candy_manager.rs:639:24-39",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/candy_manager.rs:644:20-35",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helper_transactions.rs:215:23-38"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/state.rs:62:16-33",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/core/helpers.rs:18:10-22",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/freeze.rs:30:10-36",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/freeze.rs:141:10-23",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/freeze.rs:315:13-25",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/initialize.rs:97:10-44",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/candy_manager.rs:951:18-44",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/candy_manager.rs:1031:28-32",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helper_transactions.rs:33:14-38",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helper_transactions.rs:45:9-27",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helper_transactions.rs:49:15-16",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helper_transactions.rs:202:14-34",
+   "metaplex-candy-machine/secure/candy-machine/program/tests/utils/helpers.rs:35:8-11"
+  ]
+ },
+ {
+  "name": "Unvalidated Sysvar Account",
+  "description": "A sysvar passed as a raw AccountInfo or UncheckedAccount is not checked against the sysvar's well-known address, so a caller can substitute an account of their own and control what the instruction reads. Anchor's Sysvar type or an address constraint pins it.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "metaplex-candy-machine/secure/candy-machine/program/src/processor/mint.rs:76:25-41"
+  ]
+ },
+ {
+  "name": "Missing Pyth Confidence Interval",
+  "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:309:24-33",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:449:38-47",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:2109:4-13"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:2124:43-58",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:2178:45-60"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:2262:9-22",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:96:9-22"
+  ]
+ },
+ {
+  "name": "Unrestricted Token Minting",
+  "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/state/reserve.rs:509:12-16"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:42:43-49",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:2064:11-17",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:48:57-63",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:746:24-30",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:805:36-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:935:18-24",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1041:21-27",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1066:21-27",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1094:21-27",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:1347:32-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:254:21-27"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/instruction.rs:698:8-27",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:131:4-31",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:194:4-24",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:733:4-27",
+   "solend-owner-checks/insecure/token-lending/program/src/processor.rs:2213:4-26",
+   "solend-owner-checks/insecure/token-lending/program/src/state/lending_market.rs:39:12-16",
+   "solend-owner-checks/insecure/token-lending/program/src/state/obligation.rs:57:12-16",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:482:18-22",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:778:18-22",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:985:18-22",
+   "solend-owner-checks/insecure/token-lending/program/tests/init_lending_market.rs:36:10-34",
+   "solend-owner-checks/insecure/token-lending/program/tests/init_reserve.rs:86:10-34"
+  ]
+ },
+ {
+  "name": "Missing Security Documentation",
+  "description": "Security-critical functions without documentation make auditing harder and can hide vulnerabilities.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:58:8-34"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:97:41-51",
+   "solend-owner-checks/insecure/token-lending/program/tests/set_lending_market_owner.rs:34:29-39"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/insecure/token-lending/program/src/math/decimal.rs:54:12-24",
+   "solend-owner-checks/insecure/token-lending/program/src/math/rate.rs:60:12-24",
+   "solend-owner-checks/insecure/token-lending/program/src/state/obligation.rs:146:26-29",
+   "solend-owner-checks/insecure/token-lending/program/src/state/obligation.rs:188:26-29",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:33:11-39",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:38:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:39:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:40:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:180:11-41",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:181:9-14",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:182:11-37",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:183:11-45",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:184:11-41",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:312:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:312:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:313:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:313:48-53",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:314:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:315:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:29:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:29:46-48",
+   "solend-owner-checks/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:30:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:32:13-34",
+   "solend-owner-checks/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:33:13-29",
+   "solend-owner-checks/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:45:10-17",
+   "solend-owner-checks/insecure/token-lending/program/tests/flash_loan.rs:29:11-28",
+   "solend-owner-checks/insecure/token-lending/program/tests/flash_loan.rs:140:10-22",
+   "solend-owner-checks/insecure/token-lending/program/tests/flash_loan.rs:147:11-28",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/genesis.rs:36:12-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/genesis.rs:46:33-34",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/genesis.rs:60:14-29",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:139:8-22",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:238:8-19",
+   "solend-owner-checks/insecure/token-lending/program/tests/helpers/mod.rs:408:13-19",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:31:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:31:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:33:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:37:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:37:50-52",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:39:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/liquidate_obligation.rs:40:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:40:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:40:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:43:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/obligation_end_to_end.rs:44:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/redeem_reserve_collateral.rs:32:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/redeem_reserve_collateral.rs:33:11-28",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:34:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:35:9-27",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:36:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:37:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_obligation.rs:38:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_reserve.rs:30:11-41",
+   "solend-owner-checks/insecure/token-lending/program/tests/refresh_reserve.rs:31:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:30:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:30:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:31:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:32:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:33:11-44",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:33:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:34:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:11-26",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:34-37",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:159:11-41",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:160:9-14",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:161:11-45",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:11-38",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:46-49",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:266:11-40",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:267:11-42",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:11-26",
+   "solend-owner-checks/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:35-38"
+  ]
+ },
+ {
+  "name": "Missing Pyth Confidence Interval",
+  "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:309:24-33",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:449:38-47",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:2113:4-13"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:2128:43-58",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:2182:45-60"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:2266:9-22",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:96:9-22"
+  ]
+ },
+ {
+  "name": "Unrestricted Token Minting",
+  "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/state/reserve.rs:509:12-16"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:42:43-49",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:2068:11-17",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:48:57-63",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:746:24-30",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:805:36-42",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:935:18-24",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1041:21-27",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1066:21-27",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1094:21-27",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:1347:32-38",
+   "solend-owner-checks/secure/token-lending/program/tests/obligation_end_to_end.rs:254:21-27"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/instruction.rs:698:8-27",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:131:4-31",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:194:4-24",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:733:4-27",
+   "solend-owner-checks/secure/token-lending/program/src/processor.rs:2217:4-26",
+   "solend-owner-checks/secure/token-lending/program/src/state/lending_market.rs:39:12-16",
+   "solend-owner-checks/secure/token-lending/program/src/state/obligation.rs:57:12-16",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:482:18-22",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:778:18-22",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:985:18-22",
+   "solend-owner-checks/secure/token-lending/program/tests/init_lending_market.rs:36:10-34",
+   "solend-owner-checks/secure/token-lending/program/tests/init_reserve.rs:86:10-34"
+  ]
+ },
+ {
+  "name": "Missing Security Documentation",
+  "description": "Security-critical functions without documentation make auditing harder and can hide vulnerabilities.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:58:8-34"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:97:41-51",
+   "solend-owner-checks/secure/token-lending/program/tests/set_lending_market_owner.rs:34:29-39"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solend-owner-checks/secure/token-lending/program/src/math/decimal.rs:54:12-24",
+   "solend-owner-checks/secure/token-lending/program/src/math/rate.rs:60:12-24",
+   "solend-owner-checks/secure/token-lending/program/src/state/obligation.rs:146:26-29",
+   "solend-owner-checks/secure/token-lending/program/src/state/obligation.rs:188:26-29",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:33:11-39",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:38:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:39:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:40:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:180:11-41",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:181:9-14",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:182:11-37",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:183:11-45",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:184:11-41",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:312:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:312:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:313:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:313:48-53",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:314:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:315:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/deposit_obligation_collateral.rs:29:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/deposit_obligation_collateral.rs:29:46-48",
+   "solend-owner-checks/secure/token-lending/program/tests/deposit_obligation_collateral.rs:30:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/deposit_reserve_liquidity.rs:32:13-34",
+   "solend-owner-checks/secure/token-lending/program/tests/deposit_reserve_liquidity.rs:33:13-29",
+   "solend-owner-checks/secure/token-lending/program/tests/deposit_reserve_liquidity.rs:45:10-17",
+   "solend-owner-checks/secure/token-lending/program/tests/flash_loan.rs:29:11-28",
+   "solend-owner-checks/secure/token-lending/program/tests/flash_loan.rs:140:10-22",
+   "solend-owner-checks/secure/token-lending/program/tests/flash_loan.rs:147:11-28",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/genesis.rs:36:12-38",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/genesis.rs:46:33-34",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/genesis.rs:60:14-29",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:139:8-22",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:238:8-19",
+   "solend-owner-checks/secure/token-lending/program/tests/helpers/mod.rs:408:13-19",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:31:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:31:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:33:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:37:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:37:50-52",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:39:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/liquidate_obligation.rs:40:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/obligation_end_to_end.rs:40:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/obligation_end_to_end.rs:40:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/obligation_end_to_end.rs:43:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/obligation_end_to_end.rs:44:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/redeem_reserve_collateral.rs:32:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/redeem_reserve_collateral.rs:33:11-28",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_obligation.rs:34:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_obligation.rs:35:9-27",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_obligation.rs:36:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_obligation.rs:37:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_obligation.rs:38:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_reserve.rs:30:11-41",
+   "solend-owner-checks/secure/token-lending/program/tests/refresh_reserve.rs:31:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/repay_obligation_liquidity.rs:30:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/repay_obligation_liquidity.rs:30:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/repay_obligation_liquidity.rs:31:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/repay_obligation_liquidity.rs:32:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/repay_obligation_liquidity.rs:33:11-44",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:33:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:34:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:11-26",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:34-37",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:159:11-41",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:160:9-14",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:161:11-45",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:11-38",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:46-49",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:266:11-40",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:267:11-42",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:11-26",
+   "solend-owner-checks/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:35-38"
+  ]
+ },
+ {
+  "name": "Anchor Reward Overflow",
+  "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/src/state.rs:649:10-16",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/state.rs:671:10-16"
+  ]
+ },
+ {
+  "name": "Anchor Missing Min Output",
+  "description": "Anchor swap-like instructions should not accept a minimum output argument that is declared but never enforced in the instruction body.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/src/logic.rs:255:13-31"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/src/logic.rs:121:5-18",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/logic.rs:189:5-18",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/logic.rs:208:5-18",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/logic.rs:266:5-18",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:334:5-18",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:455:9-22"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/src/state.rs:324:40-46"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/tests/tests/manager.rs:54:34-44",
+   "solido-anker-arbitrary-cpi/insecure/anker/tests/tests/sell_rewards.rs:68:68-78"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:48:44-58",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:183:41-55",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:235:45-59",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:278:42-56",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:373:63-77",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:387:53-67",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:409:45-59",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:505:41-55"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solido-anker-arbitrary-cpi/insecure/anker/src/metrics.rs:29:12-30",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/processor.rs:234:4-24",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/state.rs:649:25-28",
+   "solido-anker-arbitrary-cpi/insecure/anker/src/state.rs:671:25-28"
+  ]
+ },
+ {
+  "name": "Anchor Reward Overflow",
+  "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solido-anker-arbitrary-cpi/secure/anker/src/state.rs:665:10-16",
+   "solido-anker-arbitrary-cpi/secure/anker/src/state.rs:687:10-16"
+  ]
+ },
+ {
+  "name": "Anchor Missing Min Output",
+  "description": "Anchor swap-like instructions should not accept a minimum output argument that is declared but never enforced in the instruction body.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/secure/anker/src/logic.rs:255:13-31"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solido-anker-arbitrary-cpi/secure/anker/src/logic.rs:121:5-18",
+   "solido-anker-arbitrary-cpi/secure/anker/src/logic.rs:189:5-18",
+   "solido-anker-arbitrary-cpi/secure/anker/src/logic.rs:208:5-18",
+   "solido-anker-arbitrary-cpi/secure/anker/src/logic.rs:266:5-18",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:334:5-18",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:462:9-22"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/secure/anker/tests/tests/manager.rs:54:34-44",
+   "solido-anker-arbitrary-cpi/secure/anker/tests/tests/sell_rewards.rs:68:68-78"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:48:44-58",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:183:41-55",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:235:45-59",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:278:42-56",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:373:63-77",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:387:53-67",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:416:45-59",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:512:41-55"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solido-anker-arbitrary-cpi/secure/anker/src/metrics.rs:29:12-30",
+   "solido-anker-arbitrary-cpi/secure/anker/src/processor.rs:234:4-24",
+   "solido-anker-arbitrary-cpi/secure/anker/src/state.rs:665:25-28",
+   "solido-anker-arbitrary-cpi/secure/anker/src/state.rs:687:25-28"
+  ]
+ },
+ {
+  "name": "Anchor Reward Overflow",
+  "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:160:10-16",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:179:13-19"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:138:8-23"
+  ]
+ },
+ {
+  "name": "Incorrect Ceiling Division",
+  "description": "Financial calculations involving division should use ceiling division (div_ceil or checked_ceil_div) to avoid rounding errors that benefit attackers.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:842:12-24"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/logic.rs:129:5-18",
+   "solido-deposit-reserve-account/insecure/program/src/logic.rs:212:5-18",
+   "solido-deposit-reserve-account/insecure/program/src/logic.rs:277:5-18",
+   "solido-deposit-reserve-account/insecure/program/src/logic.rs:472:5-18",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:238:5-18",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:378:9-22",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:443:5-18",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:555:9-22",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:727:5-18"
+  ]
+ },
+ {
+  "name": "Integer Division Overflow",
+  "description": "Division operations without checked_div can cause panics on division by zero or overflow conditions.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/account_map.rs:118:12-27",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:842:12-24"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/account_map.rs:176:40-50",
+   "solido-deposit-reserve-account/insecure/program/src/accounts.rs:392:28-38",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:960:26-36"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/accounts.rs:419:46-60",
+   "solido-deposit-reserve-account/insecure/program/src/accounts.rs:535:40-54",
+   "solido-deposit-reserve-account/insecure/program/src/accounts.rs:617:45-59",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:28:50-64",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:43:38-52",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:78:41-55",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:99:45-59",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:117:43-57",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:144:39-53",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:158:42-56",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:185:36-50",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:64:44-58",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:143:41-55",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:191:46-60",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:406:41-55",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:498:52-66",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:589:47-61",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:693:45-59",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:759:42-56",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:868:40-54"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/insecure/program/src/account_map.rs:108:12-26",
+   "solido-deposit-reserve-account/insecure/program/src/account_map.rs:114:9-10",
+   "solido-deposit-reserve-account/insecure/program/src/account_map.rs:118:12-27",
+   "solido-deposit-reserve-account/insecure/program/src/balance.rs:38:51-59",
+   "solido-deposit-reserve-account/insecure/program/src/balance.rs:57:14-20",
+   "solido-deposit-reserve-account/insecure/program/src/balance.rs:70:10-16",
+   "solido-deposit-reserve-account/insecure/program/src/balance.rs:86:47-53",
+   "solido-deposit-reserve-account/insecure/program/src/balance.rs:90:43-49",
+   "solido-deposit-reserve-account/insecure/program/src/logic.rs:77:8-37",
+   "solido-deposit-reserve-account/insecure/program/src/logic.rs:320:8-23",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:94:12-32",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:105:12-34",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:116:12-33",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:127:12-46",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:194:12-19",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:206:12-28",
+   "solido-deposit-reserve-account/insecure/program/src/metrics.rs:229:8-15",
+   "solido-deposit-reserve-account/insecure/program/src/process_management.rs:184:8-27",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:56:8-26",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:85:21-39",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:186:8-29",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:401:8-23",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:463:29-51",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:585:8-39",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:672:10-16",
+   "solido-deposit-reserve-account/insecure/program/src/processor.rs:679:43-49",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:160:25-28",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:179:28-31",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:563:40-48",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:581:29-37",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:686:14-20",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:801:12-15",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:803:30-33",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:842:12-24",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:859:14-17",
+   "solido-deposit-reserve-account/insecure/program/src/state.rs:1106:8-28",
+   "solido-deposit-reserve-account/insecure/program/src/token.rs:203:8-40",
+   "solido-deposit-reserve-account/insecure/program/tests/context.rs:595:39-45",
+   "solido-deposit-reserve-account/insecure/program/tests/context.rs:1126:14-20",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/add_remove_validator.rs:79:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/collect_validator_fee.rs:78:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/collect_validator_fee.rs:101:59-65",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/collect_validator_fee.rs:110:62-68",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/collect_validator_fee.rs:119:62-68",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/merge_stake.rs:13:10-48",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/merge_stake.rs:63:4-17",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/solana_assumptions.rs:118:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/solana_assumptions.rs:118:23-33",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/solana_assumptions.rs:139:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/solana_assumptions.rs:139:23-33",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/solana_assumptions.rs:144:31-37",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/solana_assumptions.rs:166:10-29",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/unstake.rs:67:51-57",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/unstake.rs:74:26-37",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/unstake.rs:79:65-71",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/update_exchange_rate.rs:55:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/update_exchange_rate.rs:55:23-33",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/update_exchange_rate.rs:79:10-14",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/update_exchange_rate.rs:84:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/update_exchange_rate.rs:84:23-33",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdraw_inactive_stake.rs:74:53-59",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:70:80-86",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:77:26-38",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:82:26-38",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:88:80-86",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:92:10-22",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:104:10-47",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:111:26-38",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:120:10-33",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:126:26-38",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:131:10-32",
+   "solido-deposit-reserve-account/insecure/program/tests/tests/withdrawals.rs:200:10-22"
+  ]
+ },
+ {
+  "name": "Anchor Reward Overflow",
+  "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/state.rs:160:10-16",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:179:13-19"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:138:8-23"
+  ]
+ },
+ {
+  "name": "Incorrect Ceiling Division",
+  "description": "Financial calculations involving division should use ceiling division (div_ceil or checked_ceil_div) to avoid rounding errors that benefit attackers.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/state.rs:842:12-24"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/logic.rs:129:5-18",
+   "solido-deposit-reserve-account/secure/program/src/logic.rs:212:5-18",
+   "solido-deposit-reserve-account/secure/program/src/logic.rs:277:5-18",
+   "solido-deposit-reserve-account/secure/program/src/logic.rs:472:5-18",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:238:5-18",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:379:9-22",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:444:5-18",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:556:9-22",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:728:5-18"
+  ]
+ },
+ {
+  "name": "Integer Division Overflow",
+  "description": "Division operations without checked_div can cause panics on division by zero or overflow conditions.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/account_map.rs:118:12-27",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:842:12-24"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/account_map.rs:176:40-50",
+   "solido-deposit-reserve-account/secure/program/src/accounts.rs:392:28-38",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:960:26-36"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/accounts.rs:419:46-60",
+   "solido-deposit-reserve-account/secure/program/src/accounts.rs:535:40-54",
+   "solido-deposit-reserve-account/secure/program/src/accounts.rs:617:45-59",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:28:50-64",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:43:38-52",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:78:41-55",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:99:45-59",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:117:43-57",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:144:39-53",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:158:42-56",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:185:36-50",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:64:44-58",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:143:41-55",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:192:46-60",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:407:41-55",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:499:52-66",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:590:47-61",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:694:45-59",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:760:42-56",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:869:40-54"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "solido-deposit-reserve-account/secure/program/src/account_map.rs:108:12-26",
+   "solido-deposit-reserve-account/secure/program/src/account_map.rs:114:9-10",
+   "solido-deposit-reserve-account/secure/program/src/account_map.rs:118:12-27",
+   "solido-deposit-reserve-account/secure/program/src/balance.rs:38:51-59",
+   "solido-deposit-reserve-account/secure/program/src/balance.rs:57:14-20",
+   "solido-deposit-reserve-account/secure/program/src/balance.rs:70:10-16",
+   "solido-deposit-reserve-account/secure/program/src/balance.rs:86:47-53",
+   "solido-deposit-reserve-account/secure/program/src/balance.rs:90:43-49",
+   "solido-deposit-reserve-account/secure/program/src/logic.rs:77:8-37",
+   "solido-deposit-reserve-account/secure/program/src/logic.rs:320:8-23",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:94:12-32",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:105:12-34",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:116:12-33",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:127:12-46",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:194:12-19",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:206:12-28",
+   "solido-deposit-reserve-account/secure/program/src/metrics.rs:229:8-15",
+   "solido-deposit-reserve-account/secure/program/src/process_management.rs:184:8-27",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:56:8-26",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:85:21-39",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:187:8-29",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:402:8-23",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:464:29-51",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:586:8-39",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:673:10-16",
+   "solido-deposit-reserve-account/secure/program/src/processor.rs:680:43-49",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:160:25-28",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:179:28-31",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:563:40-48",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:581:29-37",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:686:14-20",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:801:12-15",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:803:30-33",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:842:12-24",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:859:14-17",
+   "solido-deposit-reserve-account/secure/program/src/state.rs:1106:8-28",
+   "solido-deposit-reserve-account/secure/program/src/token.rs:203:8-40",
+   "solido-deposit-reserve-account/secure/program/tests/context.rs:595:39-45",
+   "solido-deposit-reserve-account/secure/program/tests/context.rs:1126:14-20",
+   "solido-deposit-reserve-account/secure/program/tests/tests/add_remove_validator.rs:79:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/collect_validator_fee.rs:78:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/collect_validator_fee.rs:101:59-65",
+   "solido-deposit-reserve-account/secure/program/tests/tests/collect_validator_fee.rs:110:62-68",
+   "solido-deposit-reserve-account/secure/program/tests/tests/collect_validator_fee.rs:119:62-68",
+   "solido-deposit-reserve-account/secure/program/tests/tests/merge_stake.rs:13:10-48",
+   "solido-deposit-reserve-account/secure/program/tests/tests/merge_stake.rs:63:4-17",
+   "solido-deposit-reserve-account/secure/program/tests/tests/solana_assumptions.rs:118:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/solana_assumptions.rs:118:23-33",
+   "solido-deposit-reserve-account/secure/program/tests/tests/solana_assumptions.rs:139:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/solana_assumptions.rs:139:23-33",
+   "solido-deposit-reserve-account/secure/program/tests/tests/solana_assumptions.rs:144:31-37",
+   "solido-deposit-reserve-account/secure/program/tests/tests/solana_assumptions.rs:166:10-29",
+   "solido-deposit-reserve-account/secure/program/tests/tests/unstake.rs:67:51-57",
+   "solido-deposit-reserve-account/secure/program/tests/tests/unstake.rs:74:26-37",
+   "solido-deposit-reserve-account/secure/program/tests/tests/unstake.rs:79:65-71",
+   "solido-deposit-reserve-account/secure/program/tests/tests/update_exchange_rate.rs:55:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/update_exchange_rate.rs:55:23-33",
+   "solido-deposit-reserve-account/secure/program/tests/tests/update_exchange_rate.rs:79:10-14",
+   "solido-deposit-reserve-account/secure/program/tests/tests/update_exchange_rate.rs:84:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/update_exchange_rate.rs:84:23-33",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdraw_inactive_stake.rs:74:53-59",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:70:80-86",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:77:26-38",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:82:26-38",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:88:80-86",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:92:10-22",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:104:10-47",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:111:26-38",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:120:10-33",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:126:26-38",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:131:10-32",
+   "solido-deposit-reserve-account/secure/program/tests/tests/withdrawals.rs:200:10-22"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:1769:43-58"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:1868:9-22",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:96:9-22"
+  ]
+ },
+ {
+  "name": "Unrestricted Token Minting",
+  "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/src/state/reserve.rs:508:12-16"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:38:43-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:1721:11-17",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:48:57-63",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:678:24-30",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:737:36-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:869:18-24",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:969:21-27",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:994:21-27",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:1022:21-27",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:1252:32-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/obligation_end_to_end.rs:251:21-27"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/src/instruction.rs:551:8-27",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:105:4-31",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:166:4-24",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:637:4-27",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/processor.rs:1819:4-26",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/state/lending_market.rs:37:12-16",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/state/obligation.rs:57:12-16",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:473:18-22",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:710:18-22",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:914:18-22",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/init_lending_market.rs:36:10-34",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/init_reserve.rs:81:10-34"
+  ]
+ },
+ {
+  "name": "Missing Security Documentation",
+  "description": "Security-critical functions without documentation make auditing harder and can hide vulnerabilities.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/flash_loan_receiver.rs:58:8-34"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:91:41-51",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/set_lending_market_owner.rs:34:29-39"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/insecure/token-lending/program/src/math/decimal.rs:54:12-24",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/math/rate.rs:60:12-24",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/state/obligation.rs:146:26-29",
+   "spl-token-lending-rounding/insecure/token-lending/program/src/state/obligation.rs:187:26-29",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:33:11-39",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:38:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:39:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:40:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:183:11-41",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:184:9-14",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:185:11-37",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:186:11-45",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:187:11-41",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:318:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:318:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:319:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:319:48-53",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:320:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/borrow_obligation_liquidity.rs:321:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:29:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:29:46-48",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/deposit_obligation_collateral.rs:30:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:32:13-34",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:33:13-29",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/deposit_reserve_liquidity.rs:45:10-17",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/flash_loan.rs:29:11-28",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/flash_loan.rs:143:10-22",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/flash_loan.rs:150:11-28",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/genesis.rs:36:12-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/genesis.rs:46:33-34",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/genesis.rs:60:14-29",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:131:8-22",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:229:8-19",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/helpers/mod.rs:400:13-19",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:31:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:31:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:33:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:37:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:37:50-52",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:39:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/liquidate_obligation.rs:40:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/obligation_end_to_end.rs:40:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/obligation_end_to_end.rs:40:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/obligation_end_to_end.rs:43:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/obligation_end_to_end.rs:44:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/redeem_reserve_collateral.rs:32:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/redeem_reserve_collateral.rs:33:11-28",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_obligation.rs:34:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_obligation.rs:35:9-27",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_obligation.rs:36:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_obligation.rs:37:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_obligation.rs:38:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_reserve.rs:30:11-41",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/refresh_reserve.rs:31:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:30:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:30:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:31:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:32:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/repay_obligation_liquidity.rs:33:11-44",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:33:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:34:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:11-26",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:34-37",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:159:11-41",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:160:9-14",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:161:11-45",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:11-38",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:46-49",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:266:11-40",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:267:11-42",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:11-26",
+   "spl-token-lending-rounding/insecure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:35-38"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:1769:43-58"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:1868:9-22",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:96:9-22"
+  ]
+ },
+ {
+  "name": "Unrestricted Token Minting",
+  "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/src/state/reserve.rs:508:12-16"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:38:43-49",
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:1721:11-17",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:48:57-63",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:678:24-30",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:737:36-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:869:18-24",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:969:21-27",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:994:21-27",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:1022:21-27",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:1252:32-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/obligation_end_to_end.rs:251:21-27"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/src/instruction.rs:551:8-27",
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:105:4-31",
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:166:4-24",
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:637:4-27",
+   "spl-token-lending-rounding/secure/token-lending/program/src/processor.rs:1819:4-26",
+   "spl-token-lending-rounding/secure/token-lending/program/src/state/lending_market.rs:37:12-16",
+   "spl-token-lending-rounding/secure/token-lending/program/src/state/obligation.rs:57:12-16",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:473:18-22",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:710:18-22",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:914:18-22",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/init_lending_market.rs:36:10-34",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/init_reserve.rs:81:10-34"
+  ]
+ },
+ {
+  "name": "Missing Security Documentation",
+  "description": "Security-critical functions without documentation make auditing harder and can hide vulnerabilities.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/flash_loan_receiver.rs:58:8-34"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:91:41-51",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/set_lending_market_owner.rs:34:29-39"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "spl-token-lending-rounding/secure/token-lending/program/src/math/decimal.rs:54:12-24",
+   "spl-token-lending-rounding/secure/token-lending/program/src/math/rate.rs:55:12-24",
+   "spl-token-lending-rounding/secure/token-lending/program/src/math/rate.rs:99:24-30",
+   "spl-token-lending-rounding/secure/token-lending/program/src/state/obligation.rs:146:26-29",
+   "spl-token-lending-rounding/secure/token-lending/program/src/state/obligation.rs:187:26-29",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:33:11-39",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:37:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:38:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:39:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:40:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:183:11-41",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:184:9-14",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:185:11-37",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:186:11-45",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:187:11-41",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:318:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:318:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:319:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:319:48-53",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:320:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/borrow_obligation_liquidity.rs:321:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/deposit_obligation_collateral.rs:29:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/deposit_obligation_collateral.rs:29:46-48",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/deposit_obligation_collateral.rs:30:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/deposit_reserve_liquidity.rs:32:13-34",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/deposit_reserve_liquidity.rs:33:13-29",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/deposit_reserve_liquidity.rs:45:10-17",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/flash_loan.rs:29:11-28",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/flash_loan.rs:143:10-22",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/flash_loan.rs:150:11-28",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/genesis.rs:36:12-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/genesis.rs:46:33-34",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/genesis.rs:60:14-29",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:131:8-22",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:229:8-19",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/helpers/mod.rs:400:13-19",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:31:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:31:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:33:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:37:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:37:50-52",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:39:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/liquidate_obligation.rs:40:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/obligation_end_to_end.rs:40:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/obligation_end_to_end.rs:40:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/obligation_end_to_end.rs:43:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/obligation_end_to_end.rs:44:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/redeem_reserve_collateral.rs:32:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/redeem_reserve_collateral.rs:33:11-28",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_obligation.rs:34:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_obligation.rs:35:9-27",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_obligation.rs:36:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_obligation.rs:37:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_obligation.rs:38:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_reserve.rs:30:11-41",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/refresh_reserve.rs:31:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/repay_obligation_liquidity.rs:30:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/repay_obligation_liquidity.rs:30:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/repay_obligation_liquidity.rs:31:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/repay_obligation_liquidity.rs:32:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/repay_obligation_liquidity.rs:33:11-44",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:32:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:33:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:34:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:11-26",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:35:34-37",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:159:11-41",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:160:9-14",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:161:11-45",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:11-38",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:265:46-49",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:266:11-40",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:267:11-42",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:11-26",
+   "spl-token-lending-rounding/secure/token-lending/program/tests/withdraw_obligation_collateral.rs:268:35-38"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "squads-account-matching/insecure/programs/squads-mpl/src/state/ms.rs:75:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-account-matching/insecure/programs/squads-mpl/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-account-matching/insecure/programs/squads-mpl/src/lib.rs:319:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "squads-account-matching/insecure/programs/squads-mpl/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "squads-account-matching/insecure/programs/squads-mpl/src/lib.rs:19:12-18",
+   "squads-account-matching/insecure/programs/squads-mpl/src/lib.rs:38:12-22",
+   "squads-account-matching/insecure/programs/squads-mpl/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "squads-account-matching/secure/programs/squads-mpl/src/state/ms.rs:75:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-account-matching/secure/programs/squads-mpl/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-account-matching/secure/programs/squads-mpl/src/lib.rs:327:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "squads-account-matching/secure/programs/squads-mpl/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "squads-account-matching/secure/programs/squads-mpl/src/lib.rs:19:12-18",
+   "squads-account-matching/secure/programs/squads-mpl/src/lib.rs:38:12-22",
+   "squads-account-matching/secure/programs/squads-mpl/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/state/ms.rs:78:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:65:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:415:21-34",
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:493:9-22"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:347:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:65:12-22",
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:77:28-42",
+   "squads-recursive-execute/insecure/programs/squads-mpl/src/lib.rs:82:30-44"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "squads-recursive-execute/secure/programs/squads-mpl/src/state/ms.rs:78:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:65:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:422:21-34",
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:500:9-22"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:347:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:65:12-22",
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:77:28-42",
+   "squads-recursive-execute/secure/programs/squads-mpl/src/lib.rs:82:30-44"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "squads-signer-auth/insecure/programs/squads-mpl/src/state/ms.rs:75:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-signer-auth/insecure/programs/squads-mpl/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-signer-auth/insecure/programs/squads-mpl/src/lib.rs:327:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "squads-signer-auth/insecure/programs/squads-mpl/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "squads-signer-auth/insecure/programs/squads-mpl/src/lib.rs:19:12-18",
+   "squads-signer-auth/insecure/programs/squads-mpl/src/lib.rs:38:12-22",
+   "squads-signer-auth/insecure/programs/squads-mpl/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "squads-signer-auth/secure/programs/squads-mpl/src/state/ms.rs:75:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:327:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:19:12-18",
+   "squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:38:12-22",
+   "squads-signer-auth/secure/programs/squads-mpl/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:225:24-27"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/post_message.rs:75:8-20",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/verify_signature.rs:68:8-25"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:116:5-18",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:291:5-18"
+  ]
+ },
+ {
+  "name": "Missing Rent Exemption Check",
+  "description": "Account creation via system_program without verifying rent exemption lamports can produce accounts that are garbage-collected by the Solana runtime, causing fund loss or program failures.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/post_message.rs:132:50-64",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/verify_signature.rs:179:54-68"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/tests/integration.rs:1042:32-42"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:324:43-57",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:337:38-52",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:366:41-55",
+   "wormhole-sysvar/insecure/solana/bridge/program/tests/common.rs:153:12-26"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:145:8-28",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:151:30-35",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:156:20-38",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/governance.rs:165:13-18",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/post_vaa.rs:104:8-16",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/post_vaa.rs:131:20-23",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/verify_signature.rs:68:8-25",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/api/verify_signature.rs:204:14-23",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:114:8-30",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:209:8-28",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:237:30-33",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:249:27-28",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:250:30-41",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:258:18-27",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:258:45-56",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:262:18-27",
+   "wormhole-sysvar/insecure/solana/bridge/program/src/wasm.rs:262:45-56",
+   "wormhole-sysvar/insecure/solana/bridge/program/tests/integration.rs:114:8-12",
+   "wormhole-sysvar/insecure/solana/bridge/program/tests/integration.rs:156:4-19",
+   "wormhole-sysvar/insecure/solana/bridge/program/tests/integration.rs:372:4-28",
+   "wormhole-sysvar/insecure/solana/bridge/program/tests/integration.rs:991:44-48"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:225:24-27"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/post_message.rs:75:8-20",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:68:8-25"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:116:5-18",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:291:5-18"
+  ]
+ },
+ {
+  "name": "Missing Rent Exemption Check",
+  "description": "Account creation via system_program without verifying rent exemption lamports can produce accounts that are garbage-collected by the Solana runtime, causing fund loss or program failures.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/post_message.rs:132:50-64",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:179:54-68"
+  ]
+ },
+ {
+  "name": "Random Authority Generation",
+  "description": "Detects generation of random/unique Pubkey for authority which bypasses proper authority validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:1042:32-42"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:324:43-57",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:337:38-52",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:366:41-55",
+   "wormhole-sysvar/secure/solana/bridge/program/tests/common.rs:153:12-26"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:145:8-28",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:151:30-35",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:156:20-38",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/governance.rs:165:13-18",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/post_vaa.rs:104:8-16",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/post_vaa.rs:131:20-23",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:68:8-25",
+   "wormhole-sysvar/secure/solana/bridge/program/src/api/verify_signature.rs:204:14-23",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:114:8-30",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:209:8-28",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:237:30-33",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:249:27-28",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:250:30-41",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:258:18-27",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:258:45-56",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:262:18-27",
+   "wormhole-sysvar/secure/solana/bridge/program/src/wasm.rs:262:45-56",
+   "wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:114:8-12",
+   "wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:156:4-19",
+   "wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:372:4-28",
+   "wormhole-sysvar/secure/solana/bridge/program/tests/integration.rs:991:44-48"
+  ]
+ }
+]

@@ -1,0 +1,77 @@
+{
+ "note": "Rust source volume of the vulnerable variant of each real crate, 2026-09-01. Regenerate: build the crates with build_corpus2.py --crates, then sum os.path.getsize over every .rs file under <case>/insecure. Committed because RESULTS-realcrates.md quotes the boundary between the crates Radar finishes and the ones it does not, and a boundary nobody can recompute is decoration.",
+ "crates": {
+  "anchor-account-reload-owner": {
+   "rs_files": 98,
+   "rs_bytes": 704075
+  },
+  "anchor-interface-account": {
+   "rs_files": 101,
+   "rs_bytes": 721324
+  },
+  "anchor-program-system": {
+   "rs_files": 99,
+   "rs_bytes": 747771
+  },
+  "cashio-account-data": {
+   "rs_files": 8,
+   "rs_bytes": 17766
+  },
+  "metaplex-bubblegum-creator": {
+   "rs_files": 111,
+   "rs_bytes": 768352
+  },
+  "metaplex-candy-machine": {
+   "rs_files": 34,
+   "rs_bytes": 210069
+  },
+  "metaplex-token-metadata": {
+   "rs_files": 145,
+   "rs_bytes": 1159826
+  },
+  "solend-owner-checks": {
+   "rs_files": 33,
+   "rs_bytes": 402390
+  },
+  "solido-anker-arbitrary-cpi": {
+   "rs_files": 17,
+   "rs_bytes": 111514
+  },
+  "solido-deposit-reserve-account": {
+   "rs_files": 33,
+   "rs_bytes": 359646
+  },
+  "spl-stake-pool-fee-rounding": {
+   "rs_files": 38,
+   "rs_bytes": 938503
+  },
+  "spl-stake-pool-mint-decimals": {
+   "rs_files": 38,
+   "rs_bytes": 907553
+  },
+  "spl-token-lending-rounding": {
+   "rs_files": 33,
+   "rs_bytes": 365325
+  },
+  "squads-account-matching": {
+   "rs_files": 4,
+   "rs_bytes": 33569
+  },
+  "squads-recursive-execute": {
+   "rs_files": 4,
+   "rs_bytes": 42617
+  },
+  "squads-signer-auth": {
+   "rs_files": 4,
+   "rs_bytes": 33395
+  },
+  "token-2022-confidential-approve-mint": {
+   "rs_files": 63,
+   "rs_bytes": 963898
+  },
+  "wormhole-sysvar": {
+   "rs_files": 23,
+   "rs_bytes": 128649
+  }
+ }
+}

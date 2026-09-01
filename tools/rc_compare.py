@@ -46,6 +46,8 @@ PAIRS = [
      "semgrep-solana-standard-c2-wide", "map", "raw/c2-semgrep-solana-standard.json", "semgrep"),
     ("solsec", "raw/rc-score-solsec.json", "solsec", "map",
      "raw/c2-solsec-percase.json", "solsec"),
+    ("Radar", "raw/rc-score-radar.json", "radar", "map",
+     "raw/c2-radar-current.json", "radar"),
     ("X-Ray, pre-registered map", "raw/rc-score-xray.json", "xray", "map",
      "raw/xray-c2-raw.json", "radar"),
     ("X-Ray, corrected map", "raw/rc-score-xray-corrected.json", "xray", "corrected_map",
