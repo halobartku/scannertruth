@@ -501,6 +501,12 @@ carries only tools with no result behind them, which is what it claims to contai
 
 ## What is still wrong
 
+- **The control figures are not derived.** Error 33 corrected `931` to `81,928`, and `AGENTS.md`
+  still carried the retracted `931` for eight hours after the front page was fixed, because the
+  derived-count check covers the number of tests and nothing else. The two control figures are
+  typed in at least four documents. A check that no document may state a findings count for
+  `control-noisy` other than what the tools produce is the fix, and it does not exist yet. Until it
+  does, this is a freshness defect waiting to happen for the fourth time.
 - **`spl-token-lending-rounding` is still not built.** Every corpus-2 figure reads out of sixteen
   built valid cases, or out of eight for the two rows that have not been re-run.
 - **`sol-audit` v2 and `vaultlint` have not been re-run over the eight cases added today**, so

@@ -59,7 +59,14 @@ cp mappings/vaultlint.json mappings/my-vaultlint.json
 # now edit it: read the tool's rule list and map each rule to a corpus class
 git add mappings/my-vaultlint.json
 git commit -m "pre-register mapping for vaultlint"
+python tools/preregistration_check.py
 ```
+
+That second command is not decoration. A mapping commit may contain **nothing but `mappings/`**. If
+it arrives beside a results page, a run file or a raw findings file, it is not pre-registered
+whatever the commit message says, and CI rejects it. This is enforced because it was once only
+asserted: the seven mappings published on 2026-08-31 each arrived in the same commit as the result
+they scored, and the claim had to be retracted. See `docs/PROTOCOL.md` 3a.
 
 **Commit it on its own, before the run.** The commit timestamp is the pre-registration, and it is
 the only thing that stops you from quietly adjusting the mapping once you dislike the score.

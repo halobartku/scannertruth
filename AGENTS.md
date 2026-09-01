@@ -17,9 +17,18 @@ Not "how many findings does this tool produce". That number can be inflated to a
 the same program after its authors fixed it**? A rule that fires on both has detected nothing; it
 has recognised a shape of code that exists in working software too.
 
-The reference point is built in: `control-noisy` flags every non-empty line, produces 931 findings
-on the teaching corpus and 2,392,280 on the real one, and scores **zero** on both. If your measurement
-ever ranks it above zero, your measurement is broken, not the control.
+The reference point is built in: `control-noisy` flags every non-empty line, produces 81,928 findings
+on the teaching corpus and 2,392,280 on the real one, and scores **zero real recall** on both. If your
+measurement ever ranks it above zero, your measurement is broken, not the control.
+
+Read the second half of that sentence carefully, because it is the whole design. The noisy control
+scores **11 / 11 nominal** on the teaching corpus. Nominal recall CAN be bought with volume, which is
+exactly why this project does not publish nominal recall as a result. Real recall cannot, because a
+rule that fires on the fixed variant too has detected nothing.
+
+Until 2026-09-01 the corpus-1 control emitted all 931 findings under one invented rule id that appears
+in no mapping. An unmapped rule is discarded before scoring, so it scored zero by construction and
+demonstrated nothing, while being cited as the reason volume cannot buy a score. That is error 33.
 
 ---
 
