@@ -14,6 +14,14 @@
   "image": "semgrep/semgrep:latest",
   "network": "none",
   "mount": "/src",
+  "mounts": [
+   {
+    "from": "raw/semgrep-solana-standard-2026-09-01/solana-security-standard.yaml",
+    "to": "/rules/solana-security-standard.yaml",
+    "ro": true,
+    "why": "the ruleset the command names. It is a property of this measurement rather than of semgrep, and it is the copy committed here, pinned by sha256 in mappings/semgrep-solana-standard.json, rather than a fresh fetch that could differ."
+   }
+  ],
   "env": {
    "SEMGREP_SEND_METRICS": "off",
    "SEMGREP_ENABLE_VERSION_CHECK": "0"

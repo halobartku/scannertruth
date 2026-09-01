@@ -231,6 +231,20 @@ def _problems(spec):
         if spec["layout"] not in LAYOUTS:
             bad.append(f"layout must be one of {LAYOUTS}; radar needs 'wrapped-pkg' because it "
                        "refuses a target whose Cargo.toml sits at the root of the path it is given")
+        for i, m in enumerate(run.get("mounts") or []):
+            if not m.get("from") or not m.get("to"):
+                bad.append(f"run.mounts[{i}] needs 'from' (a path in this repository) and 'to'")
+                continue
+            src = m["from"]
+            if not os.path.isabs(src):
+                src = os.path.normpath(os.path.join(ROOT, src))
+            if not os.path.exists(src):
+                # Docker creates an empty directory for a bind mount whose source is missing, so
+                # a wrong path here does not fail: it silently scans the corpus with no ruleset
+                # and every case comes back clean. Refused at load time instead.
+                bad.append(f"run.mounts[{i}] names {m['from']!r}, which is not in this repository. "
+                           "Docker would create an empty directory there and the run would look "
+                           "like a clean zero.")
 
     cov = spec["coverage"]
     if run.get("engine") == "unrecorded":
@@ -367,7 +381,26 @@ def _subst(value, mapping):
     return value
 
 
-def command_for(spec, target_dir, artefact_dir, tool_root=None):
+def _args_for(spec, args=None):
+    """The declaration's own argument defaults, with the caller's overrides on top.
+
+    sol-audit has three profiles, all three were run and all three are published, and the three
+    rows differ by one token. Before this the declaration could only produce the `strict` row and
+    the other two had to be run by a script outside the framework, which is exactly the situation
+    the framework exists to end. A token the declaration does not declare is refused, so a typo
+    cannot silently leave the default in place and label the run with the other profile's name.
+    """
+    defaults = dict(spec["run"].get("arg_defaults") or {})
+    for key, val in (args or {}).items():
+        if key not in defaults:
+            raise ValueError(
+                f"{spec['name']}: --arg {key}={val} names a token this declaration does not "
+                f"declare. run.arg_defaults holds {sorted(defaults) or 'nothing'}.")
+        defaults[key] = val
+    return defaults
+
+
+def command_for(spec, target_dir, artefact_dir, tool_root=None, args=None):
     """The exact argv. Recorded in the log so a reader can rerun it without reading this file."""
     run = spec["run"]
     mount = run.get("mount", "/src")
@@ -378,9 +411,10 @@ def command_for(spec, target_dir, artefact_dir, tool_root=None):
     root = tool_root or run.get("tool_root") or ""
     if root and not os.path.isabs(root):
         root = os.path.normpath(os.path.join(ROOT, root))
+    extra = _args_for(spec, args)
     if run["engine"] == "local":
         tokens = {"mount": target_dir, "target": target_dir, "tool_root": root,
-                  "out": artefact_dir, "artefact_dir": artefact_dir}
+                  "out": artefact_dir, "artefact_dir": artefact_dir, **extra}
         return [_subst(a, tokens) for a in run["command"]]
     cmd = ["docker", "run", "--rm"]
     if run.get("network", "none"):
@@ -388,13 +422,24 @@ def command_for(spec, target_dir, artefact_dir, tool_root=None):
     cmd += ["-v", f"{target_dir}:{mount}:ro"]
     if out_mount:
         cmd += ["-v", f"{artefact_dir}:{out_mount}"]
+    # A file or directory this MEASUREMENT needs inside the container that is not the corpus and
+    # not the tool: semgrep's ruleset is the case that forced it. Without this the declaration
+    # named `--config /rules/solana-security-standard.yaml` and nothing put a ruleset there, so
+    # running it from the declaration alone would have scanned every case with a config the
+    # container does not have. `from` is relative to this repository so the declaration stays
+    # portable between the laptop and the VPS.
+    for m in run.get("mounts") or []:
+        src = m["from"]
+        if not os.path.isabs(src):
+            src = os.path.normpath(os.path.join(ROOT, src))
+        cmd += ["-v", f"{src}:{m['to']}" + (":ro" if m.get("ro", True) else "")]
     for key, val in sorted((run.get("env") or {}).items()):
         cmd += ["-e", f"{key}={val}"]
     if run.get("entrypoint"):
         cmd += ["--entrypoint", run["entrypoint"]]
     cmd += [run["image"]]
     tokens = {"mount": mount, "out": out_mount or "", "target": mount, "tool_root": root,
-              "artefact_dir": out_mount or ""}
+              "artefact_dir": out_mount or "", **extra}
     return cmd + [_subst(a, tokens) for a in run["command"]]
 
 
@@ -468,7 +513,8 @@ def _rewrite(path, mount, staged_prefix, path_prefix):
     return f"{path_prefix.rstrip('/')}/{rel}"
 
 
-def run_leaf(spec, leaf, source_dir, path_prefix, artefact_root, tag="", tool_root=None):
+def run_leaf(spec, leaf, source_dir, path_prefix, artefact_root, tag="", tool_root=None,
+             args=None):
     """One invocation. Returns (log_entry, findings). Writes the artefact before it returns.
 
     The artefact is written whatever happens, including on a crash and on a timeout, because the
@@ -479,7 +525,7 @@ def run_leaf(spec, leaf, source_dir, path_prefix, artefact_root, tag="", tool_ro
     work_root = os.path.join(artefact_root, "_staged")
     os.makedirs(work_root, exist_ok=True)
     target, staged_prefix = _stage(spec, source_dir, work_root, leaf)
-    cmd = command_for(spec, target, artefact_dir, tool_root)
+    cmd = command_for(spec, target, artefact_dir, tool_root, args)
 
     started = time.time()
     try:
@@ -609,7 +655,7 @@ def _key(f):
 
 
 def run_measurement(spec, leaves, out_path, artefact_root, repeat=1, echo=True,
-                    tool_root=None):
+                    tool_root=None, args=None):
     """Every leaf, `repeat` times. Writes the findings file, the run log and the determinism note.
 
     Nothing here averages, merges or drops a pass. Pass 1 is the measurement; passes after it exist
@@ -623,7 +669,7 @@ def run_measurement(spec, leaves, out_path, artefact_root, repeat=1, echo=True,
         log, findings, per_leaf = [], [], {}
         for leaf, source, prefix in leaves:
             entry, got = run_leaf(spec, leaf, source, prefix, artefact_root, tag,
-                                  tool_root)
+                                  tool_root, args)
             log.append(entry)
             findings.extend(got)
             per_leaf[leaf] = {_key(f) for f in got}
@@ -848,6 +894,42 @@ def demo():
     assert status == "unknown", status
     assert why == "prints no file count", why
 
+    # 3b. A declared token is substituted; an undeclared one is refused rather than ignored.
+    # sol-audit's broad and all rows differ from strict by this token alone. Before it existed the
+    # declaration could only produce one of the three and the other two came from a script outside
+    # the framework, which is the situation the framework exists to end.
+    profiled = json.loads(json.dumps(_FIXTURE_SPEC))
+    profiled["run"]["command"] = ["python", "{mount}", "--profile", "{profile}"]
+    profiled["run"]["arg_defaults"] = {"profile": "strict"}
+    spec_p = load(profiled)
+    assert command_for(spec_p, "/t", "/o")[-1] == "strict", "the declared default was not used"
+    assert command_for(spec_p, "/t", "/o", args={"profile": "all"})[-1] == "all"
+    try:
+        command_for(spec_p, "/t", "/o", args={"proflie": "all"})
+        raise AssertionError("a token the declaration does not declare was accepted, which would "
+                             "have run the default and filed it under the other name")
+    except ValueError as exc:
+        assert "does not declare" in str(exc), exc
+
+    # 3c. A mount whose source is missing is refused at load time. Docker creates an empty
+    # directory for it instead of failing, so semgrep would have scanned every case with no
+    # ruleset and every case would have come back clean.
+    mounted = json.loads(json.dumps(_FIXTURE_SPEC))
+    mounted["run"] = {"engine": "docker", "image": "x:1", "mount": "/src",
+                      "mounts": [{"from": "adapters/radar.json", "to": "/rules/r.json"}],
+                      "command": ["scan", "{mount}"], "timeout_seconds": 60,
+                      "invocation_evidence": "tools/scanner_spec.py demo"}
+    argv = command_for(load(mounted), "/t", "/o")
+    assert any(a.endswith("adapters" + os.sep + "radar.json:/rules/r.json:ro")
+               or a.endswith("adapters/radar.json:/rules/r.json:ro") for a in argv), argv
+    mounted["run"]["mounts"] = [{"from": "adapters/does-not-exist.json", "to": "/rules/r.json"}]
+    try:
+        load(mounted)
+        raise AssertionError("a mount naming a path that is not here was accepted; docker would "
+                             "have created an empty directory and the run would look like a zero")
+    except ValueError as exc:
+        assert "not in this repository" in str(exc), exc
+
     # 4. Path rewriting is a prefix operation and nothing else.
     assert _rewrite("/src/src/lib.rs", "/src", "", "corpus2/x/insecure") == \
         "corpus2/x/insecure/src/lib.rs"
@@ -916,7 +998,19 @@ def main():
     ap.add_argument("--repeat", type=int, default=1)
     ap.add_argument("--tool-root", default=None,
                     help="where the tool itself lives, for a declaration that runs a local checkout")
+    ap.add_argument("--arg", action="append", default=[], metavar="NAME=VALUE",
+                    help="substitute {NAME} in run.command. Only a token the declaration lists in "
+                         "run.arg_defaults is accepted, so a typo cannot leave the default in "
+                         "place while the output is filed under another name. sol-audit's three "
+                         "published profiles differ by exactly this one token.")
     args = ap.parse_args()
+    overrides = {}
+    for pair in args.arg:
+        if "=" not in pair:
+            print(f"--arg expects NAME=VALUE, got {pair!r}", file=sys.stderr)
+            return 2
+        key, val = pair.split("=", 1)
+        overrides[key] = val
 
     if args.demo:
         demo()
@@ -955,7 +1049,7 @@ def main():
         print(f"{spec['name']} {spec.get('version', '')} over {len(leaves)} invocations "
               f"({args.corpus}), {args.repeat} pass(es)")
         log, findings, det = run_measurement(spec, leaves, args.out, artefacts, args.repeat,
-                                            tool_root=args.tool_root)
+                                            tool_root=args.tool_root, args=overrides)
         counts = {}
         for e in log:
             counts[e["status"]] = counts.get(e["status"], 0) + 1

@@ -12,12 +12,13 @@
  "run": {
   "engine": "local",
   "tool_root": "../sol-audit-v2",
-  "command": ["python", "{tool_root}/cli.py", "{mount}", "--profile", "strict",
+  "command": ["python", "{tool_root}/cli.py", "{mount}", "--profile", "{profile}",
               "--format", "json", "--out", "{out}/findings.json", "--log", "{out}/files.log",
               "--fail-on", "none", "--quiet"],
   "timeout_seconds": 600,
   "invocation_evidence": "copied from the COMMAND: line of raw/sol-audit-v3-2026-09-01/c1/0-signer-authorization.insecure.strict.log, one of the 207 runs behind the published rows",
   "profiles": ["strict", "broad", "all"],
+  "arg_defaults": {"profile": "strict"},
   "profile_note": "The tool has three profiles and all three were run and all three published. Nothing was chosen after seeing output. This declaration carries the strict invocation; --profile is the single token that differs between the three rows below."
  },
  "layout": "variant-dir",
