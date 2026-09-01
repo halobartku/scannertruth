@@ -8,6 +8,29 @@ Ordered by how much damage each one does.
 
 ---
 
+## Contents
+
+Two parts. Part 1 is the live list, numbered and ordered by damage, with the code-level gaps and
+the fix order under it. Part 2 is what was added afterwards, under the date it was found, numbered
+on from the first list; nothing there is superseded by being dated, and nothing is ever removed from
+either part.
+
+- [Honest limits: the front page's short list](#honest-limits-the-front-pages-short-list)
+- Part 1. Live limitations, ordered by damage
+  - 1 to 8, the numbered limitations
+  - Code-level gaps, concretely
+  - What we would fix first
+- Part 2. Added later, by date
+  - Added 2026-08-31, evening: 19 to 23
+  - Added 2026-08-31, late: 24 to 27
+  - Added 2026-08-31, deepest pass: 28 to 32
+  - Added 2026-09-01, on building eight new cases: 33 to 39
+  - Added 2026-09-01, on building the seventeenth case and re-running vaultlint: 40 to 42
+  - Added 2026-09-01, on running the four scanners that had never seen a real crate: 43 to 46
+  - Added 2026-09-01, evening, found by the vendor: 47
+
+---
+
 ## Honest limits: the front page's short list
 
 Moved here verbatim from `README.md` on 2026-09-02. "The rows above" are the result table, which
@@ -48,6 +71,8 @@ limitations that follow are the long form.
   criterion is deliberately outside our control.
 
 ---
+
+## Part 1. Live limitations, ordered by damage
 
 ## 1. Two different metrics were reported side by side as if comparable. **Our error.**
 
@@ -204,6 +229,13 @@ suggests: *no scanner produced any signal that distinguished the vulnerable vers
 one, under a packaging we chose, at file granularity.* That is still a real and uncomfortable
 result. It is not the same sentence as "no scanner detects real vulnerabilities", and we should not
 let it be read as one.
+
+## Part 2. Added later, by date
+
+Each section below is dated because that is when it was found, not because it has expired. The
+numbering continues from Part 1.
+
+---
 
 ## Added 2026-08-31, evening. Found by checking our own output rather than by being told.
 
