@@ -12,6 +12,14 @@
 
 
 
+> **THE CORPUS GREW AFTER THIS MEASUREMENT, 2026-09-01.** Eight cases were added to corpus 2 later
+> the same day, taking it to **17 valid cases and 16 built**. **Nothing on this page has been
+> re-measured against them.** Every "real vulnerabilities" column below is out of the **eight cases
+> measured on 2026-09-01**, and the eight new ones are not counted as zeros: `run_all.py` reports
+> them as `not-run` or `unknown` and every corpus-2 row it produces now reads `partial` rather than
+> `measured` until the tools are run again. The new cases are listed in `corpus2/manifest.json`
+> with `"measured": false`, and in [`../CLASS-BALANCE.md`](../CLASS-BALANCE.md).
+
 Six scanners and two calibration controls, measured with one protocol on the same day.
 
 ## The table

@@ -12,6 +12,12 @@
 
 
 
+> **THE CORPUS GREW AFTER THIS MEASUREMENT, 2026-09-01.** The table of cases below is the corpus as
+> it stood on 2026-08-31. Eight more were added on 2026-09-01 and **none of them has been measured
+> by anything**, so this page's denominator of eight is still the right one for the numbers on it.
+> The current corpus is `corpus2/manifest.json`, and its class and repository balance is recomputed
+> in [`../CLASS-BALANCE.md`](../CLASS-BALANCE.md).
+
 2026-08-31. Production Solana programs, each taken from the maintainers' own fix commit and its
 parent, scored with a stricter method than the teaching corpus.
 

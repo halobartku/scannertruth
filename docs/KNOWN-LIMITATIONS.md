@@ -251,3 +251,47 @@ current headline from raw data, and that remains open.
 its 11/11 nominal / 0/11 real appear in two results pages with nothing stored to re-derive them
 from. The control is deterministic and cheap to re-run, so this is weaker than 28, but it is the
 same species: a published number with no artefact behind it.
+
+## Added 2026-09-01, on building eight new cases
+
+**33. Eight of the seventeen valid cases have never been analysed by anything.** They were built on
+2026-09-01 and no scanner has been run over them. They carry `"measured": false` in the manifest,
+`run_all.py` reports them as `not-run` or `unknown`, and every corpus-2 row it produces now reads
+`partial`. **Nothing here is a zero on them.** The corpus grew; the measurement did not, and until
+it does, "17 cases" is a statement about ground truth and "0 / 8" is a statement about scanners,
+and the two must not be printed as one fraction.
+
+**34. Nothing in the new pairs was compiled, because there is no Rust toolchain on the machine that
+built them.** The pairs are exact file contents at the fix commit and its parent, extracted by
+`git show`, so their *fidelity* is not in question. What is unverified is whether either variant
+builds in the minimal crate `build_corpus2.py` writes around it: every pinned file has imports and
+callees that the extracted crate does not contain. This is limitation 4 in a sharper form. It
+matters most for `token-2022-confidential-approve-mint`, whose real crate pulls the zk proof crates,
+and for `solido-deposit-reserve-account`, whose parent commit deliberately contains a failing test.
+**No claim is made here that any new case compiles.**
+
+**35. `solido-anker-arbitrary-cpi` pins the check but not the sink.** The missing validation is in
+`anker/src/state.rs`; the `invoke_signed` it protects is in `anker/src/processor.rs`, which is
+excluded because its role in the fix commit is to thread an argument through. A scanner that needs
+to see the source and the sink in one file cannot see this bug in this pair, and should be scored
+`no-rule` or `missed` on it with that in mind rather than credited with a general blindness.
+
+**36. Two of the new cases have a severity their own auditor disputes.** `squads-recursive-execute`
+is graded **Info** by Neodyme, with "no impact, except for inconsistency" written in the report's
+own table. It is built with a `severity_note` carrying that quote, and it is flagged for a human
+decision, because the sibling candidate `squads-attach-ix-program-id` was held back partly for the
+same reason and consistency has to run one way or the other. **A corpus of "real vulnerabilities"
+containing a case its auditor says has no impact is a claim this project should either defend or
+withdraw, not leave ambiguous.**
+
+**37. `anchor-account-reload-owner` rests on a pull request title.** No advisory, no audit finding.
+Acceptance criterion 4 exists so the label is not our opinion, and here it is thinner than anywhere
+else in the corpus. It carries a `source_strength_note` saying so. Note also that a comparable
+unsourced owner check, SPL `23c487dd`, was rejected on exactly that ground; the difference is that
+this one is in a class nothing else covers and that one is in the corpus's heaviest class, which is
+a defensible distinction but a distinction a reviewer is entitled to challenge.
+
+**38. `raw/c2-control-noisy.json` is stale with respect to the enlarged corpus.** The published
+count was recomputed and the control was re-scored case by case, so the number and the zero are
+both current, but the artefact in `raw/` was left as it was because another agent was writing to
+that directory at the time. `python tools/control_c2.py` regenerates it.
