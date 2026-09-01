@@ -1,0 +1,27 @@
+→ analyzing 1 Rust file …
+
+⚠ MED  overflow-checks is not enabled
+        /work/Cargo.toml:1
+        This workspace does not set `overflow-checks = true` under `[profile.release]`. Solana programs are built in release mode, so arithmetic that overflows wraps silently instead of aborting the transaction.
+        Add `[profile.release]` with `overflow-checks = true` to the workspace manifest. Overflow then aborts the transaction instead of writing a wrapped value.
+        https://vaultlint.com/rules/VL003/
+
+⚠ LOW  unchecked arithmetic
+        /work/src/processor.rs:345
+        Unchecked addition writes into a struct field, and this workspace does not enable `overflow-checks`, so an overflow wraps silently instead of aborting the transaction.
+        Enable `overflow-checks` for the release profile, or use `checked_add` / `checked_sub` / `checked_mul` and handle the `None` case.
+        https://vaultlint.com/rules/VL003/
+
+⚠ LOW  unchecked arithmetic
+        /work/src/processor.rs:485
+        Unchecked addition writes into a struct field, and this workspace does not enable `overflow-checks`, so an overflow wraps silently instead of aborting the transaction.
+        Enable `overflow-checks` for the release profile, or use `checked_add` / `checked_sub` / `checked_mul` and handle the `None` case.
+        https://vaultlint.com/rules/VL003/
+
+⚠ LOW  unchecked arithmetic
+        /work/src/processor.rs:489
+        Unchecked addition writes into a struct field, and this workspace does not enable `overflow-checks`, so an overflow wraps silently instead of aborting the transaction.
+        Enable `overflow-checks` for the release profile, or use `checked_add` / `checked_sub` / `checked_mul` and handle the `None` case.
+        https://vaultlint.com/rules/VL003/
+
+4 issues found · 0 high · 1 medium · 3 low

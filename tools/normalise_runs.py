@@ -23,7 +23,15 @@ here.
 afterwards. The rewrite is a pure string operation on the location prefix; no line, column,
 rule name or severity is touched.
 
+**vaultlint** is the second tool named in that audit finding, and it is normalised here too as of
+2026-09-01. Its JSON envelope carries `findings` and `skipped` and no count of what it looked at,
+so coverage is read from its own human-format line, `analyzing N Rust file`, captured in a second
+pass. That is the same discipline error 32 forced on radar: the tool's own account of what it did,
+never the presence of an artefact. Its paths are container paths, `/work/src/x.rs`, and the case
+and variant are known from the artefact filename rather than guessed from the path.
+
     python tools/normalise_runs.py --kind radar --runs <dir> --out raw/c2-radar-current.json
+    python tools/normalise_runs.py --kind vaultlint --runs <dir> --out raw/c2-vaultlint-complete.json
     python tools/normalise_runs.py --demo
 """
 import argparse
@@ -90,6 +98,81 @@ def collect_radar(runs_dir, corpus="corpus2"):
     return out
 
 
+def classify_vaultlint(stdout_text):
+    """(status, files_analysed, reason). vaultlint's own account of whether the run happened.
+
+    It prints `analyzing N Rust file` (or `files`) before it prints anything else, and
+    `no issues found` when it found nothing. A run that reports analysing zero files is not a
+    zero: it is a run that saw nothing, which is the distinction error 20 and error 21 are both
+    about, and the reason this is read from the tool's sentence rather than from a file listing.
+    """
+    s = ANSI.sub("", stdout_text)
+    m = re.search(r"analyzing (\d+) Rust file", s)
+    analysed = int(m.group(1)) if m else 0
+    if analysed > 0:
+        return "ok", analysed, ""
+    return "unavailable", 0, (
+        "no 'analyzing N Rust file' line: vaultlint did not report analysing anything")
+
+
+def rewrite_work(path, case, variant, corpus="corpus2"):
+    """/work/src/x.rs -> corpus2/<case>/<variant>/src/x.rs
+
+    The container mount point carries no case name, so unlike radar's wrapper the case and the
+    variant cannot be recovered from the path. They come from the artefact's filename, which is
+    what the runner wrote them as. A finding whose path does not sit under the mount point is
+    returned untouched rather than forced, so a surprise shows up as a surprise.
+    """
+    p = str(path).replace("\\", "/")
+    prefix = "/work/"
+    if not p.startswith(prefix):
+        return p
+    return "%s/%s/%s/%s" % (corpus, case, variant, p[len(prefix):])
+
+
+def collect_vaultlint(runs_dir, corpus="corpus2"):
+    """Returns {"<case>/<variant>": (log entry, [findings in vaultlint's own envelope])}."""
+    out = {}
+    leaves = sorted(fn[:-len(".stdout.log")] for fn in os.listdir(runs_dir)
+                    if fn.endswith(".stdout.log"))
+    for leaf in leaves:
+        stdout_path = os.path.join(runs_dir, leaf + ".stdout.log")
+        json_path = os.path.join(runs_dir, leaf + ".json")
+        with open(stdout_path, encoding="utf-8", errors="replace") as fh:
+            status, analysed, reason = classify_vaultlint(fh.read())
+        case, _, variant = leaf.rpartition(".")
+        entry = {"leaf": f"{case}/{variant}", "status": status, "files_scanned": analysed,
+                 "artefact": json_path.replace("\\", "/"),
+                 "stdout": stdout_path.replace("\\", "/")}
+        if status != "ok":
+            entry["reason"] = reason
+            out[entry["leaf"]] = (entry, [])
+            continue
+        items_out = []
+        if os.path.exists(json_path) and os.path.getsize(json_path):
+            with open(json_path, encoding="utf-8") as fh:
+                blob = json.load(fh)
+            for item in (blob.get("findings") if isinstance(blob, dict) else blob) or []:
+                items_out.append({**item,
+                                  "file": rewrite_work(item.get("file", ""), case, variant, corpus)})
+        entry["findings"] = len(items_out)
+        out[entry["leaf"]] = (entry, items_out)
+    return out
+
+
+COLLECTORS = {"radar": collect_radar, "vaultlint": collect_vaultlint}
+# radar's own envelope is a bare list; vaultlint's is {"findings": [...]}. The findings file has to
+# stay in the shape the tool emits, because run_all.py reads each row with the extractor named for
+# that shape and a silently reshaped file is the defect this module exists to remove.
+ENVELOPE = {"radar": lambda items: items, "vaultlint": lambda items: {"findings": items}}
+
+
+def count_findings(kind, findings):
+    if kind == "radar":
+        return sum(len(f["locations"]) for f in findings)
+    return len(findings["findings"])
+
+
 def demo():
     import tempfile
     ok = ("[i] Ran 57 templates\n[i] Scanned 1 file (interface_account.rs)\n"
@@ -122,12 +205,45 @@ def demo():
         assert runs["case-a/insecure"][0]["findings"] == 0, runs
         assert runs["case-c/insecure"][0]["status"] == "unavailable", runs
         assert runs["case-b/secure"][1][0]["locations"] ==             ["corpus2/case-b/secure/src/lib.rs:9:1-2"], runs
+
+    # vaultlint, same two hazards: a clean zero must not become unavailable, and a run that
+    # analysed nothing must not become a zero.
+    vl_ok = "→ analyzing 2 Rust files …\n\n✓ no issues found\n"
+    vl_none = "→ analyzing 0 Rust files …\n"
+    assert classify_vaultlint(vl_ok) == ("ok", 2, ""), classify_vaultlint(vl_ok)
+    assert classify_vaultlint(vl_none)[0] == "unavailable", classify_vaultlint(vl_none)
+    assert classify_vaultlint("")[0] == "unavailable"
+    assert rewrite_work("/work/src/processor.rs", "solend-owner-checks", "insecure") == \
+        "corpus2/solend-owner-checks/insecure/src/processor.rs"
+    assert rewrite_work("/elsewhere/x.rs", "c", "insecure") == "/elsewhere/x.rs"
+
+    with tempfile.TemporaryDirectory() as d:
+        # found nothing, but said so: ok with zero findings, never unavailable
+        with open(os.path.join(d, "case-a.insecure.stdout.log"), "w", encoding="utf-8") as fh:
+            fh.write(vl_ok)
+        with open(os.path.join(d, "case-a.insecure.json"), "w") as fh:
+            json.dump({"findings": [], "skipped": []}, fh)
+        with open(os.path.join(d, "case-b.secure.stdout.log"), "w", encoding="utf-8") as fh:
+            fh.write("→ analyzing 1 Rust file …\n")
+        with open(os.path.join(d, "case-b.secure.json"), "w") as fh:
+            json.dump({"findings": [{"rule_id": "VL004", "file": "/work/src/lib.rs", "line": 9}]}, fh)
+        # said nothing about analysing anything: unavailable, not a zero
+        with open(os.path.join(d, "case-c.insecure.stdout.log"), "w", encoding="utf-8") as fh:
+            fh.write("boom\n")
+        runs = collect_vaultlint(d)
+        assert runs["case-a/insecure"][0]["status"] == "ok", runs
+        assert runs["case-a/insecure"][0]["findings"] == 0, runs
+        assert runs["case-a/insecure"][0]["files_scanned"] == 2, runs
+        assert runs["case-c/insecure"][0]["status"] == "unavailable", runs
+        assert runs["case-b/secure"][1][0]["file"] == "corpus2/case-b/secure/src/lib.rs", runs
+        assert count_findings("vaultlint", ENVELOPE["vaultlint"](
+            [f for k in sorted(runs) for f in runs[k][1]])) == 1
     print("normalise_runs: OK")
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--kind", default="radar", choices=["radar"])
+    ap.add_argument("--kind", default="radar", choices=sorted(COLLECTORS))
     ap.add_argument("--runs")
     ap.add_argument("--out")
     ap.add_argument("--corpus", default="corpus2")
@@ -139,14 +255,15 @@ def main():
         demo()
         return 0
 
-    runs = collect_radar(args.runs, args.corpus)
+    collect = COLLECTORS[args.kind]
+    runs = collect(args.runs, args.corpus)
     # A later run directory REPLACES a leaf outright rather than adding to it. Two runs of one
     # leaf are two observations of the same thing, and merging them would invent a run that never
     # happened. Both directories stay on disk either way.
     for extra in args.extra_runs:
-        runs.update(collect_radar(extra, args.corpus))
+        runs.update(collect(extra, args.corpus))
     log = [runs[k][0] for k in sorted(runs)]
-    findings = [f for k in sorted(runs) for f in runs[k][1]]
+    findings = ENVELOPE[args.kind]([f for k in sorted(runs) for f in runs[k][1]])
     with open(args.out, "w", encoding="utf-8", newline="\n") as fh:
         json.dump(findings, fh, indent=1)
         fh.write("\n")
@@ -155,7 +272,7 @@ def main():
         fh.write("\n")
     ok = sum(1 for e in log if e["status"] == "ok")
     print(f"{len(log)} runs, {ok} ok, {len(log) - ok} unavailable, "
-          f"{sum(len(f['locations']) for f in findings)} findings")
+          f"{count_findings(args.kind, findings)} findings")
     print(f"written: {args.out} and {args.out}.log")
     return 0
 

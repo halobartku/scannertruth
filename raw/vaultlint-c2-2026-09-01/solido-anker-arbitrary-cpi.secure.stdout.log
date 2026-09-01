@@ -1,0 +1,9 @@
+→ analyzing 1 Rust file …
+
+⚠ MED  non-canonical PDA bump
+        /work/src/state.rs:128
+        `bump_seed` is the bump seed given to `create_program_address` and is not read from account data, so nothing proves it is the canonical bump. The call accepts any bump, and a non-canonical one addresses a different account.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+1 issue found · 0 high · 1 medium

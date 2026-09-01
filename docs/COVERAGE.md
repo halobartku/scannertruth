@@ -32,7 +32,7 @@ weak kinds are named rather than rounded up.
 | corpus 2 | `sol-audit-v3-all` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-sol-audit-v3-all.json.log) |
 | corpus 2 | `sol-audit-v3-broad` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-sol-audit-v3-broad.json.log) |
 | corpus 2 | `solsec` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-solsec-percase.json.log) |
-| corpus 2 | `vaultlint` | **run log** | 18 invocations, 18 ok, 0 unavailable (raw/c2-vaultlint-complete.json.log) |
+| corpus 2 | `vaultlint` | **run log** | 36 invocations, 36 ok, 0 unavailable (raw/c2-vaultlint-complete.json.log) |
 
 ## What is still missing, said plainly
 

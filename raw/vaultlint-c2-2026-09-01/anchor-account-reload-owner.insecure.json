@@ -1,0 +1,17 @@
+{
+  "findings": [
+    {
+      "column": 24,
+      "docs_url": "https://vaultlint.com/rules/VL002/",
+      "file": "/work/src/account.rs",
+      "help": "Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.",
+      "line": 271,
+      "message": "Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.",
+      "rule_id": "VL002",
+      "severity": "high",
+      "snippet": "self.account = T::try_deserialize(&mut data)?;",
+      "title": "missing owner check"
+    }
+  ],
+  "skipped": []
+}

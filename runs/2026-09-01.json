@@ -1053,40 +1053,43 @@
   {
    "scanner": "radar",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-radar-current.json",
    "mapping": "radar",
    "coverage_evidence": "run log",
    "scoreable_denominator": 9,
    "missed": 7,
-   "not-built": 1,
+   "not-run": 1,
    "unlocated": 2,
-   "no-rule": 7
+   "no-rule": 7,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "semgrep-solana-standard-c2",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-semgrep-solana-standard.json",
    "mapping": "semgrep-solana-standard-c2",
    "coverage_evidence": "run log",
    "scoreable_denominator": 8,
    "missed": 5,
-   "not-built": 1,
+   "not-run": 1,
    "no-rule": 8,
-   "unlocated": 3
+   "unlocated": 3,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "semgrep-solana-standard-c2-wide",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-semgrep-solana-standard.json",
    "mapping": "semgrep-solana-standard-c2-wide",
    "coverage_evidence": "run log",
    "scoreable_denominator": 16,
    "missed": 13,
-   "not-built": 1,
-   "unlocated": 3
+   "not-run": 1,
+   "unlocated": 3,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "sol-audit",
@@ -1097,82 +1100,80 @@
    "coverage_evidence": "none",
    "scoreable_denominator": 7,
    "missed": 6,
-   "not-built": 1,
+   "unknown": 9,
    "unlocated": 1,
    "no-rule": 1,
-   "unknown": 8,
-   "reason": "8 of 17 cases unresolved: 8 with no run log for c2-sol-audit.json, so 'found nothing' and 'never analysed' cannot be told apart"
+   "reason": "9 of 17 cases unresolved: 9 with no run log for c2-sol-audit.json, so 'found nothing' and 'never analysed' cannot be told apart"
   },
   {
    "scanner": "sol-audit-v3",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-sol-audit-v3-strict.json",
    "mapping": "sol-audit",
    "coverage_evidence": "run log",
    "scoreable_denominator": 9,
    "missed": 8,
-   "not-built": 1,
+   "not-run": 1,
    "unlocated": 1,
-   "no-rule": 7
+   "no-rule": 7,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "sol-audit-v3-all",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-sol-audit-v3-all.json",
    "mapping": "sol-audit",
    "coverage_evidence": "run log",
    "scoreable_denominator": 9,
    "missed": 8,
-   "not-built": 1,
+   "not-run": 1,
    "unlocated": 1,
-   "no-rule": 7
+   "no-rule": 7,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "sol-audit-v3-broad",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-sol-audit-v3-broad.json",
    "mapping": "sol-audit",
    "coverage_evidence": "run log",
    "scoreable_denominator": 9,
    "missed": 8,
-   "not-built": 1,
+   "not-run": 1,
    "unlocated": 1,
-   "no-rule": 7
+   "no-rule": 7,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "solsec",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "source": "c2-solsec-percase.json",
    "mapping": "solsec",
    "coverage_evidence": "run log",
    "scoreable_denominator": 2,
    "no-rule": 14,
-   "not-built": 1,
+   "not-run": 1,
    "unlocated": 1,
-   "missed": 1
+   "missed": 1,
+   "reason": "1 of 17 cases unresolved: 1 the run log says were never run"
   },
   {
    "scanner": "vaultlint",
    "corpus": "corpus2",
-   "status": "partial",
+   "status": "measured",
    "source": "c2-vaultlint-complete.json",
    "mapping": "vaultlint",
    "coverage_evidence": "run log",
-   "scoreable_denominator": 1,
-   "no-rule": 7,
-   "missed": 1,
-   "not-built": 1,
-   "not-run": 8,
-   "reason": "8 of 17 cases unresolved: 8 the run log says were never run"
+   "scoreable_denominator": 2,
+   "no-rule": 15,
+   "missed": 2
   }
  ],
  "changes_since_previous": [
-  "sol-audit-v3: new to the benchmark",
-  "sol-audit-v3-all: new to the benchmark",
-  "sol-audit-v3-broad: new to the benchmark"
+  "no change since the previous run"
  ]
 }

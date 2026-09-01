@@ -1,0 +1,17 @@
+{
+  "findings": [
+    {
+      "column": 23,
+      "docs_url": "https://vaultlint.com/rules/VL004/",
+      "file": "/work/src/state.rs",
+      "help": "Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.",
+      "line": 128,
+      "message": "`bump_seed` is the bump seed given to `create_program_address` and is not read from account data, so nothing proves it is the canonical bump. The call accepts any bump, and a non-canonical one addresses a different account.",
+      "rule_id": "VL004",
+      "severity": "medium",
+      "snippet": "let address = Pubkey::create_program_address(",
+      "title": "non-canonical PDA bump"
+    }
+  ],
+  "skipped": []
+}

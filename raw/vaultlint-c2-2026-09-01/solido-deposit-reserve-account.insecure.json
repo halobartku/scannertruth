@@ -1,0 +1,53 @@
+{
+  "findings": [
+    {
+      "column": 1,
+      "docs_url": "https://vaultlint.com/rules/VL003/",
+      "file": "/work/Cargo.toml",
+      "help": "Add `[profile.release]` with `overflow-checks = true` to the workspace manifest. Overflow then aborts the transaction instead of writing a wrapped value.",
+      "line": 1,
+      "message": "This workspace does not set `overflow-checks = true` under `[profile.release]`. Solana programs are built in release mode, so arithmetic that overflows wraps silently instead of aborting the transaction.",
+      "rule_id": "VL003",
+      "severity": "medium",
+      "snippet": "[package]",
+      "title": "overflow-checks is not enabled"
+    },
+    {
+      "column": 9,
+      "docs_url": "https://vaultlint.com/rules/VL003/",
+      "file": "/work/src/processor.rs",
+      "help": "Enable `overflow-checks` for the release profile, or use `checked_add` / `checked_sub` / `checked_mul` and handle the `None` case.",
+      "line": 345,
+      "message": "Unchecked addition writes into a struct field, and this workspace does not enable `overflow-checks`, so an overflow wraps silently instead of aborting the transaction.",
+      "rule_id": "VL003",
+      "severity": "low",
+      "snippet": "validator.entry.stake_seeds.end += 1;",
+      "title": "unchecked arithmetic"
+    },
+    {
+      "column": 13,
+      "docs_url": "https://vaultlint.com/rules/VL003/",
+      "file": "/work/src/processor.rs",
+      "help": "Enable `overflow-checks` for the release profile, or use `checked_add` / `checked_sub` / `checked_mul` and handle the `None` case.",
+      "line": 485,
+      "message": "Unchecked addition writes into a struct field, and this workspace does not enable `overflow-checks`, so an overflow wraps silently instead of aborting the transaction.",
+      "rule_id": "VL003",
+      "severity": "low",
+      "snippet": "validator.entry.stake_seeds.begin += 1;",
+      "title": "unchecked arithmetic"
+    },
+    {
+      "column": 5,
+      "docs_url": "https://vaultlint.com/rules/VL003/",
+      "file": "/work/src/processor.rs",
+      "help": "Enable `overflow-checks` for the release profile, or use `checked_add` / `checked_sub` / `checked_mul` and handle the `None` case.",
+      "line": 489,
+      "message": "Unchecked addition writes into a struct field, and this workspace does not enable `overflow-checks`, so an overflow wraps silently instead of aborting the transaction.",
+      "rule_id": "VL003",
+      "severity": "low",
+      "snippet": "validator.entry.unstake_seeds.end += 1;",
+      "title": "unchecked arithmetic"
+    }
+  ],
+  "skipped": []
+}

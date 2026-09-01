@@ -1,0 +1,290 @@
+[
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/anchor-account-reload-owner.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/anchor-account-reload-owner.insecure.stdout.log",
+  "findings": 1
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/anchor-account-reload-owner.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/anchor-account-reload-owner.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/anchor-interface-account.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/anchor-interface-account.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/anchor-interface-account.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/anchor-interface-account.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/anchor-program-system.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/anchor-program-system.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/anchor-program-system.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/anchor-program-system.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "cashio-account-data/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/cashio-account-data.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/cashio-account-data.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "cashio-account-data/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/cashio-account-data.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/cashio-account-data.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/metaplex-bubblegum-creator.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/metaplex-bubblegum-creator.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "files_scanned": 2,
+  "artefact": "raw/vaultlint-c2-2026-09-01/metaplex-bubblegum-creator.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/metaplex-bubblegum-creator.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/metaplex-candy-machine.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/metaplex-candy-machine.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/metaplex-candy-machine.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/metaplex-candy-machine.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/metaplex-token-metadata.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/metaplex-token-metadata.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/metaplex-token-metadata.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/metaplex-token-metadata.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/solend-owner-checks.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/solend-owner-checks.insecure.stdout.log",
+  "findings": 10
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/solend-owner-checks.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/solend-owner-checks.secure.stdout.log",
+  "findings": 10
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/solido-anker-arbitrary-cpi.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/solido-anker-arbitrary-cpi.insecure.stdout.log",
+  "findings": 1
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/solido-anker-arbitrary-cpi.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/solido-anker-arbitrary-cpi.secure.stdout.log",
+  "findings": 1
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/solido-deposit-reserve-account.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/solido-deposit-reserve-account.insecure.stdout.log",
+  "findings": 4
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/solido-deposit-reserve-account.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/solido-deposit-reserve-account.secure.stdout.log",
+  "findings": 4
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-fee-rounding.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-fee-rounding.insecure.stdout.log",
+  "findings": 1
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-fee-rounding.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-fee-rounding.secure.stdout.log",
+  "findings": 1
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-mint-decimals.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-mint-decimals.insecure.stdout.log",
+  "findings": 3
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-mint-decimals.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/spl-stake-pool-mint-decimals.secure.stdout.log",
+  "findings": 3
+ },
+ {
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "files_scanned": 2,
+  "artefact": "raw/vaultlint-c2-2026-09-01/spl-token-lending-rounding.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/spl-token-lending-rounding.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "files_scanned": 2,
+  "artefact": "raw/vaultlint-c2-2026-09-01/spl-token-lending-rounding.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/spl-token-lending-rounding.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/squads-account-matching.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/squads-account-matching.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/squads-account-matching.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/squads-account-matching.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/squads-recursive-execute.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/squads-recursive-execute.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/squads-recursive-execute.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/squads-recursive-execute.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/squads-signer-auth.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/squads-signer-auth.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/squads-signer-auth.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/squads-signer-auth.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/token-2022-confidential-approve-mint.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/token-2022-confidential-approve-mint.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/token-2022-confidential-approve-mint.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/token-2022-confidential-approve-mint.secure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/wormhole-sysvar.insecure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/wormhole-sysvar.insecure.stdout.log",
+  "findings": 0
+ },
+ {
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "files_scanned": 1,
+  "artefact": "raw/vaultlint-c2-2026-09-01/wormhole-sysvar.secure.json",
+  "stdout": "raw/vaultlint-c2-2026-09-01/wormhole-sysvar.secure.stdout.log",
+  "findings": 0
+ }
+]

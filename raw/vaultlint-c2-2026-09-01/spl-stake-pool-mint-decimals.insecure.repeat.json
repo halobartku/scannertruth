@@ -1,0 +1,41 @@
+{
+  "findings": [
+    {
+      "column": 9,
+      "docs_url": "https://vaultlint.com/rules/VL005/",
+      "file": "/work/src/processor.rs",
+      "help": "Use Anchor's typed CPI helpers, or verify the id first, e.g. `require_keys_eq!(program.key(), expected::ID)`.",
+      "line": 644,
+      "message": "`token_program.key` supplies the program id for this CPI, and nothing in the handler proves which program it is. An attacker who controls that account can point the invocation at their own program.",
+      "rule_id": "VL005",
+      "severity": "medium",
+      "snippet": "invoke(&ix, &[burn_account, mint, authority])",
+      "title": "unchecked CPI to unknown program"
+    },
+    {
+      "column": 9,
+      "docs_url": "https://vaultlint.com/rules/VL005/",
+      "file": "/work/src/processor.rs",
+      "help": "Use Anchor's typed CPI helpers, or verify the id first, e.g. `require_keys_eq!(program.key(), expected::ID)`.",
+      "line": 671,
+      "message": "`token_program.key` supplies the program id for this CPI, and nothing in the handler proves which program it is. An attacker who controls that account can point the invocation at their own program.",
+      "rule_id": "VL005",
+      "severity": "medium",
+      "snippet": "invoke_signed(&ix, &[mint, destination, authority], signers)",
+      "title": "unchecked CPI to unknown program"
+    },
+    {
+      "column": 9,
+      "docs_url": "https://vaultlint.com/rules/VL005/",
+      "file": "/work/src/processor.rs",
+      "help": "Use Anchor's typed CPI helpers, or verify the id first, e.g. `require_keys_eq!(program.key(), expected::ID)`.",
+      "line": 695,
+      "message": "`token_program.key` supplies the program id for this CPI, and nothing in the handler proves which program it is. An attacker who controls that account can point the invocation at their own program.",
+      "rule_id": "VL005",
+      "severity": "medium",
+      "snippet": "invoke(&ix, &[source, mint, destination, authority])",
+      "title": "unchecked CPI to unknown program"
+    }
+  ],
+  "skipped": []
+}

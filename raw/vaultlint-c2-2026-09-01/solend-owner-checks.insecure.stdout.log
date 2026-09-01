@@ -1,0 +1,63 @@
+→ analyzing 1 Rust file …
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:316
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:558
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:699
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:1205
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:1375
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:1691
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:1790
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  non-canonical PDA bump
+        /work/src/processor.rs:2026
+        `create_program_address` accepts any bump, including non-canonical ones, and this call's bump seed is not written out here, so nothing rules one out.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+⚠ MED  unchecked CPI to unknown program
+        /work/src/processor.rs:2227
+        `token_program.key` supplies the program id for this CPI, and nothing in the handler proves which program it is. An attacker who controls that account can point the invocation at their own program.
+        Use Anchor's typed CPI helpers, or verify the id first, e.g. `require_keys_eq!(program.key(), expected::ID)`.
+        https://vaultlint.com/rules/VL005/
+
+⚠ MED  unchecked CPI to unknown program
+        /work/src/processor.rs:2248
+        `token_program.key` supplies the program id for this CPI, and nothing in the handler proves which program it is. An attacker who controls that account can point the invocation at their own program.
+        Use Anchor's typed CPI helpers, or verify the id first, e.g. `require_keys_eq!(program.key(), expected::ID)`.
+        https://vaultlint.com/rules/VL005/
+
+10 issues found · 0 high · 10 medium

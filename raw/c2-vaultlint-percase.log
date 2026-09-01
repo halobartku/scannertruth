@@ -1,0 +1,43 @@
+# vaultlint corpus-2 re-run, 2026-09-01
+# image not rebuilt; reusing the image the 2026-08-31 run used
+# image_id  sha256:2d540010da0bb5f8f510225c59881e44e2d552e1d85febd26f378bb7ab1ffb9a
+# version   vaultlint 0.1.1
+# corpus    /root/vl-2026-09-01/corpus2
+anchor-account-reload-owner insecure ok rc=0 findings=1 analysed=1 repeat=same
+anchor-account-reload-owner secure ok rc=0 findings=0 analysed=1 repeat=same
+anchor-interface-account insecure ok rc=0 findings=0 analysed=1 repeat=same
+anchor-interface-account secure ok rc=0 findings=0 analysed=1 repeat=same
+anchor-program-system insecure ok rc=0 findings=0 analysed=1 repeat=same
+anchor-program-system secure ok rc=0 findings=0 analysed=1 repeat=same
+cashio-account-data insecure ok rc=0 findings=0 analysed=1 repeat=same
+cashio-account-data secure ok rc=0 findings=0 analysed=1 repeat=same
+metaplex-bubblegum-creator insecure ok rc=0 findings=0 analysed=1 repeat=same
+metaplex-bubblegum-creator secure ok rc=0 findings=0 analysed=2 repeat=same
+metaplex-candy-machine insecure ok rc=0 findings=0 analysed=1 repeat=same
+metaplex-candy-machine secure ok rc=0 findings=0 analysed=1 repeat=same
+metaplex-token-metadata insecure ok rc=0 findings=0 analysed=1 repeat=same
+metaplex-token-metadata secure ok rc=0 findings=0 analysed=1 repeat=same
+solend-owner-checks insecure ok rc=0 findings=10 analysed=1 repeat=same
+solend-owner-checks secure ok rc=0 findings=10 analysed=1 repeat=same
+solido-anker-arbitrary-cpi insecure ok rc=0 findings=1 analysed=1 repeat=same
+solido-anker-arbitrary-cpi secure ok rc=0 findings=1 analysed=1 repeat=same
+solido-deposit-reserve-account insecure ok rc=0 findings=4 analysed=1 repeat=same
+solido-deposit-reserve-account secure ok rc=0 findings=4 analysed=1 repeat=same
+spl-stake-pool-fee-rounding insecure ok rc=0 findings=1 analysed=1 repeat=same
+spl-stake-pool-fee-rounding secure ok rc=0 findings=1 analysed=1 repeat=same
+spl-stake-pool-mint-decimals insecure ok rc=0 findings=3 analysed=1 repeat=same
+spl-stake-pool-mint-decimals secure ok rc=0 findings=3 analysed=1 repeat=same
+spl-token-lending-rounding insecure ok rc=0 findings=0 analysed=2 repeat=same
+spl-token-lending-rounding secure ok rc=0 findings=0 analysed=2 repeat=same
+squads-account-matching insecure ok rc=0 findings=0 analysed=1 repeat=same
+squads-account-matching secure ok rc=0 findings=0 analysed=1 repeat=same
+squads-recursive-execute insecure ok rc=0 findings=0 analysed=1 repeat=same
+squads-recursive-execute secure ok rc=0 findings=0 analysed=1 repeat=same
+squads-signer-auth insecure ok rc=0 findings=0 analysed=1 repeat=same
+squads-signer-auth secure ok rc=0 findings=0 analysed=1 repeat=same
+token-2022-confidential-approve-mint insecure ok rc=0 findings=0 analysed=1 repeat=same
+token-2022-confidential-approve-mint secure ok rc=0 findings=0 analysed=1 repeat=same
+wormhole-sysvar insecure ok rc=0 findings=0 analysed=1 repeat=same
+wormhole-sysvar secure ok rc=0 findings=0 analysed=1 repeat=same
+# totals ok=36 unavailable=0
+C2_VL_DONE
