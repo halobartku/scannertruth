@@ -1210,6 +1210,73 @@ def test_the_readme_links_the_newest_engineering_log():
         f"README does not link the newest engineering log ({newest})")
 
 
+
+def _noisy_control_quantities():
+    """Every number the noisy control legitimately produces, computed, never typed.
+
+    Both figures are products of two things the repository already knows: how many non-empty
+    lines the control flags, and how many distinct mapped rule ids it flags them under. Deriving
+    them costs about ten milliseconds, so there is no excuse for a document to carry a stale one.
+    """
+    import json, os, sys
+    sys.path.insert(0, "tools")
+    import control_c1, control_c2
+
+    rules = len(control_c2.every_rule())
+    c1_lines = sum(len(v) for v in control_c1.inventory_from_artefact().values())
+
+    cases = [c for c in json.load(open("corpus2/manifest.json", encoding="utf-8"))["cases"]
+             if c.get("valid", True)]
+    c2_lines = 0
+    for c in cases:
+        for variant in ("insecure", "secure"):
+            d = os.path.join("corpus2", c["name"], variant, "src")
+            if not os.path.isdir(d):
+                continue
+            for fn in sorted(os.listdir(d)):
+                if fn.endswith(".rs"):
+                    with open(os.path.join(d, fn), encoding="utf-8", errors="replace") as fh:
+                        c2_lines += sum(1 for line in fh if line.strip())
+    return {"rules": rules, "c1_lines": c1_lines, "c2_lines": c2_lines,
+            "c1_findings": c1_lines * rules, "c2_findings": c2_lines * rules}
+
+
+def test_no_document_states_a_noisy_control_figure_the_tools_do_not_produce():
+    """Error 33 corrected the corpus-1 control from 931 findings to 81,928, and AGENTS.md kept the
+    retracted figure for eight hours after the front page was fixed, because the derived-count
+    check counts tests and nothing else while the control figures are typed by hand.
+
+    The first version of this check compared every number in a noisy-control sentence against a
+    set of legal quantities. It passed, and then a mutation putting 931 back as a findings count
+    SURVIVED it, because 931 is legal: it is the line count. A check that accepts the right number
+    under the wrong noun is not a check.
+
+    So the noun decides. `931 findings` is the retracted claim; `931 non-empty lines` is the fact
+    it was derived from. Each quantity is checked against what it is a count OF.
+    """
+    import io as _io, re
+    q = _noisy_control_quantities()
+    expected = {
+        "findings": {q["c1_findings"], q["c2_findings"]},
+        "lines": {q["c1_lines"], q["c2_lines"]},
+        "rules": {q["rules"]},
+    }
+    nouns = (r"(?P<n>\d[\d,]*)\s+(?:distinct\s+|mapped\s+|non-empty\s+)*"
+             r"(?P<k>findings|lines|rules|rule ids)")
+    wrong = []
+    for doc in _documented_command_files():
+        for line in _io.open(doc, encoding="utf-8").read().splitlines():
+            if "noisy" not in line.lower():
+                continue
+            for m in re.finditer(nouns, line):
+                n = int(m.group("n").replace(",", ""))
+                kind = "rules" if m.group("k").startswith("rule") else m.group("k")
+                if n >= 100 and n not in expected[kind]:
+                    wrong.append(f"{doc}: {m.group(0)!r}, expected one of "
+                                 f"{sorted(expected[kind])}")
+    assert not wrong, ("a noisy-control figure must be a quantity the tools produce, counted as "
+                       f"the thing it is named as: {wrong}")
+
 def test_the_advertised_check_count_matches_the_suite():
     """The README said 82 while the suite ran 88. Adding tests without updating the
     figure is the easiest way to make the front page lie, so the figure is derived.

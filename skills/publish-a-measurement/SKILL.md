@@ -18,7 +18,7 @@ not depend on remembering.
 python test_all.py
 ```
 
-122 checks, and some of them exist specifically to catch a dishonest publication rather than a broken
+123 checks, and some of them exist specifically to catch a dishonest publication rather than a broken
 calculation: golden tests that fail when a **published** figure changes under a refactor, a check
 that every script named in the documentation exists, a check that CI step names do not overclaim
 what they verify, and a check that the limitations file has not quietly shrunk.

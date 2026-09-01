@@ -95,7 +95,7 @@ maintainers' own fix commits, that no scanner author had seen as a test set.
 
 ## The controls are what make this readable
 
-`control-noisy` flags every non-empty line: **931 findings, 11/11 nominal recall, 0/11 real.** Any
+`control-noisy` flags every non-empty line: **81,928 findings, 11/11 nominal recall, 0/11 real.** Any
 metric built on counting findings ranks it first. This one ranks it last. So no score in the table
 above was bought with volume, and a zero in the right-hand column is a real zero.
 

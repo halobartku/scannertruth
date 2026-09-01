@@ -248,7 +248,8 @@ not the real crates. The workflow step was labelled "Published headline reproduc
 **Step renamed and the scope stated in the module docstring.** Nothing currently re-derives the
 current headline from raw data, and that remains open.
 
-**32. `control-noisy`'s corpus-1 numbers have no raw file in this repository.** The 931 findings and
+**32. `control-noisy`'s corpus-1 numbers have no raw file in this repository.** The 81,928 findings (931 flagged lines under 88 mapped rule ids; the
+figure was published as 931 until error 33) and
 its 11/11 nominal / 0/11 real appear in two results pages with nothing stored to re-derive them
 from. The control is deterministic and cheap to re-run, so this is weaker than 28, but it is the
 same species: a published number with no artefact behind it.

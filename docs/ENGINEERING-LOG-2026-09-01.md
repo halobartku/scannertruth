@@ -501,12 +501,24 @@ carries only tools with no result behind them, which is what it claims to contai
 
 ## What is still wrong
 
-- **The control figures are not derived.** Error 33 corrected `931` to `81,928`, and `AGENTS.md`
-  still carried the retracted `931` for eight hours after the front page was fixed, because the
-  derived-count check covers the number of tests and nothing else. The two control figures are
-  typed in at least four documents. A check that no document may state a findings count for
-  `control-noisy` other than what the tools produce is the fix, and it does not exist yet. Until it
-  does, this is a freshness defect waiting to happen for the fourth time.
+**Error 37. The retraction in error 33 was applied to the front page and to nothing else.**
+`AGENTS.md`, `docs/ROADMAP.md`, `docs/KNOWN-LIMITATIONS.md`, both results pages and the
+`measure-a-scanner` skill all still said the corpus-1 noisy control produces **931 findings**, the
+figure error 33 retracted that morning. Six live documents, one of them the instruction sheet an
+agent loads before measuring anything.
+
+The cause is structural, not clerical: the derived-count check counts tests and nothing else, so
+every other published quantity is typed by hand and drifts silently. A check now derives both
+control figures from what the tools actually produce, in about ten milliseconds, and **the noun
+decides**: `931 findings` is illegal, `931 non-empty lines` is the fact it was derived from.
+
+The first version of that check compared numbers against a set of legal quantities and passed. A
+mutation putting `931 findings` back **survived it**, because 931 is legal as a line count. A check
+that accepts the right number under the wrong noun is not a check, so it was rewritten to match the
+quantity against what it is a count of. The rewritten version failed on introduction and named five
+documents nobody had looked at. Both directions are mutation-verified: the retracted findings count
+is caught, the legitimate line count is not.
+
 - **`spl-token-lending-rounding` is still not built.** Every corpus-2 figure reads out of sixteen
   built valid cases, or out of eight for the two rows that have not been re-run.
 - **`sol-audit` v2 and `vaultlint` have not been re-run over the eight cases added today**, so

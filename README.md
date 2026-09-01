@@ -279,7 +279,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **122 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **123 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -288,7 +288,7 @@ what the bug was.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[36 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
+- **[37 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.
@@ -301,7 +301,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            122 checks, mutation-verified. Run this first
+test_all.py            123 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person

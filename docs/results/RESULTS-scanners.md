@@ -21,7 +21,7 @@ the whole reason to have one.
 
 They are not filler. They are what makes the rest of the table mean anything.
 
-`control-noisy` flags every non-empty line of every file. It produces **931 findings** and a
+`control-noisy` flags every non-empty line of every file. It produces **81,928 findings** and a
 **perfect nominal recall of 11/11** — and **zero real recall**. Any metric based on counting
 findings would rank it first. Ours ranks it last, which is the point.
 
