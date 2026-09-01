@@ -67,19 +67,27 @@ somebody other than us** (today the answer to "has anyone outside verified it" i
 ---
 
 ## Milestone 1 (25%). Close the foundation, starting with our own gaps.
-**Two weeks.**
+**Two weeks. Substantially delivered on 2026-09-01, before any money. Status below is
+machine-checked, not asserted: `python tools/run_all.py --verify-coverage` is a CI job.**
 
-- **`adapters/` as a framework rather than a pile of scripts.** Declare a name, a container command
-  and an output parser; the per-run log, unavailability classification and determinism check come
-  for free. **Adding a seventh tool should be a config file, not a day.**
-- **A run log for everything.** Radar and VaultLint have one; our own `sol-audit` does not. We
-  closed other people's tools more rigorously than our own, and that gets fixed first.
-- **All six tools across all three corpora.** X-Ray, solsec and semgrep have never been run against
-  the real crates. No empty cells afterwards, and anything that cannot run is listed with a reason.
-- **`report.py` and a published results page**, where every number links to the raw data behind it.
+- **DONE. `adapters/` as a framework rather than a pile of scripts.** A tool is now a JSON
+  declaration read by `tools/scanner_spec.py`; the per-run log, the unavailability classification
+  and the determinism check come for free. Nine declarations exist. Adding one is a config file.
+- **DONE. A run log for everything, including our own.** This was the gap we were most exposed on:
+  we had held other people's tools to a standard we had not met ourselves.
+- **DONE, with one gap named. Every tool across both corpora.** **18 of 19 live measurements now
+  carry a run log.** The one remaining is **`corpus1 radar`**, which has no log at
+  `raw/radar-full.json.log`, so "ran it and found nothing" and "never saw it" cannot be told apart
+  there. It is listed rather than quietly rounded away. One measurement is **retired**
+  (`corpus2 sol-audit`, superseded by v3): reported, still visible, not counted.
+- **DONE. A published results page where every number is derived.** The headline figures are
+  recomputed from raw data by the test suite, which **fails if a page states a number the tools do
+  not produce.** That check has fired for real: it caught a stale packaging figure the same day.
 
-**Check:** `python tools/run_all.py --verify-coverage` reports zero `coverage_evidence: none`, and the
-page resolves with every figure traceable to its raw file.
+**Check:** `python tools/run_all.py --verify-coverage` reports zero `coverage_evidence: none`.
+**Currently 1, and it is `corpus1 radar`.** The gate runs in CI as a second, deliberately separate
+dial: `selfcheck` (is the machinery sound) can be green while `coverage` (is the state complete) is
+red, because those are different questions and merging them would let one hide the other.
 
 ---
 
