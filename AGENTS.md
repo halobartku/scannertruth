@@ -237,8 +237,10 @@ Three skills carry the full procedure, including the failures that produced each
 - [`skills/publish-a-measurement`](skills/publish-a-measurement/SKILL.md) - publishing, correcting,
   retracting
 
-And [`docs/ENGINEERING-LOG-2026-08-31.md`](docs/ENGINEERING-LOG-2026-08-31.md) records 21 errors with dates.
-Read it if you want to know which of the rules above were bought with real mistakes. All of them.
+And the engineering logs record every error with a date:
+[`docs/ENGINEERING-LOG-2026-08-31.md`](docs/ENGINEERING-LOG-2026-08-31.md) holds errors 1 to 21 and
+[`docs/ENGINEERING-LOG-2026-09-01.md`](docs/ENGINEERING-LOG-2026-09-01.md) continues from 22. Read
+them if you want to know which of the rules above were bought with real mistakes. All of them.
 
 ---
 

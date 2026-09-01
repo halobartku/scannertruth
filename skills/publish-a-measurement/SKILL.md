@@ -26,6 +26,19 @@ what they verify, and a check that the limitations file has not quietly shrunk.
 Documentation that drifts from the code is a form of overclaiming. It tells a reader to expect
 something the repository no longer does.
 
+There is a second gate, and it is about the numbers rather than the machinery:
+
+```bash
+python tools/run_all.py --verify-coverage
+```
+
+It asks of every row on the clock whether it can show what it analysed, and it runs in CI as its own
+job. **It is red today**, because rows published before the adapter framework existed were run by
+hand and the run log was a step somebody had to remember. Two rules follow from that. Do not publish
+a new row that adds to the list: run it through `tools/scanner_spec.py`, which writes the log before
+it returns. And do not make the gate pass by relaxing it, which is the tuning rule pointed at our own
+instrument. If a row cannot pass, publish why it cannot.
+
 ## 1. Lead with the number that hurts
 
 - A third-party tool beating ours goes in the **first paragraph**. Radar's 11/11 against our 4/11
@@ -87,8 +100,9 @@ handed them.
 
 ## 7. Keep the log of errors, with dates
 
-Twenty-one errors are documented. That document, not the results, is the strongest thing to hand a
-sceptic, because it shows the same reaction when a result damaged a competitor (we understated
+Thirty-seven errors are documented across two dated logs, and the count on the front page is
+derived from them rather than typed. That record, not the results, is the strongest thing to hand
+a sceptic, because it shows the same reaction when a result damaged a competitor (we understated
 X-Ray) and when it flattered us (we threw out our own corpus case).
 
 Record what was believed, when, and what refuted it. A correction with no record of the original

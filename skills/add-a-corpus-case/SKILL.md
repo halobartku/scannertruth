@@ -80,7 +80,9 @@ use it" and "we never found it" must never look the same from outside.
 - Record the corpus commit, and if you recovered it after the fact, say so.
 - Mark an unusable case `valid: false` **with its reason, and keep it**. Deleting it hides that the
   mistake happened. The scorer refuses to score anything marked that way, because a note in a
-  manifest does not stop the next run from counting it.
+  manifest does not stop the next run from counting it. Since 2026-09-01 the scanner framework
+  reads the manifest on every invocation and skips those cases too, so the flag now removes a case
+  from the runs as well as from the scores.
 - A case listed but **not built** must be reported as `not-built`, not silently skipped. Skipping
   shrank a denominator from nine to eight and nothing said so. Both `score2.py` and `run_all.py`
   now print it on its own line, and they agree on which cases exist: two components disagreeing
@@ -114,4 +116,4 @@ one for "these tools do not work". Nothing built from it may claim the second.
 | "It's Rust and it's Solana, so it belongs" | A relayer and a VM are not on-chain programs. Write the rejection down. |
 | "The case isn't built yet, I'll just skip it" | Report `not-built`. A silent skip shrinks the denominator. |
 | "Deleting the bad case keeps the corpus clean" | Keep it marked invalid. The record of the mistake is the point. |
-| "Nine famous hacks is a representative sample" | It is a sample of what nobody caught. Say so before quoting any number from it. |
+| "A corpus of famous hacks is a representative sample" | It is a sample of what nobody caught. Say so before quoting any number from it. |
