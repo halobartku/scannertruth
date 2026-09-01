@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/wormhole-sysvar.secure/pkg/src/verify_signature.rs:68:8-25"
+        ]
+    },
+    {
+        "name": "Missing Rent Exemption Check",
+        "description": "Account creation via system_program without verifying rent exemption lamports can produce accounts that are garbage-collected by the Solana runtime, causing fund loss or program failures.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/wormhole-sysvar.secure/pkg/src/verify_signature.rs:179:54-68"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/wormhole-sysvar.secure/pkg/src/verify_signature.rs:68:8-25",
+            "/tmp/radar-c2-wrap/wormhole-sysvar.secure/pkg/src/verify_signature.rs:204:14-23"
+        ]
+    }
+]

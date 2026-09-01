@@ -1,0 +1,170 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T02:57:53.461342894Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 14,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 14,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "integer_overflow": 14
+    },
+    "files_with_issues": [
+      "/src/src/processor.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 85,
+      "column": null,
+      "code_snippet": "let bytes_sum = LIDO_CONSTANT_SIZE + bytes_for_validators + bytes_for_maintainers;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 301,
+      "column": null,
+      "code_snippet": "validator.entry.stake_accounts_balance = (validator.entry.stake_accounts_balance + amount)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 358,
+      "column": null,
+      "code_snippet": "validator.entry.stake_seeds.end - 1,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 366,
+      "column": null,
+      "code_snippet": "validator.entry.stake_seeds.end - 1",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 464,
+      "column": null,
+      "code_snippet": "if (validator.entry.stake_accounts_balance - amount)? < MINIMUM_STAKE_ACCOUNT_BALANCE {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 489,
+      "column": null,
+      "code_snippet": "validator.entry.unstake_accounts_balance = (validator.entry.unstake_accounts_balance + amount)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 619,
+      "column": null,
+      "code_snippet": "end - begin,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 653,
+      "column": null,
+      "code_snippet": "excess_removed = (excess_removed + excess_removed_here)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 654,
+      "column": null,
+      "code_snippet": "observed_total = (observed_total + account_balance)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 672,
+      "column": null,
+      "code_snippet": "let donation = (observed_total - validator.entry.stake_accounts_balance)",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 680,
+      "column": null,
+      "code_snippet": "(observed_total - excess_removed).expect(\"Does not underflow, because excess <= total.\");",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 811,
+      "column": null,
+      "code_snippet": ".add(Lamports(10 * LAMPORTS_PER_SOL))?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 824,
+      "column": null,
+      "code_snippet": "let remaining_balance = (source_balance - sol_to_withdraw)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/processor.rs",
+      "line_number": 834,
+      "column": null,
+      "code_snippet": "(provided_validator.entry.stake_accounts_balance - sol_to_withdraw)?;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 14 overflow-prone locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

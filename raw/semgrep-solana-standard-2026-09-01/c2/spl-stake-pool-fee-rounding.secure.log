@@ -1,0 +1,4 @@
+COMMAND: docker run --rm --network none -v /root/st-fix-20260901/corpus2/spl-stake-pool-fee-rounding/secure:/src:ro -v /root/st-fix-20260901/rules:/rules:ro -e SEMGREP_SEND_METRICS=off -e SEMGREP_ENABLE_VERSION_CHECK=0 semgrep/semgrep:latest semgrep --config /rules/solana-security-standard.yaml --json --quiet --no-git-ignore --metrics=off --disable-version-check --timeout 60 /src
+RC: 0
+WALL: 4.6s
+STDERR:

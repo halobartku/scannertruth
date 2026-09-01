@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T02:57:58.162962564Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 10,
+    "critical_issues": 0,
+    "high_issues": 1,
+    "medium_issues": 9,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "reentrancy": 1,
+      "integer_overflow": 9
+    },
+    "files_with_issues": [
+      "/src/src/verify_signature.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 81,
+      "column": null,
+      "code_snippet": "if *p == -1 {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 100,
+      "column": null,
+      "code_snippet": "let secp_ix_index = (current_instruction - 1) as u8;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 122,
+      "column": null,
+      "code_snippet": "let _sig_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 126,
+      "column": null,
+      "code_snippet": "let address_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]) as usize;",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 130,
+      "column": null,
+      "code_snippet": "let msg_offset = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 132,
+      "column": null,
+      "code_snippet": "let msg_size = byteorder::LE::read_u16(&secp_ix.data[index..index + 2]);",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 141,
+      "column": null,
+      "code_snippet": "let address: &[u8] = &secp_ix.data[address_offset..address_offset + 20];",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 167,
+      "column": null,
+      "code_snippet": "[secp_ixs[0].msg_offset as usize..(secp_ixs[0].msg_offset + secp_ixs[0].msg_size) as usize];",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 204,
+      "column": null,
+      "code_snippet": "if s.sig_index + 1 > sig_len {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "reentrancy",
+      "severity": "high",
+      "message": "Potential reentrancy: state changes at line 189 after external call",
+      "file_path": "/src/src/verify_signature.rs",
+      "line_number": 186,
+      "column": null,
+      "code_snippet": "solana_program::program::invoke(&ix, ctx.accounts)?;",
+      "suggestion": "Move state changes before external calls or use reentrancy guards (CEI pattern)"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "⚠️  1 high-severity issues require attention.",
+    "Review 1 potential reentrancy vulnerabilities and implement guards.",
+    "Consider using checked arithmetic operations for 9 overflow-prone locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

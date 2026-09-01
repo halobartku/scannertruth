@@ -1,0 +1,30 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (set_collection_during_mint.rs)
+
+[ [91mHigh[0m ] Unconstrained UncheckedAccount found at:
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:19:15-31
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:30:22-38
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:32:26-42
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:34:32-48
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:36:16-32
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:38:34-50
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /tmp/radar-c2-wrap/metaplex-candy-machine.secure/pkg/src/set_collection_during_mint.rs:160:5-18
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fix-20260901/radar-out/metaplex-candy-machine.secure.json

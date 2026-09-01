@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Anchor Reward Overflow",
+        "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/solido-anker-arbitrary-cpi.secure/pkg/src/state.rs:665:10-16",
+            "/tmp/radar-c2-wrap/solido-anker-arbitrary-cpi.secure/pkg/src/state.rs:687:10-16"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/solido-anker-arbitrary-cpi.secure/pkg/src/state.rs:665:25-28",
+            "/tmp/radar-c2-wrap/solido-anker-arbitrary-cpi.secure/pkg/src/state.rs:687:25-28"
+        ]
+    }
+]

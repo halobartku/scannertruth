@@ -1,0 +1,284 @@
+{
+ "analysis_results": [
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/0-signer-authorization/insecure/src/lib.rs",
+   "line_number": 16,
+   "column": null,
+   "code_snippet": "authority: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/0-signer-authorization/secure/src/lib.rs",
+   "line_number": 20,
+   "column": null,
+   "code_snippet": "authority: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs",
+   "line_number": 20,
+   "column": null,
+   "code_snippet": "token: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/1-account-data-matching/secure/src/lib.rs",
+   "line_number": 23,
+   "column": null,
+   "code_snippet": "token: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "line_number": 17,
+   "column": null,
+   "code_snippet": "rent: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/secure/src/lib.rs",
+   "line_number": 18,
+   "column": null,
+   "code_snippet": "rent: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/2-owner-checks/insecure/src/lib.rs",
+   "line_number": 24,
+   "column": null,
+   "code_snippet": "token: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/2-owner-checks/secure/src/lib.rs",
+   "line_number": 27,
+   "column": null,
+   "code_snippet": "token: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/3-type-cosplay/insecure/src/lib.rs",
+   "line_number": 25,
+   "column": null,
+   "code_snippet": "user: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/3-type-cosplay/secure/src/lib.rs",
+   "line_number": 28,
+   "column": null,
+   "code_snippet": "user: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs",
+   "line_number": 31,
+   "column": null,
+   "code_snippet": "user: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "integer_overflow",
+   "severity": "medium",
+   "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+   "file_path": "/tmp/sealevel-attacks/programs/4-initialization/recommended/src/lib.rs",
+   "line_number": 18,
+   "column": null,
+   "code_snippet": "#[account(init, payer = authority, space = 8+32)]",
+   "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "line_number": 30,
+   "column": null,
+   "code_snippet": "user: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line_number": 31,
+   "column": null,
+   "code_snippet": "source: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line_number": 32,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line_number": 33,
+   "column": null,
+   "code_snippet": "authority: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line_number": 34,
+   "column": null,
+   "code_snippet": "token_program: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line_number": 34,
+   "column": null,
+   "code_snippet": "source: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line_number": 35,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line_number": 36,
+   "column": null,
+   "code_snippet": "authority: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line_number": 37,
+   "column": null,
+   "code_snippet": "token_program: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs",
+   "line_number": 24,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "line_number": 39,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "line_number": 39,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/recommended/src/lib.rs",
+   "line_number": 19,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line_number": 59,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line_number": 64,
+   "column": null,
+   "code_snippet": "account: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  },
+  {
+   "rule_name": "unchecked_account",
+   "severity": "medium",
+   "message": "AccountInfo used without type validation - consider using Account<T>",
+   "file_path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "line_number": 65,
+   "column": null,
+   "code_snippet": "destination: AccountInfo<'info>,",
+   "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+  }
+ ]
+}

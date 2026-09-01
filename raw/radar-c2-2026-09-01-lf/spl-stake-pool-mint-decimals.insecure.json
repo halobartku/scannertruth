@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:2560:45-60"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:345:5-18",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:382:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:410:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:429:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:456:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:529:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:578:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:613:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:671:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:3538:9-22",
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:3617:9-22"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:2561:54-60"
+        ]
+    },
+    {
+        "name": "Account Precreation DoS",
+        "description": "Detects unsafe account owner assignments without prior validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:709:8-26"
+        ]
+    },
+    {
+        "name": "Integer Division Overflow",
+        "description": "Division operations without checked_div can cause panics on division by zero or overflow conditions.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:2157:8-45"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/radar-c2-wrap-lf/spl-stake-pool-mint-decimals.insecure/pkg/src/processor.rs:3745:49-63"
+        ]
+    }
+]

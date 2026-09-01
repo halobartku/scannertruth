@@ -1,0 +1,68 @@
+
+================================================================================
+
+1 files scanned in /work directory
+
+┌────────────────────────────────────┬──────────┬───────────┬─────────────────────────────────────────┬───────────────┐
+│ Rule Name                          │ Severity │ Certainty │ Files                                   │ Total Matches │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Unvalidated Sysvar Account         │ Low      │ Low       │ unvalidated_sysvar_accounts.star        │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Missing Signer Check               │ Low      │ Low       │ missing_signer_check.star               │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Arbitrary Cross-Program Invocation │ Medium   │ Medium    │ arbitrary_cpi.star                      │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Missing Owner Check                │ Low      │ Low       │ missing_owner_check.star                │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Account Reinitialization           │ Medium   │ Low       │ account_reinitialization.star           │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Unsafe Account Data Reallocation   │ Medium   │ Low       │ account_data_reallocation.star          │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Missing Bump Seed Canonicalization │ Medium   │ Low       │ missing_bump_seed_canonicalization.star │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Account Data Matching              │ Low      │ Low       │ account_data_matching.star              │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Saturating math operation usage    │ Low      │ Low       │ saturating_math_usage.star              │ 7             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Duplicate Mutable Accounts         │ Medium   │ Medium    │ duplicate_mutable_accounts.star         │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Type Cosplay                       │ Low      │ Low       │ type_cosplay.star                       │ 1             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Closing Accounts Insecurely        │ Medium   │ Low       │ closing_accounts.star                   │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ PDA Sharing                        │ Low      │ Low       │ pda_sharing.star                        │ 0             │
+└────────────────────────────────────┴──────────┴───────────┴─────────────────────────────────────────┴───────────────┘
+
+Detailed findings:
+
+================================================================================
+ Name:        | Saturating math operation usage 
+ File:        | saturating_math_usage.star 
+ Version:     | 0.1.0 
+ Author:      | MohaFuzzingLabs 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | The use of operations like saturating_add, saturating_mul, or saturating_sub in Rust is generally intended to prevent integer overflow and underflow, ensuring that the result remains within the valid range for the data type. However, in certain cases, relying on these functions alone can lead to inaccurate or unexpected results. This occurs when the application logic assumes that saturation alone guarantees accurate results, but ignores the potential loss of precision or accuracy. 
+
+Matches found: 7
+/work/src/state.rs:860:23
+/work/src/state.rs:1213:73
+/work/src/state.rs:830:10
+/work/src/state.rs:1297:16
+/work/src/state.rs:973:12
+/work/src/state.rs:795:51
+/work/src/state.rs:797:13
+================================================================================
+
+================================================================================
+ Name:        | Type Cosplay 
+ File:        | type_cosplay.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | When two account types can be deserialized with the exact same values, a malicious user could substitute between the account types, leading to unexpected execution and possible authorization bypass depending on how the data is used. Using try_from_slice does not check for the necessary discriminator. 
+
+Matches found: 1
+/work/src/state.rs:774:29
+================================================================================

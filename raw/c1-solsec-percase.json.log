@@ -1,0 +1,352 @@
+[
+ {
+  "leaf": "0-signer-authorization/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/0-signer-authorization.insecure"
+ },
+ {
+  "leaf": "0-signer-authorization/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/0-signer-authorization.recommended"
+ },
+ {
+  "leaf": "0-signer-authorization/secure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/0-signer-authorization.secure"
+ },
+ {
+  "leaf": "1-account-data-matching/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/1-account-data-matching.insecure"
+ },
+ {
+  "leaf": "1-account-data-matching/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/1-account-data-matching.recommended"
+ },
+ {
+  "leaf": "1-account-data-matching/secure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/1-account-data-matching.secure"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/10-sysvar-address-checking.insecure"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/10-sysvar-address-checking.recommended"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/secure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/10-sysvar-address-checking.secure"
+ },
+ {
+  "leaf": "2-owner-checks/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/2-owner-checks.insecure"
+ },
+ {
+  "leaf": "2-owner-checks/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/2-owner-checks.recommended"
+ },
+ {
+  "leaf": "2-owner-checks/secure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/2-owner-checks.secure"
+ },
+ {
+  "leaf": "3-type-cosplay/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/3-type-cosplay.insecure"
+ },
+ {
+  "leaf": "3-type-cosplay/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/3-type-cosplay.recommended"
+ },
+ {
+  "leaf": "3-type-cosplay/secure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/3-type-cosplay.secure"
+ },
+ {
+  "leaf": "4-initialization/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/4-initialization.insecure"
+ },
+ {
+  "leaf": "4-initialization/recommended",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/4-initialization.recommended"
+ },
+ {
+  "leaf": "4-initialization/secure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/4-initialization.secure"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/insecure",
+  "status": "ok",
+  "findings": 4,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 4,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/5-arbitrary-cpi.insecure"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/5-arbitrary-cpi.recommended"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/secure",
+  "status": "ok",
+  "findings": 4,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 4,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/5-arbitrary-cpi.secure"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/insecure",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/6-duplicate-mutable-accounts.insecure"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/6-duplicate-mutable-accounts.recommended"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/secure",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/6-duplicate-mutable-accounts.secure"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/insecure",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/7-bump-seed-canonicalization.insecure"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/7-bump-seed-canonicalization.recommended"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/secure",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/7-bump-seed-canonicalization.secure"
+ },
+ {
+  "leaf": "8-pda-sharing/insecure",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/8-pda-sharing.insecure"
+ },
+ {
+  "leaf": "8-pda-sharing/recommended",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/8-pda-sharing.recommended"
+ },
+ {
+  "leaf": "8-pda-sharing/secure",
+  "status": "ok",
+  "findings": 0,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 0,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/8-pda-sharing.secure"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/9-closing-accounts.insecure"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/9-closing-accounts.insecure-still"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still-still",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/9-closing-accounts.insecure-still-still"
+ },
+ {
+  "leaf": "9-closing-accounts/recommended",
+  "status": "ok",
+  "findings": 1,
+  "rc": 0,
+  "wall_s": 0.4,
+  "files_analysed": 1,
+  "issues_reported": 1,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/9-closing-accounts.recommended"
+ },
+ {
+  "leaf": "9-closing-accounts/secure",
+  "status": "ok",
+  "findings": 3,
+  "rc": 0,
+  "wall_s": 0.3,
+  "files_analysed": 1,
+  "issues_reported": 3,
+  "artefact": "/root/st-fix-20260901/solsec-out/c1/9-closing-accounts.secure"
+ }
+]

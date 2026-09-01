@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/metaplex-token-metadata.secure/pkg/src/transfer.rs:209:58-73"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/tmp/radar-c2-wrap/metaplex-token-metadata.secure/pkg/src/transfer.rs:209:26-32"
+        ]
+    }
+]

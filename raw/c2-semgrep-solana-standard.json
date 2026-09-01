@@ -1,0 +1,6714 @@
+{
+ "results": [
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 108
+   },
+   "end": {
+    "line": 108
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 111
+   },
+   "end": {
+    "line": 111
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 229
+   },
+   "end": {
+    "line": 229
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 248
+   },
+   "end": {
+    "line": 248
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 259
+   },
+   "end": {
+    "line": 259
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 303
+   },
+   "end": {
+    "line": 303
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 319
+   },
+   "end": {
+    "line": 319
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 328
+   },
+   "end": {
+    "line": 328
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 340
+   },
+   "end": {
+    "line": 340
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 365
+   },
+   "end": {
+    "line": 365
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 384
+   },
+   "end": {
+    "line": 384
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 389
+   },
+   "end": {
+    "line": 389
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/insecure/src/account.rs",
+   "start": {
+    "line": 392
+   },
+   "end": {
+    "line": 392
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 108
+   },
+   "end": {
+    "line": 108
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 111
+   },
+   "end": {
+    "line": 111
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 229
+   },
+   "end": {
+    "line": 229
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 248
+   },
+   "end": {
+    "line": 248
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 259
+   },
+   "end": {
+    "line": 259
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 311
+   },
+   "end": {
+    "line": 311
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 327
+   },
+   "end": {
+    "line": 327
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 336
+   },
+   "end": {
+    "line": 336
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 348
+   },
+   "end": {
+    "line": 348
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 373
+   },
+   "end": {
+    "line": 373
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 392
+   },
+   "end": {
+    "line": 392
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 397
+   },
+   "end": {
+    "line": 397
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-account-reload-owner/secure/src/account.rs",
+   "start": {
+    "line": 400
+   },
+   "end": {
+    "line": 400
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 108
+   },
+   "end": {
+    "line": 108
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 111
+   },
+   "end": {
+    "line": 111
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 177
+   },
+   "end": {
+    "line": 177
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 206
+   },
+   "end": {
+    "line": 206
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 241
+   },
+   "end": {
+    "line": 241
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 243
+   },
+   "end": {
+    "line": 243
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 250
+   },
+   "end": {
+    "line": 250
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 260
+   },
+   "end": {
+    "line": 260
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 266
+   },
+   "end": {
+    "line": 266
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 276
+   },
+   "end": {
+    "line": 276
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 302
+   },
+   "end": {
+    "line": 302
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 316
+   },
+   "end": {
+    "line": 316
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 321
+   },
+   "end": {
+    "line": 321
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/insecure/src/interface_account.rs",
+   "start": {
+    "line": 324
+   },
+   "end": {
+    "line": 324
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 108
+   },
+   "end": {
+    "line": 108
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 111
+   },
+   "end": {
+    "line": 111
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 177
+   },
+   "end": {
+    "line": 177
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 213
+   },
+   "end": {
+    "line": 213
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 225
+   },
+   "end": {
+    "line": 225
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 231
+   },
+   "end": {
+    "line": 231
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 257
+   },
+   "end": {
+    "line": 257
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 283
+   },
+   "end": {
+    "line": 283
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 297
+   },
+   "end": {
+    "line": 297
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 302
+   },
+   "end": {
+    "line": 302
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-interface-account/secure/src/interface_account.rs",
+   "start": {
+    "line": 305
+   },
+   "end": {
+    "line": 305
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 100
+   },
+   "end": {
+    "line": 100
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 111
+   },
+   "end": {
+    "line": 111
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 122
+   },
+   "end": {
+    "line": 122
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 148
+   },
+   "end": {
+    "line": 148
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 151
+   },
+   "end": {
+    "line": 151
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 169
+   },
+   "end": {
+    "line": 169
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 195
+   },
+   "end": {
+    "line": 195
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 200
+   },
+   "end": {
+    "line": 200
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 201
+   },
+   "end": {
+    "line": 201
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/insecure/src/program.rs",
+   "start": {
+    "line": 207
+   },
+   "end": {
+    "line": 207
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 100
+   },
+   "end": {
+    "line": 100
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 111
+   },
+   "end": {
+    "line": 111
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-019-try-deserialize-unchecked",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 122
+   },
+   "end": {
+    "line": 122
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-019-try-deserialize-unchecked"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 148
+   },
+   "end": {
+    "line": 148
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 152
+   },
+   "end": {
+    "line": 152
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 165
+   },
+   "end": {
+    "line": 165
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 168
+   },
+   "end": {
+    "line": 168
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 180
+   },
+   "end": {
+    "line": 180
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 198
+   },
+   "end": {
+    "line": 198
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 224
+   },
+   "end": {
+    "line": 224
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 229
+   },
+   "end": {
+    "line": 229
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 230
+   },
+   "end": {
+    "line": 230
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 236
+   },
+   "end": {
+    "line": 236
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/anchor-program-system/secure/src/program.rs",
+   "start": {
+    "line": 262
+   },
+   "end": {
+    "line": 262
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 45
+   },
+   "end": {
+    "line": 45
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 46
+   },
+   "end": {
+    "line": 46
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 47
+   },
+   "end": {
+    "line": 47
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 48
+   },
+   "end": {
+    "line": 48
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 49
+   },
+   "end": {
+    "line": 49
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 50
+   },
+   "end": {
+    "line": 50
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 191
+   },
+   "end": {
+    "line": 191
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/metaplex-bubblegum-creator/insecure/src/metadata.rs",
+   "start": {
+    "line": 261
+   },
+   "end": {
+    "line": 261
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 38
+   },
+   "end": {
+    "line": 38
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 39
+   },
+   "end": {
+    "line": 39
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 40
+   },
+   "end": {
+    "line": 40
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 41
+   },
+   "end": {
+    "line": 41
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 42
+   },
+   "end": {
+    "line": 42
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 43
+   },
+   "end": {
+    "line": 43
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 179
+   },
+   "end": {
+    "line": 179
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/metaplex-bubblegum-creator/secure/src/metadata.rs",
+   "start": {
+    "line": 249
+   },
+   "end": {
+    "line": 249
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 8
+   },
+   "end": {
+    "line": 8
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 43
+   },
+   "end": {
+    "line": 43
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 104
+   },
+   "end": {
+    "line": 104
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 152
+   },
+   "end": {
+    "line": 152
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 8
+   },
+   "end": {
+    "line": 8
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 43
+   },
+   "end": {
+    "line": 43
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 51
+   },
+   "end": {
+    "line": 51
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 112
+   },
+   "end": {
+    "line": 112
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs",
+   "start": {
+    "line": 160
+   },
+   "end": {
+    "line": 160
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-token-metadata/insecure/src/transfer.rs",
+   "start": {
+    "line": 15
+   },
+   "end": {
+    "line": 15
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-token-metadata/insecure/src/transfer.rs",
+   "start": {
+    "line": 80
+   },
+   "end": {
+    "line": 80
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-token-metadata/insecure/src/transfer.rs",
+   "start": {
+    "line": 229
+   },
+   "end": {
+    "line": 229
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-token-metadata/secure/src/transfer.rs",
+   "start": {
+    "line": 15
+   },
+   "end": {
+    "line": 15
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/metaplex-token-metadata/secure/src/transfer.rs",
+   "start": {
+    "line": 80
+   },
+   "end": {
+    "line": 80
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/metaplex-token-metadata/secure/src/transfer.rs",
+   "start": {
+    "line": 241
+   },
+   "end": {
+    "line": 241
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 159
+   },
+   "end": {
+    "line": 159
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 189
+   },
+   "end": {
+    "line": 189
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 349
+   },
+   "end": {
+    "line": 349
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 429
+   },
+   "end": {
+    "line": 429
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 430
+   },
+   "end": {
+    "line": 430
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 431
+   },
+   "end": {
+    "line": 431
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 453
+   },
+   "end": {
+    "line": 453
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 502
+   },
+   "end": {
+    "line": 502
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 503
+   },
+   "end": {
+    "line": 503
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 504
+   },
+   "end": {
+    "line": 504
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 505
+   },
+   "end": {
+    "line": 505
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 506
+   },
+   "end": {
+    "line": 506
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 507
+   },
+   "end": {
+    "line": 507
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 508
+   },
+   "end": {
+    "line": 508
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 509
+   },
+   "end": {
+    "line": 509
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 511
+   },
+   "end": {
+    "line": 511
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 579
+   },
+   "end": {
+    "line": 579
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 643
+   },
+   "end": {
+    "line": 643
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 644
+   },
+   "end": {
+    "line": 644
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 645
+   },
+   "end": {
+    "line": 645
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 646
+   },
+   "end": {
+    "line": 646
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 647
+   },
+   "end": {
+    "line": 647
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 648
+   },
+   "end": {
+    "line": 648
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 649
+   },
+   "end": {
+    "line": 649
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 650
+   },
+   "end": {
+    "line": 650
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 652
+   },
+   "end": {
+    "line": 652
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 709
+   },
+   "end": {
+    "line": 709
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 771
+   },
+   "end": {
+    "line": 771
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 894
+   },
+   "end": {
+    "line": 894
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 939
+   },
+   "end": {
+    "line": 939
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 940
+   },
+   "end": {
+    "line": 940
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 941
+   },
+   "end": {
+    "line": 941
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 942
+   },
+   "end": {
+    "line": 942
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 943
+   },
+   "end": {
+    "line": 943
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 944
+   },
+   "end": {
+    "line": 944
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 945
+   },
+   "end": {
+    "line": 945
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 947
+   },
+   "end": {
+    "line": 947
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1009
+   },
+   "end": {
+    "line": 1009
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1129
+   },
+   "end": {
+    "line": 1129
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1130
+   },
+   "end": {
+    "line": 1130
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1131
+   },
+   "end": {
+    "line": 1131
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1132
+   },
+   "end": {
+    "line": 1132
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1133
+   },
+   "end": {
+    "line": 1133
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1134
+   },
+   "end": {
+    "line": 1134
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1135
+   },
+   "end": {
+    "line": 1135
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1137
+   },
+   "end": {
+    "line": 1137
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1256
+   },
+   "end": {
+    "line": 1256
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1405
+   },
+   "end": {
+    "line": 1405
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1412
+   },
+   "end": {
+    "line": 1412
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1539
+   },
+   "end": {
+    "line": 1539
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1543
+   },
+   "end": {
+    "line": 1543
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1721
+   },
+   "end": {
+    "line": 1721
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1726
+   },
+   "end": {
+    "line": 1726
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1854
+   },
+   "end": {
+    "line": 1854
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 1886
+   },
+   "end": {
+    "line": 1886
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2034
+   },
+   "end": {
+    "line": 2034
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2262
+   },
+   "end": {
+    "line": 2262
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2384
+   },
+   "end": {
+    "line": 2384
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2385
+   },
+   "end": {
+    "line": 2385
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2388
+   },
+   "end": {
+    "line": 2388
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2392
+   },
+   "end": {
+    "line": 2392
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2393
+   },
+   "end": {
+    "line": 2393
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2394
+   },
+   "end": {
+    "line": 2394
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2395
+   },
+   "end": {
+    "line": 2395
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2396
+   },
+   "end": {
+    "line": 2396
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2400
+   },
+   "end": {
+    "line": 2400
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2401
+   },
+   "end": {
+    "line": 2401
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2403
+   },
+   "end": {
+    "line": 2403
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2405
+   },
+   "end": {
+    "line": 2405
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2409
+   },
+   "end": {
+    "line": 2409
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2410
+   },
+   "end": {
+    "line": 2410
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2412
+   },
+   "end": {
+    "line": 2412
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2414
+   },
+   "end": {
+    "line": 2414
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2418
+   },
+   "end": {
+    "line": 2418
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2419
+   },
+   "end": {
+    "line": 2419
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2421
+   },
+   "end": {
+    "line": 2421
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/insecure/src/processor.rs",
+   "start": {
+    "line": 2423
+   },
+   "end": {
+    "line": 2423
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 159
+   },
+   "end": {
+    "line": 159
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 189
+   },
+   "end": {
+    "line": 189
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 349
+   },
+   "end": {
+    "line": 349
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 429
+   },
+   "end": {
+    "line": 429
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 430
+   },
+   "end": {
+    "line": 430
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 431
+   },
+   "end": {
+    "line": 431
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 453
+   },
+   "end": {
+    "line": 453
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 502
+   },
+   "end": {
+    "line": 502
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 503
+   },
+   "end": {
+    "line": 503
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 504
+   },
+   "end": {
+    "line": 504
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 505
+   },
+   "end": {
+    "line": 505
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 506
+   },
+   "end": {
+    "line": 506
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 507
+   },
+   "end": {
+    "line": 507
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 508
+   },
+   "end": {
+    "line": 508
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 509
+   },
+   "end": {
+    "line": 509
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 511
+   },
+   "end": {
+    "line": 511
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 579
+   },
+   "end": {
+    "line": 579
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 643
+   },
+   "end": {
+    "line": 643
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 644
+   },
+   "end": {
+    "line": 644
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 645
+   },
+   "end": {
+    "line": 645
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 646
+   },
+   "end": {
+    "line": 646
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 647
+   },
+   "end": {
+    "line": 647
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 648
+   },
+   "end": {
+    "line": 648
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 649
+   },
+   "end": {
+    "line": 649
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 650
+   },
+   "end": {
+    "line": 650
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 652
+   },
+   "end": {
+    "line": 652
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 709
+   },
+   "end": {
+    "line": 709
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 771
+   },
+   "end": {
+    "line": 771
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 894
+   },
+   "end": {
+    "line": 894
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 939
+   },
+   "end": {
+    "line": 939
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 940
+   },
+   "end": {
+    "line": 940
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 941
+   },
+   "end": {
+    "line": 941
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 942
+   },
+   "end": {
+    "line": 942
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 943
+   },
+   "end": {
+    "line": 943
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 944
+   },
+   "end": {
+    "line": 944
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 945
+   },
+   "end": {
+    "line": 945
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 947
+   },
+   "end": {
+    "line": 947
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1009
+   },
+   "end": {
+    "line": 1009
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1129
+   },
+   "end": {
+    "line": 1129
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1130
+   },
+   "end": {
+    "line": 1130
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1131
+   },
+   "end": {
+    "line": 1131
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1132
+   },
+   "end": {
+    "line": 1132
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1133
+   },
+   "end": {
+    "line": 1133
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1134
+   },
+   "end": {
+    "line": 1134
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1135
+   },
+   "end": {
+    "line": 1135
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1137
+   },
+   "end": {
+    "line": 1137
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1256
+   },
+   "end": {
+    "line": 1256
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1405
+   },
+   "end": {
+    "line": 1405
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1412
+   },
+   "end": {
+    "line": 1412
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1539
+   },
+   "end": {
+    "line": 1539
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1543
+   },
+   "end": {
+    "line": 1543
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1721
+   },
+   "end": {
+    "line": 1721
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1726
+   },
+   "end": {
+    "line": 1726
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1858
+   },
+   "end": {
+    "line": 1858
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 1890
+   },
+   "end": {
+    "line": 1890
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2038
+   },
+   "end": {
+    "line": 2038
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2266
+   },
+   "end": {
+    "line": 2266
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2388
+   },
+   "end": {
+    "line": 2388
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2389
+   },
+   "end": {
+    "line": 2389
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2392
+   },
+   "end": {
+    "line": 2392
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2396
+   },
+   "end": {
+    "line": 2396
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2397
+   },
+   "end": {
+    "line": 2397
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2398
+   },
+   "end": {
+    "line": 2398
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2399
+   },
+   "end": {
+    "line": 2399
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2400
+   },
+   "end": {
+    "line": 2400
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2404
+   },
+   "end": {
+    "line": 2404
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2405
+   },
+   "end": {
+    "line": 2405
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2407
+   },
+   "end": {
+    "line": 2407
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2409
+   },
+   "end": {
+    "line": 2409
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2413
+   },
+   "end": {
+    "line": 2413
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2414
+   },
+   "end": {
+    "line": 2414
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2416
+   },
+   "end": {
+    "line": 2416
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2418
+   },
+   "end": {
+    "line": 2418
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2422
+   },
+   "end": {
+    "line": 2422
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2423
+   },
+   "end": {
+    "line": 2423
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2425
+   },
+   "end": {
+    "line": 2425
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solend-owner-checks/secure/src/processor.rs",
+   "start": {
+    "line": 2427
+   },
+   "end": {
+    "line": 2427
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solido-anker-arbitrary-cpi/insecure/src/state.rs",
+   "start": {
+    "line": 90
+   },
+   "end": {
+    "line": 90
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/solido-anker-arbitrary-cpi/secure/src/state.rs",
+   "start": {
+    "line": 90
+   },
+   "end": {
+    "line": 90
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "start": {
+    "line": 322
+   },
+   "end": {
+    "line": 322
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "start": {
+    "line": 378
+   },
+   "end": {
+    "line": 378
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "start": {
+    "line": 443
+   },
+   "end": {
+    "line": 443
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "start": {
+    "line": 528
+   },
+   "end": {
+    "line": 528
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "start": {
+    "line": 555
+   },
+   "end": {
+    "line": 555
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "start": {
+    "line": 727
+   },
+   "end": {
+    "line": 727
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "start": {
+    "line": 323
+   },
+   "end": {
+    "line": 323
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "start": {
+    "line": 379
+   },
+   "end": {
+    "line": 379
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "start": {
+    "line": 444
+   },
+   "end": {
+    "line": 444
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "start": {
+    "line": 529
+   },
+   "end": {
+    "line": 529
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "start": {
+    "line": 556
+   },
+   "end": {
+    "line": 556
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "start": {
+    "line": 728
+   },
+   "end": {
+    "line": 728
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 341
+   },
+   "end": {
+    "line": 341
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 345
+   },
+   "end": {
+    "line": 345
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 350
+   },
+   "end": {
+    "line": 350
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 363
+   },
+   "end": {
+    "line": 363
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 364
+   },
+   "end": {
+    "line": 364
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 365
+   },
+   "end": {
+    "line": 365
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 366
+   },
+   "end": {
+    "line": 366
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 367
+   },
+   "end": {
+    "line": 367
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 368
+   },
+   "end": {
+    "line": 368
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 382
+   },
+   "end": {
+    "line": 382
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 398
+   },
+   "end": {
+    "line": 398
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 399
+   },
+   "end": {
+    "line": 399
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 400
+   },
+   "end": {
+    "line": 400
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 410
+   },
+   "end": {
+    "line": 410
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 416
+   },
+   "end": {
+    "line": 416
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 417
+   },
+   "end": {
+    "line": 417
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 421
+   },
+   "end": {
+    "line": 421
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 429
+   },
+   "end": {
+    "line": 429
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 442
+   },
+   "end": {
+    "line": 442
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 443
+   },
+   "end": {
+    "line": 443
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 446
+   },
+   "end": {
+    "line": 446
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 447
+   },
+   "end": {
+    "line": 447
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 448
+   },
+   "end": {
+    "line": 448
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 456
+   },
+   "end": {
+    "line": 456
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 471
+   },
+   "end": {
+    "line": 471
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 472
+   },
+   "end": {
+    "line": 472
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 474
+   },
+   "end": {
+    "line": 474
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 511
+   },
+   "end": {
+    "line": 511
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 512
+   },
+   "end": {
+    "line": 512
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 516
+   },
+   "end": {
+    "line": 516
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 529
+   },
+   "end": {
+    "line": 529
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 546
+   },
+   "end": {
+    "line": 546
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 557
+   },
+   "end": {
+    "line": 557
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 558
+   },
+   "end": {
+    "line": 558
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 561
+   },
+   "end": {
+    "line": 561
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 562
+   },
+   "end": {
+    "line": 562
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 563
+   },
+   "end": {
+    "line": 563
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 578
+   },
+   "end": {
+    "line": 578
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 595
+   },
+   "end": {
+    "line": 595
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 596
+   },
+   "end": {
+    "line": 596
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 599
+   },
+   "end": {
+    "line": 599
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 600
+   },
+   "end": {
+    "line": 600
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 601
+   },
+   "end": {
+    "line": 601
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 613
+   },
+   "end": {
+    "line": 613
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 629
+   },
+   "end": {
+    "line": 629
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 630
+   },
+   "end": {
+    "line": 630
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 631
+   },
+   "end": {
+    "line": 631
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 632
+   },
+   "end": {
+    "line": 632
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 651
+   },
+   "end": {
+    "line": 651
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 652
+   },
+   "end": {
+    "line": 652
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 653
+   },
+   "end": {
+    "line": 653
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 654
+   },
+   "end": {
+    "line": 654
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 671
+   },
+   "end": {
+    "line": 671
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 677
+   },
+   "end": {
+    "line": 677
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 678
+   },
+   "end": {
+    "line": 678
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 679
+   },
+   "end": {
+    "line": 679
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 680
+   },
+   "end": {
+    "line": 680
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 681
+   },
+   "end": {
+    "line": 681
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 699
+   },
+   "end": {
+    "line": 699
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 700
+   },
+   "end": {
+    "line": 700
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 906
+   },
+   "end": {
+    "line": 906
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 939
+   },
+   "end": {
+    "line": 939
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 991
+   },
+   "end": {
+    "line": 991
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 1136
+   },
+   "end": {
+    "line": 1136
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 1222
+   },
+   "end": {
+    "line": 1222
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 1285
+   },
+   "end": {
+    "line": 1285
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 1547
+   },
+   "end": {
+    "line": 1547
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 1824
+   },
+   "end": {
+    "line": 1824
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2118
+   },
+   "end": {
+    "line": 2118
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2151
+   },
+   "end": {
+    "line": 2151
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2199
+   },
+   "end": {
+    "line": 2199
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2483
+   },
+   "end": {
+    "line": 2483
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2564
+   },
+   "end": {
+    "line": 2564
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2587
+   },
+   "end": {
+    "line": 2587
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2658
+   },
+   "end": {
+    "line": 2658
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 2857
+   },
+   "end": {
+    "line": 2857
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3007
+   },
+   "end": {
+    "line": 3007
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3063
+   },
+   "end": {
+    "line": 3063
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3286
+   },
+   "end": {
+    "line": 3286
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3467
+   },
+   "end": {
+    "line": 3467
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3538
+   },
+   "end": {
+    "line": 3538
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3617
+   },
+   "end": {
+    "line": 3617
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3652
+   },
+   "end": {
+    "line": 3652
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3681
+   },
+   "end": {
+    "line": 3681
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3705
+   },
+   "end": {
+    "line": 3705
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs",
+   "start": {
+    "line": 3739
+   },
+   "end": {
+    "line": 3739
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 342
+   },
+   "end": {
+    "line": 342
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 346
+   },
+   "end": {
+    "line": 346
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 351
+   },
+   "end": {
+    "line": 351
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 364
+   },
+   "end": {
+    "line": 364
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 365
+   },
+   "end": {
+    "line": 365
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 366
+   },
+   "end": {
+    "line": 366
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 367
+   },
+   "end": {
+    "line": 367
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 368
+   },
+   "end": {
+    "line": 368
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 369
+   },
+   "end": {
+    "line": 369
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 383
+   },
+   "end": {
+    "line": 383
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 399
+   },
+   "end": {
+    "line": 399
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 400
+   },
+   "end": {
+    "line": 400
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 401
+   },
+   "end": {
+    "line": 401
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 411
+   },
+   "end": {
+    "line": 411
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 417
+   },
+   "end": {
+    "line": 417
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 418
+   },
+   "end": {
+    "line": 418
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 422
+   },
+   "end": {
+    "line": 422
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 430
+   },
+   "end": {
+    "line": 430
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 443
+   },
+   "end": {
+    "line": 443
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 444
+   },
+   "end": {
+    "line": 444
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 447
+   },
+   "end": {
+    "line": 447
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 448
+   },
+   "end": {
+    "line": 448
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 449
+   },
+   "end": {
+    "line": 449
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 457
+   },
+   "end": {
+    "line": 457
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 472
+   },
+   "end": {
+    "line": 472
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 473
+   },
+   "end": {
+    "line": 473
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 475
+   },
+   "end": {
+    "line": 475
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 512
+   },
+   "end": {
+    "line": 512
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 513
+   },
+   "end": {
+    "line": 513
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 517
+   },
+   "end": {
+    "line": 517
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 530
+   },
+   "end": {
+    "line": 530
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 547
+   },
+   "end": {
+    "line": 547
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 558
+   },
+   "end": {
+    "line": 558
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 559
+   },
+   "end": {
+    "line": 559
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 562
+   },
+   "end": {
+    "line": 562
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 563
+   },
+   "end": {
+    "line": 563
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 564
+   },
+   "end": {
+    "line": 564
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 579
+   },
+   "end": {
+    "line": 579
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 596
+   },
+   "end": {
+    "line": 596
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 597
+   },
+   "end": {
+    "line": 597
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 600
+   },
+   "end": {
+    "line": 600
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 601
+   },
+   "end": {
+    "line": 601
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 602
+   },
+   "end": {
+    "line": 602
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 614
+   },
+   "end": {
+    "line": 614
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 630
+   },
+   "end": {
+    "line": 630
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 631
+   },
+   "end": {
+    "line": 631
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 632
+   },
+   "end": {
+    "line": 632
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 633
+   },
+   "end": {
+    "line": 633
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 652
+   },
+   "end": {
+    "line": 652
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 653
+   },
+   "end": {
+    "line": 653
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 654
+   },
+   "end": {
+    "line": 654
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 655
+   },
+   "end": {
+    "line": 655
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 672
+   },
+   "end": {
+    "line": 672
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 678
+   },
+   "end": {
+    "line": 678
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 679
+   },
+   "end": {
+    "line": 679
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 680
+   },
+   "end": {
+    "line": 680
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 681
+   },
+   "end": {
+    "line": 681
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 682
+   },
+   "end": {
+    "line": 682
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 700
+   },
+   "end": {
+    "line": 700
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 701
+   },
+   "end": {
+    "line": 701
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 911
+   },
+   "end": {
+    "line": 911
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 944
+   },
+   "end": {
+    "line": 944
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 996
+   },
+   "end": {
+    "line": 996
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 1141
+   },
+   "end": {
+    "line": 1141
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 1227
+   },
+   "end": {
+    "line": 1227
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 1290
+   },
+   "end": {
+    "line": 1290
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 1552
+   },
+   "end": {
+    "line": 1552
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 1829
+   },
+   "end": {
+    "line": 1829
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2123
+   },
+   "end": {
+    "line": 2123
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2156
+   },
+   "end": {
+    "line": 2156
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2204
+   },
+   "end": {
+    "line": 2204
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2488
+   },
+   "end": {
+    "line": 2488
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2569
+   },
+   "end": {
+    "line": 2569
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2592
+   },
+   "end": {
+    "line": 2592
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2663
+   },
+   "end": {
+    "line": 2663
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 2862
+   },
+   "end": {
+    "line": 2862
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3012
+   },
+   "end": {
+    "line": 3012
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3068
+   },
+   "end": {
+    "line": 3068
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3291
+   },
+   "end": {
+    "line": 3291
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3472
+   },
+   "end": {
+    "line": 3472
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3543
+   },
+   "end": {
+    "line": 3543
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3622
+   },
+   "end": {
+    "line": 3622
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3657
+   },
+   "end": {
+    "line": 3657
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3686
+   },
+   "end": {
+    "line": 3686
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3710
+   },
+   "end": {
+    "line": 3710
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs",
+   "start": {
+    "line": 3744
+   },
+   "end": {
+    "line": 3744
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 163
+   },
+   "end": {
+    "line": 164
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 261
+   },
+   "end": {
+    "line": 261
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 284
+   },
+   "end": {
+    "line": 284
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 319
+   },
+   "end": {
+    "line": 319
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 326
+   },
+   "end": {
+    "line": 326
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 368
+   },
+   "end": {
+    "line": 368
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 399
+   },
+   "end": {
+    "line": 399
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 411
+   },
+   "end": {
+    "line": 411
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 444
+   },
+   "end": {
+    "line": 444
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 455
+   },
+   "end": {
+    "line": 455
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 477
+   },
+   "end": {
+    "line": 477
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 488
+   },
+   "end": {
+    "line": 488
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 509
+   },
+   "end": {
+    "line": 509
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 520
+   },
+   "end": {
+    "line": 520
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 542
+   },
+   "end": {
+    "line": 542
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 553
+   },
+   "end": {
+    "line": 553
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 574
+   },
+   "end": {
+    "line": 574
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 585
+   },
+   "end": {
+    "line": 585
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 613
+   },
+   "end": {
+    "line": 614
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 635
+   },
+   "end": {
+    "line": 636
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 163
+   },
+   "end": {
+    "line": 164
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 261
+   },
+   "end": {
+    "line": 261
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 284
+   },
+   "end": {
+    "line": 284
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 327
+   },
+   "end": {
+    "line": 327
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 334
+   },
+   "end": {
+    "line": 334
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 376
+   },
+   "end": {
+    "line": 376
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 407
+   },
+   "end": {
+    "line": 407
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 419
+   },
+   "end": {
+    "line": 419
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 452
+   },
+   "end": {
+    "line": 452
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 463
+   },
+   "end": {
+    "line": 463
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 485
+   },
+   "end": {
+    "line": 485
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 496
+   },
+   "end": {
+    "line": 496
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 517
+   },
+   "end": {
+    "line": 517
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 528
+   },
+   "end": {
+    "line": 528
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 550
+   },
+   "end": {
+    "line": 550
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 561
+   },
+   "end": {
+    "line": 561
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 584
+   },
+   "end": {
+    "line": 584
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 595
+   },
+   "end": {
+    "line": 595
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 617
+   },
+   "end": {
+    "line": 618
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "start": {
+    "line": 633
+   },
+   "end": {
+    "line": 634
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 211
+   },
+   "end": {
+    "line": 212
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 324
+   },
+   "end": {
+    "line": 324
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 346
+   },
+   "end": {
+    "line": 346
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 415
+   },
+   "end": {
+    "line": 415
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 423
+   },
+   "end": {
+    "line": 423
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 493
+   },
+   "end": {
+    "line": 493
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 537
+   },
+   "end": {
+    "line": 537
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 569
+   },
+   "end": {
+    "line": 569
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 581
+   },
+   "end": {
+    "line": 581
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 615
+   },
+   "end": {
+    "line": 615
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 627
+   },
+   "end": {
+    "line": 627
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 648
+   },
+   "end": {
+    "line": 648
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 660
+   },
+   "end": {
+    "line": 660
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 681
+   },
+   "end": {
+    "line": 681
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 693
+   },
+   "end": {
+    "line": 693
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 713
+   },
+   "end": {
+    "line": 713
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 726
+   },
+   "end": {
+    "line": 726
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 748
+   },
+   "end": {
+    "line": 748
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 760
+   },
+   "end": {
+    "line": 760
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 773
+   },
+   "end": {
+    "line": 773
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 794
+   },
+   "end": {
+    "line": 795
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "start": {
+    "line": 810
+   },
+   "end": {
+    "line": 811
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 211
+   },
+   "end": {
+    "line": 212
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 324
+   },
+   "end": {
+    "line": 324
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 346
+   },
+   "end": {
+    "line": 346
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 422
+   },
+   "end": {
+    "line": 422
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 430
+   },
+   "end": {
+    "line": 430
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 500
+   },
+   "end": {
+    "line": 500
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 544
+   },
+   "end": {
+    "line": 544
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 576
+   },
+   "end": {
+    "line": 576
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 588
+   },
+   "end": {
+    "line": 588
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 622
+   },
+   "end": {
+    "line": 622
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 634
+   },
+   "end": {
+    "line": 634
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 655
+   },
+   "end": {
+    "line": 655
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 667
+   },
+   "end": {
+    "line": 667
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 688
+   },
+   "end": {
+    "line": 688
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 700
+   },
+   "end": {
+    "line": 700
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 720
+   },
+   "end": {
+    "line": 720
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 733
+   },
+   "end": {
+    "line": 733
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 755
+   },
+   "end": {
+    "line": 755
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 767
+   },
+   "end": {
+    "line": 767
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 780
+   },
+   "end": {
+    "line": 780
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 801
+   },
+   "end": {
+    "line": 802
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "start": {
+    "line": 817
+   },
+   "end": {
+    "line": 818
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 163
+   },
+   "end": {
+    "line": 164
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 261
+   },
+   "end": {
+    "line": 261
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 284
+   },
+   "end": {
+    "line": 284
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 327
+   },
+   "end": {
+    "line": 327
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 334
+   },
+   "end": {
+    "line": 334
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 376
+   },
+   "end": {
+    "line": 376
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 407
+   },
+   "end": {
+    "line": 407
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 419
+   },
+   "end": {
+    "line": 419
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 452
+   },
+   "end": {
+    "line": 452
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 463
+   },
+   "end": {
+    "line": 463
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 485
+   },
+   "end": {
+    "line": 485
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 496
+   },
+   "end": {
+    "line": 496
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 517
+   },
+   "end": {
+    "line": 517
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 528
+   },
+   "end": {
+    "line": 528
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 550
+   },
+   "end": {
+    "line": 550
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 561
+   },
+   "end": {
+    "line": 561
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 584
+   },
+   "end": {
+    "line": 584
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 595
+   },
+   "end": {
+    "line": 595
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 617
+   },
+   "end": {
+    "line": 618
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "start": {
+    "line": 633
+   },
+   "end": {
+    "line": 634
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 163
+   },
+   "end": {
+    "line": 164
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 261
+   },
+   "end": {
+    "line": 261
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 284
+   },
+   "end": {
+    "line": 284
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 327
+   },
+   "end": {
+    "line": 327
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-009-invoke-signed",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 334
+   },
+   "end": {
+    "line": 334
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-009-invoke-signed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 376
+   },
+   "end": {
+    "line": 376
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 407
+   },
+   "end": {
+    "line": 407
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 419
+   },
+   "end": {
+    "line": 419
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 452
+   },
+   "end": {
+    "line": 452
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 463
+   },
+   "end": {
+    "line": 463
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 485
+   },
+   "end": {
+    "line": 485
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 496
+   },
+   "end": {
+    "line": 496
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 517
+   },
+   "end": {
+    "line": 517
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 528
+   },
+   "end": {
+    "line": 528
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 550
+   },
+   "end": {
+    "line": 550
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 561
+   },
+   "end": {
+    "line": 561
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 584
+   },
+   "end": {
+    "line": 584
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 595
+   },
+   "end": {
+    "line": 595
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 618
+   },
+   "end": {
+    "line": 619
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "start": {
+    "line": 634
+   },
+   "end": {
+    "line": 635
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 47
+   },
+   "end": {
+    "line": 47
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 69
+   },
+   "end": {
+    "line": 69
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 110
+   },
+   "end": {
+    "line": 110
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 171
+   },
+   "end": {
+    "line": 171
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 175
+   },
+   "end": {
+    "line": 175
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 210
+   },
+   "end": {
+    "line": 210
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 258
+   },
+   "end": {
+    "line": 258
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 270
+   },
+   "end": {
+    "line": 270
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 358
+   },
+   "end": {
+    "line": 358
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 370
+   },
+   "end": {
+    "line": 370
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 447
+   },
+   "end": {
+    "line": 447
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 637
+   },
+   "end": {
+    "line": 637
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 700
+   },
+   "end": {
+    "line": 700
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 763
+   },
+   "end": {
+    "line": 763
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 829
+   },
+   "end": {
+    "line": 829
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 935
+   },
+   "end": {
+    "line": 935
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 982
+   },
+   "end": {
+    "line": 982
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs",
+   "start": {
+    "line": 1013
+   },
+   "end": {
+    "line": 1013
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 47
+   },
+   "end": {
+    "line": 47
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 69
+   },
+   "end": {
+    "line": 69
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 110
+   },
+   "end": {
+    "line": 110
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 171
+   },
+   "end": {
+    "line": 171
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 179
+   },
+   "end": {
+    "line": 179
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 214
+   },
+   "end": {
+    "line": 214
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 262
+   },
+   "end": {
+    "line": 262
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 274
+   },
+   "end": {
+    "line": 274
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 362
+   },
+   "end": {
+    "line": 362
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 374
+   },
+   "end": {
+    "line": 374
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 451
+   },
+   "end": {
+    "line": 451
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 641
+   },
+   "end": {
+    "line": 641
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 704
+   },
+   "end": {
+    "line": 704
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 767
+   },
+   "end": {
+    "line": 767
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 833
+   },
+   "end": {
+    "line": 833
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 939
+   },
+   "end": {
+    "line": 939
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 986
+   },
+   "end": {
+    "line": 986
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs",
+   "start": {
+    "line": 1017
+   },
+   "end": {
+    "line": 1017
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+   "start": {
+    "line": 93
+   },
+   "end": {
+    "line": 93
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs",
+   "start": {
+    "line": 103
+   },
+   "end": {
+    "line": 103
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+   "start": {
+    "line": 92
+   },
+   "end": {
+    "line": 92
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  },
+  {
+   "check_id": "solana-security-standard.sol-035-instructions-sysvar-substitution",
+   "path": "corpus2/wormhole-sysvar/secure/src/verify_signature.rs",
+   "start": {
+    "line": 101
+   },
+   "end": {
+    "line": 101
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-035-instructions-sysvar-substitution"
+  }
+ ]
+}

@@ -1,0 +1,1939 @@
+Building workspace metadata entry `arbitrary_cpi`
+    Updating git repository `https://github.com/rust-lang/rust-clippy`
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded arrayvec v0.7.6
+  Downloaded heck v0.3.3
+  Downloaded bs58 v0.5.1
+  Downloaded dylint_linting v3.4.1
+  Downloaded subtle v2.4.1
+  Downloaded either v1.13.0
+  Downloaded unicode-ident v1.0.16
+  Downloaded tinyvec v1.8.1
+  Downloaded anchor-syn v0.30.1
+  Downloaded openssl-sys v0.9.105
+  Downloaded rustc_apfloat v0.2.2+llvm-462a31f5a5ab
+  Downloaded unicode-segmentation v1.12.0
+  Downloaded toml_edit v0.22.23
+  Downloaded itertools v0.12.1
+  Downloaded winnow v0.7.1
+  Downloaded serde_json v1.0.138
+  Downloaded cc v1.2.11
+  Downloaded ryu v1.0.19
+  Downloaded syn v2.0.98
+  Downloaded libssh2-sys v0.3.1
+   Compiling proc-macro2 v1.0.93
+   Compiling unicode-ident v1.0.16
+   Compiling serde v1.0.217
+   Compiling typenum v1.17.0
+   Compiling libc v0.2.169
+   Compiling version_check v0.9.5
+   Compiling shlex v1.3.0
+   Compiling stable_deref_trait v1.2.0
+   Compiling pkg-config v0.3.31
+   Compiling vcpkg v0.2.15
+   Compiling memchr v2.7.4
+   Compiling writeable v0.5.5
+   Compiling generic-array v0.14.7
+   Compiling litemap v0.7.4
+   Compiling quote v1.0.38
+   Compiling smallvec v1.13.2
+   Compiling icu_locid_transform_data v1.5.0
+   Compiling syn v2.0.98
+   Compiling subtle v2.4.1
+   Compiling icu_properties_data v1.5.0
+   Compiling aho-corasick v1.1.3
+   Compiling utf16_iter v1.0.5
+   Compiling write16 v1.0.0
+   Compiling regex-syntax v0.8.5
+   Compiling icu_normalizer_data v1.5.0
+   Compiling cfg-if v1.0.0
+   Compiling serde_json v1.0.138
+   Compiling utf8_iter v1.0.4
+   Compiling jobserver v0.1.32
+   Compiling cpufeatures v0.2.17
+   Compiling bstr v1.11.3
+   Compiling cc v1.2.11
+   Compiling ryu v1.0.19
+   Compiling itoa v1.0.14
+   Compiling same-file v1.0.6
+   Compiling equivalent v1.0.1
+   Compiling log v0.4.25
+   Compiling hashbrown v0.15.2
+   Compiling anyhow v1.0.95
+   Compiling regex-automata v0.4.9
+   Compiling walkdir v2.5.0
+   Compiling indexmap v2.7.1
+   Compiling openssl-sys v0.9.105
+   Compiling libz-sys v1.1.21
+   Compiling libssh2-sys v0.3.1
+   Compiling libgit2-sys v0.16.2+1.7.2
+   Compiling synstructure v0.13.1
+   Compiling globset v0.4.15
+   Compiling semver v1.0.25
+   Compiling camino v1.1.9
+   Compiling thiserror v2.0.11
+   Compiling winnow v0.7.1
+   Compiling percent-encoding v2.3.1
+   Compiling form_urlencoded v1.2.1
+   Compiling serde_derive v1.0.217
+   Compiling zerofrom-derive v0.1.5
+   Compiling yoke-derive v0.7.5
+   Compiling zerovec-derive v0.10.3
+   Compiling displaydoc v0.2.5
+   Compiling zerofrom v0.1.5
+   Compiling icu_provider_macros v1.5.0
+   Compiling yoke v0.7.5
+   Compiling thiserror-impl v2.0.11
+   Compiling zerovec v0.10.4
+   Compiling tinystr v0.7.6
+   Compiling icu_collections v1.5.0
+   Compiling icu_locid v1.5.0
+   Compiling icu_provider v1.5.0
+   Compiling icu_locid_transform v1.5.0
+   Compiling bitflags v2.8.0
+   Compiling serde_spanned v0.6.8
+   Compiling toml_datetime v0.6.8
+   Compiling icu_properties v1.5.1
+   Compiling crypto-common v0.1.6
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling sha2 v0.10.8
+   Compiling rust-embed-utils v8.5.0
+   Compiling toml_edit v0.22.23
+   Compiling icu_normalizer v1.5.0
+   Compiling rustversion v1.0.19
+   Compiling rustc_apfloat v0.2.2+llvm-462a31f5a5ab
+   Compiling thiserror v1.0.69
+   Compiling syn v1.0.109
+   Compiling idna_adapter v1.2.0
+   Compiling idna v1.0.3
+   Compiling toml v0.8.19
+   Compiling rust-embed-impl v8.5.0
+   Compiling url v2.5.4
+   Compiling cargo-platform v0.1.9
+   Compiling thiserror-impl v1.0.69
+   Compiling openssl-probe v0.1.6
+   Compiling if_chain v1.0.2
+   Compiling paste v1.0.15
+   Compiling unicode-segmentation v1.12.0
+   Compiling either v1.13.0
+   Compiling heck v0.3.3
+   Compiling itertools v0.12.1
+   Compiling cargo_metadata v0.19.1
+   Compiling dylint_linting v3.4.1
+   Compiling rust-embed v8.5.0
+   Compiling regex v1.11.1
+   Compiling once_cell v1.20.2
+   Compiling ansi_term v0.12.1
+   Compiling home v0.5.9
+   Compiling bs58 v0.5.1
+   Compiling arrayvec v0.7.6
+   Compiling clippy_utils v0.1.86 (https://github.com/rust-lang/rust-clippy?rev=19e305bb57a7595f2a8d81f521c0dd8bf854e739#19e305bb)
+   Compiling anchor-syn v0.30.1
+   Compiling solana-lints v0.1.0 (/src/solana-lints/crate)
+   Compiling git2 v0.18.3
+   Compiling dylint_internal v3.4.1
+   Compiling arbitrary_cpi v0.1.0 (/src/solana-lints/lints/arbitrary_cpi)
+    Finished `release` profile [optimized] target(s) in 1m 09s
+Building workspace metadata entry `bump_seed_canonicalization`
+   Compiling subtle v2.6.1
+   Compiling percent-encoding v2.3.1
+   Compiling digest v0.10.7
+   Compiling form_urlencoded v1.2.1
+   Compiling url v2.5.4
+   Compiling sha2 v0.10.8
+   Compiling rust-embed-utils v8.5.0
+   Compiling anchor-syn v0.30.1
+   Compiling rust-embed-impl v8.5.0
+   Compiling git2 v0.18.3
+   Compiling rust-embed v8.5.0
+   Compiling solana-lints v0.1.0 (/src/solana-lints/crate)
+   Compiling dylint_internal v3.4.1
+   Compiling dylint_linting v3.4.1
+   Compiling bump_seed_canonicalization v0.1.0 (/src/solana-lints/lints/bump_seed_canonicalization)
+    Finished `release` profile [optimized] target(s) in 9.72s
+Building workspace metadata entry `insecure_account_close`
+   Compiling insecure_account_close v0.1.0 (/src/solana-lints/lints/insecure_account_close)
+    Finished `release` profile [optimized] target(s) in 1.70s
+Building workspace metadata entry `missing_owner_check`
+   Compiling syn v2.0.98
+   Compiling missing_owner_check v0.1.0 (/src/solana-lints/lints/missing_owner_check)
+    Finished `release` profile [optimized] target(s) in 10.89s
+Building workspace metadata entry `missing_signer_check`
+    Updating crates.io index
+   Compiling missing_signer_check v0.1.0 (/src/solana-lints/lints/missing_signer_check)
+    Finished `release` profile [optimized] target(s) in 2.37s
+Building workspace metadata entry `sysvar_get`
+   Compiling sysvar_get v0.1.0 (/src/solana-lints/lints/sysvar_get)
+    Finished `release` profile [optimized] target(s) in 2.20s
+Building workspace metadata entry `type_cosplay`
+   Compiling type_cosplay v0.1.0 (/src/solana-lints/lints/type_cosplay)
+    Finished `release` profile [optimized] target(s) in 1.09s
+Building driver for toolchain `nightly-2025-01-09-x86_64-unknown-linux-gnu`
+    Updating crates.io index
+     Locking 49 packages to latest compatible versions
+      Adding dylint_driver v3.4.1 (available: v3.5.1)
+      Adding dylint_internal v3.4.1 (available: v3.5.1)
+ Downloading crates ...
+  Downloaded libloading v0.8.9
+  Downloaded dylint_driver v3.4.1
+   Compiling memchr v2.8.3
+   Compiling regex-syntax v0.8.11
+   Compiling anyhow v1.0.104
+   Compiling zmij v1.0.23
+   Compiling log v0.4.34
+   Compiling serde_core v1.0.229
+   Compiling utf8parse v0.2.2
+   Compiling serde_json v1.0.151
+   Compiling libc v0.2.189
+   Compiling rustversion v1.0.23
+   Compiling anstyle-parse v1.0.0
+   Compiling once_cell v1.21.4
+   Compiling itoa v1.0.18
+   Compiling jiff-core v0.1.0
+   Compiling aho-corasick v1.1.5
+   Compiling cfg-if v1.0.4
+   Compiling anstyle v1.0.14
+   Compiling anstyle-query v1.1.5
+   Compiling colorchoice v1.0.5
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling libloading v0.8.9
+   Compiling anstream v1.0.0
+   Compiling jiff v0.2.35
+   Compiling regex-automata v0.4.18
+   Compiling regex v1.13.1
+   Compiling dylint_internal v3.4.1
+   Compiling env_filter v2.0.0
+   Compiling dylint_driver v3.4.1
+   Compiling env_logger v0.11.11
+   Compiling dylint_driver-nightly-2025-01-09-x86_64-unknown-linux-gnu v0.1.0 (/tmp/.tmp2FbuRh)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.38s
+Checking with toolchain `nightly-2025-01-09-x86_64-unknown-linux-gnu`
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling version_check v0.9.5
+   Compiling serde v1.0.229
+   Compiling libc v0.2.189
+    Checking typenum v1.20.1
+    Checking cfg-if v1.0.4
+   Compiling syn v1.0.109
+   Compiling autocfg v1.5.1
+   Compiling zerocopy v0.8.56
+   Compiling generic-array v0.14.9
+    Checking once_cell v1.21.4
+   Compiling crunchy v0.2.4
+   Compiling num-traits v0.2.19
+   Compiling syn v3.0.4
+   Compiling syn v2.0.119
+    Checking either v1.18.0
+    Checking subtle v2.6.1
+   Compiling semver v1.0.28
+    Checking getrandom v0.2.17
+   Compiling rustc_version v0.4.1
+    Checking rand_core v0.6.4
+   Compiling ahash v0.8.12
+   Compiling crossbeam-utils v0.8.22
+   Compiling getrandom v0.1.16
+    Checking num-integer v0.1.47
+   Compiling paste v1.0.15
+   Compiling crossbeam-epoch v0.9.20
+   Compiling wasm-bindgen-shared v0.2.127
+   Compiling num-bigint v0.4.8
+   Compiling crossbeam-deque v0.8.7
+   Compiling find-msvc-tools v0.1.11
+   Compiling rustversion v1.0.23
+   Compiling jobserver v0.1.35
+   Compiling shlex v2.0.1
+   Compiling cc v1.4.4
+    Checking rand_core v0.5.1
+    Checking ppv-lite86 v0.2.21
+    Checking hashbrown v0.13.2
+    Checking itertools v0.10.5
+   Compiling serde_derive v1.0.229
+    Checking rand_chacha v0.3.1
+   Compiling rayon-core v1.13.0
+    Checking rand v0.8.8
+   Compiling winnow v1.0.4
+    Checking cpufeatures v0.2.17
+   Compiling thiserror v1.0.69
+   Compiling equivalent v1.0.2
+   Compiling hashbrown v0.17.1
+    Checking ark-std v0.4.0
+    Checking hybrid-array v0.4.14
+   Compiling indexmap v2.14.1
+   Compiling zeroize_derive v1.5.0
+   Compiling ark-serialize-derive v0.4.2
+   Compiling ark-ff-asm v0.4.2
+   Compiling derivative v2.2.0
+   Compiling ark-ff-macros v0.4.2
+   Compiling toml_parser v1.1.3+spec-1.1.0
+    Checking zeroize v1.3.0
+   Compiling thiserror-impl v1.0.69
+   Compiling ahash v0.7.8
+   Compiling feature-probe v0.1.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling bv v0.11.1
+    Checking rand_chacha v0.2.2
+   Compiling toml_edit v0.25.13+spec-1.1.0
+   Compiling solana-frozen-abi-macro v1.18.26
+    Checking bitmaps v2.1.0
+   Compiling im v15.1.0
+   Compiling bumpalo v3.20.3
+   Compiling cfg_aliases v0.2.2
+   Compiling zmij v1.0.23
+    Checking tinyvec_macros v0.1.1
+    Checking cmov v0.5.4
+    Checking opaque-debug v0.3.1
+   Compiling anyhow v1.0.104
+   Compiling proc-macro-crate v3.5.0
+    Checking ctutils v0.4.2
+   Compiling wasm-bindgen-macro-support v0.2.127
+    Checking sized-chunks v0.6.5
+    Checking tinyvec v1.12.0
+   Compiling borsh v1.8.1
+    Checking rayon v1.12.0
+    Checking rand v0.7.3
+    Checking block-buffer v0.12.1
+    Checking crypto-common v0.2.2
+   Compiling wasm-bindgen v0.2.127
+   Compiling blake3 v1.8.7
+   Compiling borsh-derive-internal v0.9.3
+   Compiling borsh-schema-derive-internal v0.9.3
+   Compiling borsh-schema-derive-internal v0.10.4
+   Compiling borsh-derive-internal v0.10.4
+   Compiling solana-frozen-abi v1.18.26
+    Checking rand_xoshiro v0.6.0
+   Compiling memoffset v0.9.1
+   Compiling serde_json v1.0.151
+   Compiling toml v0.5.11
+   Compiling borsh-derive v1.8.1
+    Checking digest v0.11.3
+    Checking crypto-common v0.1.6
+    Checking block-buffer v0.10.4
+    Checking digest v0.10.7
+    Checking digest v0.9.0
+    Checking ark-serialize v0.4.2
+    Checking crypto-mac v0.8.0
+   Compiling libsecp256k1-core v0.2.2
+    Checking block-buffer v0.9.0
+    Checking hmac v0.8.1
+   Compiling proc-macro-crate v0.1.5
+    Checking ark-ff v0.4.2
+    Checking sha2 v0.9.9
+    Checking hmac-drbg v0.3.0
+    Checking pbkdf2 v0.4.0
+    Checking sha2 v0.10.9
+   Compiling borsh-derive v0.10.4
+   Compiling borsh-derive v0.9.3
+   Compiling libsecp256k1-gen-ecmult v0.2.1
+   Compiling libsecp256k1-gen-genmult v0.2.1
+    Checking hashbrown v0.11.2
+    Checking unicode-normalization v0.1.25
+   Compiling libsecp256k1 v0.6.0
+   Compiling solana-program v1.18.26
+   Compiling bytemuck_derive v1.12.0
+    Checking serde_bytes v0.11.19
+    Checking memmap2 v0.5.10
+    Checking arrayvec v0.7.8
+    Checking itoa v1.0.18
+    Checking constant_time_eq v0.4.2
+    Checking keccak v0.1.6
+    Checking lazy_static v1.5.0
+    Checking log v0.4.34
+    Checking memchr v2.8.3
+   Compiling bs58 v0.4.0
+    Checking arrayref v0.3.9
+    Checking base64 v0.12.3
+    Checking cpufeatures v0.3.1
+    Checking byteorder v1.5.0
+    Checking rustc-hash v1.1.0
+    Checking tiny-bip39 v0.8.2
+    Checking curve25519-dalek v3.2.1
+   Compiling solana-sdk-macro v1.18.26
+   Compiling wasm-bindgen-macro v0.2.127
+    Checking sha3 v0.10.9
+    Checking borsh v0.9.3
+    Checking bytemuck v1.25.2
+    Checking borsh v0.10.4
+    Checking bincode v1.3.3
+   Compiling num-derive v0.4.2
+    Checking bitflags v2.13.1
+    Checking base64 v0.21.7
+    Checking ark-poly v0.4.2
+    Checking ark-ec v0.4.2
+    Checking ark-bn254 v0.4.0
+    Checking light-poseidon v0.2.0
+    Checking squads-signer-auth v0.1.0 (/work)
+error[E0583]: file not found for module `state`
+ --> src/lib.rs:4:1
+  |
+4 | pub mod state;
+  | ^^^^^^^^^^^^^^
+  |
+  = help: to create the module `state`, create file "src/state.rs" or "src/state/mod.rs"
+  = note: if there is a `mod state` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0583]: file not found for module `errors`
+ --> src/lib.rs:7:1
+  |
+7 | pub mod errors;
+  | ^^^^^^^^^^^^^^^
+  |
+  = help: to create the module `errors`, create file "src/errors.rs" or "src/errors/mod.rs"
+  = note: if there is a `mod errors` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0433]: failed to resolve: use of undeclared crate or module `anchor_lang`
+ --> src/lib.rs:1:5
+  |
+1 | use anchor_lang::{prelude::*, solana_program::instruction::Instruction};
+  |     ^^^^^^^^^^^ use of undeclared crate or module `anchor_lang`
+
+error[E0433]: failed to resolve: use of undeclared crate or module `anchor_lang`
+  --> src/lib.rs:16:9
+   |
+16 |     use anchor_lang::solana_program::{program::{invoke_signed, invoke}, system_instruction::transfer};
+   |         ^^^^^^^^^^^ use of undeclared crate or module `anchor_lang`
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:623:10
+    |
+623 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:625:7
+    |
+625 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:627:7
+    |
+627 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:637:7
+    |
+637 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:607:10
+    |
+607 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:609:7
+    |
+609 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:611:7
+    |
+611 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:575:10
+    |
+575 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:577:7
+    |
+577 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:588:7
+    |
+588 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:602:7
+    |
+602 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:541:10
+    |
+541 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:543:7
+    |
+543 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:554:7
+    |
+554 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:570:7
+    |
+570 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:509:10
+    |
+509 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:511:7
+    |
+511 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:521:7
+    |
+521 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:536:7
+    |
+536 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:477:10
+    |
+477 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:479:7
+    |
+479 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:489:7
+    |
+489 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:504:7
+    |
+504 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:444:10
+    |
+444 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:446:7
+    |
+446 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:456:7
+    |
+456 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:472:7
+    |
+472 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:399:10
+    |
+399 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:401:7
+    |
+401 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:412:7
+    |
+412 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:426:7
+    |
+426 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:439:7
+    |
+439 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:367:10
+    |
+367 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:369:7
+    |
+369 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:381:7
+    |
+381 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:394:7
+    |
+394 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find derive macro `Accounts` in this scope
+   --> src/lib.rs:352:10
+    |
+352 | #[derive(Accounts)]
+    |          ^^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:354:7
+    |
+354 |     #[account(
+    |       ^^^^^^^
+
+error: cannot find attribute `account` in this scope
+   --> src/lib.rs:362:7
+    |
+362 |     #[account(mut)]
+    |       ^^^^^^^
+
+error: cannot find attribute `program` in this scope
+  --> src/lib.rs:11:3
+   |
+11 | #[program]
+   |   ^^^^^^^
+
+error: cannot find macro `err` in this scope
+  --> src/lib.rs:23:20
+   |
+23 |             return err!(MsError::MaxMembersReached);
+   |                    ^^^
+
+error: cannot find macro `err` in this scope
+  --> src/lib.rs:27:20
+   |
+27 |             return err!(MsError::InvalidThreshold);
+   |                    ^^^
+
+error: cannot find macro `err` in this scope
+  --> src/lib.rs:40:20
+   |
+40 |             return err!(MsError::MaxMembersReached);
+   |                    ^^^
+
+error: cannot find macro `err` in this scope
+  --> src/lib.rs:73:20
+   |
+73 |             return err!(MsError::CannotRemoveSoloMember);
+   |                    ^^^
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:118:20
+    |
+118 |             return err!(MsError::InvalidThreshold);
+    |                    ^^^
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:134:20
+    |
+134 |             return err!(MsError::InvalidThreshold);
+    |                    ^^^
+
+error: cannot find macro `msg` in this scope
+   --> src/lib.rs:149:9
+    |
+149 |         msg!("TX PDA: {:?}", ctx.accounts.transaction.key());
+    |         ^^^
+    |
+help: consider importing this macro
+    |
+14  +     use solana_program::msg;
+    |
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:280:24
+    |
+280 |                 return err!(MsError::InvalidInstructionAccount);
+    |                        ^^^
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:297:24
+    |
+297 |                 return err!(MsError::InvalidInstructionAccount);
+    |                        ^^^
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:302:24
+    |
+302 |                 return err!(MsError::InvalidInstructionAccount);
+    |                        ^^^
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:313:28
+    |
+313 |                     return err!(MsError::InvalidInstructionAccount);
+    |                            ^^^
+
+error: cannot find macro `err` in this scope
+   --> src/lib.rs:317:28
+    |
+317 |                     return err!(MsError::InvalidInstructionAccount);
+    |                            ^^^
+
+error: cannot find macro `declare_id` in this scope
+ --> src/lib.rs:9:1
+  |
+9 | declare_id!("8zTaQtMiBELrRZeB4jU8bVNLpbhUoLVBjokiqxhVfyWM");
+  | ^^^^^^^^^^
+  |
+help: consider importing this macro
+  |
+1 + use solana_program::declare_id;
+  |
+
+error[E0412]: cannot find type `Context` in this scope
+  --> src/lib.rs:19:24
+   |
+19 |     pub fn create(ctx: Context<Create>, threshold:u16, members: Vec<Pubkey>) -> Result<()> {
+   |                        ^^^^^^^ not found in this scope
+   |
+help: consider importing this struct
+   |
+14 +     use std::task::Context;
+   |
+
+error[E0412]: cannot find type `Pubkey` in this scope
+  --> src/lib.rs:19:69
+   |
+19 |     pub fn create(ctx: Context<Create>, threshold:u16, members: Vec<Pubkey>) -> Result<()> {
+   |                                                                     ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Context` in this scope
+  --> src/lib.rs:38:28
+   |
+38 |     pub fn add_member(ctx: Context<MsAuthRealloc>, new_member: Pubkey) -> Result<()> {
+   |                            ^^^^^^^ not found in this scope
+   |
+help: consider importing this struct
+   |
+14 +     use std::task::Context;
+   |
+
+error[E0412]: cannot find type `Pubkey` in this scope
+  --> src/lib.rs:38:64
+   |
+38 |     pub fn add_member(ctx: Context<MsAuthRealloc>, new_member: Pubkey) -> Result<()> {
+   |                                                                ^^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: use of undeclared type `AccountInfo`
+  --> src/lib.rs:54:13
+   |
+54 |             AccountInfo::realloc(&multisig_account_info, needed_len, false)?;
+   |             ^^^^^^^^^^^ use of undeclared type `AccountInfo`
+   |
+help: consider importing this struct
+   |
+14 +     use solana_program::sysvar::slot_history::AccountInfo;
+   |
+
+error[E0412]: cannot find type `Context` in this scope
+  --> src/lib.rs:70:31
+   |
+70 |     pub fn remove_member(ctx: Context<MsAuth>, old_member: Pubkey) -> Result<()> {
+   |                               ^^^^^^^ not found in this scope
+   |
+help: consider importing this struct
+   |
+14 +     use std::task::Context;
+   |
+
+error[E0412]: cannot find type `Pubkey` in this scope
+  --> src/lib.rs:70:60
+   |
+70 |     pub fn remove_member(ctx: Context<MsAuth>, old_member: Pubkey) -> Result<()> {
+   |                                                            ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Context` in this scope
+  --> src/lib.rs:86:14
+   |
+86 |         ctx: Context<'_,'_,'_,'info, MsAuth<'info>>, old_member: Pubkey, new_threshold: u16
+   |              ^^^^^^^ not found in this scope
+   |
+help: consider importing this struct
+   |
+14 +     use std::task::Context;
+   |
+
+error[E0412]: cannot find type `Pubkey` in this scope
+  --> src/lib.rs:86:66
+   |
+86 |         ctx: Context<'_,'_,'_,'info, MsAuth<'info>>, old_member: Pubkey, new_threshold: u16
+   |                                                                  ^^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: use of undeclared type `Context`
+  --> src/lib.rs:89:13
+   |
+89 |             Context::new(
+   |             ^^^^^^^ use of undeclared type `Context`
+   |
+help: consider importing this struct
+   |
+14 +     use std::task::Context;
+   |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:100:14
+    |
+100 |         ctx: Context<'_,'_,'_,'info, MsAuthRealloc<'info>>, new_member: Pubkey, new_threshold: u16
+    |              ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Pubkey` in this scope
+   --> src/lib.rs:100:73
+    |
+100 |         ctx: Context<'_,'_,'_,'info, MsAuthRealloc<'info>>, new_member: Pubkey, new_threshold: u16
+    |                                                                         ^^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: use of undeclared type `Context`
+   --> src/lib.rs:104:13
+    |
+104 |             Context::new(
+    |             ^^^^^^^ use of undeclared type `Context`
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:127:34
+    |
+127 |     pub fn change_threshold(ctx: Context<MsAuth>, new_threshold: u16) -> Result<()> {
+    |                                  ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:144:31
+    |
+144 |     pub fn add_authority(ctx: Context<MsAuth>) -> Result<()> {
+    |                               ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:148:36
+    |
+148 |     pub fn create_transaction(ctx: Context<CreateTransaction>, authority_index: u32) -> Result<()> {
+    |                                    ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0433]: failed to resolve: use of undeclared type `Pubkey`
+   --> src/lib.rs:153:38
+    |
+153 |                 let (_, auth_bump) = Pubkey::find_program_address(&[
+    |                                      ^^^^^^ use of undeclared type `Pubkey`
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:179:38
+    |
+179 |     pub fn activate_transaction(ctx: Context<ActivateTransaction>) -> Result<()> {
+    |                                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:183:33
+    |
+183 |     pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {
+    |                                 ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `IncomingInstruction` in this scope
+   --> src/lib.rs:183:80
+    |
+183 |     pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {
+    |                                                                                ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:194:37
+    |
+194 |     pub fn approve_transaction(ctx: Context<ApproveTransaction>) -> Result<()> {
+    |                                     ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:209:36
+    |
+209 |     pub fn reject_transaction(ctx: Context<RejectTransaction>) -> Result<()> {
+    |                                    ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:226:36
+    |
+226 |     pub fn cancel_transaction(ctx: Context<CancelTransaction>) -> Result<()> {
+    |                                    ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `Context` in this scope
+   --> src/lib.rs:237:44
+    |
+237 |     pub fn execute_transaction<'info>(ctx: Context<'_,'_,'_,'info,ExecuteTransaction<'info>>, account_list: Vec<u8>) -> Result<()> {
+    |                                            ^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use std::task::Context;
+    |
+
+error[E0412]: cannot find type `AccountInfo` in this scope
+   --> src/lib.rs:265:44
+    |
+265 |         let mapped_remaining_accounts: Vec<AccountInfo>= account_list.iter().map(|&i| {
+    |                                            ^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use solana_program::sysvar::slot_history::AccountInfo;
+    |
+
+error[E0412]: cannot find type `AccountInfo` in this scope
+   --> src/lib.rs:277:33
+    |
+277 |             let ms_ix_account: &AccountInfo = next_account_info(ix_iter)?;
+    |                                 ^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use solana_program::sysvar::slot_history::AccountInfo;
+    |
+
+error[E0425]: cannot find function `next_account_info` in this scope
+   --> src/lib.rs:277:47
+    |
+277 |             let ms_ix_account: &AccountInfo = next_account_info(ix_iter)?;
+    |                                               ^^^^^^^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+14  +     use solana_program::account_info::next_account_info;
+    |
+
+error[E0412]: cannot find type `MsInstruction` in this scope
+   --> src/lib.rs:285:24
+    |
+285 |             let ms_ix: MsInstruction = MsInstruction::try_deserialize(&mut ix_account_data)?;
+    |                        ^^^^^^^^^^^^^ help: a struct with a similar name exists: `AddInstruction`
+...
+400 | pub struct AddInstruction<'info> {
+    | -------------------------------- similarly named struct `AddInstruction` defined here
+
+error[E0433]: failed to resolve: use of undeclared type `Pubkey`
+   --> src/lib.rs:288:31
+    |
+288 |             let (ix_pda, _) = Pubkey::find_program_address(&[
+    |                               ^^^^^^ use of undeclared type `Pubkey`
+
+error[E0412]: cannot find type `AccountInfo` in this scope
+   --> src/lib.rs:300:35
+    |
+300 |             let ix_program_info: &AccountInfo = next_account_info(ix_iter)?;
+    |                                   ^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use solana_program::sysvar::slot_history::AccountInfo;
+    |
+
+error[E0425]: cannot find function `next_account_info` in this scope
+   --> src/lib.rs:300:49
+    |
+300 |             let ix_program_info: &AccountInfo = next_account_info(ix_iter)?;
+    |                                                 ^^^^^^^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+14  +     use solana_program::account_info::next_account_info;
+    |
+
+error[E0412]: cannot find type `AccountInfo` in this scope
+   --> src/lib.rs:305:43
+    |
+305 |             let mut ix_account_infos: Vec<AccountInfo> = Vec::<AccountInfo>::new();
+    |                                           ^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use solana_program::sysvar::slot_history::AccountInfo;
+    |
+
+error[E0412]: cannot find type `AccountInfo` in this scope
+   --> src/lib.rs:305:64
+    |
+305 |             let mut ix_account_infos: Vec<AccountInfo> = Vec::<AccountInfo>::new();
+    |                                                                ^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+14  +     use solana_program::sysvar::slot_history::AccountInfo;
+    |
+
+error[E0425]: cannot find function `next_account_info` in this scope
+   --> src/lib.rs:310:39
+    |
+310 |                 let ix_account_info = next_account_info(ix_iter)?;
+    |                                       ^^^^^^^^^^^^^^^^^
+    |
+help: a local variable with a similar name exists
+    |
+310 |                 let ix_account_info = ix_account_infos(ix_iter)?;
+    |                                       ~~~~~~~~~~~~~~~~
+help: consider importing this function
+    |
+14  +     use solana_program::account_info::next_account_info;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:360:19
+    |
+360 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:360:34
+    |
+360 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+353 | pub struct Create<'info, Ms> {
+    |                        ++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:363:18
+    |
+363 |     pub creator: Signer<'info>,
+    |                  ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:364:25
+    |
+364 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+364 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:364:40
+    |
+364 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:379:19
+    |
+379 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:379:34
+    |
+379 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+368 | pub struct CreateTransaction<'info, Ms> {
+    |                                   ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:392:22
+    |
+392 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:392:37
+    |
+392 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+368 | pub struct CreateTransaction<'info, MsTransaction> {
+    |                                   +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:395:18
+    |
+395 |     pub creator: Signer<'info>,
+    |                  ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:396:25
+    |
+396 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+396 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:396:40
+    |
+396 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:410:19
+    |
+410 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:410:34
+    |
+410 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+400 | pub struct AddInstruction<'info, Ms> {
+    |                                ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:424:22
+    |
+424 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:424:37
+    |
+424 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+400 | pub struct AddInstruction<'info, MsTransaction> {
+    |                                +++++++++++++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:437:22
+    |
+437 |     pub instruction: Account<'info, MsInstruction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsInstruction` in this scope
+   --> src/lib.rs:437:37
+    |
+437 |     pub instruction: Account<'info, MsInstruction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+400 | pub struct AddInstruction<'info, MsInstruction> {
+    |                                +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:440:18
+    |
+440 |     pub creator: Signer<'info>,
+    |                  ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:441:25
+    |
+441 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+441 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:441:40
+    |
+441 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:454:19
+    |
+454 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:454:34
+    |
+454 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+445 | pub struct ActivateTransaction<'info, Ms> {
+    |                                     ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:470:22
+    |
+470 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:470:37
+    |
+470 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+445 | pub struct ActivateTransaction<'info, MsTransaction> {
+    |                                     +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:473:18
+    |
+473 |     pub creator: Signer<'info>,
+    |                  ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:474:25
+    |
+474 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+474 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:474:40
+    |
+474 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:487:19
+    |
+487 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:487:34
+    |
+487 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+478 | pub struct ApproveTransaction<'info, Ms> {
+    |                                    ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:502:22
+    |
+502 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:502:37
+    |
+502 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+478 | pub struct ApproveTransaction<'info, MsTransaction> {
+    |                                    +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:505:17
+    |
+505 |     pub member: Signer<'info>,
+    |                 ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:506:25
+    |
+506 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+506 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:506:40
+    |
+506 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:519:19
+    |
+519 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:519:34
+    |
+519 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+510 | pub struct RejectTransaction<'info, Ms> {
+    |                                   ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:534:22
+    |
+534 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:534:37
+    |
+534 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+510 | pub struct RejectTransaction<'info, MsTransaction> {
+    |                                   +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:537:17
+    |
+537 |     pub member: Signer<'info>,
+    |                 ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:538:25
+    |
+538 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+538 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:538:40
+    |
+538 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:552:19
+    |
+552 |     pub multisig: Account<'info, Ms>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:552:34
+    |
+552 |     pub multisig: Account<'info, Ms>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+542 | pub struct CancelTransaction<'info, Ms> {
+    |                                   ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:568:22
+    |
+568 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:568:37
+    |
+568 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+542 | pub struct CancelTransaction<'info, MsTransaction> {
+    |                                   +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:571:17
+    |
+571 |     pub member: Signer<'info>,
+    |                 ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:572:25
+    |
+572 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+572 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:572:40
+    |
+572 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:586:23
+    |
+586 |     pub multisig: Box<Account<'info, Ms>>,
+    |                       ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:586:38
+    |
+586 |     pub multisig: Box<Account<'info, Ms>>,
+    |                                      ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+576 | pub struct ExecuteTransaction<'info, Ms> {
+    |                                    ++++
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:600:22
+    |
+600 |     pub transaction: Account<'info, MsTransaction>,
+    |                      ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `MsTransaction` in this scope
+   --> src/lib.rs:600:37
+    |
+600 |     pub transaction: Account<'info, MsTransaction>,
+    |                                     ^^^^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+576 | pub struct ExecuteTransaction<'info, MsTransaction> {
+    |                                    +++++++++++++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:603:17
+    |
+603 |     pub member: Signer<'info>,
+    |                 ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:610:19
+    |
+610 |     multisig: Box<Account<'info, Ms>>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:610:34
+    |
+610 |     multisig: Box<Account<'info, Ms>>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+608 | pub struct MsAuth<'info, Ms> {
+    |                        ++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:619:24
+    |
+619 |     pub multisig_auth: Signer<'info>,
+    |                        ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Account` in this scope
+   --> src/lib.rs:626:19
+    |
+626 |     multisig: Box<Account<'info, Ms>>,
+    |                   ^^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::account_info::Account;
+    |
+
+error[E0412]: cannot find type `Ms` in this scope
+   --> src/lib.rs:626:34
+    |
+626 |     multisig: Box<Account<'info, Ms>>,
+    |                                  ^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+624 | pub struct MsAuthRealloc<'info, Ms> {
+    |                               ++++
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:635:24
+    |
+635 |     pub multisig_auth: Signer<'info>,
+    |                        ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Signer` in this scope
+   --> src/lib.rs:638:17
+    |
+638 |     pub member: Signer<'info>,
+    |                 ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `Sysvar` in this scope
+   --> src/lib.rs:639:15
+    |
+639 |     pub rent: Sysvar<'info, Rent>,
+    |               ^^^^^^ not found in this scope
+    |
+help: consider importing this trait
+    |
+1   + use solana_program::sysvar::Sysvar;
+    |
+
+error[E0412]: cannot find type `Rent` in this scope
+   --> src/lib.rs:639:29
+    |
+639 |     pub rent: Sysvar<'info, Rent>,
+    |                             ^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use solana_program::sysvar::rent::Rent;
+    |
+
+error[E0412]: cannot find type `Program` in this scope
+   --> src/lib.rs:640:25
+    |
+640 |     pub system_program: Program<'info, System>
+    |                         ^^^^^^^ not found in this scope
+    |
+help: there is an enum variant `solana_program::bpf_loader_upgradeable::UpgradeableLoaderState::Program`; try using the variant's enum
+    |
+640 |     pub system_program: solana_program::bpf_loader_upgradeable::UpgradeableLoaderState
+    |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+error[E0412]: cannot find type `System` in this scope
+   --> src/lib.rs:640:40
+    |
+640 |     pub system_program: Program<'info, System>
+    |                                        ^^^^^^ not found in this scope
+    |
+help: consider importing this struct
+    |
+1   + use std::alloc::System;
+    |
+
+warning: unused import: `errors::*`
+ --> src/lib.rs:6:5
+  |
+6 | use errors::*;
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+  --> src/lib.rs:19:81
+   |
+19 |     pub fn create(ctx: Context<Create>, threshold:u16, members: Vec<Pubkey>) -> Result<()> {
+   |                                                                                 ^^^^^^ -- supplied 1 generic argument
+   |                                                                                 |
+   |                                                                                 expected 2 generic arguments
+   |
+help: add missing generic argument
+   |
+19 |     pub fn create(ctx: Context<Create>, threshold:u16, members: Vec<Pubkey>) -> Result<(), E> {
+   |                                                                                          +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+  --> src/lib.rs:38:75
+   |
+38 |     pub fn add_member(ctx: Context<MsAuthRealloc>, new_member: Pubkey) -> Result<()> {
+   |                                                                           ^^^^^^ -- supplied 1 generic argument
+   |                                                                           |
+   |                                                                           expected 2 generic arguments
+   |
+help: add missing generic argument
+   |
+38 |     pub fn add_member(ctx: Context<MsAuthRealloc>, new_member: Pubkey) -> Result<(), E> {
+   |                                                                                    +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+  --> src/lib.rs:70:71
+   |
+70 |     pub fn remove_member(ctx: Context<MsAuth>, old_member: Pubkey) -> Result<()> {
+   |                                                                       ^^^^^^ -- supplied 1 generic argument
+   |                                                                       |
+   |                                                                       expected 2 generic arguments
+   |
+help: add missing generic argument
+   |
+70 |     pub fn remove_member(ctx: Context<MsAuth>, old_member: Pubkey) -> Result<(), E> {
+   |                                                                                +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+  --> src/lib.rs:87:10
+   |
+87 |     ) -> Result<()> {
+   |          ^^^^^^ -- supplied 1 generic argument
+   |          |
+   |          expected 2 generic arguments
+   |
+help: add missing generic argument
+   |
+87 |     ) -> Result<(), E> {
+   |                   +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:101:10
+    |
+101 |     ) -> Result<()> {
+    |          ^^^^^^ -- supplied 1 generic argument
+    |          |
+    |          expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+101 |     ) -> Result<(), E> {
+    |                   +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:127:74
+    |
+127 |     pub fn change_threshold(ctx: Context<MsAuth>, new_threshold: u16) -> Result<()> {
+    |                                                                          ^^^^^^ -- supplied 1 generic argument
+    |                                                                          |
+    |                                                                          expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+127 |     pub fn change_threshold(ctx: Context<MsAuth>, new_threshold: u16) -> Result<(), E> {
+    |                                                                                   +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:144:51
+    |
+144 |     pub fn add_authority(ctx: Context<MsAuth>) -> Result<()> {
+    |                                                   ^^^^^^ -- supplied 1 generic argument
+    |                                                   |
+    |                                                   expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+144 |     pub fn add_authority(ctx: Context<MsAuth>) -> Result<(), E> {
+    |                                                            +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:148:89
+    |
+148 |     pub fn create_transaction(ctx: Context<CreateTransaction>, authority_index: u32) -> Result<()> {
+    |                                                                                         ^^^^^^ -- supplied 1 generic argument
+    |                                                                                         |
+    |                                                                                         expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+148 |     pub fn create_transaction(ctx: Context<CreateTransaction>, authority_index: u32) -> Result<(), E> {
+    |                                                                                                  +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:179:71
+    |
+179 |     pub fn activate_transaction(ctx: Context<ActivateTransaction>) -> Result<()> {
+    |                                                                       ^^^^^^ -- supplied 1 generic argument
+    |                                                                       |
+    |                                                                       expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+179 |     pub fn activate_transaction(ctx: Context<ActivateTransaction>) -> Result<(), E> {
+    |                                                                                +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:183:104
+    |
+183 |     pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<()> {
+    |                                                                                                        ^^^^^^ -- supplied 1 generic argument
+    |                                                                                                        |
+    |                                                                                                        expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+183 |     pub fn add_instruction(ctx: Context<AddInstruction>, incoming_instruction: IncomingInstruction) -> Result<(), E> {
+    |                                                                                                                 +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:194:69
+    |
+194 |     pub fn approve_transaction(ctx: Context<ApproveTransaction>) -> Result<()> {
+    |                                                                     ^^^^^^ -- supplied 1 generic argument
+    |                                                                     |
+    |                                                                     expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+194 |     pub fn approve_transaction(ctx: Context<ApproveTransaction>) -> Result<(), E> {
+    |                                                                              +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:209:67
+    |
+209 |     pub fn reject_transaction(ctx: Context<RejectTransaction>) -> Result<()> {
+    |                                                                   ^^^^^^ -- supplied 1 generic argument
+    |                                                                   |
+    |                                                                   expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+209 |     pub fn reject_transaction(ctx: Context<RejectTransaction>) -> Result<(), E> {
+    |                                                                            +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:226:67
+    |
+226 |     pub fn cancel_transaction(ctx: Context<CancelTransaction>) -> Result<()> {
+    |                                                                   ^^^^^^ -- supplied 1 generic argument
+    |                                                                   |
+    |                                                                   expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+226 |     pub fn cancel_transaction(ctx: Context<CancelTransaction>) -> Result<(), E> {
+    |                                                                            +++
+
+error[E0107]: enum takes 2 generic arguments but 1 generic argument was supplied
+   --> src/lib.rs:237:121
+    |
+237 |     pub fn execute_transaction<'info>(ctx: Context<'_,'_,'_,'info,ExecuteTransaction<'info>>, account_list: Vec<u8>) -> Result<()> {
+    |                                                                                                                         ^^^^^^ -- supplied 1 generic argument
+    |                                                                                                                         |
+    |                                                                                                                         expected 2 generic arguments
+    |
+help: add missing generic argument
+    |
+237 |     pub fn execute_transaction<'info>(ctx: Context<'_,'_,'_,'info,ExecuteTransaction<'info>>, account_list: Vec<u8>) -> Result<(), E> {
+    |                                                                                                                                  +++
+
+error[E0433]: failed to resolve: use of undeclared type `MsInstruction`
+   --> src/lib.rs:285:40
+    |
+285 |             let ms_ix: MsInstruction = MsInstruction::try_deserialize(&mut ix_account_data)?;
+    |                                        ^^^^^^^^^^^^^
+    |                                        |
+    |                                        use of undeclared type `MsInstruction`
+    |                                        help: a struct with a similar name exists: `AddInstruction`
+
+error[E0689]: can't call method `to_le_bytes` on ambiguous numeric type `{integer}`
+   --> src/lib.rs:291:20
+    |
+275 |         (1..max_ix_index).try_for_each(|i| {
+    |                                         - you must specify a type for this binding, like `i32`
+...
+291 |                 &i.to_le_bytes(),
+    |                    ^^^^^^^^^^^
+
+Some errors have detailed explanations: E0107, E0412, E0425, E0433, E0583, E0689.
+For more information about an error, try `rustc --explain E0107`.
+warning: `squads-signer-auth` (lib) generated 1 warning
+error: could not compile `squads-signer-auth` (lib) due to 172 previous errors; 1 warning emitted
+Error: Compilation failed with toolchain `nightly-2025-01-09-x86_64-unknown-linux-gnu`
+
+Caused by:
+    command failed: env -u CARGO -u RUSTC CLIPPY_DISABLE_DOCS_LINKS="null" DYLINT_LIBS="[\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libarbitrary_cpi@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\",\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libbump_seed_canonicalization@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\",\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libinsecure_account_close@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\",\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libmissing_owner_check@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\",\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libmissing_signer_check@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\",\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libsysvar_get@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\",\"/work/target/dylint/libraries/nightly-2025-01-09-x86_64-unknown-linux-gnu/release/libtype_cosplay@nightly-2025-01-09-x86_64-unknown-linux-gnu.so\"]" DYLINT_METADATA="{\"libraries\":[{\"path\":\"/src/solana-lints\",\"pattern\":\"lints/*\"}]}" DYLINT_NO_DEPS="0" RUSTC_WORKSPACE_WRAPPER="/root/.dylint_drivers/nightly-2025-01-09-x86_64-unknown-linux-gnu/dylint-driver" RUSTUP_TOOLCHAIN="nightly-2025-01-09-x86_64-unknown-linux-gnu" "cargo" "check" "--target-dir" "/work/target/dylint/target/nightly-2025-01-09-x86_64-unknown-linux-gnu" "--workspace"

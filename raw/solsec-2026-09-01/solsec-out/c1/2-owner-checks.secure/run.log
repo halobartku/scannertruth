@@ -1,0 +1,11 @@
+COMMAND: docker run --rm --network none -v /root/st-fix-20260901/corpus1/programs/2-owner-checks/secure:/src:ro -v /root/st-fix-20260901/solsec-out/c1/2-owner-checks.secure:/out solsec-runner:0.2.1 scan /src -o /out --json-only --no-open
+RC: 0
+WALL: 0.3s
+
+[2026-09-01T02:57:37Z INFO  solsec] Starting Solana Smart Contract Security Toolkit (solsec) v0.2.1
+[2026-09-01T02:57:37Z INFO  solsec::cli] Starting static analysis scan on: /src
+[2026-09-01T02:57:37Z INFO  solsec::analyzer] Loaded 0 plugin rules
+[2026-09-01T02:57:37Z INFO  solsec::analyzer] Found 1 Rust files to analyze
+[2026-09-01T02:57:37Z INFO  solsec::analyzer] Static analysis completed. Found 1 issues
+[2026-09-01T02:57:37Z INFO  solsec::report] Report generated: /out/security-report.json
+[2026-09-01T02:57:37Z INFO  solsec::cli] Scan completed. Found 0 critical and 0 high severity issues

@@ -179,6 +179,182 @@
    }
   },
   {
+   "scanner": "semgrep-solana-standard",
+   "status": "measured",
+   "classes": 11,
+   "nominal": 3,
+   "real": 0,
+   "findings": 48,
+   "findings_on_fixed_code": 25,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 1,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 2,
+     "secure": 4,
+     "recommended": 1,
+     "nominal": true,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "semgrep-solana-standard-wide",
+   "status": "measured",
+   "classes": 11,
+   "nominal": 3,
+   "real": 0,
+   "findings": 48,
+   "findings_on_fixed_code": 25,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 1,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 2,
+     "secure": 4,
+     "recommended": 1,
+     "nominal": true,
+     "real": false
+    }
+   }
+  },
+  {
    "scanner": "sol-audit",
    "status": "measured",
    "classes": 13,
@@ -551,34 +727,72 @@
    "corpus": "corpus2",
    "status": "measured",
    "coverage_evidence": "run log",
-   "missed": 5,
+   "scoreable_denominator": 9,
+   "missed": 7,
    "not-built": 1,
    "unlocated": 2,
-   "no-rule": 1
+   "no-rule": 7
+  },
+  {
+   "scanner": "semgrep-solana-standard-c2",
+   "corpus": "corpus2",
+   "status": "measured",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 8,
+   "missed": 5,
+   "not-built": 1,
+   "no-rule": 8,
+   "unlocated": 3
+  },
+  {
+   "scanner": "semgrep-solana-standard-c2-wide",
+   "corpus": "corpus2",
+   "status": "measured",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 16,
+   "missed": 13,
+   "not-built": 1,
+   "unlocated": 3
   },
   {
    "scanner": "sol-audit",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "coverage_evidence": "none",
+   "scoreable_denominator": 7,
    "missed": 6,
    "not-built": 1,
    "unlocated": 1,
-   "no-rule": 1
+   "no-rule": 1,
+   "unknown": 8,
+   "reason": "8 of 17 cases unresolved: 8 with no run log for c2-sol-audit.json, so 'found nothing' and 'never analysed' cannot be told apart"
+  },
+  {
+   "scanner": "solsec",
+   "corpus": "corpus2",
+   "status": "measured",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 2,
+   "no-rule": 14,
+   "not-built": 1,
+   "unlocated": 1,
+   "missed": 1
   },
   {
    "scanner": "vaultlint",
    "corpus": "corpus2",
-   "status": "measured",
+   "status": "partial",
    "coverage_evidence": "run log",
+   "scoreable_denominator": 1,
    "no-rule": 7,
    "missed": 1,
-   "not-built": 1
+   "not-built": 1,
+   "not-run": 8,
+   "reason": "8 of 17 cases unresolved: 8 the run log says were never run"
   }
  ],
  "changes_since_previous": [
-  "semgrep: new to the benchmark",
-  "solsec: new to the benchmark",
-  "xray: new to the benchmark"
+  "semgrep-solana-standard: new to the benchmark",
+  "semgrep-solana-standard-wide: new to the benchmark"
  ]
 }

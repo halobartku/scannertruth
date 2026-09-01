@@ -1,0 +1,28 @@
+{
+ "findings": [
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  }
+ ]
+}

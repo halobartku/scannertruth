@@ -1,0 +1,12 @@
+[
+ {
+  "leaf": "WORKSPACE/all",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 4.85,
+  "files_scanned": 35,
+  "raw": "raw/workspace.txt",
+  "cmd": "docker run --rm --network none -v /tmp/sealevel-attacks:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ }
+]

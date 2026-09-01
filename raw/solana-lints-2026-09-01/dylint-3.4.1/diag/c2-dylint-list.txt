@@ -1,0 +1,8 @@
+### cargo dylint list on a corpus-2 crate: the seven lints DO load
+arbitrary_cpi               nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>
+bump_seed_canonicalization  nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>
+insecure_account_close      nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>
+missing_owner_check         nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>
+missing_signer_check        nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>
+sysvar_get                  nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>
+type_cosplay                nightly-2025-01-09-x86_64-unknown-linux-gnu  <unbuilt>

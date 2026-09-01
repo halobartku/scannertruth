@@ -1,0 +1,406 @@
+{
+ "findings": [
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 32,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/0-signer-authorization/insecure/src/lib.rs",
+   "line": 14,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/secure/src/lib.rs",
+   "line": 30,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/6-duplicate-mutable-accounts/secure/src/lib.rs",
+   "line": 22,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 62,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/insecure/src/lib.rs",
+   "line": 22,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/6-duplicate-mutable-accounts/recommended/src/lib.rs",
+   "line": 19,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/9-closing-accounts/insecure/src/lib.rs",
+   "line": 21,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/10-sysvar-address-checking/secure/src/lib.rs",
+   "line": 16,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/9-closing-accounts/recommended/src/lib.rs",
+   "line": 14,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/recommended/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs",
+   "line": 19,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/0-signer-authorization/secure/src/lib.rs",
+   "line": 18,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "line": 36,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/10-sysvar-address-checking/recommended/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Signer Check",
+   "file": "corpus1/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 29,
+   "col": 2
+  },
+  {
+   "rule_id": "PDA Sharing",
+   "file": "corpus1/programs/5-arbitrary-cpi/recommended/src/lib.rs",
+   "line": 26,
+   "col": 23
+  },
+  {
+   "rule_id": "PDA Sharing",
+   "file": "corpus1/programs/5-arbitrary-cpi/recommended/src/lib.rs",
+   "line": 11,
+   "col": 15
+  },
+  {
+   "rule_id": "PDA Sharing",
+   "file": "corpus1/programs/8-pda-sharing/insecure/src/lib.rs",
+   "line": 30,
+   "col": 23
+  },
+  {
+   "rule_id": "PDA Sharing",
+   "file": "corpus1/programs/8-pda-sharing/insecure/src/lib.rs",
+   "line": 13,
+   "col": 15
+  },
+  {
+   "rule_id": "PDA Sharing",
+   "file": "corpus1/programs/8-pda-sharing/secure/src/lib.rs",
+   "line": 33,
+   "col": 23
+  },
+  {
+   "rule_id": "PDA Sharing",
+   "file": "corpus1/programs/8-pda-sharing/secure/src/lib.rs",
+   "line": 16,
+   "col": 15
+  },
+  {
+   "rule_id": "Missing Bump Seed Canonicalization",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/insecure/src/lib.rs",
+   "line": 11,
+   "col": 87
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus1/programs/4-initialization/secure/src/lib.rs",
+   "line": 12,
+   "col": 29
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus1/programs/3-type-cosplay/secure/src/lib.rs",
+   "line": 11,
+   "col": 25
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus1/programs/4-initialization/insecure/src/lib.rs",
+   "line": 12,
+   "col": 29
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus1/programs/3-type-cosplay/insecure/src/lib.rs",
+   "line": 11,
+   "col": 25
+  },
+  {
+   "rule_id": "Arbitrary Cross-Program Invocation",
+   "file": "corpus1/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 10,
+   "col": 11
+  },
+  {
+   "rule_id": "Closing Accounts Insecurely",
+   "file": "corpus1/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "line": 15,
+   "col": 59
+  },
+  {
+   "rule_id": "Closing Accounts Insecurely",
+   "file": "corpus1/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 68,
+   "col": 2
+  },
+  {
+   "rule_id": "Closing Accounts Insecurely",
+   "file": "corpus1/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 47,
+   "col": 59
+  },
+  {
+   "rule_id": "Closing Accounts Insecurely",
+   "file": "corpus1/programs/9-closing-accounts/insecure/src/lib.rs",
+   "line": 12,
+   "col": 59
+  },
+  {
+   "rule_id": "Closing Accounts Insecurely",
+   "file": "corpus1/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "line": 16,
+   "col": 59
+  },
+  {
+   "rule_id": "Unvalidated Sysvar Account",
+   "file": "corpus1/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "line": 17,
+   "col": 4
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus1/programs/1-account-data-matching/insecure/src/lib.rs",
+   "line": 11,
+   "col": 52
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus1/programs/1-account-data-matching/secure/src/lib.rs",
+   "line": 11,
+   "col": 52
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus1/programs/2-owner-checks/insecure/src/lib.rs",
+   "line": 12,
+   "col": 52
+  },
+  {
+   "rule_id": "Account Data Matching",
+   "file": "corpus1/programs/2-owner-checks/secure/src/lib.rs",
+   "line": 12,
+   "col": 52
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "line": 32,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "line": 36,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/0-signer-authorization/insecure/src/lib.rs",
+   "line": 14,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/secure/src/lib.rs",
+   "line": 30,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/6-duplicate-mutable-accounts/secure/src/lib.rs",
+   "line": 22,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/5-arbitrary-cpi/recommended/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/9-closing-accounts/secure/src/lib.rs",
+   "line": 62,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/insecure/src/lib.rs",
+   "line": 22,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/6-duplicate-mutable-accounts/recommended/src/lib.rs",
+   "line": 19,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/8-pda-sharing/insecure/src/lib.rs",
+   "line": 17,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/4-initialization/recommended/src/lib.rs",
+   "line": 16,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/9-closing-accounts/insecure/src/lib.rs",
+   "line": 21,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/8-pda-sharing/recommended/src/lib.rs",
+   "line": 20,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/4-initialization/secure/src/lib.rs",
+   "line": 34,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/10-sysvar-address-checking/secure/src/lib.rs",
+   "line": 16,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/4-initialization/insecure/src/lib.rs",
+   "line": 35,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/9-closing-accounts/recommended/src/lib.rs",
+   "line": 14,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/7-bump-seed-canonicalization/recommended/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/0-signer-authorization/recommended/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs",
+   "line": 19,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/0-signer-authorization/secure/src/lib.rs",
+   "line": 18,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "line": 36,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/3-type-cosplay/recommended/src/lib.rs",
+   "line": 16,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/10-sysvar-address-checking/recommended/src/lib.rs",
+   "line": 15,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 29,
+   "col": 2
+  },
+  {
+   "rule_id": "Missing Owner Check",
+   "file": "corpus1/programs/8-pda-sharing/secure/src/lib.rs",
+   "line": 20,
+   "col": 2
+  },
+  {
+   "rule_id": "Account Reinitialization",
+   "file": "corpus1/programs/4-initialization/insecure/src/lib.rs",
+   "line": 11,
+   "col": 11
+  }
+ ]
+}

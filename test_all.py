@@ -1725,12 +1725,17 @@ def test_class_balance_document_is_derived_from_the_manifest():
 
 # -------------------------------- findings must land on files that exist, 2026-09-01, row 5
 
-# Every corpus-2 findings file the clock scores, and the envelope it is read with.
-_CORPUS2_FINDINGS = [
-    ("radar", "raw/c2-radar-current.json", "sol-audit"),
-    ("vaultlint", "raw/c2-vaultlint-complete.json", "sol-audit"),
-    ("sol-audit", "raw/c2-sol-audit.json", "sol-audit"),
-]
+def _corpus2_findings():
+    """Every corpus-2 findings file the clock scores, and the envelope it is read with.
+
+    Taken from `run_all.SOURCES_CORPUS2` rather than copied. A typed copy of this list was wrong
+    within an hour of being written: it named the sol-audit parser for a file kept in radar's own
+    envelope, so the check ran over an empty parse and passed while seeing nothing."""
+    import os, sys
+    sys.path.insert(0, "tools")
+    import run_all
+    return [(name, os.path.join("raw", filename), kind)
+            for name, (filename, kind) in sorted(run_all.SOURCES_CORPUS2.items())]
 
 
 def test_no_verdict_rests_on_a_finding_about_a_file_that_is_not_in_the_corpus():
@@ -1757,7 +1762,7 @@ def test_no_verdict_rests_on_a_finding_about_a_file_that_is_not_in_the_corpus():
     cases = [c for c in _json.load(_io.open("corpus2/manifest.json", encoding="utf-8"))["cases"]
              if c.get("valid", True)]
     moved, saw_stale = [], 0
-    for scanner, path, kind in _CORPUS2_FINDINGS:
+    for scanner, path, kind in _corpus2_findings():
         assert os.path.exists(path), \
             f"{scanner}: {path} is missing, so the clock scores nothing for it"
         findings = score2.load_findings(kind, path)

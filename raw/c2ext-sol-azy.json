@@ -1,0 +1,160 @@
+{
+ "findings": [
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "line": 542,
+   "col": 8
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs",
+   "line": 868,
+   "col": 39
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "line": 869,
+   "col": 39
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/solido-deposit-reserve-account/secure/src/processor.rs",
+   "line": 543,
+   "col": 8
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 860,
+   "col": 23
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 1209,
+   "col": 73
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 830,
+   "col": 10
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 1293,
+   "col": 16
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 969,
+   "col": 12
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 795,
+   "col": 51
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 797,
+   "col": 13
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs",
+   "line": 774,
+   "col": 29
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 860,
+   "col": 23
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 1213,
+   "col": 73
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 830,
+   "col": 10
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 1297,
+   "col": 16
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 973,
+   "col": 12
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 795,
+   "col": 51
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 797,
+   "col": 13
+  },
+  {
+   "rule_id": "Type Cosplay",
+   "file": "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs",
+   "line": 774,
+   "col": 29
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-account-matching/insecure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-account-matching/secure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-recursive-execute/insecure/src/lib.rs",
+   "line": 87,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-recursive-execute/secure/src/lib.rs",
+   "line": 87,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-signer-auth/insecure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  },
+  {
+   "rule_id": "Saturating math operation usage",
+   "file": "corpus2/squads-signer-auth/secure/src/lib.rs",
+   "line": 53,
+   "col": 34
+  }
+ ]
+}

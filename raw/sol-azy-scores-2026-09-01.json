@@ -1,0 +1,455 @@
+{
+ "sweep": "B3 scanner sweep",
+ "date": "2026-09-01",
+ "repo_head_at_start": "25bdabeff2003f2bf8fb00c2dc7996cd73d00ae2",
+ "corpus2_pin": {
+  "commit_last_touching_corpus2": "e9e0478000aba2f318c7e9de0969aecdaea26ec8",
+  "file_manifest_digest": "fde6694837e04c038961c017454fb8a6249122e1504786c8aaf0aaf73fd518ad",
+  "files": 39,
+  "note": "digest = sha256 of the sorted list of per-file sha256 of every file under corpus2/. Verified byte-identical between the Windows workstation and the VPS before any run."
+ },
+ "corpus1_pin": {
+  "repo": "coral-xyz/sealevel-attacks",
+  "commit": "24555d044802db4022112a94d6d70e74291a4b6d",
+  "date": "2022-07-16"
+ },
+ "scanner": {
+  "name": "sol-azy",
+  "publisher": "FuzzingLabs",
+  "repo": "https://github.com/FuzzingLabs/sol-azy",
+  "pinned_commit": "362327a798e5dad6e12aa9abf3ed9ed52c17ef6a",
+  "commit_date": "2026-03-02T16:28:32Z",
+  "crates_io": "no crate named sol-azy exists (crates.io API 404); git clone is the only install path the vendor documents",
+  "invocation": "sol-azy sast -d <case-dir> -s   (internal rule set, syn AST scan only)",
+  "container": "rust:slim, corpus mounted read-only, --network none"
+ },
+ "mapping_preregistration": {
+  "commit": "e7febd1b40197fa4582ce05dd8867a216cba1976",
+  "committed_at": "2026-09-01 03:34:23 +0200",
+  "pushed": false,
+  "files": {
+   "mappings/sol-azy.json": "5b268c16aec32be47fe0889c946910bccebcea9ed698b7fa3aec4325537c45c1",
+   "mappings/sol-azy-wide.json": "9156cf87503fe0c18324404709bf68ff67a7983a5bf7a8219adb6c735f06bc46"
+  }
+ },
+ "mapping_preregistration_addendum": {
+  "commit": "fcbaabf64c52ba78c5e61af73a4455c1cfc26aef",
+  "committed_at": "2026-09-01 03:49:35 +0200",
+  "pushed": false,
+  "files": {
+   "mappings/sol-azy-c2ext.json": "d1a3009a3e78a869a80fe1d1f9aad22b1cd8e186da0a813f8acb8f85d4a49495"
+  }
+ },
+ "corpus2_pin_v2": {
+  "file_manifest_digest": "5b83f1e84f52570e6e6033b1ca5a6a38cf01509870e5c5021215e866774c1ec1",
+  "files": 71,
+  "note": "corpus2 after the mid-session expansion, verified byte-identical on the VPS before the extended run."
+ },
+ "artefacts": {
+  "raw/c2-sol-azy.json": {
+   "sha256": "452836e8a17a5ecc6ce467ccc2c10a71c0d220db2841df1f6fd6e7ea8322b318",
+   "bytes": 614
+  },
+  "raw/c2-sol-azy.json.log": {
+   "sha256": "7b569267f415a401e4f59d393df59ca78f9392113c9086ca7db34fe2d2e37633",
+   "bytes": 7218
+  },
+  "raw/c2-sol-azy-run2.json": {
+   "sha256": "452836e8a17a5ecc6ce467ccc2c10a71c0d220db2841df1f6fd6e7ea8322b318",
+   "bytes": 614
+  },
+  "raw/c2-sol-azy-run2.json.log": {
+   "sha256": "8db1147a6fc68eb22101f23833722cfaaddda144db9e0d1542c201ede5424737",
+   "bytes": 7311
+  },
+  "raw/c1-sol-azy.json": {
+   "sha256": "39aded8518b5fca7cb6d3345cb067cae02a9d6575618cf2b30997e7d7d394a2c",
+   "bytes": 9827
+  },
+  "raw/c1-sol-azy.json.log": {
+   "sha256": "4cdf97b7ce3025dbb7afd3574746d2c3b304740d7f5f46650cf49a2c88250076",
+   "bytes": 327
+  },
+  "raw/c1-sol-azy-attempt1-percase.log": {
+   "sha256": "dff5b9deefc739b529e7c5faf15aa9fcc7266ad97be2b41e4e580110bd6ec6cc",
+   "bytes": 13602
+  },
+  "raw/c2ext-sol-azy.json": {
+   "sha256": "ea809beb8935f3aea36e660a4f7f4e78e49afb24e759823a5b0f1888928eb5c3",
+   "bytes": 4032
+  },
+  "raw/c2ext-sol-azy.json.log": {
+   "sha256": "5e9a35cc7fe675e2d27cbff08130598e679e562b34a17b31b500c2477918f35d",
+   "bytes": 14079
+  }
+ },
+ "corpus2_as_pinned_0330": {
+  "note": "corpus2 as it stood when this sweep pinned it: 39 files, 10 manifest cases, 9 built, 8 valid+built after cashio is excluded.",
+  "narrow": {
+   "mapping": "sol-azy",
+   "per_case": {
+    "wormhole-sysvar": {
+     "class": "sysvar-address-checking",
+     "verdict": "missed"
+    },
+    "solend-owner-checks": {
+     "class": "owner-checks",
+     "verdict": "missed"
+    },
+    "spl-token-lending-rounding": {
+     "class": "arithmetic-rounding-drain",
+     "verdict": "not-built"
+    },
+    "squads-signer-auth": {
+     "class": "signer-authorization",
+     "verdict": "missed"
+    },
+    "squads-account-matching": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "metaplex-token-metadata": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "metaplex-candy-machine": {
+     "class": "instruction-introspection",
+     "verdict": "no-rule"
+    },
+    "metaplex-bubblegum-creator": {
+     "class": "signer-authorization",
+     "verdict": "missed"
+    },
+    "anchor-interface-account": {
+     "class": "type-cosplay",
+     "verdict": "missed"
+    },
+    "anchor-program-system": {
+     "class": "program-account-validation",
+     "verdict": "not-run"
+    },
+    "solido-deposit-reserve-account": {
+     "class": "pda-derived-address-validation",
+     "verdict": "not-run"
+    },
+    "solido-anker-arbitrary-cpi": {
+     "class": "arbitrary-cpi",
+     "verdict": "not-run"
+    },
+    "spl-stake-pool-fee-rounding": {
+     "class": "arithmetic-rounding-drain",
+     "verdict": "not-run"
+    },
+    "token-2022-confidential-approve-mint": {
+     "class": "account-data-matching",
+     "verdict": "not-run"
+    },
+    "squads-recursive-execute": {
+     "class": "cpi-recursion",
+     "verdict": "not-run"
+    },
+    "spl-stake-pool-mint-decimals": {
+     "class": "mint-configuration-validation",
+     "verdict": "not-run"
+    },
+    "anchor-account-reload-owner": {
+     "class": "owner-check-after-cpi",
+     "verdict": "not-run"
+    }
+   },
+   "tally": {
+    "missed": 7,
+    "not-built": 1,
+    "no-rule": 1,
+    "not-run": 8
+   },
+   "coverage_evidence": "run log",
+   "invocations": 18,
+   "invocations_ok": 18,
+   "invocations_error": 0,
+   "denominator_valid_and_built": 16,
+   "detected": 0
+  },
+  "wide": {
+   "mapping": "sol-azy-wide",
+   "per_case": {
+    "wormhole-sysvar": {
+     "class": "sysvar-address-checking",
+     "verdict": "missed"
+    },
+    "solend-owner-checks": {
+     "class": "owner-checks",
+     "verdict": "missed"
+    },
+    "spl-token-lending-rounding": {
+     "class": "arithmetic-rounding-drain",
+     "verdict": "not-built"
+    },
+    "squads-signer-auth": {
+     "class": "signer-authorization",
+     "verdict": "missed"
+    },
+    "squads-account-matching": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "metaplex-token-metadata": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "metaplex-candy-machine": {
+     "class": "instruction-introspection",
+     "verdict": "missed"
+    },
+    "metaplex-bubblegum-creator": {
+     "class": "signer-authorization",
+     "verdict": "missed"
+    },
+    "anchor-interface-account": {
+     "class": "type-cosplay",
+     "verdict": "missed"
+    },
+    "anchor-program-system": {
+     "class": "program-account-validation",
+     "verdict": "not-run"
+    },
+    "solido-deposit-reserve-account": {
+     "class": "pda-derived-address-validation",
+     "verdict": "not-run"
+    },
+    "solido-anker-arbitrary-cpi": {
+     "class": "arbitrary-cpi",
+     "verdict": "not-run"
+    },
+    "spl-stake-pool-fee-rounding": {
+     "class": "arithmetic-rounding-drain",
+     "verdict": "not-run"
+    },
+    "token-2022-confidential-approve-mint": {
+     "class": "account-data-matching",
+     "verdict": "not-run"
+    },
+    "squads-recursive-execute": {
+     "class": "cpi-recursion",
+     "verdict": "not-run"
+    },
+    "spl-stake-pool-mint-decimals": {
+     "class": "mint-configuration-validation",
+     "verdict": "not-run"
+    },
+    "anchor-account-reload-owner": {
+     "class": "owner-check-after-cpi",
+     "verdict": "not-run"
+    }
+   },
+   "tally": {
+    "missed": 8,
+    "not-built": 1,
+    "not-run": 8
+   },
+   "coverage_evidence": "run log",
+   "invocations": 18,
+   "invocations_ok": 18,
+   "invocations_error": 0,
+   "denominator_valid_and_built": 16,
+   "detected": 0
+  },
+  "findings_total": 4,
+  "findings_on_fixed_code": 2,
+  "findings_by_rule": {
+   "Saturating math operation usage": 4
+  },
+  "findings_only_on_vulnerable_variant_same_line": [],
+  "findings_present_on_both_variants_same_line": 2,
+  "repeat_run_identical": true
+ },
+ "corpus2_extended_0349": {
+  "note": "corpus2 after another worker expanded it mid-session: 71 files, 18 manifest cases, 17 built, 16 valid+built. Scored with the addendum mapping, which was committed before sol-azy was run on any of the new cases.",
+  "addendum": {
+   "mapping": "sol-azy-c2ext",
+   "per_case": {
+    "wormhole-sysvar": {
+     "class": "sysvar-address-checking",
+     "verdict": "missed"
+    },
+    "solend-owner-checks": {
+     "class": "owner-checks",
+     "verdict": "missed"
+    },
+    "spl-token-lending-rounding": {
+     "class": "arithmetic-rounding-drain",
+     "verdict": "not-built"
+    },
+    "squads-signer-auth": {
+     "class": "signer-authorization",
+     "verdict": "missed"
+    },
+    "squads-account-matching": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "metaplex-token-metadata": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "metaplex-candy-machine": {
+     "class": "instruction-introspection",
+     "verdict": "no-rule"
+    },
+    "metaplex-bubblegum-creator": {
+     "class": "signer-authorization",
+     "verdict": "missed"
+    },
+    "anchor-interface-account": {
+     "class": "type-cosplay",
+     "verdict": "missed"
+    },
+    "anchor-program-system": {
+     "class": "program-account-validation",
+     "verdict": "no-rule"
+    },
+    "solido-deposit-reserve-account": {
+     "class": "pda-derived-address-validation",
+     "verdict": "no-rule"
+    },
+    "solido-anker-arbitrary-cpi": {
+     "class": "arbitrary-cpi",
+     "verdict": "missed"
+    },
+    "spl-stake-pool-fee-rounding": {
+     "class": "arithmetic-rounding-drain",
+     "verdict": "no-rule"
+    },
+    "token-2022-confidential-approve-mint": {
+     "class": "account-data-matching",
+     "verdict": "missed"
+    },
+    "squads-recursive-execute": {
+     "class": "cpi-recursion",
+     "verdict": "no-rule"
+    },
+    "spl-stake-pool-mint-decimals": {
+     "class": "mint-configuration-validation",
+     "verdict": "not-run"
+    },
+    "anchor-account-reload-owner": {
+     "class": "owner-check-after-cpi",
+     "verdict": "missed"
+    }
+   },
+   "tally": {
+    "missed": 10,
+    "not-built": 1,
+    "no-rule": 5,
+    "not-run": 1
+   },
+   "coverage_evidence": "run log",
+   "invocations": 34,
+   "invocations_ok": 32,
+   "invocations_error": 2,
+   "denominator_valid_and_built": 16,
+   "detected": 0
+  },
+  "findings_total": 26,
+  "findings_on_fixed_code": 13,
+  "findings_by_rule": {
+   "Saturating math operation usage": 22,
+   "Type Cosplay": 4
+  },
+  "findings_only_on_vulnerable_variant_same_line": [
+   "Saturating math operation usage | solido-deposit-reserve-account | L542",
+   "Saturating math operation usage | spl-stake-pool-fee-rounding | L1209",
+   "Saturating math operation usage | spl-stake-pool-fee-rounding | L1293",
+   "Saturating math operation usage | spl-stake-pool-fee-rounding | L969",
+   "Type Cosplay | solido-deposit-reserve-account | L868"
+  ],
+  "findings_present_on_both_variants_same_line": 8
+ },
+ "corpus1": {
+  "findings_total": 67,
+  "classes": 11,
+  "nominal": 9,
+  "real": 4,
+  "per_class": {
+   "0-signer-authorization": {
+    "insecure": 1,
+    "secure": 1,
+    "recommended": 0,
+    "nominal": true,
+    "real": false
+   },
+   "1-account-data-matching": {
+    "insecure": 1,
+    "secure": 1,
+    "recommended": 0,
+    "nominal": true,
+    "real": false
+   },
+   "10-sysvar-address-checking": {
+    "insecure": 1,
+    "secure": 0,
+    "recommended": 0,
+    "nominal": true,
+    "real": true
+   },
+   "2-owner-checks": {
+    "insecure": 0,
+    "secure": 0,
+    "recommended": 0,
+    "nominal": false,
+    "real": false
+   },
+   "3-type-cosplay": {
+    "insecure": 1,
+    "secure": 1,
+    "recommended": 0,
+    "nominal": true,
+    "real": false
+   },
+   "4-initialization": {
+    "insecure": 1,
+    "secure": 0,
+    "recommended": 0,
+    "nominal": true,
+    "real": true
+   },
+   "5-arbitrary-cpi": {
+    "insecure": 1,
+    "secure": 0,
+    "recommended": 0,
+    "nominal": true,
+    "real": true
+   },
+   "6-duplicate-mutable-accounts": {
+    "insecure": 0,
+    "secure": 0,
+    "recommended": 0,
+    "nominal": false,
+    "real": false
+   },
+   "7-bump-seed-canonicalization": {
+    "insecure": 1,
+    "secure": 0,
+    "recommended": 0,
+    "nominal": true,
+    "real": true
+   },
+   "8-pda-sharing": {
+    "insecure": 2,
+    "secure": 2,
+    "recommended": 0,
+    "nominal": true,
+    "real": false
+   },
+   "9-closing-accounts": {
+    "insecure": 1,
+    "secure": 2,
+    "recommended": 0,
+    "nominal": true,
+    "real": false
+   }
+  },
+  "coverage_evidence": "one workspace-level invocation; the tool's own line reports 35 files scanned and findings carry 33 distinct file paths. Weaker than corpus 2's per-case run log and labelled as such.",
+  "attempt1": "33 per-case invocations, all recorded 'error': exit 0 with no output at all. Cause read from the tool's source, not guessed: src/helpers/mod.rs:86 classifies a directory as Anchor only if Anchor.toml is present and as SBF only if Cargo.toml declares solana-program. sealevel-attacks crates declare anchor-lang and carry no per-crate Anchor.toml, so all 33 were Unknown."
+ }
+}

@@ -18,14 +18,14 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import run_all  # noqa: E402
 import score2  # noqa: E402
 
-# Kept in step with run_all.SOURCES_CORPUS2 by test_all.py.
-SOURCES = {
-    "radar": ("raw/c2-radar-current.json", "sol-audit"),
-    "vaultlint": ("raw/c2-vaultlint-complete.json", "sol-audit"),
-    "sol-audit": ("raw/c2-sol-audit.json", "sol-audit"),
-}
+# Derived from run_all, never typed. A hand-kept copy of "which file is read with which parser"
+# is how a findings file ends up parsed by the wrong envelope and silently yielding nothing,
+# which is precisely the failure mode mutation M15 exposed.
+SOURCES = {name: (os.path.join("raw", filename), kind)
+           for name, (filename, kind) in run_all.SOURCES_CORPUS2.items()}
 
 
 def survey(sources=None):

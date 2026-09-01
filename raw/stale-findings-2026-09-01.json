@@ -1,0 +1,92 @@
+{
+ "generated": "tools/stale_findings.py",
+ "meaning": "findings recorded against corpus files that no longer exist. score2.score_case refuses to score on them, so they cannot move a verdict; they are counted here so the weakness stays visible.",
+ "scanners": {
+  "radar": {
+   "file": "raw/c2-radar-current.json",
+   "status": "read",
+   "findings": 90,
+   "stale": 90,
+   "stale_pct": 100.0,
+   "stale_paths": [
+    {
+     "path": "",
+     "findings": 90
+    }
+   ]
+  },
+  "sol-audit": {
+   "file": "raw/c2-sol-audit.json",
+   "status": "read",
+   "findings": 426,
+   "stale": 96,
+   "stale_pct": 22.5,
+   "stale_paths": [
+    {
+     "path": "corpus2/cashio-account-data/insecure/src/lib.rs",
+     "findings": 1
+    },
+    {
+     "path": "corpus2/cashio-account-data/secure/src/lib.rs",
+     "findings": 1
+    },
+    {
+     "path": "corpus2/metaplex-bubblegum-creator/insecure/src/collection.rs",
+     "findings": 3
+    },
+    {
+     "path": "corpus2/metaplex-bubblegum-creator/insecure/src/lib.rs",
+     "findings": 28
+    },
+    {
+     "path": "corpus2/metaplex-bubblegum-creator/insecure/src/mod.rs",
+     "findings": 8
+    },
+    {
+     "path": "corpus2/metaplex-bubblegum-creator/secure/src/collection.rs",
+     "findings": 5
+    },
+    {
+     "path": "corpus2/metaplex-bubblegum-creator/secure/src/lib.rs",
+     "findings": 28
+    },
+    {
+     "path": "corpus2/metaplex-bubblegum-creator/secure/src/mod.rs",
+     "findings": 8
+    },
+    {
+     "path": "corpus2/metaplex-token-metadata/insecure/src/misc.rs",
+     "findings": 1
+    },
+    {
+     "path": "corpus2/metaplex-token-metadata/secure/src/misc.rs",
+     "findings": 1
+    },
+    {
+     "path": "corpus2/wormhole-sysvar/insecure/src/lib.rs",
+     "findings": 1
+    },
+    {
+     "path": "corpus2/wormhole-sysvar/insecure/src/main.rs",
+     "findings": 5
+    },
+    {
+     "path": "corpus2/wormhole-sysvar/secure/src/lib.rs",
+     "findings": 1
+    },
+    {
+     "path": "corpus2/wormhole-sysvar/secure/src/main.rs",
+     "findings": 5
+    }
+   ]
+  },
+  "vaultlint": {
+   "file": "raw/c2-vaultlint-complete.json",
+   "status": "read",
+   "findings": 20,
+   "stale": 0,
+   "stale_pct": 0.0,
+   "stale_paths": []
+  }
+ }
+}

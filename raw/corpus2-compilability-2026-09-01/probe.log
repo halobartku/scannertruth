@@ -1,0 +1,3 @@
+solend-owner-checks insecure rc=101 wall=1s
+squads-signer-auth insecure rc=101 wall=48s
+wormhole-sysvar insecure rc=101 wall=1s

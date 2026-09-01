@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-01T02:57:46.340123747Z",
+    "solsec_version": "0.2.1",
+    "scan_target": "N/A",
+    "total_files_scanned": 1,
+    "scan_duration_ms": 0
+  },
+  "summary": {
+    "total_issues": 23,
+    "critical_issues": 0,
+    "high_issues": 0,
+    "medium_issues": 23,
+    "low_issues": 0,
+    "issues_by_rule": {
+      "unchecked_account": 6,
+      "integer_overflow": 17
+    },
+    "files_with_issues": [
+      "/src/src/account.rs"
+    ]
+  },
+  "analysis_results": [
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 227,
+      "column": null,
+      "code_snippet": "pub struct Account<'info, T: AccountSerialize + AccountDeserialize + Clone> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 232,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone + fmt::Debug> fmt::Debug for Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 238,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone + fmt::Debug> Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 247,
+      "column": null,
+      "code_snippet": "impl<'a, T: AccountSerialize + AccountDeserialize + Clone> Account<'a, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 300,
+      "column": null,
+      "code_snippet": "impl<'a, T: AccountSerialize + AccountDeserialize + Owner + Clone> Account<'a, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 332,
+      "column": null,
+      "code_snippet": "impl<'info, B, T: AccountSerialize + AccountDeserialize + Owner + Clone> Accounts<'info, B>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 335,
+      "column": null,
+      "code_snippet": "T: AccountSerialize + AccountDeserialize + Owner + Clone,",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 354,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Owner + Clone> AccountsExit<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 362,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AccountsClose<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 370,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> ToAccountMetas for Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 381,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> ToAccountInfos<'info>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 389,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AsRef<AccountInfo<'info>>",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 397,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> AsRef<T> for Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 403,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> Deref for Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 411,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> DerefMut for Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 413,
+      "column": null,
+      "code_snippet": "#[cfg(feature = \"anchor-debug\")]",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "integer_overflow",
+      "severity": "medium",
+      "message": "Potential integer overflow. Consider using checked arithmetic operations.",
+      "file_path": "/src/src/account.rs",
+      "line_number": 422,
+      "column": null,
+      "code_snippet": "impl<T: AccountSerialize + AccountDeserialize + Clone> Key for Account<'_, T> {",
+      "suggestion": "Use checked_add(), checked_sub(), or checked_mul()"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/account.rs",
+      "line_number": 229,
+      "column": null,
+      "code_snippet": "info: &'info AccountInfo<'info>,",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/account.rs",
+      "line_number": 340,
+      "column": null,
+      "code_snippet": "accounts: &mut &'info [AccountInfo<'info>],",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/account.rs",
+      "line_number": 365,
+      "column": null,
+      "code_snippet": "fn close(&self, sol_destination: AccountInfo<'info>) -> Result<()> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/account.rs",
+      "line_number": 384,
+      "column": null,
+      "code_snippet": "fn to_account_infos(&self) -> Vec<AccountInfo<'info>> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/account.rs",
+      "line_number": 389,
+      "column": null,
+      "code_snippet": "impl<'info, T: AccountSerialize + AccountDeserialize + Clone> AsRef<AccountInfo<'info>>",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    },
+    {
+      "rule_name": "unchecked_account",
+      "severity": "medium",
+      "message": "AccountInfo used without type validation - consider using Account<T>",
+      "file_path": "/src/src/account.rs",
+      "line_number": 392,
+      "column": null,
+      "code_snippet": "fn as_ref(&self) -> &AccountInfo<'info> {",
+      "suggestion": "Add proper account validation and use typed Account<T> instead of AccountInfo"
+    }
+  ],
+  "fuzz_results": null,
+  "recommendations": [
+    "Consider using checked arithmetic operations for 17 overflow-prone locations.",
+    "Implement proper account validation for 6 locations.",
+    "Run tests after fixing issues to ensure functionality is preserved.",
+    "Consider setting up CI/CD integration to catch issues early."
+  ]
+}

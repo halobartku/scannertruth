@@ -1,0 +1,26 @@
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container postgres  Waiting
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (account.rs)
+
+[ [91mHigh[0m ] Unvalidated Price Data Account found at:
+ * /tmp/radar-c2-wrap-lf/anchor-account-reload-owner.insecure/pkg/src/account.rs:270:42-57
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /tmp/radar-c2-wrap-lf/anchor-account-reload-owner.insecure/pkg/src/account.rs:271:27-42
+ * /tmp/radar-c2-wrap-lf/anchor-account-reload-owner.insecure/pkg/src/account.rs:312:34-49
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/st-fix-20260901/radar-out-lf/anchor-account-reload-owner.insecure.json

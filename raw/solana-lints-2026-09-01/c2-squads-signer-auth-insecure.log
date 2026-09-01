@@ -1,0 +1,271 @@
+Building workspace metadata entry `arbitrary_cpi`
+    Updating git repository `https://github.com/rust-lang/rust-clippy`
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded arrayvec v0.7.6
+  Downloaded bs58 v0.5.1
+  Downloaded toml_datetime v0.6.8
+  Downloaded serde_spanned v0.6.8
+  Downloaded cargo-platform v0.1.9
+  Downloaded write16 v1.0.0
+  Downloaded subtle v2.4.1
+  Downloaded zerofrom-derive v0.1.5
+  Downloaded zerofrom v0.1.5
+  Downloaded yoke-derive v0.7.5
+  Downloaded home v0.5.9
+  Downloaded stable_deref_trait v1.2.0
+  Downloaded shlex v1.3.0
+  Downloaded zerovec-derive v0.10.3
+  Downloaded sha2 v0.10.8
+  Downloaded yoke v0.7.5
+  Downloaded log v0.4.25
+  Downloaded unicode-ident v1.0.16
+  Downloaded url v2.5.4
+  Downloaded unicode-segmentation v1.12.0
+  Downloaded zerovec v0.10.4
+  Downloaded itertools v0.12.1
+  Downloaded idna v1.0.3
+  Downloaded winnow v0.7.1
+  Downloaded syn v2.0.98
+  Downloaded regex v1.11.1
+  Downloaded regex-syntax v0.8.5
+  Downloaded bstr v1.11.3
+  Downloaded icu_properties_data v1.5.0
+  Downloaded hashbrown v0.15.2
+  Downloaded serde_json v1.0.138
+  Downloaded regex-automata v0.4.9
+  Downloaded libssh2-sys v0.3.1
+  Downloaded indexmap v2.7.1
+  Downloaded libc v0.2.169
+  Downloaded cc v1.2.11
+  Downloaded rust-embed v8.5.0
+  Downloaded toml_edit v0.22.23
+  Downloaded rustc_apfloat v0.2.2+llvm-462a31f5a5ab
+  Downloaded proc-macro2 v1.0.93
+  Downloaded memchr v2.7.4
+  Downloaded icu_collections v1.5.0
+  Downloaded rust-embed-utils v8.5.0
+  Downloaded libgit2-sys v0.16.2+1.7.2
+  Downloaded git2 v0.18.3
+  Downloaded openssl-sys v0.9.105
+  Downloaded dylint_linting v3.4.1
+  Downloaded anyhow v1.0.95
+  Downloaded serde v1.0.217
+  Downloaded icu_provider v1.5.0
+  Downloaded icu_properties v1.5.1
+  Downloaded icu_normalizer_data v1.5.0
+  Downloaded icu_normalizer v1.5.0
+  Downloaded icu_locid v1.5.0
+  Downloaded typenum v1.17.0
+  Downloaded toml v0.8.19
+  Downloaded tinyvec v1.8.1
+  Downloaded synstructure v0.13.1
+  Downloaded serde_derive v1.0.217
+  Downloaded ryu v1.0.19
+  Downloaded quote v1.0.38
+  Downloaded once_cell v1.20.2
+  Downloaded libz-sys v1.1.21
+  Downloaded dylint_internal v3.4.1
+  Downloaded cargo_metadata v0.19.1
+  Downloaded icu_locid_transform_data v1.5.0
+  Downloaded globset v0.4.15
+  Downloaded litemap v0.7.4
+  Downloaded icu_locid_transform v1.5.0
+  Downloaded displaydoc v0.2.5
+  Downloaded camino v1.1.9
+  Downloaded anchor-syn v0.30.1
+  Downloaded writeable v0.5.5
+  Downloaded tinystr v0.7.6
+  Downloaded thiserror-impl v2.0.11
+  Downloaded thiserror v2.0.11
+  Downloaded smallvec v1.13.2
+  Downloaded rustversion v1.0.19
+  Downloaded pkg-config v0.3.31
+  Downloaded jobserver v0.1.32
+  Downloaded either v1.13.0
+  Downloaded semver v1.0.25
+  Downloaded openssl-probe v0.1.6
+  Downloaded if_chain v1.0.2
+  Downloaded equivalent v1.0.1
+  Downloaded itoa v1.0.14
+  Downloaded icu_provider_macros v1.5.0
+  Downloaded heck v0.3.3
+  Downloaded cfg-if v1.0.0
+  Downloaded utf16_iter v1.0.5
+  Downloaded percent-encoding v2.3.1
+  Downloaded generic-array v0.14.7
+  Downloaded form_urlencoded v1.2.1
+  Downloaded bitflags v2.8.0
+  Downloaded rust-embed-impl v8.5.0
+  Downloaded idna_adapter v1.2.0
+  Downloaded ansi_term v0.12.1
+  Downloaded aho-corasick v1.1.3
+   Compiling proc-macro2 v1.0.93
+   Compiling unicode-ident v1.0.16
+   Compiling serde v1.0.217
+   Compiling typenum v1.17.0
+   Compiling libc v0.2.169
+   Compiling version_check v0.9.5
+   Compiling shlex v1.3.0
+   Compiling pkg-config v0.3.31
+   Compiling stable_deref_trait v1.2.0
+   Compiling memchr v2.7.4
+   Compiling vcpkg v0.2.15
+   Compiling writeable v0.5.5
+   Compiling generic-array v0.14.7
+   Compiling litemap v0.7.4
+   Compiling smallvec v1.13.2
+   Compiling quote v1.0.38
+   Compiling icu_locid_transform_data v1.5.0
+   Compiling syn v2.0.98
+   Compiling icu_properties_data v1.5.0
+   Compiling subtle v2.4.1
+   Compiling aho-corasick v1.1.3
+   Compiling serde_json v1.0.138
+   Compiling regex-syntax v0.8.5
+   Compiling write16 v1.0.0
+   Compiling cfg-if v1.0.0
+   Compiling utf8_iter v1.0.4
+   Compiling jobserver v0.1.32
+   Compiling cpufeatures v0.2.17
+   Compiling icu_normalizer_data v1.5.0
+   Compiling cc v1.2.11
+   Compiling utf16_iter v1.0.5
+   Compiling bstr v1.11.3
+   Compiling hashbrown v0.15.2
+   Compiling regex-automata v0.4.9
+   Compiling anyhow v1.0.95
+   Compiling same-file v1.0.6
+   Compiling log v0.4.25
+   Compiling libz-sys v1.1.21
+   Compiling openssl-sys v0.9.105
+   Compiling libssh2-sys v0.3.1
+   Compiling ryu v1.0.19
+   Compiling equivalent v1.0.1
+   Compiling itoa v1.0.14
+   Compiling indexmap v2.7.1
+   Compiling synstructure v0.13.1
+   Compiling globset v0.4.15
+   Compiling libgit2-sys v0.16.2+1.7.2
+   Compiling walkdir v2.5.0
+   Compiling percent-encoding v2.3.1
+   Compiling thiserror v2.0.11
+   Compiling winnow v0.7.1
+   Compiling serde_derive v1.0.217
+   Compiling zerofrom-derive v0.1.5
+   Compiling yoke-derive v0.7.5
+   Compiling zerovec-derive v0.10.3
+   Compiling displaydoc v0.2.5
+   Compiling zerofrom v0.1.5
+   Compiling yoke v0.7.5
+   Compiling icu_provider_macros v1.5.0
+   Compiling camino v1.1.9
+   Compiling semver v1.0.25
+   Compiling zerovec v0.10.4
+   Compiling tinystr v0.7.6
+   Compiling icu_locid v1.5.0
+   Compiling icu_collections v1.5.0
+   Compiling icu_provider v1.5.0
+   Compiling icu_locid_transform v1.5.0
+   Compiling icu_properties v1.5.1
+   Compiling crypto-common v0.1.6
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling bitflags v2.8.0
+   Compiling sha2 v0.10.8
+   Compiling toml_datetime v0.6.8
+   Compiling serde_spanned v0.6.8
+   Compiling rust-embed-utils v8.5.0
+   Compiling toml_edit v0.22.23
+   Compiling thiserror-impl v2.0.11
+   Compiling icu_normalizer v1.5.0
+   Compiling idna_adapter v1.2.0
+   Compiling idna v1.0.3
+   Compiling form_urlencoded v1.2.1
+   Compiling rustversion v1.0.19
+   Compiling rustc_apfloat v0.2.2+llvm-462a31f5a5ab
+   Compiling thiserror v1.0.69
+   Compiling syn v1.0.109
+   Compiling url v2.5.4
+   Compiling toml v0.8.19
+   Compiling rust-embed-impl v8.5.0
+   Compiling cargo-platform v0.1.9
+   Compiling thiserror-impl v1.0.69
+   Compiling unicode-segmentation v1.12.0
+   Compiling openssl-probe v0.1.6
+   Compiling paste v1.0.15
+   Compiling either v1.13.0
+   Compiling if_chain v1.0.2
+   Compiling heck v0.3.3
+   Compiling cargo_metadata v0.19.1
+   Compiling itertools v0.12.1
+   Compiling rust-embed v8.5.0
+   Compiling dylint_linting v3.4.1
+   Compiling regex v1.11.1
+   Compiling ansi_term v0.12.1
+   Compiling arrayvec v0.7.6
+   Compiling once_cell v1.20.2
+   Compiling home v0.5.9
+   Compiling bs58 v0.5.1
+   Compiling clippy_utils v0.1.86 (https://github.com/rust-lang/rust-clippy?rev=19e305bb57a7595f2a8d81f521c0dd8bf854e739#19e305bb)
+   Compiling anchor-syn v0.30.1
+   Compiling solana-lints v0.1.0 (/src/solana-lints/crate)
+   Compiling git2 v0.18.3
+   Compiling dylint_internal v3.4.1
+   Compiling arbitrary_cpi v0.1.0 (/src/solana-lints/lints/arbitrary_cpi)
+    Finished `release` profile [optimized] target(s) in 1m 17s
+Building workspace metadata entry `bump_seed_canonicalization`
+   Compiling subtle v2.6.1
+   Compiling percent-encoding v2.3.1
+   Compiling form_urlencoded v1.2.1
+   Compiling digest v0.10.7
+   Compiling url v2.5.4
+   Compiling sha2 v0.10.8
+   Compiling rust-embed-utils v8.5.0
+   Compiling anchor-syn v0.30.1
+   Compiling rust-embed-impl v8.5.0
+   Compiling git2 v0.18.3
+   Compiling rust-embed v8.5.0
+   Compiling solana-lints v0.1.0 (/src/solana-lints/crate)
+   Compiling dylint_internal v3.4.1
+   Compiling dylint_linting v3.4.1
+   Compiling bump_seed_canonicalization v0.1.0 (/src/solana-lints/lints/bump_seed_canonicalization)
+    Finished `release` profile [optimized] target(s) in 9.72s
+Building workspace metadata entry `insecure_account_close`
+   Compiling insecure_account_close v0.1.0 (/src/solana-lints/lints/insecure_account_close)
+    Finished `release` profile [optimized] target(s) in 1.72s
+Building workspace metadata entry `missing_owner_check`
+   Compiling syn v2.0.98
+   Compiling missing_owner_check v0.1.0 (/src/solana-lints/lints/missing_owner_check)
+    Finished `release` profile [optimized] target(s) in 11.47s
+Building workspace metadata entry `missing_signer_check`
+    Updating crates.io index
+   Compiling missing_signer_check v0.1.0 (/src/solana-lints/lints/missing_signer_check)
+    Finished `release` profile [optimized] target(s) in 2.47s
+Building workspace metadata entry `sysvar_get`
+   Compiling sysvar_get v0.1.0 (/src/solana-lints/lints/sysvar_get)
+    Finished `release` profile [optimized] target(s) in 2.14s
+Building workspace metadata entry `type_cosplay`
+   Compiling type_cosplay v0.1.0 (/src/solana-lints/lints/type_cosplay)
+    Finished `release` profile [optimized] target(s) in 1.18s
+Building driver for toolchain `nightly-2025-01-09-x86_64-unknown-linux-gnu`
+    Updating crates.io index
+     Locking 86 packages to latest compatible versions
+      Adding cargo-platform v0.3.3 (requires Rust 1.91)
+      Adding libloading v0.9.0 (requires Rust 1.88.0)
+ Downloading crates ...
+  Downloaded libloading v0.9.0
+  Downloaded socket2 v0.6.5
+  Downloaded openssl-sys v0.9.117
+  Downloaded curl v0.4.50
+  Downloaded curl-sys v0.4.90+curl-8.21.0
+  Downloaded libgit2-sys v0.18.8+1.9.7
+  Downloaded dylint_driver v6.0.4
+error: rustc 1.86.0-nightly is not supported by the following packages:
+  cargo-platform@0.3.3 requires rustc 1.91
+  libloading@0.9.0 requires rustc 1.88.0
+Either upgrade rustc or select compatible dependency versions with
+`cargo update <name>@<current-ver> --precise <compatible-ver>`
+where `<compatible-ver>` is the latest version supporting rustc 1.86.0-nightly
+
+Error: Error: command failed: cd "/tmp/.tmplAV7i7" && env -u CARGO -u RUSTC -u RUSTUP_TOOLCHAIN RUSTFLAGS=" -C link-args=-Wl,-rpath,/usr/local/rustup/toolchains/nightly-2025-01-09-x86_64-unknown-linux-gnu/lib " "cargo" "build"

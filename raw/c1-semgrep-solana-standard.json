@@ -1,0 +1,532 @@
+{
+ "results": [
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/0-signer-authorization/insecure/src/lib.rs",
+   "start": {
+    "line": 16
+   },
+   "end": {
+    "line": 16
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/0-signer-authorization/secure/src/lib.rs",
+   "start": {
+    "line": 20
+   },
+   "end": {
+    "line": 20
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs",
+   "start": {
+    "line": 20
+   },
+   "end": {
+    "line": 20
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/1-account-data-matching/secure/src/lib.rs",
+   "start": {
+    "line": 23
+   },
+   "end": {
+    "line": 23
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs",
+   "start": {
+    "line": 17
+   },
+   "end": {
+    "line": 17
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/secure/src/lib.rs",
+   "start": {
+    "line": 18
+   },
+   "end": {
+    "line": 18
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/2-owner-checks/insecure/src/lib.rs",
+   "start": {
+    "line": 24
+   },
+   "end": {
+    "line": 24
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/2-owner-checks/secure/src/lib.rs",
+   "start": {
+    "line": 27
+   },
+   "end": {
+    "line": 27
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/3-type-cosplay/insecure/src/lib.rs",
+   "start": {
+    "line": 25
+   },
+   "end": {
+    "line": 25
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/3-type-cosplay/secure/src/lib.rs",
+   "start": {
+    "line": 28
+   },
+   "end": {
+    "line": 28
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs",
+   "start": {
+    "line": 16
+   },
+   "end": {
+    "line": 16
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs",
+   "start": {
+    "line": 31
+   },
+   "end": {
+    "line": 31
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "start": {
+    "line": 20
+   },
+   "end": {
+    "line": 20
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "start": {
+    "line": 30
+   },
+   "end": {
+    "line": 30
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "start": {
+    "line": 31
+   },
+   "end": {
+    "line": 31
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "start": {
+    "line": 32
+   },
+   "end": {
+    "line": 32
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "start": {
+    "line": 33
+   },
+   "end": {
+    "line": 33
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "start": {
+    "line": 34
+   },
+   "end": {
+    "line": 34
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "start": {
+    "line": 34
+   },
+   "end": {
+    "line": 34
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "start": {
+    "line": 35
+   },
+   "end": {
+    "line": 35
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "start": {
+    "line": 36
+   },
+   "end": {
+    "line": 36
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs",
+   "start": {
+    "line": 37
+   },
+   "end": {
+    "line": 37
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended/src/lib.rs",
+   "start": {
+    "line": 23
+   },
+   "end": {
+    "line": 23
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs",
+   "start": {
+    "line": 12
+   },
+   "end": {
+    "line": 12
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "start": {
+    "line": 14
+   },
+   "end": {
+    "line": 14
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs",
+   "start": {
+    "line": 26
+   },
+   "end": {
+    "line": 26
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-016-bump-field-read",
+   "path": "/tmp/sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs",
+   "start": {
+    "line": 14
+   },
+   "end": {
+    "line": 14
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-016-bump-field-read"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs",
+   "start": {
+    "line": 12
+   },
+   "end": {
+    "line": 12
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs",
+   "start": {
+    "line": 15
+   },
+   "end": {
+    "line": 15
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs",
+   "start": {
+    "line": 24
+   },
+   "end": {
+    "line": 24
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "start": {
+    "line": 15
+   },
+   "end": {
+    "line": 15
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "start": {
+    "line": 18
+   },
+   "end": {
+    "line": 18
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "start": {
+    "line": 20
+   },
+   "end": {
+    "line": 20
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs",
+   "start": {
+    "line": 39
+   },
+   "end": {
+    "line": 39
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "start": {
+    "line": 16
+   },
+   "end": {
+    "line": 16
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "start": {
+    "line": 19
+   },
+   "end": {
+    "line": 19
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "start": {
+    "line": 21
+   },
+   "end": {
+    "line": 21
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs",
+   "start": {
+    "line": 39
+   },
+   "end": {
+    "line": 39
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-011-close-attr",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/recommended/src/lib.rs",
+   "start": {
+    "line": 16
+   },
+   "end": {
+    "line": 16
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-011-close-attr"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/recommended/src/lib.rs",
+   "start": {
+    "line": 19
+   },
+   "end": {
+    "line": 19
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 16
+   },
+   "end": {
+    "line": 16
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 19
+   },
+   "end": {
+    "line": 19
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-010-init-if-needed",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 21
+   },
+   "end": {
+    "line": 21
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-010-init-if-needed"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 47
+   },
+   "end": {
+    "line": 47
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-034-manual-lamport-mutation",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 50
+   },
+   "end": {
+    "line": 50
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-034-manual-lamport-mutation"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 59
+   },
+   "end": {
+    "line": 59
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 64
+   },
+   "end": {
+    "line": 64
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  },
+  {
+   "check_id": "solana-security-standard.sol-006-raw-account-info",
+   "path": "/tmp/sealevel-attacks/programs/9-closing-accounts/secure/src/lib.rs",
+   "start": {
+    "line": 65
+   },
+   "end": {
+    "line": 65
+   },
+   "raw_check_id": "rules.solana-security-standard.sol-006-raw-account-info"
+  }
+ ]
+}

@@ -1,0 +1,953 @@
+[
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/anchor-account-reload-owner/insecure/src/account.rs:270:42-57"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/anchor-account-reload-owner/insecure/src/account.rs:271:27-42",
+   "corpus2/anchor-account-reload-owner/insecure/src/account.rs:312:34-49"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/anchor-account-reload-owner/secure/src/account.rs:305:27-42",
+   "corpus2/anchor-account-reload-owner/secure/src/account.rs:320:34-49"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/anchor-interface-account/secure/src/interface_account.rs:244:41-56"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/anchor-interface-account/secure/src/interface_account.rs:219:31-46",
+   "corpus2/anchor-interface-account/secure/src/interface_account.rs:245:16-31"
+  ]
+ },
+ {
+  "name": "Unconstrained UncheckedAccount",
+  "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:19:15-31",
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:30:22-38",
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:32:26-42",
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:34:32-48",
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:36:16-32",
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:38:34-50"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/metaplex-candy-machine/insecure/src/set_collection_during_mint.rs:152:5-18"
+  ]
+ },
+ {
+  "name": "Unconstrained UncheckedAccount",
+  "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:19:15-31",
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:30:22-38",
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:32:26-42",
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:34:32-48",
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:36:16-32",
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:38:34-50"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/metaplex-candy-machine/secure/src/set_collection_during_mint.rs:160:5-18"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/metaplex-token-metadata/insecure/src/transfer.rs:197:58-73"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/metaplex-token-metadata/insecure/src/transfer.rs:197:26-32"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/metaplex-token-metadata/secure/src/transfer.rs:209:58-73"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/metaplex-token-metadata/secure/src/transfer.rs:209:26-32"
+  ]
+ },
+ {
+  "name": "Missing Pyth Confidence Interval",
+  "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:309:24-33",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:449:38-47",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:2109:4-13"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:2124:43-58",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:2178:45-60"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:2262:9-22"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:42:43-49",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:2064:11-17"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:131:4-31",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:194:4-24",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:733:4-27",
+   "corpus2/solend-owner-checks/insecure/src/processor.rs:2213:4-26"
+  ]
+ },
+ {
+  "name": "Missing Pyth Confidence Interval",
+  "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solend-owner-checks/secure/src/processor.rs:309:24-33",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:449:38-47",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:2113:4-13"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solend-owner-checks/secure/src/processor.rs:2128:43-58",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:2182:45-60"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solend-owner-checks/secure/src/processor.rs:2266:9-22"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solend-owner-checks/secure/src/processor.rs:42:43-49",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:2068:11-17"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solend-owner-checks/secure/src/processor.rs:131:4-31",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:194:4-24",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:733:4-27",
+   "corpus2/solend-owner-checks/secure/src/processor.rs:2217:4-26"
+  ]
+ },
+ {
+  "name": "Anchor Reward Overflow",
+  "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-anker-arbitrary-cpi/insecure/src/state.rs:649:10-16",
+   "corpus2/solido-anker-arbitrary-cpi/insecure/src/state.rs:671:10-16"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solido-anker-arbitrary-cpi/insecure/src/state.rs:324:40-46"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-anker-arbitrary-cpi/insecure/src/state.rs:649:25-28",
+   "corpus2/solido-anker-arbitrary-cpi/insecure/src/state.rs:671:25-28"
+  ]
+ },
+ {
+  "name": "Anchor Reward Overflow",
+  "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-anker-arbitrary-cpi/secure/src/state.rs:665:10-16",
+   "corpus2/solido-anker-arbitrary-cpi/secure/src/state.rs:687:10-16"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-anker-arbitrary-cpi/secure/src/state.rs:665:25-28",
+   "corpus2/solido-anker-arbitrary-cpi/secure/src/state.rs:687:25-28"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:138:8-23"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:378:9-22",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:443:5-18",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:555:9-22",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:727:5-18"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:64:44-58",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:143:41-55",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:191:46-60",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:406:41-55",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:498:52-66",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:589:47-61",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:693:45-59",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:759:42-56",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:868:40-54"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:56:8-26",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:85:21-39",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:186:8-29",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:401:8-23",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:463:29-51",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:585:8-39",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:672:10-16",
+   "corpus2/solido-deposit-reserve-account/insecure/src/processor.rs:679:43-49"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:138:8-23"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:379:9-22",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:444:5-18",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:556:9-22",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:728:5-18"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:64:44-58",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:143:41-55",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:192:46-60",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:407:41-55",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:499:52-66",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:590:47-61",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:694:45-59",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:760:42-56",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:869:40-54"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:56:8-26",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:85:21-39",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:187:8-29",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:402:8-23",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:464:29-51",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:586:8-39",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:673:10-16",
+   "corpus2/solido-deposit-reserve-account/secure/src/processor.rs:680:43-49"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs:396:39-54"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs:482:15-18"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs:397:53-59"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs:747:14-28",
+   "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs:754:14-28",
+   "corpus2/spl-stake-pool-fee-rounding/insecure/src/state.rs:774:30-44"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs:396:39-54"
+  ]
+ },
+ {
+  "name": "Anchor Admin Without Timelock",
+  "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+  "severity": "Medium",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs:482:15-18"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs:397:53-59"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs:747:14-28",
+   "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs:754:14-28",
+   "corpus2/spl-stake-pool-fee-rounding/secure/src/state.rs:774:30-44"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:2560:45-60"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:345:5-18",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:382:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:410:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:429:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:456:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:529:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:578:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:613:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:671:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:3538:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:3617:9-22"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:2561:54-60"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:709:8-26"
+  ]
+ },
+ {
+  "name": "Integer Division Overflow",
+  "description": "Division operations without checked_div can cause panics on division by zero or overflow conditions.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:2157:8-45"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/insecure/src/processor.rs:3745:49-63"
+  ]
+ },
+ {
+  "name": "Unvalidated Price Data Account",
+  "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+  "severity": "High",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:2565:45-60"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:346:5-18",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:383:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:411:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:430:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:457:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:530:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:579:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:614:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:672:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:3543:9-22",
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:3622:9-22"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:2566:54-60"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:710:8-26"
+  ]
+ },
+ {
+  "name": "Integer Division Overflow",
+  "description": "Division operations without checked_div can cause panics on division by zero or overflow conditions.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:2162:8-45"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/spl-stake-pool-mint-decimals/secure/src/processor.rs:3750:49-63"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-account-matching/insecure/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-account-matching/insecure/src/lib.rs:319:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/squads-account-matching/insecure/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-account-matching/insecure/src/lib.rs:19:12-18",
+   "corpus2/squads-account-matching/insecure/src/lib.rs:38:12-22",
+   "corpus2/squads-account-matching/insecure/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-account-matching/secure/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-account-matching/secure/src/lib.rs:327:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/squads-account-matching/secure/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-account-matching/secure/src/lib.rs:19:12-18",
+   "corpus2/squads-account-matching/secure/src/lib.rs:38:12-22",
+   "corpus2/squads-account-matching/secure/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:65:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:415:21-34",
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:493:9-22"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:347:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:65:12-22",
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:77:28-42",
+   "corpus2/squads-recursive-execute/insecure/src/lib.rs:82:30-44"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:65:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:422:21-34",
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:500:9-22"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:347:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:65:12-22",
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:77:28-42",
+   "corpus2/squads-recursive-execute/secure/src/lib.rs:82:30-44"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-signer-auth/insecure/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-signer-auth/insecure/src/lib.rs:327:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/squads-signer-auth/insecure/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-signer-auth/insecure/src/lib.rs:19:12-18",
+   "corpus2/squads-signer-auth/insecure/src/lib.rs:38:12-22",
+   "corpus2/squads-signer-auth/insecure/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-signer-auth/secure/src/lib.rs:38:12-22"
+  ]
+ },
+ {
+  "name": "Invoke Signed Unvalidated Seeds",
+  "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-signer-auth/secure/src/lib.rs:327:20-33"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/squads-signer-auth/secure/src/lib.rs:285:55-70"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/squads-signer-auth/secure/src/lib.rs:19:12-18",
+   "corpus2/squads-signer-auth/secure/src/lib.rs:38:12-22",
+   "corpus2/squads-signer-auth/secure/src/lib.rs:51:30-44"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:70:52-58",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:111:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:127:45-51",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:172:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:176:45-51",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:211:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:259:45-51",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:271:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:359:45-51",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:371:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:448:45-51",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:638:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:702:44-50",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:764:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:831:44-50",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:936:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:983:64-70",
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:1014:64-70"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/token-2022-confidential-approve-mint/insecure/src/processor.rs:37:4-27"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:70:52-58",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:111:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:127:45-51",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:172:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:180:45-51",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:215:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:263:45-51",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:275:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:363:45-51",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:375:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:452:45-51",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:642:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:706:44-50",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:768:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:835:44-50",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:940:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:987:64-70",
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:1018:64-70"
+  ]
+ },
+ {
+  "name": "Account Precreation DoS",
+  "description": "Detects unsafe account owner assignments without prior validation.",
+  "severity": "Low",
+  "certainty": "Low",
+  "locations": [
+   "corpus2/token-2022-confidential-approve-mint/secure/src/processor.rs:37:4-27"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs:68:8-25"
+  ]
+ },
+ {
+  "name": "Missing Rent Exemption Check",
+  "description": "Account creation via system_program without verifying rent exemption lamports can produce accounts that are garbage-collected by the Solana runtime, causing fund loss or program failures.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs:179:54-68"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs:68:8-25",
+   "corpus2/wormhole-sysvar/insecure/src/verify_signature.rs:204:14-23"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/wormhole-sysvar/secure/src/verify_signature.rs:68:8-25"
+  ]
+ },
+ {
+  "name": "Missing Rent Exemption Check",
+  "description": "Account creation via system_program without verifying rent exemption lamports can produce accounts that are garbage-collected by the Solana runtime, causing fund loss or program failures.",
+  "severity": "Medium",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/wormhole-sysvar/secure/src/verify_signature.rs:179:54-68"
+  ]
+ },
+ {
+  "name": "Unchecked Arithmetics",
+  "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+  "severity": "Low",
+  "certainty": "Medium",
+  "locations": [
+   "corpus2/wormhole-sysvar/secure/src/verify_signature.rs:68:8-25",
+   "corpus2/wormhole-sysvar/secure/src/verify_signature.rs:204:14-23"
+  ]
+ }
+]

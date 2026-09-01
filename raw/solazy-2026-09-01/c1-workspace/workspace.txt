@@ -1,0 +1,223 @@
+
+================================================================================
+
+35 files scanned in /work directory
+
+┌────────────────────────────────────┬──────────┬───────────┬─────────────────────────────────────────┬───────────────┐
+│ Rule Name                          │ Severity │ Certainty │ Files                                   │ Total Matches │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Saturating math operation usage    │ Low      │ Low       │ saturating_math_usage.star              │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Type Cosplay                       │ Low      │ Low       │ type_cosplay.star                       │ 4             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ PDA Sharing                        │ Low      │ Low       │ pda_sharing.star                        │ 6             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Unvalidated Sysvar Account         │ Low      │ Low       │ unvalidated_sysvar_accounts.star        │ 1             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Missing Bump Seed Canonicalization │ Medium   │ Low       │ missing_bump_seed_canonicalization.star │ 1             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Arbitrary Cross-Program Invocation │ Medium   │ Medium    │ arbitrary_cpi.star                      │ 1             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Closing Accounts Insecurely        │ Medium   │ Low       │ closing_accounts.star                   │ 5             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Account Reinitialization           │ Medium   │ Low       │ account_reinitialization.star           │ 1             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Account Data Matching              │ Low      │ Low       │ account_data_matching.star              │ 4             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Duplicate Mutable Accounts         │ Medium   │ Medium    │ duplicate_mutable_accounts.star         │ 0             │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Missing Signer Check               │ Low      │ Low       │ missing_signer_check.star               │ 17            │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Missing Owner Check                │ Low      │ Low       │ missing_owner_check.star                │ 27            │
+├────────────────────────────────────┼──────────┼───────────┼─────────────────────────────────────────┼───────────────┤
+│ Unsafe Account Data Reallocation   │ Medium   │ Low       │ account_data_reallocation.star          │ 0             │
+└────────────────────────────────────┴──────────┴───────────┴─────────────────────────────────────────┴───────────────┘
+
+Detailed findings:
+
+================================================================================
+ Name:        | Missing Signer Check 
+ File:        | missing_signer_check.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | Signer checks verify whether an account owner has authorized the requested transaction. Failing to perform these checks might result in unintended operations executable by any account. 
+
+Matches found: 17
+/work/programs/5-arbitrary-cpi/secure/src/lib.rs:32:2
+/work/programs/0-signer-authorization/insecure/src/lib.rs:14:2
+/work/programs/7-bump-seed-canonicalization/secure/src/lib.rs:30:2
+/work/programs/6-duplicate-mutable-accounts/secure/src/lib.rs:22:2
+/work/programs/9-closing-accounts/secure/src/lib.rs:62:2
+/work/programs/7-bump-seed-canonicalization/insecure/src/lib.rs:22:2
+/work/programs/6-duplicate-mutable-accounts/recommended/src/lib.rs:19:2
+/work/programs/9-closing-accounts/insecure/src/lib.rs:21:2
+/work/programs/10-sysvar-address-checking/insecure/src/lib.rs:15:2
+/work/programs/10-sysvar-address-checking/secure/src/lib.rs:16:2
+/work/programs/9-closing-accounts/recommended/src/lib.rs:14:2
+/work/programs/7-bump-seed-canonicalization/recommended/src/lib.rs:15:2
+/work/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:19:2
+/work/programs/0-signer-authorization/secure/src/lib.rs:18:2
+/work/programs/9-closing-accounts/insecure-still-still/src/lib.rs:36:2
+/work/programs/10-sysvar-address-checking/recommended/src/lib.rs:15:2
+/work/programs/5-arbitrary-cpi/insecure/src/lib.rs:29:2
+================================================================================
+
+================================================================================
+ Name:        | PDA Sharing 
+ File:        | pda_sharing.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | Reuse of a PDA across multiple authority domains can lead to unauthorized data or funds access. 
+
+Matches found: 6
+/work/programs/5-arbitrary-cpi/recommended/src/lib.rs:26:23
+/work/programs/5-arbitrary-cpi/recommended/src/lib.rs:11:15
+/work/programs/8-pda-sharing/insecure/src/lib.rs:30:23
+/work/programs/8-pda-sharing/insecure/src/lib.rs:13:15
+/work/programs/8-pda-sharing/secure/src/lib.rs:33:23
+/work/programs/8-pda-sharing/secure/src/lib.rs:16:15
+================================================================================
+
+================================================================================
+ Name:        | Missing Bump Seed Canonicalization 
+ File:        | missing_bump_seed_canonicalization.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Medium 
+ Certainty:   | Low 
+ Description: | If a program is deriving a bump seed for a Program Derived Address (PDA) without ensuring its uniqueness, it could lead to collisions or unexpected insecure logical occurrences. Check for usage of program_id which is not part of Pubkey::find_program_address and there is a usage of `bump` 
+
+Matches found: 1
+/work/programs/7-bump-seed-canonicalization/insecure/src/lib.rs:11:87
+================================================================================
+
+================================================================================
+ Name:        | Type Cosplay 
+ File:        | type_cosplay.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | When two account types can be deserialized with the exact same values, a malicious user could substitute between the account types, leading to unexpected execution and possible authorization bypass depending on how the data is used. Using try_from_slice does not check for the necessary discriminator. 
+
+Matches found: 4
+/work/programs/4-initialization/secure/src/lib.rs:12:29
+/work/programs/3-type-cosplay/secure/src/lib.rs:11:25
+/work/programs/4-initialization/insecure/src/lib.rs:12:29
+/work/programs/3-type-cosplay/insecure/src/lib.rs:11:25
+================================================================================
+
+================================================================================
+ Name:        | Arbitrary Cross-Program Invocation 
+ File:        | arbitrary_cpi.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Medium 
+ Certainty:   | Medium 
+ Description: | If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program. 
+
+Matches found: 1
+/work/programs/5-arbitrary-cpi/insecure/src/lib.rs:10:11
+================================================================================
+
+================================================================================
+ Name:        | Closing Accounts Insecurely 
+ File:        | closing_accounts.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Medium 
+ Certainty:   | Low 
+ Description: | Closing accounts in Solana requires transferring the lamports remaining in the account. When lamports are zeroed, the Solana runtime eventually closes the account. Improperly setting the account for closure could cause account reinitialization type attacks. 
+
+Matches found: 5
+/work/programs/9-closing-accounts/insecure-still/src/lib.rs:15:59
+/work/programs/9-closing-accounts/secure/src/lib.rs:68:2
+/work/programs/9-closing-accounts/secure/src/lib.rs:47:59
+/work/programs/9-closing-accounts/insecure/src/lib.rs:12:59
+/work/programs/9-closing-accounts/insecure-still-still/src/lib.rs:16:59
+================================================================================
+
+================================================================================
+ Name:        | Unvalidated Sysvar Account 
+ File:        | unvalidated_sysvar_accounts.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | Sysvars are special Solana accounts that provide access to dynamically updated data. When using them, it's important to verify the interaction is made to the real intended system variable account, and not to fraudulent or incorrect ones. 
+
+Matches found: 1
+/work/programs/10-sysvar-address-checking/insecure/src/lib.rs:17:4
+================================================================================
+
+================================================================================
+ Name:        | Account Data Matching 
+ File:        | account_data_matching.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification. 
+
+Matches found: 4
+/work/programs/1-account-data-matching/insecure/src/lib.rs:11:52
+/work/programs/1-account-data-matching/secure/src/lib.rs:11:52
+/work/programs/2-owner-checks/insecure/src/lib.rs:12:52
+/work/programs/2-owner-checks/secure/src/lib.rs:12:52
+================================================================================
+
+================================================================================
+ Name:        | Missing Owner Check 
+ File:        | missing_owner_check.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Low 
+ Certainty:   | Low 
+ Description: | The Account struct includes an owner field indicating the key associated with that account's owner. This field should be used to ensure a caller of an owner-only intended functionality, is in fact the owner. 
+
+Matches found: 27
+/work/programs/5-arbitrary-cpi/secure/src/lib.rs:32:2
+/work/programs/9-closing-accounts/insecure-still/src/lib.rs:36:2
+/work/programs/0-signer-authorization/insecure/src/lib.rs:14:2
+/work/programs/7-bump-seed-canonicalization/secure/src/lib.rs:30:2
+/work/programs/6-duplicate-mutable-accounts/secure/src/lib.rs:22:2
+/work/programs/5-arbitrary-cpi/recommended/src/lib.rs:15:2
+/work/programs/9-closing-accounts/secure/src/lib.rs:62:2
+/work/programs/7-bump-seed-canonicalization/insecure/src/lib.rs:22:2
+/work/programs/6-duplicate-mutable-accounts/recommended/src/lib.rs:19:2
+/work/programs/8-pda-sharing/insecure/src/lib.rs:17:2
+/work/programs/4-initialization/recommended/src/lib.rs:16:2
+/work/programs/9-closing-accounts/insecure/src/lib.rs:21:2
+/work/programs/8-pda-sharing/recommended/src/lib.rs:20:2
+/work/programs/4-initialization/secure/src/lib.rs:34:2
+/work/programs/10-sysvar-address-checking/insecure/src/lib.rs:15:2
+/work/programs/10-sysvar-address-checking/secure/src/lib.rs:16:2
+/work/programs/4-initialization/insecure/src/lib.rs:35:2
+/work/programs/9-closing-accounts/recommended/src/lib.rs:14:2
+/work/programs/7-bump-seed-canonicalization/recommended/src/lib.rs:15:2
+/work/programs/0-signer-authorization/recommended/src/lib.rs:15:2
+/work/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:19:2
+/work/programs/0-signer-authorization/secure/src/lib.rs:18:2
+/work/programs/9-closing-accounts/insecure-still-still/src/lib.rs:36:2
+/work/programs/3-type-cosplay/recommended/src/lib.rs:16:2
+/work/programs/10-sysvar-address-checking/recommended/src/lib.rs:15:2
+/work/programs/5-arbitrary-cpi/insecure/src/lib.rs:29:2
+/work/programs/8-pda-sharing/secure/src/lib.rs:20:2
+================================================================================
+
+================================================================================
+ Name:        | Account Reinitialization 
+ File:        | account_reinitialization.star 
+ Version:     | 0.1.0 
+ Author:      | forefy 
+ Severity:    | Medium 
+ Certainty:   | Low 
+ Description: | When account initialization is not properly validated against reinitialization attempts, callers of the program may try to reinitialize an existing account to manipulate its data and state. 
+
+Matches found: 1
+/work/programs/4-initialization/insecure/src/lib.rs:11:11
+================================================================================

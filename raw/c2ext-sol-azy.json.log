@@ -1,0 +1,342 @@
+[
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.16,
+  "files_scanned": 1,
+  "raw": "raw/anchor-account-reload-owner__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/anchor-account-reload-owner/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.13,
+  "files_scanned": 1,
+  "raw": "raw/anchor-account-reload-owner__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/anchor-account-reload-owner/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.91,
+  "files_scanned": 1,
+  "raw": "raw/anchor-interface-account__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/anchor-interface-account/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.01,
+  "files_scanned": 1,
+  "raw": "raw/anchor-interface-account__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/anchor-interface-account/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.78,
+  "files_scanned": 1,
+  "raw": "raw/anchor-program-system__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/anchor-program-system/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.04,
+  "files_scanned": 1,
+  "raw": "raw/anchor-program-system__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/anchor-program-system/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "cashio-account-data/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.51,
+  "files_scanned": 1,
+  "raw": "raw/cashio-account-data__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/cashio-account-data/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "cashio-account-data/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.52,
+  "files_scanned": 1,
+  "raw": "raw/cashio-account-data__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/cashio-account-data/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.7,
+  "files_scanned": 1,
+  "raw": "raw/metaplex-bubblegum-creator__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/metaplex-bubblegum-creator/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.85,
+  "files_scanned": 2,
+  "raw": "raw/metaplex-bubblegum-creator__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/metaplex-bubblegum-creator/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.93,
+  "files_scanned": 1,
+  "raw": "raw/metaplex-candy-machine__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/metaplex-candy-machine/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.98,
+  "files_scanned": 1,
+  "raw": "raw/metaplex-candy-machine__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/metaplex-candy-machine/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.53,
+  "files_scanned": 1,
+  "raw": "raw/metaplex-token-metadata__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/metaplex-token-metadata/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.77,
+  "files_scanned": 1,
+  "raw": "raw/metaplex-token-metadata__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/metaplex-token-metadata/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 20.78,
+  "files_scanned": 1,
+  "raw": "raw/solend-owner-checks__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/solend-owner-checks/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 16.97,
+  "files_scanned": 1,
+  "raw": "raw/solend-owner-checks__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/solend-owner-checks/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.29,
+  "files_scanned": 1,
+  "raw": "raw/solido-anker-arbitrary-cpi__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/solido-anker-arbitrary-cpi/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 1.26,
+  "files_scanned": 1,
+  "raw": "raw/solido-anker-arbitrary-cpi__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/solido-anker-arbitrary-cpi/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 6.09,
+  "files_scanned": 1,
+  "raw": "raw/solido-deposit-reserve-account__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/solido-deposit-reserve-account/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 6.22,
+  "files_scanned": 1,
+  "raw": "raw/solido-deposit-reserve-account__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/solido-deposit-reserve-account/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 3.48,
+  "files_scanned": 1,
+  "raw": "raw/spl-stake-pool-fee-rounding__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/spl-stake-pool-fee-rounding/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 3.57,
+  "files_scanned": 1,
+  "raw": "raw/spl-stake-pool-fee-rounding__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/spl-stake-pool-fee-rounding/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "error",
+  "reason": "exit 137",
+  "exit_code": 137,
+  "wall_seconds": 48.52,
+  "files_scanned": null,
+  "raw": "raw/spl-stake-pool-mint-decimals__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/spl-stake-pool-mint-decimals/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "error",
+  "reason": "exit 137",
+  "exit_code": 137,
+  "wall_seconds": 48.92,
+  "files_scanned": null,
+  "raw": "raw/spl-stake-pool-mint-decimals__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/spl-stake-pool-mint-decimals/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 5.02,
+  "files_scanned": 1,
+  "raw": "raw/squads-account-matching__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/squads-account-matching/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 5.31,
+  "files_scanned": 1,
+  "raw": "raw/squads-account-matching__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/squads-account-matching/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 6.67,
+  "files_scanned": 1,
+  "raw": "raw/squads-recursive-execute__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/squads-recursive-execute/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 7.21,
+  "files_scanned": 1,
+  "raw": "raw/squads-recursive-execute__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/squads-recursive-execute/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 5.11,
+  "files_scanned": 1,
+  "raw": "raw/squads-signer-auth__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/squads-signer-auth/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 4.96,
+  "files_scanned": 1,
+  "raw": "raw/squads-signer-auth__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/squads-signer-auth/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 5.21,
+  "files_scanned": 1,
+  "raw": "raw/token-2022-confidential-approve-mint__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/token-2022-confidential-approve-mint/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 5.77,
+  "files_scanned": 1,
+  "raw": "raw/token-2022-confidential-approve-mint__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/token-2022-confidential-approve-mint/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.85,
+  "files_scanned": 1,
+  "raw": "raw/wormhole-sysvar__insecure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/wormhole-sysvar/insecure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ },
+ {
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "reason": "",
+  "exit_code": 0,
+  "wall_seconds": 0.81,
+  "files_scanned": 1,
+  "raw": "raw/wormhole-sysvar__secure.txt",
+  "cmd": "docker run --rm --network none -v /root/st-sweep-20260901/v2/corpus2/wormhole-sysvar/secure:/work:ro --entrypoint /src/sol-azy/target/release/sol-azy solazy-runner:built sast -d /work -s"
+ }
+]

@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Unconstrained UncheckedAccount",
+        "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:19:15-31",
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:30:22-38",
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:32:26-42",
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:34:32-48",
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:36:16-32",
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:38:34-50"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/tmp/radar-c2-wrap/metaplex-candy-machine.insecure/pkg/src/set_collection_during_mint.rs:152:5-18"
+        ]
+    }
+]
