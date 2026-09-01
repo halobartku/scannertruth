@@ -52,6 +52,52 @@ whose results cannot be reproduced because a package version drifted is not a be
 
 ---
 
+## Will this run on your system?
+
+**The verification path runs on Windows, macOS and Linux, and CI proves it on all three.** It is
+pure Python standard library with no install step, so there is no package version that can drift
+between your machine and ours.
+
+| What you want to do | Windows | macOS | Linux | What you need |
+|---|---|---|---|---|
+| **Check our numbers** - `test_all.py`, `verify.py`, `control_c2.py` | yes | yes | yes | Python 3.9-3.12, nothing else |
+| **Score findings you already have** - `score.py`, `score2.py` | yes | yes | yes | the same |
+| **Build the real crates** - `build_corpus2.py --crates` | no | yes | yes | `git`, and a POSIX temp path |
+| **Run the scanners themselves** | via WSL2 | mostly | yes | Docker, Rust, or a vendor key - see [`docs/SCANNERS.md`](docs/SCANNERS.md) |
+
+**Why the split.** Checking a result and producing one are different jobs with different costs.
+Verification reads JSON we already published, so it can afford to depend on nothing. Measuring has
+to clone repositories and drive somebody else's tool, and those tools are Linux-first: Radar ships
+as a Docker image, and one AI auditor needs a paid model key. That is their constraint, not ours,
+and it is recorded in the registry rather than hidden behind an install script of our own.
+
+**The remaining POSIX assumption is ours and it is written down**: `build_corpus2.py`, `rb.py` and
+`shiftaware.py` default to `/tmp` paths, which do not exist on Windows. Pass `--cache` and `--out`
+explicitly, or use WSL2. Nothing on the verification path has that problem.
+
+**How, on each system:**
+
+```bash
+# macOS / Linux - python3, because bare `python` may not exist
+git clone https://github.com/halobartku/scannertruth && cd scannertruth
+python3 test_all.py && python3 tools/verify.py && python3 tools/control_c2.py
+```
+
+```powershell
+# Windows PowerShell - && is not a chain operator in Windows PowerShell 5.1
+git clone https://github.com/halobartku/scannertruth; cd scannertruth
+python test_all.py; python toolserify.py; python tools\control_c2.py
+```
+
+Two minutes, no network after the clone. If any check fails on your machine and not on ours, that
+is a bug we want: **a benchmark that only reproduces on the author's laptop is not reproducible.**
+
+**Windows is in CI deliberately.** Paths are the one thing a scorer can get quietly wrong, and a
+finding located by a backslash path has to map to the same case as a forward-slash one. That is
+tested rather than assumed.
+
+---
+
 ## The one concept
 
 **Real recall: does the tool's mapped rule fire on a vulnerable program AND stay silent on the same
@@ -194,7 +240,7 @@ what the bug was.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **90 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **92 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **[21 of our own errors](docs/ENGINEERING-LOG-2026-08-31.md), with dates**, including a headline we
@@ -210,7 +256,7 @@ what the bug was.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            90 checks, mutation-verified. Run this first
+test_all.py            92 checks, mutation-verified. Run this first
 
 docs/
   GETTING-STARTED.md   entry point for a person

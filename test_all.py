@@ -725,6 +725,38 @@ def test_documents_linked_from_the_readme_exist():
     assert not missing, f"README links to missing files: {missing}"
 
 
+def test_the_platform_claims_match_what_ci_actually_runs():
+    """The README tells a stranger which systems and Python versions work. That claim
+    is only worth anything if the machines we do not control actually run them, so it
+    is derived from the workflow rather than typed beside it."""
+    import io as _io, re
+    ci = _io.open(".github/workflows/verify.yml", encoding="utf-8").read()
+    s = _io.open("README.md", encoding="utf-8").read()
+
+    for os_name in ("windows", "macos", "ubuntu"):
+        assert f"{os_name}-latest" in ci, \
+            f"README promises {os_name} but CI no longer runs it"
+
+    versions = sorted({v for v in re.findall(r'python-version: "(\d+\.\d+)"', ci)},
+                      key=lambda v: [int(x) for x in v.split(".")])
+    lo, hi = versions[0], versions[-1]
+    assert f"Python {lo}-{hi}" in s, (
+        f"README must state the Python range CI proves, which is {lo}-{hi}; "
+        f"found versions {versions}")
+
+
+def test_a_backslash_path_maps_to_the_same_case_as_a_forward_slash_one():
+    """The README says Windows is in CI because a scorer can get paths quietly wrong.
+    This is the check that makes the sentence true rather than reassuring."""
+    import score
+    mapping = {"2-owner-checks": ["R"]}
+    posix = score.score([("R", "x/2-owner-checks/insecure/lib.rs")], mapping)
+    win = score.score([("R", r"C:\x\2-owner-checks\insecure\lib.rs")], mapping)
+    assert posix == win, (
+        "the same finding located by a Windows path scores differently from a POSIX one: "
+        f"{posix!r} vs {win!r}")
+
+
 def test_the_advertised_check_count_matches_the_suite():
     """The README said 82 while the suite ran 88. Adding tests without updating the
     figure is the easiest way to make the front page lie, so the figure is derived."""

@@ -16,12 +16,29 @@ on:
 
 jobs:
   selfcheck:
-    runs-on: ubuntu-latest
+    # Three operating systems, because "it is pure standard library so it is portable" is an
+    # assertion and this repository does not publish assertions. The verification surface is
+    # what a stranger runs to check our numbers, so it has to run where they are, not where we
+    # are. Windows earns its place: paths are the one thing a scorer can get quietly wrong, and
+    # a finding located by a backslash path must map to the same case as a forward-slash one.
+    # 3.9 is the floor and 3.12 the ceiling, so a version drift shows up here rather than in
+    # somebody's terminal.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.11"]
+        include:
+          - os: ubuntu-latest
+            python-version: "3.9"
+          - os: ubuntu-latest
+            python-version: "3.12"
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
 
       - name: Test suite
         run: python test_all.py
