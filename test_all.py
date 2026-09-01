@@ -725,6 +725,57 @@ def test_documents_linked_from_the_readme_exist():
     assert not missing, f"README links to missing files: {missing}"
 
 
+def test_every_relative_link_in_every_document_resolves():
+    """The README-only, .md-only check missed a link to a .log inside docs/results/.
+
+    Moving files into docs/ and raw/ broke it silently: the link was relative to the
+    document's old home at the repository root. Any relative target, any extension,
+    from any document."""
+    import io as _io, os, re
+    broken = []
+    for root, dirs, files in os.walk("."):
+        dirs[:] = [d for d in dirs if d not in (".git", ".omc", "__pycache__", "node_modules")]
+        for fn in files:
+            if not fn.endswith(".md"):
+                continue
+            doc = os.path.join(root, fn)
+            s = _io.open(doc, encoding="utf-8", errors="replace").read()
+            for target in re.findall(r"\]\((?!https?:|mailto:|#)([^)\s#]+)", s):
+                if not os.path.exists(os.path.join(root, target)):
+                    broken.append(f"{doc} -> {target}")
+    assert not broken, "documents link to missing files: " + repr(sorted(broken))
+
+
+def test_readme_does_not_overstate_the_real_crates_result():
+    """The results page states six scoreable pairs, two scanners, three cases
+    unmeasurable. A one-line summary on the front page must not drop those."""
+    import io as _io
+    s = _io.open("README.md", encoding="utf-8").read()
+    i = s.find("**Real crates**")
+    assert i > 0, "the real-crates bullet is gone; update or remove this test"
+    bullet = s[i:i + 700]
+    assert "six pairs" in bullet.lower(),         "the real-crates claim must say how many pairs were actually scored"
+    assert "two scanners" in bullet.lower(),         "the real-crates claim must say only two of six scanners were run on them"
+    for banned in ("retires the packaging objection", "retired the packaging objection"):
+        assert banned not in bullet.lower(),             f"unqualified claim {banned!r}: six pairs tests an objection, it does not retire it"
+
+
+def test_real_crate_counts_are_not_quoted_as_a_committed_fact():
+    """927 .rs files was quoted on the front page while corpus2/ holds 19: the real
+    crates are built on demand into /tmp and were never committed, so no reader
+    could check the number, and it counted a case since excluded as invalid."""
+    import io as _io, os, re
+    s = _io.open("README.md", encoding="utf-8").read()
+    on_disk = sum(len([f for f in fs if f.endswith(".rs")])
+                  for _, _, fs in os.walk("corpus2"))
+    for n in re.findall(r"(\d[\d,]{2,})\s*`?\.rs`?\s*files", s):
+        count = int(n.replace(",", ""))
+        assert count == on_disk, (
+            f"README quotes {count} .rs files but {on_disk} are committed under corpus2/. "
+            "Real-crate counts are not reproducible from the repository; cite the "
+            "per-case table in docs/results/RESULTS-realcrates.md instead.")
+
+
 def test_skills_referenced_by_agents_md_exist():
     import io as _io, os, re
     s = _io.open("AGENTS.md", encoding="utf-8").read()

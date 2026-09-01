@@ -66,7 +66,7 @@ Every teaching-corpus figure is **in-sample**: that corpus is public, four years
 two of these tools cite it in their own rule tables. Every third-party figure is **provisional**
 until its authors use their [right of reply](../docs/PROTOCOL.md).
 
-Our mapping of each tool's rules is in [`mappings/`](mappings/), one file per tool, each recording
+Our mapping of each tool's rules is in [`mappings/`](../mappings/), one file per tool, each recording
 how it was derived.
 
 ---
@@ -103,5 +103,5 @@ Conflating those two is one of the main ways a benchmark misleads, so they get t
 
 Open an issue with the tool's **own** repository link. If it runs in a container and produces
 machine-readable output, adding it is mostly writing a mapping and a run loop. The procedure is
-[`AGENTS.md`](AGENTS.md) for an agent, [`docs/WALKTHROUGH.md`](../docs/WALKTHROUGH.md) for a person, and we would
+[`AGENTS.md`](../AGENTS.md) for an agent, [`docs/WALKTHROUGH.md`](../docs/WALKTHROUGH.md) for a person, and we would
 rather measure your tool than guess about it.

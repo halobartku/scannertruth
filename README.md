@@ -100,8 +100,12 @@ did not exist. Building it is the work:
 
 - **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit and
   its parent, so the answer key is somebody else's. Nine valid cases.
-- **Real crates**: the same bugs as whole projects rather than extracted files, 927 `.rs` files,
-  which retires the packaging objection instead of arguing about it.
+- **Real crates**: the same bugs as whole projects rather than extracted files, built from each
+  project's own `Cargo.toml` and sibling modules. This tests the packaging objection rather than
+  arguing about it, and on the six pairs that could be scored it did not explain the result.
+  Two scanners, not six; three of the largest cases could not be measured at all. The crates are
+  built on demand rather than committed, so counts come from
+  [`docs/results/RESULTS-realcrates.md`](docs/results/RESULTS-realcrates.md) per case.
 - **Acquisition**: `corpus_ghsa.py` reads advisory databases, where a fix commit is a structured
   field rather than prose to be mined. It has scanned 1,200 advisories.
 - **A sealed holdout**, committed by hash before the round it scores.

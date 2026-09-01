@@ -4,7 +4,7 @@ Two paths. Pick the one that describes you.
 
 - **A person** who wants to check whether a scanner actually detects anything: start below.
 - **An AI agent** handed this repository and told to measure something: read
-  [`AGENTS.md`](AGENTS.md) instead. It is the complete procedure, and the short version is here in
+  [`AGENTS.md`](../AGENTS.md) instead. It is the complete procedure, and the short version is here in
   section 4.
 
 ---
@@ -100,7 +100,7 @@ It covers the parts that are easy to get wrong, because we got them wrong:
 - **Classify a clean zero and an outage differently.** We have made that mistake in both directions,
   hours apart.
 
-An AI agent given this repository should read [`AGENTS.md`](AGENTS.md) instead, which is the same
+An AI agent given this repository should read [`AGENTS.md`](../AGENTS.md) instead, which is the same
 procedure written to be executed unsupervised.
 
 ## 5. If you find something wrong

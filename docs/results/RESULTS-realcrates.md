@@ -96,12 +96,13 @@ this log already records once.
 ## Reproduce
 
 ```
-python ../../tools/build_corpus2.py --manifest corpus2/manifest.json --out /tmp/c2crates --crates
-/root/percase-radar.sh            # per case, per variant, verifies output parses before saying ok
-python ../../tools/shiftaware.py              # shift-corrected comparison
+# from the repository root
+python tools/build_corpus2.py --manifest corpus2/manifest.json --out /tmp/c2crates --crates
+/root/percase-radar.sh     # per case, per variant, verifies output parses before saying ok
+python tools/shiftaware.py # shift-corrected comparison
 ```
 
-Raw run log: [`realcrates-radar-run.log`](realcrates-radar-run.log).
+Raw run log: [`raw/realcrates-radar-run.log`](../../raw/realcrates-radar-run.log).
 
 ## Limits
 
