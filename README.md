@@ -258,7 +258,7 @@ what the bug was.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[28 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
+- **[30 of our own errors](docs/ENGINEERING-LOG-2026-09-01.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.
@@ -280,7 +280,7 @@ docs/
   PROTOCOL.md          the rules, and what makes a result provisional
   ROADMAP.md           what exists today, and four funded milestones
   KNOWN-LIMITATIONS.md what this measurement cannot tell you
-  ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 7 more on 2026-09-01
+  ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 9 more on 2026-09-01
   COMMITMENTS.md       three standing promises
   CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
   results/             the measurements themselves

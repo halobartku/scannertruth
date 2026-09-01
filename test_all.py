@@ -1413,7 +1413,11 @@ def test_the_noisy_control_count_is_derived_from_the_corpus():
     the corpus and the mapping set, both of which grow. It was 424,170 with seven
     mappings and eight cases; adding mappings moved it and adding cases moved it again.
     A quoted figure that nothing recomputes is the freshness defect this project keeps
-    paying for, so every document that quotes one is checked against the corpus."""
+    paying for, so every document that quotes one is checked against the corpus.
+
+    The engineering logs are exempt, and only they. Their whole job is to record the
+    value that turned out to be wrong, next to the date it was found; a log that could
+    not quote a superseded number could not record the error at all."""
     import io as _io, os, re
     expected = _corpus2_noisy_finding_count()
     allowed = {expected, 931}  # 931 is the teaching corpus, computed the same way
@@ -1422,7 +1426,7 @@ def test_the_noisy_control_count_is_derived_from_the_corpus():
         dirs[:] = [d for d in dirs if d not in (".git", ".omc", "__pycache__",
                                                 "node_modules", "raw", "runs")]
         for fn in files:
-            if not fn.endswith(".md"):
+            if not fn.endswith(".md") or fn.startswith("ENGINEERING-LOG-"):
                 continue
             doc = os.path.join(root, fn)
             s = _io.open(doc, encoding="utf-8", errors="replace").read()
