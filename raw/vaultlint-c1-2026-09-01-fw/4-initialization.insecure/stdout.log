@@ -1,0 +1,35 @@
+COMMAND: docker run --rm --network none -v /tmp/sealevel-attacks/programs/4-initialization/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src
+EXIT: 0
+WALL_SECONDS: 0.35
+
+STDOUT:
+{
+  "findings": [
+    {
+      "column": 24,
+      "docs_url": "https://vaultlint.com/rules/VL002/",
+      "file": "/src/src/lib.rs",
+      "help": "Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.",
+      "line": 12,
+      "message": "Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.",
+      "rule_id": "VL002",
+      "severity": "high",
+      "snippet": "let mut user = User::try_from_slice(&ctx.accounts.user.data.borrow()).unwrap();",
+      "title": "missing owner check"
+    }
+  ],
+  "skipped": []
+}
+
+
+STDERR:
+→ analyzing 1 Rust file (Anchor 0.20.1) …
+
+✗ HIGH  missing owner check
+        /src/src/lib.rs:12
+        Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.
+        Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.
+        https://vaultlint.com/rules/VL002/
+
+1 issue found · 1 high · 0 medium
+

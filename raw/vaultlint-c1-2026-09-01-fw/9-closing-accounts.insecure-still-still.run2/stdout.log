@@ -1,0 +1,16 @@
+COMMAND: docker run --rm --network none -v /tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src
+EXIT: 0
+WALL_SECONDS: 0.34
+
+STDOUT:
+{
+  "findings": [],
+  "skipped": []
+}
+
+
+STDERR:
+→ analyzing 1 Rust file (Anchor 0.20.1) …
+
+✓ no issues found
+

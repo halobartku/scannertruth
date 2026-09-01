@@ -1,0 +1,35 @@
+COMMAND: docker run --rm --network none -v /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src
+EXIT: 0
+WALL_SECONDS: 0.38
+
+STDOUT:
+{
+  "findings": [
+    {
+      "column": 13,
+      "docs_url": "https://vaultlint.com/rules/VL004/",
+      "file": "/src/src/lib.rs",
+      "help": "Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.",
+      "line": 11,
+      "message": "`bump` is the bump seed given to `create_program_address` and is not read from account data, so nothing proves it is the canonical bump. The call accepts any bump, and a non-canonical one addresses a different account.",
+      "rule_id": "VL004",
+      "severity": "medium",
+      "snippet": "Pubkey::create_program_address(&[key.to_le_bytes().as_ref(), &[bump]], ctx.program_id)?;",
+      "title": "non-canonical PDA bump"
+    }
+  ],
+  "skipped": []
+}
+
+
+STDERR:
+→ analyzing 1 Rust file (Anchor 0.20.1) …
+
+⚠ MED  non-canonical PDA bump
+        /src/src/lib.rs:11
+        `bump` is the bump seed given to `create_program_address` and is not read from account data, so nothing proves it is the canonical bump. The call accepts any bump, and a non-canonical one addresses a different account.
+        Use `find_program_address`, or compare the result against a stored canonical bump before trusting it.
+        https://vaultlint.com/rules/VL004/
+
+1 issue found · 0 high · 1 medium
+

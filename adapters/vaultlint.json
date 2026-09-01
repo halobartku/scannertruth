@@ -10,20 +10,33 @@
   "note": "Released July 2026; 52 crates.io downloads in its entire history. A weak popularity signal recorded in docs/SCANNERS.md, not a quality judgement."
  },
  "run": {
-  "engine": "unrecorded",
-  "reason": "The 2026-08-31 invocation was not written into any artefact in this repository, and the tool was not re-run on 2026-09-01. The VPS image vaultlint-runner:local still exists, so this is recoverable by whoever runs it next; it is recorded as unknown rather than reconstructed from memory.",
-  "invocation_evidence": "What is known: vaultlint 0.1.1 with its `scan` subcommand, in a container, on 2026-08-31. The corpus-2 run has a per-case log (raw/c2-vaultlint-complete.json.log) proving 8 cases were analysed, and the corpus-1 run has none."
+  "engine": "docker",
+  "image": "vaultlint-runner:local",
+  "image_id": "sha256:2d540010da0bb5f8f510225c59881e44e2d552e1d85febd26f378bb7ab1ffb9a",
+  "network": "none",
+  "mount": "/src",
+  "entrypoint": "/bin/sh",
+  "command": [
+   "-c",
+   "vaultlint scan --fail-on never {mount} >&2; vaultlint scan --format json --fail-on never {mount}"
+  ],
+  "timeout_seconds": 600,
+  "invocation_evidence": "Recovered on 2026-09-01 from the committed corpus-2 artefacts, not from memory: raw/vaultlint-c2-2026-09-01/<leaf>.stdout.log is vaultlint's human formatter and raw/vaultlint-c2-2026-09-01/<leaf>.json is the same scan under --format json. Those two files are the two halves of the command above. The image is not rebuilt: vaultlint-runner:local still carries the id the 2026-08-31 run used, so a difference in a result is a difference in the corpus and not in a dependency resolved afresh.",
+  "entrypoint_reason": "vaultlint has only --format and --fail-on. Its file count is printed by the human formatter and its findings by the json one, and no single argv produces both. Before this the coverage question was answered by a shell script outside the framework, and how it decided ok versus unavailable was itself unrecorded. One `sh -c` runs the tool twice in one container: the human pass to stderr for its own account of what it read, the json pass to stdout for the findings. Nothing is inferred from whether a file appeared."
  },
- "layout": "unrecorded",
+ "layout": "variant-dir",
  "coverage": {
-  "ok_exit_codes": [0],
+  "ok_exit_codes": [
+   0
+  ],
   "evidence": {
-   "absent": true,
-   "reason": "the corpus-2 row has a per-case run log and is scored from it; how that log's ok/unavailable decision was made is not recorded, so the classifier itself cannot be checked. The corpus-1 row has no log at all."
+   "pattern": "analyzing (\\d+) Rust file",
+   "minimum": 1,
+   "means": "vaultlint's own count of the files it opened, printed by its human formatter before it analyses them and before it says whether it found anything"
   }
  },
  "output": {
-  "from": "unrecorded",
+  "from": "stdout",
   "format": "vaultlint"
  },
  "envelope": "vaultlint",
@@ -50,7 +63,7 @@
    "raw": "vaultlint.json",
    "mapping": "vaultlint",
    "envelope": "vaultlint",
-   "note": "2 / 11 nominal and real, from 4 findings across 35 files. No per-run log."
+   "note": "2 / 11 nominal and real, from 4 findings across 35 files, published 2026-08-31 with no per-run log. Re-run per case, per variant, through the framework on 2026-09-01 against the corpus pinned at commit 24555d044802db4022112a94d6d70e74291a4b6d."
   },
   {
    "row": "vaultlint",
@@ -59,7 +72,7 @@
    "mapping": "vaultlint",
    "envelope": "sol-audit",
    "envelope_note": "This file is NOT in vaultlint's own envelope. It was hand-converted into the flat sol-audit shape in 2026-08-31 by a script that was never committed, which is why the declared envelope differs from the tool's. The conversion is unreproducible and that is a defect, not a design choice; it stays declared as sol-audit because that is what the committed bytes are, and pretending otherwise would silently change a published number.",
-   "note": "Covers 8 of the 17 valid cases, so run_all reports it `partial` with 8 not-run and a scoreable denominator of 1. It is the row the B7 handover asks to be re-run first."
+   "note": "Covers 8 of the 17 valid cases, so run_all reports it `partial` with 8 not-run and a scoreable denominator of 1. It is the row the B7 handover asks to be re-run first. Produced on 2026-09-01 by a per-case shell script whose artefacts are committed under raw/vaultlint-c2-2026-09-01/; that script is where the command in this declaration was read from, so the command is evidence about this row rather than the thing that produced it."
   }
  ]
 }

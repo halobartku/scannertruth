@@ -1,0 +1,352 @@
+[
+ {
+  "leaf": "0-signer-authorization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/0-signer-authorization/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/0-signer-authorization.insecure/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/0-signer-authorization/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/0-signer-authorization.recommended/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/0-signer-authorization/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/0-signer-authorization.secure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/1-account-data-matching/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/1-account-data-matching.insecure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.29,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/1-account-data-matching/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/1-account-data-matching.recommended/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/1-account-data-matching/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/1-account-data-matching.secure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.3,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/10-sysvar-address-checking.insecure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.3,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/10-sysvar-address-checking/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/10-sysvar-address-checking.recommended/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.31,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/10-sysvar-address-checking/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/10-sysvar-address-checking.secure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/2-owner-checks/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/2-owner-checks.insecure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/2-owner-checks/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/2-owner-checks.recommended/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.31,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/2-owner-checks/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/2-owner-checks.secure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.36,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/3-type-cosplay/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/3-type-cosplay.insecure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/3-type-cosplay/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/3-type-cosplay.recommended/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.29,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/3-type-cosplay/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/3-type-cosplay.secure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/4-initialization/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/4-initialization.insecure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/4-initialization/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/4-initialization.recommended/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/4-initialization/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/4-initialization.secure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.28,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/5-arbitrary-cpi.insecure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.4,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/5-arbitrary-cpi.recommended/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.36,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/5-arbitrary-cpi.secure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/6-duplicate-mutable-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/6-duplicate-mutable-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.29,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/6-duplicate-mutable-accounts.secure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/7-bump-seed-canonicalization.insecure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/7-bump-seed-canonicalization.recommended/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.35,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/7-bump-seed-canonicalization.secure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.38,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/8-pda-sharing/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/8-pda-sharing.insecure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.36,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/8-pda-sharing/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/8-pda-sharing.recommended/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.34,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/8-pda-sharing/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/8-pda-sharing.secure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.32,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/9-closing-accounts/insecure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/9-closing-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/9-closing-accounts.insecure-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.37,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/9-closing-accounts.insecure-still-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/9-closing-accounts/recommended:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/9-closing-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.3,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "docker run --rm --network none -v /tmp/sealevel-attacks/programs/9-closing-accounts/secure:/src:ro --entrypoint /bin/sh vaultlint-runner:local -c vaultlint scan --fail-on never /src >&2; vaultlint scan --format json --fail-on never /src",
+  "artefact": "raw/vaultlint-c1-2026-09-01-fw/9-closing-accounts.secure/stdout.log"
+ }
+]

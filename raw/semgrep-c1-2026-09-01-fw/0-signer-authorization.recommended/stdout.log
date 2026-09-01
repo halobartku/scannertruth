@@ -1,0 +1,10 @@
+COMMAND: docker run --rm --network bridge -v /tmp/sealevel-attacks/programs/0-signer-authorization/recommended:/src:ro semgrep/semgrep semgrep --config auto --no-git-ignore --timeout 60 --json --quiet /src
+EXIT: 0
+WALL_SECONDS: 8.15
+
+STDOUT:
+{"version":"1.174.0","results":[],"errors":[],"paths":{"scanned":["/src/Cargo.toml","/src/Xargo.toml","/src/src/lib.rs"]},"time":{"rules":[],"rules_parse_time":0.6886658668518066,"profiling_times":{"config_time":2.1978421211242676,"core_time":1.3756740093231201,"ignores_time":0.004208803176879883,"total_time":3.612874984741211},"parsing_time":{"total_time":0.0,"per_file_time":{"mean":0.0,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_files":[]},"scanning_time":{"total_time":0.010157108306884766,"per_file_time":{"mean":0.0014510154724121094,"std_dev":2.19448398703597e-06},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_files":[]},"matching_time":{"total_time":0.0,"per_file_and_rule_time":{"mean":0.0,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_rules_on_files":[]},"tainting_time":{"total_time":0.0,"per_def_and_rule_time":{"mean":0.0,"std_dev":0.0},"very_slow_stats":{"time_ratio":0.0,"count_ratio":0.0},"very_slow_rules_on_defs":[]},"fixpoint_timeouts":[],"prefiltering":{"project_level_time":0.0,"file_level_time":0.0,"rules_with_project_prefilters_ratio":0.0,"rules_with_file_prefilters_ratio":1.0,"rules_selected_ratio":0.0,"rules_matched_ratio":0.0},"targets":[],"total_bytes":0,"max_memory_bytes":767051328},"engine_requested":"OSS","skipped_rules":[],"profiling_results":[]}
+
+
+STDERR:
+
