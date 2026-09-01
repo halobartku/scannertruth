@@ -321,6 +321,7 @@ docs/
   SCANNERS.md          registry: every tool we know of, what it needs, what we measured
   PROTOCOL.md          the rules, and what makes a result provisional
   ROADMAP.md           what exists today, and four funded milestones
+  ADAPTERS.md          adding a scanner: the declaration, and what comes for free
   KNOWN-LIMITATIONS.md what this measurement cannot tell you
   ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 10 more on 2026-09-01
   COMMITMENTS.md       three standing promises
@@ -338,7 +339,9 @@ tools/
   unmapped_check.py    find a detection hiding under a rule the mapping missed
   preregistration_check.py  a mapping's commit must touch nothing but mappings/
   adapters.py          one normalised Finding shape, plus the two controls
+  scanner_spec.py      the adapter framework: run, classify, log, check determinism
 
+adapters/              one declaration per scanner: provenance, invocation, parser, rows
 corpus2/               real vulnerabilities, each pinned to its maintainers' own fix commit
 mappings/              one file per tool: which rule claims which class, and how it was derived
 raw/                   every scanner's raw output and run logs
