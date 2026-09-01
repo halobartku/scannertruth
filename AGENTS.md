@@ -129,7 +129,7 @@ found nothing. [`measure-a-scanner`, step 3](skills/measure-a-scanner/SKILL.md#3
 from **the tool's own rule names and documentation**, never from which rules happened to fire. Commit
 it in its own commit before the run; **that commit must touch nothing outside `mappings/`**, and
 `python tools/preregistration_check.py` fails otherwise. `no-rule` and `unmappable` are permitted
-outcomes. [`measure-a-scanner`, step 6](skills/measure-a-scanner/SKILL.md#6-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes)
+outcomes. [`measure-a-scanner`, step 5](skills/measure-a-scanner/SKILL.md#5-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes)
 
 ### 5. Run it
 ```bash
@@ -140,7 +140,7 @@ One invocation per case, per variant, with the case list read from `corpus2/mani
 run. The log is written before the run returns, on success, on crash and on timeout; `ok`,
 `unavailable` and `unknown` come from your declaration, and a status that is not `ok` carries
 `"findings": null`, never `0`. Check the first few `stdout.log` artefacts against the tool's own
-words, and without `--repeat 2` the determinism verdict is `not-checked`. [`measure-a-scanner`, step 4](skills/measure-a-scanner/SKILL.md#4-run-it-and-let-the-log-be-structural-rather-than-remembered)
+words, and without `--repeat 2` the determinism verdict is `not-checked`. [`measure-a-scanner`, step 6](skills/measure-a-scanner/SKILL.md#6-run-it-and-let-the-log-be-structural-rather-than-remembered)
 
 ### 6. Score
 **Yours.** Nothing in the framework scores anything.

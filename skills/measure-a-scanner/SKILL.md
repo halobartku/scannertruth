@@ -7,7 +7,7 @@ description: Use when adding a security scanner to the ScannerTruth benchmark, o
 
 Adding a scanner is this project's one repeatable unit of work. `adapters/` holds a declaration for
 every tool measured so far, and on 2026-08-31 an audit found that two published headline numbers
-were wrong. The order below is what survived that audit. Steps 4 and 6 exist because skipping them
+were wrong. The order below is what survived that audit. Steps 5 and 6 exist because skipping them
 produced retractions.
 
 Repo: `github.com/halobartku/scannertruth`. Protocol: `PROTOCOL.md`. Every error referenced by
@@ -150,7 +150,41 @@ row on the clock changes the published tables, and a golden check will name the 
 A tool that cannot run at all still goes in the **could-not-run** table with its reason. That table
 is published.
 
-## 4. Run it, and let the log be structural rather than remembered
+## 4. Pin the corpus, and say when you pinned it
+
+Nothing in this repository recorded which corpus state produced its headline until it was dug out
+of a working checkout after the fact. Record the commit **before** the run, in `PROTOCOL.md`. If
+you recover it afterwards, say that you did.
+
+Worth knowing about the teaching corpus: `sealevel-attacks` was last touched **2022-07-16** and at
+least two measured tools cite its class pages in their own rule tables. **Every score on it is
+in-sample**, including ours. Say so before anyone asks.
+
+## 5. Write the mapping down before you run, and check the scorer can say yes
+
+`mappings/<scanner>.json` maps the tool's rule ids to classes, derived from **the tool's own rule
+names and documentation**, committed **in its own commit before the run** so the timestamp is the
+pre-registration.
+
+- **The commit must contain nothing but `mappings/`.** Run `python tools/preregistration_check.py`
+  after committing it; a mapping that arrives beside a results page, a run file or a raw findings
+  file is not pre-registered, whatever the commit message says. This is enforced because it was
+  once only asserted: the seven mappings published on 2026-08-31 each arrived in the same commit as
+  their result, and the claim had to be retracted (`docs/PROTOCOL.md` 3a).
+- Use the ids the tool actually emits.
+- `no-rule` and `unmappable` are permitted outcomes. Forcing a mapping for every class
+  manufactures failures.
+- **Beware narrowing a generic rule on the strength of a vendor blog post.** X-Ray's rule named
+  "the account may not be properly validated" was mapped to one class because a blog presented it
+  as catching one specific hack. It detected a real vulnerability at the fix site and our mapping
+  scored it zero (error 17). Publish both numbers and leave the pre-registered map unedited.
+- **Validate the scorer against a known positive before believing its zeros.** Until 2026-08-31
+  this project's corpus-2 scorer had never once returned `detected`, and nobody had checked that it
+  could. `score2.py --demo` drives a synthetic case end to end on every run, and
+  `scanner_spec.py --self-check` does the same **per declaration**, because a parser can break in
+  one branch only and every other branch stays green while it does.
+
+## 6. Run it, and let the log be structural rather than remembered
 
 **Error 20, the worst of the day.** We published that two scanners detected nothing across eight
 real vulnerabilities. Both numbers were **extrapolated from one case each**. The findings files
@@ -195,40 +229,6 @@ determinism check. And a tool whose output shape is new needs a parser, which is
 with unresolved cases drops to status `partial` with the reason attached, rather than reporting a
 confident number over cases nobody can prove were analysed. Check your own row with
 `python tools/run_all.py --verify-coverage` before publishing anything; it must not add another gap.
-
-## 5. Pin the corpus, and say when you pinned it
-
-Nothing in this repository recorded which corpus state produced its headline until it was dug out
-of a working checkout after the fact. Record the commit **before** the run, in `PROTOCOL.md`. If
-you recover it afterwards, say that you did.
-
-Worth knowing about the teaching corpus: `sealevel-attacks` was last touched **2022-07-16** and at
-least two measured tools cite its class pages in their own rule tables. **Every score on it is
-in-sample**, including ours. Say so before anyone asks.
-
-## 6. Write the mapping down before you run, and check the scorer can say yes
-
-`mappings/<scanner>.json` maps the tool's rule ids to classes, derived from **the tool's own rule
-names and documentation**, committed **in its own commit before the run** so the timestamp is the
-pre-registration.
-
-- **The commit must contain nothing but `mappings/`.** Run `python tools/preregistration_check.py`
-  after committing it; a mapping that arrives beside a results page, a run file or a raw findings
-  file is not pre-registered, whatever the commit message says. This is enforced because it was
-  once only asserted: the seven mappings published on 2026-08-31 each arrived in the same commit as
-  their result, and the claim had to be retracted (`docs/PROTOCOL.md` 3a).
-- Use the ids the tool actually emits.
-- `no-rule` and `unmappable` are permitted outcomes. Forcing a mapping for every class
-  manufactures failures.
-- **Beware narrowing a generic rule on the strength of a vendor blog post.** X-Ray's rule named
-  "the account may not be properly validated" was mapped to one class because a blog presented it
-  as catching one specific hack. It detected a real vulnerability at the fix site and our mapping
-  scored it zero (error 17). Publish both numbers and leave the pre-registered map unedited.
-- **Validate the scorer against a known positive before believing its zeros.** Until 2026-08-31
-  this project's corpus-2 scorer had never once returned `detected`, and nobody had checked that it
-  could. `score2.py --demo` drives a synthetic case end to end on every run, and
-  `scanner_spec.py --self-check` does the same **per declaration**, because a parser can break in
-  one branch only and every other branch stays green while it does.
 
 ## 7. Score with the scorers, and compare shift-aware
 

@@ -63,7 +63,7 @@ python tools/preregistration_check.py
 
 That second command is not decoration. A mapping commit may contain **nothing but `mappings/`**, and
 CI rejects one that does not; why that rule is enforced rather than asserted is in
-[`measure-a-scanner`, step 6](../skills/measure-a-scanner/SKILL.md#6-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes) and `docs/PROTOCOL.md` 3a.
+[`measure-a-scanner`, step 5](../skills/measure-a-scanner/SKILL.md#5-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes) and `docs/PROTOCOL.md` 3a.
 
 **Commit it on its own, before the run.** The commit timestamp is the pre-registration, and it is
 the only thing that stops you from quietly adjusting the mapping once you dislike the score.
@@ -73,7 +73,7 @@ Two outcomes are allowed and you should use them:
 - `unmappable`: the rule's description is too broad to tie to one class.
 
 **A trap we fell into**, mapping a generic X-Ray rule to one narrow class on the strength of a vendor
-blog post, is in [`measure-a-scanner`, step 6](../skills/measure-a-scanner/SKILL.md#6-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes). Map from the rule's own name and docs, not from marketing.
+blog post, is in [`measure-a-scanner`, step 5](../skills/measure-a-scanner/SKILL.md#5-write-the-mapping-down-before-you-run-and-check-the-scorer-can-say-yes). Map from the rule's own name and docs, not from marketing.
 
 ---
 
@@ -237,14 +237,14 @@ raw/c2-my-vaultlint.json.determinism.json   deterministic, non-deterministic, or
 
 The run log, the zero-versus-outage classification and the determinism check are the framework's,
 written before the run returns. What each one guarantees, the four outcomes it keeps apart, and the
-retraction the missing log once caused are in [`measure-a-scanner`, step 4](../skills/measure-a-scanner/SKILL.md#4-run-it-and-let-the-log-be-structural-rather-than-remembered).
+retraction the missing log once caused are in [`measure-a-scanner`, step 6](../skills/measure-a-scanner/SKILL.md#6-run-it-and-let-the-log-be-structural-rather-than-remembered).
 
 ### What is still yours, and do not skip it
 
 The status column is only as good as the `coverage.evidence` pattern you wrote. Open two or three of
 the artefacts under `raw/c2-my-vaultlint-runs/` and read the tool's own words against the verdict
 the framework gave them. And `--repeat 2` is a flag, not a default: without it the determinism file
-says `not-checked`. Both are spelled out in [`measure-a-scanner`, step 4](../skills/measure-a-scanner/SKILL.md#4-run-it-and-let-the-log-be-structural-rather-than-remembered).
+says `not-checked`. Both are spelled out in [`measure-a-scanner`, step 6](../skills/measure-a-scanner/SKILL.md#6-run-it-and-let-the-log-be-structural-rather-than-remembered).
 
 ---
 
