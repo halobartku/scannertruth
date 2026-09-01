@@ -19,7 +19,7 @@ PUBLISHED_REAL = 11 - 11  # 0. Written this way so a careless edit to one consta
 EXPECTED_CLASSES = 11
 
 
-def load(path="benchmark-raw.json"):
+def load(path="raw/benchmark-raw.json"):
     with open(path, encoding="utf-8") as fh:
         return json.load(fh)
 

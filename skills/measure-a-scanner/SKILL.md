@@ -12,6 +12,21 @@ survived that audit. Steps 3 and 6 exist because skipping them produced retracti
 Repo: `github.com/halobartku/scannertruth`. Protocol: `PROTOCOL.md`. Every error referenced by
 number is in `ENGINEERING-LOG-2026-08-31.md`.
 
+## Before anything: prove the harness works
+
+```bash
+python test_all.py     # 81 checks, mutation-verified; expect "81 passed, 0 failed"
+```
+
+A harness that cannot check itself cannot tell you anything about somebody else's tool. If any check
+fails, **stop and report that** rather than measuring. The suite is mutation-verified: five
+deliberate defects were introduced and all five were caught, including one that reported a published
+number changing under a refactor.
+
+`AGENTS.md` at the repo root is the condensed executable form of this skill, written so an agent
+handed the repository can act without reading further. `WALKTHROUGH.md` is the same procedure for a
+person, with a worked example on a tool already measured.
+
 ## The rule that outranks the rest
 
 **A number you did not verify at its source is not a result.** Not the tool's summary line, not a
@@ -54,6 +69,15 @@ So, before scoring anything:
   built to prevent error 20, four hours later. Read the tool's own log line before classifying.
 - Absent or unparseable output is **unavailable**, never zero. With no log at all the honest
   verdict is **unknown**; guessing either way has already been wrong once in each direction.
+- **Check the tool's argument shape before the run, not after.** We passed a flag to a binary when
+  it belonged to a subcommand, and all 18 runs failed identically. The harness correctly recorded
+  them as unavailable rather than as zeros, which is the point of the distinction, but the run was
+  wasted. `--help` on the binary *and* on the subcommand costs ten seconds.
+
+`run_all.py` records how coverage was established as `coverage_evidence`: `run log` when a
+`<findings>.log` exists and is the authority, `none` when the question is unanswerable. A scanner
+with unresolved cases drops to status `partial` with the reason attached, rather than reporting a
+confident number over cases nobody can prove were analysed.
 
 ## 4. Give the tool what it expects before judging it
 

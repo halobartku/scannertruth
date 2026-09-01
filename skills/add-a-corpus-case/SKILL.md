@@ -12,6 +12,17 @@ touched 2022-07-16, so anything measured only on it measures homework.
 This is the other half of `measure-a-scanner`. Running a tool and building the thing you run it
 against are different jobs with different ways of going wrong.
 
+## 0. Run the suite first
+
+```bash
+python test_all.py     # 81 checks, several of which guard the corpus itself
+```
+
+Among them: every case must name its fix commit, its repository and its class; case names must be
+unique or a denominator double-counts; pinned paths must be relative Rust files; an excluded case
+must carry a reason long enough to audit; and an unreleased holdout spec must not be sitting in the
+repository, because a sealed spec you can read is not sealed.
+
 ## 1. Acquire from structured sources, not from prose
 
 The first acquisition tool searched the open web for postmortems: 23 queries, one hit, false. The
@@ -71,7 +82,9 @@ use it" and "we never found it" must never look the same from outside.
   mistake happened. The scorer refuses to score anything marked that way, because a note in a
   manifest does not stop the next run from counting it.
 - A case listed but **not built** must be reported as `not-built`, not silently skipped. Skipping
-  shrank a denominator from nine to eight and nothing said so.
+  shrank a denominator from nine to eight and nothing said so. Both `score2.py` and `run_all.py`
+  now print it on its own line, and they agree on which cases exist: two components disagreeing
+  about the denominator is how a number drifts without anyone noticing.
 
 ## 5. Disclose the bias, because it is real and it favours nobody
 

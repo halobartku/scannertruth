@@ -530,9 +530,9 @@ def test_published_corpus1_numbers_still_reproduce():
 def test_the_noisy_control_still_produces_931_on_corpus_one():
     """The figure quoted in two results pages and in the call materials."""
     import json, io as _io, os
-    if not os.path.exists("c1-control-noisy.json"):
+    if not os.path.exists("raw/c1-control-noisy.json"):
         raise AssertionError("the control's raw data is missing; the 931 figure is unbacked")
-    d = json.load(_io.open("c1-control-noisy.json", encoding="utf-8"))
+    d = json.load(_io.open("raw/c1-control-noisy.json", encoding="utf-8"))
     n = len(d["findings"])
     assert n == 931, f"published 931 findings, raw file now has {n}"
 
@@ -550,7 +550,7 @@ def test_corpus_commit_is_pinned_in_the_protocol():
 def test_every_raw_json_file_parses():
     import json, io as _io, os
     bad = []
-    for fn in sorted(os.listdir(".")):
+    for fn in sorted(os.listdir(".")) + [os.path.join("raw", f) for f in sorted(os.listdir("raw"))]:
         if fn.endswith(".json"):
             try:
                 json.load(_io.open(fn, encoding="utf-8"))

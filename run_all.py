@@ -76,7 +76,7 @@ def load_mapping(name, mappings_dir="mappings"):
         return json.load(fh)
 
 
-def measure(raw_dir=".", mappings_dir="mappings"):
+def measure(raw_dir="raw", mappings_dir="mappings"):
     """Returns a list of per-scanner result dicts, including the ones we could not run."""
     results = []
     for name, (filename, kind) in sorted(SOURCES.items()):
@@ -111,7 +111,7 @@ def measure(raw_dir=".", mappings_dir="mappings"):
     return results
 
 
-def measure_corpus2(raw_dir=".", corpus_dir="corpus2", mappings_dir="mappings"):
+def measure_corpus2(raw_dir="raw", corpus_dir="corpus2", mappings_dir="mappings"):
     """Corpus 2, scored with score2.py. Absent raw output is unavailable, never a zero."""
     try:
         import score2
@@ -238,7 +238,7 @@ def diff_against(prev, results):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--raw", default=".")
+    ap.add_argument("--raw", default="raw")
     ap.add_argument("--mappings", default="mappings")
     ap.add_argument("--out", default="runs")
     ap.add_argument("--demo", action="store_true")

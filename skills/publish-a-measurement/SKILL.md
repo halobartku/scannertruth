@@ -12,6 +12,20 @@ On 2026-08-31 this project published a headline, found it rested on one case, an
 public. That went well. The rules below are what made it go well, written down so the next one does
 not depend on remembering.
 
+## 0. The suite is part of publishing, not separate from it
+
+```bash
+python test_all.py
+```
+
+81 checks, and some of them exist specifically to catch a dishonest publication rather than a broken
+calculation: golden tests that fail when a **published** figure changes under a refactor, a check
+that every script named in the documentation exists, a check that CI step names do not overclaim
+what they verify, and a check that the limitations file has not quietly shrunk.
+
+Documentation that drifts from the code is a form of overclaiming. It tells a reader to expect
+something the repository no longer does.
+
 ## 1. Lead with the number that hurts
 
 - A third-party tool beating ours goes in the **first paragraph**. Radar's 11/11 against our 4/11

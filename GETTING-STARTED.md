@@ -84,25 +84,24 @@ the numbers a vendor prints on a landing page.
 
 ## 4. Measure a scanner yourself
 
-The full procedure is [`AGENTS.md`](AGENTS.md), written so an AI agent can follow it unsupervised.
-Hand it the repository, name the tool, and it has everything. The shape of it:
+**[`WALKTHROUGH.md`](WALKTHROUGH.md) is the step-by-step**, written for a person, with every command
+and what you should see. It measures a tool we have already measured, so you can compare your result
+to ours and know whether you did it right. About 40 minutes, most of it a container build.
 
-```bash
-# 1. provenance: find the tool's OWN repo, do not trust a registry name
-# 2. run it in a container, corpus mounted read-only
-# 3. write mappings/<tool>.json BEFORE the run, and commit it separately
-# 4. run per case, per variant, one log line per invocation
-python score2.py --scanner <tool> --kind <tool> --findings c2-<tool>.json
-python unmapped_check.py --findings c2-<tool>.json --kind <tool>
-python run_all.py           # appends a dated row to runs/
-```
+It covers the parts that are easy to get wrong, because we got them wrong:
 
-**Step 4 is not optional and it is where we failed.** A findings file cannot prove a case was
-analysed: a tool that ran and found nothing leaves exactly the same silence as one that never saw
-the case. We published a headline built on that confusion and had to retract it. `run_all.py` now
-refuses to call a scanner `measured` without a run log, and reports `unknown` instead of guessing.
+- **Find the tool's real home first.** A registry name nearly made us measure an unrelated crate by
+  a different author and call it a competitor.
+- **Write the mapping before you run anything**, and commit it on its own. The timestamp is what
+  stops you quietly adjusting it once you dislike the score.
+- **Run per case, per variant, with a log per run.** A findings file cannot prove a case was
+  analysed: a tool that ran and found nothing leaves the same silence as one that never saw it.
+  Skipping this is what forced us to retract a published headline.
+- **Classify a clean zero and an outage differently.** We have made that mistake in both directions,
+  hours apart.
 
----
+An AI agent given this repository should read [`AGENTS.md`](AGENTS.md) instead, which is the same
+procedure written to be executed unsupervised.
 
 ## 5. If you find something wrong
 

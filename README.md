@@ -19,6 +19,9 @@ We know this because we measured it on our own product.
 
 **A person?** [`GETTING-STARTED.md`](GETTING-STARTED.md) - what you need (Python 3, nothing else),
 how to verify our numbers offline in two minutes, and the one concept that makes them mean anything.
+To measure a scanner yourself, [`WALKTHROUGH.md`](WALKTHROUGH.md) is the step-by-step, on a tool we
+already measured so you can check your answer against ours. [`SCANNERS.md`](SCANNERS.md) lists every
+tool we know of, what it needs to run, and what we measured for it.
 
 **An AI agent handed this repo?** [`AGENTS.md`](AGENTS.md) - the full measurement procedure,
 written to be followed unsupervised, including the three steps whose absence produced retractions.
@@ -149,6 +152,39 @@ each case was checked. That is the asset, and it is also the thing that decides 
 project deserves to continue: if the corpus stops growing, there is nothing here.
 
 
+
+
+## Repository layout
+
+```
+AGENTS.md              entry point for an AI agent asked to measure something
+GETTING-STARTED.md     entry point for a person
+WALKTHROUGH.md         worked example: measure a scanner yourself, step by step
+SCANNERS.md            registry of every tool we know of, what it needs, what we measured
+PROTOCOL.md            the rules, and what makes a result provisional
+ROADMAP.md             what exists, and four funded milestones
+KNOWN-LIMITATIONS.md   what this measurement cannot tell you
+ENGINEERING-LOG-*.md   21 of our own errors, with dates
+RESULTS-*.md           the measurements themselves
+
+test_all.py            81 checks, mutation-verified. Run this first
+score.py score2.py     the scorers; score2 is the strict one used for real vulnerabilities
+run_all.py             the clock: re-measures on a schedule and diffs against the previous run
+control_c2.py          the calibration controls, which must score zero
+holdout.py             seal a holdout by hash before the round it scores
+corpus_ghsa.py         propose corpus candidates from advisory databases
+shiftaware.py          compare findings across a fix without being fooled by line shift
+unmapped_check.py      find a detection hiding under a rule the mapping missed
+
+corpus2/               real vulnerabilities, each pinned to its maintainers' own fix commit
+mappings/              one file per tool: which of its rules claims which class, and how derived
+raw/                   every scanner's raw output and run logs, so numbers can be re-derived
+runs/                  dated history from the clock
+skills/                the method as three executable procedures
+```
+
+**`raw/` is the point of the whole layout.** Every published number can be recomputed from what is
+in there, which is why the repository is 49 MB instead of 2.
 
 
 ## Independence

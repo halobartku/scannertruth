@@ -96,15 +96,15 @@ def main():
     print(f"corpus 2: {len(cases)} valid cases; {len(rules)} distinct mapped rules\n")
 
     noisy = noisy_findings(cases, rules)
-    with open("c2-control-noisy.json", "w", encoding="utf-8") as fh:
+    with open("raw/c2-control-noisy.json", "w", encoding="utf-8") as fh:
         json.dump({"findings": noisy}, fh)
-    with open("c2-control-null.json", "w", encoding="utf-8") as fh:
+    with open("raw/c2-control-null.json", "w", encoding="utf-8") as fh:
         json.dump({"findings": []}, fh)
     print(f"control-noisy: {len(noisy):,} findings written\n")
 
-    n = score("noisy", "c2-control-noisy.json", cases)
+    n = score("noisy", "raw/c2-control-noisy.json", cases)
     print()
-    z = score("null ", "c2-control-null.json", cases)
+    z = score("null ", "raw/c2-control-null.json", cases)
 
     print()
     if n == 0 and z == 0:
