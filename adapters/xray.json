@@ -1,0 +1,52 @@
+{
+ "name": "xray",
+ "version": "v0.0.6, official container, measured 2026-08-31",
+ "homepage": "https://github.com/sec3-product/x-ray",
+ "provenance": {
+  "repository": "https://github.com/sec3-product/x-ray",
+  "install": "docker pull ghcr.io/sec3-product/x-ray:latest, the project's own image",
+  "install_documented_at": "https://github.com/sec3-product/x-ray README",
+  "checked_on": "2026-08-31",
+  "note": "sec3 was formerly Soteria; X-Ray is the open-source successor to their earlier scanner. Quiet since March 2026."
+ },
+ "run": {
+  "engine": "unrecorded",
+  "reason": "The 2026-08-31 invocation was not written into any artefact here. X-Ray compiles Rust to LLVM IR, and B3 established that neither corpus currently compiles: anchor-lang 0.20.1 is yanked so corpus 1 does not resolve, and 7 of the built corpus-2 cases have no src/lib.rs so cargo will not parse them. Re-running it is blocked on the corpus, not on the command.",
+  "invocation_evidence": "What is known: the official container ghcr.io/sec3-product/x-ray:latest, pulled 2026-08-31, over corpus 1 with paths under /tmp/xray_c1. A per-case log exists at raw/xray-c1-raw.json.log; the command that produced it does not."
+ },
+ "layout": "unrecorded",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "absent": true,
+   "reason": "a per-case run log exists for corpus 1, but how each run was classified is not recorded, so the classifier cannot be checked against X-Ray's own output the way radar's was"
+  }
+ },
+ "output": {
+  "from": "unrecorded",
+  "format": "xray"
+ },
+ "envelope": "xray",
+ "positive_control": {
+  "rule_id": "1002",
+  "sample": [
+   {
+    "name": "1002",
+    "rule_name": "The account is missing owner check",
+    "bucket": "untrustfulAccounts",
+    "locations": ["{path}:{line}:4"]
+   }
+  ],
+  "sample_source": "the shape of raw/xray-c1-raw.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "xray",
+   "corpus": "corpus1",
+   "raw": "xray-c1-raw.json",
+   "mapping": "xray",
+   "envelope": "xray",
+   "note": "4 / 11 nominal, 2 / 11 real, scored with the CORRECTED mapping. The pre-registered mapping narrowed rule 1019 to one class on the strength of a vendor blog post, and that scored a real detection as zero. Both maps are kept in mappings/xray.json and error 17 is the reason two readings are now registered before every run."
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "name": "sol-azy",
+ "version": "master at 362327a798e5dad6e12aa9abf3ed9ed52c17ef6a, authored 2026-03-02, measured 2026-09-01",
+ "homepage": "https://github.com/FuzzingLabs/sol-azy",
+ "provenance": {
+  "repository": "https://github.com/FuzzingLabs/sol-azy",
+  "install": "git clone plus cargo build --release, the only path the project documents. There is NO crate named sol-azy on crates.io: the API returns 404, so the `cargo install radar` trap cannot arise here.",
+  "install_documented_at": "https://github.com/FuzzingLabs/sol-azy README, build section",
+  "checked_on": "2026-09-01",
+  "note": "Built with `cargo update -p allocative --precise 0.3.4` because the project gitignores its Cargo.lock and the default resolution fails with two versions of hashbrown in one graph. That changes dependency resolution only: no rule, threshold, argument or source line of the tool was altered, it was decided before any corpus run, and it is recorded in mappings/sol-azy.json under build_note."
+ },
+ "run": {
+  "engine": "docker",
+  "image": "solazy-runner:built",
+  "network": "none",
+  "mount": "/work",
+  "entrypoint": "/src/sol-azy/target/release/sol-azy",
+  "command": [
+   "sast",
+   "-d",
+   "{mount}",
+   "-s"
+  ],
+  "timeout_seconds": 900,
+  "invocation_evidence": "copied from the `cmd` field of raw/c2-sol-azy.json.log, which records the exact docker invocation of all 18 runs behind the sol-azy corpus-2 result"
+ },
+ "layout": "variant-dir",
+ "layout_reason": "sol-azy decides what a directory is from its contents: helpers/mod.rs get_project_type calls it Anchor only if it holds Anchor.toml and SBF only if its Cargo.toml declares solana-program. sealevel-attacks crates satisfy neither, so all 33 corpus-1 per-case runs exited 0 having read nothing. Same family of trap as radar's, opposite shape.",
+ "coverage": {
+  "ok_exit_codes": [
+   0
+  ],
+  "evidence": {
+   "pattern": "(\\d+) files scanned in .* directory",
+   "minimum": 1,
+   "means": "sol-azy's own count of the files it read. It is exactly this line that separated the 33 corpus-1 runs that read nothing from the runs that worked; without it all 33 would have been zeros."
+  }
+ },
+ "output": {
+  "from": "stdout",
+  "format": "text-regex",
+  "patterns": {
+   "begin_at": "Detailed findings:",
+   "rule": "^\\s*Name:\\s*\\|\\s*(.+?)\\s*$",
+   "location": "([^\\s:]+\\.rs):(\\d+):(\\d+)"
+  },
+  "patterns_note": "Taken from the runner B3 wrote (run_solazy.py). begin_at exists because sol-azy prints a summary table before the detail section and a parser that reads both counts every finding twice. B3's own pattern additionally required the path to start with a slash, which is true of sol-azy's container output and not of the relative paths this repository stores; the leading slash is not required here so the same pattern reads both, and the parse of the committed artefacts is unchanged, which tools/scanner_spec.py --demo checks against the 36 raw run files."
+ },
+ "envelope": "sol-audit",
+ "envelope_note": "sol-azy speaks prose, so its findings are stored in the flat sol-audit envelope, which is what B3 did and what raw/c2-sol-azy.json contains. Declared rather than inferred.",
+ "positive_control": {
+  "rule_id": "Missing Owner Check",
+  "sample": "Summary:\n  1 finding\n\nDetailed findings:\n  Name: | Missing Owner Check\n{path}:{line}:8\n",
+  "sample_source": "the shape of raw/solazy-2026-09-01/c2/*.txt, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "sol-azy",
+   "corpus": "corpus2",
+   "raw": "c2ext-sol-azy.json",
+   "mapping": "sol-azy-c2ext",
+   "envelope": "sol-audit",
+   "on_clock": false,
+   "off_clock_reason": "sol-azy is measured (0 detected of 15 analysed, 1 could not run) but has never been on the clock, and putting it there is a deliberate act somebody should take rather than a side effect of this refactor. B3 also names a trap that must be handled first: run_all.previous() takes the lexicographically last file in runs/, so any file sorting after runs/<today>.json makes the next scheduled run report every existing scanner as `disappeared`.",
+   "note": "0 detected, 0 unlocated, 10 missed, 5 no-rule, 1 not built, 1 could not run (spl-stake-pool-mint-decimals: ~14 GB RSS then killed by the kernel OOM killer, reproducibly, on a 4,011-line processor.rs). Honest denominator 0 of 15 analysed. Run twice on the pinned corpus with byte-identical findings, which is the determinism check passing."
+  }
+ ]
+}

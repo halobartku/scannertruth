@@ -1,0 +1,71 @@
+{
+ "name": "solsec",
+ "version": "0.2.1",
+ "homepage": "https://github.com/hasip-timurtas/solsec",
+ "provenance": {
+  "repository": "https://github.com/hasip-timurtas/solsec",
+  "install": "cargo install solsec --version 0.2.1, built inside a rust:slim container",
+  "install_documented_at": "https://github.com/hasip-timurtas/solsec README, install section",
+  "checked_on": "2026-08-31",
+  "note": "77,684 lifetime crates.io downloads but 56 recent. Last release June 2025. Recorded in docs/SCANNERS.md as a weak popularity signal, not as a quality judgement."
+ },
+ "run": {
+  "engine": "docker",
+  "image": "solsec-runner:0.2.1",
+  "network": "none",
+  "mount": "/src",
+  "out_mount": "/out",
+  "command": ["scan", "{mount}", "-o", "{out}", "--json-only", "--no-open"],
+  "timeout_seconds": 1800,
+  "invocation_evidence": "copied from the COMMAND: line of raw/solsec-2026-09-01/solsec-out/c1/0-signer-authorization.insecure/run.log, which is the run behind the published corpus-1 row"
+ },
+ "layout": "variant-dir",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "pattern": "Found (\\d+) Rust files to analyze",
+   "minimum": 1,
+   "means": "solsec's own count of the files it opened, printed on stdout before it analyses them"
+  }
+ },
+ "output": {
+  "from": "file",
+  "name": "security-report.json",
+  "format": "solsec"
+ },
+ "envelope": "solsec",
+ "positive_control": {
+  "rule_id": "missing_signer_check",
+  "sample": {
+   "analysis_results": [
+    {
+     "rule_name": "missing_signer_check",
+     "severity": "high",
+     "message": "Account used as an authority without an is_signer check",
+     "file_path": "{path}",
+     "line_number": "{line}",
+     "column": null
+    }
+   ]
+  },
+  "sample_source": "the shape of raw/c2-solsec-percase.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "solsec",
+   "corpus": "corpus1",
+   "raw": "c1-solsec-percase.json",
+   "mapping": "solsec",
+   "envelope": "solsec",
+   "note": "35 invocations, 35 ok, 28 findings, 2026-09-01. Replaced a row with no run log at all."
+  },
+  {
+   "row": "solsec",
+   "corpus": "corpus2",
+   "raw": "c2-solsec-percase.json",
+   "mapping": "solsec",
+   "envelope": "solsec",
+   "note": "New on 2026-09-01. solsec was published as 0 / 6 with 3 unavailable, no run log, no code path and a denominator inferred from the absence of entries in a findings file. Measured per case it is 34 invocations, 34 ok and ZERO unavailable: the three unavailable cases did not exist. Error 35."
+  }
+ ]
+}

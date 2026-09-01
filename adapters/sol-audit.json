@@ -1,0 +1,61 @@
+{
+ "name": "sol-audit",
+ "version": "v2, guard-aware rules, measured 2026-08-31",
+ "homepage": "https://github.com/halobartku/sol-audit",
+ "provenance": {
+  "repository": "https://github.com/halobartku/sol-audit",
+  "install": "our own scanner, run from a local checkout of the v2 source",
+  "install_documented_at": "https://github.com/halobartku/sol-audit README",
+  "checked_on": "2026-08-31",
+  "note": "Superseded in the working tree by 3.0. Its rows stay because deleting a superseded run is not how this project corrects things."
+ },
+ "run": {
+  "engine": "unrecorded",
+  "reason": "Nobody wrote down the command. The v2 rows were produced on 2026-08-31 by a run whose invocation exists in no artefact in this repository, and v2's source is no longer the working tree. Re-running it needs a checkout of the old version, which has not been done.",
+  "invocation_evidence": "What is known: it was our own Python scanner at v2, run over both corpora on 2026-08-31, and it produced raw/sol-audit.json and raw/c2-sol-audit.json. There is no per-run log for either, and 96 of the 426 findings in the corpus-2 file name files the corpus rebuild removed."
+ },
+ "layout": "unrecorded",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "absent": true,
+   "reason": "no run log exists for either v2 row, so which cases were analysed cannot be answered from this repository. run_all reports the corpus-2 row as `partial` with 8 cases `unknown`, which is the honest verdict rather than a guess in either direction."
+  }
+ },
+ "output": {
+  "from": "unrecorded",
+  "format": "sol-audit"
+ },
+ "envelope": "sol-audit",
+ "positive_control": {
+  "rule_id": "SOL-001",
+  "sample": {
+   "findings": [
+    {
+     "rule_id": "SOL-001",
+     "file": "{path}",
+     "line": "{line}"
+    }
+   ]
+  },
+  "sample_source": "the shape of raw/sol-audit.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "sol-audit",
+   "corpus": "corpus1",
+   "raw": "sol-audit.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "4 / 11 real. No per-run log. Named in docs/COVERAGE.md as one of the five measurements without one."
+  },
+  {
+   "row": "sol-audit",
+   "corpus": "corpus2",
+   "raw": "c2-sol-audit.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "The weakest evidence on the clock: no run log, and 96 of 426 findings naming files that are not in the corpus. It is the only row that reports coverage_evidence `none`, and `python tools/run_all.py --verify-coverage` fails on it today."
+  }
+ ]
+}

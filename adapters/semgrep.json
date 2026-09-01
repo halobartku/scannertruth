@@ -1,0 +1,63 @@
+{
+ "name": "semgrep",
+ "version": "semgrep/semgrep:latest with its OWN registry under --config auto, measured 2026-08-31",
+ "homepage": "https://semgrep.dev",
+ "provenance": {
+  "repository": "https://github.com/semgrep/semgrep",
+  "install": "docker pull semgrep/semgrep:latest",
+  "install_documented_at": "https://semgrep.dev/docs/getting-started/",
+  "checked_on": "2026-08-31",
+  "note": "This row measures semgrep's own public registry, reachable anonymously with no login. It is a different tool from semgrep loaded with the third-party SOL-0XX pack, which has its own declaration, and merging the two would let a 3 / 11 overwrite a true statement about the registry."
+ },
+ "run": {
+  "engine": "docker",
+  "image": "semgrep/semgrep",
+  "network": "bridge",
+  "network_reason": "--config auto fetches the registry over the network, so this run cannot be isolated the way the others are. Stated rather than silently omitted.",
+  "mount": "/src",
+  "command": ["semgrep", "--config", "auto", "--no-git-ignore", "--timeout", "60",
+              "--json", "--quiet", "{mount}"],
+  "timeout_seconds": 1800,
+  "invocation_evidence": "quoted verbatim from the version_note field of mappings/semgrep.json, which records the command used for the 2026-08-31 run and the image id f1f7b71861c7"
+ },
+ "layout": "variant-dir",
+ "coverage": {
+  "ok_exit_codes": [0, 1],
+  "evidence": {
+   "pattern": "\"scanned\":\\s*\\[\\s*\"[^\"]+\"",
+   "count": "matches",
+   "minimum": 1,
+   "means": "semgrep's own paths.scanned list; a run whose scanned list is empty read nothing"
+  }
+ },
+ "output": {
+  "from": "stdout",
+  "format": "semgrep"
+ },
+ "envelope": "semgrep",
+ "positive_control": {
+  "rule_id": "rust.lang.security.example",
+  "sample": {
+   "results": [
+    {
+     "check_id": "rust.lang.security.example",
+     "path": "{path}",
+     "start": {"line": "{line}"},
+     "end": {"line": "{line}"}
+    }
+   ],
+   "paths": {"scanned": ["{path}"]}
+  },
+  "sample_source": "semgrep's documented --json shape. The registry run produced no findings at all, so there is no real finding of semgrep's own to copy; the envelope is semgrep's and the rule id is a placeholder, which is stated here rather than implied."
+ },
+ "measurements": [
+  {
+   "row": "semgrep",
+   "corpus": "corpus1",
+   "raw": "semgrep-c1.json",
+   "mapping": "semgrep",
+   "envelope": "semgrep",
+   "note": "0 findings under --config auto, p/rust and p/security-audit. The registry has no rules aimed at the Solana account-validation family this corpus tests. That is a fact about the registry and it remains true; the SOL-0XX pack row measures the other question. No per-run log."
+  }
+ ]
+}

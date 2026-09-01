@@ -1,0 +1,65 @@
+{
+ "name": "vaultlint",
+ "version": "0.1.1 from crates.io, measured 2026-08-31",
+ "homepage": "https://github.com/vaultlint/vaultlint",
+ "provenance": {
+  "repository": "https://github.com/vaultlint/vaultlint",
+  "install": "cargo install vaultlint, version 0.1.1, built and run inside a container",
+  "install_documented_at": "the crate's own page and repository README",
+  "checked_on": "2026-08-31",
+  "note": "Released July 2026; 52 crates.io downloads in its entire history. A weak popularity signal recorded in docs/SCANNERS.md, not a quality judgement."
+ },
+ "run": {
+  "engine": "unrecorded",
+  "reason": "The 2026-08-31 invocation was not written into any artefact in this repository, and the tool was not re-run on 2026-09-01. The VPS image vaultlint-runner:local still exists, so this is recoverable by whoever runs it next; it is recorded as unknown rather than reconstructed from memory.",
+  "invocation_evidence": "What is known: vaultlint 0.1.1 with its `scan` subcommand, in a container, on 2026-08-31. The corpus-2 run has a per-case log (raw/c2-vaultlint-complete.json.log) proving 8 cases were analysed, and the corpus-1 run has none."
+ },
+ "layout": "unrecorded",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "absent": true,
+   "reason": "the corpus-2 row has a per-case run log and is scored from it; how that log's ok/unavailable decision was made is not recorded, so the classifier itself cannot be checked. The corpus-1 row has no log at all."
+  }
+ },
+ "output": {
+  "from": "unrecorded",
+  "format": "vaultlint"
+ },
+ "envelope": "vaultlint",
+ "positive_control": {
+  "rule_id": "VL002",
+  "sample": {
+   "findings": [
+    {
+     "rule_id": "VL002",
+     "file": "{path}",
+     "line": "{line}",
+     "column": 24,
+     "message": "Account data is deserialised without an owner check",
+     "docs_url": "https://vaultlint.com/rules/VL002/"
+    }
+   ]
+  },
+  "sample_source": "the shape of raw/vaultlint.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "vaultlint",
+   "corpus": "corpus1",
+   "raw": "vaultlint.json",
+   "mapping": "vaultlint",
+   "envelope": "vaultlint",
+   "note": "2 / 11 nominal and real, from 4 findings across 35 files. No per-run log."
+  },
+  {
+   "row": "vaultlint",
+   "corpus": "corpus2",
+   "raw": "c2-vaultlint-complete.json",
+   "mapping": "vaultlint",
+   "envelope": "sol-audit",
+   "envelope_note": "This file is NOT in vaultlint's own envelope. It was hand-converted into the flat sol-audit shape in 2026-08-31 by a script that was never committed, which is why the declared envelope differs from the tool's. The conversion is unreproducible and that is a defect, not a design choice; it stays declared as sol-audit because that is what the committed bytes are, and pretending otherwise would silently change a published number.",
+   "note": "Covers 8 of the 17 valid cases, so run_all reports it `partial` with 8 not-run and a scoreable denominator of 1. It is the row the B7 handover asks to be re-run first."
+  }
+ ]
+}

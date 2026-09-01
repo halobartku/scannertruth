@@ -1,0 +1,108 @@
+{
+ "name": "sol-audit-v3",
+ "version": "3.0, 30 rules, measured 2026-09-01",
+ "homepage": "https://github.com/halobartku/sol-audit",
+ "provenance": {
+  "repository": "https://github.com/halobartku/sol-audit",
+  "install": "our own scanner, run from a sibling checkout with the system Python; not a product and not sold",
+  "install_documented_at": "https://github.com/halobartku/sol-audit README",
+  "checked_on": "2026-09-01",
+  "note": "This is the project's own tool. It is measured with the same procedure as everybody else's and it is the one whose gaps got closed last rather than first, which was the wrong order and is why milestone 1 exists."
+ },
+ "run": {
+  "engine": "local",
+  "tool_root": "../sol-audit-v2",
+  "command": ["python", "{tool_root}/cli.py", "{mount}", "--profile", "strict",
+              "--format", "json", "--out", "{out}/findings.json", "--log", "{out}/files.log",
+              "--fail-on", "none", "--quiet"],
+  "timeout_seconds": 600,
+  "invocation_evidence": "copied from the COMMAND: line of raw/sol-audit-v3-2026-09-01/c1/0-signer-authorization.insecure.strict.log, one of the 207 runs behind the published rows",
+  "profiles": ["strict", "broad", "all"],
+  "profile_note": "The tool has three profiles and all three were run and all three published. Nothing was chosen after seeing output. This declaration carries the strict invocation; --profile is the single token that differs between the three rows below."
+ },
+ "layout": "variant-dir",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "source": "files.log",
+   "pattern": "\"status\":\\s*\"ok\"",
+   "count": "matches",
+   "minimum": 1,
+   "means": "sol-audit writes one JSON line per file it opened to the path given as --log; each line carries the file and how the read ended. Its own account of coverage, not ours."
+  }
+ },
+ "output": {
+  "from": "file",
+  "name": "findings.json",
+  "format": "sol-audit"
+ },
+ "envelope": "sol-audit",
+ "positive_control": {
+  "rule_id": "SOL-001",
+  "sample": {
+   "scanner": "sol-audit",
+   "version": "3.0",
+   "profile": "strict",
+   "findings": [
+    {
+     "rule_id": "SOL-001",
+     "title": "Authority account is never checked for is_signer",
+     "severity": "HIGH",
+     "file": "{path}",
+     "line": "{line}"
+    }
+   ]
+  },
+  "sample_source": "the shape of raw/c1-sol-audit-v3-strict.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "sol-audit-v3",
+   "corpus": "corpus1",
+   "raw": "c1-sol-audit-v3-strict.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "6 / 11 nominal, 5 / 11 real. Scored with the mapping pre-registered for v2 on 2026-08-31 and NOT extended to claim SOL-020 to SOL-030, because a mapping written after both the rules and the corpus are known is not a pre-registration. The row understates v3 on purpose. It is a new row, not a correction of v2's 4 / 11: a number that moved because the tool changed is a different fact from one that moved because the corpus changed."
+  },
+  {
+   "row": "sol-audit-v3-broad",
+   "corpus": "corpus1",
+   "raw": "c1-sol-audit-v3-broad.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "--profile broad. 6 / 11 nominal, 5 / 11 real."
+  },
+  {
+   "row": "sol-audit-v3-all",
+   "corpus": "corpus1",
+   "raw": "c1-sol-audit-v3-all.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "--profile all. 7 / 11 nominal, 5 / 11 real."
+  },
+  {
+   "row": "sol-audit-v3",
+   "corpus": "corpus2",
+   "raw": "c2-sol-audit-v3-strict.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "0 detected under every profile. Our own tool, rewritten to 30 rules, detects none of the real vulnerabilities. unmapped_check reports 0 candidates, so nothing is hiding under a rule the mapping does not claim."
+  },
+  {
+   "row": "sol-audit-v3-broad",
+   "corpus": "corpus2",
+   "raw": "c2-sol-audit-v3-broad.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "--profile broad, same verdicts."
+  },
+  {
+   "row": "sol-audit-v3-all",
+   "corpus": "corpus2",
+   "raw": "c2-sol-audit-v3-all.json",
+   "mapping": "sol-audit",
+   "envelope": "sol-audit",
+   "note": "--profile all, same verdicts."
+  }
+ ]
+}

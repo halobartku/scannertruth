@@ -1,0 +1,115 @@
+{
+ "name": "semgrep-solana-standard",
+ "version": "semgrep/semgrep:latest with the MIT SOL-0XX pack, 30 rules",
+ "homepage": "https://github.com/Copenhagen0x/solana-security-standard",
+ "provenance": {
+  "repository": "https://github.com/Copenhagen0x/solana-security-standard",
+  "install": "docker pull semgrep/semgrep:latest, plus the ruleset YAML fetched from the repository above and mounted read-only",
+  "install_documented_at": "https://semgrep.dev docs, and the ruleset repository's own README",
+  "checked_on": "2026-09-01",
+  "note": "The ruleset file is pinned by sha256 babf91199fa640b024edc6cf1f89ea82204a0d91d2141b8afda0abe0d347d02e in mappings/semgrep-solana-standard.json, along with both the repository pushed_at and the file's own last-change date, because reading the wrong one of those two fields is itself a documented error."
+ },
+ "run": {
+  "engine": "docker",
+  "image": "semgrep/semgrep:latest",
+  "network": "none",
+  "mount": "/src",
+  "env": {
+   "SEMGREP_SEND_METRICS": "off",
+   "SEMGREP_ENABLE_VERSION_CHECK": "0"
+  },
+  "command": [
+   "semgrep",
+   "--config",
+   "/rules/solana-security-standard.yaml",
+   "--json",
+   "--quiet",
+   "--no-git-ignore",
+   "--metrics=off",
+   "--disable-version-check",
+   "--timeout",
+   "60",
+   "{mount}"
+  ],
+  "timeout_seconds": 1800,
+  "invocation_evidence": "copied from the COMMAND: line of raw/semgrep-solana-standard-2026-09-01/c2/anchor-account-reload-owner.insecure.log, which is one of the 34 runs behind the published corpus-2 row",
+  "note": "--disable-version-check changes nothing but how long semgrep waits for a network it does not have: 121s to 4.7s with identical output on the same file, verified before the run. The ruleset is mounted separately at /rules; that mount is added by the operator because it is a property of this measurement rather than of the tool."
+ },
+ "layout": "variant-dir",
+ "coverage": {
+  "ok_exit_codes": [
+   0,
+   1
+  ],
+  "ok_exit_reason": "semgrep exits 1 when it has findings. Requiring exit 0 would have recorded every case with a finding as unavailable.",
+  "evidence": {
+   "pattern": "\"scanned\":\\s*\\[\\s*\"[^\"]+\"",
+   "count": "matches",
+   "minimum": 1,
+   "means": "semgrep's own paths.scanned list in its JSON output; a run whose scanned list is empty read nothing, whatever its exit code says"
+  }
+ },
+ "output": {
+  "from": "stdout",
+  "format": "semgrep"
+ },
+ "envelope": "semgrep",
+ "rule_id_note": "semgrep prefixes a rule id with `rules.` when the config is a local file and does not when the same ruleset is loaded by URL. The pre-registered mapping holds the URL form. Both forms were observed on the same file with the same finding before the measurement, and the prefix is stripped as envelope normalisation. No rule id was renamed to make anything match.",
+ "positive_control": {
+  "rule_id": "solana-security-standard.sol-006-raw-account-info",
+  "sample": {
+   "results": [
+    {
+     "check_id": "solana-security-standard.sol-006-raw-account-info",
+     "path": "{path}",
+     "start": {
+      "line": "{line}"
+     },
+     "end": {
+      "line": "{line}"
+     }
+    }
+   ],
+   "paths": {
+    "scanned": [
+     "{path}"
+    ]
+   }
+  },
+  "sample_source": "the shape of raw/c1-semgrep-solana-standard.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "semgrep-solana-standard",
+   "corpus": "corpus1",
+   "raw": "c1-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard",
+   "envelope": "semgrep",
+   "note": "narrow reading. 35 invocations, 35 ok, 48 findings. 3 / 11 nominal, 0 / 11 real."
+  },
+  {
+   "row": "semgrep-solana-standard-wide",
+   "corpus": "corpus1",
+   "raw": "c1-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard-wide",
+   "envelope": "semgrep",
+   "note": "The same run scored with the second pre-registered reading. Both readings were committed together before the first run, for the reason error 17 exists: a generic rule narrowed after seeing output is a mapping fitted to a result. Same file, different mapping, both published."
+  },
+  {
+   "row": "semgrep-solana-standard-c2",
+   "corpus": "corpus2",
+   "raw": "c2-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard-c2",
+   "envelope": "semgrep",
+   "note": "narrow reading. 34 invocations, 34 ok, 610 findings, 0 detected."
+  },
+  {
+   "row": "semgrep-solana-standard-c2-wide",
+   "corpus": "corpus2",
+   "raw": "c2-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard-c2-wide",
+   "envelope": "semgrep",
+   "note": "wide reading of the same run. All three unlocated verdicts read `fires at the fix site but also on the fixed variant`, which is the shape matching this benchmark exists to name."
+  }
+ ]
+}

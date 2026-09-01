@@ -1,0 +1,72 @@
+{
+ "name": "radar",
+ "version": "main, installed 2026-08-31",
+ "homepage": "https://github.com/Auditware/radar",
+ "provenance": {
+  "repository": "https://github.com/Auditware/radar",
+  "install": "the project's own install script, read in full before it was run; radar then orchestrates its own containers",
+  "install_documented_at": "https://github.com/Auditware/radar README, quickstart",
+  "checked_on": "2026-08-31",
+  "note": "There is a crate named radar on crates.io by a different author, published 2021 and unrelated. `cargo install radar` would have measured it. See AGENTS.md step 1."
+ },
+ "run": {
+  "engine": "local",
+  "command": ["radar", "scan", "-p", "{mount}", "-f", "none", "-o", "{out}/radar.json"],
+  "timeout_seconds": 1800,
+  "invocation_evidence": "the 2026-09-01 re-run recorded in tools/normalise_runs.py and its 34 stdout artefacts under raw/radar-c2-2026-09-01/. radar starts its own containers, so the isolation is radar's rather than ours, which is stated rather than claimed otherwise."
+ },
+ "layout": "wrapped-pkg",
+ "layout_reason": "radar refuses a target whose Cargo.toml sits at the root of the path it is given, answering `No Cargo.toml files found in any subdirectories` while exiting 0 and writing nothing. Every case is therefore staged as <case>.<variant>/pkg/{Cargo.toml,src} and the wrapper prefix is removed from the locations afterwards. Getting this wrong produces a silent zero that looks exactly like a clean miss.",
+ "coverage": {
+  "ok_exit_codes": [0],
+  "evidence": {
+   "pattern": "Scanned (\\d+) file",
+   "minimum": 1,
+   "means": "radar's own count of the files it read, printed whether or not it found anything"
+  },
+  "success_pattern": "radar completed successfully",
+  "failure_patterns": [
+   "Failed to process source path[^\"\\n]*",
+   "Exceeded maximum retries[^\"\\n]*"
+  ]
+ },
+ "output": {
+  "from": "file",
+  "name": "radar.json",
+  "format": "radar",
+  "no_output_means_empty": true,
+  "no_output_reason": "radar writes NO output file when it finds nothing. The 2026-08-31 runner decided ok versus unavailable by asking whether the file existed, so a clean zero and a failed run were the same observation, and one clean zero was published as `could not run`. That is error 36, and this flag plus the coverage pattern above is what stops it recurring: the file's absence is a zero only because radar's own stdout says it scanned the files."
+ },
+ "envelope": "radar",
+ "positive_control": {
+  "rule_id": "Missing Owner Check",
+  "sample": [
+   {
+    "name": "Missing Owner Check",
+    "description": "An account is deserialised without checking its owner program.",
+    "severity": "High",
+    "certainty": "Medium",
+    "locations": ["{path}:{line}:8-25"]
+   }
+  ],
+  "sample_source": "the shape of raw/c2-radar-current.json, with one finding substituted for the fix site of the synthetic case"
+ },
+ "measurements": [
+  {
+   "row": "radar",
+   "corpus": "corpus1",
+   "raw": "radar-full.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "11 / 11 nominal and real, the most quoted figure in this project, and it has NO per-run log. Radar is syntactic so the run is possible; nobody has done it. Named in docs/COVERAGE.md and in the B7 handover."
+  },
+  {
+   "row": "radar",
+   "corpus": "corpus2",
+   "raw": "c2-radar-current.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Re-run per case, per variant, over all 17 built cases on 2026-09-01 against a corpus pinned by digest on both machines first. 34 invocations, 34 ok, zero unavailable, zero stale paths. Superseded c2-radar-complete.json, which was produced before the corpus was rebuilt and had 161 of 238 findings naming files that no longer exist. Both files stay on disk; only this one scores."
+  }
+ ]
+}
