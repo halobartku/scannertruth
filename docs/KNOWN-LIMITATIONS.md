@@ -295,3 +295,13 @@ a defensible distinction but a distinction a reviewer is entitled to challenge.
 count was recomputed and the control was re-scored case by case, so the number and the zero are
 both current, but the artefact in `raw/` was left as it was because another agent was writing to
 that directory at the time. `python tools/control_c2.py` regenerates it.
+
+**39. `score2.py` matches a finding to a case by filename alone, so one case's findings can be
+credited to another case with the same filename.** Logged as error 31 with the exact fix and the
+exact numbers it moves. **One published verdict is affected**: Radar's `squads-signer-auth` reads
+`unlocated` and should read `missed`, which changes a published breakdown but not a headline, since
+Radar's real recall on corpus 2 is zero either way. **The scorer was deliberately not changed**, so
+the correction can be published as a correction, with the vendor's right of reply, rather than
+appearing silently in the same commit as a corpus change. Until then, treat every `unlocated` in a
+corpus-2 table as provisional. The clock is unaffected because `run_all` refuses to score a case
+its run log does not list.

@@ -1,17 +1,22 @@
 # Engineering log, 2026-09-01
 
-Nine more errors, numbered 22 to 30, continuing from
+Ten more errors, numbered 22 to 31, continuing from
 [the log of 2026-08-31](ENGINEERING-LOG-2026-08-31.md).
 
-**Every one of them was a freshness defect, not a computation defect.** Nothing here was calculated
+**Errors 22 to 30 are freshness defects, not computation defects.** Nothing in them was calculated
 wrong. Each was a statement that was true when it was written, was never rechecked, and stopped
 being true when the thing it described changed. That is a different failure mode from the twenty-one
 before it, and it needed a different fix: the numbers on the front page are now **derived from the
 repository rather than typed beside it**.
 
 Five of the first seven were on the README. That is not a coincidence. **The front page is read by
-everyone and verified by no one**, so it rots fastest and costs the most when it rots. The last two,
-29 and 30, are the same shape one level down, in the document that decides what enters the corpus.
+everyone and verified by no one**, so it rots fastest and costs the most when it rots. Errors 29 and
+30 are the same shape one level down, in the document that decides what enters the corpus.
+
+**Error 31 is not.** It is a defect in the scorer itself, latent since the scorer was written,
+found only because eight new cases gave four different files the same name. It is the one entry
+here that changes a published verdict, and it is deliberately left unfixed so the correction can be
+published as a correction rather than buried in a corpus commit.
 
 ---
 
@@ -190,6 +195,46 @@ the number was changed.
 **`raw/c2-control-noisy.json` is stale as of this commit** and regenerates with
 `python tools/control_c2.py`. It is a generated artefact, not a measurement of anybody's tool, and
 it was left alone only because another agent was writing to `raw/` at the same time.
+
+---
+
+## Part 8: a scorer defect the eight new cases made visible
+
+**Error 31. `score2.score_case` matches a finding to a case by FILENAME ONLY, so a finding on one
+case's `processor.rs` can be credited to another case's `processor.rs`.** The matching line is
+`if not p.endswith("/" + name): continue`, where `name` is a bare basename. The case directory is
+used to locate the pair and to compute the fix site, and then never used to decide whether a
+finding belongs to this case at all.
+
+This was always wrong. It was mostly harmless while the corpus had nine cases with nearly distinct
+filenames, and adding eight cases made it live: `processor.rs` now appears in four cases,
+`state.rs` in two, `lib.rs` in three.
+
+**It affects one published verdict.** Scored with findings restricted to their own case, Radar's
+`squads-signer-auth` goes from `unlocated` to `missed`, so the published breakdown "2 `unlocated`,
+5 missed, 1 no-rule" would read "1 `unlocated`, 6 missed, 1 no-rule". Radar's real recall is **0
+either way**, so no headline moves, but a breakdown this project published about somebody else's
+tool is wrong in the direction that flatters it, and it is still wrong.
+
+**Nothing was changed here.** The scorer is untouched and every published number stands as
+published, because:
+
+- correcting it restates a third-party result, and this project's own protocol gives that vendor a
+  right of reply before a result about their tool is treated as final;
+- a scorer changed in the same session as a corpus is a scorer whose change cannot be attributed;
+- the retraction has to come before the replacement, not bundled with it.
+
+**What a fix looks like**, so that this is a five-minute job for whoever picks it up rather than a
+re-derivation: require the finding path to contain the case directory, `if f"/{case}/" not in p and
+not p.startswith(case + "/"): continue`, next to the existing basename test. Measured across every
+raw corpus-2 findings file in the repository, that changes exactly two verdicts: the Radar one
+above, and `token-2022-confidential-approve-mint`, which is one of today's unmeasured cases and was
+never going to be published from that file anyway. `vaultlint` and `sol-audit` are unaffected.
+
+The clock is not affected, and that is not luck: `run_all.measure_corpus2` consults the per-run log
+first and never scores a case the log does not list, so a case with no run behind it can never pick
+up another case's findings. The exposure is `score2.py` used directly, which is what `AGENTS.md`
+step 6 tells an agent to do.
 
 ---
 
