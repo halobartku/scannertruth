@@ -765,6 +765,32 @@ def test_a_backslash_path_maps_to_the_same_case_as_a_forward_slash_one():
         f"{posix!r} vs {win!r}")
 
 
+def test_the_error_count_matches_the_logs():
+    """The README's error count is its strongest claim, so it is the one most worth
+    keeping honest. Derived from the logs rather than typed, because the count only
+    ever goes up and a stale figure understates exactly the thing we want on record."""
+    import io as _io, re, glob
+    logged = 0
+    for f in sorted(glob.glob("docs/ENGINEERING-LOG-*.md")):
+        s = _io.open(f, encoding="utf-8").read()
+        logged = max(logged, *[int(n) for n in re.findall(r"\*\*Error (\d+)", s)] or [0])
+    s = _io.open("README.md", encoding="utf-8").read()
+    claimed = re.search(r"\*\*\[(\d+) of our own errors\]", s)
+    assert claimed, "the README no longer states an error count; that claim is load-bearing"
+    assert int(claimed.group(1)) == logged, (
+        f"README claims {claimed.group(1)} errors but the logs number up to {logged}")
+
+
+def test_the_readme_links_the_newest_engineering_log():
+    """A reader following the error link must land on the current log, not the one that
+    happened to be newest when the sentence was written."""
+    import io as _io, glob, os
+    newest = sorted(glob.glob("docs/ENGINEERING-LOG-*.md"))[-1]
+    s = _io.open("README.md", encoding="utf-8").read()
+    assert os.path.basename(newest) in s, (
+        f"README does not link the newest engineering log ({newest})")
+
+
 def test_the_advertised_check_count_matches_the_suite():
     """The README said 82 while the suite ran 88. Adding tests without updating the
     figure is the easiest way to make the front page lie, so the figure is derived."""
