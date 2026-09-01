@@ -5,8 +5,12 @@ This is the clock. A ranking can be produced once and frozen; a regression is on
 same measurement is repeated on a schedule. That repetition is the product.
 
 Usage:
-    python run_all.py --raw raw/ --out runs/
-    python run_all.py --demo
+    python tools/run_all.py --verify-coverage   # the coverage gate; reads only, exits 1 on a gap
+    python tools/run_all.py                     # score every row and append a dated row to runs/
+    python tools/run_all.py --demo
+
+Run from the repository root: `from score import score` below resolves through `sys.path`, and
+`--raw` and `--out` default to `raw/` and `runs/` relative to it.
 
 Design rule, learned the hard way on this project: a scanner whose raw output is missing is
 recorded as **unavailable**, never as a zero. "We could not run it" and "it found nothing" are

@@ -7,6 +7,13 @@ artefact of arithmetic. Solend alone produced six such phantoms.
 
 For each insecure finding at line L we map L to its position in the fixed file using the diff
 hunks, then ask whether the same rule fires there. Only a finding with no counterpart is real.
+
+Usage:
+    python tools/shiftaware.py
+
+Takes no arguments: it reads per-case Radar output from `/tmp/c2crates-radar` and the manifest
+from `/tmp/c2crates/manifest.json`, which do not exist on Windows. Call `main(out_dir, manifest)`
+from Python to point it elsewhere. `tests/shiftaware.py` exercises the functions directly.
 """
 import json,os,re,subprocess,sys
 

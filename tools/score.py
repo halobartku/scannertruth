@@ -4,6 +4,13 @@
 Same scoring rules as PROTOCOL.md, applied identically to every scanner:
   nominal = the class's rule fired on that class's `insecure` variant
   real    = nominal AND it did not fire on that class's `secure` or `recommended` variant
+
+Usage:
+    python tools/score.py mappings/radar.json raw/radar-full.json   # a mapping, then Radar-envelope findings
+    python tools/score.py --demo
+
+The command line reads Radar's envelope only; every other envelope reaches `score()` through
+`tools/run_all.py`, which extracts `(rule_id, path)` pairs for it.
 """
 import json, sys, collections
 

@@ -19,8 +19,11 @@ and it follows the same protocol as every other run in this repository:
   * the container gets the corpus read-only and, where the tool permits it, no network
 
 Usage:
-    python3 rc_run.py --tool semgrep --crates /tmp/rc-crates --out /root/rc-out
-    python3 rc_run.py --demo
+    python tools/rc_run.py --tool semgrep --crates <real-crates dir> --out <artefact dir>
+    python tools/rc_run.py --demo
+
+Run from the repository root. The argparse defaults for `--out`, `--rules` and `--tool-dir` are
+the paths of the machine the 2026-09-01 run happened on; pass all three explicitly elsewhere.
 """
 import argparse
 import glob

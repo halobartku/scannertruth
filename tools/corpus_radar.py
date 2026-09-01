@@ -18,6 +18,10 @@ Anything missing one of them is rejected with the reason recorded, because the r
 useful as the finds: they tell you which sources are worth watching next time.
 
 State lives in `.corpus_seen.json` so a scheduled run reports only what is new.
+
+Usage:
+    python tools/corpus_radar.py --out corpus-candidates.md   # needs the network
+    python tools/corpus_radar.py --demo
 """
 import argparse
 import json

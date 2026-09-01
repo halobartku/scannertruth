@@ -3,6 +3,13 @@
 
 Ground truth: `insecure/` has the bug, `secure/` and `recommended/` are the SAME program fixed.
 A finding of the class on a fixed variant is a false positive by construction.
+
+Usage:
+    python tools/rb.py
+
+Runs at import time. It reads the corpus from `/tmp/sealevel-attacks/programs`, imports
+`scanner` from a hard-coded checkout path, and writes `/tmp/benchmark-raw.json`; edit the two
+constants below before running it anywhere else. The scorer the clock uses is `tools/score.py`.
 """
 import json, os, re, subprocess, sys
 
