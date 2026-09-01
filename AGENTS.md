@@ -54,7 +54,7 @@ python tools/run_all.py --verify-coverage                  # exits 1 on purpose.
 
 ---
 
-## `--verify-coverage`, which is red, and what red means
+## `--verify-coverage`, and what red means when it is red
 
 `python tools/run_all.py --verify-coverage` asks one question of every measurement on the clock:
 **can this row show what it analysed?** A findings file cannot, because a case that was analysed and
@@ -204,6 +204,38 @@ Lead with the number that hurts. Record limitations in the same commit. Third-pa
 you published turns out to be wrong, **retract before you have the replacement**.
 
 ---
+
+## If the tool you are measuring is a model, read this before anything else
+
+An AI auditor is a scanner for the purposes of this repository, and everything above still applies:
+provenance first, mapping written before the run, an artefact per invocation, real recall rather
+than a finding count. Use `tools/model_audit.py`, which does all of that:
+
+    python tools/model_audit.py --model <name> --corpus 2 --runs 3
+
+**Three things differ, and each of them is a way to be wrong that a static scanner cannot be.**
+
+**A model always supplies a reason, and the reason can be wrong while the verdict is right.** A
+scanner emits a rule id, so "which rule fired" is structural and you cannot skip it. A model emits
+prose, so the verdict is easy to parse and the reason is not - which makes it easy to score only
+the half that is easy to score. On 2026-09-01 this cost us a nearly published 2/17 for a model that
+called an `account-data-matching` bug "Reentrancy" (error 38). **The class it names is part of the
+detection. Adjudicate it by hand and write down who adjudicated. Never match classes by string
+equality.**
+
+**A hedge is not a verdict.** `{"vulnerable": "maybe"}` must never be scored as "the model said it
+is safe", because silence on the fixed variant is what earns a detection, so treating hedges as
+negatives flatters the model on exactly the half that matters. Unparseable answers are counted as
+unusable and reported as their own number.
+
+**Record the prompt, the version, the temperature and the model tag, or the result is not
+reproducible even for us.** A better prompt produces a *new* measurement with a new version string;
+it does not quietly replace the old one. And do not tune the prompt against the corpus - that is
+the homework-tuning we criticise in vendors, done to ourselves.
+
+One thing we asserted and the first measurement did not support: at temperature 0 there was **no
+spread**, every case landing 3/3 or 0/3. Run `--runs 3` anyway and report what you find. If you
+find spread, say so; if you do not, say that too.
 
 ## Rules that override anything else you might infer
 

@@ -619,3 +619,83 @@ is caught, the legitimate line count is not.
 - **Still no vendor reply**, from any of the threads, and none has been opened with Copenhagen0x
   for the SOL-0XX pack or with the solsec author about the corrected denominator. Every result
   here is provisional until they have been.
+
+---
+
+## Error 38. We nearly published 2/17 for a model that named the wrong vulnerability
+
+**2026-09-01, evening.** An outside reviewer ran this repository and asked why we benchmark static
+scanners when AI exists. It is the best question anyone has put to this project, so we measured a
+model the same evening: `qwen3.5:9b`, free and local, over all seventeen corpus-2 cases, both
+variants, three runs each.
+
+The tool's first summary line read **`real detections: 2 / 17`**, and that would have been the
+headline: *a free 9-billion-parameter model beats every specialised Solana scanner we measured*.
+Both static-scanner filters had already been applied - the model fired on the vulnerable program
+and stayed silent on the fixed one, twice.
+
+**It was wrong, and only reading the raw responses caught it.** Both cases named the wrong
+vulnerability class:
+
+| Case | Class actually present | What the model said |
+|---|---|---|
+| `spl-token-lending-rounding` | `arithmetic-rounding-drain` | "Integer Overflow" |
+| `metaplex-token-metadata` | `account-data-matching` | **"Reentrancy"** |
+
+The second is not arguable. Reentrancy is not account-data-matching, and the model supplied a
+confident, detailed, entirely fabricated explanation about draining funds through a reentrancy path
+that does not exist in that program.
+
+**We credit a static scanner only when its mapped rule fires, not when any rule does.** A model
+that returns the right verdict with an invented reason has not detected anything either, and the
+same standard has to apply or the comparison is worthless.
+
+**Cause, and it is the interesting part.** A static scanner emits a rule id, so "which rule fired"
+is structural and cannot be skipped. A model emits prose, so the verdict is trivially machine
+readable and the reason is not - which makes it *easy to score the half that is easy to score*.
+That is a new way to be wrong that this project had not met before, and it is presumably how the
+category is being measured everywhere right now.
+
+**Fixed** by carrying the named class through to the summary and renaming the line so it cannot be
+read as a detection count. It now reads `verdict right on both variants (necessary, not
+sufficient)` and prints the class the model named beside the class actually present. Class
+agreement is adjudicated by hand, never by string equality, because "Integer Overflow" versus
+`arithmetic-rounding-drain` is close enough to argue about and that argument belongs in the open.
+
+**The result, counted honestly:**
+
+    counted the way a vendor would count it       6 / 17
+    minus those that also fire on the fixed code   -4
+    minus those that named the wrong class         -2
+                                                 =  0 / 17
+
+Both subtractions exist only because static scanners taught us to build them. The teaching corpus
+alone would have shown none of this.
+
+**Recorded against our own roadmap.** Milestone 3 argues that non-determinism is the hard part of
+measuring models. At temperature 0 there was **no spread at all**: every case came out 3/3 or 0/3.
+One model, one prompt, one temperature, so the claim is narrowed rather than withdrawn - but it was
+stated more confidently than the first measurement supports.
+
+### The prompt, verbatim, because a result under a different prompt is a different result
+
+Version `v1-2026-09-01`, in `tools/model_audit.py`. Temperature 0, thinking disabled, sources
+concatenated and truncated at 24,000 characters:
+
+    You are auditing a Solana program written in Rust for security vulnerabilities.
+
+    Answer with one JSON object and nothing else:
+    {"vulnerable": true or false, "class": "<short name of the vulnerability class, or empty>", "why": "<one sentence>"}
+
+    Say vulnerable=true ONLY if this code contains an exploitable security flaw. Ordinary code, style
+    issues, and missing tests are not vulnerabilities. Some of the programs you will see are already
+    fixed and are not vulnerable. Be precise rather than helpful.
+
+    CODE:
+
+**This prompt is a defensible first attempt and not a good one, and that is stated here rather than
+discovered by a reader.** It gives no Solana-specific framing, no list of classes to choose from,
+and tells the model some programs are already fixed - which may suppress detections. A prompt tuned
+for recall would score higher, and a prompt tuned against this corpus would be exactly the
+homework-tuning we criticise in vendors. The version string exists so that a better prompt produces
+a *new* measurement rather than quietly replacing this one.

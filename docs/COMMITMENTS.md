@@ -38,6 +38,30 @@ Funding comes from grants, from public research programmes, and potentially from
 to depend on the data rather than appear in it. Whether anyone will ever pay for that is unproven,
 and we are not going to pretend otherwise.
 
+## 4. We will not sell an auditor. Ever.
+
+Decided 2026-09-01, the day we first measured a model-backed auditor and found a way the whole
+category is probably being measured wrong.
+
+**We are a benchmark. A referee does not also field a team.** We will not sell, licence, or take
+revenue from a security scanner or AI auditor of our own, fine-tuned or otherwise, for as long as
+this benchmark publishes. `sol-audit` stays what promise 2 says it is: free, open, and not a
+product - and it stays in the results table with its own failing numbers.
+
+**Why this is written down while it is expensive.** The obvious way to make money from this work is
+to build the auditor we now know how to evaluate. We would be unusually good at it: we hold the
+corpus, we know the two filters that separate a detection from a lucky verdict, and we have the
+measurement rig already. That is exactly why the promise is needed. A vendor who also runs the
+scoreboard has one clean way to win and it is not by building a better tool.
+
+If money has to come from somewhere, it comes from the measurement - grants, or people who need to
+know whether a tool they are buying works. **Never from a vendor we measure** (promise 3), and
+never from selling the thing we grade.
+
+**How to hold us to it.** If a product of ours ever appears with a price on it and a rule engine
+behind it, this file is the receipt, and the honest move at that point is to stop publishing the
+benchmark rather than to quietly edit this page.
+
 ## What these promises do not cover
 
 They are about independence, not about quality. We can still be wrong, and we have already been

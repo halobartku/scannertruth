@@ -29,6 +29,10 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "corpus2"
+# The teaching corpus is a sibling checkout, the same one every scanner run uses. Frozen at
+# 2022-07-16, so a model trained after that has very likely read it - which is exactly why the
+# two corpora have to be measured with one command and reported side by side.
+CORPUS1 = ROOT.parent / "sealevel-attacks" / "programs"
 OLLAMA = "http://localhost:11434/api/generate"
 
 # Versioned deliberately. A result measured under a different prompt is a different measurement,
@@ -94,26 +98,37 @@ def main():
     ap.add_argument("--model", default="qwen3.5:9b")
     ap.add_argument("--runs", type=int, default=3, help="invocations per variant; spread is the point")
     ap.add_argument("--case", help="one case only, for a smoke test")
+    ap.add_argument("--corpus", choices=("1", "2"), default="2",
+                    help="1 = the teaching corpus everybody scores on, 2 = real vulnerabilities")
     args = ap.parse_args()
 
-    manifest = json.loads((CORPUS / "manifest.json").read_text(encoding="utf-8"))
-    cases = [c for c in manifest["cases"] if c.get("valid", True)]
+    if args.corpus == "1":
+        if not CORPUS1.is_dir():
+            sys.exit(f"teaching corpus not found at {CORPUS1}")
+        root = CORPUS1
+        # "3-type-cosplay" carries its class in its own directory name; strip the ordinal.
+        cases = [{"name": d.name, "class": d.name.split("-", 1)[1]}
+                 for d in sorted(CORPUS1.iterdir()) if d.is_dir()]
+    else:
+        root = CORPUS
+        manifest = json.loads((CORPUS / "manifest.json").read_text(encoding="utf-8"))
+        cases = [c for c in manifest["cases"] if c.get("valid", True)]
     if args.case:
         cases = [c for c in cases if c["name"] == args.case]
         if not cases:
             sys.exit(f"no such case: {args.case}")
 
     stamp = time.strftime("%Y-%m-%d")
-    out_dir = ROOT / "raw" / f"model-{args.model.replace(':', '-').replace('/', '-')}-{stamp}"
+    out_dir = ROOT / "raw" / f"model-{args.model.replace(':', '-').replace('/', '-')}-c{args.corpus}-{stamp}"
     out_dir.mkdir(parents=True, exist_ok=True)
     log = (out_dir / "runs.jsonl").open("a", encoding="utf-8")
 
-    print(f"model={args.model}  prompt={PROMPT_VERSION}  runs={args.runs}  cases={len(cases)}")
+    print(f"model={args.model}  corpus={args.corpus}  prompt={PROMPT_VERSION}  runs={args.runs}  cases={len(cases)}")
     print(f"artefacts: {out_dir}\n")
 
     detected = both = neither = missed = unusable = 0
     for c in cases:
-        case_dir = CORPUS / c["name"]
+        case_dir = root / c["name"]
         if not (case_dir / "insecure").is_dir() or not (case_dir / "secure").is_dir():
             print(f"  {c['name']:38s} SKIP (no vulnerable/fixed pair built)")
             continue
@@ -132,7 +147,8 @@ def main():
                     raw, err = "", f"{type(exc).__name__}"
                 v, note = verdict(raw) if not err else (None, err)
                 log.write(json.dumps({
-                    "case": c["name"], "class": c.get("class", ""), "variant": variant, "run": i + 1,
+                    "corpus": args.corpus, "case": c["name"], "class": c.get("class", ""),
+                    "variant": variant, "run": i + 1,
                     "model": args.model, "prompt_version": PROMPT_VERSION,
                     "vulnerable": v, "note": note, "sec": round(time.time() - t0, 1),
                     "raw": raw[:600],
