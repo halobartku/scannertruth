@@ -1,3 +1,5 @@
+from ._core import _rule_mappings
+
 # ------------------------------------------------------------------ score.py
 # The corpus-1 scorer. Every headline figure on the teaching corpus comes out of these ten lines.
 
@@ -64,9 +66,7 @@ def test_score1_separates_real_from_nominal_on_every_published_mapping():
     """
     import score, json, io as _io, os
     checked = 0
-    for fn in sorted(os.listdir("mappings")):
-        if not fn.endswith(".json"):
-            continue
+    for fn in _rule_mappings():
         m = json.load(_io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
         cls = sorted(k for k, v in m.items() if v)
         if not cls:

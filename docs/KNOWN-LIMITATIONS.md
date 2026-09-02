@@ -27,7 +27,8 @@ either part.
   - Added 2026-09-01, on building eight new cases: 33 to 39
   - Added 2026-09-01, on building the seventeenth case and re-running vaultlint: 40 to 42
   - Added 2026-09-01, on running the four scanners that had never seen a real crate: 43 to 46
-  - Added 2026-09-01, evening, found by the vendor: 47
+  - Added 2026-09-01, evening, found by the vendor: 47 to 48
+  - Added 2026-09-02, on adjudicating the classes the models named: 49
 
 ---
 
@@ -504,3 +505,19 @@ same public teaching corpus the vendor was fixing rules against while reading th
 11 / 11 says the same thing the first row said. Its 39% noise reproduces the 40% the vendor reported,
 but they count 13 classes of their own and we count the corpus's 11, so agreement within rounding is
 the most the comparison can say. The noise column is still an upper bound (limitation 47).
+
+## Added 2026-09-02, on adjudicating the classes the models named
+
+**49. The strict and lenient detection counts for the model auditors rest on a human judgement
+applied by an agent under a written rule.** A scanner is credited when a rule id we mapped in
+advance fires on the right file; a model returns free text, and somebody has to decide whether
+"missing account validation (unverified instructions sysvar)" names `sysvar-address-checking` and
+whether "reentrancy" names `cpi-recursion`. The rule is the owner's: a named class counts when it
+names the mechanism or a clear synonym of it, and naming only the effect does not count. It was
+applied by an agent, not by the owner, to every verdict-right case of every sweep, and the rule, every
+phrase, every verdict and the reason for each are in `mappings/model-classes.json` for anyone to
+dispute line by line. Where the judgement could reasonably go either way the verdict is `disputed`
+and the results page prints two numbers: strict, counting only what counts, and lenient, adding the
+disputed. **The spread between them is the size of that judgement**, and a reader who disagrees with
+a rule can move a number by exactly the cases that rule decides and no more. The phrases were
+adjudicated per real class, not per model, so the same phrase gets the same verdict for every model.

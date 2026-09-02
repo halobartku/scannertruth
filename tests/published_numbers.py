@@ -1,3 +1,5 @@
+from ._core import _rule_mappings
+
 # --------------------------------------------------- published-number lockdown
 # Golden tests. If a refactor changes any of these, it changed a public claim.
 
@@ -62,9 +64,7 @@ def test_the_corpus_one_noisy_control_scores_zero_real_recall_when_actually_scor
 
     findings = [(x["rule_id"], x["file"]) for x in built]
     best_nominal = 0
-    for fn in sorted(os.listdir("mappings")):
-        if not fn.endswith(".json"):
-            continue
+    for fn in _rule_mappings():
         m = json.load(_io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
         rows = score.score(findings, m)
         best_nominal = max(best_nominal, sum(1 for r in rows if r[4]))

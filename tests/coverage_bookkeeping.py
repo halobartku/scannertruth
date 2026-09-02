@@ -2,6 +2,8 @@ import io
 import json
 import os
 
+from ._core import _rule_mappings
+
 
 # ------------------------------------------------------- coverage bookkeeping
 # The defect that caused a public retraction: silence read as measurement.
@@ -23,9 +25,7 @@ def test_every_published_scanner_has_a_mapping():
     score has a mapping to check it against. A scored cell whose mapping is missing is a number
     with no derivation at all.
     """
-    for fn in os.listdir("mappings"):
-        if not fn.endswith(".json"):
-            continue
+    for fn in _rule_mappings():
         m = json.load(io.open(os.path.join("mappings", fn), encoding="utf-8"))
         assert "map" in m, f"{fn} has no map"
         assert isinstance(m["map"], dict) and m["map"], f"{fn} has an empty map"

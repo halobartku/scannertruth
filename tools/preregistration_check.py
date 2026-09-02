@@ -37,6 +37,12 @@ ENFORCED_FROM = "2026-09-01"
 # the mapping and something else moved together, and the timestamp stops separating them.
 ALLOWED_PREFIX = "mappings/"
 
+# Files in mappings/ that are not rule maps and cannot be pre-registered by construction: the
+# adjudication of the free-text class names the model auditors returned is written after the
+# answers are read, and says so (KNOWN-LIMITATIONS 49). Reported as post-hoc, never as
+# pre-registered and never as a violation; the rule above is for rule maps.
+POST_HOC = {"mappings/model-classes.json"}
+
 
 def git(args, repo, env=None):
     p = subprocess.run(["git"] + args, cwd=repo, capture_output=True, text=True,
@@ -87,6 +93,10 @@ def audit(repo="."):
                 if p.endswith(".json")]
     records = []
     for path in sorted(mappings):
+        if path in POST_HOC:
+            records.append({"mapping": path, "status": "post-hoc",
+                            "detail": "an adjudication written after the runs, by design"})
+            continue
         found = added_in(path, repo)
         if found is None:
             records.append({"mapping": path, "status": "untracked",
@@ -157,9 +167,12 @@ def main():
 
     unproven = [r for r in records if r["status"] == "unproven"]
     bad = [r for r in records if r["status"] in ("VIOLATION", "untracked")]
+    post_hoc = [r for r in records if r["status"] == "post-hoc"]
     print(f"\n{len(records)} mappings: "
           f"{sum(1 for r in records if r['status'] == 'pre-registered')} pre-registered, "
-          f"{len(unproven)} unproven (added before {ENFORCED_FROM}), {len(bad)} in violation")
+          f"{len(unproven)} unproven (added before {ENFORCED_FROM}), {len(bad)} in violation"
+          + (f", {len(post_hoc)} post-hoc adjudication (not a rule map, cannot be pre-registered)"
+             if post_hoc else ""))
     if unproven:
         print("The unproven ones are on the record in docs/PROTOCOL.md 3a. They are not evidence.")
     if bad:

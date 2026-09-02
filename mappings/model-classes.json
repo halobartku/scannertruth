@@ -1,0 +1,2104 @@
+{
+  "_about": [
+    "Adjudication of the class each model named on the cases where it was verdict-right: fired on the",
+    "vulnerable variant on at least one valid run and stayed silent on the fixed variant on every valid run.",
+    "Directories suffixed -partial or -calibration are not sweeps and are not adjudicated.",
+    "`named` lists the class strings the model returned on the vulnerable runs (the full string from its",
+    "JSON answer; the `note` field on the artefact line is the same string cut at 60 characters).",
+    "A case counts if any named string counts; otherwise it is disputed if any is disputed; otherwise no.",
+    "Strict detections = counts only. Lenient detections = counts + disputed.",
+    "Every rule below is one human judgement, applied by an agent, and is open to dispute."
+  ],
+  "derivation": "post-hoc adjudication of the free-text class names in raw/model-*/runs.jsonl under the owner's rule of 2026-09-02, applied by an agent after reading the answers; not a rule map and not pre-registered, because it cannot be (KNOWN-LIMITATIONS 49)",
+  "rule": "a named class counts as the class present when it names the mechanism or a clear synonym of it; naming only the effect does not count; a name that fits both the real class and a different one, or names the vulnerable spot without the missing check, is disputed; a generic phrase such as 'Missing account validation' alone does not count; a different mechanism does not count",
+  "rules": [
+    {
+      "real_class": "sysvar-address-checking",
+      "verdict": "counts",
+      "reason": "names the instructions sysvar account as unverified or spoofed, which is the mechanism",
+      "phrases": [
+        "Missing sysvar account validation (spoofed Instructions sysvar)",
+        "Unverified Instructions sysvar account (missing sysvar address check)",
+        "Missing account validation (unverified instructions sysvar / arbitrary account)",
+        "Missing account validation (unverified instructions sysvar / arbitrary account substitution)",
+        "Missing account validation (unverified instructions sysvar)",
+        "Unvalidated account (fake instructions sysvar)",
+        "Unvalidated sysvar account (signature verification bypass)"
+      ]
+    },
+    {
+      "real_class": "sysvar-address-checking",
+      "verdict": "counts",
+      "reason": "names the missing sysvar validation, a clear synonym of the class",
+      "phrases": [
+        "Sysvar Account Confusion",
+        "Sysvar account validation",
+        "Sysvar address validation",
+        "Missing Sysvar Validation",
+        "Missing sysvar check",
+        "Missing Sysvar Constraint",
+        "Missing Sysvar Verification"
+      ]
+    },
+    {
+      "real_class": "sysvar-address-checking",
+      "verdict": "no",
+      "reason": "names the effect (signatures not verified), not the unchecked sysvar address",
+      "phrases": [
+        "Missing signature verification"
+      ]
+    },
+    {
+      "real_class": "sysvar-address-checking",
+      "verdict": "no",
+      "reason": "names a different account (the SignatureSet) and a different check (PDA derivation and ownership)",
+      "phrases": [
+        "unvalidated account / fake SignatureSet (missing PDA derivation & ownership check)"
+      ]
+    },
+    {
+      "real_class": "sysvar-address-checking",
+      "verdict": "no",
+      "reason": "wrong mechanism: there is no re-entry in an unchecked sysvar address",
+      "phrases": [
+        "reentrancy"
+      ]
+    },
+    {
+      "real_class": "owner-checks",
+      "verdict": "counts",
+      "reason": "names the missing ownership check on the account, which is the mechanism",
+      "phrases": [
+        "missing account validation (reserve/lending-market ownership check in UpdateReserveConfig)",
+        "Missing authorization / account validation (missing signer & account-ownership checks)",
+        "Missing owner/signer authorization check",
+        "MissingOwnerCheck",
+        "unchecked account owner",
+        "Missing account owner check",
+        "Missing account ownership check"
+      ]
+    },
+    {
+      "real_class": "owner-checks",
+      "verdict": "no",
+      "reason": "generic: authorization or validation without saying which check is missing",
+      "phrases": [
+        "missing account validation / authorization check",
+        "missing authorization check",
+        "Missing Authority Check"
+      ]
+    },
+    {
+      "real_class": "owner-checks",
+      "verdict": "no",
+      "reason": "different mechanism: the account's owner is unchecked, not its type",
+      "phrases": [
+        "Missing account type check",
+        "Missing account type validation"
+      ]
+    },
+    {
+      "real_class": "owner-checks",
+      "verdict": "no",
+      "reason": "wrong mechanism",
+      "phrases": [
+        "Flash loan / reentrancy",
+        "oracle price manipulation",
+        "Missing Ownership Check"
+      ]
+    },
+    {
+      "real_class": "arithmetic-rounding-drain",
+      "verdict": "counts",
+      "reason": "names rounding or precision loss, which is the mechanism",
+      "phrases": [
+        "Rounding / precision loss in collateral exchange-rate conversion",
+        "rounding error",
+        "rounding error / precision loss",
+        "Rounding / precision error in reserve exchange-rate & fee math",
+        "Rounding direction / precision loss in liquidation math",
+        "Arithmetic rounding error"
+      ]
+    },
+    {
+      "real_class": "arithmetic-rounding-drain",
+      "verdict": "no",
+      "reason": "different mechanism: overflow is not rounding direction",
+      "phrases": [
+        "arithmetic overflow",
+        "integer overflow (DoS)",
+        "integer overflow"
+      ]
+    },
+    {
+      "real_class": "arithmetic-rounding-drain",
+      "verdict": "no",
+      "reason": "wrong mechanism",
+      "phrases": [
+        "missing signer check",
+        "improper input validation"
+      ]
+    },
+    {
+      "real_class": "signer-authorization",
+      "verdict": "counts",
+      "reason": "names the missing signer or membership check, which is the mechanism",
+      "phrases": [
+        "Missing access control (unchecked member on execute_transaction)",
+        "missing access control (membership check)",
+        "Missing authorization / access control (missing multisig membership check)",
+        "Missing authorization / access control (unverified signer)",
+        "Missing authorization / signer check (missing multisig membership constraint)",
+        "insufficient account validation (program-owner check instead of signer-key check)",
+        "Missing signer check"
+      ]
+    },
+    {
+      "real_class": "signer-authorization",
+      "verdict": "no",
+      "reason": "names the effect (unauthorised execution, a backdoor), not the missing signer check",
+      "phrases": [
+        "missing access control (unauthorized transaction execution)",
+        "Privileged backdoor (hardcoded authority bypass)"
+      ]
+    },
+    {
+      "real_class": "signer-authorization",
+      "verdict": "no",
+      "reason": "wrong mechanism",
+      "phrases": [
+        "Type Confusion",
+        "Missing Ownership Check"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "counts",
+      "reason": "names the accounts whose data must match (mint, token account, owner, metadata), which is the mechanism",
+      "phrases": [
+        "missing account validation (metadata/mint and token_owner mismatch)",
+        "Account substitution / improper account validation (metadata not bound to mint)",
+        "Missing account validation (metadata substitution / rule-set bypass)",
+        "Missing account validation (mint/token-account mismatch - account confusion)",
+        "Missing account validation (token account / mint mismatch, broken access control)"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "counts",
+      "reason": "account substitution is the name this class goes by in the Solana scanner taxonomies (an account in a slot is not checked against the data that should bind it)",
+      "phrases": [
+        "Account substitution"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "counts",
+      "reason": "names the class or a clear synonym",
+      "phrases": [
+        "Account Data Matching",
+        "Account data matching / Type confusion",
+        "Account Data Mismatch"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "disputed",
+      "reason": "names the check the fix adds (the token holder must be the account's owner) under the name of a different class (owner-checks)",
+      "phrases": [
+        "Missing Owner Verification"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "disputed",
+      "reason": "names validation of the unpacked account data without saying what it must match",
+      "phrases": [
+        "unpacked data validation"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "no",
+      "reason": "generic: does not say which accounts must match",
+      "phrases": [
+        "insufficient account validation (account confusion)",
+        "Missing account validation"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "no",
+      "reason": "different mechanism: a state or lock check, not a binding between accounts",
+      "phrases": [
+        "Missing state validation (locked token / TokenRecord state check bypass)",
+        "Missing state/authorization check (locked token can be transferred)",
+        "Missing token-state (lock) check / authorization bypass"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "no",
+      "reason": "names the effect (authorisation bypassed), not the missing match",
+      "phrases": [
+        "Authorization bypass",
+        "auth rules bypass",
+        "Missing access control (unauthorized execution)",
+        "missing access control / authorization check"
+      ]
+    },
+    {
+      "real_class": "account-data-matching",
+      "verdict": "no",
+      "reason": "different mechanism",
+      "phrases": [
+        "Missing proof-context validation (unchecked ElGamal pubkey in confidential transfer-with-fee path)",
+        "Duplicate member addition",
+        "Missing account ownership check",
+        "Missing Ownership Check",
+        "Reentrancy"
+      ]
+    },
+    {
+      "real_class": "instruction-introspection",
+      "verdict": "counts",
+      "reason": "names instruction introspection, which is the mechanism",
+      "phrases": [
+        "insufficient instruction introspection validation (collection spoofing)",
+        "Insufficient account validation via instruction introspection (unverified metadata/collection accounts)"
+      ]
+    },
+    {
+      "real_class": "instruction-introspection",
+      "verdict": "no",
+      "reason": "names the effect (a verification bypass), not the unchecked introspected instruction",
+      "phrases": [
+        "silent validation failure / collection-verification bypass"
+      ]
+    },
+    {
+      "real_class": "instruction-introspection",
+      "verdict": "no",
+      "reason": "generic or wrong mechanism",
+      "phrases": [
+        "missing_ownership_validation",
+        "Missing signer verification",
+        "account ordering",
+        "Missing account validation"
+      ]
+    },
+    {
+      "real_class": "type-cosplay",
+      "verdict": "counts",
+      "reason": "names the missing discriminator check or type confusion, the mechanism or its clear synonym",
+      "phrases": [
+        "Missing account discriminator check (type confusion / type cosplay)",
+        "Missing account discriminator check (type confusion)",
+        "Missing Discriminator Check",
+        "type cosplay",
+        "Type Confusion"
+      ]
+    },
+    {
+      "real_class": "program-account-validation",
+      "verdict": "counts",
+      "reason": "names the missing program ID validation, which is the mechanism",
+      "phrases": [
+        "Missing program ID validation (sentinel collision / arbitrary program substitution)",
+        "Missing program ID validation / arbitrary program substitution (type confusion)",
+        "Missing/bypassable program ID validation (arbitrary program substitution)",
+        "Missing program ID validation",
+        "program ID validation bypass"
+      ]
+    },
+    {
+      "real_class": "program-account-validation",
+      "verdict": "no",
+      "reason": "names the effect",
+      "phrases": [
+        "Authentication Bypass"
+      ]
+    },
+    {
+      "real_class": "pda-derived-address-validation",
+      "verdict": "counts",
+      "reason": "names the reserve PDA as unverified, which is the mechanism",
+      "phrases": [
+        "Missing account validation (unchecked reserve account / PDA ownership check)",
+        "Missing account validation (unverified reserve PDA)"
+      ]
+    },
+    {
+      "real_class": "pda-derived-address-validation",
+      "verdict": "disputed",
+      "reason": "names the account left unchecked (the reserve) but not the check it lacks (re-deriving its address)",
+      "phrases": [
+        "Missing account validation (unchecked reserve account / account substitution)",
+        "Missing account validation (unchecked reserve account in deposit)"
+      ]
+    },
+    {
+      "real_class": "pda-derived-address-validation",
+      "verdict": "no",
+      "reason": "generic",
+      "phrases": [
+        "Missing account validation"
+      ]
+    },
+    {
+      "real_class": "arbitrary-cpi",
+      "verdict": "counts",
+      "reason": "names the unverified CPI target or the missing owner or program check on it, which is the mechanism",
+      "phrases": [
+        "Missing owner check on token-swap pool account (arbitrary CPI / type confusion)",
+        "Missing owner/program validation on deserialized account (unchecked token-swap pool)",
+        "Missing owner/program validation on the token-swap pool (unchecked CPI target)",
+        "Unverified CPI target / missing account owner check",
+        "Missing program ID check",
+        "Arbitrary CPI"
+      ]
+    },
+    {
+      "real_class": "arbitrary-cpi",
+      "verdict": "no",
+      "reason": "generic or wrong mechanism",
+      "phrases": [
+        "Missing signer check",
+        "Missing account validation",
+        "Missing Ownership Check"
+      ]
+    },
+    {
+      "real_class": "cpi-recursion",
+      "verdict": "disputed",
+      "reason": "recursive CPI into the program itself is a reentrancy shape, but reentrancy is also the name of a different class, so the owner's rule records it as disputed",
+      "phrases": [
+        "reentrancy"
+      ]
+    },
+    {
+      "real_class": "cpi-recursion",
+      "verdict": "no",
+      "reason": "different mechanism",
+      "phrases": [
+        "Missing bounds check",
+        "Instruction replay / missing sequence check",
+        "Missing State/Status Check (approval bypass)"
+      ]
+    },
+    {
+      "real_class": "mint-configuration-validation",
+      "verdict": "no",
+      "reason": "generic or wrong mechanism: nothing about the mint's decimals",
+      "phrases": [
+        "insufficient account validation",
+        "Missing Account Owner Check",
+        "Missing Account Validation",
+        "Missing Program ID Check"
+      ]
+    },
+    {
+      "real_class": "bump-seed-canonicalization",
+      "verdict": "counts",
+      "reason": "names the class (one with a typo)",
+      "phrases": [
+        "Bump seed canonicalization",
+        "bump seed canocanailization"
+      ]
+    },
+    {
+      "real_class": "bump-seed-canonicalization",
+      "verdict": "no",
+      "reason": "wrong mechanism",
+      "phrases": [
+        "Missing Signature Verification",
+        "Bypassable Access Control"
+      ]
+    },
+    {
+      "real_class": "closing-accounts",
+      "verdict": "counts",
+      "reason": "names the class or the mechanism (an account closed without its data zeroed)",
+      "phrases": [
+        "ClosingAccounts",
+        "closing account without zeroing data"
+      ]
+    },
+    {
+      "real_class": "closing-accounts",
+      "verdict": "disputed",
+      "reason": "names closing accounts as the area without saying what is wrong with the closure",
+      "phrases": [
+        "account closure",
+        "Arbitrary Account Closure"
+      ]
+    },
+    {
+      "real_class": "closing-accounts",
+      "verdict": "no",
+      "reason": "names a missing closure or a rent check; the defect is a closure done wrong",
+      "phrases": [
+        "Missing account closure/rent exemption",
+        "Missing account closure/rent exemption check"
+      ]
+    },
+    {
+      "real_class": "closing-accounts",
+      "verdict": "no",
+      "reason": "wrong mechanism",
+      "phrases": [
+        "Missing Owner Check",
+        "arithmetic overflow"
+      ]
+    },
+    {
+      "real_class": "duplicate-mutable-accounts",
+      "verdict": "counts",
+      "reason": "names the class",
+      "phrases": [
+        "Duplicate mutable accounts",
+        "DuplicateMutableAccounts"
+      ]
+    },
+    {
+      "real_class": "duplicate-mutable-accounts",
+      "verdict": "no",
+      "reason": "different class",
+      "phrases": [
+        "Account Substitution"
+      ]
+    },
+    {
+      "real_class": "initialization",
+      "verdict": "counts",
+      "reason": "names the missing initialisation check, which is the mechanism",
+      "phrases": [
+        "Missing Account Initialization Check",
+        "Missing Initialization Check"
+      ]
+    },
+    {
+      "real_class": "initialization",
+      "verdict": "no",
+      "reason": "different mechanism: the defect is re-initialising an initialised account, not using an uninitialised one",
+      "phrases": [
+        "uninitialized account"
+      ]
+    },
+    {
+      "real_class": "initialization",
+      "verdict": "no",
+      "reason": "wrong mechanism",
+      "phrases": [
+        "Reentrancy",
+        "Missing Ownership Check"
+      ]
+    },
+    {
+      "real_class": "pda-sharing",
+      "verdict": "counts",
+      "reason": "names the class",
+      "phrases": [
+        "PDA sharing",
+        "PDA Sharing / Authority Confusion"
+      ]
+    },
+    {
+      "real_class": "pda-sharing",
+      "verdict": "no",
+      "reason": "names the effect",
+      "phrases": [
+        "Missing authority check"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "dir": "model-anthropic-claude-fable-5.1-or-c2-2026-09-01",
+      "model": "anthropic/claude-fable-5.1",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "missing account validation (metadata/mint and token_owner mismatch)"
+      ],
+      "verdict": "counts",
+      "reason": "'missing account validation (metadata/mint and token_owner mismatch)': names the accounts whose data must match (mint, token account, owner, metadata), which is the mechanism"
+    },
+    {
+      "dir": "model-claude-fable-5-1-cc-c2-2026-09-01",
+      "model": "claude-fable-5-1",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "wormhole-sysvar",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing sysvar account validation (spoofed Instructions sysvar)",
+        "Missing sysvar account validation (spoofed instructions sysvar)",
+        "Unverified Instructions sysvar account (missing sysvar address check)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing sysvar account validation (spoofed Instructions sysvar)': names the instructions sysvar account as unverified or spoofed, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-fable-5-1-cc-c2-2026-09-01",
+      "model": "claude-fable-5-1",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solend-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "missing account validation (reserve/lending-market ownership check in UpdateReserveConfig)",
+        "missing account validation / authorization check"
+      ],
+      "verdict": "counts",
+      "reason": "'missing account validation (reserve/lending-market ownership check in UpdateReserveConfig)': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-fable-5-1-cc-c2-2026-09-01",
+      "model": "claude-fable-5-1",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "Rounding / precision loss in collateral exchange-rate conversion",
+        "rounding error",
+        "rounding error / precision loss"
+      ],
+      "verdict": "counts",
+      "reason": "'Rounding / precision loss in collateral exchange-rate conversion': names rounding or precision loss, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-fable-5-1-cc-c2-2026-09-01",
+      "model": "claude-fable-5-1",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "squads-signer-auth",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing access control (unchecked member on execute_transaction)",
+        "missing access control (membership check)",
+        "missing access control (unauthorized transaction execution)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing access control (unchecked member on execute_transaction)': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-fable-5-1-cc-c2-2026-09-01",
+      "model": "claude-fable-5-1",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "squads-account-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing access control (unauthorized execution)",
+        "missing access control / authorization check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing access control (unauthorized execution)': names the effect (authorisation bypassed), not the missing match"
+    },
+    {
+      "dir": "model-claude-fable-5-1-cc-c2-2026-09-01",
+      "model": "claude-fable-5-1",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "metaplex-candy-machine",
+      "real_class": "instruction-introspection",
+      "named": [
+        "insufficient instruction introspection validation (collection spoofing)",
+        "silent validation failure / collection-verification bypass"
+      ],
+      "verdict": "counts",
+      "reason": "'insufficient instruction introspection validation (collection spoofing)': names instruction introspection, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "wormhole-sysvar",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing account validation (unverified instructions sysvar / arbitrary account substitution)",
+        "Missing account validation (unverified instructions sysvar / arbitrary account)",
+        "Missing account validation (unverified instructions sysvar)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account validation (unverified instructions sysvar / arbitrary account substitution)': names the instructions sysvar account as unverified or spoofed, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solend-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing authorization / account validation (missing signer & account-ownership checks)",
+        "Missing owner/signer authorization check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing authorization / account validation (missing signer & account-ownership checks)': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "Rounding / precision error in reserve exchange-rate & fee math",
+        "Rounding direction / precision loss in liquidation math"
+      ],
+      "verdict": "counts",
+      "reason": "'Rounding / precision error in reserve exchange-rate & fee math': names rounding or precision loss, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "squads-signer-auth",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing authorization / access control (missing multisig membership check)",
+        "Missing authorization / access control (unverified signer)",
+        "Missing authorization / signer check (missing multisig membership constraint)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing authorization / access control (missing multisig membership check)': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing state validation (locked token / TokenRecord state check bypass)",
+        "Missing state/authorization check (locked token can be transferred)",
+        "Missing token-state (lock) check / authorization bypass"
+      ],
+      "verdict": "no",
+      "reason": "'Missing state validation (locked token / TokenRecord state check bypass)': different mechanism: a state or lock check, not a binding between accounts"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "metaplex-candy-machine",
+      "real_class": "instruction-introspection",
+      "named": [
+        "Insufficient account validation via instruction introspection (unverified metadata/collection accounts)"
+      ],
+      "verdict": "counts",
+      "reason": "'Insufficient account validation via instruction introspection (unverified metadata/collection accounts)': names instruction introspection, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "anchor-interface-account",
+      "real_class": "type-cosplay",
+      "named": [
+        "Missing account discriminator check (type confusion / type cosplay)",
+        "Missing account discriminator check (type confusion)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account discriminator check (type confusion / type cosplay)': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "anchor-program-system",
+      "real_class": "program-account-validation",
+      "named": [
+        "Missing program ID validation (sentinel collision / arbitrary program substitution)",
+        "Missing program ID validation / arbitrary program substitution (type confusion)",
+        "Missing/bypassable program ID validation (arbitrary program substitution)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing program ID validation (sentinel collision / arbitrary program substitution)': names the missing program ID validation, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solido-deposit-reserve-account",
+      "real_class": "pda-derived-address-validation",
+      "named": [
+        "Missing account validation (unchecked reserve account / PDA ownership check)",
+        "Missing account validation (unchecked reserve account / account substitution)",
+        "Missing account validation (unverified reserve PDA)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account validation (unchecked reserve account / PDA ownership check)': names the reserve PDA as unverified, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solido-anker-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Missing owner check on token-swap pool account (arbitrary CPI / type confusion)",
+        "Missing owner/program validation on deserialized account (unchecked token-swap pool)",
+        "Missing owner/program validation on the token-swap pool (unchecked CPI target)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing owner check on token-swap pool account (arbitrary CPI / type confusion)': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-claude-opus-5-cc-c2-2026-09-02",
+      "model": "claude-opus-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "token-2022-confidential-approve-mint",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing account validation (mint/token-account mismatch - account confusion)",
+        "Missing account validation (token account / mint mismatch, broken access control)",
+        "Missing proof-context validation (unchecked ElGamal pubkey in confidential transfer-with-fee path)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account validation (mint/token-account mismatch - account confusion)': names the accounts whose data must match (mint, token account, owner, metadata), which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing Signer Check",
+        "Missing signer check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Signer Check': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "1-account-data-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Account Data Matching"
+      ],
+      "verdict": "counts",
+      "reason": "'Account Data Matching': names the class or a clear synonym"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "10-sysvar-address-checking",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Sysvar Account Confusion",
+        "Sysvar account validation",
+        "Sysvar address validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Sysvar Account Confusion': names the missing sysvar validation, a clear synonym of the class"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "3-type-cosplay",
+      "real_class": "type-cosplay",
+      "named": [
+        "type cosplay"
+      ],
+      "verdict": "counts",
+      "reason": "'type cosplay': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI",
+        "arbitrary CPI"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "Bump seed canonicalization",
+        "bump seed canonicalization"
+      ],
+      "verdict": "counts",
+      "reason": "'Bump seed canonicalization': names the class (one with a typo)"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "9-closing-accounts",
+      "real_class": "closing-accounts",
+      "named": [
+        "Missing account closure/rent exemption",
+        "Missing account closure/rent exemption check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing account closure/rent exemption': names a missing closure or a rent check; the defect is a closure done wrong"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "1-account-data-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Account Data Matching",
+        "Account data matching / Type confusion",
+        "Missing account validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Account Data Matching': names the class or a clear synonym"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "10-sysvar-address-checking",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing Sysvar Validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Sysvar Validation': names the missing sysvar validation, a clear synonym of the class"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing account type check",
+        "MissingOwnerCheck",
+        "unchecked account owner"
+      ],
+      "verdict": "counts",
+      "reason": "'MissingOwnerCheck': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "3-type-cosplay",
+      "real_class": "type-cosplay",
+      "named": [
+        "type cosplay"
+      ],
+      "verdict": "counts",
+      "reason": "'type cosplay': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI",
+        "Missing signer check"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "Duplicate mutable accounts",
+        "duplicate mutable accounts"
+      ],
+      "verdict": "counts",
+      "reason": "'Duplicate mutable accounts': names the class"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "bump seed canonicalization"
+      ],
+      "verdict": "counts",
+      "reason": "'bump seed canonicalization': names the class (one with a typo)"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "9-closing-accounts",
+      "real_class": "closing-accounts",
+      "named": [
+        "ClosingAccounts",
+        "account closure",
+        "closing account without zeroing data"
+      ],
+      "verdict": "counts",
+      "reason": "'ClosingAccounts': names the class or the mechanism (an account closed without its data zeroed)"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "2",
+      "case": "wormhole-sysvar",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing signature verification"
+      ],
+      "verdict": "no",
+      "reason": "'Missing signature verification': names the effect (signatures not verified), not the unchecked sysvar address"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "Arithmetic rounding error"
+      ],
+      "verdict": "counts",
+      "reason": "'Arithmetic rounding error': names rounding or precision loss, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c2-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "solido-anker-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Missing program ID check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing program ID check': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-or-c2-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "spl-stake-pool-fee-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "missing signer check"
+      ],
+      "verdict": "no",
+      "reason": "'missing signer check': wrong mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing signer check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing signer check': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "10-sysvar-address-checking",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing sysvar check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing sysvar check': names the missing sysvar validation, a clear synonym of the class"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing account owner check",
+        "Missing account ownership check",
+        "Missing account type validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account owner check': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI",
+        "Missing signer check",
+        "arbitrary CPI"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "duplicate mutable accounts"
+      ],
+      "verdict": "counts",
+      "reason": "'duplicate mutable accounts': names the class"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "bump seed canocanailization",
+        "bump seed canonicalization"
+      ],
+      "verdict": "counts",
+      "reason": "'bump seed canocanailization': names the class (one with a typo)"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c1-2026-09-02",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "1",
+      "case": "8-pda-sharing",
+      "real_class": "pda-sharing",
+      "named": [
+        "Missing authority check",
+        "PDA sharing"
+      ],
+      "verdict": "counts",
+      "reason": "'PDA sharing': names the class"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "2",
+      "case": "squads-account-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Account substitution",
+        "Duplicate member addition"
+      ],
+      "verdict": "counts",
+      "reason": "'Account substitution': account substitution is the name this class goes by in the Solana scanner taxonomies (an account in a slot is not checked against the data that should bind it)"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "Authorization bypass",
+        "auth rules bypass"
+      ],
+      "verdict": "no",
+      "reason": "'Authorization bypass': names the effect (authorisation bypassed), not the missing match"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "2",
+      "case": "metaplex-candy-machine",
+      "real_class": "instruction-introspection",
+      "named": [
+        "Missing signer verification",
+        "account ordering"
+      ],
+      "verdict": "no",
+      "reason": "'Missing signer verification': generic or wrong mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "2",
+      "case": "anchor-program-system",
+      "real_class": "program-account-validation",
+      "named": [
+        "Missing program ID validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing program ID validation': names the missing program ID validation, which is the mechanism"
+    },
+    {
+      "dir": "model-deepseek-deepseek-v4-flash-think-or-c2-2026-09-01",
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "regime": "requested",
+      "corpus": "2",
+      "case": "squads-recursive-execute",
+      "real_class": "cpi-recursion",
+      "named": [
+        "Missing bounds check",
+        "reentrancy"
+      ],
+      "verdict": "disputed",
+      "reason": "'reentrancy': recursive CPI into the program itself is a reentrancy shape, but reentrancy is also the name of a different class, so the owner's rule records it as disputed"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing Ownership Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Ownership Check': wrong mechanism"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "1-account-data-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing Ownership Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Ownership Check': different mechanism"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing Ownership Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Ownership Check': wrong mechanism"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "4-initialization",
+      "real_class": "initialization",
+      "named": [
+        "Missing Ownership Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Ownership Check': wrong mechanism"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Missing Ownership Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Ownership Check': generic or wrong mechanism"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "Account Substitution"
+      ],
+      "verdict": "no",
+      "reason": "'Account Substitution': different class"
+    },
+    {
+      "dir": "model-gemma4-12b-c1-2026-09-01",
+      "model": "gemma4:12b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "Missing Signature Verification"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Signature Verification': wrong mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "wormhole-sysvar",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Unvalidated account (fake instructions sysvar)",
+        "Unvalidated sysvar account (signature verification bypass)",
+        "unvalidated account / fake SignatureSet (missing PDA derivation & ownership check)"
+      ],
+      "verdict": "counts",
+      "reason": "'Unvalidated account (fake instructions sysvar)': names the instructions sysvar account as unverified or spoofed, which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "solend-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Flash loan / reentrancy",
+        "missing authorization check",
+        "oracle price manipulation"
+      ],
+      "verdict": "no",
+      "reason": "'Flash loan / reentrancy': wrong mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "arithmetic overflow",
+        "integer overflow (DoS)"
+      ],
+      "verdict": "no",
+      "reason": "'arithmetic overflow': different mechanism: overflow is not rounding direction"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "Account substitution / improper account validation (metadata not bound to mint)",
+        "Missing account validation (metadata substitution / rule-set bypass)",
+        "insufficient account validation (account confusion)"
+      ],
+      "verdict": "counts",
+      "reason": "'Account substitution / improper account validation (metadata not bound to mint)': names the accounts whose data must match (mint, token account, owner, metadata), which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "metaplex-candy-machine",
+      "real_class": "instruction-introspection",
+      "named": [
+        "missing_ownership_validation"
+      ],
+      "verdict": "no",
+      "reason": "'missing_ownership_validation': generic or wrong mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "metaplex-bubblegum-creator",
+      "real_class": "signer-authorization",
+      "named": [
+        "Privileged backdoor (hardcoded authority bypass)",
+        "insufficient account validation (program-owner check instead of signer-key check)"
+      ],
+      "verdict": "counts",
+      "reason": "'insufficient account validation (program-owner check instead of signer-key check)': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "anchor-program-system",
+      "real_class": "program-account-validation",
+      "named": [
+        "Missing program ID validation",
+        "missing program ID validation",
+        "program ID validation bypass"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing program ID validation': names the missing program ID validation, which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "solido-deposit-reserve-account",
+      "real_class": "pda-derived-address-validation",
+      "named": [
+        "Missing account validation",
+        "Missing account validation (unchecked reserve account in deposit)"
+      ],
+      "verdict": "disputed",
+      "reason": "'Missing account validation (unchecked reserve account in deposit)': names the account left unchecked (the reserve) but not the check it lacks (re-deriving its address)"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "solido-anker-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Unverified CPI target / missing account owner check",
+        "unverified CPI target / missing account owner check"
+      ],
+      "verdict": "counts",
+      "reason": "'Unverified CPI target / missing account owner check': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "spl-stake-pool-fee-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "improper input validation"
+      ],
+      "verdict": "no",
+      "reason": "'improper input validation': wrong mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "squads-recursive-execute",
+      "real_class": "cpi-recursion",
+      "named": [
+        "Instruction replay / missing sequence check",
+        "Missing State/Status Check (approval bypass)"
+      ],
+      "verdict": "no",
+      "reason": "'Instruction replay / missing sequence check': different mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c2-2026-09-01",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "spl-stake-pool-mint-decimals",
+      "real_class": "mint-configuration-validation",
+      "named": [
+        "insufficient account validation"
+      ],
+      "verdict": "no",
+      "reason": "'insufficient account validation': generic or wrong mechanism: nothing about the mint's decimals"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing signer check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing signer check': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "1-account-data-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing account ownership check",
+        "unpacked data validation"
+      ],
+      "verdict": "disputed",
+      "reason": "'unpacked data validation': names validation of the unpacked account data without saying what it must match"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "10-sysvar-address-checking",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing sysvar validation",
+        "missing sysvar validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing sysvar validation': names the missing sysvar validation, a clear synonym of the class"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing account ownership check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account ownership check': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "4-initialization",
+      "real_class": "initialization",
+      "named": [
+        "uninitialized account"
+      ],
+      "verdict": "no",
+      "reason": "'uninitialized account': different mechanism: the defect is re-initialising an initialised account, not using an uninitialised one"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Missing account validation"
+      ],
+      "verdict": "no",
+      "reason": "'Missing account validation': generic or wrong mechanism"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "duplicate mutable accounts"
+      ],
+      "verdict": "counts",
+      "reason": "'duplicate mutable accounts': names the class"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "Bump seed canonicalization"
+      ],
+      "verdict": "counts",
+      "reason": "'Bump seed canonicalization': names the class (one with a typo)"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c1-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "9-closing-accounts",
+      "real_class": "closing-accounts",
+      "named": [
+        "arithmetic overflow"
+      ],
+      "verdict": "no",
+      "reason": "'arithmetic overflow': wrong mechanism"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c2-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "wormhole-sysvar",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "reentrancy"
+      ],
+      "verdict": "no",
+      "reason": "'reentrancy': wrong mechanism: there is no re-entry in an unchecked sysvar address"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c2-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "integer overflow"
+      ],
+      "verdict": "no",
+      "reason": "'integer overflow': different mechanism: overflow is not rounding direction"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c2-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "metaplex-candy-machine",
+      "real_class": "instruction-introspection",
+      "named": [
+        "Missing account validation"
+      ],
+      "verdict": "no",
+      "reason": "'Missing account validation': generic or wrong mechanism"
+    },
+    {
+      "dir": "model-mistralai-devstral-2512-or-c2-2026-09-02",
+      "model": "mistralai/devstral-2512",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "squads-recursive-execute",
+      "real_class": "cpi-recursion",
+      "named": [
+        "reentrancy"
+      ],
+      "verdict": "disputed",
+      "reason": "'reentrancy': recursive CPI into the program itself is a reentrancy shape, but reentrancy is also the name of a different class, so the owner's rule records it as disputed"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing Signer Check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Signer Check': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "1-account-data-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Account Data Matching",
+        "Account Data Mismatch"
+      ],
+      "verdict": "counts",
+      "reason": "'Account Data Matching': names the class or a clear synonym"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing Account Owner Check",
+        "Missing Account Ownership Check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Account Owner Check': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "3-type-cosplay",
+      "real_class": "type-cosplay",
+      "named": [
+        "Type Confusion"
+      ],
+      "verdict": "counts",
+      "reason": "'Type Confusion': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "4-initialization",
+      "real_class": "initialization",
+      "named": [
+        "Missing Account Initialization Check",
+        "Missing Initialization Check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Account Initialization Check': names the missing initialisation check, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "Duplicate Mutable Accounts"
+      ],
+      "verdict": "counts",
+      "reason": "'Duplicate Mutable Accounts': names the class"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "Bump Seed Canonicalization"
+      ],
+      "verdict": "counts",
+      "reason": "'Bump Seed Canonicalization': names the class (one with a typo)"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "8-pda-sharing",
+      "real_class": "pda-sharing",
+      "named": [
+        "PDA Sharing / Authority Confusion"
+      ],
+      "verdict": "counts",
+      "reason": "'PDA Sharing / Authority Confusion': names the class"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "9-closing-accounts",
+      "real_class": "closing-accounts",
+      "named": [
+        "Arbitrary Account Closure",
+        "Missing Owner Check"
+      ],
+      "verdict": "disputed",
+      "reason": "'Arbitrary Account Closure': names closing accounts as the area without saying what is wrong with the closure"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing Signer Check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Signer Check': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "10-sysvar-address-checking",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing Sysvar Check",
+        "Missing Sysvar Constraint",
+        "Missing Sysvar Verification"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Sysvar Check': names the missing sysvar validation, a clear synonym of the class"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing Account Owner Check",
+        "Missing Account Ownership Check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Account Owner Check': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-01",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "suppressed",
+      "corpus": "2",
+      "case": "solido-deposit-reserve-account",
+      "real_class": "pda-derived-address-validation",
+      "named": [
+        "Missing Account Validation"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Account Validation': generic"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing Owner Verification"
+      ],
+      "verdict": "disputed",
+      "reason": "'Missing Owner Verification': names the check the fix adds (the token holder must be the account's owner) under the name of a different class (owner-checks)"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "metaplex-bubblegum-creator",
+      "real_class": "signer-authorization",
+      "named": [
+        "Type Confusion"
+      ],
+      "verdict": "no",
+      "reason": "'Type Confusion': wrong mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "anchor-interface-account",
+      "real_class": "type-cosplay",
+      "named": [
+        "Missing Discriminator Check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Discriminator Check': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "anchor-program-system",
+      "real_class": "program-account-validation",
+      "named": [
+        "Authentication Bypass",
+        "Missing Program ID Validation"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing Program ID Validation': names the missing program ID validation, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "2",
+      "case": "spl-stake-pool-mint-decimals",
+      "real_class": "mint-configuration-validation",
+      "named": [
+        "Missing Account Owner Check",
+        "Missing Account Validation",
+        "Missing Program ID Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Account Owner Check': generic or wrong mechanism: nothing about the mint's decimals"
+    },
+    {
+      "dir": "model-qwen3.5-9b-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "Integer Overflow"
+      ],
+      "verdict": "no",
+      "reason": "'Integer Overflow': different mechanism: overflow is not rounding direction"
+    },
+    {
+      "dir": "model-qwen3.5-9b-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "Reentrancy"
+      ],
+      "verdict": "no",
+      "reason": "'Reentrancy': different mechanism"
+    },
+    {
+      "dir": "model-qwen3.5-9b-c1-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing Authority Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Authority Check': generic: authorization or validation without saying which check is missing"
+    },
+    {
+      "dir": "model-qwen3.5-9b-c1-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "4-initialization",
+      "real_class": "initialization",
+      "named": [
+        "Reentrancy"
+      ],
+      "verdict": "no",
+      "reason": "'Reentrancy': wrong mechanism"
+    },
+    {
+      "dir": "model-qwen3.5-9b-c1-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen3.5-9b-c1-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "DuplicateMutableAccounts"
+      ],
+      "verdict": "counts",
+      "reason": "'DuplicateMutableAccounts': names the class"
+    },
+    {
+      "dir": "model-qwen3.5-9b-c1-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "Bypassable Access Control"
+      ],
+      "verdict": "no",
+      "reason": "'Bypassable Access Control': wrong mechanism"
+    },
+    {
+      "dir": "model-qwen3.5-9b-c1-2026-09-01",
+      "model": "qwen3.5:9b",
+      "provider": "ollama",
+      "regime": "suppressed",
+      "corpus": "1",
+      "case": "8-pda-sharing",
+      "real_class": "pda-sharing",
+      "named": [
+        "Missing Authority Check"
+      ],
+      "verdict": "no",
+      "reason": "'Missing Authority Check': names the effect"
+    }
+  ]
+}

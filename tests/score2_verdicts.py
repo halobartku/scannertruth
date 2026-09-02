@@ -3,7 +3,7 @@ import json
 import os
 import tempfile
 
-from ._core import FIXED, MAP, VULN, _case, _findings_file
+from ._core import FIXED, MAP, VULN, _case, _findings_file, _rule_mappings
 
 
 # ------------------------------------------------------------------- score2
@@ -173,9 +173,7 @@ def test_noisy_control_would_win_a_findings_count_ranking():
     import json, control_c2
     rules = set(control_c2.every_rule())
     assert len(rules) > 10, f"expected many mapped rules to fire, got {len(rules)}"
-    for fn in sorted(os.listdir("mappings")):
-        if not fn.endswith(".json"):
-            continue
+    for fn in _rule_mappings():
         m = json.load(io.open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
         for cls, claimed in m.items():
             missing = [r for r in claimed if r not in rules]

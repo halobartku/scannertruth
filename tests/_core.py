@@ -75,6 +75,20 @@ def _findings_file(tmp, kind, rule, line):
     return dest
 
 
+def _rule_mappings():
+    """The rule maps in `mappings/`: every `.json` there except the model-class adjudication.
+
+    `mappings/model-classes.json` is not a map from class to rule ids. It is the post-hoc judgement
+    of the free-text class names the model auditors returned (KNOWN-LIMITATIONS 49): it has no
+    `map`, it cannot be pre-registered because it is written after reading the answers, and its
+    own check is `python tools/model_results.py --demo`. Every check that scores a mapping against
+    findings reads this list, so the adjudication is neither scored as a scanner nor skipped by
+    accident.
+    """
+    return sorted(fn for fn in os.listdir(os.path.join(ROOT, "mappings"))
+                  if fn.endswith(".json") and fn != "model-classes.json")
+
+
 def _documented_command_files():
     """Every document that tells a reader to run something.
 
