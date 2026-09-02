@@ -84,7 +84,7 @@ Six scanners and two calibration controls, one protocol, measured the same day. 
 | Scanner | Teaching corpus (2022, public) | Real vulnerabilities |
 |---|---|---|
 | `control-noisy` | **0 / 11**, from 81,928 findings | **0**, despite 2,629,968 findings |
-| **Radar** (Auditware) | **11 / 11** | 0 / 8, re-run 2026-09-01: also **0 / 16** |
+| **Radar** (Auditware) | **11 / 11**, at `main` 2026-09-02 still 11 / 11 with noise 46% down to 39% and 11% (upper bounds) | 0 / 8, re-run 2026-09-01: also **0 / 16**; `main` 2026-09-02 (`24c56f9`): **0 / 17** |
 | `sol-audit` v2 (ours) | 4 / 11 | *retired 2026-09-01, superseded by v3*; was 0 / 8 |
 | `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** |
 | `vaultlint` 0.1.1 | 2 / 11 | **0 / 17 registered, 1 / 17 corrected**; 15 of 17 `no-rule` |
@@ -195,7 +195,7 @@ docs/
   KNOWN-LIMITATIONS.md what this measurement cannot tell you
   COVERAGE.md          generated: which measurement can show what it analysed, derived from raw/
   CLASS-BALANCE.md     generated: class and repository concentration of corpus 2, from the manifest
-  ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 20 more on 2026-09-01, 2 on 2026-09-02
+  ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 20 more on 2026-09-01, 3 on 2026-09-02
   COMMITMENTS.md       three standing promises
   MANIFESTO.md         nine testable sentences, each with its named breach
   CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
