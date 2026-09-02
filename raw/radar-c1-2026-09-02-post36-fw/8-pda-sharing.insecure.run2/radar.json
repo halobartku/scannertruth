@@ -1,0 +1,11 @@
+[
+    {
+        "name": "PDA Sharing",
+        "description": "Reuse of a PDA across multiple authority domains can lead to unauthorized data or funds access.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-post36/fw/_staged/8-pda-sharing.insecure.pkg/pkg/src/lib.rs:13:16-24"
+        ]
+    }
+]

@@ -12,6 +12,7 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 | `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | - | 15 |
 | `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | - | 23 |
 | **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, not yet re-measured by us) |
+| **`radar`** (Auditware, main of 2026-09-02, post-#36) | **11 / 11** | **11 / 11** | **19** | **2 (11%, upper bound)** — measured by us; confirms the vendor's own figures |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
 
 Two scanners, two opposite strategies, and the benchmark separates them cleanly. That separation is
@@ -75,6 +76,33 @@ gave our own v1 a real recall of zero, surviving inside a tool that is otherwise
 
 **Recall and noise are different axes.** A scanner can be first on one and unremarkable on the
 other, and a single ranking number would hide it. This is why the benchmark reports both.
+
+## Re-measured 2026-09-02: the vendor's fix is real, and it is better than they claimed
+
+The row above dated 2026-09-02 is the re-measurement promised on `radar#32`: the vendor's `main`
+at `67348ee`, after their noise-reduction PRs #33/#34/#35/#36 and the dependency bump #37,
+against the same corpus at the same pinned commit, scored with the same pre-registered mapping.
+
+Measured by us, not vendor-reported: **real recall unchanged at 11/11**; findings **52 → 19**;
+firings on already-fixed variants **24 → 2**. The vendor's own figures for the same release were
+2 false positives and an 11% noise rate; our independent run lands on exactly that. Their
+engineering is verified at source rather than taken on trust, and the sequence it records —
+reproduce first, narrow, catch their own regression with adversarial fixtures outside our corpus,
+revert part — is the right-of-reply protocol working as designed.
+
+The two remaining firings on fixed code are both `Missing Owner Check` on `secure` variants of
+`1-account-data-matching` and `4-initialization`. The error-39 caveat applies to this row as to
+every other: the column is an upper bound, because a correct cross-class firing on a variant
+labelled secure-for-its-own-class is counted as noise.
+
+Method disclosure: this run, unlike every earlier radar row, was made without a docker daemon,
+through an engine shim that executes the vendor's own pipeline code unmodified from their
+checkout at `67348ee`. Before measuring, the shim was parity-proven against the docker
+measurement of the older revision `206a469`: **52 of 52 location rows identical, rule for rule,
+file for file, line and column for line and column** (`raw/radar-shim-parity-2026-09-02/`).
+The full reasoning, and what the shim does and does not claim, is
+`ENGINEERING-LOG-2026-09-02.md`. The in-sample caveat below applies to this row exactly as it
+applies to the last: 11/11 on a public 2022 corpus is 11/11 of homework, not of generalisation.
 
 ## VaultLint: the precision claim holds, and you can see what it cost
 

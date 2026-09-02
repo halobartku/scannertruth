@@ -1,0 +1,11 @@
+COMMAND: radar scan -p /root/st-post36/fw/_staged/8-pda-sharing.secure.pkg -f none -o /root/st-post36/fw/8-pda-sharing.secure/radar.json
+EXIT: 0
+WALL_SECONDS: 0.75
+
+STDOUT:
+[i] Scanned 1 file (lib.rs)
+[i] radar completed successfully. No results found.
+
+
+STDERR:
+

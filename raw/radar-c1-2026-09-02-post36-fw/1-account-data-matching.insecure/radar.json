@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-post36/fw/_staged/1-account-data-matching.insecure.pkg/pkg/src/lib.rs:12:38-44"
+        ]
+    },
+    {
+        "name": "Missing Owner Check",
+        "description": "Deserializing or unpacking a raw account's data without verifying the account is owned by the expected program lets a caller substitute an attacker-controlled account with a compatible layout. The account's owner should be checked against the program ID, or the account should be typed as Anchor's Account<T> which validates it.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-post36/fw/_staged/1-account-data-matching.insecure.pkg/pkg/src/lib.rs:18:3-9"
+        ]
+    }
+]

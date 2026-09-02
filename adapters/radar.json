@@ -11,14 +11,25 @@
  },
  "run": {
   "engine": "local",
-  "command": ["radar", "scan", "-p", "{mount}", "-f", "none", "-o", "{out}/radar.json"],
+  "command": [
+   "radar",
+   "scan",
+   "-p",
+   "{mount}",
+   "-f",
+   "none",
+   "-o",
+   "{out}/radar.json"
+  ],
   "timeout_seconds": 1800,
   "invocation_evidence": "the 2026-09-01 re-run recorded in tools/legacy/normalise_runs.py and its 34 stdout artefacts under raw/radar-c2-2026-09-01/. radar starts its own containers, so the isolation is radar's rather than ours, which is stated rather than claimed otherwise."
  },
  "layout": "wrapped-pkg",
  "layout_reason": "radar refuses a target whose Cargo.toml sits at the root of the path it is given, answering `No Cargo.toml files found in any subdirectories` while exiting 0 and writing nothing. Every case is therefore staged as <case>.<variant>/pkg/{Cargo.toml,src} and the wrapper prefix is removed from the locations afterwards. Getting this wrong produces a silent zero that looks exactly like a clean miss.",
  "coverage": {
-  "ok_exit_codes": [0],
+  "ok_exit_codes": [
+   0
+  ],
   "evidence": {
    "pattern": "Scanned (\\d+) file",
    "minimum": 1,
@@ -46,7 +57,9 @@
     "description": "An account is deserialised without checking its owner program.",
     "severity": "High",
     "certainty": "Medium",
-    "locations": ["{path}:{line}:8-25"]
+    "locations": [
+     "{path}:{line}:8-25"
+    ]
    }
   ],
   "sample_source": "the shape of raw/c2-radar-current.json, with one finding substituted for the fix site of the synthetic case"
@@ -67,6 +80,15 @@
    "mapping": "radar",
    "envelope": "radar",
    "note": "Re-run per case, per variant, over all 17 built cases on 2026-09-01 against a corpus pinned by digest on both machines first. 34 invocations, 34 ok, zero unavailable, zero stale paths. Superseded c2-radar-complete.json, which was produced before the corpus was rebuilt and had 161 of 238 findings naming files that no longer exist. Both files stay on disk; only this one scores."
+  },
+  {
+   "row": "radar@2026-09-02",
+   "corpus": "corpus1",
+   "raw": "radar-c1-2026-09-02-post36.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Re-measurement of Auditware/radar main at 67348ee (post-#33/#34/#35/#36/#37) against corpus1 at the pinned commit, promised on radar#32 and delivered 2026-09-02. 35 invocations, 35 ok, zero unavailable, deterministic over two passes. Real recall 11/11 unchanged; findings 52 -> 19; firings on already-fixed variants 24 -> 2 (upper bound). Independently confirms the vendor's own reported figures (2 FPs, 11% noise). Run without a docker daemon via the engine shim documented in ENGINEERING-LOG-2026-09-02: vendor engine code unmodified from the checkout at 67348ee, parity-proven against the docker measurement of 206a469 first (52/52 location rows identical, raw/radar-shim-parity-2026-09-02/).",
+   "invocation": "engine shim raw/radar-shim-parity-2026-09-02: PATH=/root/radar-engine-shim/bin radar scan -p <staged-wrapped-pkg> -f none -o radar.json, framework-run via tools/scanner_spec.py --run radar --corpus corpus1 --corpus-root <pinned sealevel-attacks>/programs --repeat 2"
   }
  ]
 }

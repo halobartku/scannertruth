@@ -1,0 +1,11 @@
+COMMAND: radar scan -p /root/st-post36/fw/_staged/6-duplicate-mutable-accounts.insecure.pkg -f none -o /root/st-post36/fw/6-duplicate-mutable-accounts.insecure.run2/radar.json
+EXIT: 0
+WALL_SECONDS: 0.53
+
+STDOUT:
+[i] Scanned 1 file (lib.rs)
+[i] radar completed successfully. json results were saved to disk.
+
+
+STDERR:
+

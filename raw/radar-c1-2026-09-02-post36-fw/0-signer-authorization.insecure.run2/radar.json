@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Missing Signer Check",
+        "description": "When an instruction does not verify that a caller signed the transaction, any account may be passed in its place. Anchor proves this with a Signer field, or the handler can check is_signer directly.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-post36/fw/_staged/0-signer-authorization.insecure.pkg/pkg/src/lib.rs:14:3-9"
+        ]
+    }
+]
