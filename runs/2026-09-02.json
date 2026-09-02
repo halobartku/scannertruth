@@ -1,0 +1,1255 @@
+{
+ "date": "2026-09-02",
+ "corpus": "coral-xyz/sealevel-attacks",
+ "results": [
+  {
+   "scanner": "radar",
+   "status": "measured",
+   "source": "radar-full.json",
+   "mapping": "radar",
+   "classes": 11,
+   "nominal": 11,
+   "real": 11,
+   "findings": 52,
+   "findings_on_fixed_code": 24,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "4-initialization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "8-pda-sharing": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "9-closing-accounts": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    }
+   }
+  },
+  {
+   "scanner": "radar@2026-09-02",
+   "status": "measured",
+   "source": "radar-c1-2026-09-02-post36.json",
+   "mapping": "radar",
+   "classes": 11,
+   "nominal": 11,
+   "real": 11,
+   "findings": 19,
+   "findings_on_fixed_code": 2,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "4-initialization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "8-pda-sharing": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "9-closing-accounts": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    }
+   }
+  },
+  {
+   "scanner": "semgrep",
+   "status": "measured",
+   "source": "semgrep-c1.json",
+   "mapping": "semgrep",
+   "classes": 11,
+   "nominal": 0,
+   "real": 0,
+   "findings": 0,
+   "findings_on_fixed_code": 0,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "semgrep-solana-standard",
+   "status": "measured",
+   "source": "c1-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard",
+   "classes": 11,
+   "nominal": 3,
+   "real": 0,
+   "findings": 48,
+   "findings_on_fixed_code": 25,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 1,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 2,
+     "secure": 4,
+     "recommended": 1,
+     "nominal": true,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "semgrep-solana-standard-wide",
+   "status": "measured",
+   "source": "c1-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard-wide",
+   "classes": 11,
+   "nominal": 3,
+   "real": 0,
+   "findings": 48,
+   "findings_on_fixed_code": 25,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 1,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 2,
+     "secure": 4,
+     "recommended": 1,
+     "nominal": true,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "sol-audit",
+   "status": "measured",
+   "source": "sol-audit.json",
+   "mapping": "sol-audit",
+   "classes": 13,
+   "nominal": 6,
+   "real": 4,
+   "findings": 44,
+   "findings_on_fixed_code": 22,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 2,
+     "secure": 2,
+     "recommended": 3,
+     "nominal": true,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "arithmetic-rounding-drain": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "instruction-introspection": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "sol-audit-v3",
+   "status": "measured",
+   "source": "c1-sol-audit-v3-strict.json",
+   "mapping": "sol-audit",
+   "classes": 13,
+   "nominal": 6,
+   "real": 5,
+   "findings": 34,
+   "findings_on_fixed_code": 12,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "arithmetic-rounding-drain": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "instruction-introspection": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "sol-audit-v3-all",
+   "status": "measured",
+   "source": "c1-sol-audit-v3-all.json",
+   "mapping": "sol-audit",
+   "classes": 13,
+   "nominal": 7,
+   "real": 5,
+   "findings": 55,
+   "findings_on_fixed_code": 25,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 2,
+     "secure": 2,
+     "recommended": 3,
+     "nominal": true,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "arithmetic-rounding-drain": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "instruction-introspection": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "sol-audit-v3-broad",
+   "status": "measured",
+   "source": "c1-sol-audit-v3-broad.json",
+   "mapping": "sol-audit",
+   "classes": 13,
+   "nominal": 6,
+   "real": 5,
+   "findings": 43,
+   "findings_on_fixed_code": 16,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 2,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "arithmetic-rounding-drain": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "instruction-introspection": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "solsec",
+   "status": "measured",
+   "source": "c1-solsec-percase.json",
+   "mapping": "solsec",
+   "classes": 11,
+   "nominal": 0,
+   "real": 0,
+   "findings": 28,
+   "findings_on_fixed_code": 15,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "vaultlint",
+   "status": "measured",
+   "source": "vaultlint.json",
+   "mapping": "vaultlint",
+   "classes": 11,
+   "nominal": 2,
+   "real": 2,
+   "findings": 4,
+   "findings_on_fixed_code": 1,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  },
+  {
+   "scanner": "xray",
+   "status": "measured",
+   "source": "xray-c1-raw.json",
+   "mapping": "xray",
+   "classes": 11,
+   "nominal": 4,
+   "real": 2,
+   "findings": 10,
+   "findings_on_fixed_code": 3,
+   "per_class": {
+    "0-signer-authorization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "1-account-data-matching": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "10-sysvar-address-checking": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "2-owner-checks": {
+     "insecure": 1,
+     "secure": 1,
+     "recommended": 0,
+     "nominal": true,
+     "real": false
+    },
+    "3-type-cosplay": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "4-initialization": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "5-arbitrary-cpi": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "6-duplicate-mutable-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "7-bump-seed-canonicalization": {
+     "insecure": 1,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": true,
+     "real": true
+    },
+    "8-pda-sharing": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    },
+    "9-closing-accounts": {
+     "insecure": 0,
+     "secure": 0,
+     "recommended": 0,
+     "nominal": false,
+     "real": false
+    }
+   }
+  }
+ ],
+ "corpus2": [
+  {
+   "scanner": "radar",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-radar-current.json",
+   "mapping": "radar",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 9,
+   "missed": 7,
+   "no-rule": 8,
+   "unlocated": 2
+  },
+  {
+   "scanner": "semgrep-solana-standard-c2",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard-c2",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 8,
+   "missed": 5,
+   "no-rule": 9,
+   "unlocated": 3
+  },
+  {
+   "scanner": "semgrep-solana-standard-c2-wide",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-semgrep-solana-standard.json",
+   "mapping": "semgrep-solana-standard-c2-wide",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 17,
+   "missed": 14,
+   "unlocated": 3
+  },
+  {
+   "scanner": "sol-audit",
+   "corpus": "corpus2",
+   "status": "partial",
+   "source": "c2-sol-audit.json",
+   "mapping": "sol-audit",
+   "coverage_evidence": "none",
+   "scoreable_denominator": 7,
+   "missed": 6,
+   "unknown": 9,
+   "unlocated": 1,
+   "no-rule": 1,
+   "reason": "9 of 17 cases unresolved: 9 with no run log for c2-sol-audit.json, so 'found nothing' and 'never analysed' cannot be told apart"
+  },
+  {
+   "scanner": "sol-audit-v3",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-sol-audit-v3-strict.json",
+   "mapping": "sol-audit",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 9,
+   "missed": 8,
+   "no-rule": 8,
+   "unlocated": 1
+  },
+  {
+   "scanner": "sol-audit-v3-all",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-sol-audit-v3-all.json",
+   "mapping": "sol-audit",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 9,
+   "missed": 8,
+   "no-rule": 8,
+   "unlocated": 1
+  },
+  {
+   "scanner": "sol-audit-v3-broad",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-sol-audit-v3-broad.json",
+   "mapping": "sol-audit",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 9,
+   "missed": 8,
+   "no-rule": 8,
+   "unlocated": 1
+  },
+  {
+   "scanner": "solsec",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-solsec-percase.json",
+   "mapping": "solsec",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 2,
+   "no-rule": 15,
+   "unlocated": 1,
+   "missed": 1
+  },
+  {
+   "scanner": "vaultlint",
+   "corpus": "corpus2",
+   "status": "measured",
+   "source": "c2-vaultlint-complete.json",
+   "mapping": "vaultlint",
+   "coverage_evidence": "run log",
+   "scoreable_denominator": 2,
+   "no-rule": 15,
+   "missed": 2
+  }
+ ],
+ "changes_since_previous": [
+  "radar@2026-09-02: new to the benchmark"
+ ]
+}

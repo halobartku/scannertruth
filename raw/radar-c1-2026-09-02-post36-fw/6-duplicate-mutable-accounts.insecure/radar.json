@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Duplicate Mutable Accounts",
+        "description": "When there are two or more accounts with mutable data, a check must be in place to ensure mutation of each account is differentiated properly, to avoid unintended data modification of other accounts.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-post36/fw/_staged/6-duplicate-mutable-accounts.insecure.pkg/pkg/src/lib.rs:21:13-20",
+            "/root/st-post36/fw/_staged/6-duplicate-mutable-accounts.insecure.pkg/pkg/src/lib.rs:22:13-20"
+        ]
+    }
+]

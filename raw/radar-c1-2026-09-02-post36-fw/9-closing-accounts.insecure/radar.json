@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Closing Accounts Insecurely",
+        "description": "Closing accounts in Solana requires transferring the lamports remaining in the account. When lamports are zeroed, the Solana runtime eventually closes the account. Improperly setting the account for closure could cause account reinitialization type attacks.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/st-post36/fw/_staged/9-closing-accounts.insecure.pkg/pkg/src/lib.rs:15:59-69"
+        ]
+    }
+]

@@ -82,12 +82,22 @@
    "note": "Re-run per case, per variant, over all 17 built cases on 2026-09-01 against a corpus pinned by digest on both machines first. 34 invocations, 34 ok, zero unavailable, zero stale paths. Superseded c2-radar-complete.json, which was produced before the corpus was rebuilt and had 161 of 238 findings naming files that no longer exist. Both files stay on disk; only this one scores."
   },
   {
+   "row": "radar@2026-09-02",
+   "corpus": "corpus1",
+   "raw": "radar-c1-2026-09-02-post36.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Re-measurement of Auditware/radar main at 67348ee (post-#33/#34/#35/#36/#37) against corpus1 at the pinned commit, promised on radar#32 and delivered 2026-09-02. 35 invocations, 35 ok, zero unavailable, deterministic over two passes. Real recall 11/11 unchanged; findings 52 -> 19; firings on already-fixed variants 24 -> 2 (upper bound). Independently confirms the vendor's own reported figures (2 FPs, 11% noise). Run without a docker daemon via the engine shim documented in ENGINEERING-LOG-2026-09-02: vendor engine code unmodified from the checkout at 67348ee, parity-proven against the docker measurement of 206a469 first (52/52 location rows identical, raw/radar-shim-parity-2026-09-02/).",
+   "invocation": "engine shim raw/radar-shim-parity-2026-09-02: PATH=/root/radar-engine-shim/bin radar scan -p <staged-wrapped-pkg> -f none -o radar.json, framework-run via tools/scanner_spec.py --run radar --corpus corpus1 --corpus-root <pinned sealevel-attacks>/programs --repeat 2"
+  },
+  {
    "row": "radar-24c56f9",
    "corpus": "corpus1",
    "raw": "radar-24c56f9-c1.json",
    "mapping": "radar",
    "envelope": "radar",
-   "note": "Radar at main after Auditware/radar#35 (checkout 24c56f9, api image sha256:f205bf7a...), measured 2026-09-02 on the VPS host through scanner_spec, 35 invocations, 35 ok, --repeat 2 deterministic. A NEW ROW beside the 2026-08-31 one, promised publicly on radar#32. 36 findings, 14 on fixed variants (39%), recall 11/11."
+   "note": "Radar at main after Auditware/radar#35 (checkout 24c56f9, api image ghcr.io/auditware/radar-api@sha256:f205bf7a9af877e1f5426322d1445723362ae72c9ed23f53432fd698e997af7e built from that revision), measured 2026-09-02 00:43-00:49Z on the VPS host with docker through scanner_spec, 35 invocations, 35 ok, --repeat 2 deterministic. A NEW ROW beside the 2026-08-31 one. 36 findings, 14 on fixed variants (39%), recall 11/11. The radar@2026-09-02 row beside it is a later vendor revision (67348ee, after #36 and #37) measured through the engine shim; the two rows differ by revision and by method and both stay.",
+   "invocation": "on the VPS host: git -C /root/.radar checkout 24c56f9; docker compose up -d (images pulled 2026-09-02, digests in raw/radar-c1-2026-09-02-24c56f9/README.txt); python3 tools/scanner_spec.py --run radar --corpus corpus1 --corpus-root /tmp/sealevel-attacks/programs --out raw/radar-24c56f9-c1.json --artefacts raw/radar-c1-2026-09-02-24c56f9 --repeat 2 (script /root/radar-main.sh, log /root/radar-main-2026-09-02.log)"
   },
   {
    "row": "radar-24c56f9",
@@ -95,7 +105,8 @@
    "raw": "c2-radar-24c56f9.json",
    "mapping": "radar",
    "envelope": "radar",
-   "note": "Same build, corpus 2 per case per variant, 34 invocations, 34 ok, --repeat 2 deterministic, 228 findings, zero fix-site detections (7 missed, 8 no-rule, 2 unlocated)."
+   "note": "Same build (24c56f9, docker), corpus 2 per case per variant, 34 invocations, 34 ok, --repeat 2 deterministic, 228 findings, zero fix-site detections (7 missed, 8 no-rule, 2 unlocated).",
+   "invocation": "python3 tools/scanner_spec.py --run radar --corpus corpus2 --out raw/c2-radar-24c56f9.json --artefacts raw/radar-c2-2026-09-02-24c56f9 --repeat 2"
   }
  ]
 }

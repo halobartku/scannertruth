@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Missing Bump Seed Canonicalization",
+        "description": "create_program_address accepts any bump that lands on a valid address, so a caller-supplied bump can derive a second, non-canonical PDA for the same seeds. find_program_address returns the canonical bump and is what a derivation should be checked against.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-post36/fw/_staged/7-bump-seed-canonicalization.insecure.pkg/pkg/src/lib.rs:11:13-19"
+        ]
+    }
+]

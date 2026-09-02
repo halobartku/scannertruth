@@ -32,6 +32,10 @@ CLOCK_BEFORE_MIGRATION_C1 = {
     "semgrep": ("semgrep-c1.json", "semgrep"),
     "semgrep-solana-standard": ("c1-semgrep-solana-standard.json", "semgrep"),
     "semgrep-solana-standard-wide": ("c1-semgrep-solana-standard.json", "semgrep"),
+    # Added 2026-09-02, after the migration: the promised post-#36 re-measurement of radar.
+    # Pre-existing rows above are still compared key by key, so a silent edit of any of
+    # them keeps failing; this row is the deliberate addition, not a drift.
+    "radar@2026-09-02": ("radar-c1-2026-09-02-post36.json", "radar"),
 }
 CLOCK_BEFORE_MIGRATION_C2 = {
     "radar": ("c2-radar-current.json", "radar"),
@@ -51,6 +55,8 @@ CLOCK_BEFORE_MIGRATION_ALIAS = {
     "sol-audit-v3-broad": "sol-audit",
     "sol-audit-v3-all": "sol-audit",
     "semgrep-solana-standard-c2": "semgrep-solana-standard-c2",
+    # Same deliberate 2026-09-02 addition as the C1 literal above.
+    "radar@2026-09-02": "radar",
 }
 
 # A scanner that does not exist, so the framework can be driven end to end on a laptop with no

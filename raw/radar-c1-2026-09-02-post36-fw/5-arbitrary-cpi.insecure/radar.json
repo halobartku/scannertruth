@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/st-post36/fw/_staged/5-arbitrary-cpi.insecure.pkg/pkg/src/lib.rs:10:12-15"
+        ]
+    }
+]
