@@ -197,6 +197,7 @@ docs/
   CLASS-BALANCE.md     generated: class and repository concentration of corpus 2, from the manifest
   ENGINEERING-LOG-*.md our errors, with dates: 21 on 2026-08-31, 20 more on 2026-09-01, 2 on 2026-09-02
   COMMITMENTS.md       three standing promises
+  MANIFESTO.md         nine testable sentences, each with its named breach
   CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
   results/             the measurements themselves
     RESULTS-all.md         current: every scanner, both corpora, the table the front page reads
@@ -267,6 +268,9 @@ summarises. Read it before quoting any number here.
 Three standing promises, made while this project has no users and nobody offering it money: **the
 data is open and free forever, our own scanner stays free and open, and we take no money from anyone
 we measure.** Full text and reasoning in [`docs/COMMITMENTS.md`](docs/COMMITMENTS.md).
+
+The nine sentences the project holds itself to, each with what a breach of it looks like, are in
+[`docs/MANIFESTO.md`](docs/MANIFESTO.md), adopted 2026-09-02.
 
 `docs/PROTOCOL.md` also carries a falsifier: if the pending grant is refused **and** no vendor thread
 receives a technical reply within fourteen days, this has zero confirmed consumers and work stops.

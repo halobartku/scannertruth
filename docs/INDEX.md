@@ -14,6 +14,10 @@ for why a rule that also fires on the fixed code has detected nothing.
 [`../skills/measure-a-scanner/SKILL.md`](../skills/measure-a-scanner/SKILL.md), then
 [`ADAPTERS.md`](ADAPTERS.md) for the declaration a scanner is measured through.
 
+**Both, before publishing anything:** [`MANIFESTO.md`](MANIFESTO.md), nine sentences the project
+holds itself to, each naming what a breach looks like; the three promises behind its third sentence
+are [`COMMITMENTS.md`](COMMITMENTS.md).
+
 **The state of the coverage gate, which both orders must state the same way:**
 `python tools/run_all.py --verify-coverage` **passes**. It went green on 2026-09-01: every live
 measurement on the clock has a per-run log and no case on either corpus is unresolved. It was red
