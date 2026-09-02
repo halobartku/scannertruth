@@ -1,0 +1,60 @@
+COMMAND: radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solido-deposit-reserve-account.secure/radar.json
+EXIT: 0
+WALL_SECONDS: 56.55
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 57 templates
+[i] Scanned 1 file (processor.rs)
+
+[ [94mMedium[0m ] Arbitrary Cross-Program Invocation found at:
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:138:8-23
+
+
+[ [94mMedium[0m ] Invoke Signed Unvalidated Seeds found at:
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:379:9-22
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:444:5-18
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:556:9-22
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:728:5-18
+
+
+[ [92mLow[0m ] Type Cosplay found at:
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:64:44-58
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:143:41-55
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:192:46-60
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:407:41-55
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:499:52-66
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:590:47-61
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:694:45-59
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:760:42-56
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:869:40-54
+
+
+[ [92mLow[0m ] Unchecked Arithmetics found at:
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:56:8-26
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:85:21-39
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:187:8-29
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:402:8-23
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:464:29-51
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:586:8-39
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:673:10-16
+ * /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:680:43-49
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solido-deposit-reserve-account.secure/radar.json
+
+
+STDERR:
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+

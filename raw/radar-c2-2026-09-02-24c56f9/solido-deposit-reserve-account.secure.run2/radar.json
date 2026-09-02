@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:138:8-23"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:379:9-22",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:444:5-18",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:556:9-22",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:728:5-18"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:64:44-58",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:143:41-55",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:192:46-60",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:407:41-55",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:499:52-66",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:590:47-61",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:694:45-59",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:760:42-56",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:869:40-54"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:56:8-26",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:85:21-39",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:187:8-29",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:402:8-23",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:464:29-51",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:586:8-39",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:673:10-16",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg/pkg/src/processor.rs:680:43-49"
+        ]
+    }
+]

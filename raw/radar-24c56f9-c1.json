@@ -1,0 +1,326 @@
+[
+ {
+  "name": "Missing Signer Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/0-signer-authorization/insecure/src/lib.rs:14:3"
+  ]
+ },
+ {
+  "name": "Account Data Matching",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs:12:38"
+  ]
+ },
+ {
+  "name": "Missing Owner Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/1-account-data-matching/insecure/src/lib.rs:18:3"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/1-account-data-matching/recommended/src/lib.rs:19:12"
+  ]
+ },
+ {
+  "name": "Missing Owner Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/1-account-data-matching/secure/src/lib.rs:21:3"
+  ]
+ },
+ {
+  "name": "Unvalidated Sysvar Account",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/10-sysvar-address-checking/insecure/src/lib.rs:17:11"
+  ]
+ },
+ {
+  "name": "Missing Owner Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/2-owner-checks/insecure/src/lib.rs:22:3"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/2-owner-checks/recommended/src/lib.rs:19:12"
+  ]
+ },
+ {
+  "name": "Missing has_one Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/3-type-cosplay/insecure/src/lib.rs:23:3"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/3-type-cosplay/insecure/src/lib.rs:11:26"
+  ]
+ },
+ {
+  "name": "Missing has_one Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/3-type-cosplay/secure/src/lib.rs:26:3"
+  ]
+ },
+ {
+  "name": "Account Reinitialization",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:11:12"
+  ]
+ },
+ {
+  "name": "Missing Owner Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:29:3"
+  ]
+ },
+ {
+  "name": "Missing has_one Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:29:3"
+  ]
+ },
+ {
+  "name": "Type Cosplay",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs:12:30"
+  ]
+ },
+ {
+  "name": "Missing Owner Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs:28:3"
+  ]
+ },
+ {
+  "name": "Missing has_one Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs:28:3"
+  ]
+ },
+ {
+  "name": "Arbitrary Cross-Program Invocation",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs:10:12"
+  ]
+ },
+ {
+  "name": "Missing Signer Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs:29:3"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended/src/lib.rs:17:13"
+  ]
+ },
+ {
+  "name": "Missing Transfer Amount Validation",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/recommended/src/lib.rs:11:16"
+  ]
+ },
+ {
+  "name": "Missing Signer Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/secure/src/lib.rs:32:3"
+  ]
+ },
+ {
+  "name": "Duplicate Mutable Accounts",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:21:13"
+  ]
+ },
+ {
+  "name": "Duplicate Mutable Accounts",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure/src/lib.rs:22:13"
+  ]
+ },
+ {
+  "name": "Missing Bump Seed Canonicalization",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure/src/lib.rs:11:13"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs:21:12"
+  ]
+ },
+ {
+  "name": "Missing Transfer Amount Validation",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs:13:16"
+  ]
+ },
+ {
+  "name": "PDA Sharing",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/insecure/src/lib.rs:13:16"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs:29:12"
+  ]
+ },
+ {
+  "name": "Missing Transfer Amount Validation",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/recommended/src/lib.rs:16:16"
+  ]
+ },
+ {
+  "name": "Missing Token Mint Constraint",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs:24:12"
+  ]
+ },
+ {
+  "name": "Missing Transfer Amount Validation",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/8-pda-sharing/secure/src/lib.rs:16:16"
+  ]
+ },
+ {
+  "name": "Closing Accounts Insecurely",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure/src/lib.rs:15:59"
+  ]
+ },
+ {
+  "name": "Closing Accounts Insecurely",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still/src/lib.rs:18:28"
+  ]
+ },
+ {
+  "name": "Closing Accounts Insecurely",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/9-closing-accounts/insecure-still-still/src/lib.rs:19:28"
+  ]
+ },
+ {
+  "name": "Missing Signer Check",
+  "description": "",
+  "severity": "",
+  "certainty": "",
+  "locations": [
+   "/tmp/sealevel-attacks/programs/9-closing-accounts/recommended/src/lib.rs:14:3"
+  ]
+ }
+]

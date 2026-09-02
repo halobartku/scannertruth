@@ -1,0 +1,342 @@
+[
+ {
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.61,
+  "files_seen": 1,
+  "findings": 4,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/wormhole-sysvar.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/wormhole-sysvar.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/wormhole-sysvar.insecure/stdout.log"
+ },
+ {
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.41,
+  "files_seen": 1,
+  "findings": 4,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/wormhole-sysvar.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/wormhole-sysvar.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/wormhole-sysvar.secure/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 64.48,
+  "files_seen": 1,
+  "findings": 12,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solend-owner-checks.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solend-owner-checks.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/solend-owner-checks.insecure/stdout.log"
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 63.92,
+  "files_seen": 1,
+  "findings": 12,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solend-owner-checks.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solend-owner-checks.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/solend-owner-checks.secure/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 59.92,
+  "files_seen": 2,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-token-lending-rounding.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/spl-token-lending-rounding.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/spl-token-lending-rounding.insecure/stdout.log"
+ },
+ {
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.84,
+  "files_seen": 2,
+  "findings": 3,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-token-lending-rounding.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/spl-token-lending-rounding.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/spl-token-lending-rounding.secure/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.69,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/squads-signer-auth.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/squads-signer-auth.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/squads-signer-auth.insecure/stdout.log"
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.25,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/squads-signer-auth.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/squads-signer-auth.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/squads-signer-auth.secure/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.64,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/squads-account-matching.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/squads-account-matching.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/squads-account-matching.insecure/stdout.log"
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.4,
+  "files_seen": 1,
+  "findings": 6,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/squads-account-matching.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/squads-account-matching.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/squads-account-matching.secure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.52,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/metaplex-token-metadata.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/metaplex-token-metadata.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/metaplex-token-metadata.insecure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.78,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/metaplex-token-metadata.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/metaplex-token-metadata.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/metaplex-token-metadata.secure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.05,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/metaplex-candy-machine.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/metaplex-candy-machine.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/metaplex-candy-machine.insecure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.32,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/metaplex-candy-machine.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/metaplex-candy-machine.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/metaplex-candy-machine.secure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.52,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/metaplex-bubblegum-creator.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/metaplex-bubblegum-creator.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/metaplex-bubblegum-creator.insecure/stdout.log"
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.14,
+  "files_seen": 2,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/metaplex-bubblegum-creator.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/metaplex-bubblegum-creator.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/metaplex-bubblegum-creator.secure/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.97,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/anchor-interface-account.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/anchor-interface-account.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/anchor-interface-account.insecure/stdout.log"
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.9,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/anchor-interface-account.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/anchor-interface-account.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/anchor-interface-account.secure/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.33,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/anchor-program-system.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/anchor-program-system.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/anchor-program-system.insecure/stdout.log"
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.21,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/anchor-program-system.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/anchor-program-system.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/anchor-program-system.secure/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.5,
+  "files_seen": 1,
+  "findings": 22,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solido-deposit-reserve-account.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/solido-deposit-reserve-account.insecure/stdout.log"
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.55,
+  "files_seen": 1,
+  "findings": 22,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-deposit-reserve-account.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solido-deposit-reserve-account.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/solido-deposit-reserve-account.secure/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.22,
+  "files_seen": 1,
+  "findings": 5,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-anker-arbitrary-cpi.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solido-anker-arbitrary-cpi.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/solido-anker-arbitrary-cpi.insecure/stdout.log"
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.21,
+  "files_seen": 1,
+  "findings": 4,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/solido-anker-arbitrary-cpi.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/solido-anker-arbitrary-cpi.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/solido-anker-arbitrary-cpi.secure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 59.71,
+  "files_seen": 1,
+  "findings": 5,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-fee-rounding.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-fee-rounding.insecure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 60.24,
+  "files_seen": 1,
+  "findings": 5,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-fee-rounding.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-fee-rounding.secure/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 57.16,
+  "files_seen": 1,
+  "findings": 19,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/token-2022-confidential-approve-mint.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/token-2022-confidential-approve-mint.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/token-2022-confidential-approve-mint.insecure/stdout.log"
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.53,
+  "files_seen": 1,
+  "findings": 19,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/token-2022-confidential-approve-mint.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/token-2022-confidential-approve-mint.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/token-2022-confidential-approve-mint.secure/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.37,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/squads-recursive-execute.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/squads-recursive-execute.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/squads-recursive-execute.insecure/stdout.log"
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 56.37,
+  "files_seen": 1,
+  "findings": 7,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/squads-recursive-execute.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/squads-recursive-execute.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/squads-recursive-execute.secure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 71.81,
+  "files_seen": 1,
+  "findings": 15,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-mint-decimals.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-mint-decimals.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-mint-decimals.insecure/stdout.log"
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 71.39,
+  "files_seen": 1,
+  "findings": 15,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-mint-decimals.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-mint-decimals.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/spl-stake-pool-mint-decimals.secure/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.22,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/anchor-account-reload-owner.insecure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/anchor-account-reload-owner.insecure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/anchor-account-reload-owner.insecure/stdout.log"
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.11,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/anchor-account-reload-owner.secure.pkg -f none -o /root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/anchor-account-reload-owner.secure/radar.json",
+  "artefact": "raw/radar-c2-2026-09-02-24c56f9/anchor-account-reload-owner.secure/stdout.log"
+ }
+]

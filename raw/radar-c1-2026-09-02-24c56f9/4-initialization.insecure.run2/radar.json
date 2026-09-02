@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Account Reinitialization",
+        "description": "When account initialization is not properly validated against reinitialization attempts, callers of the program may try to reinitialize an existing account to manipulate its data and state.",
+        "severity": "High",
+        "certainty": "High",
+        "locations": [
+            "/root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.insecure.pkg/pkg/src/lib.rs:11:12-22"
+        ]
+    },
+    {
+        "name": "Missing Owner Check",
+        "description": "Deserializing or unpacking a raw account's data without verifying the account is owned by the expected program lets a caller substitute an attacker-controlled account with a compatible layout. The account's owner should be checked against the program ID, or the account should be typed as Anchor's Account<T> which validates it.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.insecure.pkg/pkg/src/lib.rs:29:3-9"
+        ]
+    },
+    {
+        "name": "Missing has_one Constraint",
+        "description": "An account holding an authority Pubkey should be tied to the signer that claims it, either with a has_one constraint or an explicit key comparison. Without one, any signer can act on another account's behalf.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.insecure.pkg/pkg/src/lib.rs:29:3-9"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.insecure.pkg/pkg/src/lib.rs:12:30-44"
+        ]
+    }
+]

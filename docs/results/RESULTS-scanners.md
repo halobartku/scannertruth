@@ -11,7 +11,8 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 | `control-null` (reports nothing) | 0 / 11 | **0 / 11** | 0 | 0 |
 | `sol-audit` v1 (ours, as sold) | 2 / 11 | **0 / 11** | - | 15 |
 | `sol-audit` v2 (ours, repaired) | 6 / 11 | **4 / 11** | - | 23 |
-| **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, not yet re-measured by us) |
+| **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, re-measured below) |
+| **`radar`** (Auditware, main after #35, `24c56f9`, 2026-09-02) | **11 / 11** | **11 / 11** | 36 | 14 (39%, upper bound) |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
 
 Two scanners, two opposite strategies, and the benchmark separates them cleanly. That separation is
@@ -59,6 +60,23 @@ fixed.** The offenders are its generic rules rather than its class detectors:
 > it stays vendor-reported until we re-measure that release as a new row. The mapping stays as
 > pre-registered; the vendor has not commented on it either way (an earlier version of this note
 > said they had confirmed it, which the thread does not support; error 41).
+
+**Re-measured, 2026-09-02, as a new row.** Radar at `main` after #35 (checkout `24c56f9`, api image
+`ghcr.io/auditware/radar-api@sha256:f205bf7a9af877e1f5426322d1445723362ae72c9ed23f53432fd698e997af7e`,
+built from that revision at 2026-09-01T19:45Z; the rules live inside the image, not in the checkout,
+so the image digest is the version) through `tools/scanner_spec.py`, same declaration, same
+pre-registered mapping, `--repeat 2`, deterministic on both corpora. Teaching corpus: **36 findings,
+14 on `secure` or `recommended`, 39%**, recall 11 / 11 nominal and real, unchanged. The vendor's
+own figure of 40% with recall 13/13 is therefore reproduced within rounding (they count their 13
+classes, we count the corpus's 11). What fell: Missing Signer Check 10 to 2, Missing Token Mint
+Constraint 5 to 5, Missing Transfer Amount Validation 3 to 3, Missing has_one Constraint 3 to 2,
+Missing Owner Check 2 to 2, Unvalidated Price Data Account 1 to 0. Real vulnerabilities (corpus 2):
+34 invocations, 34 ok, 228 findings (231 before), **zero detections at a fix site**, 7 missed, 8
+no-rule, 2 unlocated, as before. The 39% is still an upper bound for the reason in the correction
+above. Raw: `raw/radar-24c56f9-c1.json` and `raw/c2-radar-24c56f9.json` with their `.log`,
+`.run2` and `.determinism.json` files, per-invocation artefacts under `raw/radar-c1-2026-09-02-24c56f9/`
+and `raw/radar-c2-2026-09-02-24c56f9/` (each with a README naming the digests). The 2026-08-31 row
+above stays as published; the images it ran on are kept locally as `measured-2026-08-31`.
 
 | Radar rule | findings on fixed code |
 |---|---|

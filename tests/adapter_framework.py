@@ -20,6 +20,8 @@ import tempfile
 # nothing.
 CLOCK_BEFORE_MIGRATION_C1 = {
     "radar": ("radar-full.json", "radar"),
+    # added 2026-09-02: Radar at main after #35, a NEW row beside the old one (radar#32 promise)
+    "radar-24c56f9": ("radar-24c56f9-c1.json", "radar"),
     "vaultlint": ("vaultlint.json", "vaultlint"),
     "sol-audit": ("sol-audit.json", "sol-audit"),
     "xray": ("xray-c1-raw.json", "xray"),
@@ -33,6 +35,7 @@ CLOCK_BEFORE_MIGRATION_C1 = {
 }
 CLOCK_BEFORE_MIGRATION_C2 = {
     "radar": ("c2-radar-current.json", "radar"),
+    "radar-24c56f9": ("c2-radar-24c56f9.json", "radar"),
     "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
     "sol-audit-v3": ("c2-sol-audit-v3-strict.json", "sol-audit"),
@@ -43,6 +46,7 @@ CLOCK_BEFORE_MIGRATION_C2 = {
     "semgrep-solana-standard-c2-wide": ("c2-semgrep-solana-standard.json", "semgrep"),
 }
 CLOCK_BEFORE_MIGRATION_ALIAS = {
+    "radar-24c56f9": "radar",  # added 2026-09-02: the new Radar row scores with the same pre-registered mapping
     "sol-audit-v3": "sol-audit",
     "sol-audit-v3-broad": "sol-audit",
     "sol-audit-v3-all": "sol-audit",

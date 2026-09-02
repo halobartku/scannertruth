@@ -11,14 +11,25 @@
  },
  "run": {
   "engine": "local",
-  "command": ["radar", "scan", "-p", "{mount}", "-f", "none", "-o", "{out}/radar.json"],
+  "command": [
+   "radar",
+   "scan",
+   "-p",
+   "{mount}",
+   "-f",
+   "none",
+   "-o",
+   "{out}/radar.json"
+  ],
   "timeout_seconds": 1800,
   "invocation_evidence": "the 2026-09-01 re-run recorded in tools/legacy/normalise_runs.py and its 34 stdout artefacts under raw/radar-c2-2026-09-01/. radar starts its own containers, so the isolation is radar's rather than ours, which is stated rather than claimed otherwise."
  },
  "layout": "wrapped-pkg",
  "layout_reason": "radar refuses a target whose Cargo.toml sits at the root of the path it is given, answering `No Cargo.toml files found in any subdirectories` while exiting 0 and writing nothing. Every case is therefore staged as <case>.<variant>/pkg/{Cargo.toml,src} and the wrapper prefix is removed from the locations afterwards. Getting this wrong produces a silent zero that looks exactly like a clean miss.",
  "coverage": {
-  "ok_exit_codes": [0],
+  "ok_exit_codes": [
+   0
+  ],
   "evidence": {
    "pattern": "Scanned (\\d+) file",
    "minimum": 1,
@@ -46,7 +57,9 @@
     "description": "An account is deserialised without checking its owner program.",
     "severity": "High",
     "certainty": "Medium",
-    "locations": ["{path}:{line}:8-25"]
+    "locations": [
+     "{path}:{line}:8-25"
+    ]
    }
   ],
   "sample_source": "the shape of raw/c2-radar-current.json, with one finding substituted for the fix site of the synthetic case"
@@ -67,6 +80,22 @@
    "mapping": "radar",
    "envelope": "radar",
    "note": "Re-run per case, per variant, over all 17 built cases on 2026-09-01 against a corpus pinned by digest on both machines first. 34 invocations, 34 ok, zero unavailable, zero stale paths. Superseded c2-radar-complete.json, which was produced before the corpus was rebuilt and had 161 of 238 findings naming files that no longer exist. Both files stay on disk; only this one scores."
+  },
+  {
+   "row": "radar-24c56f9",
+   "corpus": "corpus1",
+   "raw": "radar-24c56f9-c1.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Radar at main after Auditware/radar#35 (checkout 24c56f9, api image sha256:f205bf7a...), measured 2026-09-02 on the VPS host through scanner_spec, 35 invocations, 35 ok, --repeat 2 deterministic. A NEW ROW beside the 2026-08-31 one, promised publicly on radar#32. 36 findings, 14 on fixed variants (39%), recall 11/11."
+  },
+  {
+   "row": "radar-24c56f9",
+   "corpus": "corpus2",
+   "raw": "c2-radar-24c56f9.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Same build, corpus 2 per case per variant, 34 invocations, 34 ok, --repeat 2 deterministic, 228 findings, zero fix-site detections (7 missed, 8 no-rule, 2 unlocated)."
   }
  ]
 }

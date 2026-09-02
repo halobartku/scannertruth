@@ -9,11 +9,12 @@ project has published both mistakes, in both directions, and they are errors 20,
 32 in the engineering log. So every row below says which kind of evidence exists, and the
 weak kinds are named rather than rounded up.
 
-**19 of 20 measurements have a per-run log.**
+**21 of 22 measurements have a per-run log.**
 
 | corpus | scanner | evidence | detail |
 |---|---|---|---|
 | corpus 1 | `radar` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/radar-full.json.log) |
+| corpus 1 | `radar-24c56f9` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/radar-24c56f9-c1.json.log) |
 | corpus 1 | `semgrep` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/semgrep-c1.json.log) |
 | corpus 1 | `semgrep-solana-standard` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-semgrep-solana-standard.json.log) |
 | corpus 1 | `semgrep-solana-standard-wide` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/c1-semgrep-solana-standard.json.log) |
@@ -25,6 +26,7 @@ weak kinds are named rather than rounded up.
 | corpus 1 | `vaultlint` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/vaultlint.json.log) |
 | corpus 1 | `xray` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/xray-c1-raw.json.log) |
 | corpus 2 | `radar` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-radar-current.json.log) |
+| corpus 2 | `radar-24c56f9` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-radar-24c56f9.json.log) |
 | corpus 2 | `semgrep-solana-standard-c2` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-semgrep-solana-standard.json.log) |
 | corpus 2 | `semgrep-solana-standard-c2-wide` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-semgrep-solana-standard.json.log) |
 | corpus 2 | `sol-audit` | findings only | raw/c2-sol-audit.json exists; no run log, so 'found nothing' and 'never analysed' cannot be told apart |

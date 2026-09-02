@@ -1,0 +1,7 @@
+[package]
+name = "token-2022-confidential-approve-mint"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+solana-program = "1.9"

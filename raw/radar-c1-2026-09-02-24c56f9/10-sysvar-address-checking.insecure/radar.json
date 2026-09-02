@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Unvalidated Sysvar Account",
+        "description": "A sysvar passed as a raw AccountInfo or UncheckedAccount is not checked against the sysvar's well-known address, so a caller can substitute an account of their own and control what the instruction reads. Anchor's Sysvar type or an address constraint pins it.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/10-sysvar-address-checking.insecure.pkg/pkg/src/lib.rs:17:11-22"
+        ]
+    }
+]

@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Anchor Admin Without Timelock",
+        "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:482:15-18"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:397:53-59"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:747:14-28",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:754:14-28",
+            "/root/scannertruth/raw/radar-c2-2026-09-02-24c56f9/_staged/spl-stake-pool-fee-rounding.insecure.pkg/pkg/src/state.rs:774:30-44"
+        ]
+    }
+]

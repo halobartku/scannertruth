@@ -1,0 +1,352 @@
+[
+ {
+  "leaf": "0-signer-authorization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.13,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/0-signer-authorization.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/0-signer-authorization.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/0-signer-authorization.insecure/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 50.07,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/0-signer-authorization.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/0-signer-authorization.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/0-signer-authorization.recommended/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.13,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/0-signer-authorization.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/0-signer-authorization.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/0-signer-authorization.secure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.22,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/1-account-data-matching.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.insecure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.88,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/1-account-data-matching.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.recommended/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.91,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/1-account-data-matching.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.secure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.18,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/10-sysvar-address-checking.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/10-sysvar-address-checking.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/10-sysvar-address-checking.insecure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.1,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/10-sysvar-address-checking.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/10-sysvar-address-checking.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/10-sysvar-address-checking.recommended/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 49.97,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/10-sysvar-address-checking.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/10-sysvar-address-checking.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/10-sysvar-address-checking.secure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.2,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/2-owner-checks.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/2-owner-checks.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/2-owner-checks.insecure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.1,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/2-owner-checks.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/2-owner-checks.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/2-owner-checks.recommended/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.9,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/2-owner-checks.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/2-owner-checks.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/2-owner-checks.secure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.93,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/3-type-cosplay.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/3-type-cosplay.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/3-type-cosplay.insecure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.1,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/3-type-cosplay.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/3-type-cosplay.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/3-type-cosplay.recommended/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.5,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/3-type-cosplay.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/3-type-cosplay.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/3-type-cosplay.secure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.81,
+  "files_seen": 1,
+  "findings": 4,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/4-initialization.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/4-initialization.insecure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.7,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/4-initialization.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/4-initialization.recommended/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.06,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/4-initialization.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/4-initialization.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/4-initialization.secure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.29,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/5-arbitrary-cpi.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/5-arbitrary-cpi.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/5-arbitrary-cpi.insecure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.07,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/5-arbitrary-cpi.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/5-arbitrary-cpi.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/5-arbitrary-cpi.recommended/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.05,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/5-arbitrary-cpi.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/5-arbitrary-cpi.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/5-arbitrary-cpi.secure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.92,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/6-duplicate-mutable-accounts.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/6-duplicate-mutable-accounts.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/6-duplicate-mutable-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.93,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/6-duplicate-mutable-accounts.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/6-duplicate-mutable-accounts.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/6-duplicate-mutable-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.29,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/6-duplicate-mutable-accounts.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/6-duplicate-mutable-accounts.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/6-duplicate-mutable-accounts.secure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.98,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/7-bump-seed-canonicalization.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/7-bump-seed-canonicalization.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/7-bump-seed-canonicalization.insecure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.14,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/7-bump-seed-canonicalization.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/7-bump-seed-canonicalization.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/7-bump-seed-canonicalization.recommended/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.08,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/7-bump-seed-canonicalization.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/7-bump-seed-canonicalization.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/7-bump-seed-canonicalization.secure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.56,
+  "files_seen": 1,
+  "findings": 3,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/8-pda-sharing.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/8-pda-sharing.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/8-pda-sharing.insecure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.31,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/8-pda-sharing.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/8-pda-sharing.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/8-pda-sharing.recommended/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.1,
+  "files_seen": 1,
+  "findings": 2,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/8-pda-sharing.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/8-pda-sharing.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/8-pda-sharing.secure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.97,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/9-closing-accounts.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.insecure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 50.06,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/9-closing-accounts.insecure-still.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.insecure-still/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.insecure-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.98,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/9-closing-accounts.insecure-still-still.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.insecure-still-still/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.insecure-still-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.59,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/9-closing-accounts.recommended.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.recommended/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.99,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/9-closing-accounts.secure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.secure/radar.json",
+  "artefact": "raw/radar-c1-2026-09-02-24c56f9/9-closing-accounts.secure/stdout.log"
+ }
+]

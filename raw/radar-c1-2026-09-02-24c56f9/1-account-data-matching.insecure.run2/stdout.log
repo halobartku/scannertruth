@@ -1,0 +1,35 @@
+COMMAND: radar scan -p /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/1-account-data-matching.insecure.pkg -f none -o /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.insecure.run2/radar.json
+EXIT: 0
+WALL_SECONDS: 53.06
+
+STDOUT:
+[i] Cleaning up previous scan results
+[i] Running images.. (if frozen - make sure Docker is available)
+[i] Copying folder from radar container to a shared docker volume
+[i] Language detected: rust
+[i] Framework/Toolchain: Anchor (Solana)
+[i] AST successfully generated for folder
+[i] Scan initiated for folder
+[i] Ran 38 templates
+[i] Scanned 1 file (lib.rs)
+
+[ [92mLow[0m ] Account Data Matching found at:
+ * /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/1-account-data-matching.insecure.pkg/pkg/src/lib.rs:12:38-44
+
+
+[ [92mLow[0m ] Missing Owner Check found at:
+ * /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/_staged/1-account-data-matching.insecure.pkg/pkg/src/lib.rs:18:3-9
+
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/scannertruth/raw/radar-c1-2026-09-02-24c56f9/1-account-data-matching.insecure.run2/radar.json
+
+
+STDERR:
+ Container radar-rabbitmq-1  Running
+ Container postgres  Running
+ Container radar-api  Running
+ Container radar-rabbitmq-1  Waiting
+ Container postgres  Waiting
+ Container postgres  Healthy
+ Container radar-rabbitmq-1  Healthy
+

@@ -497,3 +497,10 @@ therefore charged for being right. Auditware's maintainer showed one on `radar#3
 destination, and Radar flagging it is correct. Every noise figure on every results page is now
 labelled as an upper bound. Fixing the metric needs a per-variant, per-class ground truth the corpus
 does not carry, which is milestone 2 work and is not done. Error 39.
+
+**48. The re-measured Radar row is as in-sample as the first one, and it confirms the vendor's number
+without being independent of the vendor's classes.** The 2026-09-02 row (main after #35) runs on the
+same public teaching corpus the vendor was fixing rules against while reading these files, so its
+11 / 11 says the same thing the first row said. Its 39% noise reproduces the 40% the vendor reported,
+but they count 13 classes of their own and we count the corpus's 11, so agreement within rounding is
+the most the comparison can say. The noise column is still an upper bound (limitation 47).
