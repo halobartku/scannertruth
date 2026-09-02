@@ -128,7 +128,11 @@ def report(findings, label):
     for fn in sorted(os.listdir("mappings")):
         if not fn.endswith(".json"):
             continue
-        mapping = json.load(open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
+        doc = json.load(open(os.path.join("mappings", fn), encoding="utf-8"))
+        if "map" not in doc:
+            # mappings/model-classes.json is a post-hoc adjudication of model answers, not a rule map
+            continue
+        mapping = doc["map"]
         rows = score.score(pairs, mapping)
         nom = sum(1 for r in rows if r[4])
         real = sum(1 for r in rows if r[5])

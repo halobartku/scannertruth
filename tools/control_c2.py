@@ -74,7 +74,11 @@ def score(label, findings_file, cases):
         if not fn.endswith(".json"):
             continue
         scanner = fn[:-5]
-        mapping = json.load(open(os.path.join("mappings", fn), encoding="utf-8"))["map"]
+        doc = json.load(open(os.path.join("mappings", fn), encoding="utf-8"))
+        if "map" not in doc:
+            # mappings/model-classes.json is a post-hoc adjudication of model answers, not a rule map
+            continue
+        mapping = doc["map"]
         tally = {}
         for c in cases:
             d = os.path.join(CORPUS, c["name"])
