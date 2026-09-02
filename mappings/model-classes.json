@@ -37,7 +37,9 @@
         "Missing Sysvar Validation",
         "Missing sysvar check",
         "Missing Sysvar Constraint",
-        "Missing Sysvar Verification"
+        "Missing Sysvar Verification",
+        "Unvalidated sysvar account",
+        "unchecked sysvar account"
       ]
     },
     {
@@ -75,7 +77,8 @@
         "MissingOwnerCheck",
         "unchecked account owner",
         "Missing account owner check",
-        "Missing account ownership check"
+        "Missing account ownership check",
+        "missing owner check / unvalidated account"
       ]
     },
     {
@@ -85,7 +88,8 @@
       "phrases": [
         "missing account validation / authorization check",
         "missing authorization check",
-        "Missing Authority Check"
+        "Missing Authority Check",
+        "insufficient account validation (fake account)"
       ]
     },
     {
@@ -150,7 +154,8 @@
         "Missing authorization / access control (unverified signer)",
         "Missing authorization / signer check (missing multisig membership constraint)",
         "insufficient account validation (program-owner check instead of signer-key check)",
-        "Missing signer check"
+        "Missing signer check",
+        "Missing signer check (signer authorization)"
       ]
     },
     {
@@ -296,7 +301,9 @@
         "Missing account discriminator check (type confusion)",
         "Missing Discriminator Check",
         "type cosplay",
-        "Type Confusion"
+        "Type Confusion",
+        "type cosplay (account type confusion)",
+        "type cosplay / account type confusion"
       ]
     },
     {
@@ -500,7 +507,8 @@
       "reason": "names the class",
       "phrases": [
         "PDA sharing",
-        "PDA Sharing / Authority Confusion"
+        "PDA Sharing / Authority Confusion",
+        "PDA sharing (seed collision)"
       ]
     },
     {
@@ -508,7 +516,50 @@
       "verdict": "no",
       "reason": "names the effect",
       "phrases": [
-        "Missing authority check"
+        "Missing authority check",
+        "Missing Authorization Check"
+      ]
+    },
+    {
+      "real_class": "owner-checks",
+      "verdict": "disputed",
+      "reason": "names the owner check and, beside it, account type confusion, which is a different class (type-cosplay); the owner's rule records a name that fits both as disputed",
+      "phrases": [
+        "account-owner-check / account type confusion"
+      ]
+    },
+    {
+      "real_class": "closing-accounts",
+      "verdict": "disputed",
+      "reason": "names the closure as insecure and the revival it enables, which is the exploit this class is known by, but not the missing step (zeroing the data or the discriminator); the answers' why fields do name it, the class strings do not",
+      "phrases": [
+        "account revival (insecure account closure)",
+        "closed account revival (insecure account close)",
+        "insecure account closure / account revival"
+      ]
+    },
+    {
+      "real_class": "duplicate-mutable-accounts",
+      "verdict": "no",
+      "reason": "wrong mechanism: nothing about the same account being passed twice",
+      "phrases": [
+        "Missing Signer"
+      ]
+    },
+    {
+      "real_class": "pda-sharing",
+      "verdict": "disputed",
+      "reason": "names the vulnerable spot (the program signing with a PDA any pool can reach) without the missing piece (a pool-specific seed), so it fits PDA sharing and a plain unchecked-PDA finding alike",
+      "phrases": [
+        "Arbitrary PDA Signing"
+      ]
+    },
+    {
+      "real_class": "pda-sharing",
+      "verdict": "no",
+      "reason": "generic: does not say which constraint is missing",
+      "phrases": [
+        "Missing Account Constraint"
       ]
     }
   ],
@@ -1348,6 +1399,100 @@
       "reason": "'Missing Signature Verification': wrong mechanism"
     },
     {
+      "dir": "model-glm-5.3-zai-c1-2026-09-02",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "0-signer-authorization",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing signer check (signer authorization)",
+        "missing signer check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing signer check (signer authorization)': names the missing signer or membership check, which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c1-2026-09-02",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "10-sysvar-address-checking",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Unvalidated sysvar account",
+        "unchecked sysvar account",
+        "unvalidated sysvar account"
+      ],
+      "verdict": "counts",
+      "reason": "'Unvalidated sysvar account': names the missing sysvar validation, a clear synonym of the class"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c1-2026-09-02",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "2-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "account-owner-check / account type confusion",
+        "insufficient account validation (fake account)",
+        "missing owner check / unvalidated account"
+      ],
+      "verdict": "counts",
+      "reason": "'missing owner check / unvalidated account': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c1-2026-09-02",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "3-type-cosplay",
+      "real_class": "type-cosplay",
+      "named": [
+        "type cosplay (account type confusion)",
+        "type cosplay / account type confusion"
+      ],
+      "verdict": "counts",
+      "reason": "'type cosplay (account type confusion)': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c1-2026-09-02",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "8-pda-sharing",
+      "real_class": "pda-sharing",
+      "named": [
+        "PDA sharing",
+        "PDA sharing (seed collision)",
+        "pda sharing"
+      ],
+      "verdict": "counts",
+      "reason": "'PDA sharing': names the class"
+    },
+    {
+      "dir": "model-glm-5.3-zai-c1-2026-09-02",
+      "model": "glm-5.3",
+      "provider": "zai",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "9-closing-accounts",
+      "real_class": "closing-accounts",
+      "named": [
+        "account revival (insecure account closure)",
+        "closed account revival (insecure account close)",
+        "insecure account closure / account revival"
+      ],
+      "verdict": "disputed",
+      "reason": "'account revival (insecure account closure)': names the closure as insecure and the revival it enables, which is the exploit this class is known by, but not the missing step (zeroing the data or the discriminator); the answers' why fields do name it, the class strings do not"
+    },
+    {
       "dir": "model-glm-5.3-zai-c2-2026-09-01",
       "model": "glm-5.3",
       "provider": "zai",
@@ -1900,6 +2045,80 @@
       ],
       "verdict": "counts",
       "reason": "'Missing Account Owner Check': names the missing ownership check on the account, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "3-type-cosplay",
+      "real_class": "type-cosplay",
+      "named": [
+        "Type Confusion",
+        "Type Cosplay"
+      ],
+      "verdict": "counts",
+      "reason": "'Type Confusion': names the missing discriminator check or type confusion, the mechanism or its clear synonym"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "5-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI': names the unverified CPI target or the missing owner or program check on it, which is the mechanism"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "6-duplicate-mutable-accounts",
+      "real_class": "duplicate-mutable-accounts",
+      "named": [
+        "Duplicate Mutable Accounts",
+        "Missing Signer"
+      ],
+      "verdict": "counts",
+      "reason": "'Duplicate Mutable Accounts': names the class"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "7-bump-seed-canonicalization",
+      "real_class": "bump-seed-canonicalization",
+      "named": [
+        "Bump Seed Canonicalization"
+      ],
+      "verdict": "counts",
+      "reason": "'Bump Seed Canonicalization': names the class (one with a typo)"
+    },
+    {
+      "dir": "model-qwen-qwen3.5-397b-a17b-or-c1-2026-09-02",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "regime": "allowed",
+      "corpus": "1",
+      "case": "8-pda-sharing",
+      "real_class": "pda-sharing",
+      "named": [
+        "Arbitrary PDA Signing",
+        "Missing Account Constraint",
+        "Missing Authorization Check"
+      ],
+      "verdict": "disputed",
+      "reason": "'Arbitrary PDA Signing': names the vulnerable spot (the program signing with a PDA any pool can reach) without the missing piece (a pool-specific seed), so it fits PDA sharing and a plain unchecked-PDA finding alike"
     },
     {
       "dir": "model-qwen-qwen3.5-397b-a17b-or-c2-2026-09-01",

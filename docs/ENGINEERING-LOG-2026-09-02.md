@@ -124,3 +124,21 @@ The shape is the one this log keeps meeting: a check that lives outside the suit
 run by hand) has no test that says it still runs on the current tree. `test_documented_commands` covers
 documentation; nothing covers `.github/workflows/verify.yml`'s own steps. That gap is the next thing to
 close.
+
+## Error 45. The suite was green on untracked files and red on the same files once they were tracked
+
+**2026-09-02, 13:06 to 13:45 CEST.** The Radar regression pack (`08e375d`) shipped a README that tells
+its reader, standing inside `regression-pack-radar/`, to run `python check.py`. The documentation
+checks take their list of documents from `git ls-files`, so while the pack was untracked the suite ran
+green locally (156 / 0) and the push went out on that. In CI the files were tracked, the README joined
+the list, `check.py` was resolved from the repository root, and `selfcheck` went red on every platform.
+Found by the agent that adjudicated the corpus 1 sweeps, which ran the suite on the committed tree.
+
+**Fixed in `4c2712e`**: the two pack documents leave the root-relative command checks, with the reason
+written where the exclusion is made, and `tests/regression_pack.py` gains the check those documents
+actually need: every script the pack README names must ship inside the pack. Pushed as a hotfix without
+the ten-minute notice; the exception is logged here and on the channel, as with error 44.
+
+The lesson is the mirror image of error 44: a check that reads its inputs from git history gives a
+different answer before and after `git add`. Run the suite after staging, not before, for any change
+that adds a document.
