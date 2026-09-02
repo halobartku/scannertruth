@@ -105,3 +105,22 @@ occurrence is evidence that the rule has not yet taken.
 **One consequence for the front page.** The README carries the error count as a link to this log,
 and the suite derives the count from the log headings and fails when the front page disagrees.
 This entry moves it from 42 to 43; the figure was re-derived by running the suite, not typed.
+
+## Error 44. A file that is not a rule map landed in `mappings/`, and two CI steps read it as one
+
+**2026-09-02, 09:00 to 10:25 CEST.** The adjudication file `mappings/model-classes.json` (error 43's
+companion, the written verdicts on the classes the models named) was committed in `6e8777a`. The test
+suite passed, locally and in CI: its mapping checks were taught to recognise the file. Two steps that run
+only in CI were not: `tools/control_c1.py` and `tools/control_c2.py` iterate every `mappings/*.json`
+and index `["map"]`, so the `selfcheck` job went red on all five platforms with `KeyError: 'map'` and
+stayed red through the next push (`dcbf587`). Found by the local PM script's CI probe, which put
+"CI czerwone" in front of the operator before anyone looked at the badge.
+
+**Fixed in `899a003`**: both controls skip a mapping file without a `map` key and say why. Pushed as a
+hotfix without the ten-minute channel notice adopted that morning; the exception is logged here and on
+the channel.
+
+The shape is the one this log keeps meeting: a check that lives outside the suite (a CI step, a script
+run by hand) has no test that says it still runs on the current tree. `test_documented_commands` covers
+documentation; nothing covers `.github/workflows/verify.yml`'s own steps. That gap is the next thing to
+close.

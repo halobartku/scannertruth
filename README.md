@@ -167,7 +167,7 @@ nothing.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[43 of our own errors](docs/ENGINEERING-LOG-2026-09-02.md), with dates**, including a headline we
+- **[44 of our own errors](docs/ENGINEERING-LOG-2026-09-02.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.
