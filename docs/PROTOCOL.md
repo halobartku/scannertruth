@@ -253,9 +253,10 @@ it; the Claude Code harness does not expose it, and that row says so.
 **Reasoning is a regime, recorded per line, never mixed in one row.** Two regimes exist:
 `suppressed` (the provider was asked not to reason and given a 400-token belt; the 2026-09-01 rows)
 and `allowed` or `requested` (the owner's rule since 2026-09-02: a model that can think, thinks;
-ceiling 128,000 tokens, falling back to the model's own maximum where a provider refuses that
-value). Every line records `reasoning`, `max_tokens` and `thinking_chars`, and a line that reasoned
-despite a request not to is counted, not discarded. Rows from different regimes are different rows.
+no ceiling by default since 2026-09-02, the model's own maximum; the 128,000 rows are labelled on
+the line). Every line records `reasoning`, `max_tokens`, `ceiling` and `thinking_chars`, and a
+line that reasoned despite a request not to is counted, not discarded. Rows from different regimes
+are different rows.
 
 **Provider is part of the row.** The same model through ollama, OpenRouter, the Z.ai coding plan or
 the Claude Code subscription harness is a different measurement, because context, effort defaults
