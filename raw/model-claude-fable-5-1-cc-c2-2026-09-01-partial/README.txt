@@ -1,0 +1,1 @@
+﻿PARTIAL, effort high. Stopped 2026-09-02 ~01:00 CEST when the owner set Claude Code effort to max. Rows are valid effort-high measurements of the cases they cover; not scored as a sweep. Re-run at effort max lives in the directory dated 2026-09-02.

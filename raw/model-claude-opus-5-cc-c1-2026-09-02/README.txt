@@ -1,0 +1,1 @@
+ALL LINES ARE SUBSCRIPTION-LIMIT ERRORS. Started after the Claude subscription usage window was exhausted by the corpus-2 sweeps at effort max (about 03:15 CEST 2026-09-02); every call returned the limit message and no verdict. Not a measurement; kept because it happened. Re-run once the window resets.

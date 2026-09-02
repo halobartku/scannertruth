@@ -1,0 +1,1 @@
+PARTIAL COVERAGE. 44 valid answers at effort max, then the subscription window was exhausted (about 03:15 CEST) and the remaining calls returned the limit message (vulnerable=null). Not a full sweep; the valid part is a measurement of the cases it covers.
