@@ -96,9 +96,14 @@ def _documented_command_files():
     correcting a command in one would be rewriting history rather than fixing a document.
 
     Same list as `_publication_documents`, and taken from the same place, so a document cannot be
-    live for one check and invisible to the other.
+    live for one check and invisible to the other, with one exception: the regression pack. Its
+    README is read by a vendor standing inside `regression-pack-radar/`, so `python check.py` is
+    the correct command there and wrong from the repository root. `tests/regression_pack.py`
+    checks that every script that README names exists inside the pack, so the promise is still
+    tested, from the directory the reader is actually told to stand in.
     """
-    return _publication_documents()
+    return [d for d in _publication_documents()
+            if not (d.startswith("regression-pack-radar/") or d.startswith("tools/pack/"))]
 
 
 def _publication_documents():

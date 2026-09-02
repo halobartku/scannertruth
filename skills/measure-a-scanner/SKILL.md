@@ -18,7 +18,7 @@ number is in `ENGINEERING-LOG-2026-08-31.md` (errors 1 to 21) or `ENGINEERING-LO
 ## Before anything: prove the harness works
 
 ```bash
-python test_all.py                          # 156 checks, mutation-verified; expect "156 passed, 0 failed"
+python test_all.py                          # 157 checks, mutation-verified; expect "157 passed, 0 failed"
 python tools/scanner_spec.py --demo         # the adapter framework's own checks
 python tools/scanner_spec.py --self-check   # every declaration's positive control
 ```

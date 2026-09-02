@@ -79,3 +79,13 @@ def test_regression_pack_readme_offers_nothing():
     text = io.open(os.path.join(PACK, "README.md"), encoding="utf-8").read().lower()
     for word in ("price", "pricing", "$", "usd", "consult", "hire", "sponsor", "subscribe", "buy"):
         assert word not in text, f"vendor-thread rule: README must not contain {word!r}"
+
+
+def test_regression_pack_readme_names_only_scripts_that_ship_in_the_pack():
+    """The README is read from inside the pack, so its commands resolve there, not from the repo root."""
+    import re
+    text = io.open(os.path.join(PACK, "README.md"), encoding="utf-8").read()
+    named = set(re.findall(r"(?:python3?\s+|\./)([\w./-]+\.(?:py|sh))", text))
+    assert named, "README names no script at all"
+    missing = sorted(n for n in named if not os.path.exists(os.path.join(PACK, n)))
+    assert not missing, f"pack README names scripts that are not in the pack: {missing}"
