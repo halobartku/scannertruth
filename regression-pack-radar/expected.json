@@ -1,0 +1,616 @@
+{
+ "scanner": "radar",
+ "reference_revision": "24c56f9 (Auditware/radar main after #35, api image sha256:f205bf7a9af8..., 2026-09-02)",
+ "reference_run": "raw/c2-radar-24c56f9.json",
+ "verdicts": "detected | unlocated | missed | no-rule | unknown, defined in score2.py",
+ "cases": [
+  {
+   "id": "wormhole-sysvar",
+   "class": "sysvar-address-checking",
+   "mapped_rules": [
+    "Unvalidated Sysvar Account"
+   ],
+   "fix_sites": {
+    "src/verify_signature.rs": [
+     4,
+     5,
+     6,
+     13,
+     92,
+     93,
+     94,
+     101,
+     103
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "wormhole-foundation/wormhole",
+    "fix_commit": "7edbbd3677ee6ca681be8722a607bc576a3912c8",
+    "parent_commit": "79ab522f802ccc5ba34278d3c648fa62e06f4f1c",
+    "source": "https://rekt.news/wormhole-rekt/",
+    "files": [
+     "solana/bridge/program/src/api/verify_signature.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "Instructions sysvar read without verifying the account address; fix switches to the _checked variants.",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "solend-owner-checks",
+   "class": "owner-checks",
+   "mapped_rules": [
+    "Missing Owner Check"
+   ],
+   "fix_sites": {
+    "src/processor.rs": [
+     1799
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "solendprotocol/solana-program-library",
+    "fix_commit": "4c2d5c10e2240fd79398dbad586aa73fd9077f0f",
+    "parent_commit": "132d74cf171dac66f896c4009ad6836f8c0b3799",
+    "source": "Kudelski audit, token-lending/audit/solend-audit-v1.0.pdf, finding KS-SOLEND-F-00",
+    "files": [
+     "token-lending/program/src/processor.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "spl-token-lending-rounding",
+   "class": "arithmetic-rounding-drain",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/rate.rs": [
+     54,
+     55,
+     56,
+     57,
+     58,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79,
+     80,
+     81,
+     82
+    ],
+    "src/reserve.rs": [
+     556,
+     557,
+     558,
+     571,
+     665,
+     667,
+     681,
+     682,
+     687,
+     688
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "solana-labs/solana-program-library",
+    "fix_commit": "c2b287788b98b74dcec7436db107d66e6da91295",
+    "parent_commit": "c24bc966f133fbac5c789f7fb2841e47764ee0f2",
+    "source": "https://neodyme.io/en/blog/lending_disclosure",
+    "files": [
+     "token-lending/program/src/math/rate.rs",
+     "token-lending/program/src/state/reserve.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "Rate::try_round_u64 rounded half-up, and CollateralExchangeRate::collateral_to_liquidity and liquidity_to_collateral both used it. Converting between collateral and liquidity therefore rounded in the depositor's favour, so an amount chosen to sit just above a half-unit boundary came back worth more than it went in, and the difference was paid out of the reserve. Repeated, that drains the pool one rounding unit at a time. The fix floors both conversions with try_floor_u64, so rounding always favours the protocol, removes try_round_u64 from Rate entirely, and applies the minimum borrow fee in Decimal before rounding rather than after.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'arithmetic-rounding-drain'"
+   }
+  },
+  {
+   "id": "squads-signer-auth",
+   "class": "signer-authorization",
+   "mapped_rules": [
+    "Missing Signer Check"
+   ],
+   "fix_sites": {
+    "src/lib.rs": [
+     598
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "Squads-Protocol/squads-mpl",
+    "fix_commit": "4b5c0e9c7d043b27c4a89bb8ab0bbe743fef8f27",
+    "parent_commit": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+    "source": "Bramah Systems, Squads_V3_Audit_Bramah.pdf in repo",
+    "files": [
+     "programs/squads-mpl/src/lib.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "squads-account-matching",
+   "class": "account-data-matching",
+   "mapped_rules": [
+    "Account Data Matching"
+   ],
+   "fix_sites": {
+    "src/lib.rs": [
+     309,
+     311,
+     557,
+     601,
+     602,
+     603,
+     604,
+     605,
+     606,
+     623,
+     624,
+     625,
+     626,
+     627,
+     628
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "Squads-Protocol/squads-mpl",
+    "fix_commit": "352673d96c06d3c9450b9f3b20ed994aad74e4be",
+    "parent_commit": "336bdbd887bb5566fae4db9dcb05347f73961877",
+    "source": "Bramah Systems, same report",
+    "files": [
+     "programs/squads-mpl/src/lib.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "metaplex-token-metadata",
+   "class": "account-data-matching",
+   "mapped_rules": [
+    "Account Data Matching"
+   ],
+   "fix_sites": {
+    "src/transfer.rs": [
+     186,
+     249,
+     250,
+     251,
+     252,
+     253,
+     254,
+     255,
+     256,
+     257,
+     258,
+     259,
+     260
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "metaplex-foundation/metaplex-program-library",
+    "fix_commit": "7f163a1777d2540af92d7cb5cf89ea0393094619",
+    "parent_commit": "b8735d98ad592ea5847631435ceff5d9b2881a01",
+    "source": "GHSA-5233-j5mj-qxww",
+    "files": [
+     "token-metadata/program/src/processor/metadata/transfer.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "",
+   "reference": {
+    "verdict": "unlocated",
+    "reason": "mapped rule fires in the file but not at the fix site"
+   }
+  },
+  {
+   "id": "metaplex-candy-machine",
+   "class": "instruction-introspection",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/set_collection_during_mint.rs": [
+     43
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "metaplex-foundation/metaplex-program-library",
+    "fix_commit": "e6b3aff603ac06236bf77c2ec21ead93c6836dce",
+    "parent_commit": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+    "source": "GHSA-9v25-r5q2-2p6w",
+    "files": [
+     "candy-machine/program/src/processor/collection/set_collection_during_mint.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'instruction-introspection'"
+   }
+  },
+  {
+   "id": "metaplex-bubblegum-creator",
+   "class": "signer-authorization",
+   "mapped_rules": [
+    "Missing Signer Check"
+   ],
+   "fix_sites": {
+    "src/metadata.rs": [
+     8,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     126,
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "metaplex-foundation/metaplex-program-library",
+    "fix_commit": "c18591a7ce9bb561940cb94df4b7c35ef9cc0f57",
+    "parent_commit": "ec23ef776f183d5b8aa0697eef07db7ecf5f4658",
+    "source": "GHSA-8r76-fr72-j32w",
+    "files": [
+     "token-metadata/program/src/utils/metadata.rs",
+     "token-metadata/program/src/utils/compression.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "anchor-interface-account",
+   "class": "type-cosplay",
+   "mapped_rules": [
+    "Type Cosplay"
+   ],
+   "fix_sites": {
+    "src/interface_account.rs": [
+     4,
+     11,
+     183,
+     184,
+     185,
+     186,
+     187,
+     188,
+     189,
+     190,
+     191,
+     192,
+     193,
+     194,
+     195,
+     196,
+     197,
+     198,
+     199,
+     200,
+     201,
+     202,
+     203,
+     204,
+     205,
+     206,
+     207,
+     208,
+     237,
+     238,
+     239,
+     240,
+     241,
+     244,
+     245,
+     246,
+     247,
+     248,
+     249,
+     250,
+     251,
+     252,
+     253,
+     254,
+     255,
+     256,
+     257,
+     258,
+     267
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "otter-sec/anchor",
+    "fix_commit": "26ef36968a62e28a1f028e7adae4806af30c747d",
+    "parent_commit": "6374139ba383d22a75cfacfdabd9506f4d390663",
+    "source": "RUSTSEC-2026-0146, GHSA-429q-fhh4-r6hj",
+    "files": [
+     "lang/src/accounts/interface_account.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "A vulnerability in the framework itself rather than in a program built with it.",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "anchor-program-system",
+   "class": "program-account-validation",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/program.rs": [
+     150,
+     152,
+     153,
+     154,
+     155,
+     158,
+     183,
+     222,
+     223,
+     224,
+     225,
+     226,
+     227,
+     228,
+     229,
+     230
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "coral-xyz/anchor",
+    "fix_commit": "3eb1fb0427d4fed0e944b627aef76db651a93aab",
+    "parent_commit": "415a16b57e7a7fee093a38dc4f2588b020324242",
+    "source": "GHSA-c6rc-8jpp-2fgc, CVE-2026-45137, RUSTSEC-2026-0144",
+    "files": [
+     "lang/src/accounts/program.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "Program<'info, System> skipped its own program-id check. The untyped Program<'info, ()> shorthand was implemented by giving () an Id of Pubkey::default(), used as a sentinel meaning 'do not check the id', and Pubkey::default() is the System program's own address. System::id() therefore collided with the sentinel, so any executable account passed in that slot was accepted as the System program. The fix deletes the sentinel and gives Program<'info, ()> its own TryFrom that skips the key check by construction, so the typed path always compares the key.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'program-account-validation'"
+   }
+  },
+  {
+   "id": "solido-deposit-reserve-account",
+   "class": "pda-derived-address-validation",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/processor.rs": [
+     151
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "chorusone/solido",
+    "fix_commit": "97fafb2bbcf5d1179da887f36bac0b2916b988fe",
+    "parent_commit": "f050f316ebf2c075635ffec9ea2162b6362ed2e2",
+    "source": "Neodyme, Security Audit: Lido on Solana, 2021, finding \"Attackers Can Mint Unlimited stSOL due to Missing Reserve Account Check (Critical)\". PDF committed in the repository at audit/2021-08-03-neodyme.pdf. Also https://github.com/ChorusOne/solido/pull/383",
+    "files": [
+     "program/src/processor.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "process_deposit transferred the user's SOL to whatever account occupied the reserve_account slot and minted stSOL in proportion, without ever checking that the slot held the real reserve. The fix adds one line that re-derives the reserve program-derived address from the program id and the Solido instance address and rejects any account whose key does not match.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'pda-derived-address-validation'"
+   }
+  },
+  {
+   "id": "solido-anker-arbitrary-cpi",
+   "class": "arbitrary-cpi",
+   "mapped_rules": [
+    "Arbitrary Cross-Program Invocation"
+   ],
+   "fix_sites": {
+    "src/state.rs": [
+     300,
+     302,
+     306,
+     413
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "chorusone/solido",
+    "fix_commit": "676d6bee310b13c39b3c8e1adc6a26a4db2f8482",
+    "parent_commit": "b1257e44fc6bda7bbf6096b2d38e33fa3367af63",
+    "source": "Neodyme, Security Audit: Anker on Solana, 2022, finding \"Missing Token Program validation in SellRewards (Critical; Resolved)\". PDF committed in the repository at audit/2022-04-06-neodyme.pdf. Also https://github.com/ChorusOne/solido/pull/512",
+    "files": [
+     "anker/src/state.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "SellRewards is permissionless and built an spl_token_swap swap instruction whose program id came straight from a caller-supplied account, then invoke_signed it with the Anker reserve authority PDA seeds, handing an attacker's program a signature over the reserve. The fix does not hardcode a program id, which would break multi-cluster testing; it requires that the program about to be invoked is the owner of the swap-pool state account, and the swap-pool address is stored in Anker's state and changeable only by the manager.",
+   "reference": {
+    "verdict": "missed"
+   }
+  },
+  {
+   "id": "spl-stake-pool-fee-rounding",
+   "class": "arithmetic-rounding-drain",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/state.rs": [
+     945,
+     946,
+     947
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "solana-labs/solana-program-library",
+    "fix_commit": "a17fffe70d6cc13742abfbc4a4a375b087580bc1",
+    "parent_commit": "0d6832eddb0bf49706a9173521c8d09bfc2a52bc",
+    "source": "https://github.com/solana-labs/solana-program-library/pull/6153, Halborn finding HAL-01, named in the commit title. The Halborn report itself was not obtained, so the description of HAL-01 here is the commit title plus our own reading of the code, not the auditor's prose.",
+    "files": [
+     "stake-pool/program/src/state.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "Fee::apply computed amt * numerator / denominator with integer division, which floors. Any operation small enough that amt * numerator was below the denominator paid exactly zero fee, so splitting an operation into many small ones avoided the fee entirely. The fix switches to ceiling division so any non-zero chargeable amount pays at least one.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'arithmetic-rounding-drain'"
+   }
+  },
+  {
+   "id": "token-2022-confidential-approve-mint",
+   "class": "account-data-matching",
+   "mapped_rules": [
+    "Account Data Matching"
+   ],
+   "fix_sites": {
+    "src/processor.rs": [
+     174
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "solana-labs/solana-program-library",
+    "fix_commit": "b41094566e04c5b3e93f28cb92dd5d09ae9becc5",
+    "parent_commit": "6ed80b3a353042df7a60353fa38d9460628b40de",
+    "source": "https://github.com/solana-labs/solana-program-library/pull/5901, OtterSec finding OS-SPL-ADV-03, named in the commit title.",
+    "files": [
+     "token/program-2022/src/extension/confidential_transfer/processor.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "process_approve_account for the confidential-transfer extension unpacked a token account and, separately, a mint account, then applied the mint's confidential-transfer authority to the token account without establishing that the two belonged together. An attacker could present a token account for one mint alongside a mint they control and self-approve. The fix compares the mint account's key against the token account's own mint before any of the mint's configuration is read.",
+   "reference": {
+    "verdict": "unlocated",
+    "reason": "fires at the fix site but also on the fixed variant"
+   }
+  },
+  {
+   "id": "squads-recursive-execute",
+   "class": "cpi-recursion",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/lib.rs": [
+     407
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "Squads-Protocol/squads-mpl",
+    "fix_commit": "09470403a684b8d4d83928a46dd76d2173de5c21",
+    "parent_commit": "7ef3ed2bab2f68fb49d5db327854b2fccc092bb0",
+    "source": "Neodyme, Security Audit: Squads MPL Multisig, finding \"MPL3: Bypass of OS-SQD-SUG-01 fix via recursion\". PDF committed in the repository as Squads_V3_MPL_Audit_Neodyme.pdf.",
+    "files": [
+     "programs/squads-mpl/src/lib.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "MPL refuses to sign for a foreign program under the special authority index 0 by comparing ix.program_id against its own program id. The bypass is to aim the instruction at MPL itself: a nested execute_transaction passes that check trivially, and Solana carries the parent's PDA signatures into the child, so a third level reaches an attacker contract holding both. The fix blacklists the execute_transaction and execute_instruction discriminators from being the target of a 0-authority execution.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'cpi-recursion'"
+   }
+  },
+  {
+   "id": "spl-stake-pool-mint-decimals",
+   "class": "mint-configuration-validation",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/processor.rs": [
+     42,
+     829,
+     4009
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "solana-labs/solana-program-library",
+    "fix_commit": "c9edc4dbcc1981c27f94e786dc9ba15bb7174549",
+    "parent_commit": "7f2f11507e4a26d9bfbacba650334b7d86fa1514",
+    "source": "https://github.com/solana-labs/solana-program-library/pull/5085, Halborn finding HAL-03, named in the commit title. The Halborn report itself was not obtained, so the description of HAL-03 here is the commit title plus our own reading of the code, not the auditor's prose.",
+    "files": [
+     "stake-pool/program/src/processor.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "The stake pool mints pool tokens against SOL at an exchange rate that assumes both sides use 9 decimals, because that is native_mint::DECIMALS. A pool initialised with a mint of, say, 6 decimals leaves every conversion between lamports and pool tokens off by a factor of a thousand. The fix rejects a non-9-decimal mint at initialisation, which is the only place it can be fixed because the mint cannot be changed afterwards.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'mint-configuration-validation'"
+   }
+  },
+  {
+   "id": "anchor-account-reload-owner",
+   "class": "owner-check-after-cpi",
+   "mapped_rules": [],
+   "fix_sites": {
+    "src/account.rs": [
+     264,
+     265,
+     266,
+     267,
+     268,
+     269,
+     270,
+     271,
+     301
+    ]
+   },
+   "tolerance_lines": 3,
+   "provenance": {
+    "repo": "coral-xyz/anchor",
+    "fix_commit": "3a799e2d32bd708f0b280c60baecac76418248b1",
+    "parent_commit": "2da41204735c944686a39bd18a50a0ff173425bb",
+    "source": "https://github.com/coral-xyz/anchor/pull/3837, \"feat(account): Check Owner on Reload\". No advisory and no audit finding exist for it; the label rests on the pull request title, the added doc comment and our own reading of the diff. First tag containing it: v1.0.0.",
+    "files": [
+     "lang/src/accounts/account.rs"
+    ],
+    "license": "the upstream repository's own; these are unmodified excerpts of public source"
+   },
+   "note": "Account<T>'s safety story is that the owner is checked once during account validation. reload() exists precisely to re-read an account after a CPI, which is exactly the window in which ownership can have changed, so re-deserialising the bytes without re-checking the owner leaves a program trusting T-shaped data in an account now owned by somebody else. The fix moves reload() into the T: Owner impl block and re-runs the owner check inside it.",
+   "reference": {
+    "verdict": "no-rule",
+    "reason": "scanner has no rule mapped to class 'owner-check-after-cpi'"
+   }
+  }
+ ]
+}

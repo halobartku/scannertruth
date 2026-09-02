@@ -1,0 +1,72 @@
+{
+ "cases": [
+  {
+   "name": "wormhole-sysvar",
+   "class": "sysvar-address-checking"
+  },
+  {
+   "name": "solend-owner-checks",
+   "class": "owner-checks"
+  },
+  {
+   "name": "spl-token-lending-rounding",
+   "class": "arithmetic-rounding-drain"
+  },
+  {
+   "name": "squads-signer-auth",
+   "class": "signer-authorization"
+  },
+  {
+   "name": "squads-account-matching",
+   "class": "account-data-matching"
+  },
+  {
+   "name": "metaplex-token-metadata",
+   "class": "account-data-matching"
+  },
+  {
+   "name": "metaplex-candy-machine",
+   "class": "instruction-introspection"
+  },
+  {
+   "name": "metaplex-bubblegum-creator",
+   "class": "signer-authorization"
+  },
+  {
+   "name": "anchor-interface-account",
+   "class": "type-cosplay"
+  },
+  {
+   "name": "anchor-program-system",
+   "class": "program-account-validation"
+  },
+  {
+   "name": "solido-deposit-reserve-account",
+   "class": "pda-derived-address-validation"
+  },
+  {
+   "name": "solido-anker-arbitrary-cpi",
+   "class": "arbitrary-cpi"
+  },
+  {
+   "name": "spl-stake-pool-fee-rounding",
+   "class": "arithmetic-rounding-drain"
+  },
+  {
+   "name": "token-2022-confidential-approve-mint",
+   "class": "account-data-matching"
+  },
+  {
+   "name": "squads-recursive-execute",
+   "class": "cpi-recursion"
+  },
+  {
+   "name": "spl-stake-pool-mint-decimals",
+   "class": "mint-configuration-validation"
+  },
+  {
+   "name": "anchor-account-reload-owner",
+   "class": "owner-check-after-cpi"
+  }
+ ]
+}
