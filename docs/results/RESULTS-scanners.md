@@ -1,4 +1,4 @@
-# RESULTS: multiple scanners, 2026-08-31
+# RESULTS: multiple scanners, 2026-08-31, Radar re-measured 2026-09-02
 
 First run of this benchmark against a scanner that is not ours. Same corpus, same protocol, same
 scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/radar.json`.

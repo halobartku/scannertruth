@@ -50,7 +50,7 @@ limitations that follow are the long form.
   corpus is public and at least two measured tools cite it in their own rules. A holdout is the only
   real answer; round 1 is sealed but gives timestamp integrity, not concealment.
 - **Every third-party number is provisional.** Four right-of-reply threads are open with the vendors
-  we measured and none has answered. Our X-Ray mapping was wrong in a way only its authors could
+  we measured; Auditware answered on 2026-09-01 (limitation 47), the other three have not. Our X-Ray mapping was wrong in a way only its authors could
   have settled quickly, so this is not a formality.
 - **The mappings published on 2026-08-31 are not pre-registered in any way a stranger can check.**
   We claimed they were committed before their runs. The history says each one first appears in the

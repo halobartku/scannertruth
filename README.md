@@ -4,7 +4,7 @@
 
 **An independent, repeatable measurement of Solana security scanners.**
 
-Seven scanners, run against real vulnerabilities taken from their maintainers' own fix commits.
+Seven third-party scanners and our own, run against real vulnerabilities taken from their maintainers' own fix commits.
 **Not one detection stands under its own pre-registered mapping.** The tool that scores 11 out of
 11 on the corpus the whole field measures against scores **0 out of 16** here.
 
@@ -78,7 +78,7 @@ in working software. Every number here rests on that distinction.
 
 ## The result
 
-Six scanners and two calibration controls, one protocol, measured the same day. Full tables in
+Eight scanners (seven third-party and ours) and two calibration controls, one protocol. Full tables in
 [`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md).
 
 | Scanner | Teaching corpus (2022, public) | Real vulnerabilities |
@@ -125,8 +125,9 @@ So the interesting question is what happens off it, and answering that required 
 did not exist. Building it is the work:
 
 - **Corpus 2**: real production vulnerabilities, each taken from the maintainers' own fix commit and
-  its parent, so the answer key is somebody else's. 17 valid cases, 17 built, 8 measured, which is
-  why the table above reads out of eight. Class and repository concentration is recomputed from the
+  its parent, so the answer key is somebody else's. 17 valid cases, 17 built, 8 measured by every
+  row including the oldest, so the 2026-08-31 rows read out of eight; every row re-run since reads
+  out of 16 or 17. Class and repository concentration is recomputed from the
   manifest in [`docs/CLASS-BALANCE.md`](docs/CLASS-BALANCE.md) rather than described in prose.
 - **Real crates**: the same bugs as whole projects rather than extracted files, built from each
   project's own `Cargo.toml` and sibling modules. This tests the packaging objection rather than
@@ -205,7 +206,7 @@ docs/
     RESULTS-realcrates.md  current: the packaging objection tested on whole crates
     RESULTS-models.md      current: model-backed auditors, three runs per variant
     RESULTS-wormhole.md    frozen: the first out-of-sample case
-    RESULTS-scanners.md    superseded by RESULTS-all.md: the first multi-scanner run
+    RESULTS-scanners.md    scanner rows incl. the Radar re-measurements of 2026-09-02 (noise and method)
     RESULTS-v2.md          frozen: run 2, sol-audit v2
     RESULTS.md             frozen: run 1, sol-audit v1; verify.py re-derives it
 
