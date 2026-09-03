@@ -24,7 +24,17 @@ def _git(args):
 
 
 def _tracked(glob):
-    return [f for f in _git(["ls-files", "--", glob]).splitlines() if f.strip()]
+    """Tracked paths matching a pathspec, each one once.
+
+    dict.fromkeys is load-bearing. During a merge `git ls-files` prints one line per index
+    STAGE, so every conflicted path arrives two or three times and every count derived from
+    this function silently inflates. On 2026-09-03 that put "3,870 lines of documentation
+    across 20 files" into ROADMAP - the true figures were 2,466 and 14 - and the numbers were
+    written from a suite run taken mid-merge. A derivation that depends on when it is run is
+    not a derivation.
+    """
+    seen = [f for f in _git(["ls-files", "--", glob]).splitlines() if f.strip()]
+    return list(dict.fromkeys(seen))
 
 
 def _tracked_flat(directory, suffix):
