@@ -183,6 +183,8 @@ README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
 test_all.py            158 checks, mutation-verified. Run this first
 tests/                 the checks themselves, one module per concern; test_all.py imports them all
+tools/assert_coverage.py  runs the suite under trace and lists assertions that never execute:
+                       269 of 270 do, and the one that does not is an idle else branch
 
 docs/
   INDEX.md             the map: every script and who calls it, generated files, raw/ names, results pages
