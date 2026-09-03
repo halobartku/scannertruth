@@ -60,6 +60,7 @@ from tests.two_logs_one_run import *
 from tests.adapter_framework import *
 from tests.regression_pack import *
 from tests.real_crate_run import *
+from tests.ci_steps import *
 
 
 def test_the_advertised_check_count_matches_the_suite():
