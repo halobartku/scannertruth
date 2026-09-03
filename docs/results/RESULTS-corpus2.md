@@ -110,6 +110,35 @@ choose.
 
 That gap is the entire argument for this corpus existing, and it is larger than we expected.
 
+## Radar re-measured on corpus 2, 2026-09-04, at `fa81c25` (post-#36)
+
+> New row beside the old one, nothing overwritten. Same corpus commit, same pre-registered mapping
+> (`mappings/radar.json`, confirmed by the vendor in
+> [`radar#32`](https://github.com/Auditware/radar/issues/32) comment 5523410629), same engine shim
+> and procedure as the `67348ee` row of 2026-09-02. Raw:
+> `raw/c2-radar-fa81c25.json` (+ `.run2`, `.log`, `.determinism.json`), per-invocation artefacts
+> under `raw/radar-c2-2026-09-04-fa81c25/` with a README naming the revision.
+
+| Radar revision | detected | missed | no-rule | unlocated |
+|---|---|---|---|---|
+| `24c56f9` (post-#35, 2026-09-02, docker) | 0 | 7 | 8 | 2 |
+| `fa81c25` (post-#36 + docs/skill commits, 2026-09-04, engine shim) | **1** | **6** | 8 | 2 |
+
+**The one new detection is `wormhole-sysvar`, and it is exactly what the vendor said it would be.**
+Their comment 5523410629 claimed `Unvalidated Sysvar Account` would go missed→detected, firing at
+`verify_signature.rs:92` and `:101` — both inside the pre-registered fix-sites — and stay silent on
+the secure variant. Our run fires at exactly those two lines (`92:69-87`, `101:57-76`), on the
+vulnerable variant only. 34 invocations × 2 passes, all ok, deterministic, 274 location rows
+(228 before). The remaining 46 new/changed rows are generic-rule effects of `f36d1a4`
+("Cut generic-rule false positives and repair source-span accuracy"): +21 on
+`spl-stake-pool-mint-decimals` (20× `Unused Function Parameters`, 1× `Incorrect Ceiling Division`),
++1 `Unused Function Parameters` on `solido-anker-arbitrary-cpi`, and two line-offset moves already
+seen in the 2026-09-02 shim run. None of those rules is mapped to a corpus-2 class, so no verdict
+other than wormhole changes.
+
+Vendor-reported became measured. The right of reply works in both directions: we publish their
+confirmed claim beside our earlier number, with the raw artefacts to check it.
+
 ## What we corrected about our own method, on the same day we published it
 
 The first pass at corpus 2 **counted findings of any kind, anywhere in the file**, while corpus 1

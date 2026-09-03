@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-fa81c25/_staged/anchor-account-reload-owner.insecure.pkg/pkg/src/account.rs:271:27-42",
+            "/root/radar32/work/c2-fa81c25/_staged/anchor-account-reload-owner.insecure.pkg/pkg/src/account.rs:312:34-49"
+        ]
+    }
+]

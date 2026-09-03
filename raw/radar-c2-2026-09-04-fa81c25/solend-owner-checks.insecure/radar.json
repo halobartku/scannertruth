@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Missing Pyth Confidence Interval",
+        "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:309:24-33",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:449:38-47",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2109:4-13"
+        ]
+    },
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2124:43-58",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2178:45-60"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2262:9-22"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:42:43-49",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2064:11-17"
+        ]
+    },
+    {
+        "name": "Account Precreation DoS",
+        "description": "Detects unsafe account owner assignments without prior validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:131:4-31",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:194:4-24",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:733:4-27",
+            "/root/radar32/work/c2-fa81c25/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2213:4-26"
+        ]
+    }
+]

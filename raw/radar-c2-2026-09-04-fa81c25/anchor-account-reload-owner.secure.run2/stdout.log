@@ -1,0 +1,5 @@
+[i] Language detected: rust
+[i] Scanned 1 file (account.rs)
+[i] Ran 56 templates (shim revision fa81c25)
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to /root/radar32/work/c2-fa81c25/anchor-account-reload-owner.secure.run2/radar.json

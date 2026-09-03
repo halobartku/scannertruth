@@ -1,0 +1,7 @@
+{
+ "runs": 2,
+ "invocations": 72,
+ "verdict": "deterministic",
+ "differing": [],
+ "note": "every pass produced the same findings by rule, file, line and column"
+}
