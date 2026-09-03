@@ -8,17 +8,21 @@ interpretation.
 
 ## What already exists, before the first dollar
 
-Not a prototype and not a plan. Measured on 2026-09-01 by counting the repository, so every figure
-below is checkable in thirty seconds.
+Not a prototype and not a plan. Every figure below is derived, not typed: the test
+`test_the_roadmap_inventory_is_derived_not_typed` (`tests/roadmap_inventory.py`) recomputes each one from
+the repository and fails the suite if this table drifts from it. Until 2026-09-03 this header said the
+figures were "measured on 2026-09-01, checkable in thirty seconds"; two days later every derivable figure
+was wrong and nothing checked it (error 47).
 
 ### Built and running
 
 | | |
 |---|---|
-| **2165 lines** of Python across **15 tools**, plus a suite of **164 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
-| **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
-| **46 commits**, all public | every correction visible in history |
+| **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **3,870 lines** of documentation across 20 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
+| **187 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
+| **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
 | **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
 
 ### Measurement, done
@@ -35,7 +39,8 @@ below is checkable in thirty seconds.
   `corpus2/manifest.json` taken from their maintainers' own fix commits, and the same bugs rebuilt
   as **real crates**, per-case counts in `docs/results/RESULTS-realcrates.md`. The real crates are
   built on demand rather than committed, so a total file count is not quoted here (error 23).
-- **26 raw output files** published, so every number can be re-derived rather than believed.
+- **1,851 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
+  directory's own README - so every number can be re-derived rather than believed.
 - **A clock** that re-measures on a schedule and diffs against the previous run, with two dated
   entries already published. A ranking can be produced once; a regression only shows up if the
   measurement repeats.
@@ -57,7 +62,7 @@ below is checkable in thirty seconds.
 - **A sealed holdout**, committed by hash before the round it scores.
 - **Right of reply**: four threads open with the vendors we measured. Every third-party number is
   marked provisional until they answer.
-- **21 of our own errors**, documented with dates, including a headline we retracted in public
+- **46 of our own errors**, documented with dates, including a headline we retracted in public
   before we had the replacement data.
 
 ### What the money is actually for

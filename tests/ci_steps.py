@@ -234,7 +234,13 @@ def test_every_ci_command_runs_green_on_a_copy_of_the_tree():
             # against a tree CI never sees. `git ls-files` is the checkout's own list.
             tracked = subprocess.run(["git", "ls-files", "-z"],
                                      capture_output=True).stdout.split(b"\0")
-            tracked = [t.decode("utf-8", "surrogateescape") for t in tracked if t]
+            # dict.fromkeys, and it is not decoration: during a merge `git ls-files` prints one
+            # line per index STAGE, so every conflicted path arrives two or three times, the
+            # second os.link hits an existing destination and this check dies with
+            # FileExistsError instead of saying anything about CI. Found on 2026-09-03 while
+            # merging this branch, which is the first time the suite was run mid-merge.
+            tracked = list(dict.fromkeys(
+                t.decode("utf-8", "surrogateescape") for t in tracked if t))
             if tracked:
                 for rel in tracked:
                     if not os.path.isfile(rel):

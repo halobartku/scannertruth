@@ -84,12 +84,12 @@ tested rather than assumed.
 git clone https://github.com/halobartku/scannertruth
 cd scannertruth
 
-python test_all.py        # 164 checks on the code that produces every published figure
+python test_all.py        # 166 checks on the code that produces every published figure
 python tools/verify.py          # re-derives a published result from the raw data
 python tools/control_c2.py      # the calibration controls must score zero
 ```
 
-**What you should see.** `test_all.py` ends with `164 passed, 0 failed`. `verify.py` prints a table
+**What you should see.** `test_all.py` ends with `166 passed, 0 failed`. `verify.py` prints a table
 and `OK: raw data reproduces the published result`. `control_c2.py` prints
 `CONTROLS PASS: noisy scores 0 despite 2,629,968 findings`.
 
