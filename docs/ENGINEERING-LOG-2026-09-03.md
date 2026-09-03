@@ -54,3 +54,32 @@ it is a more expensive one, because it also buys the belief that the thing is co
 The general rule this repository keeps rediscovering: a check that cannot be shown failing has not
 been shown to work. This one could never have failed, because `max` and `len` agree on every input
 where the numbering is dense, and nobody fed it a sparse one.
+
+---
+
+## Not an error: what the family of error 46 looks like across the whole suite
+
+**2026-09-03, 03:50 to 04:00 CEST.** Error 46 was a guard that ran on every push and measured a
+different quantity than its name. The obvious next question is how many more there are, and
+grepping does not answer it, because whether a loop body ever runs depends on the data rather than
+on the code. `tools/assert_coverage.py` runs the whole suite under `sys.settrace` and counts which
+`assert` lines the interpreter actually reaches.
+
+    assertions in tests/: 270   executed at least once: 269   never: 1
+
+The one is `tests/real_crate_run.py:170`, the `else` half of a two-sided check on whether the
+packaging comparison still finds zero differences. It is idle because the data currently satisfies
+the other branch, which is what a two-sided check is for. **So there is no second error 46 in the
+suite, and that is now measured rather than assumed.**
+
+**What the number does not say**, and the tool's own header says it first: it measures execution,
+not the ability to fail. `assert x or True` executes on every run and can never fail. On the same
+night, the sister project's `discover.py` carried exactly that line under a comment describing a
+Bonferroni correction, and this tool would not have caught it. Execution is one necessary condition
+of a check being real, not a sufficient one.
+
+**The suite caught the tool while the tool was measuring the suite.** A plain `import test_all`
+inside `tools/` reads to `test_no_external_python_dependencies` as a pip dependency, because
+`test_all.py` sits at the repository root and has no sibling in `tools/`. The check was right, so
+the new file bent rather than the check: the suite is loaded by path through `importlib`.
+
