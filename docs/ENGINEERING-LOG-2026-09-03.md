@@ -165,3 +165,29 @@ inside `tools/` reads to `test_no_external_python_dependencies` as a pip depende
 `test_all.py` sits at the repository root and has no sibling in `tools/`. The check was right, so
 the new file bent rather than the check: the suite is loaded by path through `importlib`.
 
+
+---
+
+## Limitation 48 — the shim and the image can select different templates, and the vendor said so
+
+Recorded 2026-09-03, from `radar#32` comment `5523410629`, in answer to the standing invitation we
+published on 09-02: *"If you see a path where the container orchestration and the library path could
+diverge, that is exactly the kind of correction we publish next to the number."* `forefy` gave two.
+
+**Rules are baked into the image** at `api/Dockerfile:113`. So a docker measurement identifies a
+**digest** and the shim measurement identifies a **commit**, and those pin different objects: the
+digest pins the rules as built, the commit pins the source they were built from. Every docker row we
+have published carries a digest; the `67348ee` row carries a commit. That is not a defect in the
+parity artefact, which compared 52 of 52 location rows and still holds — it is a statement about what
+each row's version string is able to promise.
+
+**Templates are filtered by detected framework.** On all seventeen cases in the regression pack this
+is inert, and we observed nothing that contradicts that. But inert-on-our-cases is not the same
+property as absent, and a case detecting as anchor would take a different path through the shim than
+through the image. We have not constructed such a case.
+
+**Why this is a limitation and not an error.** Nothing published is wrong because of it. Both facts
+narrow what the shim row is entitled to claim, and the honest consequence is written beside the row
+in `RESULTS-scanners.md` rather than only here: that row should be re-measured under docker before
+anyone leans on it. This is the first limitation in this repository contributed by the measured
+vendor rather than found by us, which is the arrangement working exactly as `PROTOCOL.md` describes.
