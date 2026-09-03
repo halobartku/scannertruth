@@ -62,7 +62,7 @@ was wrong and nothing checked it (error 47).
 - **A sealed holdout**, committed by hash before the round it scores.
 - **Right of reply**: four threads open with the vendors we measured. Every third-party number is
   marked provisional until they answer.
-- **46 of our own errors**, documented with dates, including a headline we retracted in public
+- **47 of our own errors**, documented with dates, including a headline we retracted in public
   before we had the replacement data.
 
 ### What the money is actually for

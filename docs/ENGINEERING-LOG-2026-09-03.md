@@ -102,6 +102,43 @@ at most 2 on that row and only that row, never an overstatement, and the table s
 the correcting commit (187). Every other figure is exact or the suite fails.
 ---
 
+## Error 48. I pushed main red, with numbers derived while a merge was open
+
+**2026-09-03, 04:10 to 04:20 CEST.** Two branches landed within twenty minutes of each other and
+both touched the same documents. While resolving the merge I ran the suite, read the figures it
+demanded, wrote them into `docs/ROADMAP.md`, saw `166 passed, 0 failed`, committed the merge and
+pushed. The push was red. The suite I had trusted was run **with the merge still open**, and during
+a merge `git ls-files` prints one line per index **stage**, so every conflicted path is counted two
+or three times. Six conflicted documents became twelve, and "2,466 lines of documentation across 14
+files" became "3,870 across 20". I then typed the inflated pair onto a funder-facing page.
+
+**The same defect, in two places, one hour apart.** At 04:05 I had fixed exactly this in
+`tests/ci_steps.py`, where the duplicate list made a check die with `FileExistsError`. Having
+found it there, I did not go looking for the second `git ls-files` in the tree, and the second one
+did not crash: it quietly returned a bigger number. **The crashing copy of a bug is the lucky one.**
+
+Three things made it worse and each is worth naming:
+
+- **The green I trusted was mine, not CI's.** A local pass on a working tree in an unusual state
+  says less than it looks like it says, and mid-merge is exactly such a state.
+- **I checked the wrong artefact.** The suite prints its failures and then a footer. I read the
+  footer, saw familiar text, and read `&&` chaining as proof of success; the pass line was cut by
+  a `tail -2`. The command that would have settled it takes one second and I did not run it.
+- **I had already lowered my own bar that night.** The ten-minute channel notice before a push to
+  main went out at 03:53 and I pushed at 03:59:59, six minutes and fifty seconds later. Nothing
+  came of it, but the habit that skips seven minutes is the habit that skips the check after.
+
+**Fixed in the same hour.** `_tracked()` in `tests/roadmap_inventory.py` deduplicates, with the
+reason written where the fix is. The commit figure was overstated too, and that half was caught by
+the check's own asymmetry: it tolerates the page lagging the repository by up to two, and tolerates
+overstatement not at all. That is the right way round and it is why only one figure of the four got
+through.
+
+**What it does not change.** The derived-inventory check is the correct fix for error 47 and it
+works: it caught both my mistakes within minutes. A check that catches its author is doing its job.
+
+---
+
 ## Not an error: what the family of error 46 looks like across the whole suite
 
 **2026-09-03, 03:50 to 04:00 CEST.** Error 46 was a guard that ran on every push and measured a

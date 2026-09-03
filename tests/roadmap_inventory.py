@@ -75,6 +75,10 @@ def _roadmap_inventory():
     skills = [d for d in sorted(os.listdir("skills"))
               if os.path.isfile(os.path.join("skills", d, "SKILL.md"))]
     adapters = [f for f in sorted(os.listdir("adapters")) if f.endswith(".json")]
+    # The error count is derived from the logs by the same helper the README's own claim uses,
+    # so the two pages cannot disagree. They did on 2026-09-03: README said 47 and ROADMAP said
+    # 46, one line below a paragraph about figures not being typed by hand (error 48).
+    from .documented_commands import _documented_error_numbers
     return {
         "lines": _line_total(tools),
         "tools": len(tools),
@@ -84,6 +88,7 @@ def _roadmap_inventory():
         "raw": len(artefacts),
         "skills": len(skills),
         "adapters": len(adapters),
+        "errors": len(_documented_error_numbers()),
     }
 
 
@@ -105,6 +110,7 @@ def test_the_roadmap_inventory_is_derived_not_typed():
         (q["docfiles"], r"documentation across ([\d,]+) files", "documentation files"),
         (q["commits"], r"\*\*([\d,]+) commits\*\*", "commits"),
         (q["raw"], r"\*\*([\d,]+) raw artefacts\*\*", "raw artefacts under raw/"),
+        (q["errors"], r"\*\*([\d,]+) of our own errors\*\*", "documented errors"),
         (q["skills"], r"\*\*([\d,]+) skills\*\*", "skills"),
         (q["adapters"], r"\*\*([\d,]+) adapter declarations\*\*", "adapter declarations"),
     ]
