@@ -119,8 +119,25 @@ checkout at `67348ee`. Before measuring, the shim was parity-proven against the 
 measurement of the older revision `206a469`: **52 of 52 location rows identical, rule for rule,
 file for file, line and column for line and column** (`raw/radar-shim-parity-2026-09-02/`).
 The full reasoning, and what the shim does and does not claim, is
-`ENGINEERING-LOG-2026-09-02.md`. The in-sample caveat below applies to this row exactly as it
-applies to the last: 11/11 on a public 2022 corpus is 11/11 of homework, not of generalisation.
+`ENGINEERING-LOG-2026-09-02.md`.
+
+**Two divergence paths named by the vendor, published here because we asked for exactly this.**
+On 2026-09-03 `forefy` answered the open invitation to point at any path where the container and
+the library path could differ:
+
+> rules are baked into the image (api/Dockerfile:113), so docker = digest and shim = commit; and we
+> filter templates by detected framework, which looks inert on all 17 pack cases but could bite if
+> one detected as anchor.
+
+Both stand against this row and neither is disputed. The first means this row's version identity is
+a **commit** while every docker row above identifies a **digest**, and those are not the same object:
+a digest pins the rules, a commit pins the source they were built from. The second is a real
+mechanism by which the shim and the image could select different templates, unobserved on our cases
+but not excluded by them. Neither invalidates the parity artefact, which was measured location for
+location; both are reasons this row should be re-measured under docker before it is leaned on.
+
+The in-sample caveat below applies to this row exactly as it applies to the last: 11/11 on a public
+2022 corpus is 11/11 of homework, not of generalisation.
 
 ## VaultLint: the precision claim holds, and you can see what it cost
 
@@ -157,9 +174,21 @@ is the answer key, is the only way to tell those apart.
 
 ## Status of this measurement
 
-**Provisional.** Under `docs/PROTOCOL.md` a third-party mapping should be offered to the tool's authors
-for correction before the number is treated as final, and their correction published. That has not
-been done yet for Radar. `mappings/radar.json` records this.
+**The mapping has now been confirmed by the vendor.** Under `docs/PROTOCOL.md` a third-party mapping
+is offered to the tool's authors for correction before the number is treated as final, and their
+answer published next to it either way. Asked on `radar#32` on 2026-09-01 and again on 09-02,
+answered by `forefy` on **2026-09-03 09:12Z**:
+
+> As far as we can tell mappings/radar.json is correct — all 11 lines match our rule names
+> verbatim, so we'd say publish as is.
+
+So the Radar rows above are no longer provisional on mapping grounds. They remain bounded by
+everything else stated on this page: the noise column is an upper bound (error 39), and 11/11 on a
+public 2022 corpus is in-sample.
+
+*Before 2026-09-03 this section read "That has not been done yet for Radar." It was true when
+written and stopped being true the moment the vendor answered; it is replaced rather than annotated,
+because a correction added above a false sentence leaves the false sentence in the file.*
 
 The mapping was derived from Radar's own rule names as emitted in its JSON output, not from which
 rules happened to fire. Four Radar rules name no class in this corpus and are excluded from
