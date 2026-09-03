@@ -15,7 +15,7 @@ below is checkable in thirty seconds.
 
 | | |
 |---|---|
-| **2165 lines** of Python across **15 tools**, plus a suite of **158 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **2165 lines** of Python across **15 tools**, plus a suite of **164 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
 | **46 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |

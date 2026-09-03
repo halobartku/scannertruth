@@ -9,7 +9,7 @@ Seven third-party scanners and our own, run against real vulnerabilities taken f
 11 on the corpus the whole field measures against scores **0 out of 16** here.
 
     git clone https://github.com/halobartku/scannertruth && cd scannertruth
-    python test_all.py                        # 158 checks, no dependencies
+    python test_all.py                        # 164 checks, no dependencies
     python tools/run_all.py --verify-coverage # every number can show what it analysed
 
 Start with [`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md) for the scanner table,
@@ -21,7 +21,7 @@ fires on the fixed code has detected nothing.
 
 ## How to read the two badges
 
-**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 158
+**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 164
 checks on three operating systems and four Python versions. `coverage` says whether every number
 published here can show what it analysed. **`coverage` went green on 2026-09-01**: all 19 live
 measurements carry a per-run log and no case on either corpus is unresolved, so "the tool read this
@@ -159,7 +159,7 @@ nothing.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **158 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **164 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -181,7 +181,7 @@ nothing.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            158 checks, mutation-verified. Run this first
+test_all.py            164 checks, mutation-verified. Run this first
 tests/                 the checks themselves, one module per concern; test_all.py imports them all
 tools/assert_coverage.py  runs the suite under trace and lists assertions that never execute:
                        269 of 270 do, and the one that does not is an idle else branch
