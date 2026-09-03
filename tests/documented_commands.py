@@ -116,25 +116,83 @@ def test_a_backslash_path_maps_to_the_same_case_as_a_forward_slash_one():
         f"{posix!r} vs {win!r}")
 
 
+# Numbers the log declares as never issued. Error 9 was skipped when the log was first written;
+# git history for docs/ contains no commit that ever added one. It is listed here rather than
+# closed by renumbering, and the test below asserts the list is exactly right, so a future gap
+# has to be written down instead of quietly absorbed into the count.
+NEVER_ISSUED = {9}
+
+# Error 6 has no heading of its own: it shares one with error 5 ("Error 5, and then error 6").
+# No regex over headings can see it, and a heading count is not an entry count.
+SHARES_A_HEADING = {5: 6}
+
+
+def _error_numbers_in(path):
+    """Every error number one log file documents, as a set.
+
+    Two heading schemes: `**Error N.` inline up to error 37, `## Error N.` from 38 on. The regex
+    saw only the first until 2026-09-01 and the README understated the record by four while the
+    check passed. Both forms count; a number is counted once whichever form it uses, or both.
+    """
+    import io as _io, re
+    s = _io.open(path, encoding="utf-8").read()
+    nums = {int(n) for n in re.findall(r"(?:\*\*|^#+ )Error (\d+)", s, re.M)}
+    for host, guest in SHARES_A_HEADING.items():
+        if host in nums:
+            nums.add(guest)
+    return nums
+
+
+def _documented_error_numbers():
+    """The union across every log file.
+
+    Note what this returns and what it does not: a SET, so callers count entries. Until
+    2026-09-03 the caller took the maximum instead, which is the same quantity only while the
+    numbering is dense, and it has not been dense since day one (error 46).
+    """
+    import glob
+    numbers = set()
+    for f in sorted(glob.glob("docs/ENGINEERING-LOG-*.md")):
+        numbers |= _error_numbers_in(f)
+    return numbers
+
+
 def test_the_error_count_matches_the_logs():
     """The README's error count is its strongest claim, so it is the one most worth
     keeping honest. Derived from the logs rather than typed, because the count only
     ever goes up and a stale figure understates exactly the thing we want on record."""
-    import io as _io, re, glob
-    logged = 0
-    for f in sorted(glob.glob("docs/ENGINEERING-LOG-*.md")):
-        s = _io.open(f, encoding="utf-8").read()
-        # Two heading schemes: `**Error N.` inline up to error 37, `## Error N.` from 38 on. The
-        # regex saw only the first until 2026-09-01 and the README understated the record by
-        # four while this check passed. Both forms count; a number is counted once whichever
-        # form it uses, or both.
-        numbers = {int(n) for n in re.findall(r"(?:\*\*|^#+ )Error (\d+)", s, re.M)}
-        logged = max(logged, *numbers) if numbers else logged
+    import io as _io, re
+    numbers = _documented_error_numbers()
+    logged = len(numbers)
+    gaps = set(range(1, max(numbers) + 1)) - numbers
+    assert gaps == NEVER_ISSUED, (
+        f"the numbering skips {sorted(gaps)} but the log declares {sorted(NEVER_ISSUED)}; "
+        "a skipped number must be written down in the log, not absorbed into the count")
     s = _io.open("README.md", encoding="utf-8").read()
     claimed = re.search(r"\*\*\[(\d+) of our own errors\]", s)
     assert claimed, "the README no longer states an error count; that claim is load-bearing"
     assert int(claimed.group(1)) == logged, (
-        f"README claims {claimed.group(1)} errors but the logs number up to {logged}")
+        f"README claims {claimed.group(1)} errors but the logs document {logged} "
+        f"(numbered to {max(numbers)}, with {sorted(NEVER_ISSUED)} never issued)")
+
+
+def test_the_per_day_error_breakdown_matches_the_logs():
+    """The README also breaks the errors down by day, one line below the count. That line was
+    wrong in two of its three figures on 2026-09-03 while the count above it was guarded, which
+    is what a partly-derived page looks like: the guarded number is right and the one beside it
+    is decoration."""
+    import io as _io, re, glob
+    per_day = {}
+    for f in sorted(glob.glob("docs/ENGINEERING-LOG-*.md")):
+        day = f.replace("\\", "/").rsplit("ENGINEERING-LOG-", 1)[1][:10]
+        per_day[day] = len(_error_numbers_in(f))
+    s = _io.open("README.md", encoding="utf-8").read()
+    line = re.search(r"ENGINEERING-LOG-\*\.md\s+our errors, with dates: ([^\n]+)", s)
+    assert line, "the README index no longer breaks the errors down by day"
+    claimed = {d: int(n) for n, d in
+               re.findall(r"(\d+)\s+(?:more\s+)?on (\d{4}-\d{2}-\d{2})", line.group(1))}
+    assert claimed == per_day, (
+        f"README breakdown says {claimed} but the logs document {per_day}")
 
 
 def test_the_readme_links_the_newest_engineering_log():

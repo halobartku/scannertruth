@@ -1,6 +1,6 @@
 # Engineering log, 2026-09-02
 
-Continuing from [the log of 2026-09-01](ENGINEERING-LOG-2026-09-01.md). Three entries. Error 42
+Continuing from [the log of 2026-09-01](ENGINEERING-LOG-2026-09-01.md). Four entries. Error 42
 is not an error in the ordinary sense: nothing published today was wrong yesterday. It is the
 record of a method substitution made under a constraint, the proof that was required before the
 substitution was allowed to produce a number, and a near-miss that would have been error-shaped

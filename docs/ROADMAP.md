@@ -15,7 +15,7 @@ below is checkable in thirty seconds.
 
 | | |
 |---|---|
-| **2165 lines** of Python across **15 tools**, plus a suite of **157 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **2165 lines** of Python across **15 tools**, plus a suite of **158 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **1,625 lines** of documentation across 15 files | protocol, results, limitations, engineering log |
 | **46 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
@@ -46,8 +46,10 @@ below is checkable in thirty seconds.
   other, and scores **zero real recall on both**. Proof the metric cannot be bought with volume.
 - **A positive control on the scorer itself**, because until it was added the scorer had never once
   returned a detection and nobody had checked that it could.
-- **A per-run log** proving each case was actually analysed, for Radar and VaultLint. Ours does not
-  have one yet, which is milestone 1.
+- **A per-run log** proving each case was actually analysed, for every live measurement including
+  our own: `python tools/run_all.py --verify-coverage` reports **22 of 22** with a run log and zero
+  with none. This section said "ours does not have one yet" until 2026-09-03, three days after the
+  gap was closed in milestone 1; the sentence was written before the work and outlived it.
 - **A test suite whose selection rule is "would a defect here change a published number"**, covering
   line-shift mapping, every scoring verdict, the controls, holdout commitments, and the coverage
   bookkeeping whose absence caused the retraction. Writing it immediately exposed a module that ran
@@ -75,7 +77,7 @@ machine-checked, not asserted: `python tools/run_all.py --verify-coverage` is a 
   and the determinism check come for free. Nine declarations exist. Adding one is a config file.
 - **DONE. A run log for everything, including our own.** This was the gap we were most exposed on:
   we had held other people's tools to a standard we had not met ourselves.
-- **DONE. Every tool across both corpora.** **19 of 19 live measurements carry a run log**, and no
+- **DONE. Every tool across both corpora.** **22 of 22 live measurements carry a run log**, and no
   case on either corpus is unresolved. `corpus1 radar` was the last one and was re-run on
   2026-09-01: 35 invocations, 35 ok, and the 11/11 reproduced location for location. One
   measurement is **retired** (`corpus2 sol-audit`, superseded by v3): reported, still visible, not
