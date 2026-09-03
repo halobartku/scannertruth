@@ -100,3 +100,31 @@ One figure needed a rule of its own. A commit count cannot contain itself: the c
 adds one, and the merge that lands the correction can add another. The check therefore accepts a lag of
 at most 2 on that row and only that row, never an overstatement, and the table states the count as of
 the correcting commit (187). Every other figure is exact or the suite fails.
+---
+
+## Not an error: what the family of error 46 looks like across the whole suite
+
+**2026-09-03, 03:50 to 04:00 CEST.** Error 46 was a guard that ran on every push and measured a
+different quantity than its name. The obvious next question is how many more there are, and
+grepping does not answer it, because whether a loop body ever runs depends on the data rather than
+on the code. `tools/assert_coverage.py` runs the whole suite under `sys.settrace` and counts which
+`assert` lines the interpreter actually reaches.
+
+    assertions in tests/: 270   executed at least once: 269   never: 1
+
+The one is `tests/real_crate_run.py:170`, the `else` half of a two-sided check on whether the
+packaging comparison still finds zero differences. It is idle because the data currently satisfies
+the other branch, which is what a two-sided check is for. **So there is no second error 46 in the
+suite, and that is now measured rather than assumed.**
+
+**What the number does not say**, and the tool's own header says it first: it measures execution,
+not the ability to fail. `assert x or True` executes on every run and can never fail. On the same
+night, the sister project's `discover.py` carried exactly that line under a comment describing a
+Bonferroni correction, and this tool would not have caught it. Execution is one necessary condition
+of a check being real, not a sufficient one.
+
+**The suite caught the tool while the tool was measuring the suite.** A plain `import test_all`
+inside `tools/` reads to `test_no_external_python_dependencies` as a pip dependency, because
+`test_all.py` sits at the repository root and has no sibling in `tools/`. The check was right, so
+the new file bent rather than the check: the suite is loaded by path through `importlib`.
+
