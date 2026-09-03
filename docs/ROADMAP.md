@@ -39,7 +39,7 @@ was wrong and nothing checked it (error 47).
   `corpus2/manifest.json` taken from their maintainers' own fix commits, and the same bugs rebuilt
   as **real crates**, per-case counts in `docs/results/RESULTS-realcrates.md`. The real crates are
   built on demand rather than committed, so a total file count is not quoted here (error 23).
-- **1,851 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
+- **1,929 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
   directory's own README - so every number can be re-derived rather than believed.
 - **A clock** that re-measures on a schedule and diffs against the previous run, with two dated
   entries already published. A ranking can be produced once; a regression only shows up if the
