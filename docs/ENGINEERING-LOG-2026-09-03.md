@@ -1,6 +1,6 @@
 # Engineering log, 2026-09-03
 
-Continuing from [the log of 2026-09-02](ENGINEERING-LOG-2026-09-02.md). One entry so far.
+Continuing from [the log of 2026-09-02](ENGINEERING-LOG-2026-09-02.md). Two entries so far.
 
 **A note on the numbering, established by this entry.** The entries run from 1 to 46 and there are
 45 of them: **number 9 was never issued.** Nothing was deleted; git history for `docs/` contains no
@@ -54,3 +54,49 @@ it is a more expensive one, because it also buys the belief that the thing is co
 The general rule this repository keeps rediscovering: a check that cannot be shown failing has not
 been shown to work. This one could never have failed, because `max` and `len` agree on every input
 where the numbering is dense, and nobody fed it a sparse one.
+
+
+---
+
+## Error 47. The ROADMAP inventory was typed by hand, dated, and wrong within two days
+
+**2026-09-03, 03:40 to 04:30 CEST.** The "What already exists, before the first dollar" section of
+`docs/ROADMAP.md` is the inventory a funder reads first. Its header claimed: "Measured on 2026-09-01 by
+counting the repository, so every figure below is checkable in thirty seconds." Checked on 2026-09-03:
+
+| the table said | the repository has |
+|---|---|
+| 2165 lines of Python | 5,645 in `tools/` alone |
+| 15 tools | 29 tracked `tools/*.py` |
+| 1,625 lines of documentation in 15 files | 2,461 in 14, excluding the engineering logs |
+| 46 commits | 186 (`git rev-list --count HEAD`) |
+| 26 raw output files | 3,487 tracked under `raw/`, of which 1,635 are run logs and 1,851 are artefacts |
+
+Nothing checked any of it, and none of it was derived in the first place: at commit `28801ec`, which
+introduced the table, the tree already disagreed with the figures. They were typed from memory, dated,
+and frozen. The one non-obvious row was reconstructed rather than guessed at: `raw/` held 34 files at
+that commit, 8 of them run logs, so "26" counted everything that was not a log. That definition is kept
+and is now written in the document, because a count that cannot say what it counts is a number, not a
+claim.
+
+The direction of the error is worth noting: the table *understated* the repository by 3x on lines and
+4x on commits. A stale inventory does not only overstate; it sells the work short in the one document
+whose job is to state it.
+
+**Fixed in this commit.** The figures in `ROADMAP.md` are now derived by
+`test_the_roadmap_inventory_is_derived_not_typed` (`tests/roadmap_inventory.py`), which recomputes each
+quantity from the repository and compares it with the sentence that states it, figure matched to noun as
+in the noisy-control check. The header names the test instead of a measurement date. The raw row says
+what it counts. The check-count cascade (README, GETTING-STARTED, WALKTHROUGH, the three skills) moved
+from 158 to 160 with the two new checks.
+
+**What this is an instance of.** Error 46, found an hour earlier the same morning, was a published
+figure guarded by a check that measured a different quantity. This one was a table of published figures
+with no guard at all. The shared root: figures typed by hand stay true only until the next commit, and
+the repository had already learned that lesson twice (errors 22 and 33) without applying it to the
+document that faces the money.
+
+One figure needed a rule of its own. A commit count cannot contain itself: the commit that corrects it
+adds one, and the merge that lands the correction can add another. The check therefore accepts a lag of
+at most 2 on that row and only that row, never an overstatement, and the table states the count as of
+the correcting commit (187). Every other figure is exact or the suite fails.

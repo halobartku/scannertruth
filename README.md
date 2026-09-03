@@ -9,7 +9,7 @@ Seven third-party scanners and our own, run against real vulnerabilities taken f
 11 on the corpus the whole field measures against scores **0 out of 16** here.
 
     git clone https://github.com/halobartku/scannertruth && cd scannertruth
-    python test_all.py                        # 158 checks, no dependencies
+    python test_all.py                        # 160 checks, no dependencies
     python tools/run_all.py --verify-coverage # every number can show what it analysed
 
 Start with [`docs/results/RESULTS-all.md`](docs/results/RESULTS-all.md) for the scanner table,
@@ -21,7 +21,7 @@ fires on the fixed code has detected nothing.
 
 ## How to read the two badges
 
-**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 158
+**Two dials, and they answer different questions.** `selfcheck` says the machinery is sound: 160
 checks on three operating systems and four Python versions. `coverage` says whether every number
 published here can show what it analysed. **`coverage` went green on 2026-09-01**: all 19 live
 measurements carry a per-run log and no case on either corpus is unresolved, so "the tool read this
@@ -159,7 +159,7 @@ nothing.
 
 - **Every number re-derives from raw data.** `raw/` holds every scanner's output and run logs. That
   is why this repository is 49 MB and not 2.
-- **158 checks**, mutation-verified: deliberate defects were introduced and caught, including one
+- **160 checks**, mutation-verified: deliberate defects were introduced and caught, including one
   that reported a published figure changing under a refactor. `python test_all.py`.
 - **CI on machines we do not control**, running that suite on every push.
 - **Every published number is derived, not typed.** This page has been wrong twice, and both times
@@ -168,7 +168,7 @@ nothing.
   computed from the suite and the denominator read from the corpus manifest and the directory. If
   they disagree, the suite fails and nothing can be pushed. **Never type a count a machine can
   compute** - the rule applies to us before it applies to any vendor.
-- **[45 of our own errors](docs/ENGINEERING-LOG-2026-09-03.md), with dates**, including a headline we
+- **[46 of our own errors](docs/ENGINEERING-LOG-2026-09-03.md), with dates**, including a headline we
   retracted in public *before* we had the replacement data, and an unverifiable figure withdrawn
   from this page. That document, not the results, is the strongest thing here: it shows the same
   reaction when a measurement damaged a competitor and when it flattered us.
@@ -181,7 +181,7 @@ nothing.
 ```
 README.md              this file
 AGENTS.md              entry point for an AI agent asked to measure something
-test_all.py            158 checks, mutation-verified. Run this first
+test_all.py            160 checks, mutation-verified. Run this first
 tests/                 the checks themselves, one module per concern; test_all.py imports them all
 
 docs/
@@ -196,7 +196,7 @@ docs/
   KNOWN-LIMITATIONS.md what this measurement cannot tell you
   COVERAGE.md          generated: which measurement can show what it analysed, derived from raw/
   CLASS-BALANCE.md     generated: class and repository concentration of corpus 2, from the manifest
-  ENGINEERING-LOG-*.md our errors, with dates: 20 on 2026-08-31, 20 more on 2026-09-01, 4 on 2026-09-02, 1 on 2026-09-03 (numbered to 46; 9 never issued)
+  ENGINEERING-LOG-*.md our errors, with dates: 20 on 2026-08-31, 20 more on 2026-09-01, 4 on 2026-09-02, 2 on 2026-09-03 (numbered to 47; 9 never issued)
   COMMITMENTS.md       three standing promises
   MANIFESTO.md         nine testable sentences, each with its named breach
   CANDIDATES-TRIAGE.md corpus candidates accepted and rejected, with reasons
