@@ -59,9 +59,11 @@ fixed.** The offenders are its generic rules rather than its class detectors:
 > reverted part of it (#34). The figure they asked us to publish for the current release is
 > **46% to 40%, recall unchanged at 13/13**. The 46% in the table is our measurement of the `main`
 > we installed on 2026-08-31, before #33 and #34; the 40% is theirs, on code we have not run, and
-> it stays vendor-reported until we re-measure that release as a new row. The mapping stays as
-> pre-registered; the vendor has not commented on it either way (an earlier version of this note
-> said they had confirmed it, which the thread does not support; error 41).
+> it stays vendor-reported until we re-measure that release as a new row. The mapping stayed
+> pre-registered until 2026-09-03, when the vendor confirmed it in the thread: "As far as we can
+> tell mappings/radar.json is correct — all 11 lines match our rule names verbatim, so we'd say
+> publish as is" (`radar#32` comment 5523410629; an earlier version of this note said they had
+> confirmed it, which the thread did not support at the time — error 41; it does now).
 
 **Re-measured, 2026-09-02, as a new row.** Radar at `main` after #35 (checkout `24c56f9`, api image
 `ghcr.io/auditware/radar-api@sha256:f205bf7a9af877e1f5426322d1445723362ae72c9ed23f53432fd698e997af7e`,
