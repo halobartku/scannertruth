@@ -45,6 +45,11 @@ CLOCK_BEFORE_MIGRATION_C2 = {
     # reported 22 of 22 while not covering the row we had just handed a vendor. That gap is the
     # reason this line exists; the deliberate addition, not a drift.
     "radar-fa81c25": ("c2-radar-fa81c25.json", "radar"),
+    # Added 2026-09-04: the SAME revision through the real docker image rather than the engine
+    # shim. It exists to close the divergence risk the vendor named themselves in radar#32.
+    # Declared here BEFORE the row was published anywhere, which is the order the fa81c25 row
+    # got wrong: that one went to a vendor while --verify-coverage still read 22 of 22.
+    "radar-fa81c25-image": ("c2-radar-fa81c25-image.json", "radar"),
     "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
     "sol-audit-v3": ("c2-sol-audit-v3-strict.json", "sol-audit"),
@@ -57,6 +62,7 @@ CLOCK_BEFORE_MIGRATION_C2 = {
 CLOCK_BEFORE_MIGRATION_ALIAS = {
     "radar-24c56f9": "radar",  # added 2026-09-02: the new Radar row scores with the same pre-registered mapping
     "radar-fa81c25": "radar",  # added 2026-09-04: same pre-registered mapping, vendor-confirmed in radar#32
+    "radar-fa81c25-image": "radar",  # same mapping again: the point is the engine, not the mapping
     "sol-audit-v3": "sol-audit",
     "sol-audit-v3-broad": "sol-audit",
     "sol-audit-v3-all": "sol-audit",

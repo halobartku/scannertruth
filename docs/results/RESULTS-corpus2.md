@@ -123,6 +123,41 @@ That gap is the entire argument for this corpus existing, and it is larger than 
 |---|---|---|---|---|
 | `24c56f9` (post-#35, 2026-09-02, docker) | 0 | 7 | 8 | 2 |
 | `fa81c25` (post-#36 + docs/skill commits, 2026-09-04, engine shim) | **1** | **6** | 8 | 2 |
+| `fa81c25`, same revision, **real docker image**, 2026-09-04 | **1** | **6** | 8 | 2 |
+
+### The shim row and the docker row are the same row, and that was not guaranteed
+
+The detection above was first measured through the **engine shim**, and the vendor themselves named
+two ways shim and image could diverge: rules are baked into the image (`api/Dockerfile:113`), and
+templates are filtered by detected framework. They called both "inert on all 17 pack cases", which
+is a statement about seventeen cases rather than about the mechanism. Our only new corpus-2
+detection rested on that.
+
+So we measured the same revision again through
+`ghcr.io/auditware/radar-api@sha256:1616723a1879668d4050def641e541f2c9edc878974b06011fb6b1a3bc519b4f`,
+36 invocations per pass, 36 ok, two passes, deterministic. **The two rows are identical, and not
+only in the scored verdicts: all 274 location rows match exactly.** Normalising the location format
+and diffing the two raw files gives **0 rows appearing and 0 disappearing**:
+
+    python -c "import json,re,collections
+    def rows(p):
+        out=[]
+        for f in json.load(open(p)):
+            for L in f.get('locations') or []:
+                m=re.match(r'^(.*):(\d+):(\d+)(?:-(\d+))?$',L)
+                out.append((f['name'],m.group(1),int(m.group(2)),int(m.group(3))))
+        return collections.Counter(out)
+    a=rows('raw/c2-radar-fa81c25.json'); b=rows('raw/c2-radar-fa81c25-image.json')
+    print(sum((a-b).values()), sum((b-a).values()))"
+    # -> 0 0
+
+Image integrity was checked separately: **23 of 23 layer blobs plus the config are intact**, and the
+only differences between the image contents and the checkout are build files (`.dockerignore`,
+`Dockerfile`, tests) and build artefacts, **none in engine code**.
+
+Raw: `raw/c2-radar-fa81c25-image.json` (+ `.run2`, + per-pass `.log`). Declared in
+`adapters/radar.json` and in the golden record **before** being published here, which is the order
+the shim row got wrong.
 
 **The one new detection is `wormhole-sysvar`, and it is exactly what the vendor said it would be.**
 Their comment 5523410629 claimed `Unvalidated Sysvar Account` would go missed→detected, firing at

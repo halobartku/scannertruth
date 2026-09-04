@@ -100,6 +100,15 @@
    "invocation": "on the VPS host: git -C /root/.radar checkout 24c56f9; docker compose up -d (images pulled 2026-09-02, digests in raw/radar-c1-2026-09-02-24c56f9/README.txt); python3 tools/scanner_spec.py --run radar --corpus corpus1 --corpus-root /tmp/sealevel-attacks/programs --out raw/radar-24c56f9-c1.json --artefacts raw/radar-c1-2026-09-02-24c56f9 --repeat 2 (script /root/radar-main.sh, log /root/radar-main-2026-09-02.log)"
   },
   {
+   "row": "radar-fa81c25-image",
+   "corpus": "corpus2",
+   "raw": "c2-radar-fa81c25-image.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "The SAME revision as the radar-fa81c25 row (Auditware/radar at fa81c25), measured through the REAL DOCKER IMAGE instead of the engine shim: ghcr.io/auditware/radar-api@sha256:1616723a1879668d4050def641e541f2c9edc878974b06011fb6b1a3bc519b4f. Measured 2026-09-04. 36 invocations per pass, 36 ok, --repeat 2 deterministic. This row exists to close the risk the vendor themselves named in radar#32: rules are baked into the image (api/Dockerfile:113) and templates are filtered by detected framework, so shim and docker could in principle diverge. They do not. Scored detected=1 missed=6 no-rule=8 unlocated=2, identical to the shim row, and all 274 location rows match exactly, verified by normalising the location format and diffing: 0 rows appear and 0 disappear. Image integrity checked separately: 23 of 23 layer blobs plus config intact, and the only differences between image and checkout are build files, not engine code. A NEW ROW beside the shim one; nothing overwritten.",
+   "invocation": "image-runner/run_corpus2_image.py --out-dir work/c2-fa81c25-image --run2, against ghcr.io/auditware/radar-api@sha256:1616723a1879... ; raw copied to raw/c2-radar-fa81c25-image.json (+ .run2, + per-pass .log)"
+  },
+  {
    "row": "radar-fa81c25",
    "corpus": "corpus2",
    "raw": "c2-radar-fa81c25.json",
