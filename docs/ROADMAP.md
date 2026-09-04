@@ -67,7 +67,7 @@ was wrong and nothing checked it (error 47).
 
 ### What the money is actually for
 
-**Corpus scale** (9 cases is our largest stated weakness), **measurement of non-deterministic AI
+**Corpus scale** (17 scored cases on corpus 2 is our largest stated weakness), **measurement of non-deterministic AI
 tools** (nobody is doing this and the wave has already started), and **making this usable by
 somebody other than us** (today the answer to "has anyone outside verified it" is no).
 
