@@ -148,11 +148,26 @@ comment, not from any reply. After it closes:
 - the window does not reopen and does not extend because we would prefer a different answer. If a
   reply arrives on day fifteen it is published on day fifteen.
 
-**Where the number comes from, and why it is not tuned.** Fourteen days is already published in
-this repository, in "When this benchmark stops" below, as the window in which an open vendor
-thread must draw a technical reply. Reusing it costs nothing and invents nothing. Picking a fresh
-number now would be choosing a deadline after seeing which threads are quiet, which is the exact
-failure this protocol exists to prevent.
+**None of this is our invention, and pretending otherwise would be the same failure this
+benchmark measures.** The anti-malware testing industry standardised it years ago. The AMTSO
+Testing Protocol Standard (v1.3, 2018) carries a Dispute Process (2.2.11), requires the procedure
+to be described in advance (6.1.9), gives vendors the right to attach commentary to a published
+result (9.1.1.1), and holds the result changeable until the window closes (9.2.8). Its clause
+9.2.4.12.1 is our "silence is published as silence" almost word for word: the notation must be
+explicit, "including statements like [...] 'All vendors were invited, but some vendors declined to
+take part.'" AV-Comparatives has run an "(approximately) two weeks (peer-) reviewing procedure"
+since its 2009 methodology, which is where our fourteen days already existed before we chose it.
+
+We are adopting a known practice from a neighbouring field, not inventing one, and we say so here
+so that nobody has to catch us at it. What appears to be genuinely absent is this discipline
+inside SAST and smart-contract benchmarking: we found no equivalent clause in SmartBugs, DAppSCAN
+or Re-Evaluating EVMBench.
+
+**Why the number is not tuned.** Fourteen days is also already published in this repository, in
+"When this benchmark stops" below, as the window in which an open vendor thread must draw a
+technical reply. Both sources predate the situation. Picking a fresh number now would be choosing
+a deadline after seeing which threads are quiet, which is the exact failure this protocol exists
+to prevent.
 
 **Disclosure, because this clause was written late.** It was added on 2026-09-04, while three
 threads were already open and unanswered and a fourth had been answered. It is written after the
