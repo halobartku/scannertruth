@@ -14,7 +14,7 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 | **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, re-measured below) |
 | **`radar`** (Auditware, main after #35, `24c56f9`, 2026-09-02, docker image) | **11 / 11** | **11 / 11** | 36 | 14 (39%, upper bound) |
 | **`radar`** (Auditware, main after #36 and #37, `67348ee`, 2026-09-02, engine shim) | **11 / 11** | **11 / 11** | **19** | **2 (11%, upper bound)**, confirms the vendor's own figures |
-| **`radar`** (Auditware, main `fa81c25`, 2026-09-04, engine shim, corpus 2 re-run) | **11 / 11** | **11 / 11** | 19 | 2 (11%, upper bound); on corpus 2, `wormhole-sysvar` goes **missed → detected** at the pre-registered fix sites (`verify_signature.rs:92`, `:101`), exactly as the vendor reported in `radar#32` — detected 0→1, missed 7→6, everything else unchanged ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
+| **`radar`** (Auditware, main `fa81c25`, 2026-09-04, engine shim, corpus 2 re-run) | **11 / 11** | **11 / 11** | 19 | 2 (11%, upper bound); on corpus 2, `wormhole-sysvar` goes **missed → detected** at the pre-registered fix sites (`verify_signature.rs:92`, `:101`), exactly as the vendor reported in `radar#32`, detected 0→1, missed 7→6, everything else unchanged ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
 
 Two scanners, two opposite strategies, and the benchmark separates them cleanly. That separation is
@@ -138,6 +138,16 @@ a digest pins the rules, a commit pins the source they were built from. The seco
 mechanism by which the shim and the image could select different templates, unobserved on our cases
 but not excluded by them. Neither invalidates the parity artefact, which was measured location for
 location; both are reasons this row should be re-measured under docker before it is leaned on.
+
+**Re-measured under docker on 2026-09-04, and the two paths did not diverge.** The same revision
+`fa81c25` was run through the vendor's real image,
+`ghcr.io/auditware/radar-api@sha256:1616723a1879668d4050def641e541f2c9edc878974b06011fb6b1a3bc519b4f`,
+over all 17 corpus-2
+cases: **274 location rows on each side, 0 appearing and 0 disappearing**, and the score identical
+(detected 1, missed 6, no-rule 8, unlocated 2). Two passes of the image agree with each other, so
+the run is deterministic, and both logs report 36 invocations with 36 ok. Row and reproduction in
+[`RESULTS-corpus2.md`](RESULTS-corpus2.md). This settles the framework-filter path on our cases and
+nothing wider: it is 17 cases, not a proof that the two can never diverge.
 
 The in-sample caveat below applies to this row exactly as it applies to the last: 11/11 on a public
 2022 corpus is 11/11 of homework, not of generalisation.
