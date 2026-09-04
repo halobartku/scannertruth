@@ -19,8 +19,8 @@ was wrong and nothing checked it (error 47).
 | | |
 |---|---|
 | **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
-| **2,507 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
-| **203 commits**, all public | every correction visible in history |
+| **2,511 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
+| **206 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
 | **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
@@ -135,7 +135,11 @@ temperature at 0 and report **one** score per model.
 
 A conventional scanner is deterministic: same code, same answer, check it once. **An AI auditor is
 not.** The same code can produce a different answer tomorrow after a model or prompt change, so
-measuring it once is worthless, and measuring it once is what everyone currently does. We have
+measuring it once tells you very little. **Most benchmarks report a single run, and the three we
+found that do not report a spread have no deterministic scanner standing beside the model**:
+SecLLMHolmes runs ten passes and scores consistency, arXiv:2606.21397 runs three and publishes
+per-model agreement, SEC-bench runs five and reports a standard deviation. So the gap is not that
+nobody repeats a run, it is that nobody repeats it next to a scanner measured the same way. We have
 already had to exclude one such tool from a measurement because it required a paid API key. The wave
 has started.
 
