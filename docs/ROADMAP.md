@@ -19,7 +19,7 @@ was wrong and nothing checked it (error 47).
 | | |
 |---|---|
 | **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
-| **2,500 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
+| **2,507 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
 | **203 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
@@ -67,9 +67,11 @@ was wrong and nothing checked it (error 47).
 
 ### What the money is actually for
 
-**Corpus scale** (17 scored cases on corpus 2 is our largest stated weakness), **measurement of non-deterministic AI
-tools** (nobody is doing this and the wave has already started), and **making this usable by
-somebody other than us** (today the answer to "has anyone outside verified it" is no).
+**Corpus scale** (17 scored cases on corpus 2 is our largest stated weakness), **measurement of the
+run-to-run spread of non-deterministic AI tools** (scoring models beside scanners is well
+established, but the published studies pin temperature at 0 and report a single run, so the spread
+is what nobody reports), and **making this usable by somebody other than us** (today the answer to
+"has anyone outside verified it" is no).
 
 ---
 
@@ -123,8 +125,13 @@ red, because those are different questions and merging them would let one hide t
 
 ---
 
-## Milestone 3 (25%). Measuring AI auditors. Nobody is doing this.
+## Milestone 3 (25%). Measuring AI auditors, and specifically their run-to-run spread.
 **Four weeks.**
+
+Scoring models on the same corpus as static scanners is **not new and we are not claiming it**:
+CASTLE (arXiv:2503.09433) puts 13 scanners and 10 models on one metric, and arXiv:2508.04448 and
+arXiv:2605.11163 do their own versions. What those studies have in common is that they fix
+temperature at 0 and report **one** score per model.
 
 A conventional scanner is deterministic: same code, same answer, check it once. **An AI auditor is
 not.** The same code can produce a different answer tomorrow after a model or prompt change, so
