@@ -40,6 +40,11 @@ CLOCK_BEFORE_MIGRATION_C1 = {
 CLOCK_BEFORE_MIGRATION_C2 = {
     "radar": ("c2-radar-current.json", "radar"),
     "radar-24c56f9": ("c2-radar-24c56f9.json", "radar"),
+    # Added 2026-09-04: the post-#36 corpus-2 re-run promised on radar#32 and published to the
+    # vendor on 2026-09-03. It was published BEFORE it was declared here, so --verify-coverage
+    # reported 22 of 22 while not covering the row we had just handed a vendor. That gap is the
+    # reason this line exists; the deliberate addition, not a drift.
+    "radar-fa81c25": ("c2-radar-fa81c25.json", "radar"),
     "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
     "sol-audit-v3": ("c2-sol-audit-v3-strict.json", "sol-audit"),
@@ -51,6 +56,7 @@ CLOCK_BEFORE_MIGRATION_C2 = {
 }
 CLOCK_BEFORE_MIGRATION_ALIAS = {
     "radar-24c56f9": "radar",  # added 2026-09-02: the new Radar row scores with the same pre-registered mapping
+    "radar-fa81c25": "radar",  # added 2026-09-04: same pre-registered mapping, vendor-confirmed in radar#32
     "sol-audit-v3": "sol-audit",
     "sol-audit-v3-broad": "sol-audit",
     "sol-audit-v3-all": "sol-audit",

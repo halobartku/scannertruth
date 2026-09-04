@@ -19,7 +19,7 @@ was wrong and nothing checked it (error 47).
 | | |
 |---|---|
 | **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
-| **2,466 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
+| **2,467 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
 | **200 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
