@@ -131,6 +131,37 @@ Rule descriptions promise more than rules do. That is a known weakness of derivi
 documentation, and it is the reason the right of reply below is the strongest safeguard here, not
 this one.
 
+### 3b. The right of reply, and how long it lasts
+
+A result about a tool is **provisional until that tool's authors have been offered the mapping for
+correction**. That much was already the rule. What was missing until 2026-09-04 is the only part
+that makes it operable: **how long we wait.**
+
+**The window is fourteen days from the moment the thread is opened**, counted from our first
+comment, not from any reply. After it closes:
+
+- a vendor reply we received is published beside the number, in their words, whether it helps us
+  or not;
+- **silence is published as silence**: the number stands, and the result says plainly that the
+  vendor was asked on date X, did not respond within fourteen days, and remains free to respond
+  at any time afterwards, in which case we publish that too and say we were wrong if we were;
+- the window does not reopen and does not extend because we would prefer a different answer. If a
+  reply arrives on day fifteen it is published on day fifteen.
+
+**Where the number comes from, and why it is not tuned.** Fourteen days is already published in
+this repository, in "When this benchmark stops" below, as the window in which an open vendor
+thread must draw a technical reply. Reusing it costs nothing and invents nothing. Picking a fresh
+number now would be choosing a deadline after seeing which threads are quiet, which is the exact
+failure this protocol exists to prevent.
+
+**Disclosure, because this clause was written late.** It was added on 2026-09-04, while three
+threads were already open and unanswered and a fourth had been answered. It is written after the
+situation arose, which is worth knowing when judging it. The dates it produces were not chosen;
+they follow from it. All three quiet threads were opened on 2026-08-31 at 20:40Z, so the window
+closes for all three on **2026-09-14**. The rule is symmetric and is not a rule about vendors who
+stay quiet: Auditware replied technically within one day, and the same clause is what obliged us
+to publish their correction of us beside our own number rather than only the parts that suited us.
+
 ## 4. Procedure
 
 1. Clone the corpus.
