@@ -123,18 +123,82 @@ That gap is the entire argument for this corpus existing, and it is larger than 
 |---|---|---|---|---|
 | `24c56f9` (post-#35, 2026-09-02, docker) | 0 | 7 | 8 | 2 |
 | `fa81c25` (post-#36 + docs/skill commits, 2026-09-04, engine shim) | **1** | **6** | 8 | 2 |
+| `fa81c25`, same revision, **real docker image**, 2026-09-04 | **1** | **6** | 8 | 2 |
+
+### The shim row and the docker row are the same row, and that was not guaranteed
+
+The detection above was first measured through the **engine shim**, and the vendor themselves named
+two ways shim and image could diverge: rules are baked into the image (`api/Dockerfile:113`), and
+templates are filtered by detected framework. They called both "inert on all 17 pack cases", which
+is a statement about seventeen cases rather than about the mechanism. Our only new corpus-2
+detection rested on that.
+
+So we measured the same revision again through
+`ghcr.io/auditware/radar-api@sha256:1616723a1879668d4050def641e541f2c9edc878974b06011fb6b1a3bc519b4f`,
+36 invocations per pass, 36 ok, two passes, deterministic. **The two rows are identical, and not
+only in the scored verdicts: all 274 location rows match exactly.** Normalising the location format
+and diffing the two raw files gives **0 rows appearing and 0 disappearing**:
+
+    python -c "import json,re,collections
+    def rows(p):
+        out=[]
+        for f in json.load(open(p)):
+            for L in f.get('locations') or []:
+                m=re.match(r'^(.*):(\d+):(\d+)(?:-(\d+))?$',L)
+                out.append((f['name'],m.group(1),int(m.group(2)),int(m.group(3))))
+        return collections.Counter(out)
+    a=rows('raw/c2-radar-fa81c25.json'); b=rows('raw/c2-radar-fa81c25-image.json')
+    print(sum((a-b).values()), sum((b-a).values()))"
+    # -> 0 0
+
+Image integrity was checked separately: **23 of 23 layer blobs plus the config are intact**, and the
+only differences between the image contents and the checkout are build files (`.dockerignore`,
+`Dockerfile`, tests) and build artefacts, **none in engine code**.
+
+Raw: `raw/c2-radar-fa81c25-image.json` (+ `.run2`, + per-pass `.log`). Declared in
+`adapters/radar.json` and in the golden record **before** being published here, which is the order
+the shim row got wrong.
 
 **The one new detection is `wormhole-sysvar`, and it is exactly what the vendor said it would be.**
 Their comment 5523410629 claimed `Unvalidated Sysvar Account` would go missed→detected, firing at
 `verify_signature.rs:92` and `:101` — both inside the pre-registered fix-sites — and stay silent on
 the secure variant. Our run fires at exactly those two lines (`92:69-87`, `101:57-76`), on the
-vulnerable variant only. 34 invocations × 2 passes, all ok, deterministic, 274 location rows
-(228 before). The remaining 46 new/changed rows are generic-rule effects of `f36d1a4`
-("Cut generic-rule false positives and repair source-span accuracy"): +21 on
-`spl-stake-pool-mint-decimals` (20× `Unused Function Parameters`, 1× `Incorrect Ceiling Division`),
-+1 `Unused Function Parameters` on `solido-anker-arbitrary-cpi`, and two line-offset moves already
-seen in the 2026-09-02 shim run. None of those rules is mapped to a corpus-2 class, so no verdict
-other than wormhole changes.
+vulnerable variant only.
+
+**36 invocations × 2 passes, all ok, deterministic** (72 in total; `raw/c2-radar-fa81c25.json.log`
+and `.run2.json.log` each list 36, and `.determinism.json` records `"invocations": 72`). Of those
+36, **34 are scored**: 17 valid cases × 2 variants. The 18th manifest case,
+`cashio-account-data`, carries `valid: false` and is scanned but excluded from scoring. The
+`24c56f9` row beside this one was 34 invocations, because that run did not scan the excluded case.
+
+*Correction, 2026-09-04:* this paragraph and
+[radar#32 comment 5523415188](https://github.com/Auditware/radar/issues/32) first said
+"34 invocations × 2 passes". That was the `24c56f9` figure carried across by transcription. The
+scored count is unchanged; the number of invocations actually run was not.
+
+**274 location rows against 228, and the diff needs one caveat before it means anything.**
+`f36d1a4` changed the location format: `24c56f9` emits `file:line:col`, `fa81c25` emits
+`file:line:startcol-endcol`. A literal row-by-row diff between the two therefore reports every
+row as new, which is an artefact of the format and not a finding. Normalising to the start
+column, **50 rows appear and 4 disappear**, and 228 + 50 - 4 = 274.
+
+| what appears | rows |
+|---|---|
+| `Unused Function Parameters`, `spl-stake-pool-mint-decimals`, 20 per variant | 40 |
+| `Unused Function Parameters`, `solido-anker-arbitrary-cpi`, 1 per variant | 2 |
+| `Incorrect Ceiling Division`, `spl-stake-pool-mint-decimals`, 1 per variant | 2 |
+| `Unvalidated Sysvar Account`, `wormhole-sysvar`, insecure variant only | **2** |
+| line moves: `Invoke Signed Unvalidated Seeds` and `Anchor Admin Without Timelock`, 2 each | 4 |
+
+The 4 line moves pair exactly with the 4 rows that disappear, same rule and same case. So
+**44 rows are `f36d1a4` generic-rule effects** (42 `Unused Function Parameters` plus 2
+`Incorrect Ceiling Division`) and 2 are the wormhole detection. None of those generic rules is
+mapped to a corpus-2 class, so no verdict other than wormhole changes.
+
+*Correction, 2026-09-04:* the earlier text said "the remaining 46 new/changed rows" and broke
+them down as "+21" and "+1". Both counted a single variant. Every corpus-2 case is scanned in
+two variants, so the totals are 42 and 2, and the non-wormhole figure is 44, not 46. 46 is the
+net change in row count, not the number of generic-rule rows.
 
 Vendor-reported became measured. The right of reply works in both directions: we publish their
 confirmed claim beside our earlier number, with the raw artefacts to check it.

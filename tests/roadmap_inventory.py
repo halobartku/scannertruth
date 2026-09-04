@@ -89,7 +89,19 @@ def _roadmap_inventory():
         "skills": len(skills),
         "adapters": len(adapters),
         "errors": len(_documented_error_numbers()),
+        # Added 2026-09-04. The ROADMAP said "9 cases is our largest stated weakness" while
+        # corpus 2 had held 17 scored cases since 9b89b31: a stale figure that understated our
+        # own work on the page funders read. Scored means valid; the manifest carries one case
+        # with "valid": false (cashio-account-data, whose fix commit is not a fix), which is
+        # scanned and not scored, so 18 in the file and 17 on the clock.
+        "corpus2_cases": len([c for c in _json("corpus2/manifest.json")["cases"]
+                              if c.get("valid") is not False]),
     }
+
+
+def _json(path):
+    import json, io as _io
+    return json.load(_io.open(path, encoding="utf-8"))
 
 
 def test_the_roadmap_inventory_is_derived_not_typed():
@@ -113,6 +125,7 @@ def test_the_roadmap_inventory_is_derived_not_typed():
         (q["errors"], r"\*\*([\d,]+) of our own errors\*\*", "documented errors"),
         (q["skills"], r"\*\*([\d,]+) skills\*\*", "skills"),
         (q["adapters"], r"\*\*([\d,]+) adapter declarations\*\*", "adapter declarations"),
+        (q["corpus2_cases"], r"\(([\d,]+) scored cases on corpus 2", "scored corpus-2 cases"),
     ]
     wrong = []
     for n, pattern, what in wanted:

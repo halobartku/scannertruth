@@ -19,8 +19,8 @@ was wrong and nothing checked it (error 47).
 | | |
 |---|---|
 | **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
-| **2,466 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
-| **200 commits**, all public | every correction visible in history |
+| **2,527 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
+| **209 commits**, all public | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
 | **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
@@ -39,7 +39,7 @@ was wrong and nothing checked it (error 47).
   `corpus2/manifest.json` taken from their maintainers' own fix commits, and the same bugs rebuilt
   as **real crates**, per-case counts in `docs/results/RESULTS-realcrates.md`. The real crates are
   built on demand rather than committed, so a total file count is not quoted here (error 23).
-- **1,929 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
+- **1,931 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
   directory's own README - so every number can be re-derived rather than believed.
 - **A clock** that re-measures on a schedule and diffs against the previous run, with two dated
   entries already published. A ranking can be produced once; a regression only shows up if the
@@ -67,9 +67,11 @@ was wrong and nothing checked it (error 47).
 
 ### What the money is actually for
 
-**Corpus scale** (9 cases is our largest stated weakness), **measurement of non-deterministic AI
-tools** (nobody is doing this and the wave has already started), and **making this usable by
-somebody other than us** (today the answer to "has anyone outside verified it" is no).
+**Corpus scale** (17 scored cases on corpus 2 is our largest stated weakness), **measurement of the
+run-to-run spread of non-deterministic AI tools** (scoring models beside scanners is well
+established, but the published studies pin temperature at 0 and report a single run, so the spread
+is what nobody reports), and **making this usable by somebody other than us** (today the answer to
+"has anyone outside verified it" is no).
 
 ---
 
@@ -123,12 +125,21 @@ red, because those are different questions and merging them would let one hide t
 
 ---
 
-## Milestone 3 (25%). Measuring AI auditors. Nobody is doing this.
+## Milestone 3 (25%). Measuring AI auditors, and specifically their run-to-run spread.
 **Four weeks.**
+
+Scoring models on the same corpus as static scanners is **not new and we are not claiming it**:
+CASTLE (arXiv:2503.09433) puts 13 scanners and 10 models on one metric, and arXiv:2508.04448 and
+arXiv:2605.11163 do their own versions. What those studies have in common is that they fix
+temperature at 0 and report **one** score per model.
 
 A conventional scanner is deterministic: same code, same answer, check it once. **An AI auditor is
 not.** The same code can produce a different answer tomorrow after a model or prompt change, so
-measuring it once is worthless, and measuring it once is what everyone currently does. We have
+measuring it once tells you very little. **Most benchmarks report a single run, and the three we
+found that do not report a spread have no deterministic scanner standing beside the model**:
+SecLLMHolmes runs ten passes and scores consistency, arXiv:2606.21397 runs three and publishes
+per-model agreement, SEC-bench runs five and reports a standard deviation. So the gap is not that
+nobody repeats a run, it is that nobody repeats it next to a scanner measured the same way. We have
 already had to exclude one such tool from a measurement because it required a paid API key. The wave
 has started.
 

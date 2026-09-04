@@ -100,6 +100,24 @@
    "invocation": "on the VPS host: git -C /root/.radar checkout 24c56f9; docker compose up -d (images pulled 2026-09-02, digests in raw/radar-c1-2026-09-02-24c56f9/README.txt); python3 tools/scanner_spec.py --run radar --corpus corpus1 --corpus-root /tmp/sealevel-attacks/programs --out raw/radar-24c56f9-c1.json --artefacts raw/radar-c1-2026-09-02-24c56f9 --repeat 2 (script /root/radar-main.sh, log /root/radar-main-2026-09-02.log)"
   },
   {
+   "row": "radar-fa81c25-image",
+   "corpus": "corpus2",
+   "raw": "c2-radar-fa81c25-image.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "The SAME revision as the radar-fa81c25 row (Auditware/radar at fa81c25), measured through the REAL DOCKER IMAGE instead of the engine shim: ghcr.io/auditware/radar-api@sha256:1616723a1879668d4050def641e541f2c9edc878974b06011fb6b1a3bc519b4f. Measured 2026-09-04. 36 invocations per pass, 36 ok, --repeat 2 deterministic. This row exists to close the risk the vendor themselves named in radar#32: rules are baked into the image (api/Dockerfile:113) and templates are filtered by detected framework, so shim and docker could in principle diverge. They do not. Scored detected=1 missed=6 no-rule=8 unlocated=2, identical to the shim row, and all 274 location rows match exactly, verified by normalising the location format and diffing: 0 rows appear and 0 disappear. Image integrity checked separately: 23 of 23 layer blobs plus config intact, and the only differences between image and checkout are build files, not engine code. A NEW ROW beside the shim one; nothing overwritten.",
+   "invocation": "image-runner/run_corpus2_image.py --out-dir work/c2-fa81c25-image --run2, against ghcr.io/auditware/radar-api@sha256:1616723a1879... ; raw copied to raw/c2-radar-fa81c25-image.json (+ .run2, + per-pass .log)"
+  },
+  {
+   "row": "radar-fa81c25",
+   "corpus": "corpus2",
+   "raw": "c2-radar-fa81c25.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Radar at main after Auditware/radar#36 (checkout fa81c25), corpus 2 per case per variant, measured 2026-09-04 via the same engine shim and procedure as the 67348ee row of 2026-09-02. 36 invocations per pass, 36 ok, --repeat 2 deterministic (72 total; .determinism.json records invocations=72). 34 of the 36 are scored: 17 valid cases x 2 variants; the 18th manifest case cashio-account-data carries valid=false and is scanned but not scored, which is why this row shows 36 where the 24c56f9 row shows 34. 274 location rows against 228. Scored detected=1 missed=6 no-rule=8 unlocated=2, against 0/7/8/2 at 24c56f9: wormhole-sysvar goes missed to detected at verify_signature.rs:92 and :101, both inside the pre-registered fix sites, on the vulnerable variant only. A NEW ROW beside the 24c56f9 one; nothing overwritten. Declared here on 2026-09-04 because the row was published to the vendor in radar#32 on 2026-09-03 while sitting outside --verify-coverage, which kept reporting 22 of 22 without covering it.",
+   "invocation": "python3 tools/scanner_spec.py --run radar --corpus corpus2 --out raw/c2-radar-fa81c25.json --artefacts raw/radar-c2-2026-09-04-fa81c25 --repeat 2"
+  },
+  {
    "row": "radar-24c56f9",
    "corpus": "corpus2",
    "raw": "c2-radar-24c56f9.json",

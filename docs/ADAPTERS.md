@@ -177,7 +177,9 @@ Everything in this list is a judgement, not a keystroke, which is why none of it
   project. Each produced a silent zero that looked exactly like a clean miss.
 - **a new parser**, if the tool's output shape is not one of the six already here
 - **right of reply**: the result is provisional until the tool's authors have been offered the
-  mapping for correction
+  mapping for correction, and the offer runs for **fourteen days from the day the thread is
+  opened**. After that the number stands and silence is published as silence, with the date of
+  the ask beside it. See [`docs/PROTOCOL.md`](PROTOCOL.md) section 3b.
 
 ---
 
