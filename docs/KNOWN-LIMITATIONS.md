@@ -302,10 +302,29 @@ money", but it cannot support the broader claim "these tools do not work", and n
 repository should be read as making it. Unfixed, and probably unfixable without a source of
 disclosed-but-uncelebrated vulnerabilities.
 
-**26. No calibration control was ever run on corpus 2.** `control-noisy` and `control-null` cover
-the teaching corpus only. The corpus that carries the headline has no floor and no ceiling
-established by construction. Item 24 partly substitutes for this, but a real `control-noisy` run
-over corpus 2 is still missing.
+**26. No calibration control was ever run on corpus 2. CLOSED 2026-09-02, and this entry was left
+standing false until 2026-09-05.** When written, the sentence was true: `control-noisy` and
+`control-null` covered the teaching corpus only, so the corpus that carries the headline had no
+floor and no ceiling established by construction.
+
+It stopped being true on 2026-09-02, when `tools/control_c2.py` was written and made a CI step.
+**Nobody came back to this entry, so the document went on claiming a gap that was closed three
+days earlier**, while item 38 in this same file described running the very control item 26 said
+did not exist. That is the failure this document exists to catch in other people, and it should
+be read as an example of it.
+
+Reproduced 2026-09-05 00:30Z, from the current corpus and every mapping in `mappings/`:
+
+    control-noisy   2,629,968 findings   detected=0 across all 14 mappings
+    control-null            0 findings   detected=0 across all 14 mappings
+
+Noisy scores zero because it fires **just as loudly on the fixed variant**, so nothing it says
+distinguishes a bug from its repair; the verdict it earns is `unlocated`, never `detected`.
+**Real recall on corpus 2 therefore cannot be bought with volume, and every zero published from
+this corpus is a real zero.** That is the sentence item 26 was asking for.
+
+**Command:** `python tools/control_c2.py`. It takes about three minutes and rebuilds the artefact,
+which is gitignored at 311 MB.
 
 **27. The line tolerance is arbitrary, so we tested whether anything depends on it. Nothing does.**
 `TOLERANCE = 3` decides how close a finding must land to a changed line to count as located, and
