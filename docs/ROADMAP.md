@@ -20,7 +20,7 @@ was wrong and nothing checked it (error 47).
 |---|---|
 | **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **2,546 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
-| **212 commits**, all public | every correction visible in history |
+| **214 commits**, all public (`git rev-list --count HEAD`) | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
 | **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
@@ -52,7 +52,7 @@ was wrong and nothing checked it (error 47).
 - **A positive control on the scorer itself**, because until it was added the scorer had never once
   returned a detection and nobody had checked that it could.
 - **A per-run log** proving each case was actually analysed, for every live measurement including
-  our own: `python tools/run_all.py --verify-coverage` reports **22 of 22** with a run log and zero
+  our own: `python tools/run_all.py --verify-coverage` reports **24 of 24** with a run log and zero
   with none. This section said "ours does not have one yet" until 2026-09-03, three days after the
   gap was closed in milestone 1; the sentence was written before the work and outlived it.
 - **A test suite whose selection rule is "would a defect here change a published number"**, covering
@@ -84,7 +84,7 @@ machine-checked, not asserted: `python tools/run_all.py --verify-coverage` is a 
   and the determinism check come for free. Nine declarations exist. Adding one is a config file.
 - **DONE. A run log for everything, including our own.** This was the gap we were most exposed on:
   we had held other people's tools to a standard we had not met ourselves.
-- **DONE. Every tool across both corpora.** **22 of 22 live measurements carry a run log**, and no
+- **DONE. Every tool across both corpora.** **24 of 24 live measurements carry a run log**, and no
   case on either corpus is unresolved. `corpus1 radar` was the last one and was re-run on
   2026-09-01: 35 invocations, 35 ok, and the 11/11 reproduced location for location. One
   measurement is **retired** (`corpus2 sol-audit`, superseded by v3): reported, still visible, not
