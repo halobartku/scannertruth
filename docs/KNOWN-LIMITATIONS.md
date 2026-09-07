@@ -49,9 +49,16 @@ limitations that follow are the long form.
 - **Every teaching-corpus score is in-sample**, including the 11/11 and our own 4/11, because that
   corpus is public and at least two measured tools cite it in their own rules. A holdout is the only
   real answer; round 1 is sealed but gives timestamp integrity, not concealment.
-- **Every third-party number is provisional.** Four right-of-reply threads are open with the vendors
-  we measured; Auditware answered on 2026-09-01 (limitation 47), the other three have not. Our X-Ray mapping was wrong in a way only its authors could
-  have settled quickly, so this is not a formality.
+- **Every third-party number is provisional.** Three right-of-reply threads are still open with the
+  vendors we measured (`sec3-product/x-ray#51`, `vaultlint/vaultlint#1`, `hasip-timurtas/solsec#14`),
+  all three with zero comments and no change since 2026-08-31. The fourth, `Auditware/radar#32`,
+  **was closed by the vendor on 2026-09-06** after they answered twice: the mapping confirmation of
+  2026-09-01 (limitation 47) and a closing comment stating "no corrections to the mapping from our
+  side", that the generic-rule noise we flagged is largely gone with real recall unchanged, and that
+  they have added measurement scoring rules on whether they also stay quiet on the fix, so volume
+  cannot buy a number. That last part is our in-sample objection adopted by the tool's authors.
+  Our X-Ray mapping was wrong in a way only its authors could have settled quickly, so this is not
+  a formality.
 - **The mappings published on 2026-08-31 are not pre-registered in any way a stranger can check.**
   We claimed they were committed before their runs. The history says each one first appears in the
   same commit as the result it scores. They were written from the tools' own rule names and
