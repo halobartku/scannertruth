@@ -203,6 +203,58 @@ net change in row count, not the number of generic-rule rows.
 Vendor-reported became measured. The right of reply works in both directions: we publish their
 confirmed claim beside our earlier number, with the raw artefacts to check it.
 
+## Radar re-measured on corpus 2, 2026-09-07, at `3439053` (post-#41)
+
+> New row beside the old ones, nothing overwritten. Same corpus commit, same pre-registered mapping
+> (`mappings/radar.json`, confirmed by the vendor in
+> [`radar#32`](https://github.com/Auditware/radar/issues/32) comment 5523410629), same engine shim
+> and procedure as the `fa81c25` row of 2026-09-04. Raw: `raw/c2-radar-3439053.json`
+> (+ `.run2`, `.log`, `.determinism.json`), per-invocation artefacts under
+> `raw/radar-c2-2026-09-07-3439053/` with a README naming the revision.
+>
+> This is the first re-measure after a **real rule change**: the window `fa81c25..3439053` carries
+> #38–#40 (8 new builtin templates, 1 removed, 5+ rewritten, the AST `&mut` node-drop fix, test code
+> excluded by default) plus #41 (build revision printed in the scan header — visible in our
+> artefacts as `Ran 62 templates (shim revision 3439053)`, 56 at `fa81c25`).
+
+| Radar revision | detected | missed | no-rule | unlocated |
+|---|---|---|---|---|
+| `24c56f9` (post-#35, 2026-09-02, docker) | 0 | 7 | 8 | 2 |
+| `fa81c25` (post-#36 + docs/skill commits, 2026-09-04, engine shim) | 1 | 6 | 8 | 2 |
+| `3439053` (post-#41, 2026-09-07, engine shim) | 1 | **8** | 8 | **0** |
+
+**The mapping was not touched, so the mapping decides — and here it decided against the tool.**
+Every one of the 7 new templates that fire on this corpus names a corpus-2 class
+(`cpi-recursion`, `owner-check-after-cpi`, `pda-derived-address-validation`,
+`mint-configuration-validation`, `arithmetic-rounding-drain`, `program-account-validation`,
+`instruction-introspection`) — none is in `mappings/radar.json`, which was derived from Radar's
+rule names and confirmed by the vendor **before these templates existed**. A rule that joins the
+mapped set only after a run would not be a pre-registration, so the new templates score as
+unmapped rows, not verdicts. Extending the mapping is a separate decision with its own commit and
+its own right of reply, not an edit made while publishing a number.
+
+**What did move, moved down.** 36 invocations × 2 passes, all ok, deterministic: 217 location rows
+(274 at `fa81c25`). The two `unlocated` verdicts — `metaplex-token-metadata` and
+`token-2022-confidential-approve-mint` — became `missed`: the `Account Data Matching` rewrite
+(#38/#39) no longer fires in those vulnerable files at all (5 rows remain corpus-wide, 47 before).
+The one detection (`wormhole-sysvar`, `Unvalidated Sysvar Account` at `verify_signature.rs:92`,
+`:101`, insecure variant only) is unchanged. Fires-on-fixed for mapped rules fell 48 → 26.
+
+**The new rules are loud on fixed code.** Rule-level delta, all attributable to #38–#40:
++80 rows across the 7 new templates (`Unvalidated CPI Program Account` +36, `PDA Address Not
+Verified` +11, `Owner Check After CPI` +10, `Mint Configuration Unvalidated` +10,
+`CPI Self Recursion` +6, `Rounding Favours The Caller` +5, `Unvalidated Instruction
+Introspection` +2); `Account Data Matching` 47→5 and `Invoke Signed Unvalidated Seeds` 42→8
+(rewrites); `Unchecked Arithmetics` 45→26; `Unused Function Parameters` 42→0; `Missing Security
+Documentation` absent (template removed). 40 of the 80 new-template rows land on **secure**
+variants — on this corpus the new rules fire on fixed code half the time, which is exactly the
+behaviour real recall is defined against. Whether they would score as detections under an extended
+mapping is a question for the mapping process, not for this row.
+
+**Corpus 1 columns are not re-measured at this revision** — the rules changed, so carrying the
+`11 / 11` teaching-corpus figures into a `3439053` row would be stale data rather than
+measurement. The last corpus-1 measurement remains `67348ee` (2026-09-02).
+
 ## What we corrected about our own method, on the same day we published it
 
 The first pass at corpus 2 **counted findings of any kind, anywhere in the file**, while corpus 1

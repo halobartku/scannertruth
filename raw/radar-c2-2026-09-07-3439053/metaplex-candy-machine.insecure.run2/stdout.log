@@ -1,0 +1,5 @@
+[i] Language detected: rust
+[i] Scanned 1 file (set_collection_during_mint.rs)
+[i] Ran 62 templates (shim revision 3439053)
+[i] radar completed successfully. json results were saved to disk.
+[i] Results written to c2-3439053/metaplex-candy-machine.insecure.run2/radar.json

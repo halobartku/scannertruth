@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Unconstrained UncheckedAccount",
+        "description": "UncheckedAccount fields bypass Anchor's ownership and type validation, so without an address, owner, seeds, or constraint attribute a caller can substitute an arbitrary account into the instruction.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/metaplex-candy-machine.secure.pkg/pkg/src/set_collection_during_mint.rs:19:15-31",
+            "/root/radar32/work/c2-3439053/_staged/metaplex-candy-machine.secure.pkg/pkg/src/set_collection_during_mint.rs:30:22-38",
+            "/root/radar32/work/c2-3439053/_staged/metaplex-candy-machine.secure.pkg/pkg/src/set_collection_during_mint.rs:32:26-42",
+            "/root/radar32/work/c2-3439053/_staged/metaplex-candy-machine.secure.pkg/pkg/src/set_collection_during_mint.rs:34:32-48",
+            "/root/radar32/work/c2-3439053/_staged/metaplex-candy-machine.secure.pkg/pkg/src/set_collection_during_mint.rs:36:16-32",
+            "/root/radar32/work/c2-3439053/_staged/metaplex-candy-machine.secure.pkg/pkg/src/set_collection_during_mint.rs:38:34-50"
+        ]
+    }
+]

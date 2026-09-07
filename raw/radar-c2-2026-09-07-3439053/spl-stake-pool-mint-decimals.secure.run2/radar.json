@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Unvalidated CPI Program Account",
+        "description": "Dispatching a cross-program invocation to a program account that the caller supplied and the program never tied to a known address. Anchor's Program<'info, T> makes that check declarative; a raw UncheckedAccount or AccountInfo in the same slot means whoever builds the transaction chooses which program runs. Native programs need the equivalent comparison against the expected program id before invoking through the account.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:383:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:411:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:430:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:457:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:485:9-15",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:530:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:579:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:614:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:645:9-15",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:672:9-22",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:696:9-15",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:705:9-15"
+        ]
+    },
+    {
+        "name": "Incorrect Ceiling Division",
+        "description": "Dividing a token or value amount with `/` truncates toward zero, so the remainder is silently given away. Financial divisions should round up - through div_ceil / checked_ceil_div, a `(a + b - 1) / b` numerator, or an explicit remainder correction - whenever rounding down favours the caller.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:2209:42-45"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:2566:54-60"
+        ]
+    },
+    {
+        "name": "Account Precreation DoS",
+        "description": "Detects unsafe account owner assignments without prior validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:710:8-26"
+        ]
+    },
+    {
+        "name": "Integer Division Overflow",
+        "description": "Division operations without checked_div can cause panics on division by zero or overflow conditions.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:2162:8-45"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-mint-decimals.secure.pkg/pkg/src/processor.rs:3750:49-63"
+        ]
+    }
+]

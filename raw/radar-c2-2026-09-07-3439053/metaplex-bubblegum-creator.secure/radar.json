@@ -1,0 +1,11 @@
+[
+    {
+        "name": "PDA Address Not Verified",
+        "description": "Deriving a program address and never comparing it against the account actually supplied. Deriving proves what the address ought to be; only the comparison makes that mean anything, and without it any account of the right type is accepted in the PDA's place. The fix requires the derived key to equal the account's key before the account is used.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/metaplex-bubblegum-creator.secure.pkg/pkg/src/compression.rs:15:13-33"
+        ]
+    }
+]

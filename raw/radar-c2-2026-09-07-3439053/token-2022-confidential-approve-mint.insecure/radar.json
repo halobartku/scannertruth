@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Account Precreation DoS",
+        "description": "Detects unsafe account owner assignments without prior validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/token-2022-confidential-approve-mint.insecure.pkg/pkg/src/processor.rs:37:4-27"
+        ]
+    }
+]

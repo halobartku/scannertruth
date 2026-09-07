@@ -1,0 +1,290 @@
+[
+ {
+  "leaf": "anchor-account-reload-owner/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 13.69,
+  "files_seen": 1,
+  "findings": 2
+ },
+ {
+  "leaf": "anchor-account-reload-owner/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 14.41,
+  "files_seen": 1,
+  "findings": 2
+ },
+ {
+  "leaf": "anchor-interface-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 10.06,
+  "files_seen": 0,
+  "findings": 0
+ },
+ {
+  "leaf": "anchor-interface-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 10.81,
+  "files_seen": 1,
+  "findings": 2
+ },
+ {
+  "leaf": "anchor-program-system/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 8.58,
+  "files_seen": 0,
+  "findings": 0
+ },
+ {
+  "leaf": "anchor-program-system/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 11.47,
+  "files_seen": 0,
+  "findings": 0
+ },
+ {
+  "leaf": "cashio-account-data/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 1.45,
+  "files_seen": 0,
+  "findings": 0
+ },
+ {
+  "leaf": "cashio-account-data/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 1.63,
+  "files_seen": 0,
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 21.78,
+  "files_seen": 0,
+  "findings": 0
+ },
+ {
+  "leaf": "metaplex-bubblegum-creator/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 20.93,
+  "files_seen": 1,
+  "findings": 1
+ },
+ {
+  "leaf": "metaplex-candy-machine/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 6.85,
+  "files_seen": 1,
+  "findings": 6
+ },
+ {
+  "leaf": "metaplex-candy-machine/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 7.5,
+  "files_seen": 1,
+  "findings": 6
+ },
+ {
+  "leaf": "metaplex-token-metadata/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 15.45,
+  "files_seen": 1,
+  "findings": 3
+ },
+ {
+  "leaf": "metaplex-token-metadata/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 14.95,
+  "files_seen": 1,
+  "findings": 3
+ },
+ {
+  "leaf": "solend-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 121.82,
+  "files_seen": 1,
+  "findings": 22
+ },
+ {
+  "leaf": "solend-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 114.02,
+  "files_seen": 1,
+  "findings": 20
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 18.18,
+  "files_seen": 1,
+  "findings": 3
+ },
+ {
+  "leaf": "solido-anker-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 18.88,
+  "files_seen": 1,
+  "findings": 2
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 32.01,
+  "files_seen": 1,
+  "findings": 17
+ },
+ {
+  "leaf": "solido-deposit-reserve-account/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 31.03,
+  "files_seen": 1,
+  "findings": 17
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 54.07,
+  "files_seen": 1,
+  "findings": 9
+ },
+ {
+  "leaf": "spl-stake-pool-fee-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 52.8,
+  "files_seen": 1,
+  "findings": 8
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 176.62,
+  "files_seen": 1,
+  "findings": 17
+ },
+ {
+  "leaf": "spl-stake-pool-mint-decimals/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 174.12,
+  "files_seen": 1,
+  "findings": 17
+ },
+ {
+  "leaf": "spl-token-lending-rounding/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 53.02,
+  "files_seen": 1,
+  "findings": 4
+ },
+ {
+  "leaf": "spl-token-lending-rounding/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 51.64,
+  "files_seen": 1,
+  "findings": 4
+ },
+ {
+  "leaf": "squads-account-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 26.8,
+  "files_seen": 1,
+  "findings": 7
+ },
+ {
+  "leaf": "squads-account-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 28.09,
+  "files_seen": 1,
+  "findings": 7
+ },
+ {
+  "leaf": "squads-recursive-execute/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 35.03,
+  "files_seen": 1,
+  "findings": 6
+ },
+ {
+  "leaf": "squads-recursive-execute/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 34.12,
+  "files_seen": 1,
+  "findings": 6
+ },
+ {
+  "leaf": "squads-signer-auth/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 30.42,
+  "files_seen": 1,
+  "findings": 7
+ },
+ {
+  "leaf": "squads-signer-auth/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 31.2,
+  "files_seen": 1,
+  "findings": 7
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 49.28,
+  "files_seen": 1,
+  "findings": 1
+ },
+ {
+  "leaf": "token-2022-confidential-approve-mint/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 39.01,
+  "files_seen": 1,
+  "findings": 1
+ },
+ {
+  "leaf": "wormhole-sysvar/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 8.49,
+  "files_seen": 1,
+  "findings": 6
+ },
+ {
+  "leaf": "wormhole-sysvar/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 9.13,
+  "files_seen": 1,
+  "findings": 4
+ }
+]

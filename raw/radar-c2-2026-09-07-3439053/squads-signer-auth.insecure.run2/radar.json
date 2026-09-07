@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Owner Check After CPI",
+        "description": "Trusting an account's data after a cross-program invocation without re-establishing who owns it. A CPI can reassign an account to another program, and Anchor's reload() re-deserializes the bytes without re-checking the owner - so the data read afterwards can be entirely attacker-controlled. An ownership check made before the CPI proves nothing about the account after it. The fix re-checks the owner between the CPI and the next use of the account's data.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:64:31-37"
+        ]
+    },
+    {
+        "name": "PDA Address Not Verified",
+        "description": "Deriving a program address and never comparing it against the account actually supplied. Deriving proves what the address ought to be; only the comparison makes that mean anything, and without it any account of the right type is accepted in the PDA's place. The fix requires the derived key to equal the account's key before the account is used.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:153:46-66"
+        ]
+    },
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:38:12-22"
+        ]
+    },
+    {
+        "name": "Invoke Signed Unvalidated Seeds",
+        "description": "invoke_signed lends the program's PDA signature to a cross-program invocation. When the target program or account keys derive from caller-supplied accounts without a require_keys_eq check, an attacker can redirect the signed invocation to a malicious target.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:327:20-33"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:285:55-70"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:21:37-40",
+            "/root/radar32/work/c2-3439053/_staged/squads-signer-auth.insecure.pkg/pkg/src/lib.rs:274:53-70"
+        ]
+    }
+]

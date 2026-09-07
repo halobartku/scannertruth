@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Owner Check After CPI",
+        "description": "Trusting an account's data after a cross-program invocation without re-establishing who owns it. A CPI can reassign an account to another program, and Anchor's reload() re-deserializes the bytes without re-checking the owner - so the data read afterwards can be entirely attacker-controlled. An ownership check made before the CPI proves nothing about the account after it. The fix re-checks the owner between the CPI and the next use of the account's data.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/metaplex-token-metadata.insecure.pkg/pkg/src/transfer.rs:197:26-32"
+        ]
+    },
+    {
+        "name": "Unvalidated Instruction Introspection",
+        "description": "Reading a neighbouring instruction through the instructions sysvar and trusting its contents without checking which program it belongs to. Any account can put any instruction at any index of a transaction, so an introspected instruction proves nothing until its program id is established - making it look like the expected one is the attack, not an obstacle to it. The fix compares the loaded instruction's program_id against the program that is supposed to have produced it.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/metaplex-token-metadata.insecure.pkg/pkg/src/transfer.rs:229:17-41"
+        ]
+    },
+    {
+        "name": "Mint Configuration Unvalidated",
+        "description": "Accepting a token mint and pricing amounts in its raw units without checking the mint's decimals. Two mints sharing a symbol and differing in decimals value the same integer amount orders of magnitude apart, so a protocol that never checks credits whatever the caller's mint claims. The fix compares the mint's decimals against the value the protocol prices in.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/metaplex-token-metadata.insecure.pkg/pkg/src/transfer.rs:90:4-15"
+        ]
+    }
+]

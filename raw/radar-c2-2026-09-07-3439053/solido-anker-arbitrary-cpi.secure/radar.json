@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Anchor Reward Overflow",
+        "description": "Reward or interest calculations that multiply staked amounts by rates without checked_mul can silently overflow on Solana, distributing incorrect reward amounts or panicking.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solido-anker-arbitrary-cpi.secure.pkg/pkg/src/state.rs:665:10-16",
+            "/root/radar32/work/c2-3439053/_staged/solido-anker-arbitrary-cpi.secure.pkg/pkg/src/state.rs:687:10-16"
+        ]
+    }
+]

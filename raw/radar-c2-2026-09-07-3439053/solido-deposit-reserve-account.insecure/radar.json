@@ -1,0 +1,59 @@
+[
+    {
+        "name": "CPI Self Recursion",
+        "description": "Invoking a caller-supplied instruction that is permitted to target this program, without constraining which of its own entry points may be re-entered. The outer call is still on the stack, so state it has read is re-read and effects it has applied are applied again - reentrancy reached through CPI rather than a callback. Permitting self-invocation is not the bug; permitting it unconstrained is. The fix rejects the program's own dispatch entry points by discriminator or selector before invoking.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:152:5-11",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:443:5-18",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:727:5-18"
+        ]
+    },
+    {
+        "name": "Unvalidated CPI Program Account",
+        "description": "Dispatching a cross-program invocation to a program account that the caller supplied and the program never tied to a known address. Anchor's Program<'info, T> makes that check declarative; a raw UncheckedAccount or AccountInfo in the same slot means whoever builds the transaction chooses which program runs. Native programs need the equivalent comparison against the expected program id before invoking through the account.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:152:5-11",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:555:9-22",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:727:5-18"
+        ]
+    },
+    {
+        "name": "Arbitrary Cross-Program Invocation",
+        "description": "If not validated properly, when a program implements a Cross-Program Invocation, callers of the program may provide an arbitrary or untrusted program - manipulating the program to call instructions on an untrusted target program.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:138:8-23"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:64:44-58",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:143:41-55",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:191:46-60",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:406:41-55",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:498:52-66",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:589:47-61",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:693:45-59",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:759:42-56",
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:868:40-54"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solido-deposit-reserve-account.insecure.pkg/pkg/src/processor.rs:85:21-39"
+        ]
+    }
+]

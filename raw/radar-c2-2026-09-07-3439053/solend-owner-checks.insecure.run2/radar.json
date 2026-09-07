@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Missing Pyth Confidence Interval",
+        "description": "Using Pyth prices without validating the returned confidence interval can accept unreliable oracle values during volatile market conditions.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:309:24-33",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:449:38-47",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2109:4-13"
+        ]
+    },
+    {
+        "name": "Owner Check After CPI",
+        "description": "Trusting an account's data after a cross-program invocation without re-establishing who owns it. A CPI can reassign an account to another program, and Anchor's reload() re-deserializes the bytes without re-checking the owner - so the data read afterwards can be entirely attacker-controlled. An ownership check made before the CPI proves nothing about the account after it. The fix re-checks the owner between the CPI and the next use of the account's data.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:1882:24-30"
+        ]
+    },
+    {
+        "name": "PDA Address Not Verified",
+        "description": "Deriving a program address and never comparing it against the account actually supplied. Deriving proves what the address ought to be; only the comparison makes that mean anything, and without it any account of the right type is accepted in the PDA's place. The fix requires the derived key to equal the account's key before the account is used.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:152:28-48"
+        ]
+    },
+    {
+        "name": "Unvalidated CPI Program Account",
+        "description": "Dispatching a cross-program invocation to a program account that the caller supplied and the program never tied to a known address. Anchor's Program<'info, T> makes that check declarative; a raw UncheckedAccount or AccountInfo in the same slot means whoever builds the transaction chooses which program runs. Native programs need the equivalent comparison against the expected program id before invoking through the account.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2227:18-24",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2248:18-24",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2260:9-15"
+        ]
+    },
+    {
+        "name": "Unvalidated Price Data Account",
+        "description": "Reading oracle or price data from an untyped AccountInfo without validating the account owner can allow untrusted accounts to supply forged pricing data.",
+        "severity": "High",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2124:43-58",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2178:45-60"
+        ]
+    },
+    {
+        "name": "Mint Configuration Unvalidated",
+        "description": "Accepting a token mint and pricing amounts in its raw units without checking the mint's decimals. Two mints sharing a symbol and differing in decimals value the same integer amount orders of magnitude apart, so a protocol that never checks credits whatever the caller's mint claims. The fix compares the mint's decimals against the value the protocol prices in.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:194:4-24",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2293:4-21",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2319:4-18"
+        ]
+    },
+    {
+        "name": "Account Data Matching",
+        "description": "Unpacking account structures without verifying authorization might allow an attacker to view or modify account data unintentionally. Therefore, account unpack operations should be accompanied by appropriate ownership verification.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:1798:32-38",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:1882:24-30"
+        ]
+    },
+    {
+        "name": "Account Precreation DoS",
+        "description": "Detects unsafe account owner assignments without prior validation.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:131:4-31",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:194:4-24",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:733:4-27",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2213:4-26"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2077:27-32",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2087:26-27",
+            "/root/radar32/work/c2-3439053/_staged/solend-owner-checks.insecure.pkg/pkg/src/processor.rs:2089:23-28"
+        ]
+    }
+]

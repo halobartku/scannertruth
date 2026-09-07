@@ -14,8 +14,13 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 | **`radar`** (Auditware, main of 2026-08-31) | **11 / 11** | **11 / 11** | 52 | 24 (46%, upper bound; vendor reports 40% after #34, re-measured below) |
 | **`radar`** (Auditware, main after #35, `24c56f9`, 2026-09-02, docker image) | **11 / 11** | **11 / 11** | 36 | 14 (39%, upper bound) |
 | **`radar`** (Auditware, main after #36 and #37, `67348ee`, 2026-09-02, engine shim) | **11 / 11** | **11 / 11** | **19** | **2 (11%, upper bound)**, confirms the vendor's own figures |
-| **`radar`** (Auditware, main `fa81c25`, 2026-09-04, engine shim, corpus 2 re-run) | **11 / 11** | **11 / 11** | 19 | 2 (11%, upper bound); on corpus 2, `wormhole-sysvar` goes **missed → detected** at the pre-registered fix sites (`verify_signature.rs:92`, `:101`), exactly as the vendor reported in `radar#32`, detected 0→1, missed 7→6, everything else unchanged ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
+| **`radar`** (Auditware, main `fa81c25`, 2026-09-04, engine shim, corpus 2 re-run) | **11 / 11** | **11 / 11** | 19 | 2 (11%, upper bound); on corpus 2, `wormhole-sysvar` goes **missed → detected** at the pre-registered fix sites (`verify_signature.rs:92`, `:101`), exactly as the vendor reported in `radar#32` — detected 0→1, missed 7→6, everything else unchanged ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
+| **`radar`** (Auditware, main `3439053`, 2026-09-07, engine shim, corpus 2 re-run after the #38–#40 rule changes) | — not re-measured — | — | 62 templates† | — ; on corpus 2 the two `unlocated` verdicts become `missed` (Account Data Matching rewrite no longer fires in those files), `wormhole-sysvar` detection holds, and all 7 new templates fire only as unmapped rows — 40 of their 80 rows on fixed code ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
+
+† `62 templates` is the header build-info from #41 (`Ran 62 templates (shim revision 3439053)`;
+56 at `fa81c25`), not a findings count. The corpus-1 columns are marked not re-measured because
+the rules changed between revisions; the last corpus-1 measurement remains `67348ee` (2026-09-02).
 
 Two scanners, two opposite strategies, and the benchmark separates them cleanly. That separation is
 the whole reason to have one.

@@ -1,0 +1,50 @@
+[
+    {
+        "name": "PDA Address Not Verified",
+        "description": "Deriving a program address and never comparing it against the account actually supplied. Deriving proves what the address ought to be; only the comparison makes that mean anything, and without it any account of the right type is accepted in the PDA's place. The fix requires the derived key to equal the account's key before the account is used.",
+        "severity": "High",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:278:40-62"
+        ]
+    },
+    {
+        "name": "Anchor Admin Without Timelock",
+        "description": "Immediate Anchor admin setters that change critical protocol thresholds or fees should gate execution behind a timelock.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:481:34-37"
+        ]
+    },
+    {
+        "name": "Rounding Favours The Caller",
+        "description": "Integer division whose rounding direction moves value toward the caller. A fee owed to the protocol computed with floor division is short by the remainder on every call, and shares issued with ceiling division hand out marginally more than was paid for. Neither loses much once; both are free to repeat. The direction is what matters - fees round up, issuance rounds down - so this keys on which quantity is being computed, and is therefore Low certainty by construction.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:215:18-29",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:233:18-29"
+        ]
+    },
+    {
+        "name": "Type Cosplay",
+        "description": "Type cosplay vulnerability occurs when a program fails to validate that an account is of the expected type, allowing malicious accounts to masquerade as legitimate program accounts.",
+        "severity": "Low",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:747:14-28",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:754:14-28",
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:774:30-44"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-stake-pool-fee-rounding.secure.pkg/pkg/src/state.rs:1460:20-37"
+        ]
+    }
+]

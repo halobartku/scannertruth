@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Mint Configuration Unvalidated",
+        "description": "Accepting a token mint and pricing amounts in its raw units without checking the mint's decimals. Two mints sharing a symbol and differing in decimals value the same integer amount orders of magnitude apart, so a protocol that never checks credits whatever the caller's mint claims. The fix compares the mint's decimals against the value the protocol prices in.",
+        "severity": "Medium",
+        "certainty": "Low",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/reserve.rs:62:12-29"
+        ]
+    },
+    {
+        "name": "Unrestricted Token Minting",
+        "description": "Public mint functions without access control allow anyone to mint unlimited tokens, completely breaking the token economics and security model.",
+        "severity": "Medium",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/reserve.rs:508:12-16"
+        ]
+    },
+    {
+        "name": "Unchecked Arithmetics",
+        "description": "Arithmetic operations without overflow checks can lead to unexpected behavior, incorrect calculations, or security vulnerabilities when values exceed their maximum limits.",
+        "severity": "Low",
+        "certainty": "Medium",
+        "locations": [
+            "/root/radar32/work/c2-3439053/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/rate.rs:56:25-32",
+            "/root/radar32/work/c2-3439053/_staged/spl-token-lending-rounding.secure.pkg/pkg/src/rate.rs:99:42-45"
+        ]
+    }
+]
