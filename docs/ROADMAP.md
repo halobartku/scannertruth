@@ -20,7 +20,7 @@ was wrong and nothing checked it (error 47).
 |---|---|
 | **5,740 lines** of Python across **30 tools**, plus a suite of **166 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **2,546 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
-| **215 commits**, all public (`git rev-list --count HEAD`) | every correction visible in history |
+| **218 commits**, all public (`git rev-list --count HEAD`) | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
 | **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
@@ -39,7 +39,7 @@ was wrong and nothing checked it (error 47).
   `corpus2/manifest.json` taken from their maintainers' own fix commits, and the same bugs rebuilt
   as **real crates**, per-case counts in `docs/results/RESULTS-realcrates.md`. The real crates are
   built on demand rather than committed, so a total file count is not quoted here (error 23).
-- **1,931 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
+- **2,009 raw artefacts** published under `raw/` - every tracked file that is neither a run log nor the
   directory's own README - so every number can be re-derived rather than believed.
 - **A clock** that re-measures on a schedule and diffs against the previous run, with two dated
   entries already published. A ranking can be produced once; a regression only shows up if the
