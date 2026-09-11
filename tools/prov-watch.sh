@@ -111,6 +111,28 @@ if os.path.exists(man):
 else:
     log("korpus2: brak manifestu, stan zachowany")
 
+# Czy ten podpis jest juz przez nas ZMIERZONY. Bez tego skrypt porownuje HEAD wylacznie
+# z wlasnym poprzednim odczytem i mimo to pisze "nasz opublikowany pomiar opisuje stare",
+# czego nie moze wiedziec. 2026-09-11 wlasnie tak powstal falszywy wniosek o radarze:
+# pomiar na 3439053 istnial od 07.09, tylko nie byl zadeklarowany w adapterze.
+def zmierzone(nazwa, sig):
+    """Prawda, gdy ktorykolwiek zadeklarowany pomiar nazywa rewizje z tego podpisu.
+
+    Szuka kazdego ciagu 7+ znakow szesnastkowych z podpisu w tresci adaptera. Dopasowanie
+    na krotszym przedrostku dawaloby trafienia przypadkowe, a adapter i tak zapisuje rewizje
+    w nazwie wiersza (radar-3439053) albo w nocie.
+    """
+    import re
+    ad = os.path.join(repo, "adapters", nazwa + ".json")
+    if not os.path.exists(ad):
+        return None
+    tresc = open(ad, encoding="utf-8").read()
+    kandydaci = [x for x in re.findall(r"[0-9a-f]{7,40}", sig.lower())]
+    if not kandydaci:
+        return None
+    return any(k[:7] in tresc.lower() for k in kandydaci)
+
+
 # --- 3. wersje CUDZYCH skanerow -------------------------------------------------------
 # Ten sam zarzut, ktory postawilibysmy komus innemu: pomiar ma opisywac wersje, ktora zmierzyl.
 # Zrodlo musi byc TO, z ktorego instalowalismy, a nie to, ktore najlatwiej odpytac.
@@ -138,8 +160,13 @@ for nazwa, (zrodlo, gh) in sorted(SLEDZONE.items()):
         if prev is None:
             log("%s: baseline crates.io %s" % (nazwa, sig))
         elif prev != sig:
-            out.append("DRYF %s | crates.io ma %s (bylo %s) | nasz opublikowany pomiar opisuje stare"
-                       % (nazwa, sig, prev))
+            ad = os.path.join(repo, "adapters", nazwa + ".json")
+            mamy = sig and os.path.exists(ad) and sig in open(ad, encoding="utf-8").read()
+            if mamy:
+                log("%s: crates.io ma %s, ale adapter juz deklaruje ta wersje" % (nazwa, sig))
+            else:
+                out.append("DRYF %s | crates.io ma %s (bylo %s) | zaden zadeklarowany pomiar "
+                           "nie nazywa tej wersji" % (nazwa, sig, prev))
         new[klucz] = sig
         continue
     klucz = "wydanie:" + nazwa
@@ -167,8 +194,14 @@ for nazwa, (zrodlo, gh) in sorted(SLEDZONE.items()):
     if prev is None:
         log("%s: baseline %s" % (nazwa, sig))
     elif prev != sig:
-        out.append("DRYF %s | nowe wydanie %s (bylo %s) | nasz opublikowany pomiar opisuje stare"
-                   % (nazwa, sig, prev))
+        mamy = zmierzone(nazwa, sig)
+        if mamy:
+            log("%s: ruszyl na %s, ale adapter juz deklaruje ten pomiar" % (nazwa, sig))
+        else:
+            out.append("DRYF %s | nowe wydanie %s (bylo %s) | %s"
+                       % (nazwa, sig, prev,
+                          "zaden zadeklarowany pomiar nie nazywa tej rewizji" if mamy is False
+                          else "nie umiem porownac tego podpisu z adapterem, sprawdz recznie"))
     new[klucz] = sig
 
 if out:

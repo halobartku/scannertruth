@@ -201,3 +201,41 @@ def test_a_run_the_framework_produced_is_declared_on_the_clock():
     assert not undeclared, (
         "these runs were made by the framework and no adapter declares them, so the coverage "
         f"gate cannot see them: {undeclared}")
+
+
+def test_the_provenance_watcher_asks_the_adapter_before_it_claims_drift():
+    """The watcher compares upstream against its own previous reading, which is not the question.
+
+    Until 2026-09-11 it printed `nasz opublikowany pomiar opisuje stare` on any upstream move. It
+    never read `adapters/`, so it could not know that, and on 2026-09-11 it was wrong: the Radar row
+    at 3439053 had existed since 2026-09-07. A watchdog that overstates what it knows produces the
+    same false conclusion every time the thing it watches moves and we keep up.
+
+    The check pulls `zmierzone` out of the shell script and drives it both ways, because a helper
+    that always answers "already measured" silences the watcher completely and looks identical to a
+    watcher with nothing to report.
+    """
+    src = io.open("tools/prov-watch.sh", encoding="utf-8").read()
+    start = src.index("def zmierzone(")
+    body = [src[start:].splitlines()[0]]
+    for line in src[start:].splitlines()[1:]:
+        if line and not line[0].isspace():
+            break
+        body.append(line)
+    ns = {"os": os}
+    exec("\n".join(body), ns)
+    zmierzone = ns["zmierzone"]
+    ns["repo"] = "."
+
+    cases = [
+        ("radar", "HEAD 3439053d8da6 2026-09-07", True),   # declared 2026-09-11
+        ("radar", "HEAD fa81c25aaaaa 2026-09-04", True),   # declared 2026-09-04
+        ("radar", "HEAD deadbeef1234 2026-09-30", False),  # never measured: this must alarm
+        ("radar", "v1.2.3", None),                         # no revision in the signature
+        ("no-such-scanner", "HEAD 3439053d8da6", None),
+    ]
+    for name, sig, want in cases:
+        got = zmierzone(name, sig)
+        assert got is want, (
+            f"zmierzone({name!r}, {sig!r}) returned {got!r}, expected {want!r}; the watcher would "
+            f"{'stay silent about a revision nobody measured' if want is False else 'cry drift over a row we declared'}")

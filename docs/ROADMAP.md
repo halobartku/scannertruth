@@ -18,7 +18,7 @@ was wrong and nothing checked it (error 47).
 
 | | |
 |---|---|
-| **5,886 lines** of Python across **32 tools**, plus a suite of **167 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **5,886 lines** of Python across **32 tools**, plus a suite of **168 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **2,629 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
 | **220 commits**, all public (`git rev-list --count HEAD`) | every correction visible in history |
 | **3 skills** | the method as executable procedure, not prose |
