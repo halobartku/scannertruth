@@ -149,3 +149,54 @@ they were not looked at, not that they are empty. Twenty-four audit PDFs are kno
 in repositories already cloned and have not been read: ten OtterSec Mango v4, thirteen marginfi, one
 OtterSec Squads. That is the seam to work next, and it is a better one than commit-message
 archaeology.
+
+
+---
+
+# Powtorka pozyskiwania, 2026-09-11
+
+**Powod:** przed dolozeniem przypadku trzeba wiedziec, czy sa kandydaci. Bez tego wpisu
+"szukalismy i nie ma" wygladaloby tak samo jak "nie szukalismy".
+
+## GHSA, ta sama sciezka co 31.08
+
+    przeskanowanych doradztw Rust    1 200 (log mowi "complete", nie ucięte limitem)
+    solanowych                       10
+    z bezposrednim commitem naprawczym  5
+
+**Zero nowych.** Wszystkie dziesiec ma juz werdykt w tabeli powyzej.
+
+## RustSec, sprawdzony OSOBNO, bo dokumentacja narzedzia obiecuje wiecej niz kod
+
+`corpus_ghsa.py` w naglowku mowi, ze czyta "GitHub Security Advisories and RustSec",
+a pyta wylacznie `api.github.com/advisories?ecosystem=rust`. Sprawdzone wprost w bazie RustSec:
+
+    plikow doradztw                                      1 223
+    pasujacych do markerow solanowych                        7
+    z tego FALSZYWYCH trafien mojego wzorca                  3
+
+Falszywe: `cpython` i `sophosfirewall-python` zlapaly sie na fragmencie "pyth",
+`chrono_anchor` na "anchor". **To ten sam blad, przed ktorym ostrzega sekcja 1 tej procedury**
+(dopasowanie do blobu zrobilo z `gix-packetline` trafienie solanowe), i popelnilem go na nowo.
+Zapisuje, bo wzorzec jest powtarzalny.
+
+Prawdziwe cztery: `anchor-lang` (RUSTSEC-2026-0144, 2026-0146), `solana_rbpf` (2026-0191),
+`spl-token-swap` (2024-0426). **Wszystkie cztery sa juz w tabeli powyzej.**
+
+## Werdykt
+
+**Zrodlo doradztw jest wyczerpane. Nie da sie dzis dolozyc przypadku z GHSA ani z RustSec.**
+
+To nie jest brak wysilku i nie jest ucięty skan: oba skany sa kompletne, a kazde znalezione
+doradztwo solanowe ma zapisany werdykt.
+
+**Gdzie moze byc nastepny przypadek, w kolejnosci wiarygodnosci zrodla:**
+
+1. **Raporty audytowe z opublikowanym commitem naprawczym.** Fix jest tam polem, nie proza,
+   wiec spelnia wymog sekcji 1. Wymaga jednak reki: audyty nie maja API.
+2. **Programy on-chain bez crate'a na crates.io.** One z definicji **nie moga miec GHSA**,
+   bo doradztwo wymaga ekosystemu pakietow. To jest strukturalna luka tego zrodla,
+   a nie nasze niedopatrzenie, i warto ja zapisac.
+3. **NIE przez wyszukiwanie postmortemow w sieci.** Pierwsze narzedzie tak wlasnie dzialalo:
+   23 zapytania, jedno trafienie, falszywe. Sekcja 1 mowi dlaczego: postmortem trzyma commit
+   w tresci strony, a fragment wyniku wyszukiwania nigdy go nie zawiera.
