@@ -547,3 +547,27 @@ and the results page prints two numbers: strict, counting only what counts, and 
 disputed. **The spread between them is the size of that judgement**, and a reader who disagrees with
 a rule can move a number by exactly the cases that rule decides and no more. The phrases were
 adjudicated per real class, not per model, so the same phrase gets the same verdict for every model.
+
+## Added 2026-09-11, on finding a published measurement that our own gate could not see
+
+**50. A measurement can be published without being declared, and the coverage gate cannot say so.**
+`run_all.py` builds its row registry from the adapters' `measurements`, so an undeclared row is
+invisible to `--verify-coverage` by construction: it does not fail, it is never asked about. The
+Radar row at `3439053` was run on 2026-09-07 with a full per-run log, a determinism verdict over 72
+invocations and 77 artefacts, published the same day in `RESULTS-corpus2.md` and
+`RESULTS-scanners.md`, and declared only on 2026-09-11. For four days the gate reported 24 of 24
+while covering 24 of 25. **This is the second time it happened to this scanner**: the `fa81c25` row
+went to a vendor on 2026-09-03 and was declared on 2026-09-04, and that fix declared the one row
+rather than closing the class. The class is now closed by
+`tests/coverage_bookkeeping.py::test_a_run_the_framework_produced_is_declared_on_the_clock`, which
+refuses when a findings file sits beside both a run log and a determinism verdict and no adapter
+names it. What the check does **not** cover is a run made outside the framework, which leaves neither
+artefact and is therefore still undetectable this way.
+
+**51. The `3439053` row's literal command line was never written down.** The commit carries results
+and artefacts only, there is no 2026-09-07 engineering log, and no runner script for the revision
+exists in the repository or on the VPS. The revision, the shim, the procedure and the per-leaf
+coverage lines are all recorded in `raw/radar-c2-2026-09-07-3439053/README.txt` and in each
+`stdout.log`, so what ran is documented; the exact invocation is not, and the declaration says so
+instead of reconstructing it from memory. This is the same gap as the X-Ray row's `unrecorded`
+engine, arrived at a different way.

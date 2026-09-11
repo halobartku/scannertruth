@@ -125,6 +125,15 @@
    "envelope": "radar",
    "note": "Same build (24c56f9, docker), corpus 2 per case per variant, 34 invocations, 34 ok, --repeat 2 deterministic, 228 findings, zero fix-site detections (7 missed, 8 no-rule, 2 unlocated).",
    "invocation": "python3 tools/scanner_spec.py --run radar --corpus corpus2 --out raw/c2-radar-24c56f9.json --artefacts raw/radar-c2-2026-09-02-24c56f9 --repeat 2"
+  },
+  {
+   "row": "radar-3439053",
+   "corpus": "corpus2",
+   "raw": "c2-radar-3439053.json",
+   "mapping": "radar",
+   "envelope": "radar",
+   "note": "Radar at main 3439053 (post-#41), corpus 2 per case per variant, measured 2026-09-07 through the same engine shim and procedure as the fa81c25 row of 2026-09-04, engine code unmodified from the checkout at 3439053d8da6339606ec6aee604cf2e1855e43e0. 36 invocations per pass, 36 ok, --repeat 2 deterministic (determinism.json records invocations=72). Mapping unchanged and pre-registered (mappings/radar.json, confirmed by the vendor in radar#32 comment 5523410629). THE FIRST RE-MEASURE AFTER A REAL RULE CHANGE: the window fa81c25..3439053 carries #38-#40 (8 new builtin templates, 1 removed, 5+ rewritten, the AST &mut node-drop fix, test code excluded by default) plus #41, visible in the artefacts as `Ran 62 templates (shim revision 3439053)` against 56 at fa81c25. Scored detected=1 missed=8 no-rule=8 unlocated=0, against 1/6/8/2 at fa81c25: the mapping was not touched, so the mapping decided, and it decided against the tool. None of the 7 new templates that fire on this corpus is mapped to a corpus-2 class, so they score as unmapped rows rather than verdicts. 217 location rows against 274. A NEW ROW beside the old ones; nothing overwritten. Corpus 1 NOT re-measured at this revision. DECLARED 2026-09-11, four days after the run was published in RESULTS-corpus2.md and RESULTS-scanners.md (commit d2d69d9): the row sat outside --verify-coverage, which kept reporting 24 of 24 without covering it. This is the second time the same omission happened to this scanner; the class is now closed by tests/coverage_bookkeeping.py::test_a_run_the_framework_produced_is_declared_on_the_clock.",
+   "invocation": "THE LITERAL COMMAND LINE WAS NOT RECORDED and is not reconstructed here from memory: commit d2d69d9 carries only results and artefacts, there is no 2026-09-07 engineering log, and no runner script for this revision exists in the repository or on the VPS (checked 2026-09-11). What IS recorded: raw/radar-c2-2026-09-07-3439053/README.txt names the revision, the shim and the procedure; each leaf carries stdout.log showing `Ran 62 templates (shim revision 3439053)` and the coverage line `Scanned N file`; raw/c2-radar-3439053.json.log holds one entry per invocation; the output paths inside the artefacts read `c2-3439053/<leaf>/radar.json`. The shape matches the fa81c25 row's recorded invocation with --out raw/c2-radar-3439053.json and --artefacts raw/radar-c2-2026-09-07-3439053, but nobody wrote it down, so it is not claimed."
   }
  ]
 }

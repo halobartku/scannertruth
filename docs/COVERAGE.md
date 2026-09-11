@@ -9,7 +9,7 @@ project has published both mistakes, in both directions, and they are errors 20,
 32 in the engineering log. So every row below says which kind of evidence exists, and the
 weak kinds are named rather than rounded up.
 
-**24 of 25 measurements have a per-run log.**
+**25 of 26 measurements have a per-run log.**
 
 | corpus | scanner | evidence | detail |
 |---|---|---|---|
@@ -28,6 +28,7 @@ weak kinds are named rather than rounded up.
 | corpus 1 | `xray` | **run log** | 35 invocations, 35 ok, 0 unavailable (raw/xray-c1-raw.json.log) |
 | corpus 2 | `radar` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-radar-current.json.log) |
 | corpus 2 | `radar-24c56f9` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-radar-24c56f9.json.log) |
+| corpus 2 | `radar-3439053` | **run log** | 36 invocations, 36 ok, 0 unavailable (raw/c2-radar-3439053.json.log) |
 | corpus 2 | `radar-fa81c25` | **run log** | 36 invocations, 36 ok, 0 unavailable (raw/c2-radar-fa81c25.json.log) |
 | corpus 2 | `radar-fa81c25-image` | **run log** | 36 invocations, 36 ok, 0 unavailable (raw/c2-radar-fa81c25-image.json.log) |
 | corpus 2 | `semgrep-solana-standard-c2` | **run log** | 34 invocations, 34 ok, 0 unavailable (raw/c2-semgrep-solana-standard.json.log) |

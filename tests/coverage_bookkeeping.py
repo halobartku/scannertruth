@@ -163,3 +163,41 @@ def test_a_findings_file_covering_one_case_cannot_score_many():
                 seen.add(c)
     assert len(seen) == 1, "test fixture is wrong"
     assert len(seen) < len(valid),         "a single-case file must not be able to account for every case"
+
+
+def test_a_run_the_framework_produced_is_declared_on_the_clock():
+    """A framework run that nobody declared is invisible to `--verify-coverage` by construction.
+
+    `run_all` builds its row registry from the adapters' `measurements`, so a measurement that was
+    run, published and never declared cannot fail the coverage gate: the gate never hears about it.
+    A gate that cannot see a row looks exactly like a gate with nothing to report.
+
+    This has now happened twice with the same scanner. The `fa81c25` row was published to the
+    vendor in radar#32 on 2026-09-03 and declared on 2026-09-04, and that fix declared the one row
+    rather than closing the class. On 2026-09-07 the `3439053` row was published in
+    RESULTS-corpus2.md and RESULTS-scanners.md with full artefacts and again no declaration, and it
+    sat outside the gate for four days while `--verify-coverage` reported 24 of 24.
+
+    The predicate is the framework's own footprint, not a curated list: a findings file beside both
+    a per-run log and a determinism verdict was produced by `scanner_spec --repeat 2`, which is how
+    a measurement row is made here. Scoring outputs, controls and scratch files have neither and are
+    not caught. At the time of writing that is 15 files, of which 14 were declared.
+    """
+    import glob
+    import sys
+    sys.path.insert(0, "tools")
+    import scanner_spec
+
+    declared = {m["raw"] for s in scanner_spec.load_all().values()
+                for m in s.get("measurements", []) if m.get("raw")}
+    undeclared = []
+    for path in sorted(glob.glob("raw/*.json")):
+        name = os.path.basename(path)
+        if name.endswith(".determinism.json") or ".run2." in name:
+            continue
+        if os.path.exists(path + ".log") and os.path.exists(path + ".determinism.json"):
+            if name not in declared:
+                undeclared.append(name)
+    assert not undeclared, (
+        "these runs were made by the framework and no adapter declares them, so the coverage "
+        f"gate cannot see them: {undeclared}")

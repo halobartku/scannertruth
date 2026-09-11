@@ -50,6 +50,12 @@ CLOCK_BEFORE_MIGRATION_C2 = {
     # Declared here BEFORE the row was published anywhere, which is the order the fa81c25 row
     # got wrong: that one went to a vendor while --verify-coverage still read 22 of 22.
     "radar-fa81c25-image": ("c2-radar-fa81c25-image.json", "radar"),
+    # Added 2026-09-11 for a run made 2026-09-07 and published the same day in
+    # RESULTS-corpus2.md and RESULTS-scanners.md. Four days outside the gate, which read
+    # 24 of 24 the whole time. The SECOND time this scanner was published before it was
+    # declared; the fa81c25 note above is the first. Declaring the row is not the fix, and
+    # test_a_run_the_framework_produced_is_declared_on_the_clock is.
+    "radar-3439053": ("c2-radar-3439053.json", "radar"),
     "vaultlint": ("c2-vaultlint-complete.json", "sol-audit"),
     "sol-audit": ("c2-sol-audit.json", "sol-audit"),
     "sol-audit-v3": ("c2-sol-audit-v3-strict.json", "sol-audit"),
@@ -63,6 +69,7 @@ CLOCK_BEFORE_MIGRATION_ALIAS = {
     "radar-24c56f9": "radar",  # added 2026-09-02: the new Radar row scores with the same pre-registered mapping
     "radar-fa81c25": "radar",  # added 2026-09-04: same pre-registered mapping, vendor-confirmed in radar#32
     "radar-fa81c25-image": "radar",  # same mapping again: the point is the engine, not the mapping
+    "radar-3439053": "radar",  # added 2026-09-11: same pre-registered mapping, unedited across the rule change
     "sol-audit-v3": "sol-audit",
     "sol-audit-v3-broad": "sol-audit",
     "sol-audit-v3-all": "sol-audit",
