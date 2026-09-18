@@ -221,13 +221,18 @@ is systematically harder than the population of real bugs and understates every 
 it. It answers "do these tools catch the ones that cost money". It cannot support "these tools do
 not work", and nothing here should be read as claiming that.
 
-**The right of reply is now open, not exercised.** Four threads, one per measured tool:
-[radar#32](https://github.com/Auditware/radar/issues/32),
+**The right of reply was offered to all four and the window has closed (updated 2026-09-18).**
+Four threads, one per measured tool, opened 2026-08-31.
+[radar#32](https://github.com/Auditware/radar/issues/32): Auditware answered twice and closed the
+thread on 2026-09-06, with no corrections to the mapping.
 [x-ray#51](https://github.com/sec3-product/x-ray/issues/51),
-[vaultlint#1](https://github.com/vaultlint/vaultlint/issues/1),
-[solsec#14](https://github.com/hasip-timurtas/solsec/issues/14). No replies yet. Until they answer,
-every third-party number below is provisional, and the X-Ray correction shows that is not a
-formality.
+[vaultlint#1](https://github.com/vaultlint/vaultlint/issues/1) and
+[solsec#14](https://github.com/hasip-timurtas/solsec/issues/14): **no response**. Checked on
+2026-09-18 through the GitHub API: all three open, zero comments, unchanged since 2026-08-31. Under
+[`PROTOCOL.md`](../PROTOCOL.md) section 3b the window was fourteen days and closed on 2026-09-14, so
+**silence is published as silence**: these numbers stand as our reading of each tool's rules, not
+confirmed by the authors. The authors remain free to answer at any time; a reply will be published
+beside the number, and if it shows our mapping was wrong we will say so, as we did for X-Ray.
 
 Every result here is provisional until each tool's authors have been offered their mapping for
 correction, which `docs/PROTOCOL.md` requires and which has not yet happened for anyone. Eight

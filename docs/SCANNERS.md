@@ -69,8 +69,10 @@ mapped rule fired on the vulnerable program **and stayed silent on the same prog
 | semgrep + SOL-0XX pack (MIT, 30 rules) | 3 / 11 nominal, 0 / 11 real | 0 / 16 |
 
 Every teaching-corpus figure is **in-sample**: that corpus is public, four years old, and at least
-two of these tools cite it in their own rule tables. Every third-party figure is **provisional**
-until its authors use their [right of reply](../docs/PROTOCOL.md).
+two of these tools cite it in their own rule tables. A third-party figure is **provisional**
+until its authors have had fourteen days to use their [right of reply](../docs/PROTOCOL.md). Radar's
+authors answered; X-Ray, VaultLint and solsec were asked on 2026-08-31 and did not, so those figures
+are published as unanswered. The Semgrep pack and sol-azy mappings have not been offered yet.
 
 Our mapping of each tool's rules is in [`mappings/`](../mappings/), one file per tool, each recording
 how it was derived.

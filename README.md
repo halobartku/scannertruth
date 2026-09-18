@@ -102,8 +102,9 @@ for this class. X-Ray's was the first, in August. VaultLint's is new on 2026-09-
 is silent on the same function once the owner check is added, which is real recall by our own
 definition. Our mapping points VL002 at `owner-checks` and the case is `owner-check-after-cpi`,
 so **as registered the score is still zero**. Both numbers are published and neither mapping is
-edited, because a mapping rewritten after seeing output is not a pre-registration. Both results
-are provisional until their authors have been offered the mapping.
+edited, because a mapping rewritten after seeing output is not a pre-registration. Both authors
+were offered the mapping on 2026-08-31 and did not answer within the fourteen days of
+`PROTOCOL.md` 3b, so both results are published as unanswered, not as confirmed.
 
 What each row's denominator is, why two rows moved on 2026-09-01 without their zeros moving, and
 what the control proves are in

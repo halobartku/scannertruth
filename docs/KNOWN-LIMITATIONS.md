@@ -49,9 +49,12 @@ limitations that follow are the long form.
 - **Every teaching-corpus score is in-sample**, including the 11/11 and our own 4/11, because that
   corpus is public and at least two measured tools cite it in their own rules. A holdout is the only
   real answer; round 1 is sealed but gives timestamp integrity, not concealment.
-- **Every third-party number is provisional.** Three right-of-reply threads are still open with the
-  vendors we measured (`sec3-product/x-ray#51`, `vaultlint/vaultlint#1`, `hasip-timurtas/solsec#14`),
-  all three with zero comments and no change since 2026-08-31. The fourth, `Auditware/radar#32`,
+- **Three third-party numbers stand on silence, not on confirmation (updated 2026-09-18).** The
+  right-of-reply threads with `sec3-product/x-ray#51`, `vaultlint/vaultlint#1` and
+  `hasip-timurtas/solsec#14` got zero comments and no change since 2026-08-31 (GitHub API,
+  2026-09-18). The fourteen-day window of `PROTOCOL.md` 3b closed on 2026-09-14, so the numbers are
+  published as unanswered, not as agreed: the authors never confirmed our mapping, and a later reply
+  will be published beside the number. The fourth, `Auditware/radar#32`,
   **was closed by the vendor on 2026-09-06** after they answered twice: the mapping confirmation of
   2026-09-01 (limitation 47) and a closing comment stating "no corrections to the mapping from our
   side", that the generic-rule noise we flagged is largely gone with real recall unchanged, and that

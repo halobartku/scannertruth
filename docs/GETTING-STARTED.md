@@ -157,5 +157,6 @@ with the date. That has happened repeatedly and the record is public.
 
 If you are the author of a tool we measured: the mapping of your rules is our reading of your work.
 [`docs/PROTOCOL.md`](../docs/PROTOCOL.md) gives you a right of reply, and **every third-party number here is
-provisional until you use it.** We already understated one tool through a mapping error we made
+provisional until you use it or until fourteen days pass in silence**, which we then publish as
+silence. A reply after that is still published beside the number. We already understated one tool through a mapping error we made
 ourselves, so this is not a formality.
