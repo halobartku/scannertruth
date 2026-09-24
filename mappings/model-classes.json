@@ -2318,6 +2318,238 @@
       ],
       "verdict": "no",
       "reason": "'Missing Authority Check': names the effect"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "anchor-interface-account",
+      "real_class": "type-cosplay",
+      "named": [
+        "Missing discriminator check (type cosplay / account type confusion)",
+        "Type cosplay / missing discriminator check",
+        "Missing discriminator check (type cosplay / account type con"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing discriminator check (type cosplay / account type confusion)': names the missing discriminator check or type confusion, the mechanism or its clear synonym",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "wormhole-sysvar",
+      "real_class": "sysvar-address-checking",
+      "named": [
+        "Missing sysvar account validation (spoofed instructions sysv",
+        "Missing sysvar account validation (spoofed instructions sysvar)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing sysvar account validation (spoofed instructions sysv': names the instructions sysvar account as unverified or spoofed, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solend-owner-checks",
+      "real_class": "owner-checks",
+      "named": [
+        "Missing account validation (authorization bypass)",
+        "Missing account validation (reserve not bound to lending mar",
+        "Missing account relationship check (admin authorization bypass)"
+      ],
+      "verdict": "disputed",
+      "reason": "'Missing account validation (authorization bypass)': names a missing binding between the reserve and the lending market (a relationship check), not the missing owner check the corpus records; fits account-data-matching as well as owner-checks",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "spl-token-lending-rounding",
+      "real_class": "arithmetic-rounding-drain",
+      "named": [
+        "Rounding / numerical precision error (rounding in the user's",
+        "Rounding error (rounding in the user's favor)",
+        "Rounding error / precision loss"
+      ],
+      "verdict": "counts",
+      "reason": "'Rounding / numerical precision error (rounding in the user's': names rounding or precision loss, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "squads-signer-auth",
+      "real_class": "signer-authorization",
+      "named": [
+        "Missing authorization / membership check",
+        "Missing authorization check"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing authorization / membership check': names the missing signer or membership check, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "squads-account-matching",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing authorization check",
+        "Missing authorization check (execute not restricted to membe",
+        "Missing access control (executor membership check)"
+      ],
+      "verdict": "no",
+      "reason": "'Missing authorization check': different mechanism: a membership or access-control check, not a binding between the accounts' data",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "metaplex-token-metadata",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing lock-state check (authorization bypass)",
+        "Missing account validation (account substitution / auth-rules bypass)",
+        "Missing account validation"
+      ],
+      "verdict": "disputed",
+      "reason": "'Missing lock-state check (authorization bypass)': 'account substitution' is the mechanism family, but no named string says which accounts must match (mint, token, owner); the lock-state string is a different mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "metaplex-bubblegum-creator",
+      "real_class": "signer-authorization",
+      "named": [
+        "Authorization bypass (spoofable program-owned signer check)",
+        "Authority spoofing via owner check (missing PDA/key verifica"
+      ],
+      "verdict": "counts",
+      "reason": "'Authorization bypass (spoofable program-owned signer check)': names a program-owner check standing in for a signer-key check, the missing signer verification, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "anchor-program-system",
+      "real_class": "program-account-validation",
+      "named": [
+        "Program ID validation bypass (arbitrary CPI)",
+        "Program ID check bypass (arbitrary CPI)",
+        "Missing program ID check (program substitution / arbitrary CPI)"
+      ],
+      "verdict": "counts",
+      "reason": "'Program ID validation bypass (arbitrary CPI)': names the missing program ID validation, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solido-deposit-reserve-account",
+      "real_class": "pda-derived-address-validation",
+      "named": [
+        "missing account validation (unchecked reserve account)",
+        "Missing account validation",
+        "Missing account validation (unchecked reserve account)"
+      ],
+      "verdict": "disputed",
+      "reason": "'missing account validation (unchecked reserve account)': names the account left unchecked (the reserve) but not the check it lacks (re-deriving its address); same phrase judged disputed for glm-5.3",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "solido-anker-arbitrary-cpi",
+      "real_class": "arbitrary-cpi",
+      "named": [
+        "Arbitrary CPI (unvalidated token swap program)",
+        "Arbitrary CPI (missing token swap program ID check)",
+        "Arbitrary CPI (unvalidated token swap program ID)"
+      ],
+      "verdict": "counts",
+      "reason": "'Arbitrary CPI (unvalidated token swap program)': names the unverified CPI target (token swap program ID), which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "token-2022-confidential-approve-mint",
+      "real_class": "account-data-matching",
+      "named": [
+        "Missing account validation (mint mismatch / authorization by",
+        "Missing account validation (mint mismatch) / authorization bypass",
+        "Missing account validation (mint mismatch / authorization bypass)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing account validation (mint mismatch / authorization by': names the mint mismatch, the accounts whose data must match, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "squads-recursive-execute",
+      "real_class": "cpi-recursion",
+      "named": [
+        "Reentrancy / recursive self-CPI"
+      ],
+      "verdict": "counts",
+      "reason": "'Reentrancy / recursive self-CPI': 'recursive self-CPI' names the mechanism itself; the 'reentrancy' half alone would be disputed",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
+    },
+    {
+      "dir": "model-claude-opus-5-5-cc-c2-2026-09-24",
+      "model": "claude-opus-5-5",
+      "provider": "claude-code",
+      "regime": "effort max",
+      "corpus": "2",
+      "case": "anchor-account-reload-owner",
+      "real_class": "owner-check-after-cpi",
+      "named": [
+        "Missing owner check (Account::reload)",
+        "Missing owner check (Account::reload type confusion)"
+      ],
+      "verdict": "counts",
+      "reason": "'Missing owner check (Account::reload)': names the missing owner check on Account::reload, which is the mechanism",
+      "adjudicated": "2026-09-24, agent under the owner's rule of 2026-09-02"
     }
   ]
 }
