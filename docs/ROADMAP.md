@@ -18,9 +18,9 @@ was wrong and nothing checked it (error 47).
 
 | | |
 |---|---|
-| **5,886 lines** of Python across **32 tools**, plus a suite of **171 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
+| **5,969 lines** of Python across **33 tools**, plus a suite of **171 checks**, verified by mutation | `score.py`, `score2.py`, `run_all.py`, `holdout.py`, `control_c2.py`, `unmapped_check.py`, `shiftaware.py`, `corpus_ghsa.py`, ... |
 | **2,635 lines** of documentation across 14 files | protocol, results, limitations, roadmap; the engineering logs are records and are counted as errors, not as documentation |
-| **227 commits** as read on 2026-09-24, all public (`git rev-list --count HEAD`) | every correction visible in history. The count is a reading with a date, not a live number: the commit that updates this line is itself the next commit, so an exact figure here is stale the moment it lands |
+| **228 commits** as read on 2026-09-24, all public (`git rev-list --count HEAD`) | every correction visible in history. The count is a reading with a date, not a live number: the commit that updates this line is itself the next commit, so an exact figure here is stale the moment it lands |
 | **3 skills** | the method as executable procedure, not prose |
 | **9 adapter declarations** | a scanner is a JSON file in `adapters/`, not a bespoke script |
 | **CI on machines we do not control** | the test suite, every self-check, the headline reproduction and the calibration controls, on every push |
