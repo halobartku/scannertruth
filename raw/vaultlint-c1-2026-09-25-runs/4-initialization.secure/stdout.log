@@ -1,0 +1,35 @@
+COMMAND: /bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/secure
+EXIT: 0
+WALL_SECONDS: 0.02
+
+STDOUT:
+{
+  "findings": [
+    {
+      "column": 24,
+      "docs_url": "https://vaultlint.com/rules/VL002/",
+      "file": "/root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+      "help": "Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.",
+      "line": 12,
+      "message": "Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.",
+      "rule_id": "VL002",
+      "severity": "high",
+      "snippet": "let mut user = User::try_from_slice(&ctx.accounts.user.data.borrow()).unwrap();",
+      "title": "missing owner check"
+    }
+  ],
+  "skipped": []
+}
+
+
+STDERR:
+→ analyzing 1 Rust file (Anchor 0.20.1) …
+
+✗ HIGH  missing owner check
+        /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/secure/src/lib.rs:12
+        Account data is deserialised without verifying the account owner. An attacker can pass a look-alike account owned by another program.
+        Use `Account<'info, T>`, which checks the owner and discriminator, or add `require_keys_eq!(*account.owner, crate::ID)` before reading.
+        https://vaultlint.com/rules/VL002/
+
+1 issue found · 1 high · 0 medium
+

@@ -111,6 +111,7 @@ line up one to one.
 | `solsec` | 2 | `solsec.json` | `solsec.json` | `raw/c2-solsec-percase.json` | `raw/c2-solsec-percase.json.log` |
 | `vaultlint` | 1 | `vaultlint.json` | `vaultlint.json` | `raw/vaultlint.json` | `raw/vaultlint.json.log` |
 | `vaultlint` | 2 | `vaultlint.json` | `vaultlint.json` | `raw/c2-vaultlint-complete.json` (hand-converted into the `sol-audit` envelope) | `raw/c2-vaultlint-complete.json.log` |
+| `vaultlint-0.2.0` | 1 | `vaultlint-0.2.0.json` | `vaultlint.json` (pre-registered 2026-08-31, unedited) | `raw/vaultlint-c1-2026-09-25.json` | `raw/vaultlint-c1-2026-09-25.json.log` |
 | `xray` | 1 | `xray.json` | `xray.json` (carries both the registered and the corrected map) | `raw/xray-c1-raw.json` | `raw/xray-c1-raw.json.log` |
 | `sol-azy` | 2 | `sol-azy.json`, **off the clock** by declaration | `sol-azy-c2ext.json` | `raw/c2ext-sol-azy.json` | `raw/c2ext-sol-azy.json.log` |
 

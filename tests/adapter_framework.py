@@ -36,6 +36,9 @@ CLOCK_BEFORE_MIGRATION_C1 = {
     # Pre-existing rows above are still compared key by key, so a silent edit of any of
     # them keeps failing; this row is the deliberate addition, not a drift.
     "radar@2026-09-02": ("radar-c1-2026-09-02-post36.json", "radar"),
+    # Added 2026-09-25: vaultlint v0.2.0 re-measurement, a NEW versioned row beside the
+    # 0.1.1 one (rules-drift watch). Same deliberate-addition rule as radar@2026-09-02.
+    "vaultlint-0.2.0": ("vaultlint-c1-2026-09-25.json", "vaultlint"),
 }
 CLOCK_BEFORE_MIGRATION_C2 = {
     "radar": ("c2-radar-current.json", "radar"),
@@ -76,6 +79,8 @@ CLOCK_BEFORE_MIGRATION_ALIAS = {
     "semgrep-solana-standard-c2": "semgrep-solana-standard-c2",
     # Same deliberate 2026-09-02 addition as the C1 literal above.
     "radar@2026-09-02": "radar",
+    # Added 2026-09-25: the v0.2.0 row scores with the same pre-registered vaultlint mapping.
+    "vaultlint-0.2.0": "vaultlint",
 }
 
 # A scanner that does not exist, so the framework can be driven end to end on a laptop with no

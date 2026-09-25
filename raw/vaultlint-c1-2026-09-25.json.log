@@ -1,0 +1,352 @@
+[
+ {
+  "leaf": "0-signer-authorization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.05,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/0-signer-authorization/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/0-signer-authorization/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/0-signer-authorization.insecure/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/0-signer-authorization/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/0-signer-authorization/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/0-signer-authorization.recommended/stdout.log"
+ },
+ {
+  "leaf": "0-signer-authorization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/0-signer-authorization/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/0-signer-authorization/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/0-signer-authorization.secure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/1-account-data-matching/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/1-account-data-matching/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/1-account-data-matching.insecure/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/1-account-data-matching/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/1-account-data-matching/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/1-account-data-matching.recommended/stdout.log"
+ },
+ {
+  "leaf": "1-account-data-matching/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/1-account-data-matching/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/1-account-data-matching/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/1-account-data-matching.secure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/10-sysvar-address-checking.insecure/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/10-sysvar-address-checking.recommended/stdout.log"
+ },
+ {
+  "leaf": "10-sysvar-address-checking/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/10-sysvar-address-checking.secure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/2-owner-checks/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/2-owner-checks/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/2-owner-checks.insecure/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/2-owner-checks/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/2-owner-checks/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/2-owner-checks.recommended/stdout.log"
+ },
+ {
+  "leaf": "2-owner-checks/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.06,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/2-owner-checks/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/2-owner-checks/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/2-owner-checks.secure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/3-type-cosplay/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/3-type-cosplay/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/3-type-cosplay.insecure/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/3-type-cosplay/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/3-type-cosplay/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/3-type-cosplay.recommended/stdout.log"
+ },
+ {
+  "leaf": "3-type-cosplay/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.07,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/3-type-cosplay/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/3-type-cosplay/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/3-type-cosplay.secure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/4-initialization.insecure/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/4-initialization.recommended/stdout.log"
+ },
+ {
+  "leaf": "4-initialization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.02,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/4-initialization/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/4-initialization.secure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.02,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/5-arbitrary-cpi/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/5-arbitrary-cpi/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/5-arbitrary-cpi.insecure/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.03,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/5-arbitrary-cpi/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/5-arbitrary-cpi/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/5-arbitrary-cpi.recommended/stdout.log"
+ },
+ {
+  "leaf": "5-arbitrary-cpi/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/5-arbitrary-cpi/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/5-arbitrary-cpi/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/5-arbitrary-cpi.secure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/6-duplicate-mutable-accounts/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/6-duplicate-mutable-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/6-duplicate-mutable-accounts/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/6-duplicate-mutable-accounts/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/6-duplicate-mutable-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "6-duplicate-mutable-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/6-duplicate-mutable-accounts/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/6-duplicate-mutable-accounts/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/6-duplicate-mutable-accounts.secure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 1,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/7-bump-seed-canonicalization.insecure/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/7-bump-seed-canonicalization/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/7-bump-seed-canonicalization.recommended/stdout.log"
+ },
+ {
+  "leaf": "7-bump-seed-canonicalization/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.02,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/7-bump-seed-canonicalization/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/7-bump-seed-canonicalization/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/7-bump-seed-canonicalization.secure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/8-pda-sharing/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/8-pda-sharing/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/8-pda-sharing.insecure/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/8-pda-sharing/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/8-pda-sharing/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/8-pda-sharing.recommended/stdout.log"
+ },
+ {
+  "leaf": "8-pda-sharing/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.02,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/8-pda-sharing/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/8-pda-sharing/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/8-pda-sharing.secure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/insecure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/9-closing-accounts.insecure/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.04,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/insecure-still >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/insecure-still",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/9-closing-accounts.insecure-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/insecure-still-still",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/insecure-still-still >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/insecure-still-still",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/9-closing-accounts.insecure-still-still/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/recommended",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.01,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/recommended >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/recommended",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/9-closing-accounts.recommended/stdout.log"
+ },
+ {
+  "leaf": "9-closing-accounts/secure",
+  "status": "ok",
+  "exit_code": 0,
+  "wall_seconds": 0.02,
+  "files_seen": 1,
+  "findings": 0,
+  "command": "/bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/secure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/9-closing-accounts/secure",
+  "artefact": "raw/vaultlint-c1-2026-09-25-runs/9-closing-accounts.secure/stdout.log"
+ }
+]

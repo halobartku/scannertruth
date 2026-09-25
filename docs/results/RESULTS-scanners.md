@@ -17,6 +17,7 @@ scoring code for every tool. Raw data: `radar-full.json`. Mapping: `mappings/rad
 | **`radar`** (Auditware, main `fa81c25`, 2026-09-04, engine shim, corpus 2 re-run) | **11 / 11** | **11 / 11** | 19 | 2 (11%, upper bound); on corpus 2, `wormhole-sysvar` goes **missed → detected** at the pre-registered fix sites (`verify_signature.rs:92`, `:101`), exactly as the vendor reported in `radar#32` — detected 0→1, missed 7→6, everything else unchanged ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
 | **`radar`** (Auditware, main `3439053`, 2026-09-07, engine shim, corpus 2 re-run after the #38–#40 rule changes) | — not re-measured — | — | 62 templates† | — ; on corpus 2 the two `unlocated` verdicts become `missed` (Account Data Matching rewrite no longer fires in those files), `wormhole-sysvar` detection holds, and all 7 new templates fire only as unmapped rows — 40 of their 80 rows on fixed code ([RESULTS-corpus2.md](RESULTS-corpus2.md)) |
 | **`vaultlint`** 0.1.1 | 2 / 11 | **2 / 11** | **4** | 1 (25%) |
+| **`vaultlint`** 0.2.0 (`main` 2026-09-25, local run, 2026-09-25) | 2 / 11 | **2 / 11** | **4** | 1 (25%); byte-identical findings to 0.1.1 - see the VaultLint section |
 
 † `62 templates` is the header build-info from #41 (`Ran 62 templates (shim revision 3439053)`;
 56 at `fa81c25`), not a findings count. The corpus-1 columns are marked not re-measured because
@@ -177,6 +178,24 @@ already-fixed program tells you something whatever the file is labelled.
 VaultLint says little and is right when it does. Which you want depends on whether an ignored alert
 or a missed bug is worse in your workflow, and a single ranking number would have erased that
 entirely. This is the clearest argument in the whole project for reporting both axes.
+
+**Re-measured, 2026-09-25, as a new row: v0.2.0 changes nothing here.** Release v0.2.0 (2026-09-25,
+release commit `fbc5a8e8eaa46b713a7feeaea54b2530652a8c9c`) ungates VL003 - a missing
+`overflow-checks` is now reported without waiting for arithmetic to point at - and adds
+`--mainnet` deployment lookup and `live on mainnet` marking, both network features this
+network-hermetic benchmark does not exercise (`--mainnet` was deliberately not passed; the
+default makes no network calls, as before). Installed from crates.io at exactly 0.2.0 and run
+through the framework as `vaultlint-0.2.0`, same pinned corpus `24555d0`, same pre-registered
+mapping, `--repeat 2`, deterministic, 35 of 35 leaves `ok`. The result is **byte-identical to the
+0.1.1 row: the same four findings, by rule, file, line and column** - 2 / 11 nominal and real,
+one firing on fixed code. The ungated VL003 cannot fire on this harness: it is a workspace-manifest
+finding, each leaf's workspace root is the corpus repository's own root manifest, which sits above
+the per-leaf scan root, and no leaf manifest declares its own `[workspace]` - so on this corpus the
+ungating is invisible, by construction rather than by luck. That is a property of the teaching
+corpus's layout, and it is written down in the declaration rather than left to be rediscovered. On
+a monorepo or a whole-repository scan the ungated VL003 would fire; five of the vendor's six
+overflow-check-less repositories were silenced by the old gate, which is their justification and we
+have no measurement that contradicts it.
 
 ## The caveat that matters more than the score
 

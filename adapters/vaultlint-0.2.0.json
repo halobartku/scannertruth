@@ -1,0 +1,64 @@
+{
+ "name": "vaultlint-0.2.0",
+ "version": "0.2.0 from crates.io, measured 2026-09-25",
+ "homepage": "https://github.com/vaultlint/vaultlint",
+ "provenance": {
+  "repository": "https://github.com/vaultlint/vaultlint",
+  "install": "cargo install vaultlint --version 0.2.0 --root <root>, binary at <root>/bin/vaultlint, version confirmed by `vaultlint --version` = 0.2.0 before the run",
+  "install_documented_at": "the crate's crates.io page and repository README, which document `cargo install vaultlint`; the version pin is the registry's own 0.2.0, published 2026-09-25",
+  "checked_on": "2026-09-25",
+  "note": "Release v0.2.0, release commit fbc5a8e8eaa46b713a7feeaea54b2530652a8c9c, detected by the rules-drift watch the same day. The 0.1.1 row is not overwritten: this is a second, versioned row beside it, scored with the same pre-registered mappings/vaultlint.json. Measured outside a container (no docker engine in the measuring sandbox); the binary is pinned by version from the registry, and the invocation is the same two-pass shape the 0.1.1 docker row used."
+ },
+ "run": {
+  "engine": "local",
+  "tool_root": "/root/kanban-tmp/t_4e04f570/vl-root/bin",
+  "command": [
+   "/bin/sh",
+   "-c",
+   "{tool_root}/vaultlint scan --fail-on never {mount} >&2; {tool_root}/vaultlint scan --format json --fail-on never {mount}"
+  ],
+  "timeout_seconds": 600,
+  "invocation_evidence": "Same two-pass shape as the 0.1.1 row (adapters/vaultlint.json, recovered 2026-09-01 from raw/vaultlint-c2-2026-09-01/): the human formatter goes to stderr for the coverage line, the json pass to stdout for findings. Read off the binary itself on 2026-09-25: `vaultlint scan --help` shows --format human|json|sarif and --fail-on high|medium|low|never; a smoke run against a corpus leaf prints '→ analyzing 1 Rust file (Anchor 0.20.1) …', which is the line the coverage evidence pattern matches, and the JSON envelope is {findings: [{rule_id, file, line, column, ...}], skipped: []}. --mainnet was read from --help and deliberately NOT passed: the network-hermetic default is the 0.1.1 baseline this row is compared against, and the release notes say the default makes no network calls."
+ },
+ "layout": "variant-dir",
+ "coverage": {
+  "ok_exit_codes": [
+   0
+  ],
+  "evidence": {
+   "pattern": "analyzing (\\d+) Rust file",
+   "minimum": 1,
+   "means": "vaultlint's own count of the files it opened, printed by its human formatter before it analyses them and before it says whether it found anything"
+  }
+ },
+ "output": {
+  "from": "stdout",
+  "format": "vaultlint"
+ },
+ "envelope": "vaultlint",
+ "positive_control": {
+  "rule_id": "VL002",
+  "sample": {
+   "findings": [
+    {
+     "rule_id": "VL002",
+     "file": "{path}",
+     "line": "{line}",
+     "column": 24,
+     "message": "Account data is deserialised without an owner check",
+     "docs_url": "https://vaultlint.com/rules/VL002/"
+    }
+   ]
+  }
+ },
+ "measurements": [
+  {
+   "row": "vaultlint-0.2.0",
+   "corpus": "corpus1",
+   "raw": "vaultlint-c1-2026-09-25.json",
+   "mapping": "vaultlint",
+   "envelope": "vaultlint",
+   "note": "v0.2.0 re-measurement of the teaching corpus at the same pinned commit 24555d044802db4022112a94d6d70e74291a4b6d, 35 leaves, run per-case through the framework with --repeat 2. Scored with the 0.1.1 pre-registered mapping (mappings/vaultlint.json, committed 2026-08-31, unedited): the release changed which findings the tool emits, not what its rule ids mean. v0.2.0's ungated VL003 (missing overflow-checks now reported without waiting for arithmetic) is a manifest-level project finding; on this harness each leaf's workspace root is the corpus repository's own root manifest, which sits above the per-leaf scan root, and no leaf manifest declares its own [workspace], so the ungated VL003 cannot fire here - the delta on this corpus is zero by construction, and that is written down rather than left to be rediscovered."
+  }
+ ]
+}

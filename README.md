@@ -88,6 +88,7 @@ Eight scanners (seven third-party and ours) and two calibration controls, one pr
 | `sol-audit` v2 (ours) | 4 / 11 | *retired 2026-09-01, superseded by v3*; was 0 / 8 |
 | `sol-audit` v3 (ours, 2026-09-01) | 5 / 11 | **0 / 16** |
 | `vaultlint` 0.1.1 | 2 / 11 | **0 / 17 registered, 1 / 17 corrected**; 15 of 17 `no-rule` |
+| `vaultlint` 0.2.0 (2026-09-25) | 2 / 11 - byte-identical findings to 0.1.1 | not re-measured on corpus 2 |
 | **X-Ray** (sec3) | 2 / 11 | **0 / 8 registered, 1 / 8 corrected** |
 | `solsec` | 0 / 11 | **0 / 16**, zero unavailable |
 | `sol-azy` (FuzzingLabs) | 9 / 11 nominal, **4 / 11** real | **0 / 15 analysed**, 1 not run |

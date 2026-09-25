@@ -1,0 +1,28 @@
+{
+ "findings": [
+  {
+   "rule_id": "VL002",
+   "file": "/tmp/sealevel-attacks/programs/4-initialization/insecure/src/lib.rs",
+   "line": 12,
+   "col": 0
+  },
+  {
+   "rule_id": "VL002",
+   "file": "/tmp/sealevel-attacks/programs/4-initialization/secure/src/lib.rs",
+   "line": 12,
+   "col": 0
+  },
+  {
+   "rule_id": "VL005",
+   "file": "/tmp/sealevel-attacks/programs/5-arbitrary-cpi/insecure/src/lib.rs",
+   "line": 11,
+   "col": 0
+  },
+  {
+   "rule_id": "VL004",
+   "file": "/tmp/sealevel-attacks/programs/7-bump-seed-canonicalization/insecure/src/lib.rs",
+   "line": 11,
+   "col": 0
+  }
+ ]
+}

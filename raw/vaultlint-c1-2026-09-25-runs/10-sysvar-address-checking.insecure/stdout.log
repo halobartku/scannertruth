@@ -1,0 +1,16 @@
+COMMAND: /bin/sh -c /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/insecure >&2; /root/kanban-tmp/t_4e04f570/vl-root/bin/vaultlint scan --format json --fail-on never /root/kanban-tmp/t_4e04f570/sealevel-attacks/programs/10-sysvar-address-checking/insecure
+EXIT: 0
+WALL_SECONDS: 0.01
+
+STDOUT:
+{
+  "findings": [],
+  "skipped": []
+}
+
+
+STDERR:
+→ analyzing 1 Rust file (Anchor 0.25.0) …
+
+✓ no issues found
+

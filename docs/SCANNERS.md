@@ -62,7 +62,7 @@ mapped rule fired on the vulnerable program **and stayed silent on the same prog
 |---|---|---|
 | Radar | **11 / 11** | 0 / 8 |
 | sol-audit v2 (ours) | 4 / 11 | *retired 2026-09-01, superseded by v3* |
-| VaultLint | 2 / 11 | 0 / 17 registered, **1 / 17** corrected; 15 of 17 `no-rule` |
+| VaultLint | 2 / 11 | 0 / 17 registered, **1 / 17** corrected; 15 of 17 `no-rule` |; 0.2.0 re-measured 2026-09-25: corpus-1 findings byte-identical, see `results/RESULTS-scanners.md` |
 | X-Ray | 2 / 11 | 0 / 8 registered, **1 / 8** corrected |
 | solsec | 0 / 11 | ~~0 / 6, 3 unavailable~~ **0 / 16, zero unavailable** (error 35) |
 | semgrep, own registry | no Solana rules in the registry | - |
